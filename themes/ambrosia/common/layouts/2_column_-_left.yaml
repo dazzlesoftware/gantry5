@@ -122,7 +122,7 @@ content:
       text:
         -
           text: Features
-          link: 'http://docs.genesis.org/genesis/basics/key-features'
+          link: 'https://codex.dazzlecms.org/basics/key-features'
           name: Features
         -
           text: 'Genesis'
@@ -130,7 +130,7 @@ content:
           name: 'Genesis'
         -
           text: Particles
-          link: 'http://docs.genesis.org/genesis/particles'
+          link: 'https://codex.dazzlecms.org/particles'
           name: Particles
         -
           text: Download

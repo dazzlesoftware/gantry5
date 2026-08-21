@@ -78,7 +78,7 @@ During the rename transition, download packages continue to use their existing G
 
 Once you have the latest packages, installation is simple. We have provided a step-by-step guide in the **Installation** portion of this documentation.
 
-[**Learn More**](http://docs.genesis.org/genesis/basics/installation)
+[**Learn More**](https://codex.dazzlecms.org/basics/installation)
 
 ## Accessing the Genesis Administrator
 
@@ -110,7 +110,7 @@ You will notice the following menu items in the Genesis Administrator:
 
 8. **Layout**: This administrative panel is where you would configure the layout for your theme. Creating an placing module positions, Particles, spacers, and non-rendered scripts such as Google Analytics code is all done in this panel.
 
-[**Learn More**](http://docs.genesis.org/genesis/configure/genesis-admin)
+[**Learn More**](https://codex.dazzlecms.org/configure/genesis-admin)
 
 ## What are Outlines, Particles, Atoms, etc.?
 
@@ -122,7 +122,7 @@ Genesis uses a few framework-specific terms. Here is a quick breakdown of their 
 | Particle      | A typically small block of data used on the front end. It acts like a widget or module and can be configured in the Genesis Administrator. |
 | Atom          | A type of Particle that contains non-rendered data, such as custom scripting (JS, CSS, etc.) or analytics scripts for traffic tracking.                |
 
-[**Learn More**](http://docs.genesis.org/genesis/basics/terminology)
+[**Learn More**](https://codex.dazzlecms.org/basics/terminology)
 
 ## Where to Get Help
 

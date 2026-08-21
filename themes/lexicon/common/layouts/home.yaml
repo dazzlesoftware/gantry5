@@ -231,7 +231,7 @@ content:
           image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Rich Content Display</span><span class="rt-title-tag">Dynamic & Versatile Content Blocks</span>'
           linklabel: 'Learn More'
-          link: 'http://docs.genesis.org/genesis/particles'
+          link: 'https://codex.dazzlecms.org/particles'
           buttontarget: _blank
           buttonclass: readon
           title: Particles

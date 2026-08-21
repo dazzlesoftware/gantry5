@@ -215,8 +215,8 @@ class ScssCompiler extends CssCompiler
  *
  * For more information on modifying CSS, please read:
  *
- * http://docs.genesis.org/genesis/configure/styles
- * http://docs.genesis.org/genesis/tutorials/adding-a-custom-style-sheet
+ * https://codex.dazzlecms.org/configure/styles
+ * https://codex.dazzlecms.org/tutorials/adding-a-custom-style-sheet
  */
 WARN;
             $css = $warning . "\n\n" . $css;

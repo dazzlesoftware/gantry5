@@ -182,7 +182,7 @@ class Theme extends AbstractTheme
             \add_action('load-widgets.php',
                 function() {
                     \add_action('admin_notices', function() {
-                        $message = __('No widget blocks have been defined. Please add some in Genesis Layout Manger or read <a target="_blank" rel="noopener" href="http://docs.genesis.org/genesis/particles/position">documentation</a> on how to create widget blocks.', 'genesis');
+                        $message = __('No widget blocks have been defined. Please add some in Genesis Layout Manger or read <a target="_blank" rel="noopener" href="https://codex.dazzlecms.org/particles/position">documentation</a> on how to create widget blocks.', 'genesis');
                         echo '<div class="error"><p>' . wp_kses_post($message) . '</p></div>';
                     });
                 });

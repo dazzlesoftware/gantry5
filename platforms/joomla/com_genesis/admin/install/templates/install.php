@@ -13,7 +13,7 @@ include __DIR__ . '/style.php';
     <p>
         Thank you for choosing Genesis Framework!
         <br>
-        The next step is to install a Genesis-compatible template. For more information, please read the <a href="http://docs.genesis.org/genesis/basics/installation">documentation</a>.
+        The next step is to install a Genesis-compatible template. For more information, please read the <a href="https://codex.dazzlecms.org/basics/installation">documentation</a>.
     </p>
 
     <div class="genesis-rockettheme">

@@ -7,7 +7,7 @@
 		<type>template</type>
 		<client>site</client>
 		<version>@version@</version>
-		<infourl title="Hydrogen @version@">http://docs.genesis.org/genesis</infourl>
+		<infourl title="Hydrogen @version@">https://codex.dazzlecms.org</infourl>
         <sha512>@sha512_joomla_hydrogen@</sha512>
 		<downloads>
 			<downloadurl type="full" format="zip">http://updates.genesis.org/download/@version@/joomla-tpl_genesis_hydrogen_v@version@.zip</downloadurl>

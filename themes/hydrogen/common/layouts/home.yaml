@@ -42,7 +42,7 @@ content:
     attributes:
       image: 'genesis-assets://images/genesis-logo.png'
       headline: ''
-      description: '<p>Genesis is the most customizable and powerful version of the framework yet. Packed full of features such as <a href="http://docs.genesis.org/genesis/configure/layout-manager">drag-and-drop layout creation</a> and the powerful particle system, Genesis has been designed from the ground up to be lightning fast and hassle free.</p>'
+      description: '<p>Genesis is the most customizable and powerful version of the framework yet. Packed full of features such as <a href="https://codex.dazzlecms.org/configure/layout-manager">drag-and-drop layout creation</a> and the powerful particle system, Genesis has been designed from the ground up to be lightning fast and hassle free.</p>'
       link: 'http://docs.genesis.org'
       linktext: 'Read More'
   sample-2:

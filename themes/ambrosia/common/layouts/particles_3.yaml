@@ -101,13 +101,13 @@ content:
       target: _blank
       text:
       - text: Features
-        link: http://docs.genesis.org/genesis/basics/key-features
+        link: https://codex.dazzlecms.org/basics/key-features
         name: Features
       - text: Genesis
         link: http://www.genesis.org/
         name: Genesis
       - text: Particles
-        link: http://docs.genesis.org/genesis/particles
+        link: https://codex.dazzlecms.org/particles
         name: Particles
       - text: Download
         link: https://dazzlesoftware.org/joomla/templates/ambrosia

@@ -5,7 +5,7 @@ items:
   -
     icon: 'fa fa-diamond'
     text: Features
-    link: 'http://docs.genesis.org/genesis/basics/key-features'
+    link: 'https://codex.dazzlecms.org/basics/key-features'
     name: Features
   -
     icon: 'fa fa-rocket'
@@ -15,7 +15,7 @@ items:
   -
     icon: 'fa fa-gear'
     text: Addons
-    link: 'http://docs.genesis.org/genesis/particles'
+    link: 'https://codex.dazzlecms.org/particles'
     name: Addons
   -
     icon: 'fa fa-cloud-download'
