@@ -5,7 +5,6 @@ Joomla, WordPress, Grav, and phpBB. It provides one shared PHP/Twig framework,
 a visual administrator, a responsive layout system, and a catalog of reusable
 themes and content components across multiple publishing platforms.
 
-Genesis continues the architecture and ecosystem formerly known as Gantry 5.
 Some extension identifiers, package names, namespaces, storage paths, and APIs
 intentionally retain legacy names where changing them would break existing
 sites or themes.
