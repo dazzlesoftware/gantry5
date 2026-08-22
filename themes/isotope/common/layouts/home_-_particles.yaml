@@ -851,7 +851,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.genesis.org/'
+          link: 'https://codex.dazzlecms.org/'
           icon: ''
           readmoreclass: ''
           title: Guides
@@ -1054,7 +1054,7 @@ content:
       html: "<h3 class=\"g-title\">Availability</h3>\n<p><a href=\"https://dazzlesoftware.org/joomla/templates/isotope\">Isotope</a> can be <span class=\"hidden-tablet\">individually </span>purchased with lifetime download / forum access.</p>\n<p>Alternatively, Isotope is available as part of a subscription.</p>"
   branding-1875:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-2327:
     title: 'To Top'
     attributes:

@@ -164,7 +164,7 @@ content:
       buttonclass: button-4
   branding-1026:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
       css:
         class: branding
   totop-1546:

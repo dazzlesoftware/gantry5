@@ -116,7 +116,7 @@ content:
           name: Genesis
         -
           text: Documentation
-          link: 'http://docs.genesis.org'
+          link: 'https://codex.dazzlecms.org'
           name: Documentation
         -
           text: Download

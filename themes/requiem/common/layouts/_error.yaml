@@ -378,7 +378,7 @@ content:
       key: footer-c
   branding-9892:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
   totop-5466:
     title: 'To Top'
     attributes:

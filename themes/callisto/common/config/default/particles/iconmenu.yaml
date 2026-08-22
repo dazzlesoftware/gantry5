@@ -10,7 +10,7 @@ items:
   -
     icon: 'fa fa-rocket'
     text: 'Genesis'
-    link: 'http://www.genesis.org/'
+    link: 'https://dazzlecms.org/'
     name: 'Genesis'
   -
     icon: 'fa fa-gear'

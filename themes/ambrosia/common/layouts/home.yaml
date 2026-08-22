@@ -116,7 +116,7 @@ content:
           name: Features
         -
           text: 'Genesis'
-          link: 'http://www.genesis.org/'
+          link: 'https://dazzlecms.org/'
           name: 'Genesis'
         -
           text: Particles
@@ -668,7 +668,7 @@ content:
           title: 'Online Guides for the Ambrosia Template'
         -
           image: ''
-          link: 'http://docs.genesis.org/'
+          link: 'https://codex.dazzlecms.org/'
           textstyle: compact
           imagestyle: compact
           desc: ''

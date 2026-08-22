@@ -477,7 +477,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.genesis.org/'
+          link: 'https://codex.dazzlecms.org/'
           icon: ''
           readmoreclass: ''
           title: Guides
@@ -697,7 +697,7 @@ content:
       class: g-title-bordered
   branding-5085:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
   totop-7373:
     title: 'To Top'
   social-4803:

@@ -526,7 +526,7 @@ content:
       items:
         -
           text: Genesis
-          link: 'http://www.genesis.org/'
+          link: 'https://dazzlecms.org/'
           name: Genesis
         -
           text: Features
@@ -553,7 +553,7 @@ content:
         xs: 3
   branding-9739:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
     layout: false
     block:
       columns:

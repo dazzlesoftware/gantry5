@@ -73,7 +73,7 @@ Genesis is a framework for building and running Genesis-powered themes. You need
 
 During the rename transition, download packages continue to use their existing Genesis 5 names and locations. Download the latest framework build and Hydrogen using the links below or from [GitHub](http://github.com/genesis/genesis/).
 
-| [Download Stable](http://www.genesis.org/downloads#genesis) | [Download CI Builds](http://genesis.org/downloads#ci-builds) |
+| [Download Stable](https://dazzlecms.org/downloads) |
 |:---------------------------------------------------:|:---------------------------------------------------------:|
 
 Once you have the latest packages, installation is simple. We have provided a step-by-step guide in the **Installation** portion of this documentation.
@@ -128,7 +128,7 @@ Genesis uses a few framework-specific terms. Here is a quick breakdown of their 
 
 A chat room has been set up using [Gitter](https://gitter.im/genesis/genesis) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
 
-[Documentation](http://docs.genesis.org) is also available, and being continually added to as development progresses. Is something missing? You can contribute to the documentation through GitHub.
+[Documentation](https://codex.dazzlecms.org) is also available, and being continually added to as development progresses. Is something missing? You can contribute to the documentation through GitHub.
 
 ## How to Contribute
 

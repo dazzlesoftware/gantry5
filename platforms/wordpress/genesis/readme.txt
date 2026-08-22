@@ -101,7 +101,7 @@ We try to ensure that any Genesis theme and the Genesis Plugin specifically will
 
 = Is there any documentation available ? =
 
-Yes of course! And it's getting better and better with every day! Please visit our [Genesis Documentation](http://docs.genesis.org/ "Genesis Documentation") site to get a better understanding on how Genesis works. If you feel like some parts of documentation could be changed or you want to add something, please feel free to do so, as the whole documentation is placed on [GitHub](https://github.com/genesis/docs "GitHub") and anyone is free to contribute.
+Yes of course! And it's getting better and better with every day! Please visit our [Genesis Documentation](https://codex.dazzlecms.org/ "Genesis Documentation") site to get a better understanding on how Genesis works. If you feel like some parts of documentation could be changed or you want to add something, please feel free to do so, as the whole documentation is placed on [GitHub](https://github.com/genesis/docs "GitHub") and anyone is free to contribute.
 
 = Where are the options of the plugin ? =
 

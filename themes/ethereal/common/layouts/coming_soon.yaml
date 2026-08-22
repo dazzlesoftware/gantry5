@@ -280,7 +280,7 @@ content:
   custom-7122:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"https://codex.dazzlecms.org/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.genesis.org/\">Genesis</a></li>\n\t<li><a href=\"https://codex.dazzlecms.org/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"https://codex.dazzlecms.org/basics/key-features\">Features</a></li>\n\t<li><a href=\"https://dazzlecms.org/\">Genesis</a></li>\n\t<li><a href=\"https://codex.dazzlecms.org/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
   totop-2594:
     title: 'To Top'
     attributes:

@@ -189,7 +189,7 @@ content:
       buttonclass: button-4
   branding-8113:
     attributes:
-      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="https://dazzlecms.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-8262:
     title: 'To Top'
     attributes:

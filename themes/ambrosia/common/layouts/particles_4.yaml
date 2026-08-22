@@ -104,7 +104,7 @@ content:
         link: https://codex.dazzlecms.org/basics/key-features
         name: Features
       - text: Genesis
-        link: http://www.genesis.org/
+        link: https://dazzlecms.org/
         name: Genesis
       - text: Particles
         link: https://codex.dazzlecms.org/particles
@@ -869,7 +869,7 @@ content:
         link: https://codex.dazzlecms.org/basics/key-features
         name: Features
       - text: Genesis
-        link: http://www.genesis.org/
+        link: https://dazzlecms.org/
         name: Genesis
       - text: Particles
         link: https://codex.dazzlecms.org/particles
@@ -903,7 +903,7 @@ content:
         link: https://codex.dazzlecms.org/basics/key-features
         name: Features
       - text: Genesis
-        link: http://www.genesis.org/
+        link: https://dazzlecms.org/
         name: Genesis
       - text: Particles
         link: https://codex.dazzlecms.org/particles
@@ -994,7 +994,7 @@ content:
         subtag: ''
         title: Online Guides for the Ambrosia Template
       - image: ''
-        link: http://docs.genesis.org/
+        link: https://codex.dazzlecms.org/
         textstyle: compact
         imagestyle: compact
         desc: ''
@@ -1029,7 +1029,7 @@ content:
         subtag: ''
         title: Online Guides for the Ambrosia Template
       - image: ''
-        link: http://docs.genesis.org/
+        link: https://codex.dazzlecms.org/
         textstyle: compact
         imagestyle: compact
         desc: ''
@@ -1907,7 +1907,7 @@ content:
         link: https://codex.dazzlecms.org/basics/key-features
         name: Features
       - text: Genesis
-        link: http://www.genesis.org/
+        link: https://dazzlecms.org/
         name: Genesis
       - text: Particles
         link: https://codex.dazzlecms.org/particles

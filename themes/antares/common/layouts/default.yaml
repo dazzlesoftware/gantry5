@@ -314,7 +314,7 @@ content:
           name: Docs
         -
           text: Guides
-          link: 'http://docs.genesis.org/'
+          link: 'https://codex.dazzlecms.org/'
           name: Guides
         -
           text: Questions

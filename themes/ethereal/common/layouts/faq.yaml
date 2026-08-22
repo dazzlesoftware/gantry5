@@ -168,7 +168,7 @@ content:
   custom-9255:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"https://codex.dazzlecms.org/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.genesis.org/\">Genesis</a></li>\n\t<li><a href=\"https://codex.dazzlecms.org/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"https://codex.dazzlecms.org/basics/key-features\">Features</a></li>\n\t<li><a href=\"https://dazzlecms.org/\">Genesis</a></li>\n\t<li><a href=\"https://codex.dazzlecms.org/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
   totop-6527:
     title: 'To Top'
     attributes:
