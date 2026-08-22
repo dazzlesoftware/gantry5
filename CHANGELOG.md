@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-This changelog begins with the Genesis `1.0.0` release. It incorporates the complete repository lineage from the first commits in 2014 through the independent Genesis stream. Repeated maintenance commits, merges, generated assets, and release bookkeeping are consolidated into the capabilities and fixes they produced.
+This changelog begins with the Genesis `1.0.0` release.
 
 ## [1.0.0] - 2026-08-22
 
