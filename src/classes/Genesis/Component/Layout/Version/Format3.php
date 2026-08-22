@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,7 +23,7 @@ class Format3 extends CompactFormat
     /**
      * @return array
      */
-    public function load()
+    public function load(): array
     {
         $result = parent::load();
 
@@ -41,7 +43,7 @@ class Format3 extends CompactFormat
      * @param array $structure
      * @return array
      */
-    public function store(array $preset, array $structure)
+    public function store(array $preset, array $structure): array
     {
         $structure = json_decode(json_encode($structure), true);
         $this->storeColumns($structure);
@@ -58,7 +60,7 @@ class Format3 extends CompactFormat
      * @param object $item
      * @return void
      */
-    protected function loadColumns($item)
+    protected function loadColumns(object $item): void
     {
         if (!is_object($item)) {
             return;
@@ -87,7 +89,7 @@ class Format3 extends CompactFormat
      * @param array $item
      * @return void
      */
-    protected function storeColumns(array &$item)
+    protected function storeColumns(array &$item): void
     {
         if (($item['type'] ?? null) === 'block') {
             $span = !empty($item['attributes']['columns']['xs'])
@@ -110,7 +112,7 @@ class Format3 extends CompactFormat
      * @param array $attributes
      * @return int|null
      */
-    protected function getCompactWidth(array $attributes)
+    protected function getCompactWidth(array $attributes): ?int
     {
         $span = (int) ($attributes['columns']['xs'] ?? 12);
 

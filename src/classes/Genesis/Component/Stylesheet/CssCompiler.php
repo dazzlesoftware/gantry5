@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fopen,WordPress.WP.AlternativeFunctions.file_system_operations_fread,WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 
 /**
@@ -26,29 +28,29 @@ abstract class CssCompiler implements CssCompilerInterface
     use GenesisTrait;
 
     /** @var string */
-    protected $type;
+    protected string $type = '';
     /** @var string */
-    protected $name;
+    protected string $name = '';
     /** @var bool */
-    protected $debug = false;
+    protected bool $debug = false;
     /** @var array */
-    protected $warnings = [];
+    protected array $warnings = [];
     /** @var array */
-    protected $fonts;
+    protected array $fonts = [];
     /** @var array */
-    protected $variables;
+    protected array $variables = [];
     /** @var string */
-    protected $target = 'genesis-theme://css-compiled';
+    protected string $target = 'genesis-theme://css-compiled';
     /** @var string */
-    protected $configuration = 'default';
+    protected string $configuration = 'default';
     /** @var array */
-    protected $paths;
+    protected array $paths = [];
     /** @var array */
-    protected $realPaths;
+    protected array $realPaths = [];
     /** @var array */
-    protected $files;
+    protected array $files = [];
     /** @var bool */
-    protected $production;
+    protected bool $production;
 
     public function __construct()
     {
@@ -64,7 +66,7 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @return array
      */
-    public function getWarnings()
+    public function getWarnings(): array
     {
         return $this->warnings;
     }
@@ -72,7 +74,7 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @return string
      */
-    public function getTarget()
+    public function getTarget(): string
     {
         return $this->target;
     }
@@ -81,7 +83,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param string $target
      * @return $this
      */
-    public function setTarget($target = null)
+    public function setTarget(?string $target = null): static
     {
         if ($target !== null) {
             $this->target = (string) $target;
@@ -94,7 +96,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param string $configuration
      * @return $this
      */
-    public function setConfiguration($configuration = null)
+    public function setConfiguration(?string $configuration = null): static
     {
         if ($configuration !== null) {
             $this->configuration = $configuration;
@@ -107,7 +109,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param array $fonts
      * @return $this
      */
-    public function setFonts(?array $fonts = null)
+    public function setFonts(?array $fonts = null): static
     {
         if ($fonts !== null) {
             // Normalize font data.
@@ -134,7 +136,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param array $paths
      * @return $this
      */
-    public function setPaths(?array $paths = null)
+    public function setPaths(?array $paths = null): static
     {
         if ($paths !== null) {
             $this->paths = $paths;
@@ -157,7 +159,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param array $files
      * @return $this
      */
-    public function setFiles(?array $files = null)
+    public function setFiles(?array $files = null): static
     {
         if ($files !== null) {
             $this->files = $files;
@@ -171,7 +173,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param string $name
      * @return string
      */
-    public function getCssUrl($name)
+    public function getCssUrl(string $name): string
     {
         $out = $name . ($this->configuration !== 'default' ? '_'. $this->configuration : '');
 
@@ -181,7 +183,7 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @return $this
      */
-    public function compileAll()
+    public function compileAll(): static
     {
         foreach ($this->files as $file) {
             $this->compileFile($file);
@@ -195,7 +197,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param callable $variablesCallable
      * @return bool
      */
-    public function needsCompile($in, $variablesCallable)
+    public function needsCompile(string $in, callable $variablesCallable): bool
     {
         /** @var array $variables */
         $variables = $variablesCallable();
@@ -299,7 +301,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param array $variables
      * @return $this
      */
-    public function setVariables(array $variables)
+    public function setVariables(array $variables): static
     {
         $this->variables = array_filter($variables);
 
@@ -352,7 +354,7 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @return array
      */
-    public function getVariables()
+    public function getVariables(): array
     {
         return $this->variables;
     }
@@ -360,19 +362,19 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @return $this|CssCompilerInterface
      */
-    abstract public function reset();
+    abstract public function reset(): static;
 
     /**
      * @param string $url
      * @return null|string
      */
-    abstract public function findImport($url);
+    abstract public function findImport(string $url): ?string;
 
     /**
      * @param int $len
      * @return string
      */
-    protected function checksum($len = 36)
+    protected function checksum(int $len = 36): string
     {
         static $checksum;
 
@@ -387,7 +389,7 @@ abstract class CssCompiler implements CssCompilerInterface
      * @param string $out
      * @param string $md5
      */
-    protected function createMeta($out, $md5)
+    protected function createMeta(string $out, string $md5): void
     {
         $genesis = Genesis::instance();
 
@@ -425,10 +427,10 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @param array $list
      */
-    abstract protected function doSetFonts(array $list);
+    abstract protected function doSetFonts(array $list): void;
 
     /**
      * @return array
      */
-    abstract protected function getIncludedFiles();
+    abstract protected function getIncludedFiles(): array;
 }

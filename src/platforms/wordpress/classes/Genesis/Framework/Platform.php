@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
 /**
@@ -28,22 +30,22 @@ use DazzleSoftware\Toolbox\DI\Container;
 class Platform extends BasePlatform
 {
     /** @var string */
-    public $content_dir;
+    public string $content_dir;
     /** @var string */
-    public $includes_dir;
+    public string $includes_dir;
     /** @var string */
-    public $upload_dir;
+    public string $upload_dir;
     /** @var string */
-    public $genesis_dir;
+    public string $genesis_dir;
     /** @var string */
-    public $multisite;
+    public string $multisite;
 
     /** @var string */
-    protected $name = 'wordpress';
+    protected string $name = 'wordpress';
     /** @var array */
-    protected $features = ['widgets' => true, 'fontawesome' => false];
+    protected array $features = ['widgets' => true, 'fontawesome' => false];
     /** @var string */
-    protected $file = 'genesis/genesis.php';
+    protected string $file = 'genesis/genesis.php';
 
     /**
      * Platform constructor.
@@ -74,7 +76,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return \get_bloginfo('version');
     }
@@ -82,7 +84,7 @@ class Platform extends BasePlatform
     /**
      * @return Platform
      */
-    public function init()
+    public function init(): static
     {
         // Support linked sample data.
         $theme = isset($this->container['theme.name']) ? $this->container['theme.name'] : null;
@@ -124,7 +126,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function getCachePath()
+    public function getCachePath(): string
     {
         /** @var Config $global */
         $global = $this->container['global'];
@@ -135,7 +137,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getThemesPaths()
+    public function getThemesPaths(): array
     {
         return ['' => Folder::getRelativePath(\get_theme_root())];
     }
@@ -143,7 +145,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getMediaPaths()
+    public function getMediaPaths(): array
     {
         $paths = [$this->upload_dir];
 
@@ -168,7 +170,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getEnginesPaths()
+    public function getEnginesPaths(): array
     {
         if (is_link(GENESIS_PATH . '/engines')) {
             // Development environment.
@@ -181,7 +183,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getAssetsPaths()
+    public function getAssetsPaths(): array
     {
         if (is_link(GENESIS_PATH . '/assets')) {
             // Development environment.
@@ -197,7 +199,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string|null
      */
-    public function getThemePreviewUrl($theme)
+    public function getThemePreviewUrl(string $theme): ?string
     {
         return admin_url('customize.php?theme=' . $theme);
     }
@@ -208,7 +210,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string|null
      */
-    public function getThemeAdminUrl($theme)
+    public function getThemeAdminUrl(string $theme): ?string
     {
         $genesis = Genesis::instance();
 
@@ -223,7 +225,7 @@ class Platform extends BasePlatform
      * @param string $text
      * @return string
      */
-    public function filter($text)
+    public function filter(string $text): string
     {
         return \do_shortcode($text);
     }
@@ -240,7 +242,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function errorHandlerPaths()
+    public function errorHandlerPaths(): array
     {
         // Catch errors in Genesis cache, plugin and theme only.
         $paths = ['#[\\\/]wp-content[\\\/](cache|plugins)[\\\/]genesis[\\\/]#', '#[\\\/]wp-content[\\\/]themes[\\\/]#'];
@@ -256,7 +258,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function settings()
+    public function settings(): ?string
     {
         return \admin_url('options-general.php?page=genesis-settings');
     }
@@ -388,7 +390,7 @@ class Platform extends BasePlatform
      * @param int|string|null $id
      * @return bool
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, string|int|null $id = null): bool
     {
         if ($action === 'filemanager.manage') {
             // File manager can read/write/delete arbitrary files under GENESIS_ROOT, so require

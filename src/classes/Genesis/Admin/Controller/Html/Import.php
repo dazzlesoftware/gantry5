@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 /**
@@ -22,7 +24,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Import extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'                 => 'index',
         ],
@@ -34,7 +36,7 @@ class Import extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         return $this->render('@genesis-admin/pages/import/import.html.twig', $this->params);
     }
@@ -42,7 +44,7 @@ class Import extends HtmlController
     /**
      * @return string
      */
-    public function import()
+    public function import(): string
     {
         \check_admin_referer('genesis-layout-manager');
 
@@ -62,7 +64,7 @@ class Import extends HtmlController
             case UPLOAD_ERR_FORM_SIZE:
                 throw new \RuntimeException('Exceeded filesize limit.', 400);
             default:
-                throw new \RuntimeException('Unkown errors', 400);
+                throw new \RuntimeException('Unknown upload error', 400);
         }
 
         if (empty($upload['tmp_name']) || !is_string($upload['tmp_name'])) {
@@ -84,6 +86,9 @@ class Import extends HtmlController
         $locator = $this->container['locator'];
 
         $folder = $locator->findResource('genesis-cache://import', true, true);
+        if (!is_string($folder) || $folder === '') {
+            throw new \RuntimeException('Unable to create the import cache folder', 500);
+        }
         if (is_dir($folder)) Folder::delete($folder);
         $zip->extractTo($folder);
         $zip->close();

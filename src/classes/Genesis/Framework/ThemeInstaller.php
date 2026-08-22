@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -17,7 +19,7 @@ use Genesis\Component\Theme\ThemeInstaller as AbstractInstaller;
  */
 class ThemeInstaller extends AbstractInstaller
 {
-    public function getPath()
+    public function getPath(): string
     {
         throw new \RuntimeException('Not Implemented');
     }
@@ -25,7 +27,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @param int|string|array $id
      */
-    public function loadExtension($id)
+    public function loadExtension(int|string|array $id): void
     {
     }
 }

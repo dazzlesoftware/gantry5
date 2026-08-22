@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,10 +28,10 @@ class TwigNodeThrow extends Node
      * @param string|null $tag
      */
     public function __construct(
-        $code,
+        int $code,
         Node $message,
-        $lineno = 0,
-        $tag = null
+        int $lineno = 0,
+        ?string $tag = null
     ) {
         parent::__construct(['message' => $message], ['code' => $code], $lineno, $tag);
     }
@@ -40,7 +42,7 @@ class TwigNodeThrow extends Node
      * @param Compiler $compiler A Twig Compiler instance
      * @throws \LogicException
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this);
 

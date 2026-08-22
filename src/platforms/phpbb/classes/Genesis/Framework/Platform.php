@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,9 +27,9 @@ use DazzleSoftware\Toolbox\DI\Container;
 class Platform extends BasePlatform
 {
     /** @var string */
-    protected $name = 'phpbb';
+    protected string $name = 'phpbb';
     /** @var array */
-    protected $features = ['fontawesome' => false];
+    protected array $features = ['fontawesome' => false];
 
     /**
      * Platform constructor.
@@ -50,7 +52,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return \defined('PHPBB_VERSION') ? PHPBB_VERSION : '0.0.0';
     }
@@ -58,7 +60,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function getCachePath()
+    public function getCachePath(): string
     {
         return rtrim(Runtime::rootPath(), '/\\') . '/cache/genesis';
     }
@@ -66,7 +68,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getThemesPaths()
+    public function getThemesPaths(): array
     {
         return ['' => [$this->relativeExtensionPath() . '/themes']];
     }
@@ -74,7 +76,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getMediaPaths()
+    public function getMediaPaths(): array
     {
         return ['' => ['genesis-theme://images']];
     }
@@ -82,7 +84,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getEnginesPaths()
+    public function getEnginesPaths(): array
     {
         $extPath = $this->relativeExtensionPath();
 
@@ -112,7 +114,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getAssetsPaths()
+    public function getAssetsPaths(): array
     {
         return ['' => ['genesis-theme://', $this->relativeExtensionPath() . '/assets']];
     }
@@ -209,7 +211,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string|null
      */
-    public function getThemePreviewUrl($theme)
+    public function getThemePreviewUrl(string $theme): ?string
     {
         return null;
     }
@@ -220,7 +222,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string|null
      */
-    public function getThemeAdminUrl($theme)
+    public function getThemeAdminUrl(string $theme): ?string
     {
         return $this->settings();
     }
@@ -228,7 +230,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function settings()
+    public function settings(): ?string
     {
         if (!$this->authorize('platform.settings.manage')) {
             return '';
@@ -245,7 +247,7 @@ class Platform extends BasePlatform
      * @param int|string|null $id
      * @return bool
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, string|int|null $id = null): bool
     {
         static $actions = [
             'platform.settings.manage' => 'a_board',

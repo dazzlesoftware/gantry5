@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.WP.AlternativeFunctions.rand_mt_rand
 
 /**
@@ -16,19 +18,19 @@ namespace Genesis\Component\Layout\Version;
 abstract class CompactFormat
 {
     /** @var array */
-    protected $scopes = [0 => 'grid', 1 => 'block'];
+    protected array $scopes = [0 => 'grid', 1 => 'block'];
     /** @var array */
-    protected $sections = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
+    protected array $sections = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
     /** @var array */
-    protected $structures = ['div', 'section', 'aside', 'nav', 'article', 'header', 'footer', 'main'];
+    protected array $structures = ['div', 'section', 'aside', 'nav', 'article', 'header', 'footer', 'main'];
     /** @var array */
-    protected $data;
+    protected array $data;
     /** @var array */
-    protected $structure;
+    protected array $structure = [];
     /** @var array */
-    protected $content;
+    protected array $content = [];
     /** @var array */
-    protected $keys;
+    protected array $keys = [];
 
     /**
      * @param array $data
@@ -41,7 +43,7 @@ abstract class CompactFormat
     /**
      * @return array
      */
-    public function load()
+    public function load(): array
     {
         $data = &$this->data;
 
@@ -65,7 +67,7 @@ abstract class CompactFormat
      * @param array $structure
      * @return array
      */
-    public function store(array $preset, array $structure)
+    public function store(array $preset, array $structure): array
     {
         $this->structure = [];
         $this->content = [];
@@ -97,7 +99,7 @@ abstract class CompactFormat
      * @param object $parent
      * @return object
      */
-    protected function parse($field, array &$content, $scope = 0, $parent = null)
+    protected function parse(string|int $field, array &$content, int $scope = 0, ?object $parent = null): object
     {
         if (is_numeric($field)) {
             // Row or block
@@ -174,9 +176,9 @@ abstract class CompactFormat
      * @param object $parent
      * @return object
      */
-    protected function resolve($field, $scope, $parent)
+    protected function resolve(string|int $field, int $scope, ?object $parent): object
     {
-        list ($type, $subtype, $id, $widthToken, $content_id) = $this->parseContentString($field);
+        list ($type, $subtype, $id, $widthToken, $content_id) = $this->parseContentString((string) $field);
 
         $title = $this->getTitle($type, $subtype, $id);
 
@@ -226,7 +228,7 @@ abstract class CompactFormat
      * @param array $content
      * @return array|null
      */
-    protected function build(array &$content)
+    protected function build(array &$content): ?array
     {
         $result = [];
         $ctype = isset($content['type']) ? $content['type'] : null;
@@ -396,7 +398,7 @@ abstract class CompactFormat
      * @param array $attributes
      * @return int|float|null
      */
-    protected function getCompactWidth(array $attributes)
+    protected function getCompactWidth(array $attributes): int|float|null
     {
         $span = (int) ($attributes['columns']['xs'] ?? 12);
 
@@ -409,7 +411,7 @@ abstract class CompactFormat
      * @param object $item
      * @param int|float $widthToken
      */
-    protected function applyWidthToken($item, $widthToken)
+    protected function applyWidthToken(object $item, mixed $widthToken): int|float|null
     {
         $columns = isset($item->attributes->columns)
             ? (array) $item->attributes->columns
@@ -422,7 +424,7 @@ abstract class CompactFormat
      * @param string $string
      * @return array
      */
-    protected function parseSectionString($string)
+    protected function parseSectionString(string $string): array
     {
         // Extract: "[section-id] [Bootstrap span]".
         $list = explode(' ', $string, 2);
@@ -457,7 +459,7 @@ abstract class CompactFormat
      * @param string $string
      * @return array
      */
-    protected function parseContentString($string)
+    protected function parseContentString(string $string): array
     {
         // Extract: "[type-subtype] [Bootstrap span]".
         $list = explode(' ', $string, 2);
@@ -492,8 +494,9 @@ abstract class CompactFormat
      * @param string $id
      * @return string|null
      */
-    protected function getTitle($type, $subtype, $id)
+    protected function getTitle(string $type, string $subtype, string|int|null $id): ?string
     {
+        $id = (string) ($id ?? '');
         if (in_array($type, $this->sections, true)) {
             if ($type === 'offcanvas') {
                 return 'Offcanvas';
@@ -528,7 +531,7 @@ abstract class CompactFormat
      * @param string|int $id
      * @return string
      */
-    protected function id($type, $subtype = null, $id = null)
+    protected function id(string $type, ?string $subtype = null, string|int|null $id = null): string
     {
         $result = [];
         if ($type !== 'particle') {

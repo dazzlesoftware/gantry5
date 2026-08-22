@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -35,7 +37,7 @@ class TokenParserTryCatch extends AbstractTokenParser
      * @return TwigNodeTryCatch
      * @throws SyntaxError
      */
-    public function parse(Token $token)
+    public function parse(Token $token): TwigNodeTryCatch
     {
         $lineno = $token->getLine();
         $stream = $this->parser->getStream();
@@ -55,7 +57,7 @@ class TokenParserTryCatch extends AbstractTokenParser
      * @param Token $token
      * @return bool
      */
-    public function decideCatch(Token $token)
+    public function decideCatch(Token $token): bool
     {
         return $token->test(['catch']);
     }
@@ -64,7 +66,7 @@ class TokenParserTryCatch extends AbstractTokenParser
      * @param Token $token
      * @return bool
      */
-    public function decideEnd(Token $token)
+    public function decideEnd(Token $token): bool
     {
         return $token->test(['endtry']) || $token->test(['endcatch']);
     }
@@ -74,7 +76,7 @@ class TokenParserTryCatch extends AbstractTokenParser
      *
      * @return string The tag name
      */
-    public function getTag()
+    public function getTag(): string
     {
         return 'try';
     }

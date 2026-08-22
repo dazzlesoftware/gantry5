@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,7 +17,7 @@ namespace Genesis\Component\Assignments;
  */
 class AssignmentFilter
 {
-    protected $method;
+    protected string $method = 'calcMax';
 
     /**
      * Return all matching candidates with their score. Candidates are ordered by their scores.
@@ -25,7 +27,7 @@ class AssignmentFilter
     * @param callable|null $function    Matching function.
      * @return array
      */
-    public function scores(array &$candidates, array &$page, ?callable $function = null)
+    public function scores(array &$candidates, array &$page, ?callable $function = null): array
     {
         $matches = $this->matches($candidates, $page, $function);
 
@@ -49,7 +51,7 @@ class AssignmentFilter
      * @param callable|null $function Matching function.
      * @return array
      */
-    public function matches(array $candidates, array &$page, ?callable $function = null)
+    public function matches(array $candidates, array &$page, ?callable $function = null): array
     {
         $matches = [];
         foreach ($candidates as $type => $candidate) {
@@ -94,7 +96,7 @@ class AssignmentFilter
      * @param string $method
      * @return float
      */
-    public function getScore(array &$matches, $method = 'max')
+    public function getScore(array &$matches, string $method = 'max'): float
     {
         $this->method = 'calc' . ucfirst($method);
 
@@ -111,7 +113,7 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcArray($carry, $item)
+    protected function calcArray(float|int $carry, float|int|array $item): float
     {
         if (is_array($item)) {
             return array_reduce($item, [$this, 'calcArray'], $carry);
@@ -127,7 +129,7 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcOr($carry, $item)
+    protected function calcOr(float|int $carry, float|int $item): float
     {
         return (float) ($carry || $item);
     }
@@ -138,7 +140,7 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcMin($carry, $item)
+    protected function calcMin(float|int $carry, float|int $item): float
     {
         return $carry ? min($carry, $item) : $item;
     }
@@ -149,9 +151,9 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcMax($carry, $item)
+    protected function calcMax(float|int $carry, float|int $item): float
     {
-        return max($carry, $item);
+        return (float) max($carry, $item);
     }
 
     /**
@@ -160,9 +162,9 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcSum($carry, $item)
+    protected function calcSum(float|int $carry, float|int $item): float
     {
-        return $carry + $item;
+        return (float) ($carry + $item);
     }
 
     /**
@@ -171,8 +173,8 @@ class AssignmentFilter
      * @return float
      * @internal
      */
-    protected function calcMul($carry, $item)
+    protected function calcMul(float|int $carry, float|int $item): float
     {
-        return $carry ? $carry * $item : $item;
+        return (float) ($carry ? $carry * $item : $item);
     }
 }

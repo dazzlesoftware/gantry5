@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ use Genesis\Component\Response\JsonResponse;
 class Particle extends JsonController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/'                  => 'selectParticle',
             '/module'            => 'selectModule'
@@ -48,7 +50,7 @@ class Particle extends JsonController
      *
      * @return string
      */
-    public function selectParticle()
+    public function selectParticle(): JsonResponse
     {
         $groups = [];
         foreach ($this->container['particles']->categories() as $category) {
@@ -83,7 +85,7 @@ class Particle extends JsonController
      *
      * @return JsonResponse
      */
-    public function selectModule()
+    public function selectModule(): JsonResponse
     {
         return new JsonResponse(['html' => $this->render('@genesis-admin/modals/module-picker.html.twig', $this->params)]);
     }
@@ -94,11 +96,12 @@ class Particle extends JsonController
      * @param string $name
      * @return JsonResponse
      */
-    public function particle($name)
+    public function particle(string $name): JsonResponse
     {
         $data = $this->request->post['item'];
         if ($data) {
-            $data = json_decode($data, true);
+            $decoded = json_decode((string) $data, true);
+            $data = is_array($decoded) ? $decoded : [];
         } else {
             $data = $this->request->post->getArray();
         }
@@ -109,7 +112,7 @@ class Particle extends JsonController
 
         // Load particle blueprints and default settings.
         $validator = $this->loadBlueprints('menu');
-        $callable = function () use ($validator) {
+        $callable = static function () use ($validator): BlueprintForm {
             return $validator;
         };
 
@@ -141,7 +144,7 @@ class Particle extends JsonController
      * @param string $name
      * @return JsonResponse
      */
-    public function validate($name)
+    public function validate(string $name): JsonResponse
     {
         // Load particle blueprints and default settings.
         $validator = new BlueprintSchema;
@@ -151,7 +154,7 @@ class Particle extends JsonController
 
         // Create configuration from the defaults.
         $data = new Config([],
-            function () use ($validator) {
+            static function () use ($validator): BlueprintSchema {
                 return $validator;
             }
         );
@@ -184,7 +187,7 @@ class Particle extends JsonController
     /**
      * @return array
      */
-    protected function getParticles()
+    protected function getParticles(): array
     {
         $particles = $this->container['particles']->all();
 
@@ -212,7 +215,7 @@ class Particle extends JsonController
      * @param string $name
      * @return BlueprintForm
      */
-    protected function loadBlueprints($name = 'menu')
+    protected function loadBlueprints(string $name = 'menu'): BlueprintForm
     {
         return BlueprintForm::instance("menu/{$name}.yaml", 'genesis-admin://blueprints');
     }

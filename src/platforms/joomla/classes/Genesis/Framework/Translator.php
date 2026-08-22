@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,13 +24,13 @@ class Translator extends BaseTranslator
      * @param string $string
      * @return string
      */
-    public function translate($string)
+    public function translate(string $string, mixed ...$arguments): string
     {
-        if (\func_num_args() === 1) {
+        if (!$arguments) {
             return Text::_($string);
         }
 
-        $args = \func_get_args();
+        $args = [$string, ...$arguments];
 
         return Text::sprintf(...$args);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -10,6 +12,7 @@
 namespace Genesis\Framework\Base;
 
 use Genesis\Component\Config\Config;
+use Genesis\Framework\Genesis;
 
 /**
  * Class Page
@@ -18,15 +21,15 @@ use Genesis\Component\Config\Config;
 abstract class Page
 {
     /** @var \Genesis\Framework\Genesis */
-    protected $container;
+    protected Genesis $container;
     /** @var Config */
-    protected $config;
+    protected Config $config;
 
     /**
      * Page constructor.
      * @param \Genesis\Framework\Genesis $container
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         $this->container = $container;
         $this->config = $container['config'];
@@ -35,7 +38,7 @@ abstract class Page
     /**
      * @return string
      */
-    public function doctype()
+    public function doctype(): string
     {
         return $this->config->get('page.doctype', 'html');
     }
@@ -44,12 +47,12 @@ abstract class Page
      * @param array $args
      * @return string
      */
-    abstract public function url(array $args = []);
+    abstract public function url(array $args = []): string;
 
     /**
      * @return string
      */
-    public function preset()
+    public function preset(): string
     {
         /** @var Theme $theme */
         $theme = $this->container['theme'];
@@ -59,7 +62,7 @@ abstract class Page
     /**
      * @return string
      */
-    public function htmlAttributes()
+    public function htmlAttributes(): string
     {
         return $this->getAttributes($this->config->get('page.html'));
     }
@@ -68,7 +71,7 @@ abstract class Page
      * @param array $attributes
      * @return string
      */
-    public function bodyAttributes($attributes = [])
+    public function bodyAttributes(array $attributes = []): string
     {
         return $this->getAttributes($this->config->get('page.body.attribs'), $attributes);
     }
@@ -78,7 +81,7 @@ abstract class Page
      * @param array $extra
      * @return string
      */
-    protected function getAttributes($params, $extra = [])
+    protected function getAttributes(array $params, array $extra = []): string
     {
         $params = array_merge_recursive($params, $extra);
 

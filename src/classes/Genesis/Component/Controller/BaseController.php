@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,13 +23,13 @@ use RuntimeException;
 abstract class BaseController implements RestfulControllerInterface
 {
     /** @var string Default HTTP method. */
-    protected $method = 'GET';
+    protected string $method = 'GET';
 
     /** @var Request */
-    protected $request;
+    protected Request $request;
 
     /** @var array List of HTTP verbs and their actions. */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'         => 'index',
             '/create'   => 'create',
@@ -49,10 +51,10 @@ abstract class BaseController implements RestfulControllerInterface
     ];
 
     /** @var array Parameters from router. */
-    protected $params = [];
+    protected array $params = [];
 
     /** @var Genesis */
-    protected $container;
+    protected Genesis $container;
 
     /**
      * BaseController constructor.
@@ -74,7 +76,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @return Response
      * @throws \RuntimeException
      */
-    public function execute($method, array $path, array $params)
+    public function execute(string $method, array $path, array $params): mixed
     {
         $this->method = $method;
         $this->setParams($params);
@@ -93,7 +95,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param array $params
      * @return $this
      */
-    public function setParams(array $params)
+    public function setParams(array $params): static
     {
         $this->params = $params;
 
@@ -105,7 +107,7 @@ abstract class BaseController implements RestfulControllerInterface
      *
      * @return mixed
      */
-    public function index()
+    public function index(): mixed
     {
         return $this->undefined();
     }
@@ -116,7 +118,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function display($id)
+    public function display(mixed $id): mixed
     {
         return $this->undefined();
     }
@@ -128,7 +130,7 @@ abstract class BaseController implements RestfulControllerInterface
      *
      * @return mixed
      */
-    public function create()
+    public function create(): mixed
     {
         return $this->undefined();
     }
@@ -141,7 +143,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function edit($id)
+    public function edit(mixed $id): mixed
     {
         return $this->undefined();
     }
@@ -151,7 +153,7 @@ abstract class BaseController implements RestfulControllerInterface
      *
      * @return mixed
      */
-    public function store()
+    public function store(): mixed
     {
         return $this->undefined();
     }
@@ -162,7 +164,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function replace($id)
+    public function replace(mixed $id): mixed
     {
         return $this->undefined();
     }
@@ -173,7 +175,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function update($id)
+    public function update(mixed $id): mixed
     {
         return $this->undefined();
     }
@@ -184,7 +186,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function destroy($id)
+    public function destroy(mixed $id): mixed
     {
         return $this->undefined();
     }
@@ -195,7 +197,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @return mixed
      * @throws RuntimeException
      */
-    public function undefined()
+    public function undefined(): never
     {
         if (in_array($this->method, ['HEAD', 'GET'])) {
             throw new RuntimeException('Page Not Found', 404);
@@ -210,7 +212,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @return mixed
      * @throws RuntimeException
      */
-    public function forbidden()
+    public function forbidden(): never
     {
         throw new RuntimeException('Forbidden', 403);
     }
@@ -223,7 +225,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param string|int $id
      * @throws \RuntimeException
      */
-    protected function loadResource($id)
+    protected function loadResource(mixed $id): mixed
     {
         throw new RuntimeException('Resource Not Found', 404);
     }
@@ -235,7 +237,7 @@ abstract class BaseController implements RestfulControllerInterface
      * @param array $items
      * @return array [function, parameters]
      */
-    protected function resolveHttpVerb($method, array $items)
+    protected function resolveHttpVerb(string $method, array $items): array
     {
         // HEAD has identical behavior to GET.
         $method = ($method === 'HEAD') ? 'GET' : $method;

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_rmdir
 
 /**
@@ -25,7 +27,7 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Settings extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'                 => 'index',
             '/particles'        => 'undefined',
@@ -58,9 +60,9 @@ class Settings extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         if ($outline === 'default') {
             $this->params['overrideable'] = false;
@@ -87,9 +89,10 @@ class Settings extends HtmlController
      * @param string $id
      * @return string
      */
-    public function display($id)
+    public function display(mixed $id): string
     {
-        $outline = $this->params['outline'];
+        $id = (string) $id;
+        $outline = (string) $this->params['outline'];
 
         /** @var Particles $particles */
         $particles = $this->container['particles'];
@@ -123,9 +126,9 @@ class Settings extends HtmlController
      * @param string $id
      * @return string
      */
-    public function formfield($id)
+    public function formfield(string $id, string ...$pathParts): JsonResponse|string
     {
-        $path = func_get_args();
+        $path = [$id, ...$pathParts];
 
         $end = end($path);
         if ($end === '') {
@@ -168,7 +171,7 @@ class Settings extends HtmlController
 
         array_pop($path);
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $configuration = "configurations/{$outline}";
         $this->params = [
                 'configuration' => $configuration,
@@ -195,9 +198,9 @@ class Settings extends HtmlController
      * @param string $particle
      * @return JsonResponse
      */
-    public function validate($particle)
+    public function validate(string $particle, string ...$pathParts): JsonResponse
     {
-        $path = implode('.', array_slice(func_get_args(), 1, -1));
+        $path = implode('.', array_slice($pathParts, 0, -1));
 
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -213,7 +216,7 @@ class Settings extends HtmlController
         // Create configuration from the defaults.
         $data = new Config(
             [],
-            function () use ($validator) {
+            static function () use ($validator): mixed {
                 return $validator;
             }
         );
@@ -229,7 +232,7 @@ class Settings extends HtmlController
      * @param string|null $id
      * @return string
      */
-    public function save($id = null)
+    public function save(?string $id = null): string
     {
         if (!$this->request->post->get('_end')) {
             throw new \OverflowException("Incomplete data received. Please increase the value of 'max_input_vars' variable (in php.ini or .htaccess)", 400);
@@ -241,8 +244,11 @@ class Settings extends HtmlController
         $locator = $this->container['locator'];
 
         // Save layout into custom directory for the current theme.
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $save_dir = $locator->findResource("genesis-config://{$outline}/particles", true, true);
+        if (!is_string($save_dir) || $save_dir === '') {
+            throw new \RuntimeException('Unable to create the particle configuration folder', 500);
+        }
 
         foreach ($data as $name => $values) {
             $this->saveItem($name, $values, $save_dir);
@@ -251,7 +257,7 @@ class Settings extends HtmlController
 
         // Fire save event.
         $event = new SettingsEvent();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;
@@ -265,7 +271,7 @@ class Settings extends HtmlController
      * @param array $data
      * @param string $save_dir
      */
-    protected function saveItem($id, $data, $save_dir)
+    protected function saveItem(string $id, mixed $data, string $save_dir): void
     {
         $filename = "{$save_dir}/{$id}.yaml";
 
@@ -279,7 +285,7 @@ class Settings extends HtmlController
             $particles = $this->container['particles'];
 
             $blueprints = $particles->getBlueprintForm($id);
-            $config = new Config($data, function() use ($blueprints) { return $blueprints; });
+            $config = new Config($data, static function() use ($blueprints): mixed { return $blueprints; });
 
             $file->save($config->toArray());
         }
@@ -290,7 +296,7 @@ class Settings extends HtmlController
      * @param string $id
      * @return string
      */
-    public function reset($id)
+    public function reset(string $id): string
     {
         $this->params += [
             'data' => [],

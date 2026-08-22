@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,17 +20,17 @@ use Genesis\Component\Theme\ThemeInstaller as AbstractInstaller;
 class ThemeInstaller extends AbstractInstaller
 {
     /** @var bool */
-    public $initialized = true;
+    public bool $initialized = true;
 
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return \get_theme_root() . '/' . $this->name;
     }
 
-    public function createSampleData()
+    public function createSampleData(): void
     {
         // TODO: Create menus etc.
     }

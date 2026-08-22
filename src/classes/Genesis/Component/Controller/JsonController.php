@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,7 +28,7 @@ abstract class JsonController extends BaseController
      * @return JsonResponse
      * @throws \RuntimeException
      */
-    public function execute($method, array $path, array $params)
+    public function execute(string $method, array $path, array $params): JsonResponse
     {
         $response = parent::execute($method, $path, $params);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,14 +27,14 @@ class BlueprintForm extends BaseBlueprintForm
     protected $context = 'genesis-blueprints://';
 
     /** @var BlueprintSchema */
-    protected $schema;
+    protected ?BlueprintSchema $schema = null;
 
     /**
      * @param string $filename
      * @param string $context
      * @return BlueprintForm
      */
-    public static function instance($filename, $context = null)
+    public static function instance(mixed $filename, mixed $context = null): static
     {
         /** @var BlueprintForm $instance */
         $instance = new static($filename);
@@ -50,7 +52,7 @@ class BlueprintForm extends BaseBlueprintForm
      *
      * @return array
      */
-    public function getDefaults()
+    public function getDefaults(): array
     {
         return $this->schema()->getDefaults();
     }
@@ -64,7 +66,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param  string $separator    Optional
      * @return array
      */
-    public function mergeData(array $data1, array $data2, $name = null, $separator = '.')
+    public function mergeData(array $data1, array $data2, mixed $name = null, mixed $separator = '.'): array
     {
         return $this->schema()->mergeData($data1, $data2, $name, $separator);
     }
@@ -76,7 +78,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param  string $prefix
      * @return array
      */
-    public function extra(array $data, $prefix = '')
+    public function extra(array $data, mixed $prefix = ''): array
     {
         return $this->schema()->extra($data, $prefix);
     }
@@ -87,7 +89,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param  array $data
      * @throws \RuntimeException
      */
-    public function validate(array $data)
+    public function validate(array $data): void
     {
         $this->schema()->validate($data);
     }
@@ -98,7 +100,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param  array $data
      * @return array
      */
-    public function filter(array $data)
+    public function filter(array $data): array
     {
         return $this->schema()->filter($data);
     }
@@ -106,7 +108,7 @@ class BlueprintForm extends BaseBlueprintForm
     /**
      * @return BlueprintSchema
      */
-    public function schema()
+    public function schema(): BlueprintSchema
     {
         if (!isset($this->schema)) {
             $this->schema = new BlueprintSchema;
@@ -121,7 +123,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string $filename
      * @return array
      */
-    protected function loadFile($filename)
+    protected function loadFile(mixed $filename): array
     {
         $file = CompiledYamlFile::instance($filename);
         $content = (array)$file->content();
@@ -135,7 +137,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string $context
      * @return array
      */
-    protected function getFiles($path, $context = null)
+    protected function getFiles(mixed $path, mixed $context = null): array
     {
         if (is_string($path) && !strpos($path, '://')) {
             // Resolve filename.
@@ -173,7 +175,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string $property
      * @param array $call
      */
-    protected function dynamicData(array &$field, $property, array &$call)
+    protected function dynamicData(array &$field, mixed $property, array &$call): void
     {
         $params = $call['params'];
 
@@ -212,7 +214,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string $property
      * @param array $call
      */
-    protected function dynamicConfig(array &$field, $property, array &$call)
+    protected function dynamicConfig(array &$field, mixed $property, array &$call): void
     {
         $var = $call['params'];
 
@@ -234,7 +236,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string  $separator
      * @return array
      */
-    public function resolve(array $path, $separator = '/')
+    public function resolve(array $path, mixed $separator = '/'): array
     {
         $fields = false;
         $parts = [];
@@ -298,7 +300,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param string $fieldName
      * @return array|null
      */
-    protected function resolveContainer($current, $prefix, $fieldName)
+    protected function resolveContainer(array $current, string $prefix, string $fieldName): ?array
     {
         foreach ($current as $field) {
             $type = isset($field['type']) ? $field['type'] : 'container._implicit';
@@ -328,7 +330,7 @@ class BlueprintForm extends BaseBlueprintForm
      * @param array $list
      * @return bool
      */
-    protected function fieldExists($prefix, $list)
+    protected function fieldExists(string $prefix, array $list): bool
     {
         foreach ($list as $field => $data) {
             $pos = strpos($field, $prefix);

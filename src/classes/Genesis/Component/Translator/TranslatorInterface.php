@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ interface TranslatorInterface
      * @param string $string
      * @return string
      */
-    public function translate($string);
+    public function translate(string $string, mixed ...$arguments): string;
 
     /**
      * Set new active language if given and return previous active language.
@@ -27,5 +29,5 @@ interface TranslatorInterface
      * @param  string  $language  Language code. If not given, current language is kept.
      * @return string  Previously active language.
      */
-    public function active($language = null);
+    public function active(?string $language = null): string;
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -24,14 +26,14 @@ use DazzleSoftware\Toolbox\File\PhpFile;
  */
 trait CompiledFile
 {
-    protected $cachePath;
-    protected $caching = true;
+    protected ?string $cachePath = null;
+    protected bool $caching = true;
 
     /**
      * @param string $path
      * @return $this
      */
-    public function setCachePath($path)
+    public function setCachePath(string $path): static
     {
         $this->cachePath = $path;
 
@@ -42,7 +44,7 @@ trait CompiledFile
      * @param bool|null $enabled
      * @return bool
      */
-    public function caching($enabled = null)
+    public function caching(?bool $enabled = null): bool
     {
         if (null !== $enabled) {
             $this->caching = (bool) $enabled;
@@ -58,7 +60,7 @@ trait CompiledFile
      * @return string
      * @throws \BadMethodCallException
      */
-    public function content($var = null)
+    public function content(mixed $var = null): mixed
     {
         if (!$this->cachePath) {
             throw new \BadMethodCallException("Cache path not defined for compiled file ({$this->filename})!");

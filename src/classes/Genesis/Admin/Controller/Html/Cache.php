@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,7 +25,7 @@ class Cache extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];

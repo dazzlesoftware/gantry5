@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,13 +28,13 @@ class StreamsServiceProvider implements ServiceProviderInterface
     /**
      * @param Container $genesis
      */
-    public function register(Container $genesis)
+    public function register(Container $genesis): void
     {
-        $genesis['locator'] = static function() {
+        $genesis['locator'] = static function(): UniformResourceLocator {
             return new UniformResourceLocator(GENESIS_ROOT);
         };
 
-        $genesis['streams'] = static function(Genesis $genesis) {
+        $genesis['streams'] = static function(Genesis $genesis): Streams {
             /** @var Platform $platform */
             $platform = $genesis['platform'];
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,19 +25,19 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Importer
 {
     /** @var string */
-    protected $folder;
+    protected string $folder;
     /** @var array */
-    protected $articles;
+    protected ?array $articles = null;
     /** @var array */
-    protected $categories;
+    protected array $categories = [];
     /** @var UniformResourceLocator */
-    protected $locator;
+    protected UniformResourceLocator $locator;
 
     /**
      * Importer constructor.
      * @param $folder
      */
-    public function __construct($folder)
+    public function __construct(string $folder)
     {
         /** @var UniformResourceLocator $locator */
         $this->locator = Genesis::instance()['locator'];
@@ -43,7 +45,7 @@ class Importer
         $this->folder = $folder;
     }
 
-    public function all()
+    public function all(): void
     {
         $this->fetchArticles();
         //$this->files();
@@ -56,20 +58,27 @@ class Importer
     /**
      * Copy files.
      */
-    public function files()
+    public function files(): void
     {
         $files = Folder::all("{$this->folder}/files", ['folders' => false]);
 
         foreach ($files as $file) {
             $stream = preg_replace('|^([^/]+)|', '\\1:/', $file);
 
-            copy("{$this->folder}/files/{$file}", $this->locator->findResource($stream, true, true));
+            $destination = $this->locator->findResource($stream, true, true);
+            if (!is_string($destination) || $destination === '') {
+                throw new \RuntimeException("Unable to resolve import destination '{$stream}'");
+            }
+            copy("{$this->folder}/files/{$file}", $destination);
         }
     }
 
-    public function positions()
+    public function positions(): void
     {
         $folder = $this->locator->findResource('genesis-positions://', true, true);
+        if (!is_string($folder) || $folder === '') {
+            throw new \RuntimeException('Unable to resolve the positions import folder');
+        }
 
         if (is_dir($folder)) {
             Folder::delete($folder);
@@ -78,9 +87,12 @@ class Importer
         Folder::copy("{$this->folder}/positions", $folder);
     }
 
-    public function outlines()
+    public function outlines(): void
     {
         $folder = $this->locator->findResource('genesis-theme://config', true, true);
+        if (!is_string($folder) || $folder === '') {
+            throw new \RuntimeException('Unable to resolve the outline import folder');
+        }
 
         if (is_dir($folder)) {
             Folder::delete($folder);
@@ -89,17 +101,17 @@ class Importer
         Folder::copy("{$this->folder}/outlines", $folder);
     }
 
-    public function menus()
+    public function menus(): void
     {
         $from = "{$this->folder}/menus";
 
         $config = $this->locator->findResource('genesis-theme://config/menus', true, true);
-        if (is_dir($config)) {
+        if (is_string($config) && is_dir($config)) {
             Folder::delete($config);
         }
 
         $pages = $this->locator->findResource('page://', true, true);
-        if (is_dir($pages)) {
+        if (is_string($pages) && is_dir($pages)) {
             Folder::delete($pages);
         }
 
@@ -107,16 +119,16 @@ class Importer
 
         foreach ($files as $filename) {
             $file = YamlFile::instance("{$from}/{$filename}");
-            $menu = $file->content();
+            $menu = (array) $file->content();
             $this->menu($menu);
         }
 
         //Folder::copy($from, $config);
     }
 
-    public function content()
+    public function content(): void
     {
-        foreach ($this->articles as $id => $filename) {
+        foreach ((array) $this->articles as $id => $filename) {
             $article = $this->readArticle($id);
             if (!$article) {
                 continue;
@@ -124,6 +136,9 @@ class Importer
 
             $foldername = sprintf('%02d.%s', $id, $article['alias']);
             $folder = $this->locator->findResource("page://category/{$article['category']}/{$foldername}", true, true);
+            if (!is_string($folder) || $folder === '') {
+                throw new \RuntimeException('Unable to resolve the article import folder');
+            }
             Folder::create($folder);
 
             $file = MarkdownFile::instance("{$folder}/blog_item.md");
@@ -137,7 +152,7 @@ class Importer
     /**
      * @param array $menu
      */
-    protected function menu(array $menu)
+    protected function menu(array $menu): void
     {
         $config = new Config([]);
 
@@ -182,6 +197,9 @@ class Importer
         foreach ($menu['items'] as $path => $menuitem) {
             $page = $menuitem['page'];
             $folder = $this->locator->findResource("page://{$menuitem['folder']}", true, true);
+            if (!is_string($folder) || $folder === '') {
+                throw new \RuntimeException('Unable to resolve the menu page import folder');
+            }
             Folder::create($folder);
 
             $file = MarkdownFile::instance("{$folder}/{$page['type']}.md");
@@ -195,14 +213,14 @@ class Importer
     /**
      * @return array
      */
-    protected function fetchArticles()
+    protected function fetchArticles(): array
     {
         if (!isset($this->articles)) {
             $from = "{$this->folder}/content";
             $this->articles = Folder::all($from, ['folders' => false, 'recursive' => false, 'key' => 'filename', 'value' => 'pathname', 'filters' => ['key' => 'intval']]);
             if (isset($this->articles[0])) {
                 $file = YamlFile::instance($this->articles[0]);
-                $this->categories = $file->content();
+                $this->categories = (array) $file->content();
                 $file->free();
                 unset($this->articles[0]);
             } else {
@@ -210,43 +228,43 @@ class Importer
             }
         }
 
-        return $this->articles;
+        return $this->articles ?? [];
     }
 
     /**
      * @param string $id
      * @return string|null
      */
-    protected function getCategoryAlias($id)
+    protected function getCategoryAlias(string|int $id): ?string
     {
-        return isset($this->categories[$id]['alias']) ? $this->categories[$id]['alias'] : null;
+        return isset($this->categories[$id]['alias']) ? (string) $this->categories[$id]['alias'] : null;
     }
 
     /**
      * @param string $id
      * @return string|null
      */
-    protected function getCategoryTitle($id)
+    protected function getCategoryTitle(string|int $id): ?string
     {
-        return isset($this->categories[$id]['title']) ? $this->categories[$id]['title'] : null;
+        return isset($this->categories[$id]['title']) ? (string) $this->categories[$id]['title'] : null;
     }
 
     /**
      * @param string $id
      * @return array
      */
-    protected function readArticle($id)
+    protected function readArticle(string|int $id): array
     {
         if (!isset($this->articles[$id])) {
             return [];
         }
 
         $file = YamlFile::instance($this->articles[$id]);
-        $content = $file->content();
+        $content = (array) $file->content();
         $file->free();
 
         $text = $this->urlFilter($content['introtext'] . ($content['fulltext'] ? "\n\n===\n\n" . $content['fulltext'] : ''));
-        $twig = strpos($text, '{{ url(') && strpos($text, ') }}');
+        $twig = strpos($text, '{{ url(') !== false && strpos($text, ') }}') !== false;
 
         $article = [
             'type' => 'default',
@@ -288,7 +306,7 @@ class Importer
      * @param array $item
      * @return array
      */
-    protected function createComponentPage(array $item)
+    protected function createComponentPage(array $item): array
     {
         $page = [];
 
@@ -401,7 +419,7 @@ class Importer
      * @param array $item
      * @return array
      */
-    protected function createAliasPage(array $item)
+    protected function createAliasPage(array $item): array
     {
         return [
             'type' => 'default',
@@ -416,7 +434,7 @@ class Importer
      * @param array $item
      * @return array
      */
-    protected function createUrlPage(array $item)
+    protected function createUrlPage(array $item): array
     {
         return [
             'type' => 'default',
@@ -432,7 +450,7 @@ class Importer
      * @param array $item
      * @return array
      */
-    protected function createSeparatorPage(array $item)
+    protected function createSeparatorPage(array $item): array
     {
         return [
             'type' => 'default',
@@ -448,7 +466,7 @@ class Importer
      * @param array $item
      * @return array
      */
-    protected function createParticlePage(array $item)
+    protected function createParticlePage(array $item): array
     {
         return [
             'type' => 'default',
@@ -464,7 +482,7 @@ class Importer
      * @param array $v
      * @return array
      */
-    protected function filterNull($v)
+    protected function filterNull(mixed $v): mixed
     {
         if (is_array($v)) {
             foreach ($v as $key => $value) {
@@ -486,20 +504,20 @@ class Importer
      * @param  string $html         HTML input to be filtered.
      * @return string               Returns modified HTML.
      */
-    protected function urlFilter($html)
+    protected function urlFilter(string $html): string
     {
         // Tokenize all PRE and CODE tags to avoid modifying any src|href|url in them
         $tokens = [];
-        $html = preg_replace_callback('#<(pre|code).*?>.*?</\\1>#is', static function($matches) use (&$tokens) {
+        $html = preg_replace_callback('#<(pre|code).*?>.*?</\\1>#is', static function(array $matches) use (&$tokens): string {
             $token = uniqid('__genesis_token', false);
             $tokens['#' . $token . '#'] = $matches[0];
 
             return $token;
-        }, $html);
+        }, $html) ?? $html;
 
-        $html = preg_replace_callback('^(\s)url\((.*?)\)^', 'static::urlHandler', $html);
-        $html = preg_replace_callback('^(\s)(src|href)="(.*?)"^', 'static::linkHandler', $html);
-        $html = preg_replace(array_keys($tokens), array_values($tokens), $html); // restore tokens
+        $html = preg_replace_callback('^(\s)url\((.*?)\)^', 'static::urlHandler', $html) ?? $html;
+        $html = preg_replace_callback('^(\s)(src|href)="(.*?)"^', 'static::linkHandler', $html) ?? $html;
+        $html = preg_replace(array_keys($tokens), array_values($tokens), $html) ?? $html; // restore tokens
 
         return $html;
     }
@@ -509,7 +527,7 @@ class Importer
      * @return string
      * @internal
      */
-    public static function linkHandler(array $matches)
+    public static function linkHandler(array $matches): string
     {
         $url = trim($matches[3]);
 
@@ -521,7 +539,7 @@ class Importer
      * @return string
      * @internal
      */
-    public static function urlHandler(array $matches)
+    public static function urlHandler(array $matches): string
     {
         $url = trim($matches[2], '"\'');
 

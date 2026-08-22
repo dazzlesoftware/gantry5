@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -30,8 +32,8 @@ class TwigNodeSwitch extends Node
         Node $value,
         Node $cases,
         ?Node $default = null,
-        $lineno = 0,
-        $tag = null
+        int $lineno = 0,
+        ?string $tag = null
     ) {
         $nodes = ['value' => $value, 'cases' => $cases, 'default' => $default];
         $nodes = array_filter($nodes);
@@ -44,7 +46,7 @@ class TwigNodeSwitch extends Node
      *
      * @param Compiler $compiler A Twig Compiler instance
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler
             ->addDebugInfo($this)

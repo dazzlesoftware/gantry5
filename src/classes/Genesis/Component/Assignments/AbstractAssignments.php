@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -23,30 +25,30 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 abstract class AbstractAssignments
 {
     /** @var string */
-    protected $configuration;
+    protected ?string $configuration;
 
     /** @var string */
-    protected $className = '\Genesis\%s\Assignments\Assignments%s';
+    protected string $className = '\Genesis\%s\Assignments\Assignments%s';
 
     /** @var string */
-    protected $platform;
+    protected string $platform = '';
 
     /** @var AssignmentFilter|null */
-    protected $filter;
+    protected ?AssignmentFilter $filter = null;
 
     /** @var array */
-    protected $candidates;
+    protected array $candidates = [];
 
     /** @var array */
-    protected $page;
+    protected array $page = [];
 
     /** @var callable */
-    protected $specialFilterMethod;
+    protected mixed $specialFilterMethod = null;
 
     /**
      * @param string|null $configuration
      */
-    public function __construct($configuration = null)
+    public function __construct(?string $configuration = null)
     {
         $this->configuration = $configuration;
     }
@@ -56,7 +58,7 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    public function get()
+    public function get(): array
     {
         return $this->getTypes();
     }
@@ -66,7 +68,7 @@ abstract class AbstractAssignments
      *
      * @param array $data
      */
-    public function set(array $data)
+    public function set(array $data): void
     {
         $this->save($data);
     }
@@ -77,7 +79,7 @@ abstract class AbstractAssignments
      * @param string $default
      * @return string
      */
-    public function select($default = 'default')
+    public function select(string $default = 'default'): string
     {
         $scores = $this->scores();
 
@@ -90,7 +92,7 @@ abstract class AbstractAssignments
      * @param array|null $candidates
      * @return array
      */
-    public function scores(?array $candidates = null)
+    public function scores(?array $candidates = null): array
     {
         $this->init();
         $candidates = $candidates ?: $this->candidates;
@@ -104,7 +106,7 @@ abstract class AbstractAssignments
      * @param array|null $candidates
      * @return array
      */
-    public function matches(?array $candidates = null)
+    public function matches(?array $candidates = null): array
     {
         $this->init();
         $candidates = $candidates ?: $this->candidates;
@@ -117,7 +119,7 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    public function loadAssignments()
+    public function loadAssignments(): array
     {
         $genesis = Genesis::instance();
 
@@ -148,7 +150,7 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    public function getPage()
+    public function getPage(): array
     {
         $list = [];
 
@@ -175,7 +177,7 @@ abstract class AbstractAssignments
      * @param bool $minimize
      * @return array
      */
-    public function filter(array $data, $minimize = false)
+    public function filter(array $data, bool $minimize = false): array
     {
         $types = [];
         foreach ($this->types() as $type) {
@@ -218,7 +220,7 @@ abstract class AbstractAssignments
      *
      * @param array $data
      */
-    public function save(array $data)
+    public function save(array $data): void
     {
         $data = $this->filter($data);
 
@@ -241,7 +243,7 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    public function getTypes()
+    public function getTypes(): array
     {
         $list = [];
 
@@ -266,7 +268,7 @@ abstract class AbstractAssignments
      *
      * @return string
      */
-    public function getAssignment()
+    public function getAssignment(): string
     {
         return 'default';
     }
@@ -276,7 +278,7 @@ abstract class AbstractAssignments
      *
      * @param mixed $value
      */
-    public function setAssignment($value)
+    public function setAssignment(mixed $value): void
     {
     }
 
@@ -285,12 +287,12 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    public function assignmentOptions()
+    public function assignmentOptions(): array
     {
         return [];
     }
 
-    protected function init()
+    protected function init(): void
     {
         if (!$this->filter) {
             $this->filter = new AssignmentFilter;
@@ -304,5 +306,5 @@ abstract class AbstractAssignments
      *
      * @return array
      */
-    abstract public function types();
+    abstract public function types(): array;
 }

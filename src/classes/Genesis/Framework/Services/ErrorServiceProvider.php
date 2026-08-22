@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,13 +29,13 @@ use Whoops\Run;
 class ErrorServiceProvider implements ServiceProviderInterface
 {
     /** @var string */
-    protected $format;
+    protected string $format;
 
     /**
      * ErrorServiceProvider constructor.
      * @param string $format
      */
-    public function __construct($format = 'html')
+    public function __construct(string $format = 'html')
     {
         $this->format = $format;
     }
@@ -41,7 +43,7 @@ class ErrorServiceProvider implements ServiceProviderInterface
     /**
      * @param Container $container
      */
-    public function register(Container $container)
+    public function register(Container $container): void
     {
         /** @var UniformResourceLocator $locator */
         $locator = $container['locator'];

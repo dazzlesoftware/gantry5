@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_readfile,WordPress.WP.AlternativeFunctions.unlink_unlink
 
 /**
@@ -25,7 +27,7 @@ class Export extends HtmlController
     /**
      * @return void
      */
-    public function index()
+    public function index(): never
     {
         if (!class_exists('Genesis\Framework\Exporter')) {
             $this->forbidden();

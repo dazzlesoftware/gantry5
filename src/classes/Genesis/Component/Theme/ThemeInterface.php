@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -32,7 +34,7 @@ interface ThemeInterface
      * @param array $context
      * @return array
      */
-    public function getContext(array $context);
+    public function getContext(array $context): array;
 
     /**
      * Define twig environment.
@@ -41,14 +43,14 @@ interface ThemeInterface
      * @param LoaderInterface $loader
      * @return Environment
      */
-    public function extendTwig(Environment $twig, ?LoaderInterface $loader = null);
+    public function extendTwig(Environment $twig, ?LoaderInterface $loader = null): Environment;
 
     /**
      * Returns renderer.
      *
      * @return Environment
      */
-    public function renderer();
+    public function renderer(): Environment;
 
     /**
      * Render a template file.
@@ -57,7 +59,7 @@ interface ThemeInterface
      * @param array $context
      * @return string
      */
-    public function render($file, array $context = []);
+    public function render(string $file, array $context = []): string;
 
     // ThemeTrait class
 
@@ -67,7 +69,7 @@ interface ThemeInterface
      * @param array $outlines
      * @return array List of CSS warnings.
      */
-    public function updateCss(?array $outlines = null);
+    public function updateCss(?array $outlines = null): array;
 
     /**
      * Set current layout.
@@ -76,7 +78,7 @@ interface ThemeInterface
      * @param bool $force
      * @return $this
      */
-    public function setLayout($name = null, $force = false);
+    public function setLayout(?string $name = null, bool $force = false): static;
 
     /**
      * Get current preset.
@@ -84,7 +86,7 @@ interface ThemeInterface
      * @param  bool $forced     If true, return only forced preset or null.
      * @return string|null $preset
      */
-    public function preset($forced = false);
+    public function preset(bool $forced = false): ?string;
 
     /**
      * Set preset to be used.
@@ -92,7 +94,7 @@ interface ThemeInterface
      * @param string $name
      * @return $this
      */
-    public function setPreset($name = null);
+    public function setPreset(?string $name = null): static;
 
     /**
      * Return CSS compiler used in the theme.
@@ -100,7 +102,7 @@ interface ThemeInterface
      * @return CssCompilerInterface
      * @throws \RuntimeException
      */
-    public function compiler();
+    public function compiler(): CssCompilerInterface;
 
     /**
      * Returns URL to CSS file.
@@ -110,21 +112,21 @@ interface ThemeInterface
      * @param string $name
      * @return string
      */
-    public function css($name);
+    public function css(string $name): string;
 
     /**
      * Return all CSS variables.
      *
      * @return array
      */
-    public function getCssVariables();
+    public function getCssVariables(): array;
 
     /**
      * Returns style presets for the theme.
      *
      * @return Config
      */
-    public function presets();
+    public function presets(): Config;
 
     /**
      * Return name of the used layout preset.
@@ -132,7 +134,7 @@ interface ThemeInterface
      * @return string
      * @throws \RuntimeException
      */
-    public function type();
+    public function type(): string;
 
     /**
      * Load current layout and its configuration.
@@ -141,34 +143,34 @@ interface ThemeInterface
      * @return Layout
      * @throws \LogicException
      */
-    public function loadLayout($name = null);
+    public function loadLayout(?string $name = null): Layout;
 
     /**
      * Check whether layout has content bock.
      *
      * @return bool
      */
-    public function hasContent();
+    public function hasContent(): bool;
 
     /**
      * Returns all non-empty segments from the layout.
      *
      * @return array
      */
-    public function segments();
+    public function segments(): array;
 
     /**
      * Returns details of the theme.
      *
      * @return ThemeDetails
      */
-    public function details();
+    public function details(): ThemeDetails;
 
     /**
      * Returns configuration of the theme.
      *
      * @return array
      */
-    public function configuration();
+    public function configuration(): array;
 
 }

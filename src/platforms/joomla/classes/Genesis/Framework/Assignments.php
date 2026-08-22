@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -34,7 +36,7 @@ class Assignments extends AbstractAssignments
      *
      * @return array
      */
-    public function loadAssignments()
+    public function loadAssignments(): array
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -85,7 +87,7 @@ class Assignments extends AbstractAssignments
      *
      * @param array $data
      */
-    public function save(array $data)
+    public function save(array $data): void
     {
         $data += ['assignment' => 0, 'menu' => []];
 
@@ -101,7 +103,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return array
      */
-    public function types()
+    public function types(): array
     {
         return ['menu', 'style'];
     }
@@ -185,7 +187,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return string
      */
-    public function getAssignment()
+    public function getAssignment(): string
     {
         $style = StyleHelper::getStyle($this->configuration);
 
@@ -217,7 +219,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return array
      */
-    public function assignmentOptions()
+    public function assignmentOptions(): array
     {
         if ((string)(int) $this->configuration !== (string) $this->configuration) {
             return [];

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Squiz.PHP.DiscouragedFunctions.Discouraged,WordPress.WP.AlternativeFunctions.file_system_operations_fopen,PluginCheck.CodeAnalysis.Heredoc.NotAllowed,Internal.LineEndings.Mixed
 
 /**
@@ -33,16 +35,16 @@ use ScssPhp\ScssPhp\Version;
 class ScssCompiler extends CssCompiler
 {
     /** @var string */
-    public $type = 'scss';
+    public string $type = 'scss';
     /** @var string */
-    public $name = 'SCSS';
+    public string $name = 'SCSS';
 
     /** @var CompilationResult|null */
-    protected $result;
+    protected ?CompilationResult $result = null;
     /** @var array */
-    protected $includedFiles = [];
+    protected array $includedFiles = [];
     /** @var Functions */
-    protected $functions;
+    protected Functions $functions;
 
     /**
      * Constructor.
@@ -72,15 +74,19 @@ class ScssCompiler extends CssCompiler
     /**
      * @return $this
      */
-    public function reset()
+    public function reset(): static
     {
         $this->functions->reset();
 
         return $this;
     }
 
-    public function resetCache()
+    public function resetCache(): static
     {
+        $this->result = null;
+        $this->includedFiles = [];
+
+        return $this;
     }
 
     /**
@@ -88,7 +94,7 @@ class ScssCompiler extends CssCompiler
      * @return bool         True if the output file was saved.
      * @throws \RuntimeException
      */
-    public function compileFile($in)
+    public function compileFile(string $in): bool
     {
         // Buy some extra time as compilation may take a lot of time in shared environments.
         @set_time_limit(30);
@@ -249,7 +255,7 @@ WARN;
      * @param callable $callback   Function to run when called by the compiler.
      * @return $this
      */
-    public function registerFunction($name, callable $callback)
+    public function registerFunction(string $name, callable $callback): static
     {
         $this->functions->registerFunction($name, $callback);
 
@@ -260,7 +266,7 @@ WARN;
      * @param string $name       Name of function to unregister.
      * @return $this
      */
-    public function unregisterFunction($name)
+    public function unregisterFunction(string $name): static
     {
         $this->functions->unregisterFunction($name);
 
@@ -277,7 +283,7 @@ WARN;
      * @param string $url
      * @return null|string
      */
-    public function findImport($url)
+    public function findImport(string $url): ?string
     {
         // Leave plain CSS and external URLs to the browser.
         if (preg_match('/\.css$|^https?:\/\//', $url)) {
@@ -293,7 +299,7 @@ WARN;
      * @param string $url
      * @return null|string
      */
-    protected function tryImport($url)
+    protected function tryImport(string $url): ?string
     {
         $url = str_replace('\\', '/', $url);
         $files = [$url, preg_replace('/[^\/]+$/', '_\0', $url)];
@@ -318,7 +324,7 @@ WARN;
      * @param bool $encoded
      * @return array
      */
-    public function getVariables($encoded = false)
+    public function getVariables(bool $encoded = false): array
     {
         $variables = $this->variables;
         if (!$encoded) {
@@ -336,7 +342,7 @@ WARN;
     /**
      * @return Compiler
      */
-    protected function getCompiler()
+    protected function getCompiler(): Compiler
     {
         $compiler = new Compiler();
 
@@ -360,7 +366,7 @@ WARN;
     /**
      * @param array $list
      */
-    protected function doSetFonts(array $list)
+    protected function doSetFonts(array $list): void
     {
         $this->functions->setFonts($list);
     }
@@ -368,7 +374,7 @@ WARN;
     /**
      * @return array
      */
-    protected function getIncludedFiles()
+    protected function getIncludedFiles(): array
     {
         if ($this->result) {
             $list = [];

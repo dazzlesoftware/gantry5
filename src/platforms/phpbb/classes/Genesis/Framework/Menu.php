@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -39,7 +41,7 @@ class Menu extends AbstractMenu
     /**
      * @return array
      */
-    public function getMenus()
+    public function getMenus(): array
     {
         static $list;
 
@@ -66,7 +68,7 @@ class Menu extends AbstractMenu
     /**
      * @return array
      */
-    public function getMenuOptions()
+    public function getMenuOptions(): array
     {
         $list = [];
         foreach ($this->getMenus() as $val) {
@@ -80,7 +82,7 @@ class Menu extends AbstractMenu
     /**
      * @return string
      */
-    public function getDefaultMenuName()
+    public function getDefaultMenuName(): ?string
     {
         return 'mainmenu';
     }
@@ -88,7 +90,7 @@ class Menu extends AbstractMenu
     /**
      * @return bool
      */
-    public function hasDefaultMenu()
+    public function hasDefaultMenu(): bool
     {
         return true;
     }
@@ -96,7 +98,7 @@ class Menu extends AbstractMenu
     /**
      * @return string
      */
-    public function getActiveMenuName()
+    public function getActiveMenuName(): ?string
     {
         return 'mainmenu';
     }
@@ -104,7 +106,7 @@ class Menu extends AbstractMenu
     /**
      * @return bool
      */
-    public function hasActiveMenu()
+    public function hasActiveMenu(): bool
     {
         return true;
     }
@@ -112,7 +114,7 @@ class Menu extends AbstractMenu
     /**
      * @return string|null
      */
-    public function getCacheId()
+    public function getCacheId(): ?string
     {
         return null;
     }
@@ -124,7 +126,7 @@ class Menu extends AbstractMenu
      * @param int $levels
      * @return array
      */
-    protected function getItemsFromPlatform($levels)
+    protected function getItemsFromPlatform(mixed $levels): array
     {
         return [];
     }
@@ -134,7 +136,7 @@ class Menu extends AbstractMenu
      * @param array $menuItems
      * @return string
      */
-    protected function calcBase($path, array $menuItems = [])
+    protected function calcBase(mixed $path, array $menuItems = []): string|int|null
     {
         $path = trim((string) $path, '/');
 
@@ -145,7 +147,7 @@ class Menu extends AbstractMenu
      * @param array $params
      * @param array $items
      */
-    public function getList(array $params, array $items)
+    public function getList(array $params, array $items): void
     {
         $this->base = $this->calcBase($params['base']);
         $this->root = '';

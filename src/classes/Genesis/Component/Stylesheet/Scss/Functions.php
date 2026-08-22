@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,23 +29,23 @@ use ScssPhp\ScssPhp\Value\Value;
  */
 class Functions
 {
-    protected $compiler;
+    protected ?Compiler $compiler = null;
 
     /** @var string */
-    protected $basePath;
+    protected string $basePath = '';
     /** @var array */
-    protected $fonts = [];
+    protected array $fonts = [];
     /** @var array */
-    protected $usedFonts = [];
+    protected array $usedFonts = [];
     /** @var array */
-    protected $streamNames = [];
+    protected array $streamNames = [];
     /** @var array */
-    protected $userFunctions = [];
+    protected array $userFunctions = [];
 
     /**
      * @param Compiler $compiler
      */
-    public function setCompiler(Compiler $compiler)
+    public function setCompiler(Compiler $compiler): void
     {
         $this->compiler = $compiler;
 
@@ -64,7 +66,7 @@ class Functions
      * @param callable $func
      * @param array    $prototype
      */
-    public function registerFunction($name, $func, $prototype = null)
+    public function registerFunction(string $name, callable $func, ?array $prototype = null): void
     {
         $this->userFunctions[$name] = [$func, $prototype];
 
@@ -76,7 +78,7 @@ class Functions
     /**
      * @param string $name
      */
-    public function unregisterFunction($name)
+    public function unregisterFunction(string $name): void
     {
         unset($this->userFunctions[$name]);
 
@@ -88,7 +90,7 @@ class Functions
     /**
      * @param string $basePath
      */
-    public function setBasePath($basePath)
+    public function setBasePath(string $basePath): void
     {
         /** @var Document $document */
         $document = Genesis::instance()['document'];
@@ -99,7 +101,7 @@ class Functions
     /**
      * @param array $fonts
      */
-    public function setFonts(array $fonts)
+    public function setFonts(array $fonts): void
     {
         $this->fonts = $fonts;
     }
@@ -107,7 +109,7 @@ class Functions
     /**
      * @return $this
      */
-    public function reset()
+    public function reset(): static
     {
         $this->usedFonts = [];
 
@@ -266,7 +268,7 @@ class Functions
      * @param array $fonts
      * @return array
      */
-    protected function getLocalFonts(array $fonts)
+    protected function getLocalFonts(array $fonts): array
     {
         $list = [];
         foreach ($fonts as $family) {
@@ -286,9 +288,9 @@ class Functions
      * @param array $fonts
      * @return string
      */
-    protected function encodeFonts(array $fonts)
+    protected function encodeFonts(array $fonts): string
     {
-        array_walk($fonts, static function(&$val) {
+        array_walk($fonts, static function (mixed &$val): void {
             // Check if font family is one of the 4 default ones, otherwise add quotes.
             if (!\in_array($val, ['cursive', 'serif', 'sans-serif', 'monospace'], true)) {
                 $val = '"' . $val . '"';
@@ -305,7 +307,7 @@ class Functions
      * @param  bool   $localOnly
      * @return array
      */
-    protected function decodeFonts($string, $localOnly = false)
+    protected function decodeFonts(string $string, bool $localOnly = false): array
     {
         if (0 === strpos($string, 'family=')) {
             if ($localOnly) {
@@ -320,7 +322,7 @@ class Functions
 
         // Filter list of fonts and quote them.
         $list = (array) explode(',', $string);
-        array_walk($list, static function(&$val) {
+        array_walk($list, static function (mixed &$val): void {
             $val = trim($val, "'\" \t\n\r\0\x0B");
         });
         array_filter($list);

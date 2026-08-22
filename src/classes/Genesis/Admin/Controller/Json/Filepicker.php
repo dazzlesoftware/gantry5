@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 /**
@@ -25,13 +27,13 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Filepicker extends JsonController
 {
     /** @var string */
-    protected $base;
+    protected string $base = '';
     /** @var string */
-    protected $value;
+    protected string $value = '';
     /** @var bool */
-    protected $filter = false;
+    protected string|false $filter = false;
     /** @var array Extensions allowed through upload(); anything server-executable is deliberately excluded. */
-    protected static $allowedUploadExtensions = [
+    protected static array $allowedUploadExtensions = [
         // images
         'jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'bmp', 'webp',
         // fonts
@@ -42,7 +44,7 @@ class Filepicker extends JsonController
         'css', 'js', 'json', 'txt', 'md', 'less', 'scss',
     ];
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/'            => 'index',
             '/*'           => 'index',
@@ -68,7 +70,7 @@ class Filepicker extends JsonController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(string ...$path): JsonResponse
     {
         if (!$this->authorize('filemanager.manage')) {
             throw new \RuntimeException('Not authorized.', 403);
@@ -87,19 +89,19 @@ class Filepicker extends JsonController
             $drives       = isset($root) ? ($root !== 'false' ? (array) $root : ['/']) : ['/'];
             $subfolder    = $this->request->post['subfolder'] ? true : false;
             $filter       = $this->request->post['filter'];
-            $this->filter = isset($filter) ? ($filter !== 'false' ? $filter : false) : false;
-            $this->value  = $this->request->post['value'] ?: '';
+            $this->filter = isset($filter) && $filter !== 'false' ? (string) $filter : false;
+            $this->value  = (string) ($this->request->post['value'] ?: '');
         }
 
         foreach ($drives as $drive) {
             // cleanup of the path so it's chrooted.
-            $drive  = str_replace('..', '', $drive);
+            $drive  = str_replace('..', '', (string) $drive);
 
             $isStream = $locator->isStream($drive);
             $path     = rtrim($this->base, '/') . '/' . ltrim($drive, '/');
 
             // It's a stream but the scheme doesn't exist. we skip it.
-            if (!$isStream && (strpos($drive, '://') || !file_exists($path))) {
+            if (!$isStream && (strpos($drive, '://') !== false || !file_exists($path))) {
                 continue;
             }
 
@@ -231,7 +233,7 @@ class Filepicker extends JsonController
      * @param object $iteration
      * @param string $folder
      */
-    protected function attachData(&$node, $iteration, $folder)
+    protected function attachData(\stdClass &$node, object $iteration, string $folder): void
     {
         foreach (
             ['getFilename', 'getExtension', 'getPerms', 'getMTime', 'getBasename', 'getPathname', 'getSize', 'getType', 'isReadable', 'isWritable',
@@ -244,7 +246,7 @@ class Filepicker extends JsonController
                 $node->{$keyMethod} = $this->isStream($folder) ? $iteration->getUrl() : Folder::getRelativePath($node->{$keyMethod});
             } else {
                 if ($method === 'getExtension') {
-                    $node->isImage = in_array(strtolower($node->{$keyMethod}), ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'bmp', 'webp']);
+                    $node->isImage = in_array(strtolower((string) $node->{$keyMethod}), ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'bmp', 'webp'], true);
                 }
             }
         }
@@ -254,7 +256,7 @@ class Filepicker extends JsonController
      * @param string $folder
      * @return \ArrayObject
      */
-    protected function listFiles($folder)
+    protected function listFiles(string $folder): \ArrayObject
     {
         $isStream = $this->isStream($folder);
         $locator  = $this->container['locator'];
@@ -282,7 +284,7 @@ class Filepicker extends JsonController
                     $stream         = explode('://', $folder);
                     $stream         = array_shift($stream) . '://';
                     $customLocation = $locator->findResource($stream, true, true);
-                    if (substr($info->getPathname(), 0, strlen($customLocation)) === $customLocation) {
+                    if (is_string($customLocation) && substr($info->getPathname(), 0, strlen($customLocation)) === $customLocation) {
                         $file->isInCustom = true;
                     }
                 }
@@ -300,7 +302,7 @@ class Filepicker extends JsonController
     /**
      * @return JsonResponse
      */
-    public function subfolder()
+    public function subfolder(?string $folder = null): JsonResponse
     {
         $response         = [];
         $response['html'] = 'subfolder';
@@ -309,9 +311,9 @@ class Filepicker extends JsonController
 
     }
 
-    public function displayFile()
+    public function displayFile(string ...$pathParts): never
     {
-        $path = implode('/', func_get_args());
+        $path = implode('/', $pathParts);
 
         $this->doDownload($path, false);
     }
@@ -320,7 +322,7 @@ class Filepicker extends JsonController
      * @param string $path
      * @param bool $download
      */
-    protected function doDownload($path, $download)
+    protected function doDownload(string $path, bool $download): never
     {
         if (!$this->authorize('filemanager.manage')) {
             throw new \RuntimeException('Not authorized.', 403);
@@ -396,9 +398,9 @@ class Filepicker extends JsonController
         exit();
     }
 
-    public function downloadFile()
+    public function downloadFile(string ...$pathParts): never
     {
-        $path = implode('/', func_get_args());
+        $path = implode('/', $pathParts);
 
         $this->doDownload($path, true);
     }
@@ -406,7 +408,7 @@ class Filepicker extends JsonController
     /**
      * @return JsonResponse
      */
-    public function upload()
+    public function upload(string ...$pathParts): JsonResponse
     {
         if (!$this->authorize('filemanager.manage')) {
             throw new \RuntimeException('Not authorized.', 403);
@@ -414,7 +416,7 @@ class Filepicker extends JsonController
 
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
-        $path    = implode('/', func_get_args());
+        $path    = implode('/', $pathParts);
 
         if (function_exists('check_ajax_referer') && !check_ajax_referer('genesis-layout-manager', '_wpnonce', false)) {
             throw new \RuntimeException('Invalid request token.', 403);
@@ -445,10 +447,13 @@ class Filepicker extends JsonController
             case UPLOAD_ERR_FORM_SIZE:
                 throw new \RuntimeException('Exceeded filesize limit.', 400);
             default:
-                throw new \RuntimeException('Unkown errors', 400);
+                throw new \RuntimeException('Unknown upload error', 400);
         }
 
-        $maxSize = $this->returnBytes(min(ini_get('post_max_size'), ini_get('upload_max_filesize')));
+        $maxSize = min(
+            $this->returnBytes((string) ini_get('post_max_size')),
+            $this->returnBytes((string) ini_get('upload_max_filesize'))
+        );
         $uploadedSize = isset($uploadedFile['size']) ? (int) $uploadedFile['size'] : 0;
         if ($uploadedSize > $maxSize) {
             throw new \RuntimeException('Exceeded filesize limit.', 400);
@@ -459,7 +464,7 @@ class Filepicker extends JsonController
         if (function_exists('sanitize_file_name')) {
             $uploadedName = sanitize_file_name($uploadedName);
         }
-        $tmpName = isset($uploadedFile['tmp_name']) ? $uploadedFile['tmp_name'] : '';
+        $tmpName = isset($uploadedFile['tmp_name']) ? (string) $uploadedFile['tmp_name'] : '';
         if ($uploadedName === '' || $tmpName === '' || !is_uploaded_file($tmpName)) {
             throw new \RuntimeException('Invalid uploaded file.', 400);
         }
@@ -500,7 +505,7 @@ class Filepicker extends JsonController
      * @param string $destination
      * @return bool
      */
-    protected function writeUploadedFile($source, $destination)
+    protected function writeUploadedFile(string $source, string $destination): bool
     {
         if (defined('ABSPATH')) {
             if (!function_exists('WP_Filesystem')) {
@@ -524,7 +529,7 @@ class Filepicker extends JsonController
      * @param string $destination
      * @return bool
      */
-    protected function moveLocalFile($source, $destination)
+    protected function moveLocalFile(string $source, string $destination): bool
     {
         try {
             Folder::moveFile($source, $destination);
@@ -541,7 +546,7 @@ class Filepicker extends JsonController
      * @param UniformResourceLocator $locator
      * @return string
      */
-    protected function getUploadTargetPath($path, UniformResourceLocator $locator)
+    protected function getUploadTargetPath(string $path, UniformResourceLocator $locator): string
     {
         $path = str_replace('\\', '/', $path);
 
@@ -556,7 +561,7 @@ class Filepicker extends JsonController
                 throw new \RuntimeException(
                     sprintf(
                         'Unable to resolve upload target: %s',
-                        esc_html($directory)
+                        $directory
                     ),
                     500
                 );
@@ -577,7 +582,7 @@ class Filepicker extends JsonController
      * @param string $path
      * @return string
      */
-    protected function getUploadDirectory($path)
+    protected function getUploadDirectory(string $path): string
     {
         $stream = explode('://', $path, 2);
 
@@ -606,7 +611,7 @@ class Filepicker extends JsonController
      * @param string $size_str
      * @return float|int|string
      */
-    protected function returnBytes($size_str)
+    protected function returnBytes(string $size_str): int
     {
         switch (strtolower(substr($size_str, -1))) {
             case 'm':
@@ -620,13 +625,13 @@ class Filepicker extends JsonController
                 return (int)$size_str * 1073741824;
         }
 
-        return $size_str;
+        return (int) $size_str;
     }
 
     /**
      * @return JsonResponse
      */
-    public function delete()
+    public function delete(string ...$pathParts): JsonResponse
     {
         if (!$this->authorize('filemanager.manage')) {
             throw new \RuntimeException('Not authorized.', 403);
@@ -634,7 +639,7 @@ class Filepicker extends JsonController
 
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
-        $path    = implode('/', func_get_args());
+        $path    = implode('/', $pathParts);
 
         if (base64_decode($path, true) !== false) {
             $path = urldecode(base64_decode($path));
@@ -655,6 +660,10 @@ class Filepicker extends JsonController
         } else {
             $targetPath = GENESIS_ROOT . '/' . $path;
             $this->assertWithinRoot($targetPath);
+        }
+
+        if (!is_string($targetPath) || $targetPath === '') {
+            throw new \RuntimeException('File not found.', 404);
         }
 
         $file = File::instance($targetPath);
@@ -683,7 +692,7 @@ class Filepicker extends JsonController
      * @param string $path
      * @return string
      */
-    protected function sanitizePath($path)
+    protected function sanitizePath(string $path): string
     {
         $path = str_replace('\\', '/', (string)$path);
 
@@ -700,7 +709,7 @@ class Filepicker extends JsonController
      * @param string $targetPath
      * @return string
      */
-    protected function assertWithinRoot($targetPath)
+    protected function assertWithinRoot(string $targetPath): string
     {
         $root = realpath(GENESIS_ROOT);
         $real = realpath($targetPath);
@@ -720,8 +729,8 @@ class Filepicker extends JsonController
      * @param string|UniformResourceIterator $folder
      * @return bool
      */
-    private function isStream($folder)
+    private function isStream(string|UniformResourceIterator $folder): bool
     {
-        return $folder instanceof UniformResourceIterator || strpos($folder, '://');
+        return $folder instanceof UniformResourceIterator || strpos($folder, '://') !== false;
     }
 }

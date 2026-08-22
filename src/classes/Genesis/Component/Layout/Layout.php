@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,WordPress.WP.AlternativeFunctions.rand_mt_rand
 
 /**
@@ -33,40 +35,40 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     const VERSION = 7;
 
     /** @var array */
-    protected static $instances = [];
+    protected static array $instances = [];
     /** @var array */
-    protected static $indexes = [];
+    protected static array $indexes = [];
 
     /** @var string */
-    public $name;
+    public string $name;
     /** @var int */
-    public $timestamp = 0;
+    public int $timestamp = 0;
     /** @var array */
-    public $preset = [];
+    public array $preset = [];
     /** @var array */
     /** @var array */
-    protected $layout = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
+    protected array $layout = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
     /** @var bool */
-    protected $exists;
+    protected bool $exists;
     /** @var array */
-    protected $items;
+    protected array $items;
     /** @var array|null */
-    protected $references;
+    protected ?array $references = null;
     /** @var array|null */
-    protected $children;
+    protected ?array $children = null;
     /** @var array */
-    protected $parents = [];
+    protected array $parents = [];
     /** @var array */
-    protected $blocks = [];
+    protected array $blocks = [];
     /** @var array|null */
-    protected $types;
+    protected ?array $types = null;
     /** @var array|null */
-    protected $inherit;
+    protected ?array $inherit = null;
 
     /**
      * @return array
      */
-    public static function presets()
+    public static function presets(): array
     {
         $genesis = Genesis::instance();
 
@@ -105,7 +107,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @return array
      * @throws \RuntimeException
      */
-    public static function preset($name)
+    public static function preset(string $name): array
     {
         $genesis = Genesis::instance();
 
@@ -119,7 +121,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
 
         $layout = LayoutReader::read($filename);
         $layout['preset']['name'] = $name;
-        $layout['preset']['timestamp'] = filemtime($filename);
+        $layout['preset']['timestamp'] = (int) filemtime($filename);
 
         return $layout;
     }
@@ -128,7 +130,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  string $name
      * @return Layout
      */
-    public static function instance($name)
+    public static function instance(string $name): static
     {
         if (!isset(static::$instances[$name])) {
             static::$instances[$name] = static::load($name);
@@ -141,7 +143,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  string $name
      * @return Layout
      */
-    public static function index($name)
+    public static function index(string $name): array
     {
         if (!isset(static::$indexes[$name])) {
             static::$indexes[$name] = static::loadIndex($name, true);
@@ -155,7 +157,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $items
      * @param array $preset
      */
-    public function __construct($name, ?array $items = null, ?array $preset = null)
+    public function __construct(string $name, ?array $items = null, ?array $preset = null)
     {
         $this->name = $name;
         $this->items = (array) $items;
@@ -180,7 +182,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return bool
      */
-    public function exists()
+    public function exists(): bool
     {
         return $this->exists;
     }
@@ -192,7 +194,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  bool  $inherit
      * @return $this
      */
-    public function init($force = false, $inherit = true)
+    public function init(bool $force = false, bool $inherit = true): static
     {
         if ($force || $this->references === null) {
             $this->initReferences();
@@ -209,7 +211,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * @return array
      */
-    public function buildIndex()
+    public function buildIndex(): array
     {
         return [
             'name' => $this->name,
@@ -226,7 +228,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function clean()
+    public function clean(): static
     {
         $this->references = null;
         $this->types = null;
@@ -243,7 +245,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array  $ids
      * @return $this
      */
-    public function updateInheritance($old, $new = null, $ids = null)
+    public function updateInheritance(string $old, ?string $new = null, ?array $ids = null): static
     {
         $this->init();
 
@@ -282,7 +284,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param bool $cascade
      * @return $this
      */
-    public function save($cascade = true)
+    public function save(bool $cascade = true): static
     {
         if (!$this->name) {
             throw new \LogicException('Cannot save unnamed layout');
@@ -330,7 +332,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
         $file->save(LayoutReader::store($this->preset, $this->items));
         $file->free();
 
-        $this->timestamp = $file->modified();
+        $this->timestamp = (int) $file->modified();
         $this->exists = true;
 
         static::$instances[$this->name] = $this;
@@ -341,7 +343,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return array
      */
-    public function export()
+    public function export(): array
     {
         return LayoutReader::store($this->preset, $this->items);
     }
@@ -352,7 +354,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array|null $index
      * @return $this
      */
-    public function saveIndex($index = null)
+    public function saveIndex(?array $index = null): static
     {
         if (!$this->name) {
             throw new \LogicException('Cannot save unnamed layout');
@@ -396,7 +398,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return array
      */
-    public function getLayoutTypes()
+    public function getLayoutTypes(): array
     {
         return $this->layout;
     }
@@ -405,7 +407,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $type
      * @return bool
      */
-    public function isLayoutType($type)
+    public function isLayoutType(string $type): bool
     {
         return in_array($type, $this->layout, true);
     }
@@ -414,7 +416,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $id
      * @return object|null
      */
-    public function getParentId($id)
+    public function getParentId(string $id): ?object
     {
         return isset($this->parents[$id]) ? $this->parents[$id] : null;
     }
@@ -422,7 +424,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return array
      */
-    public function references()
+    public function references(): array
     {
         $this->init();
 
@@ -434,7 +436,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $subtype
      * @return array
      */
-    public function referencesByType($type = null, $subtype = null)
+    public function referencesByType(?string $type = null, ?string $subtype = null): array
     {
         $this->init();
 
@@ -454,7 +456,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * @return array Array of position => title
      */
-    public function positions()
+    public function positions(): array
     {
         $positions = $this->referencesByType('position', 'position');
 
@@ -475,7 +477,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * @return array Array of position => title
      */
-    public function sections()
+    public function sections(): array
     {
         $list = [];
         foreach ($this->referencesByType('section') as $type => $sections) {
@@ -499,7 +501,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  bool  $grouped  If true, group particles by type.
      * @return array Array of position => title
      */
-    public function particles($grouped = true)
+    public function particles(bool $grouped = true): array
     {
         $blocks = $this->referencesByType('block', 'block');
 
@@ -526,7 +528,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $outline
      * @return array
      */
-    public function inherit($outline = null)
+    public function inherit(?string $outline = null): array
     {
         $this->init();
 
@@ -551,7 +553,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * (deprecated)
      */
-    public function atoms()
+    public function atoms(): ?array
     {
         $list   = null;
 
@@ -582,7 +584,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param bool $createIfNotExists
      * @return object|null
      */
-    public function find($id, $createIfNotExists = true)
+    public function find(string $id, bool $createIfNotExists = true): ?object
     {
         $this->init();
 
@@ -597,7 +599,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $id
      * @return null
      */
-    public function block($id)
+    public function block(string $id): ?object
     {
         $this->init();
 
@@ -607,7 +609,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function clearSections()
+    public function clearSections(): static
     {
         $this->items = $this->clearChildren($this->items);
 
@@ -618,7 +620,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $items
      * @return array
      */
-    protected function clearChildren(&$items)
+    protected function clearChildren(array &$items): array
     {
         foreach ($items as $key => $item) {
             if (!empty($item->children)) {
@@ -637,7 +639,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $old
      * @return array
      */
-    public function copySections(array $old)
+    public function copySections(array $old): array
     {
         $this->init();
 
@@ -677,7 +679,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function inheritAll()
+    public function inheritAll(): static
     {
         foreach ($this->references() as $item) {
             if (!empty($item->inherit->outline)) {
@@ -698,7 +700,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function inheritNothing()
+    public function inheritNothing(): static
     {
         foreach ($this->references() as $item) {
             unset($item->inherit);
@@ -714,7 +716,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $sections
      * @param array $leftover
      */
-    protected function copyData(array $data, array $sections, array &$leftover)
+    protected function copyData(array $data, array $sections, array &$leftover): void
     {
         foreach ($data as $type => $items) {
             /** @var \stdClass $item */
@@ -743,7 +745,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param mixed $data
      * @return mixed
      */
-    protected function cloneData($data)
+    protected function cloneData(mixed $data): mixed
     {
         if (!($isObject = is_object($data)) && !is_array($data)) {
             return $data;
@@ -765,7 +767,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @param array $items
      */
-    protected function cleanLayout(array $items)
+    protected function cleanLayout(array $items): void
     {
         /** @var \stdClass $item */
         foreach ($items as $item) {
@@ -790,7 +792,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
         }
     }
 
-    protected function initInheritance()
+    protected function initInheritance(): void
     {
         $index = null;
         if ($this->name) {
@@ -868,7 +870,13 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array|null $inherit
      * @param array|null $index
      */
-    protected function initReferences(?array $items = null, $parent = null, $block = null, $inherit = null, ?array $index = null)
+    protected function initReferences(
+        ?array $items = null,
+        ?object $parent = null,
+        ?object $block = null,
+        ?array $inherit = null,
+        ?array $index = null
+    ): void
     {
         if ($items === null) {
             $items = $this->items;
@@ -933,7 +941,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string|int $id
      * @return string
      */
-    protected function id($type, $subtype = null, $id = null)
+    protected function id(string $type, ?string $subtype = null, string|int|null $id = null): string
     {
         $result = [];
         if ($type !== 'particle') {
@@ -963,7 +971,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * @return $this
      */
-    public function prepareColumns()
+    public function prepareColumns(): static
     {
         $this->init();
 
@@ -978,7 +986,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $items
      * @internal
      */
-    protected function calcColumnsRecursive(array &$items)
+    protected function calcColumnsRecursive(array &$items): void
     {
         foreach ($items as $item) {
             if (empty($item->children)) {
@@ -1008,7 +1016,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $children
      * @internal
      */
-    protected function calcColumns(array &$children)
+    protected function calcColumns(array &$children): void
     {
         foreach (['xs', 'sm', 'md', 'lg', 'xl'] as $breakpoint) {
             $dynamic = [];
@@ -1053,7 +1061,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  string|null $preset
      * @return static
      */
-    public static function load($name, $preset = null)
+    public static function load(string $name, ?string $preset = null): static
     {
         if (!$name) {
             throw new \BadMethodCallException('Layout needs to have a name');
@@ -1092,7 +1100,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $name
      * @return array
      */
-    protected static function loadIndexFile($name)
+    protected static function loadIndexFile(string $name): array
     {
         $genesis = Genesis::instance();
 
@@ -1117,7 +1125,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * @param  bool   $autoSave
      * @return array
      */
-    public static function loadIndex($name, $autoSave = false)
+    public static function loadIndex(string $name, bool $autoSave = false): array
     {
         $genesis = Genesis::instance();
 
@@ -1136,7 +1144,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
         }
 
         // Get timestamp for the layout file.
-        $timestamp = $layoutFile ? filemtime($layoutFile) : 0;
+        $timestamp = $layoutFile ? (int) filemtime($layoutFile) : 0;
 
         // If layout index file doesn't exist or is not up to date, rebuild it.
         if (empty($index['timestamp']) || $index['timestamp'] !== $timestamp || !isset($index['version']) || $index['version'] !== static::VERSION) {
@@ -1172,7 +1180,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @param array|null $children
      */
-    public function check(?array $children = null)
+    public function check(?array $children = null): void
     {
         if ($children === null) {
             $children = $this->items;

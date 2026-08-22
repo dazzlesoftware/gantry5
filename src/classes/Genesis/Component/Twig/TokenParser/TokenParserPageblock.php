@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -33,7 +35,7 @@ class TokenParserPageblock extends AbstractTokenParser
      * @return Node A Twig Node instance
      * @throws SyntaxError
      */
-    public function parse(Token $token)
+    public function parse(Token $token): Node
     {
         $lineno = $token->getLine();
         $stream = $this->parser->getStream();
@@ -51,7 +53,7 @@ class TokenParserPageblock extends AbstractTokenParser
      * @return array
      * @throws SyntaxError
      */
-    protected function parseArguments(Token $token)
+    protected function parseArguments(Token $token): array
     {
         $stream = $this->parser->getStream();
         $lineno = $token->getLine();
@@ -73,7 +75,7 @@ class TokenParserPageblock extends AbstractTokenParser
      * @param Token $token
      * @return bool
      */
-    public function decideBlockEnd(Token $token)
+    public function decideBlockEnd(Token $token): bool
     {
         return $token->test('endpageblock');
     }
@@ -83,7 +85,7 @@ class TokenParserPageblock extends AbstractTokenParser
      *
      * @return string The tag name
      */
-    public function getTag()
+    public function getTag(): string
     {
         return 'pageblock';
     }

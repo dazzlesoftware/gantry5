@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.WP.AlternativeFunctions.rand_mt_rand
 
 /**
@@ -28,22 +30,22 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
     use ArrayAccess, Iterator, Export;
 
     /** @var string */
-    protected $name;
+    protected ?string $name;
     /** @var array */
-    protected $items;
+    protected array $items;
     /** @var array */
-    protected $ids;
+    protected array $ids = [];
     /** @var bool */
-    protected $inherit = false;
+    protected bool $inherit = false;
 
     /** @var static[] */
-    protected static $instances;
+    protected static array $instances = [];
 
     /**
      * @param string $outline
      * @return static
      */
-    public static function instance($outline)
+    public static function instance(string $outline): static
     {
         if (!isset(static::$instances[$outline])) {
             $file = CompiledYamlFile::instance("genesis-theme://config/{$outline}/page/head.yaml");
@@ -62,7 +64,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $atoms
      * @param string $name
      */
-    public function __construct(array $atoms = [], $name = null)
+    public function __construct(array $atoms = [], ?string $name = null)
     {
         $this->name = $name;
         $this->items = array_filter($atoms);
@@ -78,7 +80,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function init()
+    public function init(): static
     {
         foreach ($this->items as &$item) {
             if (!empty($item['inherit']['outline']) && !empty($item['inherit']['atom'])) {
@@ -98,7 +100,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
     /**
      * @return $this
      */
-    public function update()
+    public function update(): static
     {
         foreach ($this->items as &$item) {
             if (empty($item['id'])) {
@@ -118,7 +120,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $outline
      * @return $this
      */
-    public function inheritAll($outline)
+    public function inheritAll(string $outline): static
     {
         foreach ($this->items as &$item) {
             if (!empty($item['id'])) {
@@ -139,7 +141,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param array  $ids
      * @return $this
      */
-    public function updateInheritance($old, $new = null, $ids = null)
+    public function updateInheritance(string $old, ?string $new = null, ?array $ids = null): static
     {
         $this->init();
 
@@ -156,7 +158,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
         return $this;
     }
 
-    public function save()
+    public function save(): void
     {
         if ($this->name) {
             /** @var UniformResourceLocator $locator */
@@ -182,7 +184,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $id
      * @return array
      */
-    public function id($id)
+    public function id(string $id): array
     {
         return isset($this->ids[$id]) ? $this->ids[$id] : [];
     }
@@ -191,7 +193,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $type
      * @return array
      */
-    public function type($type)
+    public function type(string $type): array
     {
         $list = [];
         foreach ($this->items as $item) {
@@ -208,11 +210,11 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $data
      * @return Config
      */
-    public function createAtom($type, array $data = [])
+    public function createAtom(string $type, array $data = []): Config
     {
         $self = $this;
 
-        $callable = static function () use ($self, $type) {
+        $callable = static function () use ($self, $type): BlueprintForm {
             return $self->getBlueprint($type);
         };
 
@@ -233,7 +235,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $type
      * @return BlueprintForm
      */
-    public function getBlueprint($type)
+    public function getBlueprint(string $type): BlueprintForm
     {
         $blueprint = BlueprintForm::instance($type, 'genesis-blueprints://particles');
 
@@ -250,7 +252,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param bool $force
      * @return BlueprintForm|null
      */
-    public function getInheritanceBlueprint($type, $id = null, $force = false)
+    public function getInheritanceBlueprint(string $type, ?string $id = null, bool $force = false): ?BlueprintForm
     {
         if (!$this->inherit) {
             return null;
@@ -288,7 +290,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param string $id
      * @return array
      */
-    public function getInheritingOutlines($id = null)
+    public function getInheritingOutlines(?string $id = null): array
     {
         /** @var Outlines $outlines */
         $outlines = Genesis::instance()['outlines'];
@@ -301,7 +303,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param bool $includeInherited
      * @return array
      */
-    public function getOutlines($type, $includeInherited = true)
+    public function getOutlines(string $type, bool $includeInherited = true): array
     {
         if ($this->name !== 'default') {
             /** @var Outlines $outlines */
@@ -320,7 +322,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
      * @param array $item
      * @return string
      */
-    protected function createId(array &$item)
+    protected function createId(array &$item): string
     {
         $type = $item['type'];
 

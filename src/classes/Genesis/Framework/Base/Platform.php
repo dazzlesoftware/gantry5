@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,15 +28,15 @@ abstract class Platform
     use NestedArrayAccess, Export;
 
     /** @var string */
-    protected $name;
+    protected string $name = '';
     /** @var array */
-    protected $features = [];
+    protected array $features = [];
     /** @var string */
-    protected $settings_key;
+    protected string $settings_key = '';
     /** @var array */
-    protected $items;
+    protected array $items;
     /** @var Container */
-    protected $container;
+    protected Container $container;
 
     /**
      * Platform constructor.
@@ -123,7 +125,7 @@ abstract class Platform
      *
      * @return string
      */
-    abstract public function getVersion();
+    abstract public function getVersion(): string;
 
     /**
      * Compares version of CMS against the given version.
@@ -132,22 +134,22 @@ abstract class Platform
      * @param string|null $version2 Upper bound (<)
      * @return bool True if version matches, false otherwise.
      */
-    public function checkVersion($version, $version2 = null)
+    public function checkVersion(string $version, ?string $version2 = null): bool
     {
         $cmsVersion = $this->getVersion();
 
         return version_compare($cmsVersion, $version, '>=') && (null === $version2 || version_compare($cmsVersion, $version2, '<'));
     }
 
-    abstract public function getCachePath();
-    abstract public function getThemesPaths();
-    abstract public function getAssetsPaths();
-    abstract public function getMediaPaths();
+    abstract public function getCachePath(): string;
+    abstract public function getThemesPaths(): array;
+    abstract public function getAssetsPaths(): array;
+    abstract public function getMediaPaths(): array;
 
     /**
      * @return $this
      */
-    public function init()
+    public function init(): static
     {
         return $this;
     }
@@ -156,7 +158,7 @@ abstract class Platform
      * @param string $feature
      * @return bool
      */
-    public function has($feature)
+    public function has(string $feature): bool
     {
         return !empty($this->features[$feature]);
     }
@@ -164,7 +166,7 @@ abstract class Platform
     /**
      * @return array
      */
-    public function getThemePaths()
+    public function getThemePaths(): array
     {
         return ['' => []];
     }
@@ -173,7 +175,7 @@ abstract class Platform
      * @param string $name
      * @return array
      */
-    public function getEnginePaths($name = 'nucleus')
+    public function getEnginePaths(string $name = 'nucleus'): array
     {
         return ['' => ['genesis-theme://engine', "genesis-engines://{$name}"]];
     }
@@ -181,7 +183,7 @@ abstract class Platform
     /**
      * @return array
      */
-    public function getEnginesPaths()
+    public function getEnginesPaths(): array
     {
         return ['' => []];
     }
@@ -189,7 +191,7 @@ abstract class Platform
     /**
      * @return array
      */
-    public function errorHandlerPaths()
+    public function errorHandlerPaths(): array
     {
         return [];
     }
@@ -200,7 +202,7 @@ abstract class Platform
      * @param string $theme
      * @return string|null
      */
-    abstract public function getThemePreviewUrl($theme);
+    abstract public function getThemePreviewUrl(string $theme): ?string;
 
     /**
      * Get administrator url for individual theme.
@@ -208,12 +210,12 @@ abstract class Platform
      * @param string $theme
      * @return string|null
      */
-    abstract public function getThemeAdminUrl($theme);
+    abstract public function getThemeAdminUrl(string $theme): ?string;
 
     /**
      * @return null
      */
-    public function settings()
+    public function settings(): ?string
     {
         return null;
     }
@@ -221,7 +223,7 @@ abstract class Platform
     /**
      * @return string
      */
-    public function settings_key()
+    public function settings_key(): string
     {
         return $this->settings_key;
     }
@@ -229,7 +231,7 @@ abstract class Platform
     /**
      * @return array|bool
      */
-    public function listModules()
+    public function listModules(): array|false
     {
         return false;
     }
@@ -237,7 +239,7 @@ abstract class Platform
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -249,7 +251,7 @@ abstract class Platform
      * @param string|int|null $height
      * @return mixed|null
      */
-    public function getEditor($name, $content = '', $width = null, $height = null)
+    public function getEditor(string $name, string $content = '', string|int|null $width = null, string|int|null $height = null): mixed
     {
         return null;
     }
@@ -258,12 +260,12 @@ abstract class Platform
      * @param string $text
      * @return string
      */
-    public function filter($text)
+    public function filter(string $text): string
     {
         return $text;
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         $genesis = Genesis::instance();
         /** @var Document $document */
@@ -275,10 +277,8 @@ abstract class Platform
     /**
      * @return mixed|null
      */
-    public function call()
+    public function call(mixed $callable, mixed ...$args): mixed
     {
-        $args = func_get_args();
-        $callable = array_shift($args);
         return is_callable($callable) ? call_user_func_array($callable, $args) : null;
     }
 
@@ -287,7 +287,7 @@ abstract class Platform
      * @param int|string|null $id
      * @return bool
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, string|int|null $id = null): bool
     {
         return true;
     }
@@ -297,7 +297,7 @@ abstract class Platform
      * @return bool
      * @since 5.4.3
      */
-    public function checkDependencies($dependencies)
+    public function checkDependencies(array|string $dependencies): bool
     {
         if (is_string($dependencies)) {
             return $dependencies === $this->name;

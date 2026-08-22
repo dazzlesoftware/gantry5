@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,41 +20,41 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function getAssets();
+    public function getAssets(): array;
 
     /**
      * @return array
      * @since 5.4.3
      */
-    public function getFrameworks();
-
-    /**
-     * @param string $location
-     * @return array
-     * @since 5.4.3
-     */
-    public function getStyles($location = 'head');
+    public function getFrameworks(): array;
 
     /**
      * @param string $location
      * @return array
      * @since 5.4.3
      */
-    public function getScripts($location = 'head');
+    public function getStyles(string $location = 'head'): array;
 
     /**
      * @param string $location
      * @return array
      * @since 5.4.3
      */
-    public function getHtml($location = 'bottom');
+    public function getScripts(string $location = 'head'): array;
+
+    /**
+     * @param string $location
+     * @return array
+     * @since 5.4.3
+     */
+    public function getHtml(string $location = 'bottom'): array;
 
     /**
      * @param string $framework
      * @return $this
      * @since 5.4.3
      */
-    public function addFramework($framework);
+    public function addFramework(string $framework): static;
 
     /**
      * @param string|array $element
@@ -64,7 +66,7 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @example $block->addStyle(['href' => 'assets/js/my.js', 'media' => 'screen']);
      * @since 5.4.3
      */
-    public function addStyle($element, $priority = 0, $location = 'head');
+    public function addStyle(string|array $element, int $priority = 0, string $location = 'head'): bool;
 
     /**
      * @param string|array $element
@@ -73,7 +75,7 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addInlineStyle($element, $priority = 0, $location = 'head');
+    public function addInlineStyle(string|array $element, int $priority = 0, string $location = 'head'): bool;
 
     /**
      * @param string|array $element
@@ -82,7 +84,7 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addScript($element, $priority = 0, $location = 'head');
+    public function addScript(string|array $element, int $priority = 0, string $location = 'head'): bool;
 
     /**
      * @param string|array $element
@@ -91,7 +93,7 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addInlineScript($element, $priority = 0, $location = 'head');
+    public function addInlineScript(string|array $element, int $priority = 0, string $location = 'head'): bool;
 
     /**
      * @param string $html
@@ -100,5 +102,5 @@ interface HtmlBlockInterface extends ContentBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addHtml($html, $priority = 0, $location = 'bottom');
+    public function addHtml(string $html, int $priority = 0, string $location = 'bottom'): bool;
 }

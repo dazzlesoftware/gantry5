@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -17,16 +19,16 @@ use Genesis\Component\File\CompiledYamlFile;
 class CompiledConfig extends CompiledBase
 {
     /** @var int Version number for the compiled file. */
-    public $version = 2;
+    public int $version = 2;
 
     /** @var Config  Configuration object. */
-    protected $object;
+    protected mixed $object = null;
 
     /** @var callable  Blueprints loader. */
-    protected $callable;
+    protected mixed $callable = null;
 
     /** @var bool */
-    protected $withDefaults;
+    protected bool $withDefaults = false;
 
     /**
      * Get filename for the compiled PHP file.
@@ -34,7 +36,7 @@ class CompiledConfig extends CompiledBase
      * @param string $name
      * @return $this
      */
-    public function name($name = null)
+    public function name(?string $name = null): static
     {
         if (!$this->name) {
             $this->name = $name ?: md5(json_encode(array_keys($this->files)) . (int) $this->withDefaults);
@@ -49,7 +51,7 @@ class CompiledConfig extends CompiledBase
      * @param callable $blueprints
      * @return $this
      */
-    public function setBlueprints(callable $blueprints)
+    public function setBlueprints(callable $blueprints): static
     {
         $this->callable = $blueprints;
 
@@ -60,7 +62,7 @@ class CompiledConfig extends CompiledBase
      * @param bool $withDefaults
      * @return mixed
      */
-    public function load($withDefaults = false)
+    public function load(bool $withDefaults = false): Config
     {
         $this->withDefaults = $withDefaults;
 
@@ -72,7 +74,7 @@ class CompiledConfig extends CompiledBase
      *
      * @param  array  $data
      */
-    protected function createObject(array $data = [])
+    protected function createObject(array $data = []): void
     {
         if ($this->withDefaults && empty($data) && is_callable($this->callable)) {
             $blueprints = $this->callable;
@@ -85,7 +87,7 @@ class CompiledConfig extends CompiledBase
     /**
      * Finalize configuration object.
      */
-    protected function finalizeObject()
+    protected function finalizeObject(): void
     {
     }
 
@@ -95,8 +97,11 @@ class CompiledConfig extends CompiledBase
      * @param  string  $name  Name of the position.
      * @param  string  $filename  File to be loaded.
      */
-    protected function loadFile($name, $filename)
+    protected function loadFile(string $name, string|array $filename): void
     {
+        if (!is_string($filename)) {
+            throw new \InvalidArgumentException('Configuration filename must be a string.');
+        }
         $file = CompiledYamlFile::instance($filename);
         $this->object->join($name, $file->content(), '/');
         $file->free();

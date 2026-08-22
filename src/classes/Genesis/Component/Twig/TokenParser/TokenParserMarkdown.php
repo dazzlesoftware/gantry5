@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -31,7 +33,7 @@ class TokenParserMarkdown extends AbstractTokenParser
      * @return TwigNodeMarkdown
      * @throws SyntaxError
      */
-    public function parse(Token $token)
+    public function parse(Token $token): TwigNodeMarkdown
     {
         $lineno = $token->getLine();
         $this->parser->getStream()->expect(Token::BLOCK_END_TYPE);
@@ -45,14 +47,14 @@ class TokenParserMarkdown extends AbstractTokenParser
      * @param Token $token
      * @return bool
      */
-    public function decideMarkdownEnd(Token $token)
+    public function decideMarkdownEnd(Token $token): bool
     {
         return $token->test('endmarkdown');
     }
     /**
      * {@inheritdoc}
      */
-    public function getTag()
+    public function getTag(): string
     {
         return 'markdown';
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
 /**
@@ -22,7 +24,7 @@ use DazzleSoftware\Toolbox\Blueprints\BlueprintSchema as BlueprintSchemaBase;
 class BlueprintSchema extends BlueprintSchemaBase
 {
     /** @var Config */
-    protected $configuration;
+    protected Config $configuration;
 
     /** @var array */
     protected $ignoreFormKeys = [
@@ -59,7 +61,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      *
      * @param array $serialized  Serialized content if available.
      */
-    public function __construct($serialized = null)
+    public function __construct(mixed $serialized = null)
     {
         parent::__construct($serialized);
 
@@ -71,7 +73,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      *
      * @return array
      */
-    public function getState()
+    public function getState(): array
     {
         return parent::getState() + ['configuration' => $this->configuration->toArray()];
     }
@@ -83,7 +85,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      *
      * @return array
      */
-    public function getDefaults()
+    public function getDefaults(): array
     {
         return array_merge_recursive($this->configuration->toArray(), $this->buildDefaults($this->nested));
     }
@@ -97,7 +99,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @param bool $merge   Merge fields instead replacing them.
      * @return $this
      */
-    public function embed($name, array $value, $separator = '.', $merge = false)
+    public function embed(mixed $name, array $value, mixed $separator = '.', mixed $merge = false): static
     {
         parent::embed($name, $value, $separator, $merge);
 
@@ -114,7 +116,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @param  array $data
      * @throws \RuntimeException
      */
-    public function validate(array $data)
+    public function validate(array $data): void
     {
         try {
             $messages = $this->validateArray($data, $this->nested);
@@ -136,7 +138,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @param  array $data
      * @return array
      */
-    public function filter(array $data)
+    public function filter(array $data): array
     {
         return $this->filterArray($data, $this->nested);
     }
@@ -148,7 +150,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @throws \RuntimeException
      * @internal
      */
-    protected function validateArray(array $data, array $rules)
+    protected function validateArray(array $data, array $rules): array
     {
         $messages = $this->checkRequired($data, $rules);
 
@@ -177,7 +179,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @return array
      * @internal
      */
-    protected function filterArray(array $data, array $rules)
+    protected function filterArray(array $data, array $rules): array
     {
         $results = [];
         foreach ($data as $key => $field) {
@@ -207,7 +209,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @param array $fields
      * @return array
      */
-    protected function checkRequired(array $data, array $fields)
+    protected function checkRequired(array $data, array $fields): array
     {
         $messages = [];
 
@@ -234,7 +236,7 @@ class BlueprintSchema extends BlueprintSchemaBase
      * @param string $property
      * @param array $call
      */
-    protected function dynamicConfig(array &$field, $property, array &$call)
+    protected function dynamicConfig(array &$field, mixed $property, array &$call): void
     {
         $var = $call['params'];
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -17,13 +19,13 @@ use Genesis\Component\Filesystem\Folder;
 class ConfigFileFinder
 {
     /** @var string */
-    protected $base = '';
+    protected string $base = '';
 
     /**
      * @param string $base
      * @return $this
      */
-    public function setBase($base)
+    public function setBase(string $base): static
     {
         $this->base = $base ? "{$base}/" : '';
 
@@ -38,7 +40,7 @@ class ConfigFileFinder
      * @param  int    $levels   Maximum number of recursive directories.
      * @return array
      */
-    public function locateFiles(array $paths, $pattern = '|\.yaml$|', $levels = -1)
+    public function locateFiles(array $paths, string $pattern = '|\.yaml$|', int $levels = -1): array
     {
         $list = [];
         foreach ($paths as $folder) {
@@ -55,7 +57,7 @@ class ConfigFileFinder
      * @param  int    $levels   Maximum number of recursive directories.
      * @return array
      */
-    public function getFiles(array $paths, $pattern = '|\.yaml$|', $levels = -1)
+    public function getFiles(array $paths, string $pattern = '|\.yaml$|', int $levels = -1): array
     {
         $list = [];
         foreach ($paths as $folder) {
@@ -63,7 +65,7 @@ class ConfigFileFinder
 
             $files = $this->detectRecursive($folder, $pattern, $levels);
 
-            $list += $files[trim($path, '/')];
+            $list += $files[trim($path, '/')] ?? [];
         }
         return $list;
     }
@@ -76,7 +78,7 @@ class ConfigFileFinder
      * @param  int    $levels   Maximum number of recursive directories.
      * @return array
      */
-    public function listFiles(array $paths, $pattern = '|\.yaml$|', $levels = -1)
+    public function listFiles(array $paths, string $pattern = '|\.yaml$|', int $levels = -1): array
     {
         $list = [[]];
         foreach ($paths as $folder) {
@@ -95,7 +97,7 @@ class ConfigFileFinder
      * @param array $folders
      * @return array
      */
-    public function locateFileInFolder($filename, array $folders)
+    public function locateFileInFolder(string $filename, array $folders): array
     {
         $list = [];
         foreach ($folders as $folder) {
@@ -112,7 +114,7 @@ class ConfigFileFinder
      * @param string $filename
      * @return array
      */
-    public function locateInFolders(array $folders, $filename = null)
+    public function locateInFolders(array $folders, ?string $filename = null): array
     {
         $list = [];
         foreach ($folders as $folder) {
@@ -131,7 +133,7 @@ class ConfigFileFinder
      * @param  string $ext     File extension (optional, defaults to .yaml).
      * @return array
      */
-    public function locateFile(array $paths, $name, $ext = '.yaml')
+    public function locateFile(array $paths, string $name, string $ext = '.yaml'): array
     {
         $filename = preg_replace('|[./]+|', '/', $name) . $ext;
 
@@ -160,7 +162,7 @@ class ConfigFileFinder
      * @return array
      * @internal
      */
-    protected function detectRecursive($folder, $pattern, $levels)
+    protected function detectRecursive(string $folder, string $pattern, int $levels): array
     {
         $path = trim(Folder::getRelativePath($folder), '/');
 
@@ -198,7 +200,7 @@ class ConfigFileFinder
      * @return array
      * @internal
      */
-    protected function detectInFolder($folder, $lookup = null)
+    protected function detectInFolder(string $folder, ?string $lookup = null): array
     {
         $folder = rtrim($folder, '/');
         $path = trim(Folder::getRelativePath($folder), '/');
@@ -242,7 +244,7 @@ class ConfigFileFinder
      * @return array
      * @internal
      */
-    protected function detectAll($folder, $pattern, $levels)
+    protected function detectAll(string $folder, string $pattern, int $levels): array
     {
         $path = trim(Folder::getRelativePath($folder), '/');
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,17 +22,17 @@ use Genesis\Framework\Theme;
  */
 class HtmlBlock extends ContentBlock implements HtmlBlockInterface
 {
-    protected $version = 1;
-    protected $frameworks = [];
-    protected $styles = [];
-    protected $scripts = [];
-    protected $html = [];
+    protected int $version = 1;
+    protected array $frameworks = [];
+    protected array $styles = [];
+    protected array $scripts = [];
+    protected array $html = [];
 
     /**
      * @return array
      * @since 5.4.3
      */
-    public function getAssets()
+    public function getAssets(): array
     {
         $assets = $this->getAssetsFast();
 
@@ -45,7 +47,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function getFrameworks()
+    public function getFrameworks(): array
     {
         $assets = $this->getAssetsFast();
 
@@ -57,7 +59,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function getStyles($location = 'head')
+    public function getStyles(string $location = 'head'): array
     {
         $styles = $this->getAssetsInLocation('styles', $location);
 
@@ -95,7 +97,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function getScripts($location = 'head')
+    public function getScripts(string $location = 'head'): array
     {
         $scripts = $this->getAssetsInLocation('scripts', $location);
 
@@ -123,7 +125,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function getHtml($location = 'bottom')
+    public function getHtml(string $location = 'bottom'): array
     {
         return $this->getAssetsInLocation('html', $location);
     }
@@ -132,7 +134,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function toArray()
+    public function toArray(): array
     {
         $array = parent::toArray();
 
@@ -156,7 +158,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @param array $serialized
      * @since 5.4.3
      */
-    public function build(array $serialized)
+    public function build(array $serialized): void
     {
         parent::build($serialized);
 
@@ -171,7 +173,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return $this
      * @since 5.4.3
      */
-    public function addFramework($framework)
+    public function addFramework(string $framework): static
     {
         $this->frameworks[$framework] = 1;
 
@@ -188,7 +190,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @example $block->addStyle(['href' => 'assets/js/my.js', 'media' => 'screen']);
      * @since 5.4.3
      */
-    public function addStyle($element, $priority = 0, $location = 'head')
+    public function addStyle(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         if (!is_array($element)) {
             $element = ['href' => (string) $element];
@@ -227,7 +229,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addInlineStyle($element, $priority = 0, $location = 'head')
+    public function addInlineStyle(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         if (!is_array($element)) {
             $element = ['content' => (string) $element];
@@ -261,7 +263,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addScript($element, $priority = 0, $location = 'head')
+    public function addScript(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         if (!is_array($element)) {
             $element = ['src' => (string) $element];
@@ -301,7 +303,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addInlineScript($element, $priority = 0, $location = 'head')
+    public function addInlineScript(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         if (!is_array($element)) {
             $element = ['content' => (string) $element];
@@ -335,7 +337,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return bool
      * @since 5.4.3
      */
-    public function addHtml($html, $priority = 0, $location = 'bottom')
+    public function addHtml(string $html, int $priority = 0, string $location = 'bottom'): bool
     {
         if (empty($html) || !is_string($html)) {
             return false;
@@ -358,7 +360,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @deprecated Temporarily needed in WP
      * @since 5.4.3
      */
-    public function clearStyles($location = 'head')
+    public function clearStyles(string $location = 'head'): void
     {
         foreach ($this->blocks as $block) {
             if (method_exists($block, 'clearStyles')) {
@@ -373,7 +375,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @deprecated Temporarily needed in WP
      * @since 5.4.3
      */
-    public function clearScripts($location = 'head')
+    public function clearScripts(string $location = 'head'): void
     {
         foreach ($this->blocks as $block) {
             if (method_exists($block, 'clearScripts')) {
@@ -387,7 +389,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    protected function getAssetsFast()
+    protected function getAssetsFast(): array
     {
         $assets = [
             'frameworks' => $this->frameworks,
@@ -436,7 +438,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @return array
      * @since 5.4.3
      */
-    protected function getAssetsInLocation($type, $location)
+    protected function getAssetsInLocation(string $type, string $location): array
     {
         $assets = $this->getAssetsFast();
 
@@ -454,7 +456,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @param array $items
      * @since 5.4.3
      */
-    protected function sortAssetsInLocation(array &$items)
+    protected function sortAssetsInLocation(array &$items): void
     {
         $count = 0;
         foreach ($items as &$item) {
@@ -464,7 +466,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
 
         uasort(
             $items,
-            static function ($a, $b) {
+            static function (array $a, array $b): int {
                 return ($a[':priority'] === $b[':priority']) ? $a[':order'] - $b[':order'] : $b[':priority'] - $a[':priority'];
             }
         );
@@ -474,7 +476,7 @@ class HtmlBlock extends ContentBlock implements HtmlBlockInterface
      * @param array $array
      * @since 5.4.3
      */
-    protected function sortAssets(array &$array)
+    protected function sortAssets(array &$array): void
     {
         foreach ($array as $location => &$items) {
             $this->sortAssetsInLocation($items);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ use Genesis\Component\Event\Event;
 class InitThemeEvent extends Event
 {
     /** @var Genesis */
-    public $genesis;
+    public Genesis $genesis;
     /** @var Theme */
-    public $theme;
+    public Theme $theme;
 }

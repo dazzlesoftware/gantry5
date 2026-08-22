@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,9 +24,9 @@ class Assignments extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         if ($this->hasAssignments($outline)) {
             $assignments = new AssignmentsObject($outline);
@@ -40,14 +42,14 @@ class Assignments extends HtmlController
     /**
      * @return string
      */
-    public function store()
+    public function store(): string
     {
         // Authorization.
         if (!$this->authorize('outline.assign')) {
             $this->forbidden();
         }
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         if (!$this->hasAssignments($outline)) {
             $this->undefined();
         }
@@ -62,7 +64,7 @@ class Assignments extends HtmlController
 
         // Fire save event.
         $event = new AssigmentsEvent();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->assignments = $assignments;
@@ -75,9 +77,9 @@ class Assignments extends HtmlController
      * @param string $outline
      * @return bool
      */
-    protected function hasAssignments($outline)
+    protected function hasAssignments(string $outline): bool
     {
         // Default outline and system outlines cannot have assignments.
-        return $outline !== 'default' && $outline[0] !== '_';
+        return $outline !== '' && $outline !== 'default' && $outline[0] !== '_';
     }
 }

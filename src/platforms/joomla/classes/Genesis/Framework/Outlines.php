@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,13 +28,13 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Outlines extends OutlineCollection
 {
     /** @var int */
-    protected $createId;
+    protected ?string $createId = null;
 
     /**
      * @param int|string $id
      * @return int|string
      */
-    public function preset($id)
+    public function preset(string|int $id): string|int
     {
         if (is_numeric($id)) {
             $style = StyleHelper::getStyle($id);
@@ -48,7 +50,7 @@ class Outlines extends OutlineCollection
      * @param object|null $template
      * @return mixed
      */
-    public function current($template = null)
+    public function current(?object $template = null): string|int|null
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -84,7 +86,7 @@ class Outlines extends OutlineCollection
      * @param string $path
      * @return $this
      */
-    public function load($path = 'genesis-config://')
+    public function load(string $path = 'genesis-config://'): static
     {
         $this->path = $path;
 
@@ -123,7 +125,7 @@ class Outlines extends OutlineCollection
      * @return string
      * @throws \RuntimeException
      */
-    public function create($id, $title = null, $preset = null)
+    public function create(?string $id, ?string $title = null, string|array|null $preset = null): string
     {
         if ($this->createId) {
             // Workaround Joomla wanting to use different logic for style duplication.
@@ -145,13 +147,13 @@ class Outlines extends OutlineCollection
         StyleHelper::update($style->id, $presetId);
 
         // Create configuration folder.
-        $newId = parent::create($style->id, $title, $preset);
+        $newId = parent::create((string) $style->id, $title, $preset);
 
         if ($newId != $style->id) {
             throw new \RuntimeException(sprintf("Creating outline: folder '%s' already exists!", $style->id));
         }
 
-        return $style->id;
+        return (string) $style->id;
     }
 
     /**
@@ -161,7 +163,7 @@ class Outlines extends OutlineCollection
      * @return string
      * @throws \RuntimeException
      */
-    public function duplicate($id, $title = null, $inherit = false)
+    public function duplicate(string $id, ?string $title = null, bool $inherit = false): string
     {
         if (!$this->canDuplicate($id)) {
             throw new \RuntimeException("Outline '$id' cannot be duplicated", 400);
@@ -196,7 +198,7 @@ class Outlines extends OutlineCollection
             $title = $style->style;
         }
 
-        $this->createId = $style->id;
+        $this->createId = (string) $style->id;
 
         return parent::duplicate($id, $title, $inherit);
     }
@@ -207,7 +209,7 @@ class Outlines extends OutlineCollection
      * @return string
      * @throws \RuntimeException
      */
-    public function rename($id, $title)
+    public function rename(string $id, string $title): string
     {
         $model = StyleHelper::loadModel();
 
@@ -246,7 +248,7 @@ class Outlines extends OutlineCollection
      * @param bool $deleteModel
      * @throws \Exception
      */
-    public function delete($id, $deleteModel = true)
+    public function delete(string $id, bool $deleteModel = true): void
     {
         if (!$this->canDelete($id)) {
             throw new \RuntimeException("Outline '$id' cannot be deleted", 400);
@@ -294,7 +296,7 @@ class Outlines extends OutlineCollection
      * @param string $id
      * @return boolean
      */
-    public function canDelete($id)
+    public function canDelete(string $id): bool
     {
         $style = StyleHelper::getStyle($id);
 
@@ -305,7 +307,7 @@ class Outlines extends OutlineCollection
      * @param string $id
      * @return boolean
      */
-    public function isDefault($id)
+    public function isDefault(string $id): bool
     {
         $style = StyleHelper::getStyle($id);
 

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_mkdir,WordPress.WP.AlternativeFunctions.file_system_operations_is_writable,WordPress.WP.AlternativeFunctions.rename_rename,WordPress.WP.AlternativeFunctions.file_system_operations_chmod
 
 /**
@@ -20,12 +22,10 @@ use Twig\Cache\CacheInterface;
  */
 class TwigCacheFilesystem implements CacheInterface
 {
-    const FORCE_BYTECODE_INVALIDATION = 1;
+    public const FORCE_BYTECODE_INVALIDATION = 1;
 
-    /** @var string */
-    private $directory;
-    /** @var int */
-    private $options;
+    private string $directory;
+    private int $options;
 
     /**
      * @param string $directory The root cache directory

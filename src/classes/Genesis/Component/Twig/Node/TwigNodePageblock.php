@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ use Twig\Node\NodeCaptureInterface;
  */
 class TwigNodePageblock extends Node implements NodeCaptureInterface
 {
-    protected $tagName = 'pageblock';
+    protected string $tagName = 'pageblock';
 
     /**
      * TwigNodePageblock constructor.
@@ -30,7 +32,7 @@ class TwigNodePageblock extends Node implements NodeCaptureInterface
      * @param int $lineno
      * @param string|null $tag
      */
-    public function __construct(?Node $body = null, ?AbstractExpression $location = null, ?AbstractExpression $variables = null, $lineno = 0, $tag = null)
+    public function __construct(?Node $body = null, ?AbstractExpression $location = null, ?AbstractExpression $variables = null, int $lineno = 0, ?string $tag = null)
     {
         parent::__construct(['body' => $body, 'location' => $location, 'variables' => $variables], [], $lineno, $tag);
     }
@@ -39,7 +41,7 @@ class TwigNodePageblock extends Node implements NodeCaptureInterface
      *
      * @param Compiler $compiler A Twig Compiler instance
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this)
             ->write('$pageblockVariables = ')

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -272,7 +274,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param  string  $str
      * @return string
      */
-    public function fieldNameFilter($str)
+    public function fieldNameFilter(string $str): string
     {
         $path = explode('.', $str);
 
@@ -285,7 +287,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string $str
      * @return string
      */
-    public function transKeyFilter($str)
+    public function transKeyFilter(string $str): string
     {
         $params = \func_get_args();
         array_shift($params);
@@ -303,12 +305,12 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param  string  $str
      * @return string
      */
-    public function transFilter($str)
+    public function transFilter(string $str, mixed ...$arguments): string
     {
         /** @var TranslatorInterface|null $translator */
         static $translator;
 
-        $params = \func_get_args();
+        $params = [$str, ...$arguments];
 
         if (!$translator) {
             $translator = self::genesis()['translator'];
@@ -324,7 +326,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param  int  $count
      * @return string
      */
-    public function repeatFilter($str, $count)
+    public function repeatFilter(string $str, int $count): string
     {
         return str_repeat($str, max(0, (int) $count));
     }
@@ -339,7 +341,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param int $options
      * @return array
      */
-    public function jsonDecodeFilter($str, $assoc = false, $depth = 512, $options = 0)
+    public function jsonDecodeFilter(?string $str, bool $assoc = false, int $depth = 512, int $options = 0): mixed
     {
         return json_decode(html_entity_decode($str ?? ''), $assoc, $depth, $options);
     }
@@ -350,7 +352,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param bool $remote
      * @return array|string
      */
-    public function imageSize($src, $attrib = true, $remote = false)
+    public function imageSize(mixed $src, bool $attrib = true, bool $remote = false): array|string
     {
         // TODO: need to better handle absolute and relative paths
         //$url = Genesis::instance()['document']->url(trim((string) $src), false, false);
@@ -376,7 +378,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param array $array
      * @return array
      */
-    public function valuesFilter(array $array)
+    public function valuesFilter(array $array): array
     {
         return array_values($array);
     }
@@ -387,7 +389,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param mixed $input
      * @return string
      */
-    public function stringFilter($input)
+    public function stringFilter(mixed $input): string
     {
         return (string) $input;
     }
@@ -399,7 +401,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param mixed $input
      * @return int
      */
-    public function intFilter($input)
+    public function intFilter(mixed $input): int
     {
         return (int) $input;
     }
@@ -410,7 +412,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param mixed $input
      * @return bool
      */
-    public function boolFilter($input)
+    public function boolFilter(mixed $input): bool
     {
         return (bool) $input;
     }
@@ -421,7 +423,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param mixed $input
      * @return float
      */
-    public function floatFilter($input)
+    public function floatFilter(mixed $input): float
     {
         return (float) $input;
     }
@@ -432,7 +434,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param mixed $input
      * @return array
      */
-    public function arrayFilter($input)
+    public function arrayFilter(mixed $input): array
     {
         return (array) $input;
     }
@@ -446,7 +448,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string|array $input
      * @return string
      */
-    public function attributeArrayFilter($input)
+    public function attributeArrayFilter(string|array $input): string
     {
         if (\is_string($input)) {
             return $input;
@@ -478,12 +480,12 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string|array $b
      * @return bool
      */
-    public function is_selectedFunc($a, $b)
+    public function is_selectedFunc(string|int|float|bool|null $a, string|array $b): bool
     {
         $b = (array) $b;
         array_walk(
             $b,
-            static function (&$item) {
+            static function (mixed &$item): void {
                 if (\is_bool($item)) {
                     $item = (int) $item;
                 }
@@ -502,7 +504,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *
      * @return string
      */
-    public function truncateText($string, $limit = 150)
+    public function truncateText(string $string, int $limit = 150): string
     {
         /** @var Platform $platform */
         $platform = Genesis::instance()['platform'];
@@ -518,7 +520,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *
      * @return string
      */
-    public function truncateHtml($string, $limit = 150)
+    public function truncateHtml(string $string, int $limit = 150): string
     {
         /** @var Platform $platform */
         $platform = Genesis::instance()['platform'];
@@ -532,7 +534,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param array $settings
      * @return mixed|string
      */
-    public function markdownFunction($string, $block = true, ?array $settings = null)
+    public function markdownFunction(string $string, bool $block = true, ?array $settings = null): string
     {
         // Initialize the preferred variant of Parsedown
         if (!empty($settings['extra'])) {
@@ -561,7 +563,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string  $separator  Separator, defaults to '.'
      * @return mixed  Value.
      */
-    public function nestedFunc($items, $name, $default = null, $separator = '.')
+    public function nestedFunc(array|object $items, string $name, mixed $default = null, string $separator = '.'): mixed
     {
         if (is_callable([$items, 'getNestedProperty'])) {
             return $items->getNestedProperty($name, $default, $separator);
@@ -592,7 +594,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *                             Use value <= 0 to disable the feature.
      * @return string|null         Returns url to the resource or null if resource was not found.
      */
-    public function urlFunc($input, $domain = null, $timestamp_age = null)
+    public function urlFunc(string $input, ?bool $domain = null, ?int $timestamp_age = null): ?string
     {
         $genesis = Genesis::instance();
 
@@ -611,7 +613,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *                              Use value <= 0 to disable the feature.
      * @return string               Returns modified HTML.
      */
-    public function htmlFilter($str, $domain = false, $timestamp_age = null)
+    public function htmlFilter(string $str, bool $domain = false, ?int $timestamp_age = null): string
     {
         $genesis = Genesis::instance();
 
@@ -626,7 +628,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string $input
      * @throws \RuntimeException
      */
-    protected function dealXmlError(\LibXMLError $error, $input)
+    protected function dealXmlError(\LibXMLError $error, string $input): void
     {
         switch ($error->level) {
             case LIBXML_ERR_WARNING:
@@ -663,7 +665,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param int $priority
      * @return string
      */
-    public function parseAssetsFunc($input, $location = 'head', $priority = 0)
+    public function parseAssetsFunc(string $input, string $location = 'head', int $priority = 0): string
     {
         if ($location === 'head') {
             $scope = 'head';
@@ -713,7 +715,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string $value
      * @return bool
      */
-    public function colorContrastFunc($value)
+    public function colorContrastFunc(string $value): bool
     {
         $value = str_replace(' ', '', $value);
         $rgb = new \stdClass;
@@ -753,7 +755,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *
      * @return string
      */
-    public function nicetimeFilter($date, $long_strings = true)
+    public function nicetimeFilter(string|int $date, bool $long_strings = true): string
     {
         static $lengths = [60, 60, 24, 7, 4.35, 12, 10];
         static $periods_long = [
@@ -836,7 +838,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string $name
      * @return mixed
      */
-    public function getCookie($name)
+    public function getCookie(string $name): mixed
     {
         $genesis = Genesis::instance();
 
@@ -852,7 +854,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param array $matches
      * @return array|bool
      */
-    public function pregMatch($pattern, $subject, &$matches = [])
+    public function pregMatch(string $pattern, string $subject, array &$matches = []): array|false
     {
         preg_match($pattern, $subject, $matches);
 
@@ -863,7 +865,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @param string|array $str
      * @return array
      */
-    public function taxonomyCategories($str)
+    public function taxonomyCategories(string|array $str): array
     {
         if (!is_array($str)) {
             $taxonomies = explode(' ', $str);
@@ -879,7 +881,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
         return $list;
     }
 
-     public function pregSplit($pattern, $subject, $limit = -1)
+    public function pregSplit(string $pattern, string $subject, int $limit = -1): array|false
     {
         return preg_split($pattern, $subject, $limit);
     }

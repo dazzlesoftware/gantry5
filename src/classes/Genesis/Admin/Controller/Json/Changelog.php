@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,19 +22,19 @@ use Genesis\Component\Response\JsonResponse;
 class Changelog extends JsonController
 {
     /** @var string */
-    protected $url = 'https://raw.githubusercontent.com/genesis/genesis';
+    protected string $url = 'https://raw.githubusercontent.com/genesis/genesis';
     /** @var string */
-    protected $fullurl = 'https://github.com/genesis/genesis/blob/develop';
+    protected string $fullurl = 'https://github.com/genesis/genesis/blob/develop';
     /** @var string */
-    protected $issues = 'https://github.com/genesis/genesis/issues';
+    protected string $issues = 'https://github.com/genesis/genesis/issues';
     /** @var string */
-    protected $contrib = 'https://github.com';
+    protected string $contrib = 'https://github.com';
     /** @var string */
-    protected $file = 'CHANGELOG.md';
+    protected string $file = 'CHANGELOG.md';
     /** @var array */
-    protected $platforms = ['common' => 'share-alt', 'joomla' => '', 'wordpress' => '', 'grav' => ''];
+    protected array $platforms = ['common' => 'share-alt', 'joomla' => '', 'wordpress' => '', 'grav' => ''];
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'POST' => [
             '/' => 'index'
         ]
@@ -41,7 +43,7 @@ class Changelog extends JsonController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $version = $this->request->post['version'];
         $lookup = $version;

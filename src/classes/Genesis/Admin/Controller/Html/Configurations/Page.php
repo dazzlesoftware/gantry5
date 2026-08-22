@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,7 +29,7 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Page extends HtmlController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/' => 'index'
         ],
@@ -53,9 +55,9 @@ class Page extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         if ($outline === 'default') {
             $this->params['overrideable'] = false;
@@ -97,7 +99,7 @@ class Page extends HtmlController
      * @param string|null $id
      * @return string
      */
-    public function save($id = null)
+    public function save(?string $id = null): string
     {
         $data = $id ? [$id => $this->request->post->getArray()] : $this->request->post->getArray('page');
 
@@ -107,7 +109,7 @@ class Page extends HtmlController
 
         // Fire save event.
         $event             = new PageEvent();
-        $event->Genesis     = $this->container;
+        $event->genesis     = $this->container;
         $event->theme      = $this->container['theme'];
         $event->controller = $this;
         $event->data       = $data;
@@ -120,9 +122,9 @@ class Page extends HtmlController
      * @param string $id
      * @return string
      */
-    public function formfield($id)
+    public function formfield(string $id, string ...$pathParts): JsonResponse|string
     {
-        $path = func_get_args();
+        $path = [$id, ...$pathParts];
 
         $end = end($path);
         if ($end === '') {
@@ -160,7 +162,7 @@ class Page extends HtmlController
 
         array_pop($path);
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $configuration = "configurations/{$outline}";
         $this->params = [
                 'configuration' => $configuration,
@@ -188,9 +190,9 @@ class Page extends HtmlController
      * @param string $particle
      * @return JsonResponse
      */
-    public function validate($particle)
+    public function validate(string $particle, string ...$pathParts): JsonResponse
     {
-        $path = implode('.', array_slice(func_get_args(), 1, -1));
+        $path = implode('.', array_slice($pathParts, 0, -1));
 
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -203,7 +205,7 @@ class Page extends HtmlController
         // Create configuration from the defaults.
         $data = new Config(
             [],
-            function () use ($validator) {
+            static function () use ($validator): mixed {
                 return $validator;
             }
         );
@@ -219,20 +221,20 @@ class Page extends HtmlController
      * @param string $name
      * @return JsonResponse
      */
-    public function atom($name)
+    public function atom(string $name): JsonResponse
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $atoms = Atoms::instance($outline);
 
         $data = $this->request->post['data'];
         if ($data) {
-            $data = json_decode($data, true);
+            $data = json_decode((string) $data, true);
         } else {
             $data = $this->request->post->getArray();
         }
 
         // Create atom and get its blueprint.
-        $item = $atoms->createAtom($name, $data);
+        $item = $atoms->createAtom($name, is_array($data) ? $data : []);
         $blueprint = $item->blueprint();
 
         // Load inheritance blueprint.
@@ -262,7 +264,7 @@ class Page extends HtmlController
      * @param string $name
      * @return JsonResponse
      */
-    public function atomValidate($name)
+    public function atomValidate(string $name): JsonResponse
     {
         // Load particle blueprints and default settings.
         $validator = new BlueprintSchema;
@@ -272,7 +274,7 @@ class Page extends HtmlController
 
         // Create configuration from the defaults.
         $data = new Config([],
-            function () use ($validator) {
+            static function () use ($validator): BlueprintSchema {
                 return $validator;
             }
         );
@@ -310,13 +312,13 @@ class Page extends HtmlController
      * @param string $id
      * @param array $data
      */
-    protected function saveItem($id, $data)
+    protected function saveItem(string $id, mixed $data): void
     {
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
 
         // Save layout into custom directory for the current theme.
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         // Move atoms out of layout.
         if ($id === 'head') {
@@ -331,6 +333,9 @@ class Page extends HtmlController
         }
 
         $save_dir      = $locator->findResource("genesis-config://{$outline}/page", true, true);
+        if (!is_string($save_dir) || $save_dir === '') {
+            throw new \RuntimeException('Unable to create the page configuration folder', 500);
+        }
         $filename      = "{$save_dir}/{$id}.yaml";
 
         $file = YamlFile::instance($filename);
@@ -340,7 +345,7 @@ class Page extends HtmlController
             }
         } else {
             $blueprints = $this->container['page']->getBlueprintForm($id);
-            $config     = new Config($data, function () use ($blueprints) { return $blueprints; });
+            $config     = new Config($data, static function () use ($blueprints): mixed { return $blueprints; });
 
             $file->save($config->toArray());
         }
@@ -350,9 +355,9 @@ class Page extends HtmlController
     /**
      * @return array|null
      */
-    protected function getDeprecatedAtoms()
+    protected function getDeprecatedAtoms(): ?array
     {
-        $id     = $this->params['outline'];
+        $id     = (string) $this->params['outline'];
         $layout = Layout::instance($id);
 
         return $layout->atoms();
@@ -362,7 +367,7 @@ class Page extends HtmlController
      * @param bool $onlyEnabled
      * @return array
      */
-    protected function getAtoms($onlyEnabled = false)
+    protected function getAtoms(bool $onlyEnabled = false): array
     {
         $config = $this->container['config'];
 
@@ -378,6 +383,6 @@ class Page extends HtmlController
             }
         }
 
-        return $list['atom'];
+        return $list['atom'] ?? [];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,8 +21,8 @@ class CompiledYamlFile extends YamlFile
 {
     use CompiledFile;
 
-    static public $defaultCachePath;
-    static public $defaultCaching = true;
+    public static ?string $defaultCachePath = null;
+    public static bool $defaultCaching = true;
 
     protected function __construct()
     {

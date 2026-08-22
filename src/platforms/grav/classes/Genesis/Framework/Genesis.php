@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -28,7 +30,7 @@ class Genesis extends Base\Genesis
 
         // Keep Genesis on DazzleSoftware Toolbox while importing Grav's stream
         // configuration through the locator's public, implementation-neutral API.
-        $container['locator'] = static function() {
+        $container['locator'] = static function(): UniformResourceLocator {
             $gravLocator = Grav::instance()['locator'];
             $locator = new UniformResourceLocator(ROOT_DIR);
 

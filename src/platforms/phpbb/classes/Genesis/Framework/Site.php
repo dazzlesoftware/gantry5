@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,11 +20,11 @@ use Genesis\phpBB\Runtime;
 class Site
 {
     /** @var string */
-    public $title;
+    public string $title;
     /** @var string */
-    public $description;
+    public string $description;
     /** @var string */
-    public $url;
+    public string $url;
 
     public function __construct()
     {
@@ -32,8 +34,8 @@ class Site
         /** @var \phpbb\path_helper $pathHelper */
         $pathHelper = Runtime::service('path_helper');
 
-        $this->title = isset($config['sitename']) ? $config['sitename'] : '';
-        $this->description = isset($config['site_desc']) ? $config['site_desc'] : '';
-        $this->url = rtrim($pathHelper->get_web_root_path(), '/');
+        $this->title = isset($config['sitename']) ? (string) $config['sitename'] : '';
+        $this->description = isset($config['site_desc']) ? (string) $config['site_desc'] : '';
+        $this->url = rtrim((string) $pathHelper->get_web_root_path(), '/');
     }
 }

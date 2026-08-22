@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return array
      */
-    public function types()
+    public function types(): array
     {
         return ['type'];
     }

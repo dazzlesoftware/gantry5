@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -28,32 +30,32 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     use GenesisTrait, ArrayAccessWithGetters, Iterator, Export, Countable;
 
     /** @var int|string|null */
-    public $id;
+    public string|int|null $id = null;
 
     /** @var array */
-    protected $paths = [];
+    protected array $paths = [];
     /** @var array */
-    protected $yaml_paths = [];
+    protected array $yaml_paths = [];
     /** @var string|int */
-    protected $default;
+    protected string|int|null $default = null;
     /** @var string */
-    protected $root = '';
+    protected string $root = '';
     /** @var string */
-    protected $base;
+    protected string|int|null $base = null;
     /** @var string */
-    protected $active;
+    protected string|int|array|null $active = null;
     /** @var array */
-    protected $params;
+    protected array $params = [];
     /** @var bool */
-    protected $override = false;
+    protected bool $override = false;
     /** @var Config|null */
-    protected $config;
+    protected ?Config $config = null;
     /** @var Item[] */
-    protected $items;
+    protected array $items = [];
     /** @var Config|null */
-    protected $pathMap;
+    protected ?Config $pathMap = null;
     /** @var array */
-    protected $defaults = [
+    protected array $defaults = [
         'menu' => '',
         'base' => '/',
         'startLevel' => 1,
@@ -69,7 +71,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param array $ordering Nested ordering structure.
      * @return array
      */
-    public static function flattenOrdering(array $ordering)
+    public static function flattenOrdering(array $ordering): array
     {
         $ordering = static::fixOrdering($ordering);
         $list = static::flattenOrderingRecurse($ordering);
@@ -87,7 +89,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param array|null $orderMap
      * @return array
      */
-    public static function prepareMenuItems(array $items, array $ordering, ?array $orderMap = null)
+    public static function prepareMenuItems(array $items, array $ordering, ?array $orderMap = null): array
     {
         $ordering = static::fixOrdering($ordering);
         static::embedOrderingRecurse($items, $ordering);
@@ -113,7 +115,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param int $i
      * @return array
      */
-    public static function flattenOrderingRecurse(array $ordering, $parents = [], &$i = 0)
+    public static function flattenOrderingRecurse(array $ordering, array $parents = [], int &$i = 0): array
     {
         if (!$ordering) {
             return [];
@@ -142,7 +144,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param array $parents
      * @param int $pos
      */
-    protected static function embedOrderingRecurse(array &$items, array $ordering, $parents = [], $pos = 0)
+    protected static function embedOrderingRecurse(array &$items, array $ordering, array $parents = [], int $pos = 0): void
     {
         $name = implode('/', $parents);
         $isGroup = isset($ordering[0]);
@@ -193,7 +195,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param array $ordering
      * @return array
      */
-    protected static function fixOrdering(array $ordering)
+    protected static function fixOrdering(array $ordering): array
     {
         // FIXME: @djamil, if you move particle from column 2+, it breaks the main level.
         if (isset($ordering[0])) {
@@ -208,21 +210,21 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      *
      * @return array
      */
-    abstract public function getMenus();
+    abstract public function getMenus(): array;
 
     /**
      * Return list of menus.
      *
      * @return array
      */
-    abstract public function getMenuOptions();
+    abstract public function getMenuOptions(): array;
 
     /**
      * Return default menu.
      *
      * @return string|null
      */
-    public function getDefaultMenuName()
+    public function getDefaultMenuName(): ?string
     {
         return null;
     }
@@ -232,7 +234,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      *
      * @return bool
      */
-    public function hasDefaultMenu()
+    public function hasDefaultMenu(): bool
     {
         return false;
     }
@@ -242,7 +244,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      *
      * @return string|null
      */
-    public function getActiveMenuName()
+    public function getActiveMenuName(): ?string
     {
         return null;
     }
@@ -252,7 +254,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      *
      * @return bool
      */
-    public function hasActiveMenu()
+    public function hasActiveMenu(): bool
     {
         return false;
     }
@@ -262,7 +264,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param Config $menu
      * @return AbstractMenu
      */
-    public function instance(array $params = [], ?Config $menu = null)
+    public function instance(array $params = [], ?Config $menu = null): static
     {
         $params += $this->defaults;
 
@@ -328,7 +330,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      *
      * @return Config
      */
-    public function config()
+    public function config(): Config
     {
         if (!$this->config) {
             $genesis = static::genesis();
@@ -357,7 +359,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return string
      */
-    public function name()
+    public function name(): string
     {
         return $this->params['menu'];
     }
@@ -365,7 +367,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return Item|null
      */
-    public function root()
+    public function root(): ?Item
     {
         return $this->offsetGet($this->root);
     }
@@ -373,7 +375,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return array
      */
-    public function ordering()
+    public function ordering(): array
     {
         $list = [];
         foreach ($this->items as $item) {
@@ -399,7 +401,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param string $path
      * @return Item|null
      */
-    public function get($path)
+    public function get(string $path): ?Item
     {
         if (isset($this->paths[$path])) {
             $id = $this->paths[$path];
@@ -420,7 +422,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param bool $withdefaults
      * @return array
      */
-    public function items($withdefaults = true)
+    public function items(bool $withdefaults = true): array
     {
         $list = [];
         foreach ($this->items as $key => $item) {
@@ -435,7 +437,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return array
      */
-    public function settings()
+    public function settings(): array
     {
         return (array) $this->config()->get('settings');
     }
@@ -443,7 +445,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return object
      */
-    public function getBase()
+    public function getBase(): ?Item
     {
         return $this->offsetGet($this->base);
     }
@@ -451,7 +453,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return object
      */
-    public function getDefault()
+    public function getDefault(): ?Item
     {
         return $this->offsetGet($this->default);
     }
@@ -459,7 +461,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return object|null
      */
-    public function getActive()
+    public function getActive(): ?Item
     {
         return $this->offsetGet($this->active);
     }
@@ -467,7 +469,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @return string|null
      */
-    public function getCacheId()
+    public function getCacheId(): ?string
     {
         return $this->active ?: '-inactive-';
     }
@@ -476,7 +478,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param object|null $item
      * @return bool
      */
-    public function isActive($item)
+    public function isActive(mixed $item): bool
     {
         $active = $this->getActive();
         if (!$active || !$item) {
@@ -490,7 +492,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param object|null $item
      * @return bool
      */
-    public function isCurrent($item)
+    public function isCurrent(mixed $item): bool
     {
         $active = $this->getActive();
         if (!$active || !$item) {
@@ -503,7 +505,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
     /**
      * @param array $params
      */
-    public function init(&$params)
+    public function init(array &$params): void
     {
         $this->items = ['' => new Item($this, ['id' => '', 'layout' => 'horizontal'])];
         $this->paths = ['' => ''];
@@ -513,7 +515,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param Item $item
      * @return $this
      */
-    public function add(Item $item)
+    public function add(Item $item): static
     {
         if (isset($this->items[$item->id])) {
             // Only add the item once.
@@ -544,7 +546,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param int $levels
      * @return array
      */
-    abstract protected function getItemsFromPlatform($levels);
+    abstract protected function getItemsFromPlatform(mixed $levels): ?array;
 
     /**
      * Get base menu item.
@@ -556,7 +558,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param   string  $path
      * @return  string
      */
-    abstract protected function calcBase($path);
+    abstract protected function calcBase(mixed $path): mixed;
 
     /**
      * Get a list of the menu items.
@@ -564,7 +566,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param  array  $params
      * @param  array  $items
      */
-    abstract public function getList(array $params, array $items);
+    abstract public function getList(array $params, array $items): void;
 
     /**
      * Add custom menu items.
@@ -572,7 +574,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param  array  $params
      * @param array $items
      */
-    public function addCustom(array $params, array $items)
+    public function addCustom(array $params, array $items): void
     {
         $isAjax = !empty($params['POST']);
         $config = $this->config();
@@ -622,7 +624,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param string $path
      * @param array $map
      */
-    public function sortAll(?array $ordering = null, $path = '', $map = null)
+    public function sortAll(?array $ordering = null, string $path = '', ?array $map = null): void
     {
         if ($ordering === null) {
             $config = $this->config();
@@ -690,7 +692,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param int $depth Current recursion depth
      * @param int $maxDepth Maximum allowed recursion depth (safety limit)
      */
-    protected function setGroupToChildren($item, $depth = 0, $maxDepth = 20)
+    protected function setGroupToChildren(Item $item, int $depth = 0, int $maxDepth = 20): void
     {
         // Prevent infinite recursion by checking depth
         if ($depth >= $maxDepth) {
@@ -711,7 +713,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
      * @param array $array
      * @return bool
      */
-    protected function isAssoc(array $array)
+    protected function isAssoc(array $array): bool
     {
         return \array_values($array) !== $array;
     }

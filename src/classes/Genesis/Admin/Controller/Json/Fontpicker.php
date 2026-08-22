@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,9 +22,9 @@ use DazzleSoftware\Toolbox\File\JsonFile;
 class Fontpicker extends JsonController
 {
     /** @var string */
-    protected $google_fonts = 'genesis-admin://js/google-fonts.json';
+    protected string $google_fonts = 'genesis-admin://js/google-fonts.json';
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/' => 'index'
         ]
@@ -31,7 +33,7 @@ class Fontpicker extends JsonController
     /**
      * @return JsonResponse|mixed
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $this->params['fonts'] = $this->loadGoogleFonts();
         $this->params['variantsMap'] = $this->variantsMap();
@@ -44,19 +46,19 @@ class Fontpicker extends JsonController
     /**
      * @return \stdClass
      */
-    public function loadGoogleFonts()
+    public function loadGoogleFonts(): \stdClass
     {
         $data = new \stdClass();
         $file = JsonFile::instance($this->google_fonts);
-        $fonts = $file->content()['items'];
+        $fonts = (array) ($file->content()['items'] ?? []);
         $file->free();
 
         $data->categories = [];
         $data->subsets = [];
 
         // create list of unique categories and subsets
-        array_walk($fonts, function (&$item) use ($data) {
-            if (!in_array($item->category, $data->categories)) {
+        array_walk($fonts, static function (object &$item) use ($data): void {
+            if (!in_array($item->category, $data->categories, true)) {
                 $data->categories[] = $item->category;
             }
             $data->subsets = array_unique(array_merge($data->subsets, $item->subsets));
@@ -80,7 +82,7 @@ class Fontpicker extends JsonController
     /**
      * @return array
      */
-    public function loadLocalFonts()
+    public function loadLocalFonts(): array
     {
         $local_fonts = $this->container['theme']->details()->get('configuration.fonts', []);
         $map = [];
@@ -101,7 +103,7 @@ class Fontpicker extends JsonController
     /**
      * @return array
      */
-    protected function variantsMap()
+    protected function variantsMap(): array
     {
         return [
             '100'       => 'Thin 100',

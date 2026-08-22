@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,5 +17,5 @@ namespace Genesis\Component\Twig\Node;
  */
 class TwigNodeScripts extends TwigNodeAssets
 {
-    protected $tagName = 'scripts';
+    protected string $tagName = 'scripts';
 }

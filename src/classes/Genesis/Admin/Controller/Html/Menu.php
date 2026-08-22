@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -30,7 +32,7 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Menu extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/'                  => 'item',
             '/*'                 => 'item',
@@ -77,7 +79,7 @@ class Menu extends HtmlController
      * @param string ...$parts
      * @return string
      */
-    public function item($id = null, ...$parts)
+    public function item(?string $id = null, string ...$parts): string
     {
         // All extra arguments become the path.
         $path = $parts ? implode('/', $parts) : '';
@@ -144,9 +146,9 @@ class Menu extends HtmlController
      * @param string $id
      * @return string
      */
-    public function edit($id)
+    public function edit(mixed $id): string
     {
-        $resource = $this->loadResource($id);
+        $resource = $this->loadResource((string) $id);
         if (!$this->authorize('menu.manage', $resource->name())) {
             $this->forbidden();
         }
@@ -167,7 +169,7 @@ class Menu extends HtmlController
     /**
      * @param string|null $id
      */
-    public function save($id = null)
+    public function save(?string $id = null): JsonResponse
     {
         $resource = $this->loadResource($id);
         if (!$this->authorize('menu.manage', $resource->name()) && !$this->authorize('menu.edit', $resource->name())) {
@@ -178,10 +180,10 @@ class Menu extends HtmlController
 
         // Fire save event.
         $event = new MenuEvent();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
-        $event->resource = $id;
+        $event->resource = $id ?? $resource->name();
         $event->menu = $data;
         $this->container->fireEvent('admin.menus.save', $event);
 
@@ -189,6 +191,9 @@ class Menu extends HtmlController
             /** @var UniformResourceLocator $locator */
             $locator = $this->container['locator'];
             $filename = $locator->findResource("genesis-config://menu/{$resource->name()}.yaml", true, true);
+            if (!is_string($filename) || $filename === '') {
+                throw new \RuntimeException('Unable to resolve the menu configuration file', 500);
+            }
 
             $file = YamlFile::instance($filename);
             $file->delete();
@@ -198,6 +203,9 @@ class Menu extends HtmlController
             /** @var UniformResourceLocator $locator */
             $locator = $this->container['locator'];
             $filename = $locator->findResource("genesis-config://menu/{$resource->name()}.yaml", true, true);
+            if (!is_string($filename) || $filename === '') {
+                throw new \RuntimeException('Unable to resolve the menu configuration file', 500);
+            }
 
             $file = YamlFile::instance($filename);
             $file->settings(['inline' => 99]);
@@ -218,15 +226,15 @@ class Menu extends HtmlController
      * @param string $id
      * @return string
      */
-    public function editItem($id)
+    public function editItem(string $id, string ...$pathParts): JsonResponse|string
     {
         // All extra arguments become the path.
-        $path = array_slice(func_get_args(), 1);
+        $path = $pathParts;
         $keyword = end($path);
 
         // Special case: validate instead of fetching menu item.
         if ($this->method === 'POST' && $keyword === 'validate') {
-            $params = array_slice(func_get_args(), 0, -1);
+            $params = [$id, ...array_slice($pathParts, 0, -1)];
             return call_user_func_array([$this, 'validateitem'], $params);
         }
 
@@ -266,23 +274,27 @@ class Menu extends HtmlController
     /**
      * @return string
      */
-    public function particle()
+    public function particle(): string
     {
         $data = $this->request->post['item'];
         if ($data) {
-            $data = json_decode($data, true);
+            $decoded = json_decode((string) $data, true);
+            $data = is_array($decoded) ? $decoded : [];
         } else {
             $data = $this->request->post->getArray();
         }
 
         $name = isset($data['particle']) ? $data['particle'] : null;
+        if (!is_string($name) || $name === '') {
+            throw new \RuntimeException('Particle type was not provided', 400);
+        }
 
         $block = BlueprintForm::instance('menu/block.yaml', 'genesis-admin://blueprints');
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
         // Load particle blueprints and default settings.
         $validator = $this->loadBlueprints('menu');
-        $callable = static function () use ($validator) {
+        $callable = static function () use ($validator): BlueprintForm {
             return $validator;
         };
 
@@ -312,7 +324,7 @@ class Menu extends HtmlController
      * @param string $name
      * @return JsonResponse
      */
-    public function validateParticle($name)
+    public function validateParticle(string $name): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -327,7 +339,7 @@ class Menu extends HtmlController
 
         // Create configuration from the defaults.
         $data = new Config([],
-            function () use ($validator) {
+            static function () use ($validator): BlueprintSchema {
                 return $validator;
             }
         );
@@ -364,7 +376,7 @@ class Menu extends HtmlController
     /**
      * @return string
      */
-    public function selectModule()
+    public function selectModule(): string
     {
         return $this->render('@genesis-admin/modals/module-picker.html.twig', $this->params);
     }
@@ -372,7 +384,7 @@ class Menu extends HtmlController
     /**
      * @return string
      */
-    public function selectWidget()
+    public function selectWidget(): string
     {
         $this->params['next'] = 'menu/widget';
 
@@ -382,9 +394,12 @@ class Menu extends HtmlController
     /**
      * @return HtmlResponse|Response
      */
-    public function widget()
+    public function widget(): Response
     {
         $data = $this->request->post->getJson('item');
+        if (!is_object($data) || !isset($data->widget)) {
+            throw new \RuntimeException('Widget was not provided', 400);
+        }
         $path = [$data->widget];
         $this->params['scope'] = 'menu';
 
@@ -394,7 +409,7 @@ class Menu extends HtmlController
     /**
      * @return string
      */
-    public function selectParticle()
+    public function selectParticle(): string
     {
         $groups = [];
         foreach ($this->container['particles']->categories() as $category) {
@@ -432,7 +447,7 @@ class Menu extends HtmlController
      * @param string $id
      * @return JsonResponse
      */
-    public function validate($id)
+    public function validate(string $id): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -441,7 +456,7 @@ class Menu extends HtmlController
 
         // Load particle blueprints and default settings.
         $validator = $this->loadBlueprints('menu');
-        $callable = static function () use ($validator) {
+        $callable = static function () use ($validator): BlueprintForm {
             return $validator;
         };
 
@@ -457,11 +472,9 @@ class Menu extends HtmlController
      * @param string $id
      * @return JsonResponse
      */
-    public function validateitem($id)
+    public function validateitem(string $id, string ...$path): JsonResponse
     {
         // All extra arguments become the path.
-        $path = array_slice(func_get_args(), 1);
-
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
             $this->undefined();
@@ -472,7 +485,7 @@ class Menu extends HtmlController
 
         // Load particle blueprints and default settings.
         $validator = $this->loadBlueprints('menuitem');
-        $callable = function () use ($validator) {
+        $callable = static function () use ($validator): BlueprintForm {
             return $validator;
         };
 
@@ -482,6 +495,9 @@ class Menu extends HtmlController
         // TODO: validate
 
         $item = $resource->get(implode('/', $path));
+        if (!$item) {
+            throw new \RuntimeException('Menu item not found', 404);
+        }
         $item->update($data->toArray());
         $group = $resource->get(implode('/', array_slice($path, 0, 2)))->group;
 
@@ -503,7 +519,7 @@ class Menu extends HtmlController
      * @param int $level
      * @return string
      */
-    protected function layoutName($level)
+    protected function layoutName(int $level): string
     {
         switch ($level) {
             case 0:
@@ -523,18 +539,18 @@ class Menu extends HtmlController
      * @return AbstractMenu
      * @throws \RuntimeException
      */
-    protected function loadResource($id, ?Config $config = null)
+    protected function loadResource(mixed $id, ?Config $config = null): AbstractMenu
     {
         /** @var MenuObject $menus */
         $menus = $this->container['menu'];
 
-        return $menus->instance(['menu' => $id, 'admin' => true, 'POST' => $config !== null], $config);
+        return $menus->instance(['menu' => $id !== null ? (string) $id : null, 'admin' => true, 'POST' => $config !== null], $config);
     }
 
     /**
      * @return string[]
      */
-    protected function getMenuOptions()
+    protected function getMenuOptions(): array
     {
         /** @var MenuObject $menus */
         $menus = $this->container['menu'];
@@ -548,7 +564,7 @@ class Menu extends HtmlController
      * @param string $name
      * @return BlueprintForm
      */
-    protected function loadBlueprints($name = 'menu')
+    protected function loadBlueprints(string $name = 'menu'): BlueprintForm
     {
         return BlueprintForm::instance("menu/{$name}.yaml", 'genesis-admin://blueprints');
     }
@@ -557,10 +573,11 @@ class Menu extends HtmlController
      * @param Input $input
      * @return Config|null
      */
-    public function build(Input $input)
+    public function build(Input $input): ?Config
     {
         try {
             $items = $input->get('items');
+            $items = is_scalar($items) ? (string) $items : '';
             if ($items && $items[0] !== '{' && $items[0] !== '[') {
                 $items = urldecode((string)base64_decode($items));
             }
@@ -610,7 +627,7 @@ class Menu extends HtmlController
     /**
      * @return array
      */
-    protected function getParticles()
+    protected function getParticles(): array
     {
         $particles = $this->container['particles']->all();
 
@@ -639,7 +656,7 @@ class Menu extends HtmlController
      * @param array $params
      * @return HtmlResponse|Response
      */
-    protected function executeForward($resource, $method = 'GET', $path = [], $params = [])
+    protected function executeForward(string $resource, string $method = 'GET', array $path = [], array $params = []): Response
     {
         $class = '\\Genesis\\Admin\\Controller\\Json\\' . strtr(ucwords(strtr($resource, '/', ' ')), ' ', '\\');
         if (!class_exists($class)) {

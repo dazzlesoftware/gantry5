@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,17 +17,17 @@ namespace Genesis\Component\Config;
 class CompiledBlueprints extends CompiledBase
 {
     /** @var int Version number for the compiled file. */
-    public $version = 3;
+    public int $version = 3;
 
     /** @var BlueprintSchema  Blueprints object. */
-    protected $object;
+    protected mixed $object = null;
 
     /**
      * Create configuration object.
      *
      * @param array  $data
      */
-    protected function createObject(array $data = [])
+    protected function createObject(array $data = []): void
     {
         $this->object = new BlueprintSchema($data);
     }
@@ -33,7 +35,7 @@ class CompiledBlueprints extends CompiledBase
     /**
      * Finalize configuration object.
      */
-    protected function finalizeObject()
+    protected function finalizeObject(): void
     {
     }
 
@@ -43,7 +45,7 @@ class CompiledBlueprints extends CompiledBase
      * @param  string  $name  Name of the position.
      * @param  string|array  $filename  File to be loaded.
      */
-    protected function loadFile($name, $filename)
+    protected function loadFile(string $name, string|array $filename): void
     {
         // Load blueprint file.
         $blueprint = new BlueprintForm($filename);
@@ -57,7 +59,7 @@ class CompiledBlueprints extends CompiledBase
      * @return bool
      * @internal
      */
-    protected function loadFiles()
+    protected function loadFiles(): bool
     {
         $this->createObject();
 
@@ -82,7 +84,7 @@ class CompiledBlueprints extends CompiledBase
     /**
      * @return array
      */
-    protected function getState()
+    protected function getState(): array
     {
         return $this->object->getState();
     }

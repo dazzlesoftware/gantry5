@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,7 +23,7 @@ use Genesis\Component\Response\JsonResponse;
 class Layouts extends JsonController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/' => 'index',
             '/*' => 'index',
@@ -37,18 +39,18 @@ class Layouts extends JsonController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(string ...$pathParts): JsonResponse
     {
-        $path = implode('/', func_get_args());
+        $path = implode('/', $pathParts);
 
         $post = $this->request->request;
 
-        $outline = $post['outline'];
-        $type = $post['type'];
-        $subtype = $post['subtype'];
-        $inherit = $post['inherit'];
+        $outline = (string) $post['outline'];
+        $type = (string) $post['type'];
+        $subtype = (string) $post['subtype'];
+        $inherit = (bool) $post['inherit'];
         $clone = $post['mode'] === 'clone';
-        $id = $post['id'];
+        $id = (string) $post['id'];
 
         $this->container['outline'] = $outline;
         $this->container['configuration'] = $outline;
@@ -85,7 +87,7 @@ class Layouts extends JsonController
         } else {
             $name = $subtype;
             $particle = true;
-            $defaults = $this->container['config']->get("particles.{$name}");
+            $defaults = (array) $this->container['config']->get("particles.{$name}", []);
             $item->attributes = $item->attributes + $defaults;
             $blueprints = $this->container['particles']->getBlueprintForm($name);
             $blueprints->set('form/fields/_inherit', ['type' => 'genesis.inherit']);
@@ -106,7 +108,7 @@ class Layouts extends JsonController
         $html['g-settings-particle'] = $this->render('@genesis-admin/pages/configurations/layouts/particle-card.html.twig',  $paramsParticle);
         $html['g-settings-block-attributes'] = $this->renderBlockFields($block, $params);
         if ($path === 'list') {
-            $html['g-inherit-particle'] = $this->renderParticlesInput($inherit || $clone ? $outline : null, $subtype, $post['selected']);
+            $html['g-inherit-particle'] = $this->renderParticlesInput($inherit || $clone ? $outline : null, $subtype, (string) $post['selected']);
         }
 
         return new JsonResponse(['json' => $item, 'html' => $html]);
@@ -115,12 +117,12 @@ class Layouts extends JsonController
     /**
      * @return JsonResponse
      */
-    public function particle()
+    public function particle(): JsonResponse
     {
         $post = $this->request->request;
 
-        $outline = $post['outline'];
-        $id = $post['id'];
+        $outline = (string) $post['outline'];
+        $id = (string) $post['id'];
 
         $this->container['outline'] = $outline;
         $this->container['configuration'] = $outline;
@@ -176,7 +178,7 @@ class Layouts extends JsonController
      * @param array $params
      * @return string
      */
-     protected function renderBlockFields(array $block, array $params)
+     protected function renderBlockFields(array $block, array $params): string
      {
          $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'genesis-admin://blueprints');
 
@@ -198,7 +200,7 @@ class Layouts extends JsonController
      * @param string|null $selected
      * @return array
      */
-    protected function getParticleInstances($outline, $particle, $selected)
+    protected function getParticleInstances(?string $outline, string $particle, ?string $selected): array
     {
         $list = $outline ? $this->container['outlines']->getParticleInstances($outline, $particle, false) : [];
         $selected = $selected && isset($list[$selected]) ? $selected : (string)key($list);
@@ -214,7 +216,7 @@ class Layouts extends JsonController
      * @param string $selected
      * @return string
      */
-    protected function renderParticlesInput($outline, $particle, $selected)
+    protected function renderParticlesInput(?string $outline, string $particle, ?string $selected): string
     {
         $instances = $this->getParticleInstances($outline, $particle, $selected);
 

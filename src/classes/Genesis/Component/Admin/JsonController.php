@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,7 +26,7 @@ abstract class JsonController extends BaseController
      * @param array $context
      * @return string
      */
-    public function render($file, array $context = [])
+    public function render(string|array $file, array $context = []): string
     {
         /** @var Theme $theme */
         $theme = $this->container['admin.theme'];
@@ -37,7 +39,7 @@ abstract class JsonController extends BaseController
      * @param string $id
      * @return boolean
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, ?string $id = null): bool
     {
         /** @var Platform $platform */
         $platform = $this->container['platform'];

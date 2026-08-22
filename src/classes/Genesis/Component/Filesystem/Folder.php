@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,WordPress.WP.AlternativeFunctions.file_system_operations_copy,WordPress.WP.AlternativeFunctions.file_system_operations_mkdir,WordPress.WP.AlternativeFunctions.file_system_operations_touch,WordPress.WP.AlternativeFunctions.rename_rename,WordPress.WP.AlternativeFunctions.unlink_unlink,WordPress.WP.AlternativeFunctions.file_system_operations_rmdir,Internal.LineEndings.Mixed
 
 /**
@@ -24,7 +26,7 @@ abstract class Folder
      * @param  string $path
      * @return int
      */
-    public static function lastModifiedFolder($path)
+    public static function lastModifiedFolder(string $path): int
     {
         $last_modified = 0;
 
@@ -49,7 +51,7 @@ abstract class Folder
      * @param  string  $base
      * @return string
      */
-    public static function getRelativePath($path, $base = GENESIS_ROOT)
+    public static function getRelativePath(string $path, string $base = GENESIS_ROOT): string
     {
         $base = preg_replace('![\\\/]+!', '/', $base);
         $path = preg_replace('![\\\/]+!', '/', $path);
@@ -67,7 +69,7 @@ abstract class Folder
      * @param  string  $base
      * @return string
      */
-    public static function getRelativePathDotDot($path, $base)
+    public static function getRelativePathDotDot(string $path, string $base): string
     {
         $base = preg_replace('![\\\/]+!', '/', $base);
         $path = preg_replace('![\\\/]+!', '/', $path);
@@ -104,7 +106,7 @@ abstract class Folder
      * @param string $path
      * @return string
      */
-    public static function shift(&$path)
+    public static function shift(?string &$path): ?string
     {
         $parts = explode('/', trim($path, '/'), 2);
         $result = array_shift($parts);
@@ -121,7 +123,7 @@ abstract class Folder
      * @return array
      * @throws \RuntimeException
      */
-    public static function all($path, array $params = [])
+    public static function all(string|false $path, array $params = []): array
     {
         if ($path === false) {
             throw new \RuntimeException("Path doesn't exist.");
@@ -203,7 +205,7 @@ abstract class Folder
      * @param  string $ignore  Ignore files matching pattern (regular expression).
      * @throws \RuntimeException
      */
-    public static function copy($source, $target, $ignore = null)
+    public static function copy(string $source, string $target, ?string $ignore = null): void
     {
         $source = rtrim($source, '\\/');
         $target = rtrim($target, '\\/');
@@ -253,7 +255,7 @@ abstract class Folder
      * @param  string $target
      * @throws \RuntimeException
      */
-    public static function move($source, $target)
+    public static function move(string $source, string $target): void
     {
         if (!is_dir($source)) {
             throw new \RuntimeException('Cannot move non-existing folder.');
@@ -282,7 +284,7 @@ abstract class Folder
      * @param  string $target
      * @throws \RuntimeException
      */
-    public static function moveFile($source, $target)
+    public static function moveFile(string $source, string $target): void
     {
         if (!is_file($source)) {
             throw new \RuntimeException('Cannot move non-existing file.');
@@ -312,7 +314,7 @@ abstract class Folder
      * @param  bool   $include_target
      * @throws \RuntimeException
      */
-    public static function delete($target, $include_target = true)
+    public static function delete(string $target, bool $include_target = true): void
     {
         if (!$target) {
             return;
@@ -341,7 +343,7 @@ abstract class Folder
      * @param  string  $folder
      * @throws \RuntimeException
      */
-    public static function create($folder)
+    public static function create(string $folder): void
     {
         if (is_dir($folder)) {
             return;
@@ -368,7 +370,7 @@ abstract class Folder
      * @return bool
      * @internal
      */
-    protected static function doDelete($folder, $include_target = true)
+    protected static function doDelete(string $folder, bool $include_target = true): bool
     {
         // Special case for symbolic links.
         if ($include_target && is_link($folder)) {

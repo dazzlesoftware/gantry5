@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ class Assignments extends AbstractAssignments
      * Assignments constructor.
      * @param string|null $configuration
      */
-    public function __construct($configuration = null)
+    public function __construct(?string $configuration = null)
     {
         parent::__construct($configuration);
 
@@ -51,7 +53,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return array
      */
-    public function types()
+    public function types(): array
     {
         $types = [
             'context',
@@ -79,7 +81,7 @@ class Assignments extends AbstractAssignments
     /**
      * @return array
      */
-    public function getPage()
+    public function getPage(): array
     {
         $list = parent::getPage();
 

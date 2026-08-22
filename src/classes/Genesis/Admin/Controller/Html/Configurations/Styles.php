@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Styles extends HtmlController
 {
 
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'              => 'index',
             '/blocks'        => 'undefined',
@@ -58,9 +60,9 @@ class Styles extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         if($outline === 'default') {
             $this->params['overrideable'] = false;
@@ -81,9 +83,10 @@ class Styles extends HtmlController
      * @param string $id
      * @return string
      */
-    public function display($id)
+    public function display(mixed $id): string
     {
-        $outline = $this->params['outline'];
+        $id = (string) $id;
+        $outline = (string) $this->params['outline'];
         $blueprints = $this->container['styles']->getBlueprintForm($id);
         $prefix = 'styles.' . $id;
 
@@ -111,11 +114,11 @@ class Styles extends HtmlController
      * @param string $id
      * @return string
      */
-    public function formfield($id)
+    public function formfield(string $id, string ...$pathParts): string
     {
-        $path = func_get_args();
+        $path = [$id, ...$pathParts];
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
 
         // Load blueprints.
         $blueprints = $this->container['styles']->getBlueprintForm($id);
@@ -165,7 +168,7 @@ class Styles extends HtmlController
      * @param string $id
      * @return string
      */
-    public function reset($id)
+    public function reset(string $id): string
     {
         $this->params += [
             'data' => [],
@@ -177,7 +180,7 @@ class Styles extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function compile()
+    public function compile(): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -206,7 +209,7 @@ class Styles extends HtmlController
      * @param string|null $id
      * @return JsonResponse|string
      */
-    public function save($id = null)
+    public function save(?string $id = null): JsonResponse|string
     {
         /** @var Config $config */
         $config = $this->container['config'];
@@ -222,8 +225,11 @@ class Styles extends HtmlController
         $locator = $this->container['locator'];
 
         // Save layout into custom directory for the current theme.
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $save_dir = $locator->findResource("genesis-config://{$outline}", true, true);
+        if (!is_string($save_dir) || $save_dir === '') {
+            throw new \RuntimeException('Unable to create the outline configuration folder', 500);
+        }
         $filename = "{$save_dir}/styles.yaml";
 
         $file = YamlFile::instance($filename);
@@ -232,7 +238,7 @@ class Styles extends HtmlController
 
         // Fire save event.
         $event = new StylesEvent();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;
@@ -263,7 +269,7 @@ class Styles extends HtmlController
     /**
      * @returns array
      */
-    protected function compileSettings()
+    protected function compileSettings(): array
     {
         /** @var Theme $theme */
         $theme = $this->container['theme'];
@@ -288,7 +294,7 @@ class Styles extends HtmlController
      * @param Theme $theme
      * @return void
      */
-    protected function invalidateDerivedCss(Theme $theme)
+    protected function invalidateDerivedCss(Theme $theme): void
     {
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];

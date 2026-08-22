@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,14 +20,14 @@ use Genesis\Framework\Genesis;
 trait GenesisTrait
 {
     /** @var Genesis */
-    private static $genesis;
+    private static ?Genesis $genesis = null;
 
     /**
      * Get global Genesis instance.
      *
      * @return Genesis
      */
-    public static function Genesis()
+    public static function Genesis(): Genesis
     {
         // We cannot set variable directly for the trait as it doesn't work in HHVM.
         if (!self::$genesis) {

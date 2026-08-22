@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,25 +20,25 @@ use DazzleSoftware\Toolbox\File\PhpFile;
 abstract class CompiledBase
 {
     /** @var int Version number for the compiled file. */
-    public $version = 1;
+    public int $version = 1;
 
     /** @var string  Filename (base name) of the compiled configuration. */
-    public $name;
+    public ?string $name = null;
 
     /** @var string|bool  Configuration checksum. */
-    public $checksum;
+    public string|bool|null $checksum = null;
 
     /** @var string Cache folder to be used. */
-    protected $cacheFolder;
+    protected string $cacheFolder;
 
     /** @var array  List of files to load. */
-    protected $files;
+    protected array $files;
 
     /** @var string */
-    protected $path;
+    protected string $path;
 
     /** @var mixed  Configuration object. */
-    protected $object;
+    protected mixed $object = null;
 
     /**
      * @param  string $cacheFolder  Cache folder to be used.
@@ -44,7 +46,7 @@ abstract class CompiledBase
      * @param string $path  Base path for the file list.
      * @throws \BadMethodCallException
      */
-    public function __construct($cacheFolder, array $files, $path = GENESIS_ROOT)
+    public function __construct(string $cacheFolder, array $files, string $path = GENESIS_ROOT)
     {
         if (!$cacheFolder) {
             throw new \BadMethodCallException('Cache folder not defined.');
@@ -61,7 +63,7 @@ abstract class CompiledBase
      * @param string $name
      * @return $this
      */
-    public function name($name = null)
+    public function name(?string $name = null): static
     {
         if (!$this->name) {
             $this->name = $name ?: md5(json_encode(array_keys($this->files)));
@@ -73,7 +75,7 @@ abstract class CompiledBase
     /**
      * Function gets called when cached configuration is saved.
      */
-    public function modified()
+    public function modified(): void
     {
     }
 
@@ -82,7 +84,7 @@ abstract class CompiledBase
      *
      * @return mixed
      */
-    public function load()
+    public function load(): mixed
     {
         if ($this->object) {
             return $this->object;
@@ -103,7 +105,7 @@ abstract class CompiledBase
      *
      * @return bool|string
      */
-    public function checksum()
+    public function checksum(): string|bool
     {
         if (!isset($this->checksum)) {
             $this->checksum = md5(json_encode($this->files) . $this->version);
@@ -115,7 +117,7 @@ abstract class CompiledBase
     /**
      * @return string
      */
-    protected function createFilename()
+    protected function createFilename(): string
     {
         return "{$this->cacheFolder}/{$this->name()->name}.php";
     }
@@ -125,12 +127,12 @@ abstract class CompiledBase
      *
      * @param  array  $data
      */
-    abstract protected function createObject(array $data = []);
+    abstract protected function createObject(array $data = []): void;
 
     /**
      * Finalize configuration object.
      */
-    abstract protected function finalizeObject();
+    abstract protected function finalizeObject(): void;
 
     /**
      * Load single configuration file and append it to the correct position.
@@ -138,7 +140,7 @@ abstract class CompiledBase
      * @param  string  $name  Name of the position.
      * @param  string  $filename  File to be loaded.
      */
-    abstract protected function loadFile($name, $filename);
+    abstract protected function loadFile(string $name, string|array $filename): void;
 
     /**
      * Load and join all configuration files.
@@ -146,7 +148,7 @@ abstract class CompiledBase
      * @return bool
      * @internal
      */
-    protected function loadFiles()
+    protected function loadFiles(): bool
     {
         $this->createObject();
 
@@ -169,7 +171,7 @@ abstract class CompiledBase
      * @return bool
      * @internal
      */
-    protected function loadCompiledFile($filename)
+    protected function loadCompiledFile(string $filename): bool
     {
         $genesis = Genesis::instance();
 
@@ -212,7 +214,7 @@ abstract class CompiledBase
      * @throws \RuntimeException
      * @internal
      */
-    protected function saveCompiledFile($filename)
+    protected function saveCompiledFile(string $filename): void
     {
         $genesis = Genesis::instance();
 
@@ -255,7 +257,7 @@ abstract class CompiledBase
     /**
      * @return array
      */
-    protected function getState()
+    protected function getState(): array
     {
         return $this->object->toArray();
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,7 +31,7 @@ class Genesis extends Base\Genesis
         // Symfony\Component\EventDispatcher\EventDispatcher long before this runs, so the real
         // one Base\Genesis::init() just registered can never actually be the class in memory.
         // See Genesis\phpBB\NullEventDispatcher for the full explanation.
-        $container['events'] = static function () {
+        $container['events'] = static function (): NullEventDispatcher {
             return new NullEventDispatcher();
         };
 

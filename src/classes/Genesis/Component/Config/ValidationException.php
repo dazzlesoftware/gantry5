@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -16,13 +18,13 @@ namespace Genesis\Component\Config;
 class ValidationException extends \RuntimeException
 {
     /** @var array */
-    protected $messages = [];
+    protected array $messages = [];
 
     /**
      * @param array $messages
      * @return $this
      */
-    public function setMessages(array $messages = [])
+    public function setMessages(array $messages = []): static
     {
         $this->messages = $messages;
 
@@ -42,7 +44,7 @@ class ValidationException extends \RuntimeException
     /**
      * @return array
      */
-    public function getMessages()
+    public function getMessages(): array
     {
         return $this->messages;
     }

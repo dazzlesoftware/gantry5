@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ use Grav\Common\Page\Pages;
  */
 class Document extends HtmlDocument
 {
-    public static function registerAssets()
+    public static function registerAssets(): void
     {
         static::registerFrameworks();
         static::registerStyles();
@@ -36,7 +38,7 @@ class Document extends HtmlDocument
      * @param bool|false $addDomain
      * @return string
      */
-    public static function domain($addDomain = null)
+    public static function domain(?bool $addDomain = null): string
     {
         if (!$addDomain) {
             return '';
@@ -52,7 +54,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function rootUri()
+    public static function rootUri(): string
     {
         $grav = Grav::instance();
 
@@ -62,7 +64,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function siteUrl()
+    public static function siteUrl(): string
     {
         static $url;
 
@@ -92,7 +94,7 @@ class Document extends HtmlDocument
         return $url;
     }
 
-    public static function registerStyles()
+    public static function registerStyles(): void
     {
         $grav = Grav::instance();
 
@@ -108,7 +110,7 @@ class Document extends HtmlDocument
             switch ($style[':type']) {
                 case 'file':
                     $assets->addCss(
-                        static::getRelativeUrl($style['href'], $config->get('system.assets.css_pipeline')),
+                        static::getRelativeUrl((string) $style['href'], (bool) $config->get('system.assets.css_pipeline')),
                         90 + $style[':priority'],
                         true,
                         'head');
@@ -123,7 +125,7 @@ class Document extends HtmlDocument
     /**
      * @param string $group
      */
-    protected static function registerScripts($group)
+    protected static function registerScripts(string $group): void
     {
         $grav = Grav::instance();
 
@@ -140,7 +142,7 @@ class Document extends HtmlDocument
             switch ($script[':type']) {
                 case 'file':
                     $assets->addJs(
-                        static::getRelativeUrl($script['src'], $config->get('system.assets.js_pipeline')),
+                        static::getRelativeUrl((string) $script['src'], (bool) $config->get('system.assets.js_pipeline')),
                         90 + $script[':priority'],
                         true,
                         $script['async'] ? 'async' : ($script['defer'] ? 'defer' : ''),
@@ -162,7 +164,7 @@ class Document extends HtmlDocument
      * @param bool $pipeline
      * @return string
      */
-    protected static function getRelativeUrl($url, $pipeline)
+    protected static function getRelativeUrl(string $url, bool $pipeline): string
     {
         $base = rtrim(static::rootUri(), '/') . '/';
 

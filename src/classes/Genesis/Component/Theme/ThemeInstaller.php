@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,WordPress.WP.AlternativeFunctions.unlink_unlink
 
 /**
@@ -31,29 +33,29 @@ use Twig\Loader\FilesystemLoader;
 abstract class ThemeInstaller
 {
     /** @var bool Set to true if in Genesis. */
-    public $initialized = false;
+    public bool $initialized = false;
     /** @var array */
-    public $actions = [];
+    public array $actions = [];
 
     /** @var string|null */
-    protected $name;
+    protected ?string $name = null;
     /** @var array */
-    protected $outlines;
+    protected ?array $outlines = null;
     /** @var object|null */
-    protected $script;
+    protected ?object $script = null;
 
     /**
      * ThemeInstaller constructor.
      * @param string|null $extension
      */
-    public function __construct($extension = null)
+    public function __construct(?string $extension = null)
     {
         if ($extension) {
             $this->name = $extension;
         }
     }
 
-    abstract public function getPath();
+    abstract public function getPath(): string;
 
     /**
      * Get list of available outlines.
@@ -61,7 +63,7 @@ abstract class ThemeInstaller
      * @param array $filter
      * @return array
      */
-    public function getOutlines(?array $filter = null)
+    public function getOutlines(?array $filter = null): array
     {
         if (!isset($this->outlines)) {
             $this->outlines = [];
@@ -96,14 +98,18 @@ abstract class ThemeInstaller
      * @param string $name
      * @return array
      */
-    public function getOutline($name)
+    public function getOutline(?string $name): array|false
     {
+        if ($name === null || $name === '') {
+            return false;
+        }
+
         $list = $this->getOutlines([$name]);
 
         return reset($list);
     }
 
-    public function installDefaults()
+    public function installDefaults(): void
     {
         $installerScript = $this->getInstallerScript();
 
@@ -114,7 +120,7 @@ abstract class ThemeInstaller
         }
     }
 
-    public function installSampleData()
+    public function installSampleData(): void
     {
         $installerScript = $this->getInstallerScript();
 
@@ -125,12 +131,12 @@ abstract class ThemeInstaller
         }
     }
 
-    public function createDefaults()
+    public function createDefaults(): void
     {
         $this->createOutlines();
     }
 
-    public function createSampleData()
+    public function createSampleData(): void
     {
     }
 
@@ -139,7 +145,7 @@ abstract class ThemeInstaller
      * @param array $context
      * @return string
      */
-    public function render($template, $context = [])
+    public function render(string $template, array $context = []): string
     {
         try {
             $loader = new FilesystemLoader();
@@ -171,7 +177,7 @@ abstract class ThemeInstaller
      * @param array $outlines If parameter isn't provided, outlines list get reloaded from the disk.
      * @return $this
      */
-    public function setOutlines(?array $outlines = null)
+    public function setOutlines(?array $outlines = null): static
     {
         $this->outlines = $outlines;
 
@@ -181,13 +187,15 @@ abstract class ThemeInstaller
     /**
      * @param array $filter
      */
-    public function createOutlines(?array $filter = null)
+    public function createOutlines(?array $filter = null): static
     {
         $outlines = $this->getOutlines($filter);
 
         foreach ($outlines as $folder => $params) {
             $this->createOutline($folder, $params);
         }
+
+        return $this;
     }
 
     /**
@@ -195,7 +203,7 @@ abstract class ThemeInstaller
      * @param array $params
      * @return string|bool
      */
-    public function createOutline($folder, array $params = [])
+    public function createOutline(string $folder, array $params = []): string|int
     {
         if (!$folder) {
             throw new \RuntimeException('Cannot create outline without folder name');
@@ -223,13 +231,16 @@ abstract class ThemeInstaller
         return $folder;
     }
 
-    public function initialize()
+    public function initialize(): void
     {
         if ($this->initialized) {
             return;
         }
 
         $name = $this->name;
+        if ($name === null || $name === '') {
+            throw new \LogicException('Theme name has not been initialized.');
+        }
         $path = $this->getPath();
 
         // Remove compiled CSS files if they exist.
@@ -286,7 +297,7 @@ abstract class ThemeInstaller
         $this->initialized = true;
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         // Copy standard outlines if they haven't been copied already.
         $this->copyCustom('default', 'default');
@@ -302,7 +313,7 @@ abstract class ThemeInstaller
      * @param string $id
      * @return bool True if files were copied over.
      */
-    protected function copyCustom($layout, $id)
+    protected function copyCustom(string $layout, string|int $id): bool
     {
         $path = $this->getPath();
 
@@ -335,20 +346,18 @@ abstract class ThemeInstaller
      * @param string $text
      * @return string
      */
-    protected function translate($text)
+    protected function translate(string $text, mixed ...$arguments): string
     {
         /** @var Translator $translator */
         $translator = Genesis::instance()['translator'];
 
-        $args = func_get_args();
-
-        return $translator->translate(...$args);
+        return $translator->translate($text, ...$arguments);
     }
 
     /**
      * @return object|null
      */
-    protected function getInstallerScript()
+    protected function getInstallerScript(): ?object
     {
         if (!$this->script) {
             $className = ucfirst($this->name) . 'InstallerScript';

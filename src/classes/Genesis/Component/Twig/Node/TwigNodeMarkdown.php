@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ class TwigNodeMarkdown extends Node implements NodeOutputInterface
      * @param int $lineno
      * @param string $tag
      */
-    public function __construct(Node $body, $lineno, $tag = 'markdown')
+    public function __construct(Node $body, int $lineno, string $tag = 'markdown')
     {
         parent::__construct(['body' => $body], [], $lineno, $tag);
     }
@@ -34,7 +36,7 @@ class TwigNodeMarkdown extends Node implements NodeOutputInterface
      *
      * @param Compiler $compiler A Twig Compiler instance
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler
             ->addDebugInfo($this)

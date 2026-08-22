@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -32,19 +34,19 @@ class Particles
         'slider' => 'Slider'
     ];
     /** @var Genesis */
-    protected $container;
+    protected Genesis $container;
     /** @var array|null */
-    protected $files;
+    protected ?array $files = null;
     /** @var array|null */
-    protected $particles;
+    protected ?array $particles = null;
     /** @var array|null */
-    protected $themeParticleNames;
+    protected ?array $themeParticleNames = null;
 
     /**
      * Particles constructor.
      * @param Genesis $container
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         $this->container = $container;
     }
@@ -54,7 +56,7 @@ class Particles
      * @param string|null $particle
      * @return bool
      */
-    public function overrides($outline, $particle = null)
+    public function overrides(string $outline, ?string $particle = null): bool
     {
         if ($outline === 'default') {
             return true;
@@ -75,7 +77,7 @@ class Particles
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         if (null ===$this->particles) {
             /** @var Platform $platform */
@@ -102,17 +104,17 @@ class Particles
      * @param array $exclude
      * @return array
      */
-    public function group($exclude = [])
+    public function group(array $exclude = []): array
     {
         $particles = $this->all();
 
         $list = [];
         foreach ($particles as $name => $particle) {
             $type = isset($particle['type']) ? $particle['type'] : 'particle';
-            if (in_array($type, $exclude)) {
+            if (in_array($type, $exclude, true)) {
                 continue;
             }
-            if (in_array($type, ['spacer', 'system'])) {
+            if (in_array($type, ['spacer', 'system'], true)) {
                 $type = 'position';
             }
             if ($this->isThemeParticle($name)) {
@@ -128,7 +130,7 @@ class Particles
      * @param string $id
      * @return array
      */
-    public function get($id)
+    public function get(string $id): array
     {
         if (isset($this->particles[$id])) {
             return $this->particles[$id];
@@ -153,7 +155,7 @@ class Particles
      * @param string $id
      * @return BlueprintForm
      */
-    public function getBlueprintForm($id)
+    public function getBlueprintForm(string $id): BlueprintForm
     {
         return BlueprintForm::instance($id, 'genesis-blueprints://particles');
     }
@@ -162,7 +164,7 @@ class Particles
      * @param array $blocks
      * @return array
      */
-    protected function sort(array $blocks)
+    protected function sort(array $blocks): array
     {
         $list = [];
 
@@ -191,7 +193,7 @@ class Particles
      * @param array $ordering
      * @return array
      */
-    protected function sortItems(array $items, array $ordering)
+    protected function sortItems(array $items, array $ordering): array
     {
         $list = [];
 
@@ -210,7 +212,7 @@ class Particles
     /**
      * @return array
      */
-    protected function locateParticles()
+    protected function locateParticles(): array
     {
         if (!$this->files) {
             /** @var UniformResourceLocator $locator */
@@ -230,7 +232,7 @@ class Particles
      * @param string $name
      * @return bool
      */
-    public function isThemeParticle($name)
+    public function isThemeParticle(string $name): bool
     {
         if (null === $this->themeParticleNames) {
             /** @var UniformResourceLocator $locator */
@@ -251,7 +253,7 @@ class Particles
      * @param array $particle
      * @return array{label:string,slug:string}
      */
-    public function category($name, array $particle = [])
+    public function category(string $name, array $particle = []): array
     {
         $category = strtolower(trim((string)($particle['category'] ?? '')));
         $category = str_replace(['_', ' '], '-', $category);
@@ -266,7 +268,7 @@ class Particles
     /**
      * @return array<string,string>
      */
-    public function categories()
+    public function categories(): array
     {
         return self::CATEGORIES;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,21 +22,21 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Translator implements TranslatorInterface
 {
     /** @var string */
-    protected $default = 'en';
+    protected string $default = 'en';
     /** @var string */
-    protected $active = 'en';
+    protected string $active = 'en';
     /** @var array */
-    protected $sections = [];
+    protected array $sections = [];
     /** @var array */
-    protected $translations = [];
+    protected array $translations = [];
     /** @var array */
-    protected $untranslated = [];
+    protected array $untranslated = [];
 
     /**
      * @param string $string
      * @return string
      */
-    public function translate($string)
+    public function translate(string $string, mixed ...$arguments): string
     {
         if (preg_match('|^GENESIS(_[A-Z0-9]+){2,}$|', $string)) {
             list(, $section, $code) = explode('_', $string, 3);
@@ -42,14 +44,11 @@ class Translator implements TranslatorInterface
             $string = ($this->find($this->active, $section, $string) ?: $this->find($this->default, $section, $string)) ?: $string;
         }
 
-        if (func_num_args() === 1) {
+        if ($arguments === []) {
             return $string;
         }
 
-        $args = func_get_args();
-        $args[0] = $string;
-
-        return sprintf(...$args);
+        return sprintf($string, ...$arguments);
     }
 
     /**
@@ -58,7 +57,7 @@ class Translator implements TranslatorInterface
      * @param  string  $language  Language code. If not given, current language is kept.
      * @return string  Previously active language.
      */
-    public function active($language = null)
+    public function active(?string $language = null): string
     {
         $previous = $this->active;
 
@@ -72,7 +71,7 @@ class Translator implements TranslatorInterface
     /**
      * @return array
      */
-    public function untranslated()
+    public function untranslated(): array
     {
         return $this->untranslated;
     }
@@ -83,7 +82,7 @@ class Translator implements TranslatorInterface
      * @param string $string
      * @return string|null
      */
-    protected function find($language, $section, $string)
+    protected function find(string $language, string $section, string $string): ?string
     {
         if (!isset($this->sections[$language][$section])) {
             $translations = $this->load($language, $section);
@@ -103,7 +102,7 @@ class Translator implements TranslatorInterface
             return null;
         }
 
-        return $this->translations[$language][$string];
+        return (string) $this->translations[$language][$string];
     }
 
     /**
@@ -111,7 +110,7 @@ class Translator implements TranslatorInterface
      * @param string $section
      * @return array
      */
-    protected function load($language, $section)
+    protected function load(string $language, string $section): array
     {
         $genesis = Genesis::instance();
 

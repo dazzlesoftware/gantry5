@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -31,7 +33,7 @@ class Router extends BaseRouter
     /**
      * @return $this
      */
-    public function boot()
+    public function boot(): static
     {
         HTMLHelper::_('behavior.keepalive');
 
@@ -136,7 +138,7 @@ class Router extends BaseRouter
     /**
      * @return bool
      */
-    protected function checkSecurityToken()
+    protected function checkSecurityToken(): bool
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -150,7 +152,7 @@ class Router extends BaseRouter
      *
      * @param Response $response
      */
-    protected function send(Response $response)
+    protected function send(Response $response): void
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();

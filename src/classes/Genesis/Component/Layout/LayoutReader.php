@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ class LayoutReader
      * @param array $data
      * @return int
      */
-    public static function version(array &$data)
+    public static function version(array &$data): int
     {
         $version = (int) ($data['version'] ?? 0);
         if ($version !== 3) {
@@ -38,7 +40,7 @@ class LayoutReader
      * @param array $data
      * @return array
      */
-    public static function data(array $data)
+    public static function data(array $data): array
     {
         $version = static::version($data);
         $reader = static::getClass($version, $data);
@@ -59,7 +61,7 @@ class LayoutReader
      * @param string $filename
      * @return array
      */
-    public static function read($filename)
+    public static function read(string $filename): array
     {
         if (!$filename) {
             return [];
@@ -80,7 +82,7 @@ class LayoutReader
      * @param int $version
      * @return mixed
      */
-    public static function store(array $preset, array $structure, $version = 3)
+    public static function store(array $preset, array $structure, int $version = 3): array
     {
         $reader = static::getClass($version);
 
@@ -92,7 +94,7 @@ class LayoutReader
      * @param array $data
      * @return object
      */
-    protected static function getClass($version, array $data = [])
+    protected static function getClass(int $version, array $data = []): Version\CompactFormat
     {
         if ((int) $version !== 3) {
             throw new \RuntimeException('Only Bootstrap layout format 3 is supported.');

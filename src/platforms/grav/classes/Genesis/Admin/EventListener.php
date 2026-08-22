@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,6 +22,11 @@ use Grav\Common\Grav;
 use Grav\Common\Uri;
 use Grav\Framework\Flex\Flex;
 use Genesis\Component\Event\Event;
+use Genesis\Admin\Events\AssigmentsEvent;
+use Genesis\Admin\Events\LayoutEvent;
+use Genesis\Admin\Events\MenuEvent;
+use Genesis\Admin\Events\SettingsEvent;
+use Genesis\Admin\Events\StylesEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use DazzleSoftware\Toolbox\File\YamlFile;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
@@ -33,7 +40,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'admin.global.save' => ['onGlobalSave', 0],
@@ -48,7 +55,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onGlobalSave(Event $event)
+    public function onGlobalSave(Event $event): void
     {
         $genesis = Genesis::instance();
 
@@ -57,9 +64,13 @@ class EventListener implements EventSubscriberInterface
 
         // Use the main configuration file path to avoid multisite domain-specific paths
         $filename = 'user://config/plugins/genesis.yaml';
-        $file = YamlFile::instance($locator->findResource($filename, true, true));
+        $path = $locator->findResource($filename, true, true);
+        if (!is_string($path) || $path === '') {
+            throw new \RuntimeException('Unable to resolve the Genesis plugin configuration file');
+        }
+        $file = YamlFile::instance($path);
 
-        $content = $file->content();
+        $content = (array) $file->content();
         $content['production'] = (bool) $event->data['production'];
 
         $file->save($content);
@@ -69,10 +80,10 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onStylesSave(Event $event)
+    public function onStylesSave(StylesEvent $event): void
     {
         $cookie = md5($event->theme->name);
-        $this->updateCookie($cookie, false, time() - 42000);
+        $this->updateCookie($cookie, '', time() - 42000);
     }
 
     /**
@@ -80,7 +91,7 @@ class EventListener implements EventSubscriberInterface
      * @param string $value
      * @param int $expire
      */
-    protected function updateCookie($name, $value, $expire = 0)
+    protected function updateCookie(string $name, string $value, int $expire = 0): void
     {
         // TODO: move to better place, copied from Genesis main plugin file.
         $grav = Grav::instance();
@@ -91,8 +102,8 @@ class EventListener implements EventSubscriberInterface
         /** @var GravConfig $config */
         $config = $grav['config'];
 
-        $path   = $config->get('system.session.path', '/' . ltrim($uri->rootUrl(false), '/'));
-        $domain = $uri->host();
+        $path   = (string) $config->get('system.session.path', '/' . ltrim($uri->rootUrl(false), '/'));
+        $domain = (string) $uri->host();
 
         setcookie($name, $value, $expire, $path, $domain);
     }
@@ -100,28 +111,28 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onSettingsSave(Event $event)
+    public function onSettingsSave(SettingsEvent $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onLayoutSave(Event $event)
+    public function onLayoutSave(LayoutEvent $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onAssignmentsSave(Event $event)
+    public function onAssignmentsSave(AssigmentsEvent $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onMenusSave(Event $event)
+    public function onMenusSave(MenuEvent $event): void
     {
         $menu = $event->menu;
 
@@ -207,7 +218,7 @@ class EventListener implements EventSubscriberInterface
      * @param array $ignore
      * @return array
      */
-    protected function normalizeMenuItem(array $item, array $ignore = [])
+    protected function normalizeMenuItem(array $item, array $ignore = []): array
     {
         static $ignoreList = [
             // Never save derived values.
@@ -223,7 +234,7 @@ class EventListener implements EventSubscriberInterface
      * @param int $i
      * @return array
      */
-    protected function flattenOrdering(array $ordering, $parents = [], &$i = 0)
+    protected function flattenOrdering(array $ordering, array $parents = [], int &$i = 0): array
     {
         $list = [];
         $group = isset($ordering[0]);
@@ -252,7 +263,7 @@ class EventListener implements EventSubscriberInterface
      * @param array $parents
      * @param int $pos
      */
-    protected function embedMeta(array $ordering, Config $menu, $parents = [], $pos = 0)
+    protected function embedMeta(array $ordering, Config $menu, array $parents = [], int $pos = 0): void
     {
         $isGroup = isset($ordering[0]);
         $name = implode('/', $parents);

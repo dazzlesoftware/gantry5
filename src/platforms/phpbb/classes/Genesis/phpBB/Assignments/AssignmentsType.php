@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -44,7 +46,7 @@ class AssignmentsType implements AssignmentsInterface
      *
      * @return array
      */
-    public function getRules()
+    public function getRules(): array
     {
         $rules[static::getCurrentPageType()] = $this->priority;
 
@@ -57,7 +59,7 @@ class AssignmentsType implements AssignmentsInterface
      * @param string $configuration
      * @return array
      */
-    public function listRules($configuration)
+    public function listRules(?string $configuration): array
     {
         $items = [];
         foreach (static::$pageTypes as $name => $label) {

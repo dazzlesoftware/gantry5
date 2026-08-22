@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ class Router extends BaseRouter
     /**
      * @return $this
      */
-    public function boot()
+    public function boot(): static
     {
         /** @var Request $request */
         $request = $this->container['request'];
@@ -97,7 +99,7 @@ class Router extends BaseRouter
     /**
      * @return bool
      */
-    protected function checkSecurityToken()
+    protected function checkSecurityToken(): bool
     {
         // Check security nonce and return false on failure.
         if(\check_admin_referer('genesis-layout-manager')) {
@@ -113,7 +115,7 @@ class Router extends BaseRouter
      * @param Response $response
      * @return string
      */
-    protected function send(Response $response)
+    protected function send(Response $response): Response
     {
         // Output HTTP header.
         $headersSent = headers_sent($file, $line);

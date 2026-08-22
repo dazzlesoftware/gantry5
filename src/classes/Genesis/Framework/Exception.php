@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,7 +17,7 @@ namespace Genesis\Framework;
  */
 class Exception extends \RuntimeException
 {
-    protected $responseCodes = [
+    protected array $responseCodes = [
         200 => '200 OK',
         400 => '400 Bad Request',
         401 => '401 Unauthorized',
@@ -30,7 +32,7 @@ class Exception extends \RuntimeException
     /**
      * @return int
      */
-    public function getResponseCode()
+    public function getResponseCode(): int
     {
         return isset($this->responseCodes[$this->code]) ? (int) $this->code : 500;
     }
@@ -38,7 +40,7 @@ class Exception extends \RuntimeException
     /**
      * @return string
      */
-    public function getResponseStatus()
+    public function getResponseStatus(): string
     {
         return $this->responseCodes[$this->getResponseCode()];
     }

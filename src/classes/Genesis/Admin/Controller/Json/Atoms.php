@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ use Genesis\Component\Response\JsonResponse;
 class Atoms extends JsonController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/' => 'index',
             '/*' => 'index',
@@ -35,16 +37,16 @@ class Atoms extends JsonController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(string ...$pathParts): JsonResponse
     {
-        $path = implode('/', func_get_args());
+        $path = implode('/', $pathParts);
 
         $post = $this->request->request;
 
-        $outline = $post['outline'];
-        $type = $post['subtype'];
-        $inherit = $post['inherit'];
-        $id = $post['id'];
+        $outline = (string) $post['outline'];
+        $type = (string) $post['subtype'];
+        $inherit = (bool) $post['inherit'];
+        $id = (string) $post['id'];
 
         if (!$outline) {
             throw new \RuntimeException('Outline not given', 400);
@@ -100,12 +102,12 @@ class Atoms extends JsonController
     /**
      * @return JsonResponse
      */
-    public function atom()
+    public function atom(): JsonResponse
     {
         $post = $this->request->request;
 
-        $outline = $post['outline'];
-        $id = $post['id'];
+        $outline = (string) $post['outline'];
+        $id = (string) $post['id'];
 
         if (!$outline) {
             throw new \RuntimeException('Outline not given', 400);
@@ -157,7 +159,7 @@ class Atoms extends JsonController
      * @param array $instances
      * @return string
      */
-    protected function renderAtomsInput($outline, $type, $selected, array $instances)
+    protected function renderAtomsInput(?string $outline, string $type, ?string $selected, array $instances): string
     {
         $params = [
             'layout' => 'input',

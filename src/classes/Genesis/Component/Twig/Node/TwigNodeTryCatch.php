@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,7 +28,7 @@ class TwigNodeTryCatch extends Node
      * @param int $lineno
      * @param string|null $tag
      */
-    public function __construct(Node $try, ?Node $catch = null, $lineno = 0, $tag = null)
+    public function __construct(Node $try, ?Node $catch = null, int $lineno = 0, ?string $tag = null)
     {
         $nodes = ['try' => $try, 'catch' => $catch];
         $nodes = array_filter($nodes);
@@ -41,7 +43,7 @@ class TwigNodeTryCatch extends Node
      * @return void
      * @throws LogicException
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this);
 

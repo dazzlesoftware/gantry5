@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
 /**
@@ -25,10 +27,10 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
     use NestedArrayAccessWithGetters, Iterator, Export;
 
     /** @var array */
-    protected $items;
+    protected array $items;
 
     /** @var BlueprintSchema|BlueprintForm|callable|null */
-    protected $blueprint;
+    protected mixed $blueprint;
 
     /**
      * Constructor to initialize array.
@@ -51,7 +53,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @return $this
      * @throws \RuntimeException
      */
-    public function join($name, $value, $separator = '.')
+    public function join(string $name, mixed $value, string $separator = '.'): static
     {
         $old = $this->get($name, null, $separator);
         if ($old !== null) {
@@ -78,7 +80,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
 
      * @return array
      */
-    public function getDefaults()
+    public function getDefaults(): array
     {
         return $this->blueprint()->getDefaults();
     }
@@ -91,7 +93,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @param string  $separator  Separator, defaults to '.'
      * @return $this
      */
-    public function joinDefaults($name, $value, $separator = '.')
+    public function joinDefaults(string $name, mixed $value, string $separator = '.'): static
     {
         if (is_object($value)) {
             $value = (array) $value;
@@ -116,7 +118,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @return array
      * @throws \RuntimeException
      */
-    public function getJoined($name, $value, $separator = '.')
+    public function getJoined(string $name, array|object $value, string $separator = '.'): array
     {
         if (is_object($value)) {
             $value = (array) $value;
@@ -145,7 +147,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @param array $data
      * @return $this
      */
-    public function merge(array $data)
+    public function merge(array $data): static
     {
         $this->items = $this->blueprint()->mergeData($this->items, $data);
 
@@ -158,7 +160,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @param array $data
      * @return $this
      */
-    public function setDefaults(array $data)
+    public function setDefaults(array $data): static
     {
         $this->items = $this->blueprint()->mergeData($data, $this->items);
 
@@ -173,7 +175,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @param string $prefix    Name prefix.
      * @return array
      */
-    public function flatten($name = null, $separator = '.', $prefix = '')
+    public function flatten(?string $name = null, string|array $separator = '.', string $prefix = ''): array
     {
         $element = $name ? $this->offsetGet($name) : $this->items;
         if (null === $element) {
@@ -184,7 +186,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
             return [$name => $element];
         }
 
-        if (strlen($separator) === 2 && in_array($separator, ['][', ')(', '}{'])) {
+        if (is_string($separator) && strlen($separator) === 2 && in_array($separator, ['][', ')(', '}{'], true)) {
             $separator = [$separator[1], $separator[0]];
         }
 
@@ -199,7 +201,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @return array
      * @internal
      */
-    protected function flattenNested($name, &$element, $separator, $prefix)
+    protected function flattenNested(string $name, array &$element, string|array $separator, string $prefix): array
     {
         $list = [];
         foreach ($element as $key => $value) {
@@ -225,7 +227,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @return BlueprintSchema|BlueprintForm
      * @since 5.4.7
      */
-    public function blueprint()
+    public function blueprint(): BlueprintSchema|BlueprintForm
     {
         if (!$this->blueprint) {
             $this->blueprint = new BlueprintSchema;
@@ -243,7 +245,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @return BlueprintSchema
      * @deprecated 5.4.7
      */
-    public function blueprints()
+    public function blueprints(): BlueprintSchema|BlueprintForm
     {
         return $this->blueprint();
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -32,7 +34,7 @@ class AssignmentsMenu implements AssignmentsInterface
      *
      * @return array
      */
-    public function getRules()
+    public function getRules(): array
     {
         $rules = [];
 
@@ -69,7 +71,7 @@ class AssignmentsMenu implements AssignmentsInterface
      * @param string $configuration
      * @return array
      */
-    public function listRules($configuration)
+    public function listRules(?string $configuration): array
     {
         // Get all defined menus
         $menus = $this->getMenus();

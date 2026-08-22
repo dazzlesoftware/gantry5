@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,16 +24,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class Runtime
 {
     /** @var ContainerInterface|null */
-    protected static $container;
+    protected static ?ContainerInterface $container = null;
 
     /** @var string|null */
-    protected static $rootPath;
+    protected static ?string $rootPath = null;
 
     /** @var string|null */
-    protected static $phpExt;
+    protected static ?string $phpExt = null;
 
     /** @var string|null */
-    protected static $extensionPath;
+    protected static ?string $extensionPath = null;
 
     /**
      * @param ContainerInterface $container
@@ -39,7 +41,7 @@ abstract class Runtime
      * @param string $phpExt
      * @param string $extensionPath Absolute path to this extension's directory, with trailing slash.
      */
-    public static function boot(ContainerInterface $container, $rootPath, $phpExt, $extensionPath)
+    public static function boot(ContainerInterface $container, string $rootPath, string $phpExt, string $extensionPath): void
     {
         static::$container = $container;
         static::$rootPath = $rootPath;
@@ -50,7 +52,7 @@ abstract class Runtime
     /**
      * @return bool
      */
-    public static function isBooted()
+    public static function isBooted(): bool
     {
         return null !== static::$container;
     }
@@ -58,7 +60,7 @@ abstract class Runtime
     /**
      * @return ContainerInterface
      */
-    public static function container()
+    public static function container(): ContainerInterface
     {
         if (null === static::$container) {
             throw new \RuntimeException('Genesis: phpBB runtime has not been booted yet');
@@ -71,7 +73,7 @@ abstract class Runtime
      * @param string $id
      * @return mixed
      */
-    public static function service($id)
+    public static function service(string $id): mixed
     {
         return static::container()->get($id);
     }
@@ -79,25 +81,25 @@ abstract class Runtime
     /**
      * @return string
      */
-    public static function rootPath()
+    public static function rootPath(): string
     {
-        return static::$rootPath;
+        return static::$rootPath ?? throw new \RuntimeException('Genesis: phpBB runtime has not been booted yet');
     }
 
     /**
      * @return string
      */
-    public static function phpExt()
+    public static function phpExt(): string
     {
-        return static::$phpExt;
+        return static::$phpExt ?? throw new \RuntimeException('Genesis: phpBB runtime has not been booted yet');
     }
 
     /**
      * @return string
      */
-    public static function extensionPath()
+    public static function extensionPath(): string
     {
-        return static::$extensionPath;
+        return static::$extensionPath ?? throw new \RuntimeException('Genesis: phpBB runtime has not been booted yet');
     }
 
     /**
@@ -113,9 +115,9 @@ abstract class Runtime
      *
      * @return string
      */
-    public static function webRoot()
+    public static function webRoot(): string
     {
-        static $webRoot;
+        static $webRoot = null;
 
         if ($webRoot === null) {
             /** @var \phpbb\request\request $request */

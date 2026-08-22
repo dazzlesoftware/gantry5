@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,7 +29,7 @@ abstract class HtmlController extends BaseController
      * @return Response
      * @throws \RuntimeException
      */
-    public function execute($method, array $path, array $params)
+    public function execute(string $method, array $path, array $params): Response
     {
         $response = parent::execute($method, $path, $params);
 

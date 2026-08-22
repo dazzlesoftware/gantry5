@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -27,15 +29,15 @@ class Menu extends AbstractMenu
     const WRITE_YAML = true;
 
     /** @var array */
-    protected $menus;
+    protected array $menus = [];
     /** @var int|null */
-    protected $object;
+    protected mixed $object = null;
     /** @var array */
-    protected $current = [];
+    protected array $current = [];
     /** @var array */
-    protected $active = [];
+    protected string|int|array|null $active = [];
     /** @var bool */
-    protected $dbMeta = false;
+    protected bool $dbMeta = false;
 
     /**
      * Return list of menus.
@@ -43,7 +45,7 @@ class Menu extends AbstractMenu
      * @param  array $args
      * @return array
      */
-    public function getMenus($args = [])
+    public function getMenus(array $args = []): array
     {
         if($this->menus === null) {
             $defaults = [
@@ -67,7 +69,7 @@ class Menu extends AbstractMenu
      * @param  array $args
      * @return array
      */
-    public function getMenuOptions($args = [])
+    public function getMenuOptions(array $args = []): array
     {
         $defaults = [
             'orderby' => 'name'
@@ -113,7 +115,7 @@ class Menu extends AbstractMenu
      *
      * @return Config
      */
-    public function config()
+    public function config(): Config
     {
         if (null === $this->config) {
             $config = parent::config();
@@ -135,7 +137,7 @@ class Menu extends AbstractMenu
      * @param Item $item
      * @return bool
      */
-    public function isActive($item)
+    public function isActive(mixed $item): bool
     {
         return isset($this->active[$item->id]);
     }
@@ -144,7 +146,7 @@ class Menu extends AbstractMenu
      * @param Item $item
      * @return bool
      */
-    public function isCurrent($item)
+    public function isCurrent(mixed $item): bool
     {
         // WP supports multiple current menu items (same route).
         return isset($this->current[$item->id]);
@@ -153,7 +155,7 @@ class Menu extends AbstractMenu
     /**
      * @return int|null
      */
-    public function getCacheId()
+    public function getCacheId(): ?string
     {
         if (\is_user_logged_in()) {
             return null;
@@ -172,7 +174,7 @@ class Menu extends AbstractMenu
      * @param   string|int|null $itemid
      * @return  int|null
      */
-    protected function calcBase($itemid = null)
+    protected function calcBase(mixed $itemid = null): ?int
     {
         if ($itemid !== '/') {
             return $itemid;
@@ -190,7 +192,7 @@ class Menu extends AbstractMenu
      * @param array $params
      * @return array|null    List of routes to the pages.
      */
-    protected function getItemsFromPlatform($params)
+    protected function getItemsFromPlatform(mixed $params): ?array
     {
         $genesis = static::genesis();
         $menus = array_flip($genesis['menu']->getMenus());
@@ -520,7 +522,7 @@ class Menu extends AbstractMenu
      * @param array $params
      * @param array $items
      */
-    public function getList(array $params, array $items)
+    public function getList(array $params, array $items): void
     {
         $isAjax = !empty($params['POST']);
 
@@ -581,7 +583,7 @@ class Menu extends AbstractMenu
      * @param array $params
      * @param array $items
      */
-    public function addCustom(array $params, array $items)
+    public function addCustom(array $params, array $items): void
     {
         $isAjax = !empty($params['POST']);
         if (!$isAjax && $this->dbMeta) {

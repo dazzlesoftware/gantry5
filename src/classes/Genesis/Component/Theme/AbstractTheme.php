@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -38,12 +40,12 @@ abstract class AbstractTheme
     use GenesisTrait;
 
     /** @var string */
-    public $name;
+    public string $name;
     /** @var string */
-    public $path;
+    public string $path;
 
     /** @var Environment|null */
-    protected $renderer;
+    protected ?Environment $renderer = null;
 
     /**
      * Construct theme object.
@@ -51,7 +53,7 @@ abstract class AbstractTheme
      * @param string $path
      * @param string $name
      */
-    public function __construct($path, $name = null)
+    public function __construct(string $path, ?string $name = null)
     {
         if (!is_dir($path)) {
             throw new \LogicException('Theme not found!');
@@ -69,7 +71,7 @@ abstract class AbstractTheme
      * @param array $context
      * @return array
      */
-    public function getContext(array $context)
+    public function getContext(array $context): array
     {
         $context['theme'] = $this;
 
@@ -83,7 +85,7 @@ abstract class AbstractTheme
      * @param LoaderInterface $loader
      * @return Environment
      */
-    public function extendTwig(Environment $twig, ?LoaderInterface $loader = null)
+    public function extendTwig(Environment $twig, ?LoaderInterface $loader = null): Environment
     {
         if ($twig->hasExtension(TwigExtension::class)) {
             return $twig;
@@ -105,7 +107,7 @@ abstract class AbstractTheme
      *
      * @return Environment
      */
-    public function renderer()
+    public function renderer(): Environment
     {
         if (!$this->renderer) {
             $genesis = static::genesis();
@@ -157,7 +159,7 @@ abstract class AbstractTheme
      * @param array $context
      * @return string
      */
-    public function render($file, array $context = [])
+    public function render(string $file, array $context = []): string
     {
         // Include Genesis specific things to the context.
         $context = $this->getContext($context);
@@ -172,7 +174,7 @@ abstract class AbstractTheme
      * @param array $context
      * @return string
      */
-    public function compile($string, array $context = [])
+    public function compile(string $string, array $context = []): string
     {
         $renderer = $this->renderer();
         $template = $renderer->createTemplate($string);
@@ -186,7 +188,7 @@ abstract class AbstractTheme
     /**
      * Initialize theme.
      */
-    protected function init()
+    protected function init(): void
     {
         $genesis = static::genesis();
         $genesis['streams']->register();
@@ -216,7 +218,7 @@ abstract class AbstractTheme
      * @return FilesystemLoader|null
      * @internal
      */
-    protected function setTwigLoaderPaths(LoaderInterface $loader)
+    protected function setTwigLoaderPaths(LoaderInterface $loader): ?FilesystemLoader
     {
         if ($loader instanceof ChainLoader) {
             $new = new FilesystemLoader();
@@ -243,7 +245,7 @@ abstract class AbstractTheme
      * @param string $path
      * @return string
      */
-    protected function getCachePath($path = '')
+    protected function getCachePath(string $path = ''): string
     {
         $genesis = static::genesis();
 
@@ -257,7 +259,7 @@ abstract class AbstractTheme
     /**
      * @deprecated 5.0.2
      */
-    public function debug()
+    public function debug(): bool
     {
         return static::genesis()->debug();
     }
@@ -265,7 +267,7 @@ abstract class AbstractTheme
     /**
      * @deprecated 5.1.5
      */
-    public function add_to_context(array $context)
+    public function add_to_context(array $context): array
     {
         return $this->getContext($context);
     }
@@ -273,7 +275,7 @@ abstract class AbstractTheme
     /**
      * @deprecated 5.1.5
      */
-    public function add_to_twig(Environment $twig, ?LoaderInterface $loader = null)
+    public function add_to_twig(Environment $twig, ?LoaderInterface $loader = null): Environment
     {
         return $this->extendTwig($twig, $loader);
     }

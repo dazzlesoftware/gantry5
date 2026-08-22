@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,18 +17,18 @@ namespace Genesis\Joomla;
 class Manifest
 {
     /** @var string */
-    protected $theme;
+    protected string $theme;
     /** @var string */
-    protected $path;
+    protected string $path;
     /** @var \SimpleXMLElement */
-    protected $xml;
+    protected \SimpleXMLElement $xml;
 
     /**
      * @param string $theme
      * @param \SimpleXMLElement $manifest
      * @throws \RuntimeException
      */
-    public function __construct($theme, ?\SimpleXMLElement $manifest = null)
+    public function __construct(string $theme, ?\SimpleXMLElement $manifest = null)
     {
         $this->theme = $theme;
         $this->path = JPATH_SITE . "/templates/{$theme}/templateDetails.xml";
@@ -34,14 +36,19 @@ class Manifest
         if (!is_file($this->path)) {
             throw new \RuntimeException(sprintf('Template %s does not exist.', $theme));
         }
-        $this->xml = $manifest ?: simplexml_load_string(file_get_contents($this->path));
+        $contents = file_get_contents($this->path);
+        $xml = $manifest ?: ($contents !== false ? simplexml_load_string($contents) : false);
+        if (!$xml instanceof \SimpleXMLElement) {
+            throw new \RuntimeException(sprintf('Template manifest for %s could not be parsed.', $theme));
+        }
+        $this->xml = $xml;
     }
 
     /**
      * @param string $variable
      * @return string
      */
-    public function get($variable)
+    public function get(string $variable): string
     {
         return (string) $this->xml->{$variable};
     }
@@ -49,7 +56,7 @@ class Manifest
     /**
      * @return \SimpleXMLElement
      */
-    public function getXml()
+    public function getXml(): \SimpleXMLElement
     {
         return $this->xml;
     }
@@ -57,7 +64,7 @@ class Manifest
     /**
      * @return string
      */
-    public function getScriptFile()
+    public function getScriptFile(): string
     {
         return (string) $this->xml->scriptfile;
     }
@@ -65,12 +72,15 @@ class Manifest
     /**
      * @param array $positions
      */
-    public function setPositions(array $positions)
+    public function setPositions(array $positions): void
     {
         sort($positions);
 
         // Get the positions.
         $target = current($this->xml->xpath('//positions'));
+        if (!$target instanceof \SimpleXMLElement) {
+            throw new \RuntimeException('Template manifest has no positions element.');
+        }
 
         $xml = "<positions>\n        <position>" . implode("</position>\n        <position>", $positions) . "</position>\n    </positions>";
         $insert = new \SimpleXMLElement($xml);
@@ -81,7 +91,7 @@ class Manifest
         $targetDom->parentNode->replaceChild($insertDom, $targetDom);
     }
 
-    public function save()
+    public function save(): void
     {
         // Do not save manifest if template has been symbolically linked.
         if (is_link(dirname($this->path))) {

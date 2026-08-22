@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,7 +23,7 @@ class Install extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         if (!$this->authorize('updates.manage') || !class_exists('\Genesis\Framework\ThemeInstaller')) {
             $this->forbidden();

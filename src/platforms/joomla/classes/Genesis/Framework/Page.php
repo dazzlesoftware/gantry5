@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,48 +22,48 @@ use Joomla\CMS\Uri\Uri;
 class Page extends Base\Page
 {
     /** @var bool */
-    public $home;
+    public bool $home = false;
     /** @var string */
-    public $outline;
+    public string $outline;
     /** @var string */
-    public $language;
+    public string $language = 'en';
     /** @var string */
-    public $direction;
+    public string $direction = 'ltr';
 
     // Joomla specific properties.
     /** @var string */
-    public $tmpl;
+    public string $tmpl;
     /** @var string */
-    public $option;
+    public string $option;
     /** @var string */
-    public $view;
+    public string $view;
     /** @var string */
-    public $layout;
+    public string $layout;
     /** @var string */
-    public $task;
+    public string $task;
     /** @var string */
-    public $theme;
+    public string $theme;
     /** @var string */
-    public $baseUrl;
+    public string $baseUrl;
     /** @var string */
-    public $sitename;
+    public string $sitename;
     /** @var string */
-    public $title;
+    public string $title = '';
     /** @var string */
-    public $description;
+    public string $description = '';
     /** @var string */
-    public $class;
+    public string $class;
     /** @var string */
-    public $printing;
+    public string $printing;
     /** @var int */
-    public $itemid;
+    public int $itemid;
 
     /**
      * Page constructor.
      * @param Genesis $container
      * @throws \Exception
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         parent::__construct($container);
 
@@ -87,23 +89,23 @@ class Page extends Base\Page
             }
         }
         $templateParams = $application->getTemplate(true);
-        $this->outline = Genesis::instance()['configuration'];
-        $this->sitename = $application->get('sitename');
-        $this->theme = $templateParams->template;
+        $this->outline = (string) Genesis::instance()['configuration'];
+        $this->sitename = (string) $application->get('sitename');
+        $this->theme = (string) $templateParams->template;
         $this->baseUrl = Uri::base(true);
 
         // Document doesn't exist in error page if modern routing is being used.
         $document = isset($container['platform']->document) ? $container['platform']->document : $application->getDocument();
         if ($document) {
-            $this->title = $document->title;
-            $this->description = $document->description;
+            $this->title = (string) $document->title;
+            $this->description = (string) $document->description;
 
             // Document has lower case language code, which causes issues with some JS scripts (Snipcart). Use tag instead.
             $code = explode('-', $document->getLanguage(), 2);
             $language =  array_shift($code);
             $country = strtoupper(array_shift($code));
             $this->language = $language . ($country ? '-' . $country : '');
-            $this->direction = $document->direction;
+            $this->direction = (string) $document->direction;
         }
     }
 
@@ -111,7 +113,7 @@ class Page extends Base\Page
      * @param array $args
      * @return string
      */
-    public function url(array $args = [])
+    public function url(array $args = []): string
     {
         $url = Uri::getInstance();
 
@@ -125,7 +127,7 @@ class Page extends Base\Page
     /**
      * @return string
      */
-    public function htmlAttributes()
+    public function htmlAttributes(): string
     {
         $attributes = [
                 'lang' => $this->language,
@@ -140,7 +142,7 @@ class Page extends Base\Page
      * @param array $attributes
      * @return string
      */
-    public function bodyAttributes($attributes = [])
+    public function bodyAttributes(array $attributes = []): string
     {
         // Use modern Joomla class set for site and component pages (Joomla 5)
         $classes = ['site', $this->option, "view-{$this->view}"];

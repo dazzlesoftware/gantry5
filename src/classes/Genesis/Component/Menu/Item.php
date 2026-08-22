@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -53,7 +55,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     const VERSION = 2;
 
     /** @var array */
-    public static $defaults = [
+    public static array $defaults = [
         'id' => 0,
         'parent_id' => null,
         'type' => 'link',
@@ -90,15 +92,15 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     ];
 
     /** @var array */
-    protected $items;
+    protected array $items;
     /** @var AbstractMenu */
-    protected $menu;
+    protected AbstractMenu $menu;
     /** @var array */
-    protected $groups = [];
+    protected array $groups = [];
     /** @var array */
-    protected $children = [];
+    protected array $children = [];
     /** @var string */
-    protected $url;
+    protected ?string $url = null;
 
     /**
      * Item constructor.
@@ -114,7 +116,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return array
      */
-    public function __debugInfo()
+    public function __debugInfo(): array
     {
         return [
             'items' => $this->items,
@@ -141,7 +143,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param bool $includeCurrent
      * @return array
      */
-    public function getEscapedTitles($includeCurrent = true)
+    public function getEscapedTitles(bool $includeCurrent = true): array
     {
         $list = [];
         $current = $this;
@@ -163,7 +165,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return string
      */
-    public function getDropdown()
+    public function getDropdown(): string
     {
         if (!$this->items['dropdown']) {
             return count($this->groups()) > 1 ? 'fullwidth' : 'standard';
@@ -193,21 +195,21 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     public function __unserialize(array $serialized): void
     {
         // TODO: need to create collection class to gather the sibling data.
-        if (!isset($serialized['version']) && $serialized['version'] === static::VERSION) {
+        if (!isset($serialized['version']) || (int) $serialized['version'] !== static::VERSION) {
             throw new \UnexpectedValueException('Serialized data is not valid');
         }
 
-        $this->items = $serialized['items'];
-        $this->groups =  $serialized['groups'];
-        $this->children = $serialized['children'];
-        $this->url = $serialized['url'];
+        $this->items = (array) $serialized['items'];
+        $this->groups = (array) $serialized['groups'];
+        $this->children = (array) $serialized['children'];
+        $this->url = isset($serialized['url']) ? (string) $serialized['url'] : null;
     }
 
     /**
      * @param  string|null|bool $url
      * @return string
      */
-    public function url($url = false)
+    public function url(string|null|false $url = false): ?string
     {
         if ($url !== false) {
             $this->url = $url;
@@ -220,7 +222,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @return AbstractMenu
      * @TODO Need to break relationship to the menu and use a collection instead.
      */
-    protected function menu()
+    protected function menu(): AbstractMenu
     {
         return $this->menu;
     }
@@ -228,7 +230,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return Item|null
      */
-    public function parent()
+    public function parent(): ?Item
     {
         return $this->menu()[$this->items['parent_id']];
     }
@@ -237,7 +239,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param string|int $column
      * @return float|int
      */
-    public function columnWidth($column)
+    public function columnWidth(string|int $column): float|int
     {
         if (isset($this->items['columns'][$column])) {
             return $this->items['columns'][$column];
@@ -252,7 +254,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param string|int $column
      * @return int
      */
-    public function columnSpan($column)
+    public function columnSpan(string|int $column): int
     {
         return max(1, min(12, (int) round($this->columnWidth($column) / 100 * 12)));
     }
@@ -260,7 +262,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return array
      */
-    public function groups()
+    public function groups(): array
     {
         $menu = $this->menu();
 
@@ -315,7 +317,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return array
      */
-    public function children()
+    public function children(): array
     {
         $list = [];
         foreach ($this as $child) {
@@ -328,7 +330,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return !empty($this->children());
     }
@@ -337,7 +339,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param int $i
      * @return array
      */
-    public function getGroup($i)
+    public function getGroup(int $i): array
     {
         $groups = $this->groups();
         $i = (int) $i;
@@ -349,7 +351,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param array $data
      * @return $this
      */
-    public function update(array $data)
+    public function update(array $data): static
     {
         $this->items = array_replace($this->items, $data);
 
@@ -360,7 +362,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param Item $child
      * @return $this
      */
-    public function addChild(Item $child)
+    public function addChild(Item $child): static
     {
         $child->level = $this->level + 1;
         $child->parent_id = $this->id;
@@ -377,7 +379,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param Item $child
      * @return $this
      */
-    public function removeChild(Item $child)
+    public function removeChild(Item $child): static
     {
         unset($this->children[$child->id]);
 
@@ -388,7 +390,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param array|null $ordering
      * @return $this
      */
-    public function sortChildren($ordering)
+    public function sortChildren(array|string|null $ordering): static
     {
         // Array with keys that point to the items.
         $children =& $this->children;
@@ -417,7 +419,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return $this
      */
-    public function reverse()
+    public function reverse(): static
     {
         $this->children = array_reverse($this->children, true);
         $this->groups = array_reverse($this->groups, true);
@@ -429,7 +431,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param array $groups
      * @return $this
      */
-    public function groupChildren(array $groups)
+    public function groupChildren(array $groups): static
     {
         // Array with keys that point to the items.
         $children = $this->children;
@@ -564,7 +566,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param array $ignore
      * @return array
      */
-    public function toArray($withDefaults = true, array $ignore = [])
+    public function toArray(bool $withDefaults = true, array $ignore = []): array
     {
         return $withDefaults ? $this->items : static::normalize($this->items, $ignore);
     }
@@ -575,7 +577,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      * @param bool $keepDefaults
      * @return array
      */
-    public static function normalize(array $array, array $ignore = [], $keepDefaults = false)
+    public static function normalize(array $array, array $ignore = [], bool $keepDefaults = false): array
     {
         // Particles have no link.
         if (isset($array['type']) && $array['type'] === 'particle') {

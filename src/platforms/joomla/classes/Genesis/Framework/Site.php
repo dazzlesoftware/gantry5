@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,13 +22,13 @@ use Joomla\CMS\Factory;
 class Site
 {
     /** @var string */
-    public $theme;
+    public string $theme = '';
     /** @var string */
-    public $url;
+    public string $url = '';
     /** @var string */
-    public $title;
+    public string $title = '';
     /** @var string */
-    public $description;
+    public string $description = '';
 
     public function __construct()
     {
@@ -36,10 +38,10 @@ class Site
             $document = $application->getDocument();
 
             if ($document instanceof HtmlDocument) {
-                $this->theme = $document->template;
-                $this->url = $document->baseurl;
-                $this->title = $document->title;
-                $this->description = $document->description;
+                $this->theme = (string) $document->template;
+                $this->url = (string) $document->baseurl;
+                $this->title = (string) $document->title;
+                $this->description = (string) $document->description;
             }
         } catch (\Exception $e) {
             // Catch errors when trying to get site properties from admin

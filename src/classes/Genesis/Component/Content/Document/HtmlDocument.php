@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet,WordPress.WP.EnqueuedResources.NonEnqueuedScript,WordPress.WP.AlternativeFunctions.rand_mt_rand
 
 /**
@@ -26,19 +28,19 @@ class HtmlDocument
     use GenesisTrait;
 
     /** @var int */
-    public static $timestamp_age = 604800;
+    public static int $timestamp_age = 604800;
     /** @var array */
-    public static $urlFilterParams;
+    public static array $urlFilterParams = [];
     /** @var HtmlBlock[] */
-    protected static $stack;
+    protected static array $stack = [];
     /** @var array */
-    protected static $frameworks = [];
+    protected static array $frameworks = [];
     /** @var array */
-    protected static $scripts = [];
+    protected static array $scripts = [];
     /** @var array */
-    protected static $styles = [];
+    protected static array $styles = [];
     /** @var array */
-    protected static $availableFrameworks = [
+    protected static array $availableFrameworks = [
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
         'mootools.framework' => 'registerMootools',
@@ -57,7 +59,7 @@ class HtmlDocument
     /**
      * Create new local instance of document allowing asset caching.
      */
-    public static function push()
+    public static function push(): void
     {
         array_unshift(static::$stack, new HtmlBlock());
     }
@@ -67,7 +69,7 @@ class HtmlDocument
      *
      * @return HtmlBlock
      */
-    public static function pop()
+    public static function pop(): ?HtmlBlock
     {
         return array_shift(static::$stack);
     }
@@ -76,7 +78,7 @@ class HtmlDocument
      * @param ContentBlock $block
      * @return $this
      */
-    public function addBlock(ContentBlock $block)
+    public function addBlock(ContentBlock $block): static
     {
         static::$stack[0]->addBlock($block);
 
@@ -87,7 +89,7 @@ class HtmlDocument
      * @param string $framework
      * @return bool
      */
-    public static function addFramework($framework)
+    public static function addFramework(string $framework): bool
     {
         if (!isset(static::$availableFrameworks[$framework])) {
             return false;
@@ -105,7 +107,7 @@ class HtmlDocument
      * @param string $location
      * @return bool
      */
-    public static function addStyle($element, $priority = 0, $location = 'head')
+    public static function addStyle(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         static::getObject();
 
@@ -118,7 +120,7 @@ class HtmlDocument
      * @param string $location
      * @return bool
      */
-    public static function addInlineStyle($element, $priority = 0, $location = 'head')
+    public static function addInlineStyle(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         static::getObject();
 
@@ -131,7 +133,7 @@ class HtmlDocument
      * @param string $location
      * @return bool
      */
-    public static function addScript($element, $priority = 0, $location = 'head')
+    public static function addScript(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         static::getObject();
 
@@ -144,7 +146,7 @@ class HtmlDocument
      * @param string $location
      * @return bool
      */
-    public static function addInlineScript($element, $priority = 0, $location = 'head')
+    public static function addInlineScript(string|array $element, int $priority = 0, string $location = 'head'): bool
     {
         static::getObject();
 
@@ -157,7 +159,7 @@ class HtmlDocument
      * @param string $location
      * @return bool
      */
-    public static function addHtml($html, $priority = 0, $location = 'bottom')
+    public static function addHtml(string $html, int $priority = 0, string $location = 'bottom'): bool
     {
         static::getObject();
 
@@ -170,7 +172,7 @@ class HtmlDocument
      * @param int $priority
      * @return bool
      */
-    public static function addHeaderTag(array $element, $location = 'head', $priority = 0)
+    public static function addHeaderTag(array $element, string $location = 'head', int $priority = 0): bool
     {
         $success = false;
 
@@ -204,7 +206,7 @@ class HtmlDocument
      * @param string $location
      * @return array
      */
-    public static function getStyles($location = 'head')
+    public static function getStyles(string $location = 'head'): array
     {
         static::getObject();
         $styles = static::$stack[0]->getStyles($location);
@@ -246,7 +248,7 @@ class HtmlDocument
      * @param string $location
      * @return array
      */
-    public static function getScripts($location = 'head')
+    public static function getScripts(string $location = 'head'): array
     {
         static::getObject();
         $scripts = static::$stack[0]->getScripts($location);
@@ -287,7 +289,7 @@ class HtmlDocument
      * @param string $location
      * @return array
      */
-    public static function getHtml($location = 'bottom')
+    public static function getHtml(string $location = 'bottom'): array
     {
         static::getObject();
         $htmls = static::$stack[0]->getHtml($location);
@@ -307,7 +309,7 @@ class HtmlDocument
      * @param string $strategy
      * @return string
      */
-    public static function escape($string, $strategy = 'html')
+    public static function escape(string $string, string $strategy = 'html'): string
     {
         if (!is_string($string)) {
             if (is_object($string) && method_exists($string, '__toString')) {
@@ -367,7 +369,7 @@ class HtmlDocument
      * @return bool
      * @deprecated 5.3
      */
-    public static function load($framework)
+    public static function load(string $framework): bool
     {
         return static::addFramework($framework);
     }
@@ -375,7 +377,7 @@ class HtmlDocument
     /**
      * Register assets.
      */
-    public static function registerAssets()
+    public static function registerAssets(): void
     {
         static::registerFrameworks();
     }
@@ -383,7 +385,7 @@ class HtmlDocument
     /**
      * @return string
      */
-    public static function siteUrl()
+    public static function siteUrl(): string
     {
         return static::rootUri();
     }
@@ -393,7 +395,7 @@ class HtmlDocument
      *
      * @return string
      */
-    public static function rootUri()
+    public static function rootUri(): string
     {
         return '';
     }
@@ -404,7 +406,7 @@ class HtmlDocument
      * @param bool|null $addDomain
      * @return string
      */
-    public static function domain($addDomain = null)
+    public static function domain(?bool $addDomain = null): string
     {
         return '';
     }
@@ -423,7 +425,7 @@ class HtmlDocument
      * @param  bool $allowNull     True if non-existing files should return null.
      * @return string|null         Returns url to the resource or null if resource was not found.
      */
-    public static function url($url, $domain = null, $timestamp_age = null, $allowNull = true)
+    public static function url(mixed $url, ?bool $domain = null, ?int $timestamp_age = null, bool $allowNull = true): ?string
     {
         if (!is_string($url) || $url === '') {
             // Return null on invalid input.
@@ -528,7 +530,7 @@ class HtmlDocument
      * @param  bool $streamOnly     Only touch streams.
      * @return string               Returns modified HTML.
      */
-    public static function urlFilter($html, $domain = false, $timestamp_age = null, $streamOnly = false)
+    public static function urlFilter(string $html, bool $domain = false, ?int $timestamp_age = null, bool $streamOnly = false): string
     {
         static::$urlFilterParams = [$domain, $timestamp_age, $streamOnly];
 
@@ -579,7 +581,7 @@ class HtmlDocument
      * @return string
      * @internal
      */
-    public static function linkHandler(array $matches)
+    public static function linkHandler(array $matches): string
     {
         list($domain, $timestamp_age) = static::$urlFilterParams;
         $url = trim($matches[3]);
@@ -593,7 +595,7 @@ class HtmlDocument
      * @return string
      * @internal
      */
-    public static function urlHandler(array $matches)
+    public static function urlHandler(array $matches): string
     {
         list($domain, $timestamp_age) = static::$urlFilterParams;
         $url = trim($matches[2], '"\'');
@@ -609,7 +611,7 @@ class HtmlDocument
      * @return string
      * @internal
      */
-    public static function _escape_js_callback($matches)
+    public static function _escape_js_callback(array $matches): string
     {
         $char = $matches[0];
 
@@ -650,7 +652,7 @@ class HtmlDocument
      * @return string
      * @internal
      */
-    public static function _escape_css_callback($matches)
+    public static function _escape_css_callback(array $matches): string
     {
         $char = $matches[0];
 
@@ -667,7 +669,7 @@ class HtmlDocument
      * @license   https://framework.zend.com/license/new-bsd New BSD License
      * @internal
      */
-    public static function _escape_html_attr_callback($matches)
+    public static function _escape_html_attr_callback(array $matches): string
     {
         $chr = $matches[0];
         $ord = \ord($chr);
@@ -719,7 +721,7 @@ class HtmlDocument
      * @param string $html
      * @return string
      */
-    protected static function replaceTokens(array $tokens, $html)
+    protected static function replaceTokens(array $tokens, string $html): string
     {
         foreach ($tokens as $token => $replacement) {
             // We need to use callbacks to turn off backreferences ($1, \\1) in the replacement string.
@@ -734,7 +736,7 @@ class HtmlDocument
     /**
      * Register loaded frameworks.
      */
-    protected static function registerFrameworks()
+    protected static function registerFrameworks(): void
     {
         foreach (static::$stack[0]->getFrameworks() as $framework) {
             if (isset(static::$availableFrameworks[$framework])) {
@@ -743,31 +745,31 @@ class HtmlDocument
         }
     }
 
-    protected static function registerBootstrap5()
+    protected static function registerBootstrap5(): void
     {
         // Bootstrap CSS is compiled into Nucleus and its JavaScript is bundled
         // into the shared Genesis frontend asset.
     }
 
-    protected static function registerMootools()
+    protected static function registerMootools(): void
     {
         static::addScript(['src' => 'https://cdnjs.cloudflare.com/ajax/libs/mootools/1.5.2/mootools-core-compat.min.js'], 11);
     }
 
-    protected static function registerMootoolsMore()
+    protected static function registerMootoolsMore(): void
     {
         static::registerMootools();
 
         static::addScript(['src' => 'https://cdnjs.cloudflare.com/ajax/libs/mootools-more/1.5.2/mootools-more-compat-compressed.js'], 11);
     }
 
-    protected static function registerLightcase()
+    protected static function registerLightcase(): void
     {
         static::addScript(['src' => static::url('genesis-assets://js/lightcase.js', false, null, false)], 11, 'footer');
         static::addStyle(['href' => static::url('genesis-assets://css/lightcase.css', false, null, false)], 11);
     }
 
-    protected static function registerLightcaseInit()
+    protected static function registerLightcaseInit(): void
     {
         static::registerLightcase();
     }
@@ -775,7 +777,7 @@ class HtmlDocument
     /**
      * @return HtmlDocument
      */
-    protected static function getObject()
+    protected static function getObject(): HtmlDocument
     {
         static $object;
 
@@ -795,7 +797,7 @@ class HtmlDocument
      * @return false|string
      * @internal
      */
-    private static function convert_encoding($string, $to, $from)
+    private static function convert_encoding(string $string, string $to, string $from): string|false
     {
         if (\function_exists('mb_convert_encoding')) {
             return mb_convert_encoding($string, $to, $from);
@@ -812,7 +814,7 @@ class HtmlDocument
      * @return false|int|mixed
      * @internal
      */
-    private static function ord($string)
+    private static function ord(string $string): int|false
     {
         if (\function_exists('mb_ord')) {
             return mb_ord($string, 'UTF-8');

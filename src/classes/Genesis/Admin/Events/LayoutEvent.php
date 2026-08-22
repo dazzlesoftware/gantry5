@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,11 +24,11 @@ use Genesis\Component\Event\Event;
 class LayoutEvent extends Event
 {
     /** @var Genesis */
-    public $genesis;
+    public Genesis $genesis;
     /** @var Theme */
-    public $theme;
+    public Theme $theme;
     /** @var RestfulControllerInterface */
-    public $controller;
+    public RestfulControllerInterface $controller;
     /** @var Layout */
-    public $layout;
+    public Layout $layout;
 }

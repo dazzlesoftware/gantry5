@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -71,7 +73,6 @@ class Genesis extends Base\Genesis
         $app = Factory::getApplication();
 
         // Trigger the event.
-        EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
         EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
 
         return (array) $global;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ use Genesis\Framework\Outlines;
  */
 class Layout extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/'         => 'index',
             '/create'   => 'create',
@@ -63,7 +65,7 @@ class Layout extends HtmlController
      * @param string|null $id
      * @return string
      */
-    public function create($id = null)
+    public function create(?string $id = null): string
     {
         if (!$id) {
             // TODO: we might want to display list of options here
@@ -81,9 +83,9 @@ class Layout extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $layout = $this->getLayout($outline);
 
         $groups = [
@@ -124,16 +126,16 @@ class Layout extends HtmlController
         return $this->render('@genesis-admin/pages/configurations/layouts/edit.html.twig', $this->params);
     }
 
-    public function save()
+    public function save(): void
     {
         $layout = $this->request->post->get('layout');
-        $layout = json_decode($layout, false);
+        $layout = json_decode((string) $layout, false);
 
         if (!isset($layout)) {
             throw new \RuntimeException('Error while saving layout: Structure missing', 400);
         }
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $preset = $this->request->post->getJsonArray('preset');
 
         // Create layout from the data.
@@ -154,7 +156,7 @@ class Layout extends HtmlController
 
         // Fire save event.
         $event = new LayoutEvent();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->layout = $layout;
@@ -166,15 +168,18 @@ class Layout extends HtmlController
      * @param string $id
      * @return string
      */
-    public function particle($type, $id)
+    public function particle(string $type, string $id): string
     {
         if ($type === 'atom') {
             return '';
         }
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $layout = $this->getLayout($outline);
         $item = $layout->find($id);
+        if ($item === null) {
+            throw new \RuntimeException('Layout item not found', 404);
+        }
 
         $item->type    = $this->request->post['type'] ?: $type;
         $item->subtype = $this->request->post['subtype'] ?: $type;
@@ -305,7 +310,7 @@ class Layout extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function listSwitches()
+    public function listSwitches(): JsonResponse
     {
         $this->params['presets'] = LayoutObject::presets();
         $result = $this->render('@genesis-admin/layouts/switcher.html.twig', $this->params);
@@ -317,14 +322,14 @@ class Layout extends HtmlController
      * @param string $id
      * @return JsonResponse
      */
-    public function switchLayout($id)
+    public function switchLayout(string $id): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
             $this->undefined();
         }
 
-        $outline = $this->params['outline'];
+        $outline = (string) $this->params['outline'];
         $layout = $this->getLayout($id);
         if (!$layout->toArray()) {
             // Layout hasn't been defined, return default layout instead.
@@ -356,7 +361,7 @@ class Layout extends HtmlController
      * @param string $id
      * @return JsonResponse
      */
-    public function preset($id)
+    public function preset(string $id): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -389,7 +394,7 @@ class Layout extends HtmlController
      * @param string|null $particle
      * @return JsonResponse
      */
-    public function validate($particle)
+    public function validate(?string $particle): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -398,6 +403,10 @@ class Layout extends HtmlController
 
         // Load particle blueprints and default settings.
         $validator = new BlueprintSchema;
+
+        if ($particle === null || $particle === '') {
+            throw new \RuntimeException('Particle type was not provided', 400);
+        }
 
         $name = $particle;
         if (in_array($particle, ['wrapper', 'section', 'container', 'grid', 'offcanvas'], true)) {
@@ -416,7 +425,7 @@ class Layout extends HtmlController
             [
                 'type'    => $type,
             ],
-            function () use ($validator) {
+            static function () use ($validator): BlueprintSchema {
                 return $validator;
             }
         );
@@ -463,7 +472,7 @@ class Layout extends HtmlController
 
         // Optionally send children of the object.
         if (in_array('children', $inherit['include'], true)) {
-            $layout = LayoutObject::instance($inherit['outline'] ?: $this->params['outline']);
+            $layout = LayoutObject::instance((string) ($inherit['outline'] ?: $this->params['outline']));
             if ($clone) {
                 $item = $layout->find($inherit['section']);
             } else {
@@ -481,7 +490,7 @@ class Layout extends HtmlController
      * @param string $name
      * @return LayoutObject
      */
-    protected function getLayout($name)
+    protected function getLayout(string $name): LayoutObject
     {
         return LayoutObject::instance($name);
     }
@@ -490,7 +499,7 @@ class Layout extends HtmlController
      * @param bool $onlyEnabled
      * @return array
      */
-    protected function getParticles($onlyEnabled = false)
+    protected function getParticles(bool $onlyEnabled = false): array
     {
         /** @var Config $config */
         $config = $this->container['config'];

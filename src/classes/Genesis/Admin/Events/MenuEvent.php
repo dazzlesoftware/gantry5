@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,19 +24,19 @@ use Genesis\Component\Event\Event;
 class MenuEvent extends Event
 {
     /** @var Genesis */
-    public $genesis;
+    public Genesis $genesis;
     /** @var Theme */
-    public $theme;
+    public Theme $theme;
     /** @var RestfulControllerInterface */
-    public $controller;
+    public RestfulControllerInterface $controller;
     /** @var string */
-    public $resource;
+    public string $resource = '';
     /** @var Config */
-    public $menu;
+    public Config $menu;
     /** @var bool */
-    public $save = true;
+    public bool $save = true;
     /** @var bool */
-    public $delete = false;
+    public bool $delete = false;
     /** @var array|null */
-    public $debug;
+    public ?array $debug = null;
 }

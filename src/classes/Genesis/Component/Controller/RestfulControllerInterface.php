@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ interface RestfulControllerInterface
      *
      * @return mixed
      */
-    public function index();
+    public function index(): mixed;
 
     /**
      * @example GET /resources/:id
@@ -28,7 +30,7 @@ interface RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function display($id);
+    public function display(mixed $id): mixed;
 
     /**
      * Special sub-resource to create a new resource (returns a form).
@@ -37,7 +39,7 @@ interface RestfulControllerInterface
      *
      * @return mixed
      */
-    public function create();
+    public function create(): mixed;
 
     /**
      * Special sub-resource to edit existing resource (returns a form).
@@ -47,14 +49,14 @@ interface RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function edit($id);
+    public function edit(mixed $id): mixed;
 
     /**
      * @example POST /resources
      *
      * @return mixed
      */
-    public function store();
+    public function store(): mixed;
 
     /**
      * @example PUT /resources/:id
@@ -62,7 +64,7 @@ interface RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function replace($id);
+    public function replace(mixed $id): mixed;
 
     /**
      * @example PATCH /resources/:id
@@ -70,7 +72,7 @@ interface RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function update($id);
+    public function update(mixed $id): mixed;
 
     /**
      * @example DELETE /resources/:id
@@ -78,5 +80,5 @@ interface RestfulControllerInterface
      * @param string $id
      * @return mixed
      */
-    public function destroy($id);
+    public function destroy(mixed $id): mixed;
 }

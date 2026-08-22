@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
 /**
@@ -39,27 +41,27 @@ trait ThemeTrait
     use GenesisTrait;
 
     /** @var Layout */
-    protected $layoutObject;
+    protected ?Layout $layoutObject = null;
     /** @var bool */
-    protected $atoms = false;
+    protected bool $atoms = false;
     /** @var array */
-    protected $segments;
+    protected ?array $segments = null;
     /** @var string|null */
-    protected $preset;
+    protected ?string $preset = null;
     /** @var array */
-    protected $cssCache = [];
+    protected array $cssCache = [];
     /** @var CssCompilerInterface */
-    protected $compiler;
+    protected ?CssCompilerInterface $compiler = null;
     /** @var array */
     /** @var ThemeDetails */
-    protected $details;
+    protected ?ThemeDetails $details = null;
 
     /**
      * Register Theme stream.
      *
      * @param string|string[] $savePath
      */
-    public function registerStream($savePath = null)
+    public function registerStream(string|array|null $savePath = null): void
     {
         $streamName = $this->details()->addStreams();
 
@@ -74,7 +76,7 @@ trait ThemeTrait
      * @param array $outlines
      * @return array List of CSS warnings.
      */
-    public function updateCss(?array $outlines = null)
+    public function updateCss(?array $outlines = null): array
     {
         $genesis = static::genesis();
         $compiler = $this->compiler();
@@ -136,7 +138,7 @@ trait ThemeTrait
      * @param bool $force
      * @return $this
      */
-    public function setLayout($name = null, $force = false)
+    public function setLayout(?string $name = null, bool $force = false): static
     {
         $genesis = static::genesis();
 
@@ -172,7 +174,7 @@ trait ThemeTrait
      * @param  bool $forced     If true, return only forced preset or null.
      * @return string|null $preset
      */
-    public function preset($forced = false)
+    public function preset(bool $forced = false): ?string
     {
         $presets = $this->presets()->toArray();
 
@@ -197,7 +199,7 @@ trait ThemeTrait
      * @param string $name
      * @return $this
      */
-    public function setPreset($name = null)
+    public function setPreset(?string $name = null): static
     {
         // Set preset if given.
         if ($name) {
@@ -213,7 +215,7 @@ trait ThemeTrait
      * @return CssCompilerInterface
      * @throws \RuntimeException
      */
-    public function compiler()
+    public function compiler(): CssCompilerInterface
     {
         if (!$this->compiler) {
             $compilerClass = (string) $this->details()->get('configuration.css.compiler', ScssCompiler::class);
@@ -252,7 +254,7 @@ trait ThemeTrait
      * @param string $name
      * @return string
      */
-    public function css($name)
+    public function css(string $name): string
     {
         if (!isset($this->cssCache[$name])) {
             $compiler = $this->compiler();
@@ -279,7 +281,7 @@ trait ThemeTrait
     /**
      * @return array
      */
-    public function getCssVariables()
+    public function getCssVariables(): array
     {
         if ($this->preset) {
             $variables = $this->presets()->flatten($this->preset . '.styles', '-');
@@ -298,7 +300,7 @@ trait ThemeTrait
      *
      * @return Config
      */
-    public function presets()
+    public function presets(): Config
     {
         static $presets;
 
@@ -323,7 +325,7 @@ trait ThemeTrait
      * @return string
      * @throws \RuntimeException
      */
-    public function type()
+    public function type(): string
     {
         if (!$this->layoutObject) {
             throw new \RuntimeException('Function called too early');
@@ -340,7 +342,7 @@ trait ThemeTrait
      * @return Layout
      * @throws \LogicException
      */
-    public function loadLayout($name = null)
+    public function loadLayout(?string $name = null): Layout
     {
         if (!$name) {
             try {
@@ -369,7 +371,7 @@ trait ThemeTrait
      *
      * @return bool
      */
-    public function hasContent()
+    public function hasContent(): bool
     {
         $layout = $this->loadLayout();
         $content = $layout->referencesByType('system', 'content');
@@ -382,7 +384,7 @@ trait ThemeTrait
      *
      * @since 5.4.9
      */
-    public function loadAtoms()
+    public function loadAtoms(): void
     {
         if (!$this->atoms) {
             $this->atoms = true;
@@ -451,7 +453,7 @@ trait ThemeTrait
      *
      * @return array
      */
-    public function segments()
+    public function segments(): array
     {
         if (!isset($this->segments)) {
             $this->segments = $this->loadLayout()->toArray();
@@ -473,7 +475,7 @@ trait ThemeTrait
     /**
      * Prepare layout for rendering. Initializes all CSS/JS in particles.
      */
-    public function prepare()
+    public function prepare(): void
     {
         $this->segments();
     }
@@ -483,7 +485,7 @@ trait ThemeTrait
      *
      * @return ThemeDetails
      */
-    public function details()
+    public function details(): ThemeDetails
     {
         if (!$this->details) {
             $this->details = new ThemeDetails($this->name);
@@ -496,7 +498,7 @@ trait ThemeTrait
      *
      * @return array
      */
-    public function configuration()
+    public function configuration(): array
     {
         return (array) $this->details()['configuration'];
     }
@@ -507,7 +509,7 @@ trait ThemeTrait
      * @param mixed $offset Asset name value
      * @param mixed $value  Asset value
      */
-    public function __set($offset, $value)
+    public function __set(string $offset, mixed $value): void
     {
         if ($offset === 'title') {
             $offset = 'name';
@@ -522,7 +524,7 @@ trait ThemeTrait
      * @param  mixed $offset Asset name value
      * @return mixed         Asset value
      */
-    public function __get($offset)
+    public function __get(string $offset): mixed
     {
         if ($offset === 'title') {
             $offset = 'name';
@@ -543,7 +545,7 @@ trait ThemeTrait
      * @param  mixed   $offset Asset name value
      * @return boolean         True if the value is set
      */
-    public function __isset($offset)
+    public function __isset(string $offset): bool
     {
         if ($offset === 'title') {
             $offset = 'name';
@@ -557,7 +559,7 @@ trait ThemeTrait
      *
      * @param mixed $offset The name value to unset
      */
-    public function __unset($offset)
+    public function __unset(string $offset): void
     {
         if ($offset === 'title') {
             $offset = 'name';
@@ -576,7 +578,7 @@ trait ThemeTrait
      * @param bool  $sticky
      * @internal
      */
-    protected function prepareLayout(array &$items, $temporary = false, $sticky = false)
+    protected function prepareLayout(array &$items, bool $temporary = false, bool $sticky = false): void
     {
         foreach ($items as $i => &$item) {
             // Non-numeric items are meta-data which should be ignored.
@@ -639,7 +641,7 @@ trait ThemeTrait
      *
      * @param array $children
      */
-    protected function normalizeLayoutColumns(array &$children)
+    protected function normalizeLayoutColumns(array &$children): void
     {
         $blocks = [];
         $fixedColumns = 0;
@@ -689,7 +691,7 @@ trait ThemeTrait
      * @param array $options
      * @return string|null
      */
-    public function renderContent($item, $options = [])
+    public function renderContent(object|array $item, array $options = []): ?string
     {
         $genesis = static::genesis();
 
@@ -714,7 +716,7 @@ trait ThemeTrait
      * @return ContentBlock|ContentBlockInterface
      * @since 5.4.3
      */
-    public function getContent($item, $options = [])
+    public function getContent(object|array $item, array $options = []): ContentBlockInterface
     {
         if (is_array($item)) {
             $item = (object) $item;

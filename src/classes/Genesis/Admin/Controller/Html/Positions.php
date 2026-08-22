@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ use Genesis\Framework\Positions as PositionsObject;
  */
 class Positions extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'                   => 'index',
             '/*'                  => 'undefined',
@@ -49,7 +51,7 @@ class Positions extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         $this->params['positions'] = $this->container['positions'];
 
@@ -59,7 +61,7 @@ class Positions extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function create()
+    public function create(): JsonResponse
     {
         // Create only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -83,7 +85,7 @@ class Positions extends HtmlController
      * @param string $old
      * @return JsonResponse
      */
-    public function rename($old)
+    public function rename(string $old): JsonResponse
     {
         // Rename only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -117,7 +119,8 @@ class Positions extends HtmlController
         }
 
         if ($data) {
-            $data = ['title' => $position->title] + json_decode($data, true);
+            $decoded = json_decode($data, true);
+            $data = ['title' => $position->title] + (is_array($decoded) ? $decoded : []);
 
             $position = new Position($position->name, $data);
         }
@@ -131,7 +134,7 @@ class Positions extends HtmlController
      * @param string $position
      * @return JsonResponse
      */
-    public function duplicate($position)
+    public function duplicate(string $position): JsonResponse
     {
         // Duplicate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -150,7 +153,7 @@ class Positions extends HtmlController
      * @param string $position
      * @return JsonResponse
      */
-    public function delete($position)
+    public function delete(string $position): JsonResponse
     {
         // Delete only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -168,7 +171,7 @@ class Positions extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function save()
+    public function save(): JsonResponse
     {
         // Save only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -188,18 +191,22 @@ class Positions extends HtmlController
      * @param string|null $position
      * @return string
      */
-    public function particle($position = null)
+    public function particle(?string $position = null): string
     {
         if (!$position) {
-            $position = $this->request->post['position'];
+            $position = (string) $this->request->post['position'];
         }
         $data = $this->request->post['item'];
         if ($data) {
-            $data = json_decode($data, true);
+            $decoded = json_decode((string) $data, true);
+            $data = is_array($decoded) ? $decoded : [];
         } else {
             $data = $this->request->post->getArray();
         }
         $name = isset($data['options']['type']) ? $data['options']['type'] : (isset($data['particle']) ? $data['particle'] : null);
+        if (!is_string($name) || $name === '') {
+            throw new \RuntimeException('Particle type was not provided', 400);
+        }
 
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
@@ -236,7 +243,7 @@ class Positions extends HtmlController
      * @param string $name
      * @return JsonResponse
      */
-    public function validateParticle($position, $name)
+    public function validateParticle(string $position, string $name): JsonResponse
     {
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -255,7 +262,7 @@ class Positions extends HtmlController
 
         // Create configuration from the defaults.
         $data = new Config([],
-            function () use ($validator) {
+            static function () use ($validator): BlueprintSchema {
                 return $validator;
             }
         );
@@ -297,7 +304,7 @@ class Positions extends HtmlController
      * @param string $position
      * @return string
      */
-    public function selectParticle($position)
+    public function selectParticle(string $position): string
     {
         $groups = [];
         foreach ($this->container['particles']->categories() as $category) {
@@ -334,7 +341,7 @@ class Positions extends HtmlController
     /**
      * @return array
      */
-    protected function getParticles()
+    protected function getParticles(): array
     {
         $particles = $this->container['particles']->all();
 

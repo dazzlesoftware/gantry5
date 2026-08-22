@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,96 +20,96 @@ interface CssCompilerInterface
     /**
      * @return array
      */
-    public function getWarnings();
+    public function getWarnings(): array;
 
     /**
      * @return string
      */
-    public function getTarget();
+    public function getTarget(): string;
 
     /**
      * @param string $target
      * @return $this
      */
-    public function setTarget($target = null);
+    public function setTarget(?string $target = null): static;
 
     /**
      * @param string $configuration
      * @return $this
      */
-    public function setConfiguration($configuration = null);
+    public function setConfiguration(?string $configuration = null): static;
 
     /**
      * @param array $paths
      * @return $this
      */
-    public function setPaths(?array $paths = null);
+    public function setPaths(?array $paths = null): static;
 
     /**
      * @param array $files
      * @return $this
      */
-    public function setFiles(?array $files = null);
+    public function setFiles(?array $files = null): static;
 
     /**
      * @param array $fonts
      * @return $this
      */
-    public function setFonts(array $fonts);
+    public function setFonts(?array $fonts = null): static;
 
     /**
      * @param string $name
      * @return string
      */
-    public function getCssUrl($name);
+    public function getCssUrl(string $name): string;
 
     /**
      * @return array
      */
-    public function getVariables();
+    public function getVariables(): array;
 
     /**
      * @param array $variables
      * @return $this
      */
-    public function setVariables(array $variables);
+    public function setVariables(array $variables): static;
 
     /**
      * @param string   $name       Name of function to register to the compiler.
      * @param callable $callback   Function to run when called by the compiler.
      * @return $this
      */
-    public function registerFunction($name, callable $callback);
+    public function registerFunction(string $name, callable $callback): static;
 
     /**
      * @param string $name       Name of function to unregister.
      * @return $this
      */
-    public function unregisterFunction($name);
+    public function unregisterFunction(string $name): static;
 
     /**
      * @param string $in
      * @param callable $variables
      * @return bool
      */
-    public function needsCompile($in, $variables);
+    public function needsCompile(string $in, callable $variables): bool;
 
     /**
      * @param string $in    Filename without path or extension.
      * @return bool         True if the output file was saved.
      * @throws \RuntimeException
      */
-    public function compileFile($in);
+    public function compileFile(string $in): bool;
 
     /**
      * @return $this
      */
-    public function reset();
+    public function reset(): static;
 
     /**
      * @return $this
      */
-    public function compileAll();
+    public function compileAll(): static;
 
-    public function resetCache();
+    public function resetCache(): static;
 }

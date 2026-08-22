@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,6 +17,9 @@ use Genesis\Component\Config\ConfigFileFinder;
 use Genesis\Component\Filesystem\Folder;
 use Genesis\Component\Theme\AbstractTheme;
 use Genesis\Framework\Platform;
+use Genesis\Framework\Genesis;
+use Genesis\Component\Config\BlueprintSchema;
+use Genesis\Component\Config\Config;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
@@ -28,35 +33,38 @@ class Theme extends AbstractTheme
     /**
      * @see AbstractTheme::init()
      */
-    protected function init()
+    protected function init(): void
     {
         $genesis = static::genesis();
 
         // Add particles, styles and defaults into DI.
 
-        $genesis['particles'] = function ($c) {
+        $genesis['particles'] = static function (Genesis $c): Particles {
             return new Particles($c);
         };
 
-        $genesis['styles'] = function ($c) {
+        $genesis['styles'] = static function (Genesis $c): Styles {
             return new Styles($c);
         };
 
-        $genesis['page'] = function ($c) {
+        $genesis['page'] = static function (Genesis $c): Page {
             return new Page($c);
         };
 
-        $genesis['defaults'] = function($c) {
+        $genesis['defaults'] = static function(Genesis $c): Config {
             /** @var UniformResourceLocator $locator */
             $locator = $c['locator'];
 
             $cache = $locator->findResource('genesis-cache://theme/compiled/config', true, true);
+            if (!is_string($cache) || $cache === '') {
+                throw new \RuntimeException('Unable to create the compiled theme configuration folder');
+            }
             $paths = $locator->findResources('genesis-config://default');
 
             $files = (new ConfigFileFinder)->locateFiles($paths);
 
             $config = new CompiledConfig($cache, $files, GENESIS_ROOT);
-            $config->setBlueprints(function() use ($c) {
+            $config->setBlueprints(static function() use ($c): BlueprintSchema {
                 return $c['blueprints'];
             });
 
@@ -72,7 +80,7 @@ class Theme extends AbstractTheme
         $locator = $genesis['locator'];
 
         $nucleus = $patform->getEnginePaths('nucleus')[''];
-        if (strpos($this->path, '://')) {
+        if (strpos($this->path, '://') !== false) {
             $relpath = $this->path;
         } else {
             $relpath = Folder::getRelativePath($this->path);
@@ -91,7 +99,7 @@ class Theme extends AbstractTheme
 
         // Fire admin init event.
         $event = new InitThemeEvent();
-        $event->Genesis = $genesis;
+        $event->genesis = $genesis;
         $event->theme = $this;
 
         $genesis->fireEvent('admin.init.theme', $event);
@@ -103,7 +111,7 @@ class Theme extends AbstractTheme
      * @param string $path
      * @return string
      */
-    protected function getCachePath($path = '')
+    protected function getCachePath(string $path = ''): string
     {
         $genesis = static::genesis();
 
@@ -119,7 +127,7 @@ class Theme extends AbstractTheme
      *
      * @param LoaderInterface $loader
      */
-    protected function setTwigLoaderPaths(LoaderInterface $loader)
+    protected function setTwigLoaderPaths(LoaderInterface $loader): ?FilesystemLoader
     {
         if (!($loader instanceof FilesystemLoader)) {
             return null;

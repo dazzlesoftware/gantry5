@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,7 +26,7 @@ use Genesis\phpBB\Runtime;
  */
 class Request extends BaseRequest
 {
-    protected function init()
+    protected function init(): void
     {
         /** @var \phpbb\request\request $request */
         $request = Runtime::service('request');
@@ -47,7 +49,7 @@ class Request extends BaseRequest
      * @param int $type
      * @return array
      */
-    protected function extract($request, $type)
+    protected function extract(\phpbb\request\request $request, int $type): array
     {
         // raw_variable(), not variable() -- variable() runs every string through
         // htmlspecialchars() (XSS protection for values phpBB itself might echo back into HTML).

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,7 +29,7 @@ class Validation
      * @param array $field
      * @return array
      */
-    public static function validate($value, array $field)
+    public static function validate(mixed $value, array $field): array
     {
         $messages = [];
 
@@ -91,7 +93,7 @@ class Validation
      * @param  array  $field
      * @return mixed  Filtered value.
      */
-    public static function filter($value, array $field)
+    public static function filter(mixed $value, array $field): mixed
     {
         $validate = isset($field['validate']) ? (array) $field['validate'] : [];
 
@@ -129,7 +131,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Text($value, array $params, array $field)
+    public static function type_Input_Text(mixed $value, array $params, array $field): bool
     {
         if (!\is_string($value) && !is_numeric($value)) {
             return false;
@@ -163,7 +165,7 @@ class Validation
      * @param array $field
      * @return string
      */
-    protected static function filter_Input_Text($value, array $params, array $field)
+    protected static function filter_Input_Text(mixed $value, array $params, array $field): string
     {
         return (string) $value;
     }
@@ -174,7 +176,7 @@ class Validation
      * @param array $field
      * @return array|array[]|false|string[]
      */
-    protected static function filter_Input_CommaList($value, array $params, array $field)
+    protected static function filter_Input_CommaList(mixed $value, array $params, array $field): array|false
     {
         return \is_array($value) ? $value : preg_split('/\s*,\s*/', $value, -1, PREG_SPLIT_NO_EMPTY);
     }
@@ -185,7 +187,7 @@ class Validation
      * @param array $field
      * @return bool
      */
-    protected static function type_Input_CommaList($value, array $params, array $field)
+    protected static function type_Input_CommaList(mixed $value, array $params, array $field): bool
     {
         return \is_array($value) ? true : self::type_Input_Text($value, $params, $field);
     }
@@ -198,7 +200,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Textarea_Textarea($value, array $params, array $field)
+    public static function type_Textarea_Textarea(mixed $value, array $params, array $field): bool
     {
         if (!isset($params['multiline'])) {
             $params['multiline'] = true;
@@ -215,7 +217,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Password($value, array $params, array $field)
+    public static function type_Input_Password(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Text($value, $params, $field);
     }
@@ -228,7 +230,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Hidden($value, array $params, array $field)
+    public static function type_Input_Hidden(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Text($value, $params, $field);
     }
@@ -241,7 +243,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Checkboxes_Checkboxes($value, array $params, array $field)
+    public static function type_Checkboxes_Checkboxes(mixed $value, array $params, array $field): bool
     {
         // Set multiple: true so checkboxes can easily use min/max counts to control number of options required
         $field['multiple'] = true;
@@ -255,7 +257,7 @@ class Validation
      * @param array $field
      * @return array|null
      */
-    protected static function filter_Checkboxes_Checkboxes($value, array $params, array $field)
+    protected static function filter_Checkboxes_Checkboxes(mixed $value, array $params, array $field): mixed
     {
         return self::filterArray($value, $params, $field);
     }
@@ -268,7 +270,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Checkbox($value, array $params, array $field)
+    public static function type_Input_Checkbox(mixed $value, array $params, array $field): bool
     {
         $value = (string) $value;
 
@@ -287,7 +289,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Radio($value, array $params, array $field)
+    public static function type_Input_Radio(mixed $value, array $params, array $field): bool
     {
         return self::typeArray((array) $value, $params, $field);
     }
@@ -300,7 +302,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Toggle_Toggle($value, array $params, array $field)
+    public static function type_Toggle_Toggle(mixed $value, array $params, array $field): bool
     {
         return self::typeArray((array) $value, $params, $field);
     }
@@ -313,7 +315,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_File($value, array $params, array $field)
+    public static function type_Input_File(mixed $value, array $params, array $field): bool
     {
         return self::typeArray((array) $value, $params, $field);
     }
@@ -324,7 +326,7 @@ class Validation
      * @param array $field
      * @return array|mixed
      */
-    protected static function filter_Input_File($value, array $params, array $field)
+    protected static function filter_Input_File(mixed $value, array $params, array $field): mixed
     {
         if (isset($field['multiple']) && $field['multiple'] === true) {
             return (array) $value;
@@ -345,7 +347,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Select_Select($value, array $params, array $field)
+    public static function type_Select_Select(mixed $value, array $params, array $field): bool
     {
         return self::typeArray((array) $value, $params, $field);
     }
@@ -358,7 +360,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Number($value, array $params, array $field)
+    public static function type_Input_Number(mixed $value, array $params, array $field): bool
     {
         if (!is_numeric($value)) {
             return false;
@@ -383,7 +385,7 @@ class Validation
      * @param array $field
      * @return float|int
      */
-    protected static function filter_Input_Number($value, array $params, array $field)
+    protected static function filter_Input_Number(mixed $value, array $params, array $field): int|float
     {
         return (string)(int)$value !== (string)(float)$value ? (float) $value : (int) $value;
     }
@@ -395,7 +397,7 @@ class Validation
      * @return string
      * @throws \Exception
      */
-    protected static function filter_Input_DateTime($value, array $params, array $field)
+    protected static function filter_Input_DateTime(mixed $value, array $params, array $field): string
     {
         $converted = new \DateTime($value);
 
@@ -411,7 +413,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Range($value, array $params, array $field)
+    public static function type_Input_Range(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Number($value, $params, $field);
     }
@@ -422,7 +424,7 @@ class Validation
      * @param array $field
      * @return float|int
      */
-    protected static function filter_Input_Range($value, array $params, array $field)
+    protected static function filter_Input_Range(mixed $value, array $params, array $field): int|float
     {
         return self::filter_Input_Number($value, $params, $field);
     }
@@ -435,9 +437,9 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Color($value, array $params, array $field)
+    public static function type_Input_Color(mixed $value, array $params, array $field): bool
     {
-        return preg_match('/^#[0-9a-fA-F]{3}[0-9a-fA-F]{3}?$/u', $value);
+        return preg_match('/^#[0-9a-fA-F]{3}[0-9a-fA-F]{3}?$/u', (string) $value) === 1;
     }
 
     /**
@@ -448,7 +450,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Email($value, array $params, array $field)
+    public static function type_Input_Email(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Text($value, $params, $field) && filter_var($value, FILTER_VALIDATE_EMAIL);
     }
@@ -462,7 +464,7 @@ class Validation
      * @return bool   True if validation succeeded.
      */
 
-    public static function type_Input_Url($value, array $params, array $field)
+    public static function type_Input_Url(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Text($value, $params, $field) && filter_var($value, FILTER_VALIDATE_URL);
     }
@@ -475,7 +477,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Datetime($value, array $params, array $field)
+    public static function type_Input_Datetime(mixed $value, array $params, array $field): bool
     {
         if ($value instanceof \DateTime) {
             return true;
@@ -502,7 +504,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_DatetimeLocal($value, array $params, array $field)
+    public static function type_Input_DatetimeLocal(mixed $value, array $params, array $field): bool
     {
         return self::type_Input_Datetime($value, $params, $field);
     }
@@ -515,7 +517,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Date($value, array $params, array $field)
+    public static function type_Input_Date(mixed $value, array $params, array $field): bool
     {
         if (!isset($params['format'])) {
             $params['format'] = 'Y-m-d';
@@ -532,7 +534,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Time($value, array $params, array $field)
+    public static function type_Input_Time(mixed $value, array $params, array $field): bool
     {
         if (!isset($params['format'])) {
             $params['format'] = 'H:i';
@@ -549,7 +551,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Month($value, array $params, array $field)
+    public static function type_Input_Month(mixed $value, array $params, array $field): bool
     {
         if (!isset($params['format'])) {
             $params['format'] = 'Y-m';
@@ -566,7 +568,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Input_Week($value, array $params, array $field)
+    public static function type_Input_Week(mixed $value, array $params, array $field): bool
     {
         if (!isset($params['format']) && !preg_match('/^\d{4}-W\d{2}$/u', $value)) {
             return false;
@@ -583,7 +585,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function typeArray($value, array $params, array $field)
+    public static function typeArray(mixed $value, array $params, array $field): bool
     {
         if (!\is_array($value)) {
             return false;
@@ -616,7 +618,7 @@ class Validation
      * @param array $field
      * @return array|null
      */
-    protected static function filterArray($value, $params, $field)
+    protected static function filterArray(mixed $value, mixed $params, mixed $field): mixed
     {
         $values = (array) $value;
         $options = isset($field['options']) ? array_keys($field['options']) : [];
@@ -651,7 +653,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function type_Input_Yaml($value, $params)
+    public static function type_Input_Yaml(mixed $value, mixed $params): bool
     {
         try {
             Yaml::parse($value);
@@ -667,7 +669,7 @@ class Validation
      * @param array $params
      * @return array|null
      */
-    public static function filter_Input_Yaml($value, $params)
+    public static function filter_Input_Yaml(mixed $value, mixed $params): mixed
     {
         try {
             return (array) Yaml::parse($value);
@@ -684,7 +686,7 @@ class Validation
      * @param  array  $field   Blueprint for the field.
      * @return bool   True if validation succeeded.
      */
-    public static function type_Novalidate($value, array $params, array $field)
+    public static function type_Novalidate(mixed $value, array $params, array $field): bool
     {
         return true;
     }
@@ -695,7 +697,7 @@ class Validation
      * @param array $field
      * @return mixed
      */
-    public static function filter_Novalidate($value, array $params, array $field)
+    public static function filter_Novalidate(mixed $value, array $params, array $field): mixed
     {
         return $value;
     }
@@ -707,7 +709,7 @@ class Validation
      * @param bool $params
      * @return bool
      */
-    public static function validate_Required($value, $params)
+    public static function validate_Required(mixed $value, mixed $params): bool
     {
         if (is_scalar($value)) {
             return (bool) $params !== true || $value !== '';
@@ -721,7 +723,7 @@ class Validation
      * @param string $params
      * @return bool
      */
-    public static function validate_Pattern($value, $params)
+    public static function validate_Pattern(mixed $value, mixed $params): bool
     {
         return (bool) preg_match("`^{$params}$`u", $value);
     }
@@ -734,7 +736,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Alpha($value, $params)
+    public static function validate_Alpha(mixed $value, mixed $params): bool
     {
         return ctype_alpha($value);
     }
@@ -744,7 +746,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Alnum($value, $params)
+    public static function validate_Alnum(mixed $value, mixed $params): bool
     {
         return ctype_alnum($value);
     }
@@ -754,7 +756,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function type_Bool($value, $params)
+    public static function type_Bool(mixed $value, mixed $params): bool
     {
         return \is_bool($value) || $value == 1 || $value == 0;
     }
@@ -764,7 +766,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Bool($value, $params)
+    public static function validate_Bool(mixed $value, mixed $params): bool
     {
         return \is_bool($value) || $value == 1 || $value == 0;
     }
@@ -774,7 +776,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    protected static function filter_Bool($value, $params)
+    protected static function filter_Bool(mixed $value, mixed $params): bool
     {
         return (bool) $value;
     }
@@ -784,7 +786,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Digit($value, $params)
+    public static function validate_Digit(mixed $value, mixed $params): bool
     {
         return ctype_digit($value);
     }
@@ -794,7 +796,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Float($value, $params)
+    public static function validate_Float(mixed $value, mixed $params): bool
     {
         return \is_float(filter_var($value, FILTER_VALIDATE_FLOAT));
     }
@@ -804,7 +806,7 @@ class Validation
      * @param array $params
      * @return float
      */
-    protected static function filter_Float($value, $params)
+    protected static function filter_Float(mixed $value, mixed $params): float
     {
         return (float) $value;
     }
@@ -814,7 +816,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Hex($value, $params)
+    public static function validate_Hex(mixed $value, mixed $params): bool
     {
         return ctype_xdigit($value);
     }
@@ -824,7 +826,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Int($value, $params)
+    public static function validate_Int(mixed $value, mixed $params): bool
     {
         return is_numeric($value) && (int) $value == $value;
     }
@@ -834,7 +836,7 @@ class Validation
      * @param array $params
      * @return int
      */
-    protected static function filter_Int($value, $params)
+    protected static function filter_Int(mixed $value, mixed $params): int
     {
         return (int) $value;
     }
@@ -844,7 +846,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Array($value, $params)
+    public static function validate_Array(mixed $value, mixed $params): bool
     {
         return \is_array($value)
             || ($value instanceof \ArrayAccess
@@ -857,7 +859,7 @@ class Validation
      * @param array $params
      * @return bool
      */
-    public static function validate_Json($value, $params)
+    public static function validate_Json(mixed $value, mixed $params): bool
     {
         return (bool) (@json_decode($value));
     }

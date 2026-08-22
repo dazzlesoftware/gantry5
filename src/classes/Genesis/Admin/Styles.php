@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,15 +25,15 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Styles
 {
     /** @var Genesis */
-    protected $container;
-    protected $files;
-    protected $blocks;
+    protected Genesis $container;
+    protected ?array $files = null;
+    protected ?array $blocks = null;
 
     /**
      * Styles constructor.
      * @param Genesis $container
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         $this->container = $container;
     }
@@ -39,7 +41,7 @@ class Styles
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         if (!$this->blocks)
         {
@@ -49,7 +51,7 @@ class Styles
             foreach ($files as $key => $fileArray) {
                 $filename = key($fileArray);
                 $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
-                $this->blocks[$key] = $file->content();
+                $this->blocks[$key] = (array) $file->content();
                 $file->free();
             }
         }
@@ -60,7 +62,7 @@ class Styles
     /**
      * @return array
      */
-    public function group()
+    public function group(): array
     {
         $blocks = $this->all();
 
@@ -77,9 +79,9 @@ class Styles
      * @param string $id
      * @return string
      */
-    public function get($id)
+    public function get(string $id): array
     {
-        if ($this->blocks[$id]) {
+        if (isset($this->blocks[$id])) {
             return $this->blocks[$id];
         }
 
@@ -91,7 +93,7 @@ class Styles
 
         $filename = key($files[$id]);
         $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
-        $particle = $file->content();
+        $particle = (array) $file->content();
         $file->free();
 
         return $particle;
@@ -101,7 +103,7 @@ class Styles
      * @param string $id
      * @return BlueprintForm
      */
-    public function getBlueprintForm($id)
+    public function getBlueprintForm(string $id): BlueprintForm
     {
         return BlueprintForm::instance($id, 'genesis-blueprints://styles');
     }
@@ -110,7 +112,7 @@ class Styles
      * @param array $blocks
      * @return array
      */
-    protected function sort(array $blocks)
+    protected function sort(array $blocks): array
     {
         $list = [];
 
@@ -135,7 +137,7 @@ class Styles
      * @param array $ordering
      * @return array
      */
-    protected function sortItems(array $items, array $ordering)
+    protected function sortItems(array $items, array $ordering): array
     {
         $list = [];
 
@@ -154,7 +156,7 @@ class Styles
     /**
      * @return array
      */
-    protected function locateBlocks()
+    protected function locateBlocks(): array
     {
         if (!$this->files) {
             /** @var UniformResourceLocator $locator */

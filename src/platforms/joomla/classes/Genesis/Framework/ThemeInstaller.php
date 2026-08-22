@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -93,7 +95,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param array $context
      * @return string
      */
-    public function render($template, $context = [])
+    public function render(string $template, array $context = []): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -121,7 +123,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return JPATH_SITE . '/templates/' . $this->extension->name;
     }
@@ -174,7 +176,7 @@ class ThemeInstaller extends AbstractInstaller
         return MenuHelper::getMenuType($type);
     }
 
-    public function createSampleData()
+    public function createSampleData(): void
     {
         $this->updateStyle('JLIB_INSTALLER_DEFAULT_STYLE', [], 1);
         $this->installMenus();
@@ -285,7 +287,7 @@ class ThemeInstaller extends AbstractInstaller
      * @return string|bool
      * @throws \RuntimeException
      */
-    public function createOutline($folder, array $params = [])
+    public function createOutline(string $folder, array $params = []): string|int
     {
         if (!$folder) {
             throw new \RuntimeException('Cannot create outline without folder name');
@@ -551,7 +553,7 @@ class ThemeInstaller extends AbstractInstaller
         $this->finalize();
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         parent::finalize();
 
@@ -627,7 +629,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return object
      */
-    protected function getInstallerScript()
+    protected function getInstallerScript(): ?object
     {
         if (!$this->script) {
             $className = $this->extension->name . 'InstallerScript';

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
 /**
@@ -27,16 +29,16 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class OutlineCollection extends Collection
 {
     /** @var Container */
-    protected $container;
+    protected Container $container;
 
     /** @var string */
-    protected $path;
+    protected string $path = 'genesis-config://';
 
     /**
      * @param Container $container
      * @param array $items
      */
-    public function __construct(Container $container, $items = [])
+    public function __construct(Container $container, array $items = [])
     {
         $this->container = $container;
         $this->items = $items;
@@ -46,7 +48,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return string|null
      */
-    public function name($id)
+    public function name(string|int $id): ?string
     {
         return isset($this->items[$id]) ? $this->items[$id] : null;
     }
@@ -55,7 +57,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return string
      */
-    public function title($id)
+    public function title(string|int $id): string
     {
         return isset($this->items[$id]) ? $this->items[$id] : $id;
     }
@@ -63,7 +65,7 @@ class OutlineCollection extends Collection
     /**
      * @return $this
      */
-    public function all()
+    public function all(): static
     {
         return $this;
     }
@@ -71,7 +73,7 @@ class OutlineCollection extends Collection
     /**
      * @return $this
      */
-    public function system()
+    public function system(): static
     {
         foreach ($this->items as $key => $item) {
             $key = (string)$key;
@@ -86,7 +88,7 @@ class OutlineCollection extends Collection
     /**
      * @return $this
      */
-    public function user()
+    public function user(): static
     {
         foreach ($this->items as $key => $item) {
             $key = (string)$key;
@@ -102,7 +104,7 @@ class OutlineCollection extends Collection
      * @param string[]|null $include
      * @return $this
      */
-    public function filter(?array $include = null)
+    public function filter(?array $include = null): static
     {
         if ($include !== null) {
             foreach ($this->items as $key => $item) {
@@ -120,7 +122,7 @@ class OutlineCollection extends Collection
      *
      * @return array
      */
-    public function positions()
+    public function positions(): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -141,7 +143,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getOutlinesWithSection($section, $includeInherited = true)
+    public function getOutlinesWithSection(string $section, bool $includeInherited = true): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -172,7 +174,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getOutlinesWithParticle($particle, $includeInherited = true)
+    public function getOutlinesWithParticle(string $particle, bool $includeInherited = true): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -206,7 +208,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getOutlinesWithAtom($type, $includeInherited = true)
+    public function getOutlinesWithAtom(string $type, bool $includeInherited = true): array
     {
         $list = [];
 
@@ -231,7 +233,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getAllParticleInstances($particle, $includeInherited = true)
+    public function getAllParticleInstances(string $particle, bool $includeInherited = true): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -247,7 +249,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getParticleInstances($outline, $particle, $includeInherited = true)
+    public function getParticleInstances(string $outline, string $particle, bool $includeInherited = true): array
     {
         $list = [];
         $index = Layout::index($outline);
@@ -281,7 +283,7 @@ class OutlineCollection extends Collection
      * @param bool $includeInherited
      * @return array
      */
-    public function getAtomInstances($outline, $type, $includeInherited = true)
+    public function getAtomInstances(string $outline, string $type, bool $includeInherited = true): array
     {
         $list = [];
 
@@ -306,7 +308,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return array
      */
-    public function getInheritingOutlinesWithAtom($outline, $id = null)
+    public function getInheritingOutlinesWithAtom(string $outline, ?string $id = null): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -335,7 +337,7 @@ class OutlineCollection extends Collection
      * @param string|array $id
      * @return array
      */
-    public function getInheritingOutlines($outline, $id = null)
+    public function getInheritingOutlines(string $outline, string|array|null $id = null): array
     {
         $list = [];
         foreach ($this->items as $name => $title) {
@@ -363,7 +365,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return array
      */
-    public function getInheritedOutlines($outline, $id = null)
+    public function getInheritedOutlines(string $outline, string|array|null $id = null): array
     {
         try {
             $index = Layout::index($outline);
@@ -386,7 +388,7 @@ class OutlineCollection extends Collection
      * @param int|string $id
      * @return int|string
      */
-    public function preset($id)
+    public function preset(string|int $id): string|int
     {
         return $id;
     }
@@ -395,7 +397,7 @@ class OutlineCollection extends Collection
      * @param int|string $id
      * @return Layout
      */
-    public function layout($id)
+    public function layout(string|int $id): Layout
     {
         return Layout::load($id);
     }
@@ -404,7 +406,7 @@ class OutlineCollection extends Collection
      * @param int|string $id
      * @return array
      */
-    public function layoutPreset($id)
+    public function layoutPreset(string|int $id): array
     {
         $layout = Layout::load($id);
         $preset = $layout->preset;
@@ -419,7 +421,7 @@ class OutlineCollection extends Collection
      * @return $this
      * @throws \RuntimeException
      */
-    public function load($path = 'genesis-config://')
+    public function load(string $path = 'genesis-config://'): static
     {
         $this->path = $path;
 
@@ -450,7 +452,7 @@ class OutlineCollection extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function create($id, $title = null, $preset = null)
+    public function create(?string $id, ?string $title = null, string|array|null $preset = null): string
     {
         $title = $title ?: 'Untitled';
         $name = ltrim(strtolower(preg_replace('|[^a-z\d_-]|ui', '_', $id ?: $title)), '_');
@@ -489,7 +491,7 @@ class OutlineCollection extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function duplicate($id, $title = null, $inherit = false)
+    public function duplicate(string $id, ?string $title = null, bool $inherit = false): string
     {
         if (!$this->canDuplicate($id)) {
             throw new \RuntimeException(sprintf('Outline "%s" cannot be duplicated.', $id), 400);
@@ -534,7 +536,7 @@ class OutlineCollection extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function rename($id, $title)
+    public function rename(string $id, string $title): string
     {
         if (!$this->canDelete($id)) {
             throw new \RuntimeException(sprintf('Outline "%s" cannot be renamed.', $id), 400);
@@ -586,7 +588,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @throws \RuntimeException
      */
-    public function delete($id)
+    public function delete(string $id): void
     {
         if (!$this->canDelete($id)) {
             throw new \RuntimeException(sprintf('Outline "%s" cannot be deleted.', $id), 400);
@@ -619,7 +621,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return boolean
      */
-    public function canDuplicate($id)
+    public function canDuplicate(string $id): bool
     {
         if (!isset($this->items[$id])) {
             return false;
@@ -632,7 +634,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return boolean
      */
-    public function canDelete($id)
+    public function canDelete(string $id): bool
     {
         return !(!$id || $id[0] === '_' || $id === 'default');
     }
@@ -641,7 +643,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return boolean
      */
-    public function isDefault($id)
+    public function isDefault(string $id): bool
     {
         return $id === 'default';
     }
@@ -650,7 +652,7 @@ class OutlineCollection extends Collection
      * @param array $outlines
      * @return array
      */
-    protected function addDefaults(array $outlines)
+    protected function addDefaults(array $outlines): array
     {
         return [
             'default' => 'Base Outline',
@@ -666,7 +668,7 @@ class OutlineCollection extends Collection
      * @param string $id
      * @return string
      */
-    protected function findFreeName($id)
+    protected function findFreeName(string $id): string
     {
         if (!isset($this->items[$id])) {
             return $id;
@@ -692,7 +694,7 @@ class OutlineCollection extends Collection
      * @param string $path
      * @return FilesystemIterator|UniformResourceIterator
      */
-    protected function getFilesystemIterator($path)
+    protected function getFilesystemIterator(string $path): FilesystemIterator|UniformResourceIterator
     {
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];

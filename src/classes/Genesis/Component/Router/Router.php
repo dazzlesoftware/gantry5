@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 
 /**
@@ -30,17 +32,17 @@ use Whoops\Exception\ErrorException;
 abstract class Router implements RouterInterface
 {
     /** @var Genesis */
-    protected $container;
+    protected Genesis $container;
     /** @var string */
-    protected $format;
+    protected string $format = 'html';
     /** @var string */
-    protected $resource;
+    protected string $resource = '';
     /** @var string */
-    protected $method;
+    protected string $method = 'GET';
     /** @var array */
-    protected $path;
+    protected array $path = [];
     /** @var array */
-    protected $params;
+    protected array $params = [];
 
     /**
      * Router constructor.
@@ -55,7 +57,7 @@ abstract class Router implements RouterInterface
      * @return ResponseInterface|bool
      * @throws ErrorException
      */
-    public function dispatch()
+    public function dispatch(): bool
     {
         $this->boot();
         $this->load();
@@ -86,7 +88,13 @@ abstract class Router implements RouterInterface
      * @param string $format
      * @return HtmlResponse|JsonResponse|Response
      */
-    public function execute($resource, $method = 'GET', $path = [], $params = [], $format = 'html')
+    public function execute(
+        string $resource,
+        string $method = 'GET',
+        array $path = [],
+        array $params = [],
+        string $format = 'html'
+    ): Response
     {
         $class = '\\Genesis\\Admin\\Controller\\' . ucfirst($format) . '\\' . str_replace(' ', '\\', ucwords(str_replace('/', ' ', $resource)));
         // Protect against CSRF Attacks.
@@ -120,17 +128,17 @@ abstract class Router implements RouterInterface
     /**
      * @return $this
      */
-    abstract protected function boot();
+    abstract protected function boot(): mixed;
 
     /**
      * @return mixed
      */
-    abstract protected function checkSecurityToken();
+    abstract protected function checkSecurityToken(): bool;
 
     /**
      * @return $this
      */
-    public function load()
+    public function load(): static
     {
         static $loaded = false;
 
@@ -187,7 +195,7 @@ abstract class Router implements RouterInterface
      * @param bool $json
      * @return HtmlResponse|JsonResponse
      */
-    protected function getErrorResponse(\Exception $e, $json = false)
+    protected function getErrorResponse(\Exception $e, bool $json = false): Response
     {
         $response = new HtmlResponse;
         $response->setStatusCode($e->getCode());
@@ -213,7 +221,7 @@ abstract class Router implements RouterInterface
      * @param Response $response
      * @return ResponseInterface|bool
      */
-    protected function send(Response $response)
+    protected function send(Response $response): mixed
     {
         // Output HTTP header.
         header("HTTP/1.1 {$response->getStatus()}", true, $response->getStatusCode());

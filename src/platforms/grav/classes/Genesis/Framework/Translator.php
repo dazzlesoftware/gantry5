@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,7 +27,7 @@ class Translator extends BaseTranslator
         $language = Grav::instance()['language'];
 
         if ($language->enabled()) {
-            $this->active($language->getLanguage());
+            $this->active((string) $language->getLanguage());
         }
     }
 }

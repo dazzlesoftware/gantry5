@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,9 +28,9 @@ class Event extends BaseEvent
     public array $types = [];
 
     /** @var Genesis */
-    public $genesis;
+    public Genesis $genesis;
     /** @var RestfulControllerInterface */
-    public $controller;
+    public RestfulControllerInterface $controller;
     /** @var array */
-    public $data;
+    public array $data = [];
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound,WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 
 /**
@@ -30,7 +32,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
      *
      * @return array
      */
-    public function getRules()
+    public function getRules(): array
     {
         $rules = [];
 
@@ -57,7 +59,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
      * @param string $configuration
      * @return array
      */
-    public function listRules($configuration)
+    public function listRules(?string $configuration): array
     {
         $taxonomies = $this->getTaxonomies();
 

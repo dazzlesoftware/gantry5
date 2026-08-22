@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,WordPress.WP.AlternativeFunctions.curl_curl_init,WordPress.WP.AlternativeFunctions.curl_curl_setopt_array,WordPress.WP.AlternativeFunctions.curl_curl_exec,WordPress.WP.AlternativeFunctions.curl_curl_errno,WordPress.WP.AlternativeFunctions.curl_curl_strerror,WordPress.WP.AlternativeFunctions.curl_curl_close,Internal.LineEndings.Mixed
 
 /**
@@ -17,12 +19,12 @@ namespace Genesis\Component\Remote;
 class Response
 {
     /** @var callable  The callback for the progress */
-    public static $callback = null;
+    public static mixed $callback = null;
 
     /** @var string Which method to use for HTTP calls, can be 'curl', 'fopen' or 'auto'. Auto is default and fopen is the preferred method */
-    private static $method = 'auto';
+    private static string $method = 'auto';
     /** @var array Default parameters for `curl` and `fopen` */
-    private static $defaults = [
+    private static array $defaults = [
         'curl'  => [
             CURLOPT_REFERER        => 'Genesis Response',
             CURLOPT_USERAGENT      => 'Genesis Response',
@@ -55,9 +57,9 @@ class Response
      * @param string $method Default is `auto`
      * @return Response
      */
-    public static function setMethod($method = 'auto')
+    public static function setMethod(string $method = 'auto'): self
     {
-        if (!in_array($method, ['auto', 'curl', 'fopen'])) {
+        if (!in_array($method, ['auto', 'curl', 'fopen'], true)) {
             $method = 'auto';
         }
 
@@ -74,7 +76,7 @@ class Response
      * @param  callable $callback
      * @return string The response of the request
      */
-    public static function get($uri = '', $options = [], $callback = null)
+    public static function get(string $uri = '', array $options = [], ?callable $callback = null): string
     {
         if (!self::isCurlAvailable() && !self::isFopenAvailable()) {
             throw new \RuntimeException('Could not start an HTTP request. `allow_url_open` is disabled and `cURL` is not available');
@@ -92,7 +94,7 @@ class Response
      *
      * @return boolean
      */
-    public static function isCurlAvailable()
+    public static function isCurlAvailable(): bool
     {
         return function_exists('curl_version');
     }
@@ -102,19 +104,18 @@ class Response
      *
      * @return boolean
      */
-    public static function isFopenAvailable()
+    public static function isFopenAvailable(): bool
     {
-        return preg_match('/1|yes|on|true/i', ini_get('allow_url_fopen'));
+        return preg_match('/1|yes|on|true/i', (string) ini_get('allow_url_fopen')) === 1;
     }
 
     /**
      * Progress normalized for cURL and fopen
      */
-    public static function progress()
+    public static function progress(mixed ...$args): void
     {
         static $filesize = null;
 
-        $args           = func_get_args();
         $isCurlResource = is_resource($args[0]) && get_resource_type($args[0]) === 'curl';
 
         $notification_code = !$isCurlResource ? $args[0] : false;
@@ -127,7 +128,7 @@ class Response
         }
 
         if ($bytes_transferred > 0) {
-            if ($notification_code === STREAM_NOTIFY_PROGRESS | STREAM_NOTIFY_COMPLETED || $isCurlResource) {
+            if (in_array($notification_code, [STREAM_NOTIFY_PROGRESS, STREAM_NOTIFY_COMPLETED], true) || $isCurlResource) {
 
                 $progress = [
                     'code'        => $notification_code,
@@ -148,14 +149,14 @@ class Response
      *
      * @return string The response of the request
      */
-    private static function getAuto()
+    private static function getAuto(mixed ...$args): string
     {
         if (self::isFopenAvailable()) {
-            return self::getFopen(func_get_args());
+            return self::getFopen($args);
         }
 
         if (self::isCurlAvailable()) {
-            return self::getCurl(func_get_args());
+            return self::getCurl($args);
         }
 
         return '';
@@ -166,9 +167,9 @@ class Response
      *
      * @return string The response of the request
      */
-    private static function getFopen()
+    private static function getFopen(mixed ...$args): string
     {
-        if (count($args = func_get_args()) === 1) {
+        if (count($args) === 1) {
             $args = $args[0];
         }
 
@@ -193,9 +194,8 @@ class Response
      *
      * @return string The response of the request
      */
-    private static function getCurl()
+    private static function getCurl(mixed ...$args): string
     {
-        $args = func_get_args();
         $args = count($args) > 1 ? $args : array_shift($args);
 
         list($uri, $options, $callback) = $args;
@@ -223,6 +223,6 @@ class Response
 
         curl_close($ch);
 
-        return $response;
+        return (string) $response;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -37,7 +39,7 @@ class Theme extends AbstractTheme
      *
      * @return Environment
      */
-    public function renderer()
+    public function renderer(): Environment
     {
         if (!$this->renderer) {
             $genesis = static::genesis();
@@ -153,7 +155,7 @@ class Theme extends AbstractTheme
      * @param array $context
      * @return array
      */
-    public function getContext(array $context)
+    public function getContext(array $context): array
     {
         $genesis = static::genesis();
         $grav = Grav::instance();

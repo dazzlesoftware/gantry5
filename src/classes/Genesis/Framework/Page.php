@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ class Page extends Base\Page
      * @param array $args
      * @return string
      */
-    public function url(array $args = [])
+    public function url(array $args = []): string
     {
         throw new \Exception('Please override class');
     }

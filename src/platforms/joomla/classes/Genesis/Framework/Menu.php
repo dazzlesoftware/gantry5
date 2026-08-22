@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -31,11 +33,11 @@ class Menu extends AbstractMenu
     use GenesisTrait;
 
     /** @var bool */
-    protected $isAdmin;
+    protected bool $isAdmin;
     /** @var CMSApplication */
-    protected $application;
+    protected mixed $application;
     /** @var \Joomla\CMS\Menu\AbstractMenu */
-    protected $menu;
+    protected mixed $menu;
 
     public function __construct()
     {
@@ -107,7 +109,7 @@ class Menu extends AbstractMenu
     /**
      * @param array $params
      */
-    public function init(&$params)
+    public function init(array &$params): void
     {
         parent::init($params);
 
@@ -127,7 +129,7 @@ class Menu extends AbstractMenu
      * @return array
      * @throws \RuntimeException
      */
-    public function getMenus()
+    public function getMenus(): array
     {
         return array_keys($this->getMenuOptions());
     }
@@ -138,7 +140,7 @@ class Menu extends AbstractMenu
      * @return array
      * @throws \RuntimeException
      */
-    public function getMenuOptions()
+    public function getMenuOptions(): array
     {
         static $items;
 
@@ -214,7 +216,7 @@ class Menu extends AbstractMenu
      *
      * @return string|null
      */
-    public function getDefaultMenuName()
+    public function getDefaultMenuName(): ?string
     {
         return $this->default ? $this->default->menutype : null;
     }
@@ -224,7 +226,7 @@ class Menu extends AbstractMenu
      *
      * @return bool
      */
-    public function hasDefaultMenu()
+    public function hasDefaultMenu(): bool
     {
         return true;
     }
@@ -234,7 +236,7 @@ class Menu extends AbstractMenu
      *
      * @return string|null
      */
-    public function getActiveMenuName()
+    public function getActiveMenuName(): ?string
     {
         return $this->active ? $this->active->menutype : null;
     }
@@ -244,7 +246,7 @@ class Menu extends AbstractMenu
      *
      * @return boolean
      */
-    public function hasActiveMenu()
+    public function hasActiveMenu(): bool
     {
         return true;
     }
@@ -252,7 +254,7 @@ class Menu extends AbstractMenu
     /**
      * @return string|null
      */
-    public function getCacheId()
+    public function getCacheId(): ?string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -269,7 +271,7 @@ class Menu extends AbstractMenu
      * @param MenuItem $item
      * @return bool
      */
-    public function isActive($item)
+    public function isActive(mixed $item): bool
     {
         $tree = $this->base->tree;
         if (\in_array($item->id, $tree, false)) {
@@ -295,7 +297,7 @@ class Menu extends AbstractMenu
      * @param MenuItem $item
      * @return bool
      */
-    public function isCurrent($item)
+    public function isCurrent(mixed $item): bool
     {
         return $item->id == $this->active->id
         || ($item->type === 'alias' && $item->getParams()->get('aliasoptions') == $this->active->id);
@@ -307,7 +309,7 @@ class Menu extends AbstractMenu
      * @param array $params
      * @return array<string,object|MenuItem> List of routes to the pages.
      */
-    protected function getItemsFromPlatform($params)
+    protected function getItemsFromPlatform(mixed $params): array
     {
         /** @var CMSApplication $app */
         $app = Factory::getApplication();
@@ -736,7 +738,7 @@ class Menu extends AbstractMenu
      *
      * @return  object|null
      */
-    protected function calcBase($itemid = null)
+    protected function calcBase(mixed $itemid = null): ?object
     {
         $menu = $this->application->getMenu();
 
@@ -753,7 +755,7 @@ class Menu extends AbstractMenu
      * @param  array  $params
      * @param  array  $items
      */
-    public function getList(array $params, array $items)
+    public function getList(array $params, array $items): void
     {
         // Get base menu item for this menu (defaults to active menu item).
         $this->base = $this->calcBase($params['base']);

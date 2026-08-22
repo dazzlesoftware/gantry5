@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -14,12 +16,12 @@ namespace Genesis\Framework;
  */
 class Exporter
 {
-    protected $files = [];
+    protected array $files = [];
 
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -57,7 +59,7 @@ class Exporter
     /**
      * @return array
      */
-    public function outlines()
+    public function outlines(): array
     {
         // TODO: implement
         return [];
@@ -67,7 +69,7 @@ class Exporter
      * @param bool $all
      * @return array
      */
-    public function positions($all = true)
+    public function positions(bool $all = true): array
     {
         // TODO: implement
         return [];
@@ -76,7 +78,7 @@ class Exporter
     /**
      * @return array
      */
-    public function menus()
+    public function menus(): array
     {
         // TODO: implement
         return [];
@@ -85,7 +87,7 @@ class Exporter
     /**
      * @return array
      */
-    public function articles()
+    public function articles(): array
     {
         // TODO: implement
         return [];
@@ -94,7 +96,7 @@ class Exporter
     /**
      * @return array
      */
-    public function categories()
+    public function categories(): array
     {
         // TODO: implement
         return [];
@@ -107,7 +109,7 @@ class Exporter
      * @param string $configuration
      * @return array
      */
-    public function getOutlineAssignments($configuration)
+    public function getOutlineAssignments(string|int $configuration): array
     {
         // TODO: implement
         return [];

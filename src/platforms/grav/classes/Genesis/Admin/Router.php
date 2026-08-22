@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -33,13 +35,13 @@ class Router extends BaseRouter
     /**
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         /** @var bool */
         static $booted = false;
 
         if ($booted) {
-            return null;
+            return;
         }
 
         $booted = true;
@@ -53,7 +55,7 @@ class Router extends BaseRouter
         /** @var Uri $uri */
         $uri = $grav['uri'];
 
-        $parts = array_filter(explode('/', $admin->route), static function($var) { return $var !== ''; });
+        $parts = array_values(array_filter(explode('/', (string) $admin->route), static function(string $var): bool { return $var !== ''; }));
         $base = '';
 
         // Set theme.
@@ -66,6 +68,7 @@ class Router extends BaseRouter
 
             $theme = $config->get('system.pages.theme');
         }
+        $theme = is_string($theme) ? $theme : null;
         $this->setTheme($theme);
 
         /** @var Request $request */
@@ -110,7 +113,7 @@ class Router extends BaseRouter
      * @param string|null $theme
      * @return $this
      */
-    public function setTheme(&$theme)
+    public function setTheme(?string &$theme): static
     {
         $path = "themes://{$theme}";
 
@@ -126,8 +129,12 @@ class Router extends BaseRouter
             /** @var Config $global */
             $global = $this->container['global'];
 
-            CompiledYamlFile::$defaultCachePath = $locator->findResource('genesis-cache://theme/compiled/yaml', true, true);
-            CompiledYamlFile::$defaultCaching = $global->get('compile_yaml', 1);
+            $cachePath = $locator->findResource('genesis-cache://theme/compiled/yaml', true, true);
+            if (!is_string($cachePath) || $cachePath === '') {
+                throw new \RuntimeException('Unable to resolve the compiled YAML cache folder');
+            }
+            CompiledYamlFile::$defaultCachePath = $cachePath;
+            CompiledYamlFile::$defaultCaching = (bool) $global->get('compile_yaml', true);
         } else {
             /** @var GravConfig $config */
             $config = Grav::instance()['config'];
@@ -140,7 +147,7 @@ class Router extends BaseRouter
     /**
      * @return bool
      */
-    protected function checkSecurityToken()
+    protected function checkSecurityToken(): bool
     {
         /** @var Request $request */
         $request = $this->container['request'];
@@ -153,7 +160,7 @@ class Router extends BaseRouter
      * @param Response $response
      * @return ResponseInterface
      */
-    protected function send(Response $response)
+    protected function send(Response $response): ResponseInterface
     {
         // Add missing translations to debugbar.
 //        if (\GENESIS_DEBUGGER) {

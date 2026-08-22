@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ use Genesis\phpBB\Runtime;
  */
 class Document extends HtmlDocument
 {
-    public static function registerAssets()
+    public static function registerAssets(): void
     {
         static::registerFrameworks();
 
@@ -52,10 +54,10 @@ class Document extends HtmlDocument
      * @param array $style
      * @return string
      */
-    protected static function renderStyle($style)
+    protected static function renderStyle(array $style): string
     {
         if ($style[':type'] === 'file') {
-            $href = htmlspecialchars($style['href'], ENT_QUOTES);
+            $href = htmlspecialchars((string) $style['href'], ENT_QUOTES);
 
             return "<link rel=\"stylesheet\" href=\"{$href}\">\n";
         }
@@ -67,10 +69,10 @@ class Document extends HtmlDocument
      * @param array $script
      * @return string
      */
-    protected static function renderScript($script)
+    protected static function renderScript(array $script): string
     {
         if ($script[':type'] === 'file') {
-            $src = htmlspecialchars($script['src'], ENT_QUOTES);
+            $src = htmlspecialchars((string) $script['src'], ENT_QUOTES);
             $attribs = ($script['async'] ? ' async' : '') . ($script['defer'] ? ' defer' : '');
 
             return "<script src=\"{$src}\"{$attribs}></script>\n";
@@ -83,7 +85,7 @@ class Document extends HtmlDocument
      * @param bool|null $addDomain
      * @return string
      */
-    public static function domain($addDomain = null)
+    public static function domain(?bool $addDomain = null): string
     {
         if (!$addDomain) {
             return '';
@@ -95,7 +97,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function rootUri()
+    public static function rootUri(): string
     {
         return Runtime::webRoot() ?: '/';
     }
@@ -103,7 +105,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function siteUrl()
+    public static function siteUrl(): string
     {
         return Runtime::webRoot() ?: '/';
     }

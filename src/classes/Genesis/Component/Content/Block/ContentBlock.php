@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -30,22 +32,22 @@ class ContentBlock implements ContentBlockInterface
     use Serializable;
 
     /** @var int */
-    protected $version = 1;
+    protected int $version = 1;
     /** @var string */
-    protected $id;
+    protected string $id;
     /** @var string */
-    protected $tokenTemplate = '@@BLOCK-%s@@';
+    protected string $tokenTemplate = '@@BLOCK-%s@@';
     /** @var string */
-    protected $content = '';
+    protected string $content = '';
     /** @var ContentBlockInterface[] */
-    protected $blocks = [];
+    protected array $blocks = [];
 
     /**
      * @param string $id
      * @return static
      * @since 5.4.3
      */
-    public static function create($id = null)
+    public static function create(?string $id = null): static
     {
         return new static($id);
     }
@@ -55,7 +57,7 @@ class ContentBlock implements ContentBlockInterface
      * @return ContentBlockInterface
      * @since 5.4.3
      */
-    public static function fromArray(array $serialized)
+    public static function fromArray(array $serialized): ContentBlockInterface
     {
         try {
             $type = isset($serialized['_type']) ? $serialized['_type'] : null;
@@ -80,7 +82,7 @@ class ContentBlock implements ContentBlockInterface
      * @param string $id
      * @since 5.4.3
      */
-    public function __construct($id = null)
+    public function __construct(?string $id = null)
     {
         $this->id = $id ? (string) $id : $this->generateId();
     }
@@ -89,7 +91,7 @@ class ContentBlock implements ContentBlockInterface
      * @return string
      * @since 5.4.3
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -98,7 +100,7 @@ class ContentBlock implements ContentBlockInterface
      * @return string
      * @since 5.4.3
      */
-    public function getToken()
+    public function getToken(): string
     {
         return sprintf($this->tokenTemplate, $this->getId());
     }
@@ -107,7 +109,7 @@ class ContentBlock implements ContentBlockInterface
      * @return array
      * @since 5.4.3
      */
-    public function toArray()
+    public function toArray(): array
     {
         $blocks = [];
         foreach ($this->blocks as $block) {
@@ -135,7 +137,7 @@ class ContentBlock implements ContentBlockInterface
      * @return string
      * @since 5.4.3
      */
-    public function toString()
+    public function toString(): string
     {
         if (!$this->blocks) {
             return (string) $this->content;
@@ -155,7 +157,7 @@ class ContentBlock implements ContentBlockInterface
      * @return string
      * @since 5.4.3
      */
-    public function __toString()
+    public function __toString(): string
     {
         try {
             return $this->toString();
@@ -168,14 +170,14 @@ class ContentBlock implements ContentBlockInterface
      * @param array $serialized
      * @since 5.4.3
      */
-    public function build(array $serialized)
+    public function build(array $serialized): void
     {
         $this->checkVersion($serialized);
 
-        $this->id = isset($serialized['id']) ? $serialized['id'] : $this->generateId();
+        $this->id = isset($serialized['id']) ? (string) $serialized['id'] : $this->generateId();
 
         if (isset($serialized['content'])) {
-            $this->setContent($serialized['content']);
+            $this->setContent((string) $serialized['content']);
         }
 
         $blocks = isset($serialized['blocks']) ? (array) $serialized['blocks'] : [];
@@ -189,7 +191,7 @@ class ContentBlock implements ContentBlockInterface
      * @return $this
      * @since 5.4.3
      */
-    public function setContent($content)
+    public function setContent(string $content): static
     {
         $this->content = $content;
 
@@ -201,7 +203,7 @@ class ContentBlock implements ContentBlockInterface
      * @return $this
      * @since 5.4.3
      */
-    public function addBlock(ContentBlockInterface $block)
+    public function addBlock(ContentBlockInterface $block): static
     {
         $this->blocks[$block->getId()] = $block;
 
@@ -230,7 +232,7 @@ class ContentBlock implements ContentBlockInterface
      * @return string
      * @since 5.4.3
      */
-    protected function generateId()
+    protected function generateId(): string
     {
         return uniqid('', true);
     }
@@ -240,9 +242,9 @@ class ContentBlock implements ContentBlockInterface
      * @throws \RuntimeException
      * @since 5.4.3
      */
-    protected function checkVersion(array $serialized)
+    protected function checkVersion(array $serialized): void
     {
-        $version = isset($serialized['_version']) ? (string) $serialized['_version'] : 1;
+        $version = isset($serialized['_version']) ? (int) $serialized['_version'] : 1;
         if ($version !== $this->version) {
             throw new \RuntimeException(sprintf('Unsupported version %s', $version));
         }

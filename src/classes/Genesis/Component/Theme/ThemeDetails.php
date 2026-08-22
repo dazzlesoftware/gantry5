@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,15 +28,15 @@ class ThemeDetails implements \ArrayAccess
 {
     use NestedArrayAccessWithGetters, Export;
 
-    protected $items;
-    protected $parent;
+    protected array $items = [];
+    protected ?ThemeDetails $parent = null;
 
     /**
      * Create new theme details.
      *
      * @param string $theme
      */
-    public function __construct($theme)
+    public function __construct(string $theme)
     {
         $genesis = Genesis::instance();
 
@@ -64,7 +66,7 @@ class ThemeDetails implements \ArrayAccess
     /**
      * @return string
      */
-    public function addStreams()
+    public function addStreams(): string
     {
         $genesis = Genesis::instance();
 
@@ -96,7 +98,7 @@ class ThemeDetails implements \ArrayAccess
      * @return ThemeDetails|null
      * @throws \RuntimeException
      */
-    public function parent()
+    public function parent(): ?ThemeDetails
     {
         $parent = $this->offsetGet('parent');
 
@@ -116,7 +118,7 @@ class ThemeDetails implements \ArrayAccess
      *
      * @return array
      */
-    public function getPaths($overrides = true)
+    public function getPaths(bool $overrides = true): array
     {
         $paths = array_merge(
             $overrides ? (array) $this->get('configuration.theme.overrides', 'genesis-theme://custom') : [],
@@ -140,7 +142,7 @@ class ThemeDetails implements \ArrayAccess
      * @param string $path
      * @return string
      */
-    public function getUrl($path)
+    public function getUrl(string $path): string
     {
         $uri = (string) $this->offsetGet($path);
 
@@ -164,7 +166,7 @@ class ThemeDetails implements \ArrayAccess
      * @param array $items
      * @return array
      */
-    public function parsePaths(array $items)
+    public function parsePaths(array $items): array
     {
         foreach ($items as &$item) {
             $item = $this->parsePath($item);
@@ -179,7 +181,7 @@ class ThemeDetails implements \ArrayAccess
      * @param string $path
      * @return string
      */
-    public function parsePath($path)
+    public function parsePath(string $path): string
     {
         if (strpos($path, 'genesis-theme://') === 0) {
             list (, $path) = explode('://', $path, 2);
@@ -196,7 +198,7 @@ class ThemeDetails implements \ArrayAccess
      * @return string|null
      * @deprecated 5.1.5
      */
-    public function getParent()
+    public function getParent(): ?string
     {
         return $this->offsetGet('parent');
     }
@@ -206,7 +208,7 @@ class ThemeDetails implements \ArrayAccess
      * @param array $paths
      * @return string|null
      */
-    protected function addStream($name, $paths)
+    protected function addStream(string $name, array $paths): string
     {
         $genesis = Genesis::instance();
 

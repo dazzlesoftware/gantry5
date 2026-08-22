@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,13 +24,13 @@ class Devprod extends JsonController
     /**
      * @return JsonResponse
      */
-    public function store()
+    public function store(): JsonResponse
     {
         $production = (int)(bool)$this->request->post['mode'];
 
         // Fire save event.
         $event = new Event();
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->controller = $this;
         $event->data = ['production' => $production];
 

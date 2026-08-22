@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ use Genesis\Component\Response\JsonResponse;
 class Confirmdeletion extends JsonController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/' => 'index'
         ]
@@ -28,7 +30,7 @@ class Confirmdeletion extends JsonController
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $pageType = $this->request->get->get('page_type', 'OUTLINE');
         $response = ['html' => $this->render('@genesis-admin/ajax/confirm-deletion.html.twig', ['page_type' => $pageType])];

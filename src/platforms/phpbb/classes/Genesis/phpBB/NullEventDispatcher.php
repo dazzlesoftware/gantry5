@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -28,7 +30,7 @@ class NullEventDispatcher
      * @param string|null $eventName
      * @return object
      */
-    public function dispatch($event, $eventName = null)
+    public function dispatch(object $event, ?string $eventName = null): object
     {
         return $event;
     }
@@ -37,7 +39,7 @@ class NullEventDispatcher
      * @param object $subscriber
      * @return void
      */
-    public function addSubscriber($subscriber)
+    public function addSubscriber(object $subscriber): void
     {
     }
 
@@ -47,7 +49,7 @@ class NullEventDispatcher
      * @param int $priority
      * @return void
      */
-    public function addListener($eventName, $listener, $priority = 0)
+    public function addListener(string $eventName, callable $listener, int $priority = 0): void
     {
     }
 }

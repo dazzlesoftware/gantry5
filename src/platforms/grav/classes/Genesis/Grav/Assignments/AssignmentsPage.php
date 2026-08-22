@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,7 +31,7 @@ class AssignmentsPage implements AssignmentsInterface
      *
      * @return array
      */
-    public function getRules()
+    public function getRules(): array
     {
         $grav = Grav::instance();
 
@@ -52,7 +54,7 @@ class AssignmentsPage implements AssignmentsInterface
      * @param string $configuration
      * @return array
      */
-    public function listRules($configuration)
+    public function listRules(?string $configuration): array
     {
         // Get label and items for each menu
         $list = [

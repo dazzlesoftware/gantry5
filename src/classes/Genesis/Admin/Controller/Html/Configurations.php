@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,7 +25,7 @@ use Genesis\Framework\Outlines as OutlinesObject;
  */
 class Configurations extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'                 => 'index',
             '/*'                => 'forward',
@@ -55,7 +57,7 @@ class Configurations extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         return $this->render('@genesis-admin/pages/configurations/configurations.html.twig', $this->params);
     }
@@ -63,7 +65,7 @@ class Configurations extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function createForm()
+    public function createForm(): JsonResponse
     {
         if (!$this->authorize('outline.create')) {
             $this->forbidden();
@@ -82,11 +84,11 @@ class Configurations extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function create()
+    public function create(): JsonResponse
     {
         // Check if we want to duplicate outline instead.
         if ($this->request->post['from'] === 'outline') {
-            return $this->duplicate($this->request->post['outline']);
+            return $this->duplicate((string) $this->request->post['outline']);
         }
 
         if (!$this->authorize('outline.create')) {
@@ -95,8 +97,11 @@ class Configurations extends HtmlController
 
         /** @var OutlinesObject $outlines */
         $outlines = $this->container['outlines'];
-        $title = $this->request->post['title'];
+        $title = (string) $this->request->post['title'];
         $preset = $this->request->post['preset'];
+        if (!is_array($preset) && !is_string($preset)) {
+            $preset = null;
+        }
 
         $id = $outlines->create(null, $title, $preset);
 
@@ -109,7 +114,7 @@ class Configurations extends HtmlController
      * @param string $outline
      * @return JsonResponse
      */
-    public function rename($outline)
+    public function rename(string $outline): JsonResponse
     {
         if (!$this->authorize('outline.rename')) {
             $this->forbidden();
@@ -117,7 +122,7 @@ class Configurations extends HtmlController
 
         /** @var OutlinesObject $outlines */
         $outlines = $this->container['outlines'];
-        $title = $this->request->post['title'];
+        $title = (string) $this->request->post['title'];
 
         $id = $outlines->rename($outline, $title);
 
@@ -130,7 +135,7 @@ class Configurations extends HtmlController
      * @param string $outline
      * @return JsonResponse
      */
-    public function duplicateForm($outline)
+    public function duplicateForm(string $outline): JsonResponse
     {
         if (!$this->authorize('outline.create')) {
             $this->forbidden();
@@ -151,7 +156,7 @@ class Configurations extends HtmlController
      * @param string $outline
      * @return JsonResponse
      */
-    public function duplicate($outline)
+    public function duplicate(string $outline): JsonResponse
     {
         if (!$this->authorize('outline.create')) {
             $this->forbidden();
@@ -159,8 +164,8 @@ class Configurations extends HtmlController
 
         /** @var OutlinesObject $outlines */
         $outlines = $this->container['outlines'];
-        $title = $this->request->post['title'];
-        $inherit = in_array($this->request->post['inherit'], ['1', 'true']);
+        $title = (string) $this->request->post['title'];
+        $inherit = in_array((string) $this->request->post['inherit'], ['1', 'true'], true);
 
         $id = $outlines->duplicate($outline, $title, $inherit);
 
@@ -174,7 +179,7 @@ class Configurations extends HtmlController
      * @return JsonResponse
      * @throws \Exception
      */
-    public function delete($outline)
+    public function delete(string $outline): JsonResponse
     {
         if (!$this->authorize('outline.delete')) {
             $this->forbidden();
@@ -196,7 +201,7 @@ class Configurations extends HtmlController
     /**
      * @return JsonResponse
      */
-    public function confirmDeletion($id)
+    public function confirmDeletion(string $id): JsonResponse
     {
         /** @var OutlinesObject $outlines */
         $outlines = $this->container['outlines'];
@@ -216,14 +221,12 @@ class Configurations extends HtmlController
     /**
      * @return Response
      */
-    public function forward()
+    public function forward(string ...$path): Response
     {
-        $path = func_get_args();
-
         $outline = array_shift($path);
         $page = array_shift($path);
 
-        $method = $this->params['method'];
+        $method = (string) $this->params['method'];
 
         if (!isset($outline) || !isset($page)) {
             if ($this->params['format'] !== 'json') {
@@ -263,7 +266,7 @@ class Configurations extends HtmlController
      * @param array $params
      * @return Response
      */
-    protected function executeForward($resource, $method = 'GET', $path = [], $params = [])
+    protected function executeForward(string $resource, string $method = 'GET', array $path = [], array $params = []): Response
     {
         $class = '\\Genesis\\Admin\\Controller\\Html\\' . strtr(ucwords(strtr($resource, '/', ' ')), ' ', '\\');
         if (!class_exists($class)) {

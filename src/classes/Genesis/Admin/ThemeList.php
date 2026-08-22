@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,12 +22,12 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class ThemeList
 {
-    protected static $items;
+    protected static ?array $items = null;
 
     /**
      * @return array
      */
-    public static function getThemes()
+    public static function getThemes(): array
     {
         if (!is_array(static::$items)) {
             static::loadThemes();
@@ -38,7 +40,7 @@ class ThemeList
      * @param string $name
      * @return ThemeDetails|null
      */
-    public static function getTheme($name)
+    public static function getTheme(string $name): ?ThemeDetails
     {
         if (!is_array(static::$items)) {
             static::loadThemes();
@@ -47,7 +49,7 @@ class ThemeList
         return isset(static::$items[$name]) ? static::$items[$name] : null;
     }
 
-    protected static function loadThemes()
+    protected static function loadThemes(): void
     {
         $genesis = Genesis::instance();
 

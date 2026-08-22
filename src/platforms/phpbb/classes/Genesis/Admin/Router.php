@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,7 +31,7 @@ class Router extends BaseRouter
     /**
      * @return void
      */
-    protected function boot()
+    protected function boot(): void
     {
         static $booted = false;
 
@@ -124,7 +126,7 @@ class Router extends BaseRouter
     /**
      * @return bool
      */
-    protected function checkSecurityToken()
+    protected function checkSecurityToken(): bool
     {
         /** @var Request $request */
         $request = $this->container['request'];
@@ -137,7 +139,7 @@ class Router extends BaseRouter
      * @param Response $response
      * @return bool
      */
-    protected function send(Response $response)
+    protected function send(Response $response): bool
     {
         header("HTTP/1.1 {$response->getStatus()}", true, $response->getStatusCode());
         header("Content-Type: {$response->mimeType}; charset={$response->charset}");

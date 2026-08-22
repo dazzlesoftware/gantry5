@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -21,13 +23,13 @@ use DazzleSoftware\Toolbox\StreamWrapper\Stream;
 class Streams
 {
     /** @var array */
-    protected $schemes = [];
+    protected array $schemes = [];
 
     /** @var array */
-    protected $registered;
+    protected ?array $registered = null;
 
     /** @var UniformResourceLocator */
-    protected $locator;
+    protected ?UniformResourceLocator $locator = null;
 
     /**
      * Streams constructor.
@@ -43,7 +45,7 @@ class Streams
     /**
      * @param UniformResourceLocator $locator
      */
-    public function setLocator(UniformResourceLocator $locator)
+    public function setLocator(UniformResourceLocator $locator): void
     {
         $this->locator = $locator;
 
@@ -55,7 +57,7 @@ class Streams
     /**
      * @return UniformResourceLocator
      */
-    public function getLocator()
+    public function getLocator(): ?UniformResourceLocator
     {
         return $this->locator;
     }
@@ -63,7 +65,7 @@ class Streams
     /**
      * @param array $schemes
      */
-    public function add(array $schemes)
+    public function add(array $schemes): void
     {
         foreach ($schemes as $scheme => $config) {
             $force = !empty($config['force']);
@@ -88,7 +90,7 @@ class Streams
         }
     }
 
-    public function register()
+    public function register(): void
     {
         $this->registered = stream_get_wrappers();
 
@@ -101,7 +103,7 @@ class Streams
      * @param string $scheme
      * @param string $type
      */
-    protected function doRegister($scheme, $type)
+    protected function doRegister(string $scheme, string $type): void
     {
         if (in_array($scheme, $this->registered, true)) {
             stream_wrapper_unregister($scheme);

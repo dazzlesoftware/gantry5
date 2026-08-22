@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,24 +21,24 @@ use Genesis\phpBB\Runtime;
 class Page extends Base\Page
 {
     /** @var string */
-    public $outline;
+    public string $outline;
     /** @var string */
-    public $language;
+    public string $language;
     /** @var string */
-    public $direction;
+    public string $direction;
 
     /**
      * Page constructor.
      * @param Genesis $container
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         parent::__construct($container);
 
         /** @var \phpbb\language\language $language */
         $language = Runtime::service('language');
 
-        $this->outline = $container['configuration'];
+        $this->outline = (string) $container['configuration'];
         $this->language = substr($language->get_used_language(), 0, 2) ?: 'en';
         $this->direction = $language->lang('DIRECTION') === 'rtl' ? 'rtl' : 'ltr';
     }
@@ -45,7 +47,7 @@ class Page extends Base\Page
      * @param array $args
      * @return string
      */
-    public function url(array $args = [])
+    public function url(array $args = []): string
     {
         /** @var \phpbb\symfony_request $request */
         $request = Runtime::service('symfony_request');
@@ -60,7 +62,7 @@ class Page extends Base\Page
     /**
      * @return string
      */
-    public function htmlAttributes()
+    public function htmlAttributes(): string
     {
         $attributes = [
                 'lang' => $this->language,
@@ -75,7 +77,7 @@ class Page extends Base\Page
      * @param array $attributes
      * @return string
      */
-    public function bodyAttributes($attributes = [])
+    public function bodyAttributes(array $attributes = []): string
     {
         return $this->getAttributes((array) $this->config->get('page.body.attribs', []), $attributes);
     }

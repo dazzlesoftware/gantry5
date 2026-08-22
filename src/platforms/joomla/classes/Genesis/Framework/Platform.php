@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -40,22 +42,22 @@ use DazzleSoftware\Toolbox\DI\Container;
 class Platform extends BasePlatform
 {
     /** @var bool */
-    public $no_base_layout = false;
+    public bool $no_base_layout = false;
     /** @var string */
-    public $module_wrapper;
+    public string $module_wrapper;
     /** @var string */
-    public $component_wrapper;
+    public string $component_wrapper;
     /** @var HtmlDocument|null */
-    public $document;
+    public ?HtmlDocument $document = null;
 
     /** @var string */
-    protected $name = 'joomla';
+    protected string $name = 'joomla';
     /** @var array */
-    protected $features = ['modules' => true, 'fontawesome' => false];
+    protected array $features = ['modules' => true, 'fontawesome' => false];
     /** @var string */
-    protected $settings_key = 'return';
+    protected string $settings_key = 'return';
     /** @var array|null */
-    protected $modules;
+    protected ?array $modules = null;
 
     public function __construct(Container $container)
     {
@@ -71,7 +73,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return JVERSION;
     }
@@ -96,7 +98,7 @@ class Platform extends BasePlatform
      * @return BasePlatform
      * @throws \RuntimeException
      */
-    public function init()
+    public function init(): static
     {
         // Support linked sample data.
         $theme = isset($this->container['theme.name']) ? $this->container['theme.name'] : null;
@@ -132,7 +134,7 @@ class Platform extends BasePlatform
      * @return string
      * @throws \RuntimeException
      */
-    public function getCachePath()
+    public function getCachePath(): string
     {
         $path = Factory::getApplication()->getConfig()->get('cache_path', JPATH_SITE . '/cache');
         if (!is_dir($path)) {
@@ -145,7 +147,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getThemesPaths()
+    public function getThemesPaths(): array
     {
         return ['' => ['templates']];
     }
@@ -153,7 +155,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getMediaPaths()
+    public function getMediaPaths(): array
     {
         $paths = ['images'];
 
@@ -179,7 +181,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getEnginesPaths()
+    public function getEnginesPaths(): array
     {
         if (is_link(GENESIS_ROOT . '/media/genesis/engines')) {
             // Development environment.
@@ -191,7 +193,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function getAssetsPaths()
+    public function getAssetsPaths(): array
     {
         if (is_link(GENESIS_ROOT . '/media/genesis/assets')) {
             // Development environment.
@@ -207,7 +209,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string
      */
-    public function getThemePreviewUrl($theme)
+    public function getThemePreviewUrl(string $theme): ?string
     {
         return (string)(int) $theme === (string) $theme ? Uri::root(false) . 'index.php?templateStyle=' . $theme : null;
     }
@@ -218,7 +220,7 @@ class Platform extends BasePlatform
      * @param string $theme
      * @return string
      */
-    public function getThemeAdminUrl($theme)
+    public function getThemeAdminUrl(string $theme): ?string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -232,7 +234,7 @@ class Platform extends BasePlatform
      * @param string $text
      * @return string
      */
-    public function filter($text)
+    public function filter(string $text): string
     {
         PluginHelper::importPlugin('content');
 
@@ -410,7 +412,7 @@ class Platform extends BasePlatform
     /**
      * @return array|false|null
      */
-    public function listModules()
+    public function listModules(): array|false
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true);
@@ -443,7 +445,7 @@ class Platform extends BasePlatform
      * @param string|int|null $height
      * @return string|null
      */
-    public function getEditor($name, $content = '', $width = null, $height = null)
+    public function getEditor(string $name, string $content = '', string|int|null $width = null, string|int|null $height = null): mixed
     {
         $config = Factory::getApplication()->getConfig();
         $editor = Editor::getInstance($config->get('editor'));
@@ -457,7 +459,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function errorHandlerPaths()
+    public function errorHandlerPaths(): array
     {
         return ['|genesis|'];
     }
@@ -465,7 +467,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function settings()
+    public function settings(): ?string
     {
         if (!$this->authorize('platform.settings.manage')) {
             return '';
@@ -647,7 +649,7 @@ class Platform extends BasePlatform
      * @return bool
      * @throws \RuntimeException
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, string|int|null $id = null): bool
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();

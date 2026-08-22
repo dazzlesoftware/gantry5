@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,25 +24,25 @@ use Grav\Common\Page\Interfaces\PageInterface;
 class Page extends Base\Page
 {
     /** @var string */
-    public $theme;
+    public string $theme = '';
     /** @var string */
-    public $baseUrl;
+    public string $baseUrl = '';
     /** @var string */
-    public $title;
+    public string $title = '';
     /** @var string */
-    public $description;
+    public string $description = '';
     /** @var string */
-    public $outline;
+    public string $outline;
     /** @var string */
-    public $language;
+    public string $language;
     /** @var string */
-    public $direction;
+    public string $direction;
 
     /**
      * Page constructor.
      * @param Genesis $container
      */
-    public function __construct($container)
+    public function __construct(Genesis $container)
     {
         parent::__construct($container);
 
@@ -49,16 +51,16 @@ class Page extends Base\Page
         /** @var Language $language */
         $language = $grav['language'];
 
-        $this->outline = $container['configuration'];
+        $this->outline = (string) $container['configuration'];
         $this->language = $language->getLanguage() ?: 'en';
-        $this->direction = LanguageCodes::getOrientation($this->language);
+        $this->direction = (string) LanguageCodes::getOrientation($this->language);
     }
 
     /**
      * @param array $args
      * @return string
      */
-    public function url(array $args = [])
+    public function url(array $args = []): string
     {
         $grav = Grav::instance();
         $url = $grav['uri']->url;
@@ -72,7 +74,7 @@ class Page extends Base\Page
     /**
      * @return string
      */
-    public function htmlAttributes()
+    public function htmlAttributes(): string
     {
         $attributes = [
                 'lang' => $this->language,
@@ -87,7 +89,7 @@ class Page extends Base\Page
      * @param array $attributes
      * @return string
      */
-    public function bodyAttributes($attributes = [])
+    public function bodyAttributes(array $attributes = []): string
     {
         $grav = Grav::instance();
 

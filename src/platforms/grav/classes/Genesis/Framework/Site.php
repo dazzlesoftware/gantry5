@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,13 +22,13 @@ use Grav\Common\Uri;
 class Site
 {
     /** @var string */
-    public $theme;
+    public string $theme;
     /** @var string */
-    public $url;
+    public string $url;
     /** @var string */
-    public $title;
+    public string $title;
     /** @var string */
-    public $description;
+    public string $description;
 
     public function __construct()
     {
@@ -38,9 +40,9 @@ class Site
         /** @var Uri $uri */
         $uri = $grav['uri'];
 
-        $this->theme = $config->get('system.theme');
-        $this->url = $uri->rootUrl();
-        $this->title = $config->get('site.title');
-        $this->description = $config->get('site.description');
+        $this->theme = (string) $config->get('system.theme');
+        $this->url = (string) $uri->rootUrl();
+        $this->title = (string) $config->get('site.title');
+        $this->description = (string) $config->get('site.description');
     }
 }

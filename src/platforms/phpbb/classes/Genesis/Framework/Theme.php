@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -36,7 +38,7 @@ class Theme extends AbstractTheme
     /**
      * @return Environment
      */
-    public function renderer()
+    public function renderer(): Environment
     {
         if (!$this->renderer) {
             $genesis = static::genesis();
@@ -179,7 +181,7 @@ class Theme extends AbstractTheme
      * @param LoaderInterface $loader
      * @return LoaderInterface|null
      */
-    protected function setTwigLoaderPaths(LoaderInterface $loader)
+    protected function setTwigLoaderPaths(LoaderInterface $loader): ?FilesystemLoader
     {
         $loader = parent::setTwigLoaderPaths($loader);
 
@@ -196,7 +198,7 @@ class Theme extends AbstractTheme
      * @param array $context
      * @return array
      */
-    public function getContext(array $context)
+    public function getContext(array $context): array
     {
         $genesis = static::genesis();
 
