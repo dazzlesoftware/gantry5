@@ -2,6 +2,7 @@
 namespace Genesis;
 
 use DebugBar\DataCollector\ConfigCollector;
+use DebugBar\DataCollector\DataCollectorInterface;
 use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
@@ -19,22 +20,22 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Debugger
 {
-    protected static $instance;
+    protected static ?self $instance = null;
 
     /** @var JavascriptRenderer $renderer */
-    protected static $renderer;
+    protected static ?JavascriptRenderer $renderer = null;
 
     /** @var StandardDebugBar $debugbar */
-    protected static $debugbar;
+    protected static ?StandardDebugBar $debugbar = null;
 
-    protected static $errorHandler;
+    protected static mixed $errorHandler = null;
 
-    protected static $deprecations = [];
+    protected static array $deprecations = [];
 
     /**
      * @return static
      */
-    public static function instance()
+    public static function instance(): static
     {
         if (!self::$instance) {
             self::$instance = new static;
@@ -69,7 +70,7 @@ class Debugger
      * @return static
      * @throws \DebugBar\DebugBarException
      */
-    public static function setConfig(Config $config)
+    public static function setConfig(Config $config): static
     {
         if (self::$debugbar) {
             self::$debugbar->addCollector(new ConfigCollector($config->toArray(), 'Config'));
@@ -85,7 +86,7 @@ class Debugger
      * @return static
      * @throws \DebugBar\DebugBarException
      */
-    public static function setLocator(UniformResourceLocator $locator)
+    public static function setLocator(UniformResourceLocator $locator): static
     {
         if (self::$debugbar) {
             $paths = $locator->getPaths(null);
@@ -100,7 +101,7 @@ class Debugger
      *
      * @return static
      */
-    public static function assets()
+    public static function assets(): static
     {
         if (self::$debugbar) {
             $genesis = Genesis::instance();
@@ -139,7 +140,7 @@ class Debugger
      * @return static
      * @throws \DebugBar\DebugBarException
      */
-    public static function addCollector($collector)
+    public static function addCollector(DataCollectorInterface $collector): static
     {
         if (self::$debugbar) {
             self::$debugbar->addCollector($collector);
@@ -156,7 +157,7 @@ class Debugger
      * @return \DebugBar\DataCollector\DataCollectorInterface|null
      * @throws \DebugBar\DebugBarException
      */
-    public static function getCollector($collector)
+    public static function getCollector(string $collector): ?DataCollectorInterface
     {
         if (!self::$debugbar) {
             return null;
@@ -170,7 +171,7 @@ class Debugger
      *
      * @return string
      */
-    public static function render()
+    public static function render(): string
     {
         if (!self::$debugbar) {
             return '';
@@ -186,7 +187,7 @@ class Debugger
      *
      * @return static
      */
-    public static function sendDataInHeaders()
+    public static function sendDataInHeaders(): static
     {
         if (self::$debugbar) {
             self::addDeprecations();
@@ -204,7 +205,7 @@ class Debugger
      * @param string|null $description
      * @return static
      */
-    public static function startTimer($name, $description = null)
+    public static function startTimer(string $name, ?string $description = null): static
     {
         if (self::$debugbar) {
             self::$debugbar['time']->startMeasure($name, $description);
@@ -219,7 +220,7 @@ class Debugger
      * @param string $name
      * @return static
      */
-    public static function stopTimer($name)
+    public static function stopTimer(string $name): static
     {
         if (self::$debugbar) {
             self::$debugbar['time']->stopMeasure($name);
@@ -235,7 +236,7 @@ class Debugger
      * @param string $label
      * @return static
      */
-    public static function addMessage($message, $label = 'info', $isString = true)
+    public static function addMessage(mixed $message, string $label = 'info', bool $isString = true): static
     {
         if (self::$debugbar) {
             self::$debugbar['messages']->addMessage($message, $label, $isString);
@@ -250,7 +251,7 @@ class Debugger
      * @param \Exception $e
      * @return Debugger
      */
-    public static function addException(\Exception $e)
+    public static function addException(\Exception $e): static
     {
         if (self::$debugbar) {
             self::$debugbar['exceptions']->addException($e);
@@ -259,7 +260,7 @@ class Debugger
         return static::instance();
     }
 
-    public static function setErrorHandler()
+    public static function setErrorHandler(): void
     {
         self::$errorHandler = set_error_handler(
             [__CLASS__, 'deprecatedErrorHandler']
@@ -273,7 +274,7 @@ class Debugger
      * @param int $errline
      * @return bool
      */
-    public static function deprecatedErrorHandler($errno, $errstr, $errfile, $errline)
+    public static function deprecatedErrorHandler(int $errno, string $errstr, string $errfile, int $errline): bool
     {
         if ($errno !== E_USER_DEPRECATED) {
             if (self::$errorHandler) {
@@ -342,7 +343,7 @@ class Debugger
         return true;
     }
 
-    protected static function addDeprecations()
+    protected static function addDeprecations(): void
     {
         if (!self::$deprecations) {
             return;
@@ -360,7 +361,7 @@ class Debugger
         }
     }
 
-    protected static function getDepracatedMessage($deprecated)
+    protected static function getDepracatedMessage(array $deprecated): array
     {
         $scope = 'unknown';
         if (stripos($deprecated['message'], 'grav') !== false) {
@@ -398,7 +399,7 @@ class Debugger
         ];
     }
 
-    protected static function getFunction($trace)
+    protected static function getFunction(array $trace): string
     {
         if (!isset($trace['function'])) {
             return '';

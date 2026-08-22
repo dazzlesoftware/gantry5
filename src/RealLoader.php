@@ -29,9 +29,9 @@ use Composer\Autoload\ClassLoader;
 abstract class RealLoader
 {
     /** @var string */
-    protected static $errorMessagePhpMin = 'You are running PHP %s, but Genesis Framework needs at least PHP %s to run.';
+    protected static string $errorMessagePhpMin = 'You are running PHP %s, but Genesis Framework needs at least PHP %s to run.';
     /** @var string */
-    protected static $errorMessageGenesisLoaded = 'Attempting to load Genesis Framework multiple times.';
+    protected static string $errorMessageGenesisLoaded = 'Attempting to load Genesis Framework multiple times.';
 
     /**
      * Initializes Genesis and returns Composer ClassLoader.
@@ -40,7 +40,7 @@ abstract class RealLoader
      * @throws \RuntimeException
      * @throws \LogicException
      */
-    public static function getClassLoader()
+    public static function getClassLoader(): ClassLoader
     {
         // Fail safe version check for PHP <8.3.0.
         if (version_compare($phpVersion = PHP_VERSION, '8.3.0', '<')) {
@@ -68,7 +68,7 @@ abstract class RealLoader
      * @throws \LogicException
      * @internal
      */
-    protected static function autoload()
+    protected static function autoload(): ClassLoader
     {
         // Register platform specific overrides.
         if (defined('JVERSION') && defined('JPATH_ROOT')) {
@@ -126,7 +126,7 @@ abstract class RealLoader
      *
      * @param mixed $value
      */
-    private static function defineRuntimeConstant(string $genesisName, $value): void
+    private static function defineRuntimeConstant(string $genesisName, mixed $value): void
     {
         define($genesisName, $value);
     }
