@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -24,11 +26,11 @@ use DazzleSoftware\Toolbox\DI\Container;
 class Positions extends Collection
 {
     /** @var array|Position[] */
-    protected $items;
+    protected array $items = [];
     /** @var string */
-    protected $path;
+    protected string $path = 'genesis-positions://';
     /** @var Container */
-    protected $container;
+    protected Container $container;
 
     /**
      * Positions constructor.
@@ -44,7 +46,7 @@ class Positions extends Collection
      * @return $this
      * @throws \RuntimeException
      */
-    public function load($path = 'genesis-positions://')
+    public function load(string $path = 'genesis-positions://'): static
     {
         $this->path = $path;
         $positions = [];
@@ -94,7 +96,7 @@ class Positions extends Collection
      * @param array $data
      * @return $this
      */
-    public function import(array $data)
+    public function import(array $data): static
     {
         foreach ($data as $pos) {
             $list = [];
@@ -126,7 +128,7 @@ class Positions extends Collection
      * @param Position $item
      * @return $this
      */
-    public function add($item)
+    public function add(mixed $item): static
     {
         if ($item instanceof Position) {
             $this->items[$item->name] = $item;
@@ -142,7 +144,7 @@ class Positions extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function create($title = 'Untitled', $id = null)
+    public function create(string $title = 'Untitled', ?string $id = null): string
     {
         $name = strtolower(preg_replace('|[^a-z\d_-]|ui', '_', $id ?: $title));
 
@@ -165,7 +167,7 @@ class Positions extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function duplicate($id, $new = null)
+    public function duplicate(string $id, ?string $new = null): string
     {
         if (!isset($this->items[$id])) {
             throw new \RuntimeException(sprintf("Duplicating Position failed: '%s' not found.", $id), 400);
@@ -186,7 +188,7 @@ class Positions extends Collection
      * @return string
      * @throws \RuntimeException
      */
-    public function rename($id, $new)
+    public function rename(string $id, string $new): string
     {
         if (!isset($this->items[$id])) {
             throw new \RuntimeException(sprintf("Renaming Position failed: '%s' not found.", $id), 400);
@@ -199,7 +201,7 @@ class Positions extends Collection
         }
 
         $position = $this->items[$id];
-        $position->rename($new);
+        $position->rename($newId);
 
         return $position->name;
     }
@@ -209,7 +211,7 @@ class Positions extends Collection
      *
      * @throws \RuntimeException
      */
-    public function delete($id)
+    public function delete(string $id): void
     {
         if (!isset($this->items[$id])) {
             throw new \RuntimeException(sprintf("Deleting Position failed: '%s' not found.", $id), 400);
@@ -226,7 +228,7 @@ class Positions extends Collection
      *
      * @return string
      */
-    protected function findFreeName($id)
+    protected function findFreeName(string $id): string
     {
         if (!isset($this->items[$id])) {
             return $id;

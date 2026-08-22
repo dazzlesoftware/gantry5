@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -26,20 +28,20 @@ namespace Genesis\Component\Gettext;
 class Gettext
 {
     /** @var int */
-    public $pos = 0;
+    public int $pos = 0;
     /** @var string */
-    public $str;
+    public string $str = '';
     /** @var int */
-    public $len;
+    public int $len = 0;
     /** @var string */
-    public $endian = 'V';
+    public string $endian = 'V';
 
     /**
      * @param string $string
      * @return array
      * @throws \Exception
      */
-    public function parse($string)
+    public function parse(string $string): array
     {
         $this->str = $string;
         $this->len = strlen($string);
@@ -87,7 +89,7 @@ class Gettext
     /**
      * @return int|false
      */
-    protected function readInt()
+    protected function readInt(): int|false
     {
         $read = $this->read(4);
         if ($read === false) {
@@ -96,23 +98,32 @@ class Gettext
 
         $read = unpack($this->endian, $read);
 
-        return array_shift($read);
+        if ($read === false) {
+            return false;
+        }
+
+        return (int) array_shift($read);
     }
 
     /**
      * @param int $count
      * @return array
      */
-    protected function readIntArray($count)
+    protected function readIntArray(int $count): array
     {
-        return unpack($this->endian . $count, $this->read(4 * $count));
+        $data = $this->read(4 * $count);
+        if ($data === false) {
+            return [];
+        }
+
+        return unpack($this->endian . $count, $data) ?: [];
     }
 
     /**
      * @param int $bytes
      * @return string|false
      */
-    private function read($bytes)
+    private function read(int $bytes): string|false
     {
         $data = substr($this->str, $this->pos, $bytes);
         $this->seek($this->pos + $bytes);
@@ -124,9 +135,9 @@ class Gettext
      * @param int $pos
      * @return int
      */
-    private function seek($pos)
+    private function seek(int $pos): int
     {
-        $this->pos = max($this->len, $pos);
+        $this->pos = min($this->len, max(0, $pos));
 
         return $this->pos;
     }

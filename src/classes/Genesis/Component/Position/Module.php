@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,14 +26,14 @@ class Module implements \ArrayAccess
     use NestedArrayAccessWithGetters, Export;
 
     /** @var string */
-    public $name;
+    public ?string $name;
     /** @var string|null */
-    public $position;
+    public ?string $position;
     /** @var string */
-    public $assigned;
+    public string $assigned;
 
     /** @var array */
-    protected $items;
+    protected array $items = [];
 
     /**
      * Module constructor.
@@ -40,7 +42,7 @@ class Module implements \ArrayAccess
      * @param string $position
      * @param array $data
      */
-    public function __construct($name, $position = null, ?array $data = null)
+    public function __construct(string $name, ?string $position = null, ?array $data = null)
     {
         $this->name = $name;
         $this->position = $position;
@@ -56,7 +58,7 @@ class Module implements \ArrayAccess
      * @param array $data
      * @return $this
      */
-    public function update(array $data)
+    public function update(array $data): static
     {
         $this->init($data);
 
@@ -70,7 +72,7 @@ class Module implements \ArrayAccess
      * @param string $name
      * @return $this
      */
-    public function save($name = null, $position = null)
+    public function save(?string $name = null, ?string $position = null): static
     {
         $this->name = $name ?: $this->name;
         $this->position = $position ?: $this->position;
@@ -89,7 +91,7 @@ class Module implements \ArrayAccess
      *
      * @return $this
      */
-    public function delete()
+    public function delete(): static
     {
         $file = $this->file(true);
         if ($file->exists()) {
@@ -104,7 +106,7 @@ class Module implements \ArrayAccess
      *
      * @return bool
      */
-    public function exists()
+    public function exists(): bool
     {
         return $this->name ? $this->file()->exists() : false;
     }
@@ -112,12 +114,12 @@ class Module implements \ArrayAccess
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return  ['position' => $this->position, 'id' => $this->name] + $this->items;
     }
 
-    protected function load()
+    protected function load(): void
     {
         $file = $this->file();
         $this->init((array)$file->content());
@@ -127,7 +129,7 @@ class Module implements \ArrayAccess
     /**
      * @param array $data
      */
-    protected function init($data)
+    protected function init(array $data): void
     {
         unset($data['id'], $data['position']);
 
@@ -151,7 +153,7 @@ class Module implements \ArrayAccess
      * @param bool $save
      * @return CompiledYamlFile
      */
-    protected function file($save = false)
+    protected function file(bool $save = false): CompiledYamlFile
     {
         $position = $this->position ?: '_unassigned_';
 
@@ -167,11 +169,11 @@ class Module implements \ArrayAccess
     /**
      * Find unused name with number appended.
      */
-    protected function findFreeName()
+    protected function findFreeName(): string
     {
         $position = $this->position ?: '_unassigned_';
-        $name = $this->get('type');
-        $name = $name === 'particle' ? $this->get('options.type') : $name;
+        $name = (string) $this->get('type');
+        $name = $name === 'particle' ? (string) $this->get('options.type') : $name;
 
         /** @var UniformResourceLocator $locator */
         $locator = Genesis::instance()['locator'];
