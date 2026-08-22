@@ -11,6 +11,7 @@ namespace Genesis\Framework;
 
 use Genesis\Component\Theme\AbstractTheme;
 use Genesis\Component\Theme\ThemeTrait;
+use Genesis\Joomla\EventDispatcher;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
@@ -183,8 +184,8 @@ class Theme extends AbstractTheme
 
         PluginHelper::importPlugin('genesis');
 
-        $application->triggerEvent('onGenesisThemeInit', ['theme' => $this]);
-        $application->triggerEvent('onGenesisThemeInit', ['theme' => $this]);
+        EventDispatcher::dispatch($application, 'onGenesisThemeInit', ['theme' => $this]);
+        EventDispatcher::dispatch($application, 'onGenesisThemeInit', ['theme' => $this]);
     }
 
     /**

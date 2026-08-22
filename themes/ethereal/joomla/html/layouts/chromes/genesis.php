@@ -9,43 +9,44 @@
 
 defined('_JEXEC') or die;
 
-/**
- * Genesis Module Chrome for Joomla 4
- */
-
 use Joomla\Utilities\ArrayHelper;
 
 $module  = $displayData['module'];
 $params  = $displayData['params'];
 $attribs = $displayData['attribs'];
 
-if ($module->content === null || $module->content === '') {
+if ((string) $module->content === '') {
     return;
 }
 
-$moduleTag              = $params->get('module_tag', 'div');
+$moduleTag              = htmlspecialchars($params->get('module_tag', 'div'), ENT_QUOTES, 'UTF-8');
 $moduleAttribs          = [];
 $moduleAttribs['class'] = $module->position . ' moduletable ' . htmlspecialchars($params->get('moduleclass_sfx', ''), ENT_QUOTES, 'UTF-8');
 $headerTag              = htmlspecialchars($params->get('header_tag', 'h3'), ENT_QUOTES, 'UTF-8');
 $headerClass            = htmlspecialchars($params->get('header_class', 'g-title'), ENT_QUOTES, 'UTF-8');
 $headerAttribs          = [];
-$headerAttribs['class'] = $headerClass;
 
-// Only add aria if the moduleTag is not a div
-if ($moduleTag !== 'div')
-{
-    if ($module->showtitle) :
+if ($headerClass !== '') {
+    $headerAttribs['class'] = $headerClass;
+}
+
+if (!empty($attribs['class'])) {
+    $moduleAttribs['class'] .= ' ' . htmlspecialchars($attribs['class'], ENT_QUOTES, 'UTF-8');
+}
+
+if ($moduleTag !== 'div') {
+    if ((bool) $module->showtitle) {
         $moduleAttribs['aria-labelledby'] = 'mod-' . $module->id;
         $headerAttribs['id']              = 'mod-' . $module->id;
-    else:
-        $moduleAttribs['aria-label'] = $module->title;
-    endif;
+    } else {
+        $moduleAttribs['aria-label'] = htmlspecialchars($module->title, ENT_QUOTES, 'UTF-8');
+    }
 }
 
 $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' . $module->title . '</' . $headerTag . '>';
 ?>
 <<?php echo $moduleTag; ?> <?php echo ArrayHelper::toString($moduleAttribs); ?>>
-    <?php if ($module->showtitle) : ?>
+    <?php if ((bool) $module->showtitle) : ?>
         <?php echo $header; ?>
     <?php endif; ?>
     <?php echo $module->content; ?>

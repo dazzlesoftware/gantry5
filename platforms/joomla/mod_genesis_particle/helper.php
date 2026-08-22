@@ -14,6 +14,7 @@ use Genesis\Debugger;
 use Genesis\Framework\Genesis;
 use Genesis\Framework\Platform;
 use Genesis\Framework\Theme;
+use Genesis\Joomla\EventDispatcher;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
@@ -74,7 +75,7 @@ class ModGenesisParticleHelper
         $app = Factory::getApplication();
         // Trigger the onRenderModule event.
         if ($app->get('dispatcher')) {
-            $app->get('dispatcher')->triggerEvent('onRenderModule', ['module' => &$module, 'attribs' => &$attribs]);
+            EventDispatcher::dispatch($app, 'onRenderModule', ['subject' => $module, 'attributes' => $attribs]);
         }
 
         $params = new Registry($module->params);

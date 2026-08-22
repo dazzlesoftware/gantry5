@@ -9,6 +9,5 @@
 
 defined('_JEXEC') or die;
 
-// Joomla 5: use core system message layout
+// Delegate to Joomla so message markup, accessibility, and web assets stay current.
 include JPATH_ROOT . '/layouts/joomla/system/message.php';
-return;

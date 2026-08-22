@@ -8,10 +8,9 @@
  */
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Application\CMSApplication;
-use Joomla\CMS\Factory;
+use Joomla\CMS\Event\GenericEvent;
 use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\Event\DispatcherInterface;
+use Joomla\Event\SubscriberInterface;
 
 // Quick check to prevent fatal error in unsupported Joomla admin.
 if (!class_exists(CMSPlugin::class)) {
@@ -21,30 +20,20 @@ if (!class_exists(CMSPlugin::class)) {
 /**
  * Class plgGenesisPreset
  */
-class plgGenesisPreset extends CMSPlugin
+class plgGenesisPreset extends CMSPlugin implements SubscriberInterface
 {
-    /** @var CMSApplication */
-    protected $app;
-
-    /**
-     * plgGenesisPreset constructor.
-     * @param DispatcherInterface $subject
-     * @param array $config
-     */
-    public function __construct(&$subject, $config = array())
+    public static function getSubscribedEvents(): array
     {
-        // Do not load if Genesis libraries are not installed or initialised.
-        if (!class_exists('Genesis\Loader')) return;
+        return [
+            'onGenesisThemeInit' => 'onGenesisThemeInit',
+            'onGenesisUpdateCss' => 'onGenesisUpdateCss',
+        ];
+    }
 
-        parent::__construct($subject, $config);
-
-        // Get the application if not done by JPlugin. This may happen during upgrades from Joomla 2.5.
-        if (!$this->app) {
-            $this->app = Factory::getApplication();
-        }
-
+    public function initialise(): void
+    {
         // Always load language.
-        $language = $this->app->getLanguage();
+        $language = $this->getApplication()->getLanguage();
 
         $language->load('com_genesis.sys')
         || $language->load('com_genesis.sys', JPATH_ADMINISTRATOR . '/components/com_genesis');
@@ -56,10 +45,12 @@ class plgGenesisPreset extends CMSPlugin
      * @param object $theme
      * @throws Exception
      */
-    public function onGenesisThemeInit($theme)
+    public function onGenesisThemeInit(GenericEvent $event): void
     {
-        if ($this->app->isClient('site')) {
-            $input = $this->app->input;
+        $theme = $event->getArgument('theme');
+
+        if ($this->getApplication()->isClient('site')) {
+            $input = $this->getApplication()->getInput();
 
             $cookie = md5($theme->name);
             $presetVar = $this->params->get('preset', 'presets');
@@ -91,8 +82,9 @@ class plgGenesisPreset extends CMSPlugin
     /**
      * @param object $theme
      */
-    public function onGenesisUpdateCss($theme)
+    public function onGenesisUpdateCss(GenericEvent $event): void
     {
+        $theme = $event->getArgument('theme');
         $cookie = md5($theme->name);
 
         $this->updateCookie($cookie, false, time() - 42000);
@@ -106,10 +98,10 @@ class plgGenesisPreset extends CMSPlugin
      */
     protected function updateCookie($name, $value, $expire = 0)
     {
-        $path   = $this->app->get('cookie_path', '/');
-        $domain = $this->app->get('cookie_domain');
+        $path   = $this->getApplication()->get('cookie_path', '/');
+        $domain = $this->getApplication()->get('cookie_domain');
 
-        $input = $this->app->input;
+        $input = $this->getApplication()->getInput();
         $input->cookie->set($name, $value, $expire, $path, $domain);
     }
 }

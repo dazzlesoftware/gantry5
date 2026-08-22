@@ -16,7 +16,7 @@ use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
-use Joomla\CMS\Table\Table;
+use Joomla\CMS\Table\Extension;
 use Joomla\Filesystem\Folder;
 use Joomla\Registry\Registry;
 
@@ -220,7 +220,7 @@ class Pkg_GenesisInstallerScript
                 $search +=  array('folder' => $group);
             }
 
-            $extension = Table::getInstance('extension');
+            $extension = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
 
             if (!$extension->load($search)) {
                 continue;
@@ -238,7 +238,7 @@ class Pkg_GenesisInstallerScript
 
     protected function adjustTemplateSettings()
     {
-        $extension = Table::getInstance('extension');
+        $extension = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
         if (!$extension->load(array('type' => 'component', 'element' => 'com_templates'))) {
             return;
         }

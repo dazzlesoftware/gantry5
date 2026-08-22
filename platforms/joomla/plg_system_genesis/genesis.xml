@@ -13,6 +13,7 @@
     <files>
         <filename plugin="genesis">genesis.php</filename>
         <filename>MD5SUMS</filename>
+        <folder plugin="genesis">services</folder>
         <folder>forms</folder>
         <folder>language</folder>
     </files>

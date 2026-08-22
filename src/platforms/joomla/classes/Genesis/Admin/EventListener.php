@@ -15,11 +15,13 @@ use Genesis\Framework\Genesis;
 use Genesis\Framework\Menu;
 use Genesis\Framework\Outlines;
 use Genesis\Joomla\CacheHelper;
+use Genesis\Joomla\EventDispatcher as JoomlaEventDispatcher;
 use Genesis\Joomla\Manifest;
 use Genesis\Joomla\MenuHelper;
 use Genesis\Joomla\StyleHelper;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 use Genesis\Component\Event\Event;
@@ -62,7 +64,7 @@ class EventListener implements EventSubscriberInterface
      */
     public function onGlobalSave(Event $event)
     {
-        $this->triggerEvent('onGenesisSaveConfig', [$event->data]);
+        $this->triggerEvent('onGenesisSaveConfig', ['data' => $event->data]);
     }
 
     /**
@@ -167,7 +169,7 @@ class EventListener implements EventSubscriberInterface
         /** @var Genesis $genesis */
         $genesis = $event->Genesis;
         if ($genesis->authorize('menu.edit') && !$menuType->save($options)) {
-            throw new \RuntimeException('Saving menu failed: '. $menuType->getError(), 400);
+            throw new \RuntimeException(Text::_('GENESIS_ERROR_MENU_TYPE_SAVE_FAILED'), 400);
         }
 
         unset($menu['settings']);
@@ -293,7 +295,7 @@ class EventListener implements EventSubscriberInterface
             if ($modified && $genesis->authorize('menu.edit')) {
                 $table->params = (string) $params;
                 if (!$table->check() || !$table->store()) {
-                    throw new \RuntimeException("Failed to save /{$key}: {$table->getError()}", 400);
+                    throw new \RuntimeException(Text::sprintf('GENESIS_ERROR_PATH_SAVE_FAILED', "/{$key}"), 400);
                 }
             }
 
@@ -390,14 +392,14 @@ class EventListener implements EventSubscriberInterface
         /** @var CMSApplication $app */
         $app = Factory::getApplication();
 
-        $app->triggerEvent($eventName, $args);
+        JoomlaEventDispatcher::dispatch($app, $eventName, $args);
         $legacyEvents = [
             'onGenesisAdminInit' => 'onGenesisAdminInit',
             'onGenesisSaveConfig' => 'onGenesisSaveConfig',
             'onGenesisUpdateCss' => 'onGenesisUpdateCss',
         ];
         if (isset($legacyEvents[$eventName])) {
-            $app->triggerEvent($legacyEvents[$eventName], $args);
+            JoomlaEventDispatcher::dispatch($app, $legacyEvents[$eventName], $args);
         }
     }
 }

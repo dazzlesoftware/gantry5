@@ -20,6 +20,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\User\User;
+use Joomla\CMS\User\UserFactoryInterface;
 use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 use Joomla\Component\Content\Site\Helper\RouteHelper;
 use Joomla\Component\Content\Site\Model\ArticleModel;
@@ -80,7 +81,7 @@ class Content extends AbstractObject
      */
     public function author()
     {
-        return User::getInstance($this->created_by);
+        return Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById((int) $this->created_by);
     }
 
     /**

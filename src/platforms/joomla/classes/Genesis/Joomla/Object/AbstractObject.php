@@ -9,10 +9,11 @@
 
 namespace Genesis\Joomla\Object;
 
+use Genesis\Joomla\EventDispatcher;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use Joomla\Database\DatabaseInterface;
-use Joomla\CMS\Object\CMSObject;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseQuery;
@@ -20,7 +21,7 @@ use Joomla\Database\DatabaseQuery;
 /**
  * Abstract base class for database objects.
  */
-abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
+abstract class AbstractObject extends \stdClass
 {
     /** @var array If you don't have global instance ids, override this in extending class. */
     static protected $instances = [];
@@ -40,6 +41,8 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
     protected $_readonly = false;
     /** @var bool */
     protected $_initialized = false;
+    /** @var array */
+    protected $_errors = [];
 
     /**
      * Class constructor, overridden in descendant classes.
@@ -55,11 +58,51 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
             $properties = null;
         }
 
-        parent::__construct($properties);
+        if ($properties !== null) {
+            $this->setProperties($properties);
+        }
 
         if ($identifier) {
             $this->load($identifier);
         }
+    }
+
+    public function get($property, $default = null)
+    {
+        return $this->{$property} ?? $default;
+    }
+
+    public function set($property, $value = null)
+    {
+        $previous = $this->{$property} ?? null;
+        $this->{$property} = $value;
+
+        return $previous;
+    }
+
+    public function setProperties($properties): bool
+    {
+        if (!is_array($properties) && !is_object($properties)) {
+            return false;
+        }
+
+        foreach ((array) $properties as $key => $value) {
+            $this->{$key} = $value;
+        }
+
+        return true;
+    }
+
+    public function getError($index = null, $toString = true)
+    {
+        $error = $index === null ? end($this->_errors) : ($this->_errors[$index] ?? false);
+
+        return $toString && $error instanceof \Throwable ? $error->getMessage() : $error;
+    }
+
+    public function setError($error): void
+    {
+        $this->_errors[] = $error;
     }
 
     /**
@@ -274,7 +317,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
 
         // Check the table object.
         if (!$table->check()) {
-            $this->setError($table->getError());
+            $this->setError(Text::_('GENESIS_ERROR_OBJECT_VALIDATION_FAILED'));
             return false;
         }
 
@@ -285,15 +328,15 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
         PluginHelper::importPlugin('content');
 
         // Trigger the onContentBeforeSave event.
-        $result = $application->triggerEvent('onContentBeforeSave', ['com_genesis.' . static::class, $table, $isNew]);
+        $result = EventDispatcher::dispatch($application, 'onContentBeforeSave', ['com_genesis.' . static::class, $table, $isNew]);
         if (in_array(false, $result, true)) {
-            $this->setError($table->getError());
+            $this->setError(Text::_('GENESIS_ERROR_OBJECT_UPDATE_REJECTED'));
             return false;
         }
 
         // Store the data.
         if (!$table->store()) {
-            $this->setError($table->getError());
+            $this->setError(Text::_('GENESIS_ERROR_OBJECT_STORE_FAILED'));
             return false;
         }
 
@@ -307,7 +350,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
         }
 
         // Trigger the onContentAfterSave event.
-        $application->triggerEvent('onContentAfterSave', ['com_genesis.' . static::class, $table, $isNew]);
+        EventDispatcher::dispatch($application, 'onContentAfterSave', ['com_genesis.' . static::class, $table, $isNew]);
 
         return true;
     }
@@ -338,20 +381,20 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
         PluginHelper::importPlugin('content');
 
         // Trigger the onContentBeforeDelete event.
-        $result = $application->triggerEvent('onContentBeforeDelete', ['com_genesis.' . static::class, $table]);
+        $result = EventDispatcher::dispatch($application, 'onContentBeforeDelete', ['com_genesis.' . static::class, $table]);
         if (in_array(false, $result, true)) {
-            $this->setError($table->getError());
+            $this->setError(Text::_('GENESIS_ERROR_OBJECT_DELETE_REJECTED'));
             return false;
         }
 
         if (!$table->delete()) {
-            $this->setError($table->getError());
+            $this->setError(Text::_('GENESIS_ERROR_OBJECT_DELETE_FAILED'));
             return false;
         }
         $this->_exists = false;
 
         // Trigger the onContentAfterDelete event.
-        $application->triggerEvent('onContentAfterDelete', ['com_genesis.' . static::class, $table]);
+        EventDispatcher::dispatch($application, 'onContentAfterDelete', ['com_genesis.' . static::class, $table]);
 
         return true;
     }
@@ -515,7 +558,19 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
      */
     protected static function getTable()
     {
-        return Table::getInstance(static::$table, static::$tablePrefix);
+        $database = Factory::getContainer()->get(DatabaseInterface::class);
+
+        return match (static::$table) {
+            'Category' => new \Joomla\CMS\Table\Category($database),
+            'Content' => new \Joomla\CMS\Table\Content($database),
+            'Menu' => new \Joomla\CMS\Table\Menu($database),
+            'Module' => new \Joomla\CMS\Table\Module($database),
+            'ContactTable' => Factory::getApplication()
+                ->bootComponent('com_contact')
+                ->getMVCFactory()
+                ->createTable('Contact', 'Administrator'),
+            default => throw new \UnexpectedValueException(Text::sprintf('GENESIS_ERROR_UNSUPPORTED_TABLE_TYPE', static::$table)),
+        };
     }
 
     /**

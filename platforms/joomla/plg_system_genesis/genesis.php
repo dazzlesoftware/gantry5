@@ -8,18 +8,20 @@
  */
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Document\HtmlDocument;
+use Joomla\CMS\Event\AbstractEvent;
+use Joomla\CMS\Event\GenericEvent;
+use Joomla\CMS\Event\Model;
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
-use Joomla\CMS\Table\Table;
+use Joomla\CMS\Table\Extension;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
-use Joomla\Event\DispatcherInterface;
 use Joomla\Registry\Registry;
+use Joomla\Event\SubscriberInterface;
 use Genesis\Loader;
 use Genesis\Component\Config\Config;
 use Genesis\Component\File\CompiledYamlFile;
@@ -33,6 +35,7 @@ use Genesis\Framework\Menu;
 use Genesis\Framework\Outlines;
 use Genesis\Framework\Platform;
 use Genesis\Framework\Theme;
+use Genesis\Joomla\EventDispatcher;
 use Genesis\Joomla\CacheHelper;
 use Genesis\Joomla\StyleHelper;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
@@ -45,28 +48,119 @@ if (!class_exists(CMSPlugin::class)) {
 /**
  * Class plgSystemGenesis
  */
-class plgSystemGenesis extends CMSPlugin
+class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
 {
     protected $autoloadLanguage = true;
 
-    /** @var CMSApplication */
-    protected $app;
     protected $styles;
     protected $modules;
 
-    /**
-     * plgSystemGenesis constructor.
-     * @param DispatcherInterface $subject
-     * @param array $config
-     * @throws Exception
-     */
-    public function __construct(&$subject, $config = array())
+    public static function getSubscribedEvents(): array
     {
-        $this->_name = isset($config['name']) ? $config['name'] : 'genesis';
-        $this->_type = isset($config['type']) ? $config['type'] : 'system';
+        return [
+            'onGenesisGlobalConfig' => 'handleGenesisGlobalConfig',
+            'onAfterRoute' => 'handleAfterRoute',
+            'onAfterDispatch' => 'handleAfterDispatch',
+            'onAfterRender' => 'handleAfterRender',
+            'onRenderModule' => 'handleRenderModule',
+            'onAjaxParticle' => 'handleAjaxParticle',
+            'onGenesisSaveConfig' => 'handleGenesisSaveConfig',
+            'onContentBeforeSave' => 'handleContentBeforeSave',
+            'onExtensionBeforeSave' => 'handleExtensionBeforeSave',
+            'onExtensionAfterSave' => 'handleExtensionAfterSave',
+            'onExtensionBeforeDelete' => 'handleExtensionBeforeDelete',
+            'onContentPrepareData' => 'handleContentPrepareData',
+            'onContentPrepareForm' => 'handleContentPrepareForm',
+        ];
+    }
 
-        $this->app = Factory::getApplication();
+    public function handleGenesisGlobalConfig(GenericEvent $event): void
+    {
+        $global = $event->getArgument('global');
+        $this->onGenesisGlobalConfig($global);
+        $event->setArgument('global', $global);
+    }
 
+    public function handleAfterRoute(AbstractEvent $event): void
+    {
+        $this->onAfterRoute();
+    }
+
+    public function handleAfterDispatch(AbstractEvent $event): void
+    {
+        $this->onAfterDispatch();
+    }
+
+    public function handleAfterRender(AbstractEvent $event): void
+    {
+        $this->onAfterRender();
+    }
+
+    public function handleRenderModule(AbstractEvent $event): void
+    {
+        $module = $event->getArgument('subject');
+        $attribs = $event->getArgument('attributes');
+        $this->onRenderModule($module, $attribs);
+
+        if (method_exists($event, 'updateAttributes')) {
+            $event->updateAttributes($attribs);
+        } else {
+            $event->setArgument('attributes', $attribs);
+        }
+    }
+
+    public function handleAjaxParticle(GenericEvent $event): void
+    {
+        $result = $event->getArgument('result', []);
+        $result[] = $this->onAjaxParticle();
+        $event->setArgument('result', $result);
+    }
+
+    public function handleGenesisSaveConfig(GenericEvent $event): void
+    {
+        $this->onGenesisSaveConfig((array) $event->getArgument('data', []));
+    }
+
+    public function handleContentBeforeSave(Model\BeforeSaveEvent $event): void
+    {
+        $this->onContentBeforeSave($event->getContext(), $event->getItem(), $event->getIsNew(), $event->getData());
+    }
+
+    public function handleExtensionBeforeSave(Model\BeforeSaveEvent $event): void
+    {
+        $this->onExtensionBeforeSave($event->getContext(), $event->getItem(), $event->getIsNew());
+    }
+
+    public function handleExtensionAfterSave(Model\AfterSaveEvent $event): void
+    {
+        $this->onExtensionAfterSave($event->getContext(), $event->getItem(), $event->getIsNew());
+    }
+
+    public function handleExtensionBeforeDelete(Model\BeforeDeleteEvent $event): void
+    {
+        $result = $this->onExtensionBeforeDelete($event->getContext(), $event->getItem());
+        $event->addResult($result);
+    }
+
+    public function handleContentPrepareData(Model\PrepareDataEvent $event): void
+    {
+        $this->onContentPrepareData($event->getContext(), $event->getData());
+    }
+
+    public function handleContentPrepareForm(Model\PrepareFormEvent $event): void
+    {
+        $this->onContentPrepareForm($event->getForm(), $event->getData());
+    }
+
+    public function __construct(array $config = [])
+    {
+        $config['name'] = $config['name'] ?? 'genesis';
+        $config['type'] = $config['type'] ?? 'system';
+        parent::__construct($config);
+    }
+
+    public function initialise(): void
+    {
         $this->loadLanguage('plg_system_genesis.sys');
 
         // Use Joomla's class loader instead of JLoader which is deprecated in Joomla 5
@@ -74,8 +168,8 @@ class plgSystemGenesis extends CMSPlugin
 
         // Detect Genesis Framework or fail gracefully.
         if (!class_exists('Genesis\Loader')) {
-            if ($this->app->isClient('administrator')) {
-                $this->app->enqueueMessage(
+            if ($this->getApplication()->isClient('administrator')) {
+                $this->getApplication()->enqueueMessage(
                     Text::sprintf('PLG_SYSTEM_GENESIS_LIBRARY_MISSING', Text::_('PLG_SYSTEM_GENESIS')),
                     'warning'
                 );
@@ -87,8 +181,6 @@ class plgSystemGenesis extends CMSPlugin
             error_reporting(0);
         }
 
-        // Finish initialization and register all the events.
-        parent::__construct($subject, $config);
     }
 
     /**
@@ -103,10 +195,10 @@ class plgSystemGenesis extends CMSPlugin
 
     public function onAfterRoute()
     {
-        if ($this->app->isClient('site')) {
+        if ($this->getApplication()->isClient('site')) {
             $this->onAfterRouteSite();
 
-        } elseif ($this->app->isClient('administrator')) {
+        } elseif ($this->getApplication()->isClient('administrator')) {
             $this->onAfterRouteAdmin();
         }
     }
@@ -123,10 +215,10 @@ class plgSystemGenesis extends CMSPlugin
 
     public function onAfterRender()
     {
-        if ($this->app->isClient('site') && class_exists('Genesis\Framework\Genesis')) {
+        if ($this->getApplication()->isClient('site') && class_exists('Genesis\Framework\Genesis')) {
             $this->onAfterRenderSite();
 
-        } elseif ($this->app->isClient('administrator')) {
+        } elseif ($this->getApplication()->isClient('administrator')) {
             $this->onAfterRenderAdmin();
         }
     }
@@ -137,7 +229,7 @@ class plgSystemGenesis extends CMSPlugin
      */
     public function onRenderModule(&$module, &$attribs)
     {
-        if (!$this->app->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
+        if (!$this->getApplication()->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
             return;
         }
 
@@ -160,11 +252,11 @@ class plgSystemGenesis extends CMSPlugin
      */
     public function onAjaxParticle()
     {
-        if (!$this->app->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
+        if (!$this->getApplication()->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
             return null;
         }
 
-        $input = $this->app->input;
+        $input = $this->getApplication()->input;
         $format = strtolower($input->getCmd('format', 'html'));
 
         if (!in_array($format, ['json', 'raw', 'debug'], true)) {
@@ -199,7 +291,7 @@ class plgSystemGenesis extends CMSPlugin
 
         if ($identifier === 'main-particle') {
             $type = $identifier;
-            $menu = $this->app->getMenu();
+            $menu = $this->getApplication()->getMenu();
             $menuItem = $menu ? $menu->getActive() : null;
             $params = $menuItem ? $menuItem->getParams() : new Registry;
 
@@ -253,7 +345,7 @@ class plgSystemGenesis extends CMSPlugin
      */
     private function onAfterRouteSite()
     {
-        $templateName = $this->app->getTemplate();
+        $templateName = $this->getApplication()->getTemplate();
 
         if (!$this->isGenesisTemplate($templateName)) {
             return;
@@ -326,7 +418,7 @@ class plgSystemGenesis extends CMSPlugin
      */
     private function onAfterRouteAdmin()
     {
-        $input = $this->app->input;
+        $input = $this->getApplication()->input;
 
         $option = $input->getCmd('option');
         $task   = $input->getCmd('task');
@@ -350,9 +442,9 @@ class plgSystemGenesis extends CMSPlugin
                     if ($task === 'style.edit') {
                         $theme = reset($selected);
                         $id = key($selected);
-                    $session = $this->app->getSession();
+                    $session = $this->getApplication()->getSession();
                     $token = $session::getFormToken();
-                        $this->app->redirect("index.php?option=com_genesis&view=configurations/{$id}/layout&theme={$theme}&{$token}=1");
+                        $this->getApplication()->redirect("index.php?option=com_genesis&view=configurations/{$id}/layout&theme={$theme}&{$token}=1");
                     }
                 }
             }
@@ -371,7 +463,7 @@ class plgSystemGenesis extends CMSPlugin
 
         $theme = $genesis['theme'];
 
-        $document = $this->app->getDocument();
+        $document = $this->getApplication()->getDocument();
         if ($document instanceof HtmlDocument) {
             $document->setHtml5(true);
         }
@@ -386,13 +478,13 @@ class plgSystemGenesis extends CMSPlugin
     {
         $genesis = Genesis::instance();
 
-        $html = $this->app->getBody();
+        $html = $this->getApplication()->getBody();
 
         /** @var Document $document */
         $document = $genesis['document'];
 
         // Only filter our streams. If there's an error (bad UTF8), fallback with original output.
-        $this->app->setBody($document::urlFilter($html, false, 0, true) ?: $html);
+        $this->getApplication()->setBody($document::urlFilter($html, false, 0, true) ?: $html);
     }
 
     /**
@@ -400,19 +492,19 @@ class plgSystemGenesis extends CMSPlugin
      */
     private function onAfterRenderAdmin()
     {
-        $document = $this->app->getDocument();
+        $document = $this->getApplication()->getDocument();
         $type   = $document->getType();
 
-        $option = $this->app->input->getString('option');
-        $view   = $this->app->input->getString('view', 'genesis');
-        $task   = $this->app->input->getString('task');
+        $option = $this->getApplication()->input->getString('option');
+        $view   = $this->getApplication()->input->getString('view', 'genesis');
+        $task   = $this->getApplication()->input->getString('task');
 
         if (($option === 'com_templates' || $option === 'com_advancedtemplates') && ($view === 'genesis' || $view === 'styles') && !$task && $type === 'html') {
             $this->styles = $this->getStyles();
 
-            $body = preg_replace_callback('/(<a\s[^>]*href=")([^"]*)("[^>]*>)(.*)(<\/a>)/siU', array($this, 'appendHtml'), $this->app->getBody());
+            $body = preg_replace_callback('/(<a\s[^>]*href=")([^"]*)("[^>]*>)(.*)(<\/a>)/siU', array($this, 'appendHtml'), $this->getApplication()->getBody());
 
-            $this->app->setBody($body);
+            $this->getApplication()->setBody($body);
         }
 
         if (($option === 'com_modules' || $option === 'com_advancedmodules') && (($view === 'genesis' || $view === 'modules') || empty($view)) && $type === 'html') {
@@ -426,7 +518,7 @@ class plgSystemGenesis extends CMSPlugin
 
             if (count($data) > 0) {
                 $this->modules = array();
-                $body = $this->app->getBody();
+                $body = $this->getApplication()->getBody();
 
                 foreach ($data as $module) {
                     $params   = json_decode($module->params, false);
@@ -442,7 +534,7 @@ class plgSystemGenesis extends CMSPlugin
                 }
 
 
-                $this->app->setBody($body);
+                $this->getApplication()->setBody($body);
             }
         }
     }
@@ -460,7 +552,7 @@ class plgSystemGenesis extends CMSPlugin
         $name = 'plg_' . $this->_type . '_' . $this->_name;
 
         // Initialise variables;
-        $table = Table::getInstance('Extension');
+        $table = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
 
         // Include the content plugins for the on save events.
         PluginHelper::importPlugin('extension');
@@ -475,18 +567,18 @@ class plgSystemGenesis extends CMSPlugin
 
         // Check the data.
         if (!$table->check()) {
-            throw new RuntimeException($table->getError());
+            throw new RuntimeException(Text::_('PLG_SYSTEM_GENESIS_ERROR_CONFIG_VALIDATION_FAILED'));
         }
 
         // Trigger the onContentBeforeSave event.
-        $result = $this->app->triggerEvent('onExtensionBeforeSave', array($name, $table, false));
+        $result = EventDispatcher::dispatch($this->getApplication(), 'onExtensionBeforeSave', array($name, $table, false));
         if (in_array(false, $result, true)) {
-            throw new RuntimeException($table->getError());
+            throw new RuntimeException(Text::_('PLG_SYSTEM_GENESIS_ERROR_CONFIG_REJECTED'));
         }
 
         // Store the data.
         if (!$table->store()) {
-            throw new RuntimeException($table->getError());
+            throw new RuntimeException(Text::_('PLG_SYSTEM_GENESIS_ERROR_CONFIG_STORE_FAILED'));
         }
 
         // Clean the cache.
@@ -496,7 +588,7 @@ class plgSystemGenesis extends CMSPlugin
         $this->params = $params;
 
         // Trigger the onExtensionAfterSave event.
-        $this->app->triggerEvent('onExtensionAfterSave', array($name, $table, false));
+        EventDispatcher::dispatch($this->getApplication(), 'onExtensionAfterSave', array($name, $table, false));
 
         return true;
     }
@@ -604,7 +696,7 @@ class plgSystemGenesis extends CMSPlugin
         try {
             $outlines->delete($table->id, false);
         } catch (Exception $e) {
-            $this->app->enqueueMessage($e->getMessage(), 'error');
+            $this->getApplication()->enqueueMessage($e->getMessage(), 'error');
             return false;
         }
 
@@ -650,9 +742,7 @@ class plgSystemGenesis extends CMSPlugin
     {
         // Check that we are manipulating a valid form.
         if (!($form instanceof \Joomla\CMS\Form\Form)) {
-            $this->_subject->setError('JERROR_NOT_A_FORM');
-
-            return false;
+            throw new UnexpectedValueException(Text::_('JERROR_NOT_A_FORM'));
         }
 
         $name = 'plg_' . $this->_type . '_' . $this->_name;

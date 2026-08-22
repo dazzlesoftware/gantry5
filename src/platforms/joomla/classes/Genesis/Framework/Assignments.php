@@ -17,7 +17,7 @@ use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Table\Table;
+use Joomla\CMS\Table\Extension;
 use Joomla\CMS\Version;
 use Joomla\Utilities\ArrayHelper;
 
@@ -120,7 +120,7 @@ class Assignments extends AbstractAssignments
         $active = array_keys($active);
 
         // Detect disabled template.
-        $extension = Table::getInstance('Extension');
+        $extension = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
 
         $template = Genesis::instance()['theme.name'];
         if ($extension->load(array('enabled' => 0, 'type' => 'template', 'element' => $template, 'client_id' => 0))) {
@@ -207,7 +207,7 @@ class Assignments extends AbstractAssignments
         $style->home = $value;
 
         if (!$style->check() || !$style->store()) {
-            throw new \RuntimeException($style->getError());
+            throw new \RuntimeException(Text::_('GENESIS_ERROR_STYLE_ASSIGNMENTS_STORE_FAILED'));
         }
 
         // Clean the cache.

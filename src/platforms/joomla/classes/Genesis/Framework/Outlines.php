@@ -9,6 +9,7 @@
 
 namespace Genesis\Framework;
 
+use Joomla\CMS\Language\Text;
 use Genesis\Admin\ThemeList;
 use Genesis\Component\Filesystem\Folder;
 use Genesis\Component\Outline\OutlineCollection;
@@ -139,12 +140,6 @@ class Outlines extends OutlineCollection
         $title = $installer->getStyleName($title);
         $style = $installer->addStyle($title);
 
-        $error = $style->getError();
-
-        if ($error) {
-            throw new \RuntimeException($error, 400);
-        }
-
         $presetId = (string) (isset($preset['preset']['name']) ? $preset['preset']['name'] : ($preset ?: 'default'));
 
         StyleHelper::update($style->id, $presetId);
@@ -232,11 +227,11 @@ class Outlines extends OutlineCollection
         $item->title = $title;
 
         if (!$item->check()) {
-            throw new \RuntimeException($item->getError(), 400);
+            throw new \RuntimeException(Text::_('GENESIS_ERROR_OUTLINE_VALIDATION_FAILED'), 400);
         }
 
         if (!$item->store()) {
-            throw new \RuntimeException($item->getError(), 500);
+            throw new \RuntimeException(Text::_('GENESIS_ERROR_OUTLINE_STORE_FAILED'), 500);
         }
 
         if (isset($this->items[$id])) {
@@ -271,13 +266,9 @@ class Outlines extends OutlineCollection
             }
 
             if ($deleteModel && !$model->delete($id)) {
-                $error = $model->getError();
-                // Well, Joomla can always send enqueue message instead!
-                if (!$error) {
-                    $messages = Factory::getApplication()->getMessageQueue();
-                    $message = reset($messages);
-                    $error = $message ? $message['message'] : 'Unknown error';
-                }
+                $messages = Factory::getApplication()->getMessageQueue();
+                $message = reset($messages);
+                $error = $message ? $message['message'] : 'Unknown error';
                 throw new \RuntimeException($error);
             }
         } catch (\Exception $e) {

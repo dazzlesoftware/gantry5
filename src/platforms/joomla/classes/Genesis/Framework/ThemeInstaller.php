@@ -25,7 +25,6 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Table\Extension;
 use Joomla\CMS\Table\MenuType;
-use Joomla\CMS\Table\Table;
 use Joomla\CMS\Version;
 use Joomla\Component\Menus\Administrator\Table\MenuTypeTable; // Joomla 4
 use Joomla\Component\Templates\Administrator\Table\StyleTable; // Joomla 4
@@ -84,7 +83,7 @@ class ThemeInstaller extends AbstractInstaller
         }
 
         /** @var Extension extension */
-        $this->extension = Table::getInstance('extension');
+        $this->extension = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
         $this->extension->load($id);
         $this->name = $this->extension->name;
     }
@@ -413,7 +412,7 @@ class ThemeInstaller extends AbstractInstaller
         $table->setLocation($parent_id, 'last-child');
 
         if (!$table->bind($item) || !$table->check() || !$table->store()) {
-            throw new \Exception($table->getError());
+            throw new \Exception(Text::_('GENESIS_ERROR_TEMPLATE_STYLE_STORE_FAILED'));
         }
 
         // Turn menu item into home, ignore errors.
@@ -495,7 +494,7 @@ class ThemeInstaller extends AbstractInstaller
         }
 
         if (!$table->store()) {
-            throw new \RuntimeException($table->getError());
+            throw new \RuntimeException(Text::_('GENESIS_ERROR_MENU_ITEM_STORE_FAILED'));
         }
 
         $this->actions["menu_{$type}_created"] = ['action' => 'menu_created', 'text' => Text::sprintf('GENESIS_INSTALLER_ACTION_MENU_CREATED', $title)];
@@ -517,7 +516,7 @@ class ThemeInstaller extends AbstractInstaller
             $success = $table->delete();
 
             if (!$success) {
-                Factory::getApplication()->enqueueMessage($table->getError(), 'error');
+                Factory::getApplication()->enqueueMessage(Text::_('GENESIS_ERROR_MENU_ITEM_DELETE_FAILED'), 'error');
             } else {
                 $this->actions["menu_{$type}_deleted"] = ['action' => 'menu_delete', 'text' => Text::_('GENESIS_INSTALLER_ACTION_MENU_DELETED', $table->title)];
             }

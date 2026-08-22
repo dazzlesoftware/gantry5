@@ -12,6 +12,7 @@
 
     <files>
         <filename plugin="preset">preset.php</filename>
+        <folder plugin="preset">services</folder>
         <folder>language</folder>
     </files>
 

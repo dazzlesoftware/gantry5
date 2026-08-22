@@ -9,7 +9,7 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\Event\DispatcherInterface;
+use Joomla\Event\SubscriberInterface;
 
 // Quick check to prevent fatal error in unsupported Joomla admin.
 if (!class_exists(CMSPlugin::class)) {
@@ -19,16 +19,16 @@ if (!class_exists(CMSPlugin::class)) {
 /**
  * Class plgSystemGenesis_Debugbar
  */
-class plgSystemGenesis_Debugbar extends CMSPlugin
+class plgSystemGenesis_Debugbar extends CMSPlugin implements SubscriberInterface
 {
-    /**
-     * plgSystemGenesis_Debugbar constructor.
-     * @param DispatcherInterface $subject
-     * @param array $config
-     */
-    public function __construct(&$subject, $config = array())
+    public static function getSubscribedEvents(): array
+    {
+        return [];
+    }
+
+    public function __construct(array $config = [])
     {
         require_once __DIR__ . '/Debugger.php';
-        parent::__construct($subject, $config);
+        parent::__construct($config);
     }
 }

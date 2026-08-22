@@ -12,12 +12,11 @@ use Genesis\Component\Filesystem\Streams;
 use Genesis\Framework\Genesis;
 use Genesis\Framework\Platform;
 use Genesis\Loader;
-use Joomla\CMS\Application\CMSApplication;
-use Joomla\CMS\Factory;
+use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
-use Joomla\Event\DispatcherInterface;
+use Joomla\Event\SubscriberInterface;
 
 // Quick check to prevent fatal error in unsupported Joomla admin.
 if (!class_exists(CMSPlugin::class)) {
@@ -27,32 +26,17 @@ if (!class_exists(CMSPlugin::class)) {
 /**
  * Class plgQuickiconGenesis
  */
-class plgQuickiconGenesis extends CMSPlugin
+class plgQuickiconGenesis extends CMSPlugin implements SubscriberInterface
 {
-    /** @var CMSApplication */
-    protected $app;
-
-    /**
-     * plgQuickiconGenesis constructor.
-     * @param DispatcherInterface $subject
-     * @param array $config
-     */
-    public function __construct(&$subject, $config = array())
+    public static function getSubscribedEvents(): array
     {
-        // Do not load if Genesis libraries are not installed or initialised.
-        if (!class_exists('Genesis\Loader')) {
-            return;
-        }
+        return ['onGetIcons' => 'onGetIcons'];
+    }
 
-        parent::__construct($subject, $config);
-
-        // Get the application if not done by JPlugin. This may happen during upgrades from Joomla 2.5.
-        if (!$this->app) {
-            $this->app = Factory::getApplication();
-        }
-
+    public function initialise(): void
+    {
         // Always load language.
-        $language = $this->app->getLanguage();
+        $language = $this->getApplication()->getLanguage();
 
         $language->load('com_genesis.sys')
         || $language->load('com_genesis.sys', JPATH_ADMINISTRATOR . '/components/com_genesis');
@@ -66,13 +50,18 @@ class plgQuickiconGenesis extends CMSPlugin
      * @param string $context
      * @return array|null
      */
-    public function onGetIcons($context)
+    public function onGetIcons(QuickIconsEvent $event): void
     {
-        $user = $this->app->getIdentity();
+        if (!class_exists('Genesis\Loader')) {
+            return;
+        }
+
+        $context = $event->getContext();
+        $user = $this->getApplication()->getIdentity();
 
         if ($context !== $this->params->get('context', 'mod_quickicon')
             || !$user || !$user->authorise('core.manage', 'com_genesis')) {
-            return null;
+            return;
         }
 
         try {
@@ -92,7 +81,7 @@ class plgQuickiconGenesis extends CMSPlugin
                 $updates = $platform->updates();
             }
         } catch (Exception $e) {
-            $this->app->enqueueMessage($e->getMessage(), 'warning');
+            $this->getApplication()->enqueueMessage($e->getMessage(), 'warning');
             $updates = false;
         }
 
@@ -125,6 +114,8 @@ class plgQuickiconGenesis extends CMSPlugin
             );
         }
 
-        return $quickicons;
+        $result = $event->getArgument('result', []);
+        $result[] = $quickicons;
+        $event->setArgument('result', $result);
     }
 }

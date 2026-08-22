@@ -84,6 +84,6 @@ class CacheHelper
         $application = Factory::getApplication();
 
         // Trigger the onContentCleanCache event.
-        $application->triggerEvent($event, $options);
+        EventDispatcher::dispatch($application, $event, $options);
     }
 }

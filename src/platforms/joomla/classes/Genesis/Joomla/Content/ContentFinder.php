@@ -14,6 +14,7 @@ use Genesis\Joomla\Category\CategoryFinder;
 use Genesis\Joomla\Object\Collection;
 use Genesis\Joomla\Object\Finder;
 use Joomla\CMS\Application\CMSApplication;
+use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 
 /**
@@ -163,7 +164,7 @@ class ContentFinder extends Finder
         // Filter by start and end dates.
             if (!$user->authorise('core.edit.state', 'com_content') && !$user->authorise('core.edit', 'com_content')) {
             // Define now date and use modern datetime null checks (Joomla 5)
-            $nowDate = $this->db->quote(Factory::getDate()->toSql());
+            $nowDate = $this->db->quote((new Date('now', 'UTC'))->toSql());
             $nullDateUp = $this->query->isNullDatetime('a.publish_up');
             $nullDateDown = $this->query->isNullDatetime('a.publish_down');
 

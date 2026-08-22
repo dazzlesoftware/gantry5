@@ -9,6 +9,7 @@
 
 namespace Genesis\Framework;
 
+use Genesis\Joomla\EventDispatcher;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
 
@@ -70,8 +71,8 @@ class Genesis extends Base\Genesis
         $app = Factory::getApplication();
 
         // Trigger the event.
-        $app->triggerEvent('onGenesisGlobalConfig', ['global' => &$global]);
-        $app->triggerEvent('onGenesisGlobalConfig', ['global' => &$global]);
+        EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
+        EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
 
         return $global;
     }

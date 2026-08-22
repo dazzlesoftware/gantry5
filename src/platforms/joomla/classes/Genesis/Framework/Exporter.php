@@ -295,7 +295,7 @@ class Exporter
      */
     public function getOutlineAssignments($configuration)
     {
-        $app = CMSApplication::getInstance('site');
+        $app = Factory::getContainer()->get(\Joomla\CMS\Application\SiteApplication::class);
         $menu = $app->getMenu();
 
         // Works also in Joomla 4
