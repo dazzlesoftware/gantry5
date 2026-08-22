@@ -136,6 +136,23 @@ Contributing to Genesis or its documentation is easy. Development is conducted t
 
 We recommend chatting with the team via [Gitter](https://gitter.im/genesis/genesis) prior to submitting the pull request to avoid doubling up on a fix that is already pending or likely to be overwritten by an upcoming change.
 
+## Developing from Source on Linux or macOS
+
+Linux and macOS automation is available under `bin/tools/unix`. It requires
+Bash, PHP 8.3+, Composer, and Node.js 20.19.0+. From the repository root, run:
+
+```bash
+bin/tools/unix/composer-install-all.sh
+bin/tools/unix/assets-install.sh
+bin/tools/unix/assets-build.sh all
+bin/tools/unix/php83-tests.sh
+bin/tools/unix/scss-validate-all.sh
+bin/tools/unix/package-build.sh dev
+```
+
+The Unix tools mirror the Windows tool names and arguments. See
+`bin/tools/unix/README.md` for deployment defaults and PHP configuration.
+
 ## Developing from Source on Windows
 
 The repository includes Windows batch scripts for installing dependencies, compiling assets, running the PHP compatibility suite, creating distributable packages, and resetting the development environment. Run them from a Command Prompt or PowerShell window opened at the repository root.
@@ -154,58 +171,58 @@ The scripts use the repository-local Gulp installation, so installing Gulp globa
 From the repository root, run:
 
 ```bat
-composer-install-all.bat
-assets-install.bat
-assets-build.bat all
-php83-tests.bat
-scss-validate-all.bat
-package-build.bat dev
+bin\tools\windows\composer-install-all.bat
+bin\tools\windows\assets-install.bat
+bin\tools\windows\assets-build.bat all
+bin\tools\windows\php83-tests.bat
+bin\tools\windows\scss-validate-all.bat
+bin\tools\windows\package-build.bat dev
 ```
 
 This order ensures that PHP and package-builder dependencies exist before testing or packaging, and that all JavaScript and SCSS assets have been compiled before packages are created.
 
-For a production package build, use `assets-build.bat all --prod` followed by `package-build.bat prod`.
+For a production package build, use `bin\tools\windows\assets-build.bat all --prod` followed by `bin\tools\windows\package-build.bat prod`.
 
 ### Batch Script Reference
 
 | Script | Purpose | When to run it |
 |:--|:--|:--|
-| `composer-install-all.bat` | Verifies PHP 8.3+, creates missing platform `src` junctions, and runs `composer install` in the root, builder, current platform, and debug-bar projects. | First setup, after a `composer.lock` change, or after Composer cleanup. |
-| `assets-install.bat` | Verifies Node.js 20.19.0+ and runs `npm install` in the root and all asset subprojects. | First setup, after a `package.json` or lock-file change, or after Node cleanup. |
-| `assets-build.bat` | Runs the local Gulp compiler. It accepts `all`, `css`, or `js`, plus an optional `--prod`. | After asset installation and whenever JS or SCSS needs compiling. |
-| `assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
-| `php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
-| `scss-validate-all.bat` | Compiles every Joomla, WordPress, and Grav theme SCSS entry point with modern scssphp and fails on compiler warnings or deprecations. | After SCSS changes and before packaging. |
-| `package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
-| `wordpress-deploy-builds.bat` | Replaces the local WordPress `genesis` plugin and all `genesis_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
-| `assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
-| `assets-cleanup.bat` | Removes `node_modules` from the root and the three known asset subprojects. | Before a targeted clean reinstall. Usually use `assets-reset.bat` instead. |
-| `node-modules-cleanup-all.bat` | Recursively removes every outermost `node_modules` directory under the repository, including the root. | For a complete Node reset. Use `--dry-run` or `-n` to preview. |
-| `composer-cleanup-all.bat` | Removes all known Composer `vendor` directories without changing lock files. | For a complete PHP reset; follow it with `composer-install-all.bat`. |
+| `bin\tools\windows\composer-install-all.bat` | Verifies PHP 8.3+, creates missing platform `src` junctions, and runs `composer install` in the root, builder, current platform, and debug-bar projects. | First setup, after a `composer.lock` change, or after Composer cleanup. |
+| `bin\tools\windows\assets-install.bat` | Verifies Node.js 20.19.0+ and runs `npm install` in the root and all asset subprojects. | First setup, after a `package.json` or lock-file change, or after Node cleanup. |
+| `bin\tools\windows\assets-build.bat` | Runs the local Gulp compiler. It accepts `all`, `css`, or `js`, plus an optional `--prod`. | After asset installation and whenever JS or SCSS needs compiling. |
+| `bin\tools\windows\assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
+| `bin\tools\windows\php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
+| `bin\tools\windows\scss-validate-all.bat` | Compiles every Joomla, WordPress, and Grav theme SCSS entry point with modern scssphp and fails on compiler warnings or deprecations. | After SCSS changes and before packaging. |
+| `bin\tools\windows\package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
+| `bin\tools\windows\wordpress-deploy-builds.bat` | Replaces the local WordPress `genesis` plugin and all `genesis_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `bin\tools\windows\package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
+| `bin\tools\windows\assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
+| `bin\tools\windows\assets-cleanup.bat` | Removes `node_modules` from the root and the three known asset subprojects. | Before a targeted clean reinstall. Usually use `bin\tools\windows\assets-reset.bat` instead. |
+| `bin\tools\windows\node-modules-cleanup-all.bat` | Recursively removes every outermost `node_modules` directory under the repository, including the root. | For a complete Node reset. Use `--dry-run` or `-n` to preview. |
+| `bin\tools\windows\composer-cleanup-all.bat` | Removes all known Composer `vendor` directories without changing lock files. | For a complete PHP reset; follow it with `bin\tools\windows\composer-install-all.bat`. |
 
 ### Asset Commands
 
 ```bat
 rem Compile all development assets
-assets-build.bat
-assets-build.bat all
+bin\tools\windows\assets-build.bat
+bin\tools\windows\assets-build.bat all
 
 rem Compile only CSS or JavaScript
-assets-build.bat css
-assets-build.bat js
+bin\tools\windows\assets-build.bat css
+bin\tools\windows\assets-build.bat js
 
 rem Compile minified production assets without source maps
-assets-build.bat all --prod
+bin\tools\windows\assets-build.bat all --prod
 
 rem Watch all files, SCSS only, or JavaScript only
-assets-watch.bat
-assets-watch.bat css
-assets-watch.bat js
+bin\tools\windows\assets-watch.bat
+bin\tools\windows\assets-watch.bat css
+bin\tools\windows\assets-watch.bat js
 ```
 
 ### Package Build Targets
 
-`package-build.bat` defaults to `dev` and accepts these targets:
+`bin\tools\windows\package-build.bat` defaults to `dev` and accepts these targets:
 
 | Target | Output |
 |:--|:--|
@@ -218,7 +235,7 @@ assets-watch.bat js
 Additional Phing properties can be passed after the target, for example:
 
 ```bat
-package-build.bat wordpress-prod -Dversion=6.0.0
+bin\tools\windows\package-build.bat wordpress-prod -Dversion=6.0.0
 ```
 
 Existing files in `dist` may be replaced during a package build.
@@ -243,7 +260,7 @@ Run every platform validator and treat Sass warnings and deprecations as build
 failures with:
 
 ```bat
-scss-validate-all.bat
+bin\tools\windows\scss-validate-all.bat
 ```
 
 The batch script checks Joomla, WordPress, and Grav even if an earlier platform
@@ -260,8 +277,8 @@ php bin\validate-wordpress-scss.php --strict-warnings
 Build and deploy the WordPress development packages with:
 
 ```bat
-package-build.bat wordpress-dev
-wordpress-deploy-builds.bat
+bin\tools\windows\package-build.bat wordpress-dev
+bin\tools\windows\wordpress-deploy-builds.bat
 ```
 
 The deploy script defaults to:
@@ -275,7 +292,7 @@ It validates the target and package set before making changes. It then deletes t
 An alternate `wp-content` path and package suffix can be supplied:
 
 ```bat
-wordpress-deploy-builds.bat "D:\sites\wordpress\wp-content" develop
+bin\tools\windows\wordpress-deploy-builds.bat "D:\sites\wordpress\wp-content" develop
 ```
 
 ### Complete Clean Rebuild
@@ -283,13 +300,13 @@ wordpress-deploy-builds.bat "D:\sites\wordpress\wp-content" develop
 Use this sequence when both PHP and Node dependencies need to be rebuilt from scratch:
 
 ```bat
-composer-cleanup-all.bat
-node-modules-cleanup-all.bat
-composer-install-all.bat
-assets-install.bat
-assets-build.bat all
-php83-tests.bat
-package-build.bat dev
+bin\tools\windows\composer-cleanup-all.bat
+bin\tools\windows\node-modules-cleanup-all.bat
+bin\tools\windows\composer-install-all.bat
+bin\tools\windows\assets-install.bat
+bin\tools\windows\assets-build.bat all
+bin\tools\windows\php83-tests.bat
+bin\tools\windows\package-build.bat dev
 ```
 
 Cleanup scripts remove generated dependency directories only. They do not remove Composer or npm lock files.

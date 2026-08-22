@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set "GENESIS_NODE_ROOT=%~dp0"
+set "GENESIS_NODE_ROOT=%~dp0..\..\..\"
 set "GENESIS_NODE_DRY_RUN=0"
 
 if /I "%~1"=="--dry-run" set "GENESIS_NODE_DRY_RUN=1"

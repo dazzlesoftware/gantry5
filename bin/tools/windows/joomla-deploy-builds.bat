@@ -1,12 +1,13 @@
 @echo off
 setlocal
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
-set "grav_root=%~1"
+set "joomla_root=%~1"
 set "build_suffix=%~2"
 
-if not defined grav_root set "grav_root=C:\wamp64\www\grav"
+if not defined joomla_root set "joomla_root=C:\wamp64\www\Joomla_6.1.2-Stable-Full_Package"
 if not defined build_suffix set "build_suffix=develop"
 
 where powershell.exe >nul 2>&1
@@ -16,29 +17,29 @@ if errorlevel 1 (
 )
 
 echo ============================================================
-echo Deploying Genesis Grav builds
+echo Deploying Genesis Joomla builds
 echo ============================================================
-echo Source:  %~dp0dist
-echo Target:  %grav_root%
+echo Source:  %REPOSITORY_ROOT%dist
+echo Target:  %joomla_root%
 echo Variant: %build_suffix%
 echo.
-echo Existing user\plugins\genesis and user\themes\genesis_* directories
-echo will be deleted. Other Grav plugins and themes will be preserved.
+echo Joomla's CLI installer will install or update each package.
+echo Existing extension records and template styles will be preserved.
 echo ============================================================
 
 powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass ^
-    -File "%~dp0grav-deploy-builds.ps1" ^
-    -RepositoryRoot "%~dp0." ^
-    -GravRoot "%grav_root%" ^
+    -File "%~dp0joomla-deploy-builds.ps1" ^
+    -RepositoryRoot "%REPOSITORY_ROOT%" ^
+    -JoomlaRoot "%joomla_root%" ^
     -BuildSuffix "%build_suffix%"
 
 set "result=%errorlevel%"
 if not "%result%"=="0" (
     echo.
-    echo ERROR: Grav deployment failed.
+    echo ERROR: Joomla deployment failed.
     exit /b %result%
 )
 
 echo.
-echo Grav %build_suffix% builds deployed successfully.
+echo Joomla %build_suffix% builds deployed successfully.
 exit /b 0

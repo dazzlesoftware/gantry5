@@ -1,7 +1,8 @@
 @echo off
 setlocal
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
 call :cleanup "." || exit /b 1
 call :cleanup "bin\builder" || exit /b 1
@@ -17,7 +18,7 @@ exit /b 0
 
 :cleanup
 set "project=%~1"
-set "vendor=%~dp0%~1\vendor"
+set "vendor=%REPOSITORY_ROOT%%~1\vendor"
 
 if not exist "%vendor%\" (
     echo Skipping %project% - vendor folder does not exist.

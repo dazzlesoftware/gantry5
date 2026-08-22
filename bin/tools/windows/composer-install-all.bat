@@ -1,7 +1,8 @@
 @echo off
 setlocal
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
 where php >nul 2>&1
 if errorlevel 1 (
@@ -42,12 +43,12 @@ exit /b 0
 
 :link-source
 set "project=%~1"
-set "sourceLink=%~dp0%~1\src"
+set "sourceLink=%REPOSITORY_ROOT%%~1\src"
 
 if exist "%sourceLink%\" exit /b 0
 
 echo Creating source link for %project% ...
-mklink /J "%sourceLink%" "%~dp0src" >nul
+mklink /J "%sourceLink%" "%REPOSITORY_ROOT%src" >nul
 if errorlevel 1 (
     echo ERROR: Could not create the src junction for %project%.
     exit /b 1

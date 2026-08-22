@@ -1,7 +1,8 @@
 @echo off
 setlocal
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
 call :cleanup "." || exit /b 1
 call :cleanup "assets\common" || exit /b 1
@@ -14,7 +15,7 @@ exit /b 0
 
 :cleanup
 set "project=%~1"
-set "modules=%~dp0%~1\node_modules"
+set "modules=%REPOSITORY_ROOT%%~1\node_modules"
 if not exist "%modules%\" (
     echo Skipping %project% - node_modules does not exist.
     exit /b 0

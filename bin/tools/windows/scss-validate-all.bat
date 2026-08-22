@@ -1,7 +1,8 @@
 @echo off
 setlocal EnableExtensions
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
 where php >nul 2>&1
 if errorlevel 1 (

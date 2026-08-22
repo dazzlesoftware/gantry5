@@ -1,7 +1,8 @@
 @echo off
 setlocal
 
-cd /d "%~dp0"
+set "REPOSITORY_ROOT=%~dp0..\..\..\"
+cd /d "%REPOSITORY_ROOT%"
 
 where php >nul 2>&1
 if errorlevel 1 (
@@ -54,7 +55,7 @@ if not "%result%"=="0" (
 
 echo.
 echo Genesis package build completed successfully.
-echo Packages are available in: %~dp0dist
+echo Packages are available in: %REPOSITORY_ROOT%dist
 exit /b 0
 
 :usage
