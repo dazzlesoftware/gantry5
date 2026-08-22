@@ -60,7 +60,7 @@ class Router extends BaseRouter
      * @param string $url
      * @return string
      */
-    protected function makeUri($url)
+    protected function makeUri(string $url): string
     {
         $components = wp_parse_url($url);
 
@@ -74,7 +74,7 @@ class Router extends BaseRouter
     /**
      * @return $this
      */
-    public function setTemplate()
+    public function setTemplate(): static
     {
         // FIXME: in here use pages.php, but in AJAX we need admin-ajax.php.
         $this->container['base_url'] = $this->makeUri(\admin_url( 'admin.php?page=layout-manager' ));

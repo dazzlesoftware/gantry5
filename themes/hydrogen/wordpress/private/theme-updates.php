@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Private distribution only: remote update metadata for the Hydrogen theme.
  */

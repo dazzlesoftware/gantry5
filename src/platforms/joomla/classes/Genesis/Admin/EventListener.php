@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -38,7 +40,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'admin.init.theme'  => ['onAdminThemeInit', 0],
@@ -54,7 +56,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onAdminThemeInit(Event $event)
+    public function onAdminThemeInit(Event $event): void
     {
         $this->triggerEvent('onGenesisAdminInit', ['theme' => $event->theme]);
     }
@@ -62,7 +64,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onGlobalSave(Event $event)
+    public function onGlobalSave(Event $event): void
     {
         $this->triggerEvent('onGenesisSaveConfig', ['data' => $event->data]);
     }
@@ -70,7 +72,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onStylesSave(Event $event)
+    public function onStylesSave(Event $event): void
     {
         $this->triggerEvent('onGenesisUpdateCss', ['theme' => $event->theme]);
     }
@@ -78,17 +80,17 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onSettingsSave(Event $event)
+    public function onSettingsSave(Event $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onLayoutSave(Event $event)
+    public function onLayoutSave(Event $event): void
     {
         /** @var Genesis $genesis */
-        $genesis = $event->Genesis;
+        $genesis = $event->genesis;
 
         /** @var Layout $layout */
         $layout = $event->layout;
@@ -132,7 +134,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onAssignmentsSave(Event $event)
+    public function onAssignmentsSave(Event $event): void
     {
     }
 
@@ -142,7 +144,7 @@ class EventListener implements EventSubscriberInterface
      * @throws \UnexpectedValueException
      * @throws \InvalidArgumentException
      */
-    public function onMenusSave(Event $event)
+    public function onMenusSave(Event $event): void
     {
         /** @var array $menu */
         $menu = $event->menu;
@@ -167,7 +169,7 @@ class EventListener implements EventSubscriberInterface
         ];
 
         /** @var Genesis $genesis */
-        $genesis = $event->Genesis;
+        $genesis = $event->genesis;
         if ($genesis->authorize('menu.edit') && !$menuType->save($options)) {
             throw new \RuntimeException(Text::_('GENESIS_ERROR_MENU_TYPE_SAVE_FAILED'), 400);
         }
@@ -346,7 +348,7 @@ class EventListener implements EventSubscriberInterface
      * @param string $menutype
      * @return array
      */
-    protected function getAll($menutype)
+    protected function getAll(string $menutype): array
 	{
 	    $table = MenuHelper::getMenu();
         $db = $table->getDatabase();
@@ -371,7 +373,7 @@ class EventListener implements EventSubscriberInterface
      * @param array $ignore
      * @return array
      */
-    protected function normalizeMenuItem(array $item, array $ignore = [])
+    protected function normalizeMenuItem(array $item, array $ignore = []): array
     {
         static $ignoreList = [
             // Never save derived values.
@@ -385,7 +387,7 @@ class EventListener implements EventSubscriberInterface
      * @param string $eventName
      * @param array $args
      */
-    protected function triggerEvent($eventName, $args = [])
+    protected function triggerEvent(string $eventName, array $args = []): void
     {
         PluginHelper::importPlugin('genesis');
 

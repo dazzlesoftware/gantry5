@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -11,7 +13,7 @@ namespace Genesis\WordPress;
 
 class NavMenuEditWalker extends \Walker_Nav_Menu_Edit
 {
-    public function start_el( &$output, $item, $depth = 0, $args = [], $id = 0 )
+    public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0): void
     {
         parent::start_el($output, $item, $depth, $args, $id);
 

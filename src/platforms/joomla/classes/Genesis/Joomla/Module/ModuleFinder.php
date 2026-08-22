@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -10,6 +12,7 @@
 namespace Genesis\Joomla\Module;
 
 use Genesis\Joomla\Object\Finder;
+use Genesis\Joomla\Object\Collection;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
 
@@ -20,15 +23,15 @@ use Joomla\CMS\Factory;
 class ModuleFinder extends Finder
 {
     /** @var string */
-    protected $table = '#__modules';
+    protected string $table = '#__modules';
     /** @var bool */
-    protected $readonly = true;
+    protected bool $readonly = true;
     /** @var array */
-    protected $state = [];
+    protected array $state = [];
     /** @var array */
-    protected $published = [0, 1];
+    protected array $published = [0, 1];
     /** @var int */
-    protected $limit = 0;
+    protected int $limit = 0;
 
     /**
      * Makes all created objects as readonly.
@@ -36,7 +39,7 @@ class ModuleFinder extends Finder
      * @param bool $readonly
      * @return $this
      */
-    public function readonly($readonly = true)
+    public function readonly(bool $readonly = true): static
     {
         $this->readonly = (bool)$readonly;
 
@@ -47,7 +50,7 @@ class ModuleFinder extends Finder
      * @param bool $object
      * @return array|\Genesis\Joomla\Object\Collection
      */
-    public function find($object = true)
+    public function find(bool $object = true): array|Collection
     {
         $ids = parent::find();
 
@@ -63,7 +66,7 @@ class ModuleFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    public function id($ids, $include = true)
+    public function id(int|array $ids, bool $include = true): static
     {
         return $this->addToGroup('a.id', $ids, $include);
     }
@@ -72,7 +75,7 @@ class ModuleFinder extends Finder
      * @param string|int|bool $language
      * @return $this
      */
-    public function language($language = true)
+    public function language(string|int|bool $language = true): static
     {
         if (!$language) {
             return $this;
@@ -89,7 +92,7 @@ class ModuleFinder extends Finder
      * @param int|int[] $published
      * @return $this
      */
-    public function published($published = 1)
+    public function published(int|array $published = 1): static
     {
         if (!\is_array($published)) {
             $published = [(int)$published];
@@ -103,7 +106,7 @@ class ModuleFinder extends Finder
     /**
      * @return ModuleFinder
      */
-    public function particle()
+    public function particle(): static
     {
         return $this->where('a.module', '=', 'mod_genesis_particle');
     }
@@ -112,7 +115,7 @@ class ModuleFinder extends Finder
      * @param bool $authorised
      * @return $this
      */
-    public function authorised($authorised = true)
+    public function authorised(bool $authorised = true): static
     {
         if (!$authorised) {
             return $this;
@@ -138,8 +141,9 @@ class ModuleFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    protected function addToGroup($key, $ids, $include = true)
+    protected function addToGroup(string $key, int|array $ids, bool $include = true): static
     {
+        $ids = (array) $ids;
         $op = $include ? 'IN' : 'NOT IN';
 
         if (isset($this->state[$key][$op])) {
@@ -151,7 +155,7 @@ class ModuleFinder extends Finder
         return $this;
     }
 
-    protected function prepare()
+    protected function prepare(): void
     {
         $this->where('client_id', '=', 0)->where('published', 'IN', $this->published)->order('position')->order('ordering');
         foreach ($this->state as $key => $list) {

@@ -39,15 +39,15 @@ class Theme extends AbstractTheme
     use ThemeTrait;
 
     /** @var string */
-    public $url;
+    public string $url = '';
 
     /** @var User */
-    protected $user;
+    protected ?User $user = null;
     /**
      * @var bool
      * @deprecated 5.1.5
      */
-    protected $wordpress = false;
+    protected bool $wordpress = false;
 
     /**
      * @param array $context
@@ -95,7 +95,7 @@ class Theme extends AbstractTheme
         return $twig;
     }
 
-    public function prepare_particles()
+    public function prepare_particles(): void
     {
         if(!\is_admin()) {
             $genesis = Genesis::instance();
@@ -109,7 +109,7 @@ class Theme extends AbstractTheme
     /**
      * Convert all stream uris into proper links.
      */
-    public function postProcessOutput($html)
+    public function postProcessOutput(string $html): string
     {
         $genesis = Genesis::instance();
 
@@ -156,7 +156,7 @@ class Theme extends AbstractTheme
         return $this->renderer()->render($file, $context);
     }
 
-    public function set_template_layout()
+    public function set_template_layout(): void
     {
         $assignments = new Assignments();
         $selected = $assignments->select();
@@ -199,7 +199,7 @@ class Theme extends AbstractTheme
         return Timber::get_posts(new WP_Query($queryArgs));
     }
 
-    public function widgets_init()
+    public function widgets_init(): void
     {
         $genesis = Genesis::instance();
 
@@ -236,7 +236,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function register_menus()
+    public function register_menus(): void
     {
         $genesis = Genesis::instance();
 
@@ -254,7 +254,7 @@ class Theme extends AbstractTheme
      * @param string $text
      * @return string
      */
-    public function url_filter($text)
+    public function url_filter(string $text): string
     {
         $genesis = Genesis::instance();
 
@@ -265,17 +265,17 @@ class Theme extends AbstractTheme
         return $document::urlFilter($text, true, 0, true);
     }
 
-    public function register_post_types()
+    public function register_post_types(): void
     {
         //this is where you can register custom post types
     }
 
-    public function register_taxonomies()
+    public function register_taxonomies(): void
     {
         //this is where you can register custom taxonomies
     }
 
-    public function disable_wpautop()
+    public function disable_wpautop(): void
     {
         $genesis = Genesis::instance();
 
@@ -290,7 +290,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function enqueue_scripts()
+    public function enqueue_scripts(): void
     {
         $genesis = Genesis::instance();
 
@@ -300,7 +300,7 @@ class Theme extends AbstractTheme
         $document::registerAssets();
     }
 
-    public function print_styles()
+    public function print_styles(): void
     {
         $styles = Genesis::instance()->styles();
         if ($styles) {
@@ -309,7 +309,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function print_scripts()
+    public function print_scripts(): void
     {
         $scripts = Genesis::instance()->scripts();
         if ($scripts) {
@@ -318,7 +318,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function print_inline_scripts()
+    public function print_inline_scripts(): void
     {
         $genesis = Genesis::instance();
 
@@ -333,7 +333,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function preset_styles_init()
+    public function preset_styles_init(): void
     {
         if (!\is_admin()) {
             $genesis = Genesis::instance();
@@ -367,7 +367,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function preset_styles_update_css()
+    public function preset_styles_update_css(): void
     {
         $cookie = md5($this->name);
 
@@ -379,7 +379,7 @@ class Theme extends AbstractTheme
      * @param mixed|null $content
      * @return mixed
      */
-    public function loadposition_shortcode($atts, $content = null)
+    public function loadposition_shortcode(array|string $atts, ?string $content = null): ?string
     {
         extract(\shortcode_atts(['id' => ''], $atts));
 
@@ -393,7 +393,7 @@ class Theme extends AbstractTheme
      * @param Environment $twig
      * @return Environment
      */
-    public function timber_loader_twig(Environment $twig)
+    public function timber_loader_twig(Environment $twig): Environment
     {
         $loader = $twig->getLoader();
         if ($loader instanceof FilesystemLoader) {
@@ -411,7 +411,7 @@ class Theme extends AbstractTheme
      * @param $default_types
      * @return array
      */
-    public function extend_theme_editor_filetypes($default_types)
+    public function extend_theme_editor_filetypes(array $default_types): array
     {
         $filetypes = [
             'twig',
@@ -425,7 +425,7 @@ class Theme extends AbstractTheme
     /**
      * Register menu locations.
      */
-    public function register_nav_menus()
+    public function register_nav_menus(): void
     {
         // TODO: Not implemented
         $locations = [];
@@ -434,7 +434,7 @@ class Theme extends AbstractTheme
         }
     }
 
-    public function install()
+    public function install(): void
     {
         $installer = new ThemeInstaller($this->name);
         $installer->installDefaults();
@@ -446,7 +446,7 @@ class Theme extends AbstractTheme
      *
      * @return array
      */
-    public static function getTwigPaths()
+    public static function getTwigPaths(): array
     {
         /** @var UniformResourceLocator $locator */
         $locator = static::genesis()['locator'];
@@ -482,7 +482,7 @@ class Theme extends AbstractTheme
      * @param array $args
      * @return mixed
      */
-    public function filterMenuObjects($menuItems, $args)
+    public function filterMenuObjects(array $menuItems, mixed $args): array
     {
         foreach ($menuItems as $k => $item) {
             if (strpos($item->post_excerpt, 'genesis-particle-') === 0) {
@@ -493,7 +493,7 @@ class Theme extends AbstractTheme
         return $menuItems;
     }
 
-    public function addMenuMeta($menu_item)
+    public function addMenuMeta(\WP_Post $menu_item): \WP_Post
     {
         $meta = \get_post_meta($menu_item->ID, '_menu_item_genesis', true);
 
@@ -630,7 +630,7 @@ class Theme extends AbstractTheme
      * @param string $value
      * @param int $expire
      */
-    protected function updateCookie($name, $value, $expire = 0)
+    protected function updateCookie(string $name, string|false $value, int $expire = 0): void
     {
         $path   = SITECOOKIEPATH;
         $domain = COOKIE_DOMAIN;
@@ -638,7 +638,7 @@ class Theme extends AbstractTheme
         setcookie($name, $value, $expire, $path, $domain);
     }
 
-    protected function loadTextDomains()
+    protected function loadTextDomains(): void
     {
         $engineDomain = $this->details()->get('configuration.genesis.engine', 'nucleus');
         $lookup = '/engines/' . $engineDomain . '/languages';
@@ -673,7 +673,7 @@ class Theme extends AbstractTheme
     /**
      * Serve particle AJAX requests in '/wp-admin/admin-ajax.php?action=particle'.
      */
-    public function ajax_particle()
+    public function ajax_particle(): void
     {
         $format = !empty($_GET['format']) ? \sanitize_key(\wp_unslash($_GET['format'])) : 'html';
         $outline = !empty($_GET['outline']) ? \sanitize_key(\wp_unslash($_GET['outline'])) : 'default';
@@ -732,7 +732,7 @@ class Theme extends AbstractTheme
      * @param string $html
      * @param string $format
      */
-    protected function ajax_particle_output($type, $identifier, $props, $html, $format)
+    protected function ajax_particle_output(string $type, string $identifier, array|object $props, string $html, string $format): void
     {
         ob_clean();
 
@@ -756,7 +756,7 @@ class Theme extends AbstractTheme
     /**
      * @param string $format
      */
-    protected function ajax_not_found($format)
+    protected function ajax_not_found(string $format): void
     {
         ob_clean();
 
@@ -778,7 +778,7 @@ class Theme extends AbstractTheme
      * @return bool
      * @deprecated 5.1.5
      */
-    public function wordpress($enable = null)
+    public function wordpress(?bool $enable = null): bool
     {
         if ($enable) {
             $this->wordpress = (bool) $enable;

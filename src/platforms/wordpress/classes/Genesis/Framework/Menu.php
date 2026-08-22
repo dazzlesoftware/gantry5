@@ -90,7 +90,7 @@ class Menu extends AbstractMenu
      *
      * @return array
      */
-    public function getGroupedItems()
+    public function getGroupedItems(): array
     {
         $groups = [];
         foreach ($this->getMenus() as $menu) {
@@ -233,7 +233,7 @@ class Menu extends AbstractMenu
      * @param \WP_Post[] $menuItems
      * @return Item[]
      */
-    public function createMenuItems($menuItems)
+    public function createMenuItems(array $menuItems): array
     {
         // Flag current and active menu items.
         $current = \get_queried_object_id();
@@ -271,7 +271,7 @@ class Menu extends AbstractMenu
      * @param array $items
      * @return Item[]
      */
-    protected function bindMenuItems($menuItems, &$items)
+    protected function bindMenuItems(array $menuItems, array &$items): array
     {
         // Create quick lookup maps to help on matching the WP menu items to Genesis menu items.
         $aliases = $this->buildAliases($menuItems);
@@ -380,7 +380,7 @@ class Menu extends AbstractMenu
      * @param \WP_Post[] $menuItems
      * @return array
      */
-    protected function buildAliases($menuItems)
+    protected function buildAliases(array $menuItems): array
     {
         $list = [];
         foreach ($menuItems as $item) {
@@ -400,7 +400,7 @@ class Menu extends AbstractMenu
     /**
      * @param \WP_Post[] $menuItems
      */
-    protected function buildIdPath($menuItems)
+    protected function buildIdPath(array $menuItems): array
     {
         // Build tree from the menu items.
         $tree = [];
@@ -421,7 +421,7 @@ class Menu extends AbstractMenu
      * @param array $path
      * @return array
      */
-    protected function flattenTree(array $tree, array $path)
+    protected function flattenTree(array $tree, array $path): array
     {
         $items = [];
         foreach ($tree as $id => $array) {
@@ -441,7 +441,7 @@ class Menu extends AbstractMenu
      * @param array $item
      * @return Item
      */
-    protected function createMenuItemFromPost($post)
+    protected function createMenuItemFromPost(\WP_Post $post): Item
     {
         // These properties always come from WordPress.
         $properties = [
@@ -506,7 +506,7 @@ class Menu extends AbstractMenu
      * @param string $title
      * @return string
      */
-    protected function getMenuAlias($title)
+    protected function getMenuAlias(string $title): string
     {
         $alias = preg_replace('|[ /]|u', '-', $title);
         if (preg_match('|^[a-zA-Z0-9-_]+$|', $alias)) {
@@ -648,7 +648,7 @@ class Menu extends AbstractMenu
      * @param string|null $route
      * @return Item|null
      */
-    protected function getObject($id, $route = null)
+    protected function getObject(?int $id, ?string $route = null): ?Item
     {
             // Check if menu item with the object id exists.
             $object = $id ? $this->__get($id) : null;

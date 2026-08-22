@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ class Importer
     /**
      * @param array $data
      */
-    public function positions(array $data)
+    public function positions(array $data): void
     {
         Widgets::import($data);
     }

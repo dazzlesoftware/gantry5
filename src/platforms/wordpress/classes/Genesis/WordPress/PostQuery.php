@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ class PostQuery extends \Timber\PostQuery
     /**
      * @param \WP_Query|array<string, mixed>|null $query
      */
-    public function __construct($query = null)
+    public function __construct(mixed $query = null)
     {
         if (!$query instanceof \WP_Query) {
             $query = new \WP_Query((array) $query);
@@ -34,7 +36,7 @@ class PostQuery extends \Timber\PostQuery
      *
      * @return mixed
      */
-    public function post_count()
+    public function post_count(): int
     {
         return $this->count();
     }
@@ -45,7 +47,7 @@ class PostQuery extends \Timber\PostQuery
      * @param array $prefs
      * @return Pagination
      */
-    public function get_pagination($prefs)
+    public function get_pagination(array $prefs): Pagination
     {
         return $this->pagination((array)$prefs);
     }

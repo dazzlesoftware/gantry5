@@ -21,17 +21,17 @@ use Genesis\Component\Assignments\AssignmentsInterface;
 class AssignmentsContext implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'context';
+    public string $type = 'context';
     /** @var int */
-    public $priority = 2;
+    public int $priority = 2;
 
     /** @var array */
-    protected $priorities = [
+    protected array $priorities = [
         'is_front_page'     => 0.9,
         'is_home'           => 0.9,
     ];
     /** @var array */
-    protected $context = [
+    protected array $context = [
         'is_404'            => '404 Not Found Page',
         'is_search'         => 'Search Page',
         'is_tax'            => 'Taxonomy Archive',
@@ -92,7 +92,7 @@ class AssignmentsContext implements AssignmentsInterface
         return [$list];
     }
 
-    protected function getItems()
+    protected function getItems(): array
     {
         $items = [];
 

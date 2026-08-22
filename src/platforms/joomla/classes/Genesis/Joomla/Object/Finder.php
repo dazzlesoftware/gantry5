@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -11,7 +13,7 @@ namespace Genesis\Joomla\Object;
 
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
-use Joomla\CMS\Service\Provider\Database;
+use Joomla\Database\DatabaseQuery;
 
 /**
  * Class Finder
@@ -20,19 +22,19 @@ use Joomla\CMS\Service\Provider\Database;
 abstract class Finder
 {
     /** @var string Table associated with the model. */
-    protected $table;
+    protected string $table = '';
     /** @var string */
-    protected $primaryKey = 'id';
+    protected string $primaryKey = 'id';
     /** @var \Joomla\Database\DatabaseQuery */
-    protected $query;
+    protected DatabaseQuery $query;
     /** @var Database */
-    protected $db;
+    protected DatabaseInterface $db;
     /** @var int */
-    protected $start = 0;
+    protected int $start = 0;
     /** @var int */
-    protected $limit = 20;
+    protected int $limit = 20;
     /** @var bool */
-    protected $skip = false;
+    protected bool $skip = false;
 
     /**
      * Finder constructor.
@@ -58,7 +60,7 @@ abstract class Finder
      * @param array $options
      * @return $this
      */
-    public function parse(array $options)
+    public function parse(array $options): static
     {
         foreach ($options as $method => $params) {
             if (method_exists($this, $method)) {
@@ -75,7 +77,7 @@ abstract class Finder
      * @param int $limitstart
      * @return $this
      */
-    public function start($limitstart = 0)
+    public function start(int $limitstart = 0): static
     {
         $this->start = (int)$limitstart;
 
@@ -89,7 +91,7 @@ abstract class Finder
      *
      * @return $this
      */
-    public function limit($limit = null)
+    public function limit(?int $limit = null): static
     {
         if (null !== $limit) {
             $this->limit = (int)$limit;
@@ -109,7 +111,7 @@ abstract class Finder
      *
      * @return $this
      */
-    public function order($by, $direction = 1, $alias = 'a')
+    public function order(string $by, string|int $direction = 1, string $alias = 'a'): static
     {
         if ($direction === 'RANDOM') {
             $this->query->order('RAND()');
@@ -137,7 +139,7 @@ abstract class Finder
      *
      * @return $this
      */
-    public function where($field, $operation, $value)
+    public function where(string $field, string $operation, string|int|array $value): static
     {
         $db = $this->db;
         $operation = strtoupper($operation);
@@ -168,7 +170,7 @@ abstract class Finder
                     $this->query->where('0');
                 } else {
                     // Quote all non integer values.
-                    array_walk($value, function (&$value) use ($db) { $value = (string)(int)$value === (string)$value ? (int)$value : $db->quote($value); });
+                    array_walk($value, static function (mixed &$value) use ($db): void { $value = (string)(int)$value === (string)$value ? (int)$value : $db->quote($value); });
                     $list = implode(',', $value);
                     $this->query->where("{$this->db->quoteName($field)} {$operation} ({$list})");
                 }
@@ -185,7 +187,7 @@ abstract class Finder
      *
      * @return array
      */
-    public function find()
+    public function find(): array|Collection
     {
         if ($this->skip) {
             return [];
@@ -225,7 +227,7 @@ abstract class Finder
      *
      * @return void
      */
-    protected function prepare()
+    protected function prepare(): void
     {
     }
 }

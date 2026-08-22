@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -19,7 +21,7 @@ class Wpml extends WordPress
     /**
      * @return bool
      */
-    public static function enabled()
+    public static function enabled(): bool
     {
         return \apply_filters('wpml_current_language', null) !== null;
     }

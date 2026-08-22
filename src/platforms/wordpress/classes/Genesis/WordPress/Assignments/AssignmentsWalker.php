@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable Internal.LineEndings.Mixed
 
 /**
@@ -16,9 +18,9 @@ namespace Genesis\WordPress\Assignments;
  */
 class AssignmentsWalker
 {
-    var $tree_type = ['post_type', 'taxonomy', 'custom'];
-    var $db_fields = ['parent' => 'parent_id', 'id' => 'id'];
-    var $has_children = false;
+    public array $tree_type = ['post_type', 'taxonomy', 'custom'];
+    public array $db_fields = ['parent' => 'parent_id', 'id' => 'id'];
+    public bool $has_children = false;
 
     /**
      * Traverse elements to create list from elements.
@@ -38,7 +40,7 @@ class AssignmentsWalker
      * @param string $output            Passed by reference. Used to append additional content.
      * @return null Null on failure with no changes to parameters.
      */
-    public function add_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
+    public function add_element(object $element, array &$children_elements, int $max_depth, int $depth, array $args, array &$output): void {
 
         if ( !$element )
             return;
@@ -86,9 +88,9 @@ class AssignmentsWalker
      * @param array $walker_args
      * @return array The array of items with their depths and their direct children.
      */
-    public function walk($elements, $max_depth, $walker_args = []) {
+    public function walk(array $elements, int $max_depth, mixed ...$walker_args): array {
 
-        $args = array_slice(func_get_args(), 2);
+        $args = $walker_args;
         $output = [];
 
         if ($max_depth < -1) //invalid parameter

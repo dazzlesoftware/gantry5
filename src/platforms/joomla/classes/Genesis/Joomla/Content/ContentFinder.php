@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,11 +26,11 @@ use Joomla\CMS\Factory;
 class ContentFinder extends Finder
 {
     /** @var string */
-    protected $table = '#__content';
+    protected string $table = '#__content';
     /** @var bool */
-    protected $readonly = true;
+    protected bool $readonly = true;
     /** @var array */
-    protected $state = [];
+    protected array $state = [];
 
     /**
      * Makes all created objects as readonly.
@@ -36,7 +38,7 @@ class ContentFinder extends Finder
      * @param bool $readonly
      * @return $this
      */
-    public function readonly($readonly = true)
+    public function readonly(bool $readonly = true): static
     {
         $this->readonly = (bool)$readonly;
 
@@ -47,7 +49,7 @@ class ContentFinder extends Finder
      * @param bool $object
      * @return Collection|string[]
      */
-    public function find($object = true)
+    public function find(bool $object = true): array|Collection
     {
         $ids = parent::find();
 
@@ -63,7 +65,7 @@ class ContentFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    public function id($ids, $include = true)
+    public function id(int|array $ids, bool $include = true): static
     {
         return $this->addToGroup('a.id', $ids, $include);
     }
@@ -73,7 +75,7 @@ class ContentFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    public function author($ids, $include = true)
+    public function author(int|array $ids, bool $include = true): static
     {
         return $this->addToGroup('a.created_by', $ids, $include);
     }
@@ -83,7 +85,7 @@ class ContentFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    public function category($ids, $include = true)
+    public function category(int|array|Collection $ids, bool $include = true): static
     {
         if ($ids instanceof Collection) {
             $ids = $ids->toArray();
@@ -91,7 +93,7 @@ class ContentFinder extends Finder
             $ids = (array)$ids;
         }
 
-        array_walk($ids, static function (&$item) { $item = $item instanceof Category ? $item->id : (int) $item; });
+        array_walk($ids, static function (mixed &$item): void { $item = $item instanceof Category ? $item->id : (int) $item; });
 
         return $this->addToGroup('a.catid', $ids, $include);
     }
@@ -100,7 +102,7 @@ class ContentFinder extends Finder
      * @param int|bool $featured
      * @return $this
      */
-    public function featured($featured = true)
+    public function featured(bool|int $featured = true): static
     {
         $featured = (int)((bool)$featured);
         $this->where('a.featured', '=', $featured);
@@ -112,7 +114,7 @@ class ContentFinder extends Finder
      * @param string|int|bool $language
      * @return $this
      */
-    public function language($language = true)
+    public function language(string|int|bool $language = true): static
     {
         if (!$language) {
             return $this;
@@ -129,7 +131,7 @@ class ContentFinder extends Finder
      * @param int|int[] $published
      * @return $this
      */
-    public function published($published = 1)
+    public function published(int|array $published = 1): static
     {
         if (!\is_array($published)) {
             $published = [(int)$published];
@@ -141,7 +143,7 @@ class ContentFinder extends Finder
      * @param bool $authorised
      * @return $this
      */
-    public function authorised($authorised = true)
+    public function authorised(bool $authorised = true): static
     {
         if (!$authorised) {
             return $this;
@@ -188,8 +190,9 @@ class ContentFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    protected function addToGroup($key, $ids, $include = true)
+    protected function addToGroup(string $key, int|array $ids, bool $include = true): static
     {
+        $ids = (array) $ids;
         $op = $include ? 'IN' : 'NOT IN';
 
         if (isset($this->state[$key][$op])) {
@@ -201,7 +204,7 @@ class ContentFinder extends Finder
         return $this;
     }
 
-    protected function prepare()
+    protected function prepare(): void
     {
         foreach ($this->state as $key => $list) {
             foreach ($list as $op => $group) {
@@ -210,7 +213,7 @@ class ContentFinder extends Finder
         }
     }
 
-     public function tags($tagIds = [])
+    public function tags(array $tagIds = []): static
     {
         if (empty($tagIds['id'][0])) {
             return $this;

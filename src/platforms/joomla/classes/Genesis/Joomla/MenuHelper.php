@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -27,7 +29,7 @@ class MenuHelper
      * @param int|array|null $id
      * @return \JTableMenu|MenuTable|\Joomla\CMS\Table\Menu
      */
-    public static function getMenu($id = null)
+    public static function getMenu(int|array|null $id = null): Table
     {
         $model = static::loadModel();
         $table = $model->getTable();
@@ -47,7 +49,7 @@ class MenuHelper
      * @param int|array|null $id
      * @return \JTableMenuType|MenuTypeTable|\Joomla\CMS\Table\MenuType
      */
-    public static function getMenuType($id = null)
+    public static function getMenuType(string|int|array|null $id = null): Table
     {
         $model = static::loadModel();
         $table = $model->getTable('MenuType');
@@ -67,7 +69,7 @@ class MenuHelper
      * @param string $name
      * @return ItemModel|\MenusModelItem
      */
-    private static function loadModel($name = 'Item')
+    private static function loadModel(string $name = 'Item'): object
     {
         static $model = [];
 

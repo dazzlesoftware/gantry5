@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.NonceVerification.Missing,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -26,12 +28,12 @@ use Genesis\Admin\Theme as AdminTheme;
 class Particle extends \WP_Widget
 {
     /** @var bool */
-    public $genesis = true;
+    public bool $genesis = true;
 
     /** @var Genesis */
-    protected $container;
+    protected ?Genesis $container = null;
     /** @var array */
-    protected $content = [];
+    protected array $content = [];
 
     public function __construct()
     {
@@ -48,7 +50,8 @@ class Particle extends \WP_Widget
 
         try {
             $this->container = Genesis::instance();
-        } catch (\Exception $e) {}
+        } catch (\Exception) {
+        }
 
         $action = isset($_POST['action']) ? sanitize_key(wp_unslash($_POST['action'])) : '';
         $ajax = $pagenow === 'admin-ajax.php' && $action === 'save-widget';
@@ -61,8 +64,11 @@ class Particle extends \WP_Widget
     /**
      * Initialise Genesis
      */
-    public function initialiseGenesis()
+    public function initialiseGenesis(): void
     {
+        if ($this->container === null) {
+            $this->container = Genesis::instance();
+        }
         if (!defined('GENESIS_ADMIN_PATH')) {
             define('GENESIS_ADMIN_PATH', GENESIS_PATH . '/admin');
         }
@@ -87,15 +93,18 @@ class Particle extends \WP_Widget
      * @param array $args
      * @param array $instance
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
+        if ($this->container === null) {
+            return;
+        }
         if (!is_array($instance)) {
             $instance = [];
         }
 
         $sidebar = isset($args['id']) ? (string)$args['id'] : '';
         $widget_id = isset($args['widget_id']) ? preg_replace('/\D/', '', $args['widget_id']) : null;
-        $md5 = md5(json_encode($instance));
+        $md5 = md5((string) json_encode($instance));
         $id = isset($instance['id']) ? $instance['id'] : ($widget_id ?: "widget-{$md5}");
 
         if (!isset($this->content[$md5])) {
@@ -165,7 +174,7 @@ class Particle extends \WP_Widget
      *
      * @param array $instance The widget options
      */
-    public function form($instance)
+    public function form($instance): void
     {
         $this->initialiseGenesis();
 
@@ -196,7 +205,7 @@ class Particle extends \WP_Widget
             'content' => $theme->render('@genesis-admin/forms/fields/genesis/particle.html.twig', $field)
         ];
 
-        echo '<p>' . \__('Clic§k on the button below to choose a Particle.', 'genesis') . '</p>';
+        echo '<p>' . \__('Click on the button below to choose a Particle.', 'genesis') . '</p>';
 
         echo $theme->render('@genesis-admin/partials/inline.html.twig', $params);
     }
@@ -208,7 +217,7 @@ class Particle extends \WP_Widget
      * @param array $old_instance The previous options
      * @return array
      */
-    public function update($new_instance, $old_instance)
+    public function update($new_instance, $old_instance): array
     {
         $instance = isset($new_instance['particle']) ? json_decode($new_instance['particle'], true) : [];
         if ($instance == null) {

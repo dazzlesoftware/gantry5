@@ -21,11 +21,11 @@ use Genesis\Component\Assignments\AssignmentsInterface;
 class AssignmentsTaxonomy implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'taxonomy';
+    public string $type = 'taxonomy';
     /** @var string */
-    public $label = 'Taxonomies: %s';
+    public string $label = 'Taxonomies: %s';
     /** @var int */
-    public $priority = 8;
+    public int $priority = 8;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -104,7 +104,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
      * @param array $args
      * @return mixed
      */
-    protected function getTaxonomies($args = [])
+    protected function getTaxonomies(array $args = []): array
     {
         $defaults = [
             'show_ui' => true
@@ -122,7 +122,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
      * @param array $args
      * @return mixed
      */
-    protected function getItems($tax, $args = [])
+    protected function getItems(object $tax, array $args = []): array
     {
         $items = [];
 

@@ -21,8 +21,8 @@ use Genesis\Framework\Genesis;
  */
 class AssignmentsPost implements AssignmentsInterface
 {
-    public $type = 'post';
-    public $priority = 6;
+    public string $type = 'post';
+    public int $priority = 6;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -111,7 +111,7 @@ class AssignmentsPost implements AssignmentsInterface
      * @param array $args
      * @return array
      */
-    protected function getPostTypes($args = [])
+    protected function getPostTypes(array $args = []): array
     {
         $defaults = [
             'show_ui' => true
@@ -131,7 +131,7 @@ class AssignmentsPost implements AssignmentsInterface
      * @param array $args
      * @return mixed
      */
-    protected function getItems($post_type, $args = [])
+    protected function getItems(object $post_type, array $args = []): array
     {
         $global = Genesis::instance()['global'];
         if (!$global['assign_posts'] && $post_type->name === 'post') {
@@ -228,7 +228,7 @@ class AssignmentsPost implements AssignmentsInterface
      * @param array $args
      * @return mixed
      */
-    protected function getTerms($taxonomies, $post_type, $args = [])
+    protected function getTerms(array $taxonomies, object $post_type, array $args = []): array
     {
         $items = [];
 

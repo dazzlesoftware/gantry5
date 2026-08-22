@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,7 +20,7 @@ class WordPress implements MultiLantuageInterface
     /**
      * @return bool
      */
-    public static function enabled()
+    public static function enabled(): bool
     {
         return true;
     }
@@ -26,7 +28,7 @@ class WordPress implements MultiLantuageInterface
     /**
      * @return string
      */
-    public function getCurrentLanguage()
+    public function getCurrentLanguage(): string
     {
         return \get_locale();
     }
@@ -34,7 +36,7 @@ class WordPress implements MultiLantuageInterface
     /**
      * @return array
      */
-    public function getLanguageOptions()
+    public function getLanguageOptions(): array
     {
         require_once ABSPATH . 'wp-admin/includes/translation-install.php';
         $translations = \wp_get_available_translations();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -30,7 +32,7 @@ class Collection extends BaseCollection
      * @param string $property
      * @return array
      */
-    public function get($property)
+    public function get(string $property): array
     {
         $list = [];
 
@@ -50,7 +52,7 @@ class Collection extends BaseCollection
      * @param array $arguments
      * @return array
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments): array
     {
         $list = [];
 
@@ -61,7 +63,7 @@ class Collection extends BaseCollection
         return $list;
     }
 
-    public function exportSql()
+    public function exportSql(): string
     {
         $objects = [];
         foreach ($this as $object) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -14,11 +16,8 @@ use Genesis\Framework\Theme;
 use Genesis\Joomla\Object\AbstractObject;
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
-use Joomla\CMS\Table\Table;
 use DazzleSoftware\Toolbox\ArrayTraits\Export;
 use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
-
-Table::addIncludePath(JPATH_LIBRARIES . '/legacy/table/');
 
 /**
  * Class Module
@@ -40,20 +39,20 @@ class Module extends AbstractObject implements ExportInterface
     use Export;
 
     /** @var array */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string */
-    static protected $table = 'Module';
+    protected static mixed $table = 'Module';
     /** @var string */
-    static protected $order = 'id';
+    protected static mixed $order = 'id';
 
     /** @var array */
-    protected $_assignments;
+    protected array $_assignments = [];
 
     /**
      * @param int[]|null $assignments
      * @return array
      */
-    public function assignments($assignments = null)
+    public function assignments(?array $assignments = null): array
     {
         if (is_array($assignments)) {
             $this->_assignments = array_map('intval', array_values($assignments));
@@ -73,13 +72,13 @@ class Module extends AbstractObject implements ExportInterface
     /**
      * @return bool
      */
-    public function initialize()
+    public function initialize(): bool
     {
         if (!parent::initialize()) {
             return false;
         }
 
-        $this->params = json_decode($this->params, false);
+        $this->params = json_decode((string) $this->params, false);
 
         return true;
     }
@@ -87,7 +86,7 @@ class Module extends AbstractObject implements ExportInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $particle = $this->module === 'mod_genesis_particle';
 
@@ -138,7 +137,7 @@ class Module extends AbstractObject implements ExportInterface
         return array_filter($array, [$this, 'is_not_null']);
     }
 
-    public function exportSql()
+    public function exportSql(): string
     {
         $assignments = $this->assignments();
         foreach ($assignments as &$assignment) {
@@ -158,7 +157,7 @@ class Module extends AbstractObject implements ExportInterface
      * @param array $array
      * @return Module|null
      */
-    public function create($array)
+    public function create(array $array): ?static
     {
         $type = $array['type'];
 
@@ -198,7 +197,7 @@ class Module extends AbstractObject implements ExportInterface
      * @param string $file
      * @return string
      */
-    public function render($file)
+    public function render(string $file): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -210,7 +209,7 @@ class Module extends AbstractObject implements ExportInterface
      * @param string $string
      * @return string
      */
-    public function compile($string)
+    public function compile(string $string): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -225,7 +224,7 @@ class Module extends AbstractObject implements ExportInterface
      * @return bool
      * @internal
      */
-    public function is_not_null($val)
+    public function is_not_null(mixed $val): bool
     {
         return null !== $val;
     }
@@ -234,7 +233,7 @@ class Module extends AbstractObject implements ExportInterface
      * @param array $items
      * @return ModuleCollection
      */
-    protected static function collection($items)
+    protected static function collection(array $items): ModuleCollection
     {
         return new ModuleCollection($items);
     }

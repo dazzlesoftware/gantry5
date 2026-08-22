@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -31,7 +33,7 @@ class StyleHelper
      * @param int|array|null $id
      * @return StyleTable|\TemplatesTableStyle
      */
-    public static function getStyle($id = null)
+    public static function getStyle(int|array|null $id = null): Table
     {
         $model = static::loadModel();
         $style = $model->getTable('Style');
@@ -51,7 +53,7 @@ class StyleHelper
      * @param string $template
      * @return array
      */
-    public static function loadStyles($template)
+    public static function loadStyles(string $template): array
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
 
@@ -78,7 +80,7 @@ class StyleHelper
     /**
      * @return StyleTable|\TemplatesTableStyle
      */
-    public static function getDefaultStyle()
+    public static function getDefaultStyle(): Table
     {
         return static::getStyle(['home' => 1, 'client_id' => 0]);
     }
@@ -88,7 +90,7 @@ class StyleHelper
      * @param string $old
      * @param string $new
      */
-    public static function copy($style, $old, $new)
+    public static function copy(ThemeDetails|Table $style, string|int $old, string|int $new): void
     {
         if ($style instanceof ThemeDetails) {
             $name = $style->name;
@@ -104,7 +106,7 @@ class StyleHelper
         $oldPath = $locator->findResource('genesis-config://' . $old, true, true);
         $newPath = $locator->findResource('genesis-config://' . $new, true, true);
 
-        if (file_exists($oldPath)) {
+        if (is_string($oldPath) && is_string($newPath) && file_exists($oldPath)) {
             Folder::copy($oldPath, $newPath);
         }
 
@@ -117,7 +119,7 @@ class StyleHelper
      * @param mixed $preset
      * @throws \Exception
      */
-    public static function update($id, $preset)
+    public static function update(int|array $id, mixed $preset): void
     {
         $style = static::getStyle($id);
 
@@ -128,7 +130,7 @@ class StyleHelper
     /**
      * @param string $id
      */
-    public static function delete($id)
+    public static function delete(string $id): void
     {
         $genesis = Genesis::instance();
 
@@ -146,7 +148,7 @@ class StyleHelper
      * @param string $name
      * @return StyleModel|\TemplatesModelStyle
      */
-    public static function loadModel($name = 'Style')
+    public static function loadModel(string $name = 'Style'): object
     {
         static $model = [];
 

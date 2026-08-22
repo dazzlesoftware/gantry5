@@ -20,12 +20,12 @@ use Genesis\Component\Assignments\AssignmentsInterface;
 class AssignmentsWoocommerce implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'woocommerce';
+    public string $type = 'woocommerce';
     /** @var int */
-    public $priority = 4;
+    public int $priority = 4;
 
     /** @var array */
-    protected $context = [
+    protected array $context = [
         'is_shop'             => 'Shop Page',
         'is_product'          => 'Product Page',
         'is_product_category' => 'Product Category',
@@ -73,7 +73,7 @@ class AssignmentsWoocommerce implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getItems()
+    protected function getItems(): array
     {
         $items = [];
         $context = $this->context;
@@ -94,7 +94,7 @@ class AssignmentsWoocommerce implements AssignmentsInterface
      * @param $context
      * @return array
      */
-    public static function addPageContextItem($context)
+    public static function addPageContextItem(mixed $context): mixed
     {
         if (is_array($context)) {
             $context['is_woocommerce'] = 'WooCommerce Page';
@@ -110,7 +110,7 @@ class AssignmentsWoocommerce implements AssignmentsInterface
      * @param $priority
      * @return array
      */
-    public static function addPageContextConditionals($rules, $priority = 1)
+    public static function addPageContextConditionals(?array $rules, int $priority = 1): array
     {
         if (!isset($rules)) {
             $rules = [];

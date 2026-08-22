@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,13 +22,13 @@ use Joomla\Database\DatabaseInterface;
 class MenuItem extends AbstractObject
 {
     /** @var array */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string */
-    static protected $table = 'Menu';
+    protected static mixed $table = 'Menu';
     /** @var string */
-    static protected $order = 'id';
+    protected static mixed $order = 'id';
 
-    public function exportSql()
+    public function exportSql(): string
     {
         $component = $this->component_id;
         if ($component) {
@@ -45,7 +47,7 @@ class MenuItem extends AbstractObject
         return $this->getCreateSql(['asset_id']) . ';';
     }
 
-    protected static function getComponents()
+    protected static function getComponents(): array
     {
         static $components;
 

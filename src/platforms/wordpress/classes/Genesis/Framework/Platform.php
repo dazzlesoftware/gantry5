@@ -234,7 +234,7 @@ class Platform extends BasePlatform
      * @param mixed $query
      * @return QueryIterator
      */
-    public function query_posts($query)
+    public function query_posts(mixed $query): PostQuery
     {
         return new PostQuery($query);
     }
@@ -266,7 +266,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function update()
+    public function update(): string
     {
         return \esc_url(\wp_nonce_url(\self_admin_url('update.php?action=upgrade-plugin&plugin=') . $this->file, 'upgrade-plugin_' . $this->file));
     }
@@ -274,7 +274,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function updates()
+    public function updates(): array
     {
         $plugin = \get_site_transient('update_plugins');
         $list = [];
@@ -293,7 +293,7 @@ class Platform extends BasePlatform
      * @param array $args
      * @return mixed
      */
-    public function getCategories($args = [])
+    public function getCategories(array $args = []): array
     {
         $default = [
             'type'                     => 'post',
@@ -322,7 +322,7 @@ class Platform extends BasePlatform
      * @param array $params
      * @return string|null
      */
-    public function displayWidgets($key, array $params = [])
+    public function displayWidgets(string $key, array $params = []): ?string
     {
         return Widgets::displayPosition($key, $params);
     }
@@ -332,7 +332,7 @@ class Platform extends BasePlatform
      * @param array $params
      * @return string|null
      */
-    public function displayWidget($instance = [], array $params = [])
+    public function displayWidget(array|string $instance = [], array $params = []): ?string
     {
         return Widgets::displayWidget($instance, $params);
     }
@@ -340,7 +340,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function listWidgets()
+    public function listWidgets(): array
     {
         return Widgets::listWidgets();
     }
@@ -349,7 +349,7 @@ class Platform extends BasePlatform
      * @param array $params
      * @return string
      */
-    public function displaySystemMessages($params = [])
+    public function displaySystemMessages(array $params = []): string
     {
         /** @var Theme $theme */
         $theme = $this->container['theme'];
@@ -372,7 +372,7 @@ class Platform extends BasePlatform
      * @param bool $html
      * @return string
      */
-    public function truncate($text, $length, $html = false)
+    public function truncate(string $text, int $length, bool $html = false): string
     {
         if (!$html) {
             $text = \wp_strip_all_tags($text);

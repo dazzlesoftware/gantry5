@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable Generic.PHP.ForbiddenFunctions.Found,WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.EscapeOutput.UnsafePrintingFunction
 
 /**
@@ -24,14 +26,14 @@ abstract class Widgets
     use GenesisTrait;
 
     /** @var array */
-    static protected $chromeArgs = [];
+    protected static array $chromeArgs = [];
 
     /**
      * @param string $key
      * @param array $params
      * @return false|string|null
      */
-    public static function displayPosition($key, array $params = [])
+    public static function displayPosition(string $key, array $params = []): string|null
     {
         $key = \sanitize_title($key);
 
@@ -88,7 +90,7 @@ abstract class Widgets
                     $contents = ob_get_clean();
 
                     // As we already rendered content, we can later just display it.
-                    $wp_registered_widgets[$id]['callback'] = function () use ($contents) {
+                    $wp_registered_widgets[$id]['callback'] = static function () use ($contents): void {
                         echo $contents;
                     };
                 }
@@ -114,7 +116,7 @@ abstract class Widgets
      * @param array $params
      * @return string|null
      */
-    public static function displayWidget($instance = [], array $params = [])
+    public static function displayWidget(array|string $instance = [], array $params = []): ?string
     {
         if (is_string($instance)) {
             $instance = json_decode($instance, true);
@@ -164,7 +166,7 @@ abstract class Widgets
      * @param array $props
      * @return string|null
      */
-    public static function getAjax($sidebar_id, $id, array $props = [])
+    public static function getAjax(string|int $sidebar_id, string|int $id, array $props = []): ?string
     {
         global $wp_registered_sidebars, $wp_registered_widgets;
 
@@ -214,7 +216,7 @@ abstract class Widgets
     /**
      * @return array
      */
-    public static function listWidgets()
+    public static function listWidgets(): array
     {
         static $list;
 
@@ -234,7 +236,7 @@ abstract class Widgets
             $list[$widget->id_base] = $info;
         }
 
-        uasort($list, static function ($a, $b) { return strcmp($a['title'], $b['title']); });
+        uasort($list, static function (array $a, array $b): int { return strcmp($a['title'], $b['title']); });
 
         return $list;
     }
@@ -243,7 +245,7 @@ abstract class Widgets
      * @param bool $particlesOnly
      * @return array
      */
-    public static function export($particlesOnly = true)
+    public static function export(bool $particlesOnly = true): array
     {
         global $wp_registered_widget_controls;
 
@@ -311,7 +313,7 @@ abstract class Widgets
     /**
      * @param array $positions
      */
-    public static function import(array $positions)
+    public static function import(array $positions): void
     {
         // Load sidebars.
         $sidebars = (array)\get_option('sidebars_widgets');
@@ -346,7 +348,7 @@ abstract class Widgets
      * @param array $data
      * @param string $sidebar
      */
-    public static function create($type, array $data, $sidebar = 'wp_inactive_widgets')
+    public static function create(string $type, array $data, string|int $sidebar = 'wp_inactive_widgets'): void
     {
         // Load widgets and sidebars.
         $sidebars = (array)\get_option('sidebars_widgets');
@@ -364,7 +366,7 @@ abstract class Widgets
      * @param bool $next
      * @return int
      */
-    protected static function displayWidgetId($next = false)
+    protected static function displayWidgetId(bool $next = false): int
     {
         static $id = -1;
 
@@ -379,7 +381,7 @@ abstract class Widgets
      * @param string $type
      * @return string|false
      */
-    protected static function getImportType($type)
+    protected static function getImportType(string $type): string|false
     {
         if ($type === 'genesis.particle') {
             list ($scope, $type) = ['wordpress', 'particle_widget'];
@@ -407,7 +409,7 @@ abstract class Widgets
      * @param array $widgets
      * @param array $sidebars
      */
-    protected static function addWidget($type, array $data, $sidebar, array &$widgets, array &$sidebars)
+    protected static function addWidget(string $type, array $data, string|int $sidebar, array &$widgets, array &$sidebars): void
     {
         global $wp_registered_sidebars;
 
@@ -443,7 +445,7 @@ abstract class Widgets
      * @param array $params
      * @return array
      */
-    public static function sidebarChromeFilter($params)
+    public static function sidebarChromeFilter(array $params): array
     {
         if (empty(static::$chromeArgs)) {
             return $params;
@@ -462,7 +464,7 @@ abstract class Widgets
      * @param string|object $id
      * @return string
      */
-    protected static function getWidgetClassname($id)
+    protected static function getWidgetClassname(string|object $id): string
     {
         if (is_string($id)) {
             $classes = !empty($GLOBALS['wp_registered_widgets'][$id]) ? $GLOBALS['wp_registered_widgets'][$id]['classname'] : null;
@@ -487,7 +489,7 @@ abstract class Widgets
      * @param string|int $id
      * @return array|null
      */
-    protected static function getWidgetData($id)
+    protected static function getWidgetData(string|int $id): ?array
     {
         $widgets = static::listWidgets();
         if (!isset($widgets[$id])) {
@@ -500,7 +502,7 @@ abstract class Widgets
      * @param string $chrome
      * @return array
      */
-    protected static function getChromeArgs($chrome = 'Genesis')
+    protected static function getChromeArgs(?string $chrome = 'Genesis'): array
     {
         /** @var Theme $theme */
         $theme = static::genesis()['theme'];
@@ -513,7 +515,7 @@ abstract class Widgets
      * @param mixed $chrome
      * @return array
      */
-    protected static function getWidgetChrome($widgetClass, $chrome)
+    protected static function getWidgetChrome(string $widgetClass, ?string $chrome): array
     {
         global $wp_widget_factory;
 
@@ -557,7 +559,7 @@ abstract class Widgets
      * @param array $instance
      * @return null
      */
-    public static function widgetCustomClassesForm($widget, $return, $instance)
+    public static function widgetCustomClassesForm(object $widget, mixed $return, array $instance): null
     {
         $instance = \wp_parse_args($instance, ['genesis_classes' => '']);
 
@@ -582,7 +584,7 @@ abstract class Widgets
      * @param mixed $widget
      * @return array
      */
-    public static function widgetCustomClassesUpdate($instance, $new_instance, $old_instance, $widget)
+    public static function widgetCustomClassesUpdate(array $instance, array $new_instance, array $old_instance, mixed $widget): array
     {
         if (!empty($new_instance['genesis_classes'])) {
             $instance['genesis_classes'] = implode(' ', array_map('sanitize_html_class', explode(' ', $new_instance['genesis_classes'])));
@@ -597,7 +599,7 @@ abstract class Widgets
      * @param array $params
      * @return array
      */
-    public static function widgetCustomClassesSidebarParams($params)
+    public static function widgetCustomClassesSidebarParams(array $params): array
     {
         global $wp_registered_widgets;
 

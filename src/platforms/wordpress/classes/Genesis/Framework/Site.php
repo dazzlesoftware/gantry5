@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ class Site extends \Timber\Site
      * @param string $widget_id
      * @return string
      */
-    public function sidebar( $widget_id = '' )
+    public function sidebar(string $widget_id = ''): string
     {
         ob_start();
         \dynamic_sidebar($widget_id);

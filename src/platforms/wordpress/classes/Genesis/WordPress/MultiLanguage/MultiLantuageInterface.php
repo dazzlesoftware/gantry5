@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,15 +20,15 @@ interface MultiLantuageInterface
     /**
      * @return bool
      */
-    public static function enabled();
+    public static function enabled(): bool;
 
     /**
      * @return string
      */
-    public function getCurrentLanguage();
+    public function getCurrentLanguage(): string;
 
     /**
      * @return array
      */
-    public function getLanguageOptions();
+    public function getLanguageOptions(): array;
 }

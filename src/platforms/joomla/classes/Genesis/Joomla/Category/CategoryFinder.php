@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -13,6 +15,7 @@ use Genesis\Joomla\Object\Finder;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
+use Genesis\Joomla\Object\Collection;
 
 /**
  * Class CategoryFinder
@@ -21,11 +24,11 @@ use Joomla\Database\DatabaseInterface;
 class CategoryFinder extends Finder
 {
     /** @var string */
-    protected $table = '#__categories';
+    protected string $table = '#__categories';
     /** @var string */
-    protected $extension = 'com_content';
+    protected string $extension = 'com_content';
     /** @var bool */
-    protected $readonly = true;
+    protected bool $readonly = true;
 
     /**
      * Makes all created objects as readonly.
@@ -33,7 +36,7 @@ class CategoryFinder extends Finder
      * @param bool $readonly
      * @return $this
      */
-    public function readonly($readonly = true)
+    public function readonly(bool $readonly = true): static
     {
         $this->readonly = (bool)$readonly;
 
@@ -44,7 +47,7 @@ class CategoryFinder extends Finder
      * @param bool $object
      * @return array|\Genesis\Joomla\Object\Collection
      */
-    public function find($object = true)
+    public function find(bool $object = true): array|Collection
     {
         $ids = parent::find();
 
@@ -60,13 +63,13 @@ class CategoryFinder extends Finder
      * @param int $levels
      * @return $this
      */
-    public function id($ids, $levels = 0)
+    public function id(int|array $ids, int $levels = 0): static
     {
         if ($ids && $levels) {
             $ids = (array) $ids;
 
             $db = $this->db;
-            array_walk($ids, function (&$item) use ($db) { $item = $db->quote($item); });
+            array_walk($ids, static function (mixed &$item) use ($db): void { $item = $db->quote($item); });
             $idList = implode(',', $ids);
 
             // Create a subquery for the subcategory list
@@ -93,7 +96,7 @@ class CategoryFinder extends Finder
      * @param string|bool|int $language
      * @return $this
      */
-    public function language($language = true)
+    public function language(string|bool|int $language = true): static
     {
         if (!$language) {
             return $this;
@@ -111,7 +114,7 @@ class CategoryFinder extends Finder
      * @param int|int[] $published
      * @return $this
      */
-    public function published($published = 1)
+    public function published(int|array $published = 1): static
     {
         if (!is_array($published)) {
             $published = (array) ((int)$published);
@@ -123,7 +126,7 @@ class CategoryFinder extends Finder
      * @param bool $authorised
      * @return $this
      */
-    public function authorised($authorised = true)
+    public function authorised(bool $authorised = true): static
     {
         if (!$authorised) {
             return $this;
@@ -155,7 +158,7 @@ class CategoryFinder extends Finder
      * @param string $extension
      * @return $this
      */
-    public function extension($extension)
+    public function extension(string $extension): static
     {
         $this->extension = static::getExtension($extension);
 
@@ -166,7 +169,7 @@ class CategoryFinder extends Finder
      * @param string $extension
      * @return string
      */
-    public static function getExtension($extension)
+    public static function getExtension(string $extension): string
     {
         static $map = [
             'article' => 'com_content',
@@ -185,9 +188,9 @@ class CategoryFinder extends Finder
      * @param $extension
      * @return array
      */
-    public static function getUnpublished($extension)
+    public static function getUnpublished(string $extension): array
     {
-        static $list;
+        static $list = null;
 
         if ($list === null) {
             $db = Factory::getContainer()->get(DatabaseInterface::class);

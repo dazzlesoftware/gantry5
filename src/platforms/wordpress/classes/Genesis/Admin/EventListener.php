@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped,Internal.LineEndings.Mixed
 
 /**
@@ -26,7 +28,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'admin.global.save' => ['onGlobalSave', 0],
@@ -41,7 +43,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onGlobalSave(Event $event)
+    public function onGlobalSave(Event $event): void
     {
         $option = (array) \get_option('genesis_plugin');
         $option['production'] = (int)(bool) $event->data['production'];
@@ -51,7 +53,7 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onStylesSave(Event $event)
+    public function onStylesSave(Event $event): void
     {
         $event->theme->preset_styles_update_css();
     }
@@ -59,28 +61,28 @@ class EventListener implements EventSubscriberInterface
     /**
      * @param Event $event
      */
-    public function onSettingsSave(Event $event)
+    public function onSettingsSave(Event $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onLayoutSave(Event $event)
+    public function onLayoutSave(Event $event): void
     {
     }
 
     /**
      * @param Event $event
      */
-    public function onAssignmentsSave(Event $event)
+    public function onAssignmentsSave(Event $event): void
     {
     }
 
     /**
      * @param MenuEvent|Event $event
      */
-    public function onMenusSave(Event $event)
+    public function onMenusSave(Event $event): void
     {
         /*
          * Automatically create navigation menu items:
@@ -323,7 +325,7 @@ class EventListener implements EventSubscriberInterface
      * @param array $ignore
      * @return array
      */
-    protected function normalizeMenuItem(array $item, array $ignore = [])
+    protected function normalizeMenuItem(array $item, array $ignore = []): array
     {
         static $ignoreList = [
             // Never save derived values.

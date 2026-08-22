@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,7 +24,7 @@ use Genesis\Framework\Platform;
 class Widget extends JsonController
 {
     /** @var array */
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET'    => [
             '/'                  => 'select',
             '/*'                 => 'widget',
@@ -39,7 +41,7 @@ class Widget extends JsonController
      *
      * @return JsonResponse
      */
-    public function select()
+    public function select(): JsonResponse
     {
         return new JsonResponse(['html' => $this->render('@genesis-admin/modals/widget-picker.html.twig', $this->params)]);
     }
@@ -51,7 +53,7 @@ class Widget extends JsonController
      * @return JsonResponse
      * @throws \RuntimeException
      */
-    public function widget($name)
+    public function widget(string $name): JsonResponse
     {
         $data = $this->request->post['item'];
         if ($data) {
@@ -73,7 +75,7 @@ class Widget extends JsonController
 
             // Load particle blueprints.
             $validator = $this->loadBlueprints($scope);
-            $callable = static function () use ($validator) {
+            $callable = static function () use ($validator): BlueprintForm {
                 return $validator;
             };
         } else {
@@ -124,7 +126,7 @@ class Widget extends JsonController
      * @param string $name
      * @return JsonResponse
      */
-    public function validate($name)
+    public function validate(string $name): JsonResponse
     {
         $widgetType = $this->getWidgetType($name);
 
@@ -196,7 +198,7 @@ class Widget extends JsonController
      * @return \WP_Widget
      * @throws \RuntimeException
      */
-    protected function getWidgetType($name)
+    protected function getWidgetType(string $name): \WP_Widget
     {
         /** @var Platform $platform */
         $platform = $this->container['platform'];
@@ -219,7 +221,7 @@ class Widget extends JsonController
      * @param string $name
      * @return BlueprintForm
      */
-    protected function loadBlueprints($name = 'menu')
+    protected function loadBlueprints(string $name = 'menu'): BlueprintForm
     {
         return BlueprintForm::instance("menu/{$name}.yaml", 'genesis-admin://blueprints');
     }
@@ -228,7 +230,7 @@ class Widget extends JsonController
      * @param array $input
      * @return array
      */
-    protected function castInput(array $input)
+    protected function castInput(array $input): array
     {
         // TODO: Following code is a hack; we really need to pass the data as JSON instead of individual HTTP fields
         // TODO: in order to avoid casting. Main issue is that "true" could also be valid text string.
@@ -236,9 +238,9 @@ class Widget extends JsonController
         foreach ($input as $key => $field) {
             if (is_array($field)) {
                 $input[$key] = $this->castInput($field);
-            } elseif (strtolower($field) === 'true') {
+            } elseif (is_string($field) && strtolower($field) === 'true') {
                 $input[$key] = true;
-            } elseif (strtolower($field) === 'false') {
+            } elseif (is_string($field) && strtolower($field) === 'false') {
                 $input[$key] = false;
             } elseif ((string) $field === (string)(int) $field) {
                 $input[$key] = (int)$field;

@@ -24,12 +24,12 @@ use Genesis\WordPress\MultiLanguage\Wpml;
 class AssignmentsLanguage implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'language';
+    public string $type = 'language';
     /** @var int */
-    public $priority = 1;
+    public int $priority = 1;
 
     /** @var MultiLantuageInterface */
-    protected $adapter;
+    protected ?MultiLantuageInterface $adapter = null;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -66,7 +66,7 @@ class AssignmentsLanguage implements AssignmentsInterface
     /**
      * @return MultiLantuageInterface|PolyLang|WordPress|Wpml
      */
-    protected function getAdapter()
+    protected function getAdapter(): MultiLantuageInterface
     {
         if (!$this->adapter) {
             if (Wpml::enabled()) {

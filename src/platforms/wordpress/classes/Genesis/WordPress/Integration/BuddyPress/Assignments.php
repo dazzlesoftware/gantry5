@@ -20,18 +20,18 @@ use Genesis\Component\Assignments\AssignmentsInterface;
 class AssignmentsBuddyPress implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'buddypress';
+    public string $type = 'buddypress';
     /** @var int */
-    public $priority = 4;
+    public int $priority = 4;
     /** @var bool */
-    public $_active = false;
+    public bool $_active = false;
 
     /** @var array */
-    protected $components = [];
+    protected array $components = [];
     /** @var array */
-    protected $member_types = [];
+    protected array $member_types = [];
     /** @var array */
-    protected $groups = [];
+    protected array $groups = [];
 
     public function __construct()
     {
@@ -143,7 +143,7 @@ class AssignmentsBuddyPress implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getComponents()
+    protected function getComponents(): array
     {
         $items = [];
         $context = $this->components;
@@ -161,7 +161,7 @@ class AssignmentsBuddyPress implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getMemberTypes()
+    protected function getMemberTypes(): array
     {
         $items = [];
         $context = $this->member_types;
@@ -179,7 +179,7 @@ class AssignmentsBuddyPress implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getGroups()
+    protected function getGroups(): array
     {
         $items = [];
         $context = $this->groups;
@@ -201,7 +201,7 @@ class AssignmentsBuddyPress implements AssignmentsInterface
      *
      * @return array
      */
-    public static function addPageContextItem($context)
+    public static function addPageContextItem(mixed $context): mixed
     {
         if (is_array($context)) {
             $context['is_buddypress'] = 'BuddyPress Page';
@@ -218,7 +218,7 @@ class AssignmentsBuddyPress implements AssignmentsInterface
      *
      * @return array
      */
-    public static function addPageContextConditionals($rules, $priority = 1)
+    public static function addPageContextConditionals(?array $rules, int $priority = 1): array
     {
         if (!isset($rules)) {
             $rules = [];

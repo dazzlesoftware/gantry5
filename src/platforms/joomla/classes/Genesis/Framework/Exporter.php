@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,12 +31,12 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Exporter
 {
-    protected $files = [];
+    protected array $files = [];
 
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -77,7 +79,7 @@ class Exporter
     /**
      * @return array
      */
-    public function outlines()
+    public function outlines(): array
     {
         $genesis = Genesis::instance();
         $styles = StyleHelper::loadStyles($genesis['theme.name']);
@@ -150,7 +152,7 @@ class Exporter
      * @param bool $all
      * @return array
      */
-    public function positions($all = true)
+    public function positions(bool $all = true): array
     {
         $genesis = Genesis::instance();
 
@@ -191,7 +193,7 @@ class Exporter
     /**
      * @return array
      */
-    public function menus()
+    public function menus(): array
     {
         $genesis = Genesis::instance();
 
@@ -214,7 +216,7 @@ class Exporter
 
             array_walk(
                 $items,
-                function (&$item) {
+                static function (array &$item): void {
                     $item['id'] = (int) $item['id'];
                     if (\in_array($item['type'], ['component', 'alias'], true)) {
                         $item['type'] = "joomla.{$item['type']}";
@@ -238,7 +240,7 @@ class Exporter
     /**
      * @return array
      */
-    public function articles()
+    public function articles(): array
     {
         $finder = new ContentFinder();
 
@@ -262,7 +264,7 @@ class Exporter
     /**
      * @return array
      */
-    public function categories()
+    public function categories(): array
     {
         $finder = new CategoryFinder();
 
@@ -281,7 +283,7 @@ class Exporter
      * @param array $details
      * @return string
      */
-    public function customSql(array $details)
+    public function customSql(array $details): string
     {
         //return str_replace('#__', 'jos_', $this->dumpInstallSql($details));
         return $this->dumpInstallSql($details);
@@ -293,7 +295,7 @@ class Exporter
      * @param string $configuration
      * @return array
      */
-    public function getOutlineAssignments($configuration)
+    public function getOutlineAssignments(int|string $configuration): array
     {
         $app = Factory::getContainer()->get(\Joomla\CMS\Application\SiteApplication::class);
         $menu = $app->getMenu();
@@ -325,11 +327,11 @@ class Exporter
      * @param  string $html         HTML input to be filtered.
      * @return string               Returns modified HTML.
      */
-    public function urlFilter($html)
+    public function urlFilter(string $html): string
     {
         // Tokenize all PRE and CODE tags to avoid modifying any src|href|url in them
         $tokens = [];
-        $temp = preg_replace_callback('#<(pre|code).*?>.*?</\\1>#is', function($matches) use (&$tokens) {
+        $temp = preg_replace_callback('#<(pre|code).*?>.*?</\\1>#is', static function(array $matches) use (&$tokens): string {
             $token = uniqid('__genesis_token', false);
             $tokens['#' . $token . '#'] = $matches[0];
 
@@ -348,7 +350,7 @@ class Exporter
      * @param string $url
      * @return string
      */
-    public function url($url)
+    public function url(string $url): string
     {
         // Only process local urls.
         if ($url === '' || $url[0] === '/' || $url[0] === '#') {
@@ -401,7 +403,7 @@ class Exporter
      * @return string
      * @internal
      */
-    public function linkHandler(array $matches)
+    public function linkHandler(array $matches): string
     {
         $url = $this->url(trim($matches[3]));
 
@@ -413,7 +415,7 @@ class Exporter
      * @return string
      * @internal
      */
-    public function urlHandler(array $matches)
+    public function urlHandler(array $matches): string
     {
         $url = $this->url(trim($matches[2], '"\''));
 
@@ -424,7 +426,7 @@ class Exporter
      * @param array $data
      * @return array
      */
-    protected function moduleMod_Custom(array $data)
+    protected function moduleMod_Custom(array $data): array
     {
         // Convert to particle...
         $data['type'] = 'particle';
@@ -447,7 +449,7 @@ class Exporter
      * @param array $export
      * @return string
      */
-    protected function dumpInstallSql(array $export)
+    protected function dumpInstallSql(array $export): string
     {
         $theme = $export['export']['theme'];
         $themeName = $theme['name'];
@@ -485,7 +487,7 @@ EOS;
         return $out;
     }
 
-    protected $installSql = <<<EOS
+    protected string $installSql = <<<EOS
 
 # Install Genesis package
 
@@ -524,7 +526,7 @@ INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALU
 
 EOS;
 
-    protected $themeUpdateSql = <<<EOS
+    protected string $themeUpdateSql = <<<EOS
 # Update site for theme
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`, `extra_query`) VALUES
@@ -533,7 +535,7 @@ INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALU
 
 EOS;
 
-    protected function dumpOutlinesSql(array $export, $themeTitle)
+    protected function dumpOutlinesSql(array $export, string $themeTitle): string
     {
         $outlines = [];
         foreach ($export['outlines'] as $outline) {
@@ -560,7 +562,7 @@ EOS;
         return $out;
     }
 
-    protected function dumpMenusSql(array $export)
+    protected function dumpMenusSql(array $export): string
     {
         $menus = [];
         foreach ($export['menus'] as $menuType => $menu) {
@@ -590,14 +592,14 @@ EOS;
         return $out;
     }
 
-    protected function dumpModulesSql()
+    protected function dumpModulesSql(): string
     {
         $finder = new ModuleFinder();
 
         return $finder->limit(0)->find()->exportSql();
     }
 
-    protected function dumpContentSql()
+    protected function dumpContentSql(): string
     {
         $categories = new CategoryFinder();
         $content = new ContentFinder();

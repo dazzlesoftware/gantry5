@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ class Exporter
     /**
      * @return array
      */
-    public function positions()
+    public function positions(): array
     {
         return Widgets::export();
     }

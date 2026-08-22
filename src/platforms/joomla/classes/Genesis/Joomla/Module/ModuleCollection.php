@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -30,7 +32,7 @@ class ModuleCollection extends Collection
     /**
      * @return array
      */
-    public function export()
+    public function export(): array
     {
         $assignments = $this->assignments();
         $paths = $this->getAssignmentPath($this->values($assignments));
@@ -68,7 +70,7 @@ class ModuleCollection extends Collection
         return $positions;
     }
 
-    public function exportSql()
+    public function exportSql(): string
     {
         $modules = [];
         foreach ($this as $module) {
@@ -89,14 +91,14 @@ class ModuleCollection extends Collection
     /**
      * @return array
      */
-    public function assignments()
+    public function assignments(): array
     {
         $this->loadAssignments();
 
         return $this->__call('assignments', []);
     }
 
-    public function loadAssignments()
+    public function loadAssignments(): void
     {
         $ids = $this->defined('assignments', false);
         $ids = array_filter($ids);
@@ -129,7 +131,7 @@ class ModuleCollection extends Collection
      * @param array $ids
      * @return array
      */
-    protected function getAssignmentPath(array $ids)
+    protected function getAssignmentPath(array $ids): array
     {
         if (!$ids) {
             return [];
@@ -156,7 +158,7 @@ class ModuleCollection extends Collection
      * @param array $values
      * @return array
      */
-    protected function values($values)
+    protected function values(array $values): array
     {
         $list = [[]];
         foreach ($values as $array) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,7 +20,7 @@ class PolyLang extends WordPress
     /**
      * @return bool
      */
-    public static function enabled()
+    public static function enabled(): bool
     {
         return function_exists('pll_current_language') && function_exists('pll_the_languages');
     }

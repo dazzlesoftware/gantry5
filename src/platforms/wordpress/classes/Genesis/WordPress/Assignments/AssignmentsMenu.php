@@ -23,9 +23,9 @@ use Genesis\Component\Assignments\AssignmentsInterface;
 class AssignmentsMenu implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'menu';
+    public string $type = 'menu';
     /** @var int */
-    public $priority = 3;
+    public int $priority = 3;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -95,7 +95,7 @@ class AssignmentsMenu implements AssignmentsInterface
      * @param array $args
      * @return array
      */
-    protected function getMenus($args = [])
+    protected function getMenus(array $args = []): array
     {
         $defaults = [
             'orderby' => 'name'
@@ -112,7 +112,7 @@ class AssignmentsMenu implements AssignmentsInterface
      * @param object $menu
      * @return mixed
      */
-    protected function getItems($menu)
+    protected function getItems(object $menu): array
     {
         $items = [];
 
@@ -162,7 +162,7 @@ class AssignmentsMenu implements AssignmentsInterface
      * @param bool $use_forwarded_host
      * @return string
      */
-    function _URLorigin($s, $use_forwarded_host = false)
+    public function _URLorigin(array $s, bool $use_forwarded_host = false): string
     {
         $s_port = \apply_filters('genesis_current_url_server_port', '80');
         $s_ssl_port = \apply_filters('genesis_current_url_server_ssl_port', '443');
@@ -183,7 +183,7 @@ class AssignmentsMenu implements AssignmentsInterface
      * @param bool $use_forwarded_host
      * @return string
      */
-    function _curPageURL($s, $use_forwarded_host = false)
+    public function _curPageURL(array $s, bool $use_forwarded_host = false): string
     {
         return $this->_URLorigin($s, $use_forwarded_host) . $s['REQUEST_URI'];
     }

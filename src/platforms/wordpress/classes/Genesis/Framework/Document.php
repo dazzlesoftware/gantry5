@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable PluginCheck.CodeAnalysis.EnqueuedResourceOffloading.OffloadedContent,WordPress.WP.EnqueuedResourceParameters.NotInFooter,WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 /**
@@ -19,16 +21,16 @@ use Genesis\Component\Content\Document\HtmlDocument;
 class Document extends HtmlDocument
 {
     /** @var array */
-    public static $wp_styles = [];
+    public static array $wp_styles = [];
     /** @var array */
-    public static $wp_scripts = ['head' => [], 'footer' => []];
+    public static array $wp_scripts = ['head' => [], 'footer' => []];
     /** @var array */
-    public static $wp_html_blocks = [];
+    public static array $wp_html_blocks = [];
 
     /** @var array */
-    protected static $script_info = [];
+    protected static array $script_info = [];
     /** @var array */
-    protected static $availableFrameworks = [
+    protected static array $availableFrameworks = [
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
         'mootools.framework' => 'registerMootools',
@@ -38,7 +40,7 @@ class Document extends HtmlDocument
         'lightcase.init' => 'registerLightcaseInit',
     ];
 
-    public static function registerAssets()
+    public static function registerAssets(): void
     {
         static::registerFrameworks();
         static::registerStyles();
@@ -48,7 +50,7 @@ class Document extends HtmlDocument
         static::registerHtmlBlocks('head_meta');
     }
 
-    public static function registerStyles()
+    public static function registerStyles(): void
     {
         $styles = static::$stack[0]->getStyles();
 
@@ -59,7 +61,7 @@ class Document extends HtmlDocument
                     $href = array_shift($array);
                     $version = array_shift($array) ?: false;
                     $name = isset($style['id']) ? $style['id'] : Genesis::basename($href, '.css');
-                    if (strpos($version, '=')) {
+                    if (is_string($version) && str_contains($version, '=')) {
                         $href .= '?' . $version;
                         $version = null;
                     }
@@ -78,7 +80,7 @@ class Document extends HtmlDocument
     /**
      * @param string $pos
      */
-    public static function registerScripts($pos)
+    public static function registerScripts(string $pos): void
     {
         $scripts = static::$stack[0]->getScripts($pos);
         $in_footer = ($pos !== 'head');
@@ -94,7 +96,7 @@ class Document extends HtmlDocument
                         $name = $script['handle'];
                     }
                     self::$script_info[$name] = $script;
-                    if (strpos($version, '=')) {
+                    if (is_string($version) && str_contains($version, '=')) {
                         $src .= '?' . $version;
                         $version = null;
                     }
@@ -113,7 +115,7 @@ class Document extends HtmlDocument
     /**
      * @param string $location
      */
-    public static function registerHtmlBlocks($location)
+    public static function registerHtmlBlocks(string $location): void
     {
         $htmls = static::$stack[0]->getHtml($location);
         
@@ -132,7 +134,7 @@ class Document extends HtmlDocument
      * @param bool|null $addDomain
      * @return string
      */
-    public static function domain($addDomain = null)
+    public static function domain(?bool $addDomain = null): string
     {
         static $domain;
 
@@ -156,7 +158,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function siteUrl()
+    public static function siteUrl(): string
     {
         return \get_site_url();
     }
@@ -164,7 +166,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function rootUri()
+    public static function rootUri(): string
     {
         static $path;
 
@@ -184,7 +186,7 @@ class Document extends HtmlDocument
      * @param string $handle
      * @return string
      */
-    public static function script_add_attributes($tag, $handle)
+    public static function script_add_attributes(string $tag, string $handle): string
     {
         if (!isset(self::$script_info[$handle])) {
             return $tag;
@@ -209,18 +211,18 @@ class Document extends HtmlDocument
         return str_replace(' src=', " {$append} src=", $tag);
     }
 
-    protected static function registerBootstrap5()
+    protected static function registerBootstrap5(): void
     {
         // Bootstrap CSS is compiled into Nucleus and its JavaScript is bundled
         // into the shared Genesis frontend asset.
     }
 
-    protected static function registerMootools()
+    protected static function registerMootools(): void
     {
         \wp_enqueue_script('mootools', 'https://cdnjs.cloudflare.com/ajax/libs/mootools/1.5.2/mootools-core-compat.min.js', [], '1.5.2', true);
     }
 
-    protected static function registerMootoolsMore()
+    protected static function registerMootoolsMore(): void
     {
         \wp_enqueue_script('mootools-more', 'https://cdnjs.cloudflare.com/ajax/libs/mootools-more/1.5.2/mootools-more-compat-compressed.js', ['mootools'], '1.5.2', true);
     }
@@ -231,7 +233,7 @@ class Document extends HtmlDocument
      * @param string $location
      * @return array
      */
-    public static function getHtml($location = 'bottom')
+    public static function getHtml(string $location = 'bottom'): array
     {
         $htmls = parent::getHtml($location);
         

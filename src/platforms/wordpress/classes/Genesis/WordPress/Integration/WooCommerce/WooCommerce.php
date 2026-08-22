@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -29,7 +31,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @return bool
      */
-    public static function enabled()
+    public static function enabled(): bool
     {
         if (in_array('woocommerce/woocommerce.php', \apply_filters('active_plugins', \get_option('active_plugins')), true)) {
             return true;
@@ -46,7 +48,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Container $genesis
      */
-    public function register(Container $genesis)
+    public function register(Container $genesis): void
     {
         $loader = $genesis['loader'];
         $loader->addClassMap(
@@ -61,7 +63,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'theme.init'        => ['onThemeInit', 0],
@@ -74,7 +76,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Event $event
      */
-    public function onThemeInit(Event $event)
+    public function onThemeInit(Event $event): void
     {
         \add_theme_support('woocommerce');
 
@@ -87,7 +89,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Event $event
      */
-    public function onAssigmentsTypes(Event $event)
+    public function onAssigmentsTypes(Event $event): void
     {
         $event->types[] = 'woocommerce';
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,7 +25,7 @@ use Joomla\CMS\WebAsset\WebAssetManager;
  */
 class Document extends HtmlDocument
 {
-    protected static $availableFrameworks = [
+    protected static array $availableFrameworks = [
         'bootstrap' => 'registerBootstrap',
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
@@ -38,7 +40,7 @@ class Document extends HtmlDocument
      * @param string $framework
      * @return bool
      */
-    public static function addFramework($framework)
+    public static function addFramework(string $framework): bool
     {
         if (!parent::addFramework($framework)) {
             return false;
@@ -60,7 +62,7 @@ class Document extends HtmlDocument
     /**
      *
      */
-    public static function registerAssets()
+    public static function registerAssets(): void
     {
         static::registerFrameworks();
         static::registerStyles();
@@ -73,7 +75,7 @@ class Document extends HtmlDocument
      * @param bool|null $addDomain
      * @return string
      */
-    public static function domain($addDomain = null)
+    public static function domain(?bool $addDomain = null): string
     {
         if (!$addDomain) {
             return '';
@@ -88,7 +90,7 @@ class Document extends HtmlDocument
     /**
      * @return string
      */
-    public static function rootUri()
+    public static function rootUri(): string
     {
         return rtrim(Uri::root(true), '/') ?: '/';
     }
@@ -97,7 +99,7 @@ class Document extends HtmlDocument
      * @param bool|null $new
      * @return bool
      */
-    public static function errorPage($new = null)
+    public static function errorPage(?bool $new = null): bool
     {
         static $error = false;
 
@@ -108,7 +110,7 @@ class Document extends HtmlDocument
         return $error;
     }
 
-    protected static function registerStyles()
+    protected static function registerStyles(): void
     {
         if (static::errorPage()) {
             return;
@@ -134,7 +136,7 @@ class Document extends HtmlDocument
         }
     }
 
-    protected static function registerScripts()
+    protected static function registerScripts(): void
     {
         if (static::errorPage()) {
             return;
@@ -160,13 +162,13 @@ class Document extends HtmlDocument
         }
     }
 
-    protected static function registerBootstrap()
+    protected static function registerBootstrap(): void
     {
         // For Joomla 5 use Bootstrap 5 implementation
         static::registerBootstrap5();
     }
 
-    protected static function registerBootstrap5()
+    protected static function registerBootstrap5(): void
     {
         if (!static::errorPage()) {
             HTMLHelper::_('bootstrap.framework');
@@ -178,7 +180,7 @@ class Document extends HtmlDocument
         $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
         array_map(
-            static function ($script) use ($wa) {
+            static function (string $script) use ($wa): void {
                 $asset = $wa->getAsset('script', 'bootstrap.' . $script);
 
                 // Workaround for error document type.
@@ -195,14 +197,14 @@ class Document extends HtmlDocument
         );
     }
 
-    protected static function registerMootools()
+    protected static function registerMootools(): void
     {
         parent::registerMootools();
 
         return;
     }
 
-    protected static function registerMootoolsMore()
+    protected static function registerMootoolsMore(): void
     {
         parent::registerMootoolsMore();
 
@@ -216,7 +218,7 @@ class Document extends HtmlDocument
      * @return string
      * @internal
      */
-    public static function linkHandler(array $matches)
+    public static function linkHandler(array $matches): string
     {
         $url = trim($matches[3]);
         if (strpos($url, 'index.php?') !== 0) {

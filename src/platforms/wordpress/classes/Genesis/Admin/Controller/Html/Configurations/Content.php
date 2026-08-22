@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,7 +26,7 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Content extends HtmlController
 {
-    protected $httpVerbs = [
+    protected array $httpVerbs = [
         'GET' => [
             '/'       => 'index',
             '/*'      => 'undefined',
@@ -57,7 +59,7 @@ class Content extends HtmlController
     /**
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         /** @var ContentConfig $content */
         $content = $this->container['content'];
@@ -86,8 +88,9 @@ class Content extends HtmlController
      * @param string|null $id
      * @return string
      */
-    public function display($group, $id = null)
+    public function display(mixed $group, ?string $id = null): string
     {
+        $group = (string) $group;
         /** @var ContentConfig $content */
         $content = $this->container['content'];
 
@@ -125,9 +128,9 @@ class Content extends HtmlController
      * @param string $id
      * @return string
      */
-    public function formfield($group, $id)
+    public function formfield(string $group, string $id, string ...$segments): string|JsonResponse
     {
-        $path = func_get_args();
+        $path = [$group, $id, ...$segments];
 
         if (end($path) === 'validate') {
             return call_user_func_array([$this, 'validate'], $path);
@@ -196,9 +199,9 @@ class Content extends HtmlController
      * @param string $id
      * @return JsonResponse
      */
-    public function validate($group, $id)
+    public function validate(string $group, string $id, string ...$segments): JsonResponse
     {
-        $path = implode('.', array_slice(func_get_args(), 1, -2));
+        $path = implode('.', array_slice([$group, $id, ...$segments], 1, -2));
 
         // Validate only exists for JSON.
         if (empty($this->params['ajax'])) {
@@ -214,7 +217,7 @@ class Content extends HtmlController
         // Create configuration from the defaults.
         $data = new Config(
             [],
-            static function () use ($validator) {
+            static function () use ($validator): array {
                 return $validator;
             }
         );
@@ -231,7 +234,7 @@ class Content extends HtmlController
      * @param null $id
      * @return string
      */
-    public function save($group = null, $id = null)
+    public function save(?string $group = null, ?string $id = null): string
     {
         $data = $id ? [$group => [$id => $this->request->post->getArray()]] : $this->request->post->getArray('content');
 
@@ -243,7 +246,7 @@ class Content extends HtmlController
 
         // Fire save event.
         $event = new Event;
-        $event->Genesis = $this->container;
+        $event->genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;
@@ -257,7 +260,7 @@ class Content extends HtmlController
      * @param string $id
      * @param array|null $data
      */
-    protected function saveItem($group, $id, $data)
+    protected function saveItem(string $group, string $id, ?array $data): void
     {
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
@@ -277,7 +280,7 @@ class Content extends HtmlController
             $content = $this->container['content'];
 
             $blueprints = $content->getBlueprintForm("{$group}/{$id}");
-            $config = new Config($data, static function() use ($blueprints) { return $blueprints; });
+            $config = new Config($data, static function() use ($blueprints): BlueprintForm { return $blueprints; });
 
             $file->save($config->toArray());
         }
@@ -289,7 +292,7 @@ class Content extends HtmlController
      * @param string $id
      * @return string
      */
-    public function reset($group, $id)
+    public function reset(string $group, string $id): string
     {
         $this->params += [
             'data' => [],

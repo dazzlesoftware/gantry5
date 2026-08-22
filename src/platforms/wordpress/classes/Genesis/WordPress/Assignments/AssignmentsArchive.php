@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -16,9 +18,9 @@ namespace Genesis\WordPress\Assignments;
 class AssignmentsArchive extends AssignmentsTaxonomy
 {
     /** @var string */
-    public $type = 'archive';
+    public string $type = 'archive';
     /** @var string */
-    public $label = 'Archives: %s';
+    public string $label = 'Archives: %s';
     /** @var int */
-    public $priority = 6;
+    public int $priority = 6;
 }

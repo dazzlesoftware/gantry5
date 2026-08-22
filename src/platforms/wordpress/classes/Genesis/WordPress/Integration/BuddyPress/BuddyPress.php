@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 /**
@@ -29,7 +31,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @return bool
      */
-    public static function enabled() {
+    public static function enabled(): bool {
         // Required BuddyPress version
         $req_bp_version = '2.6';
 
@@ -45,7 +47,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Container $genesis
      */
-    public function register(Container $genesis)
+    public function register(Container $genesis): void
     {
         $loader = $genesis['loader'];
         $loader->addClassMap(
@@ -60,7 +62,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'theme.init'        => ['onThemeInit', 0],
@@ -73,7 +75,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Event $event
      */
-    public function onThemeInit(Event $event)
+    public function onThemeInit(Event $event): void
     {
         \add_filter('genesis_assignments_page_context_array', ['Genesis\\WordPress\\Assignments\\AssignmentsBuddyPress', 'addPageContextItem']);
         \add_filter('genesis_assignments_page_context_rules', ['Genesis\\WordPress\\Assignments\\AssignmentsBuddyPress', 'addPageContextConditionals'], 10, 2);
@@ -84,7 +86,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
      *
      * @param Event $event
      */
-    public function onAssigmentsTypes(Event $event)
+    public function onAssigmentsTypes(Event $event): void
     {
         $event->types[] = 'buddypress';
     }

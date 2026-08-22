@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,15 +27,15 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class ThemeList
 {
     /** @var ThemeDetails[] */
-    protected static $items;
+    protected static ?array $items = null;
 
     /** @var array */
-    protected static $styles;
+    protected static ?array $styles = null;
 
     /**
      * @return array
      */
-    public static function getThemes()
+    public static function getThemes(): array
     {
         if (!\is_array(static::$items)) {
             static::loadThemes();
@@ -54,18 +56,20 @@ class ThemeList
      * @param string $name
      * @return mixed
      */
-    public static function getTheme($name)
+    public static function getTheme(string $name): ?ThemeDetails
     {
         $styles = static::getStyles($name);
 
-        return reset($styles);
+        $theme = reset($styles);
+
+        return $theme instanceof ThemeDetails ? $theme : null;
     }
 
     /**
      * @param string $template
      * @return array
      */
-    public static function getStyles($template = null, $force = false)
+    public static function getStyles(?string $template = null, bool $force = false): array
     {
         if ($force || !\is_array(static::$styles)) {
             static::loadStyles();
@@ -88,7 +92,7 @@ class ThemeList
     /**
      *
      */
-    protected static function loadThemes()
+    protected static function loadThemes(): void
     {
         $genesis = Genesis::instance();
 
@@ -131,7 +135,7 @@ class ThemeList
     /**
      *
      */
-    protected static function loadStyles()
+    protected static function loadStyles(): void
     {
         $genesis = Genesis::instance();
 
@@ -185,7 +189,7 @@ class ThemeList
             $details['id'] = $style->id;
             $details['extension_id'] = $style->extension_id;
             $details['style'] = $style->title;
-            $details['preview_url'] = $platform->getThemePreviewUrl($style->id);
+            $details['preview_url'] = $platform->getThemePreviewUrl((string) $style->id);
             $details['params'] = $params->toArray();
 
             $list[$style->name][$style->id] = $details;

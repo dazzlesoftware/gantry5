@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -14,6 +16,7 @@ use Genesis\Framework\Theme;
 use Genesis\Joomla\Object\AbstractObject;
 use Joomla\CMS\Router\Route;
 use Joomla\Component\Content\Site\Helper\RouteHelper;
+use Joomla\CMS\Table\Table;
 
 /**
  * Class Category
@@ -29,23 +32,23 @@ use Joomla\Component\Content\Site\Helper\RouteHelper;
 class Category extends AbstractObject
 {
     /** @var array */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string */
-    static protected $table = 'Category';
+    protected static mixed $table = 'Category';
     /** @var string */
-    static protected $order = 'lft';
+    protected static mixed $order = 'lft';
 
     /**
      * @return bool
      */
-    public function initialize()
+    public function initialize(): bool
     {
         if (!parent::initialize()) {
             return false;
         }
 
-        $this->params = json_decode($this->params, false);
-        $this->metadata = json_decode($this->metadata, false);
+        $this->params = json_decode((string) $this->params, false);
+        $this->metadata = json_decode((string) $this->metadata, false);
 
         return true;
     }
@@ -53,7 +56,7 @@ class Category extends AbstractObject
     /**
      * @return Object|null
      */
-    public function parent()
+    public function parent(): ?self
     {
         if ($this->alias !== $this->path)
         {
@@ -66,7 +69,7 @@ class Category extends AbstractObject
     /**
      * @return array
      */
-    public function parents()
+    public function parents(): array
     {
         $parent = $this->parent();
 
@@ -76,7 +79,7 @@ class Category extends AbstractObject
     /**
      * @return string
      */
-    public function route()
+    public function route(): string
     {
         // Joomla 5: use namespaced RouteHelper
         require_once JPATH_SITE . '/components/com_content/src/Helper/RouteHelper.php';
@@ -88,7 +91,7 @@ class Category extends AbstractObject
      * @param string $file
      * @return mixed
      */
-    public function render($file)
+    public function render(string $file): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -100,7 +103,7 @@ class Category extends AbstractObject
      * @param string $string
      * @return mixed
      */
-    public function compile($string)
+    public function compile(string $string): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -111,7 +114,7 @@ class Category extends AbstractObject
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $properties = $this->getProperties(true);
 
@@ -124,12 +127,12 @@ class Category extends AbstractObject
         return $properties;
     }
 
-    public function exportSql()
+    public function exportSql(): string
     {
         return $this->getCreateSql(['asset_id', 'checked_out', 'checked_out_time', 'created_user_id', 'modified_user_id', 'hits', 'version']) . ';';
     }
 
-    protected function fixValue($table, $k, $v)
+    protected function fixValue(Table $table, string $k, mixed $v): mixed
     {
         if ($k === '`created_time`' || $k === '`modified_time`') {
             $v = 'NOW()';

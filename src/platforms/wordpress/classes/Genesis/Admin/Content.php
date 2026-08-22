@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -14,7 +16,7 @@ use Genesis\Component\Config\ConfigFileFinder;
 use Genesis\Component\File\CompiledYamlFile;
 use Genesis\Framework\Genesis;
 use Genesis\Framework\Theme as SiteTheme;
-use Grav\Common\Grav;
+use Pimple\Container;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
@@ -24,17 +26,17 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Content
 {
     /** @var Grav */
-    protected $container;
+    protected Container $container;
     /** @var array */
-    protected $files;
+    protected ?array $files = null;
     /** @var array */
-    protected $content;
+    protected ?array $content = null;
 
     /**
      * Content constructor.
      * @param Grav $container
      */
-    public function __construct($container)
+    public function __construct(Container $container)
     {
         $this->container = $container;
     }
@@ -42,7 +44,7 @@ class Content
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         if (!$this->content) {
             $files = $this->locateBlueprints();
@@ -62,7 +64,7 @@ class Content
     /**
      * @return array
      */
-    public function group()
+    public function group(): array
     {
         $content = $this->all();
 
@@ -81,9 +83,9 @@ class Content
      * @param $id
      * @return array
      */
-    public function get($id)
+    public function get(string $id): array
     {
-        if ($this->content[$id]) {
+        if (isset($this->content[$id])) {
             return $this->content[$id];
         }
 
@@ -105,7 +107,7 @@ class Content
      * @param string $id
      * @return BlueprintForm
      */
-    public function getBlueprintForm($id)
+    public function getBlueprintForm(string $id): BlueprintForm
     {
         return BlueprintForm::instance($id, 'genesis-blueprints://content');
     }
@@ -114,7 +116,7 @@ class Content
      * @param array $blocks
      * @return array
      */
-    protected function sort(array $blocks)
+    protected function sort(array $blocks): array
     {
         $list = [];
 
@@ -139,7 +141,7 @@ class Content
      * @param array $ordering
      * @return array
      */
-    protected function sortItems(array $items, array $ordering)
+    protected function sortItems(array $items, array $ordering): array
     {
         $list = [];
 
@@ -158,7 +160,7 @@ class Content
     /**
      * @return array
      */
-    protected function locateBlueprints()
+    protected function locateBlueprints(): array
     {
         if (!$this->files) {
             /** @var UniformResourceLocator $locator */

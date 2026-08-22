@@ -21,7 +21,7 @@ use Genesis\Component\Event\Event;
 class Assignments extends AbstractAssignments
 {
     /** @var string */
-    protected $platform = 'WordPress';
+    protected string $platform = 'WordPress';
 
     /**
      * Assignments constructor.
@@ -32,7 +32,7 @@ class Assignments extends AbstractAssignments
         parent::__construct($configuration);
 
         // Deal with special language assignments.
-        $this->specialFilterMethod = function($candidate, $match, $page) {
+        $this->specialFilterMethod = static function(array $candidate, array $match, array $page): bool {
             if (!empty($candidate['language']) && !empty($page['language'])) {
                 // Always drop candidate if language does not match.
                 if (empty($match['language'])) {
@@ -69,7 +69,7 @@ class Assignments extends AbstractAssignments
         // Use a concrete event with declared property to avoid PHP 8.2+ dynamic property deprecations.
         $event = new class extends Event {
             /** @var array */
-            public $types = [];
+            public array $types = [];
         };
         $event->types = $types;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,11 +23,11 @@ use Joomla\CMS\Factory;
 class MenuItemFinder extends Finder
 {
     /** @var string */
-    protected $table = '#__menu';
+    protected string $table = '#__menu';
     /** @var bool */
-    protected $readonly = true;
+    protected bool $readonly = true;
     /** @var array */
-    protected $state = [];
+    protected array $state = [];
 
     /**
      * Makes all created objects as readonly.
@@ -33,7 +35,7 @@ class MenuItemFinder extends Finder
      * @param bool $readonly
      * @return $this
      */
-    public function readonly($readonly = true)
+    public function readonly(bool $readonly = true): static
     {
         $this->readonly = (bool)$readonly;
 
@@ -44,7 +46,7 @@ class MenuItemFinder extends Finder
      * @param bool $object
      * @return Collection|string[]
      */
-    public function find($object = true)
+    public function find(bool $object = true): array|Collection
     {
         $ids = parent::find();
 
@@ -60,7 +62,7 @@ class MenuItemFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    public function id($ids, $include = true)
+    public function id(int|array $ids, bool $include = true): static
     {
         return $this->addToGroup('a.id', $ids, $include);
     }
@@ -69,7 +71,7 @@ class MenuItemFinder extends Finder
      * @param string|int|bool $language
      * @return $this
      */
-    public function language($language = true)
+    public function language(string|int|bool $language = true): static
     {
         if (!$language) {
             return $this;
@@ -86,7 +88,7 @@ class MenuItemFinder extends Finder
      * @param int|int[] $published
      * @return $this
      */
-    public function published($published = 1)
+    public function published(int|array $published = 1): static
     {
         if (!\is_array($published)) {
             $published = [(int)$published];
@@ -100,8 +102,9 @@ class MenuItemFinder extends Finder
      * @param bool $include
      * @return $this
      */
-    protected function addToGroup($key, $ids, $include = true)
+    protected function addToGroup(string $key, int|array $ids, bool $include = true): static
     {
+        $ids = (array) $ids;
         $op = $include ? 'IN' : 'NOT IN';
 
         if (isset($this->state[$key][$op])) {
@@ -113,7 +116,7 @@ class MenuItemFinder extends Finder
         return $this;
     }
 
-    protected function prepare()
+    protected function prepare(): void
     {
         foreach ($this->state as $key => $list) {
             foreach ($list as $op => $group) {

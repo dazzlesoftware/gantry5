@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,6 +23,7 @@ use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\User\User;
 use Joomla\CMS\User\UserFactoryInterface;
+use Joomla\CMS\Table\Table;
 use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 use Joomla\Component\Content\Site\Helper\RouteHelper;
 use Joomla\Component\Content\Site\Model\ArticleModel;
@@ -45,25 +48,25 @@ use Joomla\Component\Content\Site\Model\ArticleModel;
 class Content extends AbstractObject
 {
     /** @var array */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string */
-    static protected $table = 'Content';
+    protected static mixed $table = 'Content';
     /** @var string */
-    static protected $order = 'id';
+    protected static mixed $order = 'id';
 
     /**
      * @return bool
      */
-    public function initialize()
+    public function initialize(): bool
     {
         if (!parent::initialize()) {
             return false;
         }
 
-        $this->images = json_decode($this->images, false);
-        $this->urls = json_decode($this->urls, false);
-        $this->attribs = json_decode($this->attribs, false);
-        $this->metadata = json_decode($this->metadata, false);
+        $this->images = json_decode((string) $this->images, false);
+        $this->urls = json_decode((string) $this->urls, false);
+        $this->attribs = json_decode((string) $this->attribs, false);
+        $this->metadata = json_decode((string) $this->metadata, false);
 
         $nullDate = Factory::getContainer()->get(DatabaseInterface::class)->getNullDate();
         if ($this->modified === $nullDate) {
@@ -79,7 +82,7 @@ class Content extends AbstractObject
     /**
      * @return User
      */
-    public function author()
+    public function author(): User
     {
         return Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById((int) $this->created_by);
     }
@@ -87,15 +90,15 @@ class Content extends AbstractObject
     /**
      * @return Object
      */
-    public function category()
+    public function category(): Category
     {
-        return Category::getInstance($this->catid);
+        return Category::getInstance((int) $this->catid);
     }
 
     /**
      * @return array
      */
-    public function categories()
+    public function categories(): array
     {
         $category = $this->category();
 
@@ -105,7 +108,7 @@ class Content extends AbstractObject
     /**
      * @return string
      */
-    public function text()
+    public function text(): string
     {
         return $this->introtext . ' ' . $this->fulltext;
     }
@@ -113,7 +116,7 @@ class Content extends AbstractObject
     /**
      * @return string
      */
-    public function preparedText()
+    public function preparedText(): string
     {
         return HTMLHelper::_('content.prepare', $this->text());
     }
@@ -121,15 +124,15 @@ class Content extends AbstractObject
     /**
      * @return string
      */
-    public function preparedIntroText()
+    public function preparedIntroText(): string
     {
-        return HTMLHelper::_('content.prepare', $this->introtext);
+        return HTMLHelper::_('content.prepare', (string) $this->introtext);
     }
 
     /**
      * @return bool
      */
-    public function readmore()
+    public function readmore(): bool
     {
         return (bool)\strlen($this->fulltext);
     }
@@ -137,7 +140,7 @@ class Content extends AbstractObject
     /**
      * @return string
      */
-    public function route()
+    public function route(): string
     {
         $category = $this->category();
         // Joomla 5: use namespaced RouteHelper
@@ -149,7 +152,7 @@ class Content extends AbstractObject
     /**
      * @return bool|string
      */
-    public function edit()
+    public function edit(): string|false
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -171,7 +174,7 @@ class Content extends AbstractObject
      * @param string $file
      * @return string
      */
-    public function render($file)
+    public function render(string $file): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -183,7 +186,7 @@ class Content extends AbstractObject
      * @param string $string
      * @return string
      */
-    public function compile($string)
+    public function compile(string $string): string
     {
         /** @var Theme $theme */
         $theme = Genesis::instance()['theme'];
@@ -195,7 +198,7 @@ class Content extends AbstractObject
      * @param $config
      * @return object
      */
-    public function object($config = [])
+    public function object(array $config = []): object
     {
         $config += [
             'ignore_request' => true
@@ -226,7 +229,7 @@ class Content extends AbstractObject
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $properties = $this->getProperties(true) + [
             'category' => [
@@ -248,12 +251,12 @@ class Content extends AbstractObject
         return $properties;
     }
 
-    public function exportSql()
+    public function exportSql(): string
     {
         return $this->getCreateSql(['asset_id', 'created_by', 'modified_by', 'checked_out', 'checked_out_time', 'publish_up', 'publish_down', 'version', 'xreference']) . ';';
     }
 
-    protected function fixValue($table, $k, $v)
+    protected function fixValue(Table $table, string $k, mixed $v): mixed
     {
         if ($k === '`created`' || $k === '`modified`') {
             $v = 'NOW()';

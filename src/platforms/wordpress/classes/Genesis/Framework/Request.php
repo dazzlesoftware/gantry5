@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
 
 /**
@@ -19,7 +21,7 @@ use Genesis\Component\Request\Request as BaseRequest;
  */
 class Request extends BaseRequest
 {
-    public function init()
+    public function init(): void
     {
         // Replaces parent contructor.
 

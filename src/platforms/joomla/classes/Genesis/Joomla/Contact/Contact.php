@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,14 +21,14 @@ use Joomla\CMS\Table\Table;
 class Contact extends AbstractObject
 {
     /** @var array */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string */
-    static protected $table = 'ContactTable';
-    static protected $tablePrefix = 'Joomla\Component\Contact\Administrator\Table\\';
+    protected static mixed $table = 'ContactTable';
+    protected static string $tablePrefix = 'Joomla\Component\Contact\Administrator\Table\\';
     /** @var string */
-    static protected $order = 'id';
+    protected static mixed $order = 'id';
 
-    public function exportSql()
+    public function exportSql(): string
     {
         return $this->getCreateSql(['asset_id', 'checked_out', 'checked_out_time', 'created_by', 'modified_by', 'publish_up', 'publish_down', 'version', 'hits']) . ';';
     }
@@ -36,7 +38,7 @@ class Contact extends AbstractObject
      *
      * @return  Table  The table object.
      */
-    protected static function getTable()
+    protected static function getTable(): Table
     {
         return parent::getTable();
     }

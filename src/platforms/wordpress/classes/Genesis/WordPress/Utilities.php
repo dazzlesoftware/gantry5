@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -19,7 +21,7 @@ abstract class Utilities
      * @param string $string
      * @return int
      */
-    protected static function compatLength($string)
+    protected static function compatLength(string $string): int
     {
         return preg_match_all('/./us', $string, $matches) ?: strlen($string);
     }
@@ -32,7 +34,7 @@ abstract class Utilities
      * @param bool $considerHtml
      * @return string
      */
-    static function truncate($text, $length = 100, $ending = '&hellip;', $exact = false, $considerHtml = true)
+    public static function truncate(string $text, int $length = 100, string $ending = '&hellip;', bool $exact = false, bool $considerHtml = true): string
     {
         if (!function_exists('mb_strlen')) {
             return static::truncateCompat($text, $length, $ending, $exact, $considerHtml);
@@ -58,7 +60,7 @@ abstract class Utilities
      * @param boolean $considerHtml If true, HTML tags would be handled correctly
      * @return string Trimmed string.
      */
-    static function truncateUtf8($text, $length = 100, $ending = '&hellip;', $exact = false, $considerHtml = true)
+    public static function truncateUtf8(string $text, int $length = 100, string $ending = '&hellip;', bool $exact = false, bool $considerHtml = true): string
     {
         $open_tags = [];
 
@@ -178,7 +180,7 @@ abstract class Utilities
      * @param boolean $considerHtml If true, HTML tags would be handled correctly
      * @return string Trimmed string.
      */
-    static function truncateCompat($text, $length = 100, $ending = '&hellip;', $exact = false, $considerHtml = true)
+    public static function truncateCompat(string $text, int $length = 100, string $ending = '&hellip;', bool $exact = false, bool $considerHtml = true): string
     {
         $open_tags = [];
 

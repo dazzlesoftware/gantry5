@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -24,32 +26,32 @@ use Joomla\Database\DatabaseQuery;
 abstract class AbstractObject extends \stdClass
 {
     /** @var array If you don't have global instance ids, override this in extending class. */
-    static protected $instances = [];
+    protected static array $instances = [];
     /** @var string Override table class in your own class. */
-    static protected $table;
+    protected static mixed $table = null;
     /** @var string Table class prefix, override if needed. */
-    static protected $tablePrefix = 'JTable';
+    protected static string $tablePrefix = 'JTable';
     /** @var string Override table in your own class. */
-    static protected $order;
+    protected static mixed $order = null;
 
     /** @var int */
-    public $id;
+    public mixed $id = null;
 
     /** @var boolean Is object stored into database? */
-    protected $_exists = false;
+    protected bool $_exists = false;
     /** @var bool Readonly object. */
-    protected $_readonly = false;
+    protected bool $_readonly = false;
     /** @var bool */
-    protected $_initialized = false;
+    protected bool $_initialized = false;
     /** @var array */
-    protected $_errors = [];
+    protected array $_errors = [];
 
     /**
      * Class constructor, overridden in descendant classes.
      *
      * @param int|array $properties Identifier.
      */
-    public function __construct($properties = null)
+    public function __construct(int|array|null $properties = null)
     {
         if (null === $properties || is_array($properties)) {
             $identifier = null;
@@ -67,12 +69,12 @@ abstract class AbstractObject extends \stdClass
         }
     }
 
-    public function get($property, $default = null)
+    public function get(string $property, mixed $default = null): mixed
     {
         return $this->{$property} ?? $default;
     }
 
-    public function set($property, $value = null)
+    public function set(string $property, mixed $value = null): mixed
     {
         $previous = $this->{$property} ?? null;
         $this->{$property} = $value;
@@ -80,7 +82,7 @@ abstract class AbstractObject extends \stdClass
         return $previous;
     }
 
-    public function setProperties($properties): bool
+    public function setProperties(array|object $properties): bool
     {
         if (!is_array($properties) && !is_object($properties)) {
             return false;
@@ -93,14 +95,14 @@ abstract class AbstractObject extends \stdClass
         return true;
     }
 
-    public function getError($index = null, $toString = true)
+    public function getError(string|int|null $index = null, bool $toString = true): mixed
     {
         $error = $index === null ? end($this->_errors) : ($this->_errors[$index] ?? false);
 
         return $toString && $error instanceof \Throwable ? $error->getMessage() : $error;
     }
 
-    public function setError($error): void
+    public function setError(mixed $error): void
     {
         $this->_errors[] = $error;
     }
@@ -112,7 +114,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return bool True if initialization was done, false if object was already initialized.
      */
-    public function initialize()
+    public function initialize(): bool
     {
         $initialized = $this->_initialized;
         $this->_initialized = true;
@@ -123,7 +125,7 @@ abstract class AbstractObject extends \stdClass
     /**
      * Make instance as read only object.
      */
-    public function readonly()
+    public function readonly(): void
     {
         $this->_readonly = true;
     }
@@ -139,7 +141,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  Object
      */
-    public static function getInstance($keys = null, $reload = false)
+    public static function getInstance(int|array|null $keys = null, bool $reload = false): static
     {
         // If we are creating or loading a new item or we load instance by alternative keys,
         // we need to create a new object.
@@ -167,7 +169,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @param null|int|int[]  $ids
      */
-    public static function freeInstances($ids = null)
+    public static function freeInstances(int|array|null $ids = null): void
     {
         if ($ids === null) {
             $ids = array_keys(static::$instances);
@@ -186,7 +188,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  boolean  True if object exists in database.
      */
-    public function exists($exists = null)
+    public function exists(?bool $exists = null): bool
     {
         $return = $this->_exists;
         if ($exists !== null) $this->_exists = (bool) $exists;
@@ -201,7 +203,7 @@ abstract class AbstractObject extends \stdClass
      * @param bool   $defined
      * @return bool
      */
-    public function defined($property, $defined = true)
+    public function defined(string $property, bool $defined = true): bool
     {
         $property = '_' . $property;
 
@@ -215,10 +217,10 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  array
      */
-    public function getProperties($public = true)
+    public function getProperties(bool $public = true): array
     {
         if ($public) {
-            $getProperties = static function($obj) { return get_object_vars($obj); };
+            $getProperties = static function(object $obj): array { return get_object_vars($obj); };
             return $getProperties($this);
         }
 
@@ -236,7 +238,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  bool  True on success.
      */
-    public function bind(?array $src = null, ?array $fields = null, $include = false)
+    public function bind(?array $src = null, ?array $fields = null, bool $include = false): bool
     {
         if (empty($src)) {
             return false;
@@ -258,7 +260,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  bool  True on success, false if the object doesn't exist.
      */
-    public function load($keys = null)
+    public function load(mixed $keys = null): bool
     {
         if ($keys !== null && !is_array($keys)) {
             $keys = ['id' => (int)$keys];
@@ -302,7 +304,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  bool  True on success.
      */
-    public function save()
+    public function save(): bool
     {
         // Check the object.
         if ($this->_readonly || !$this->check()) {
@@ -360,7 +362,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return bool True on success.
      */
-    public function delete()
+    public function delete(): bool
     {
         if ($this->_readonly) {
             return false;
@@ -405,7 +407,7 @@ abstract class AbstractObject extends \stdClass
      * @param array $ignore
      * @return DatabaseQuery
      */
-    public function getCreateSql(array $ignore = ['asset_id'])
+    public function getCreateSql(array $ignore = ['asset_id']): DatabaseQuery
     {
         // Initialize table object.
         $table = self::getTable();
@@ -430,7 +432,7 @@ abstract class AbstractObject extends \stdClass
      * @param array $ignore
      * @return array
      */
-    public function getFieldValues(array $ignore = ['asset_id'])
+    public function getFieldValues(array $ignore = ['asset_id']): array
     {
         // Initialize table object.
         $table = self::getTable();
@@ -469,7 +471,7 @@ abstract class AbstractObject extends \stdClass
         return $values;
     }
 
-    protected function fixValue($table, $k, $v)
+    protected function fixValue(Table $table, string $k, mixed $v): mixed
     {
         if (is_string($v)) {
             $dbo = $table->getDatabase();
@@ -488,7 +490,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  boolean  True if the instance is sane and able to be stored in the database.
      */
-    public function check()
+    public function check(): bool
     {
         return true;
     }
@@ -496,7 +498,7 @@ abstract class AbstractObject extends \stdClass
     /**
      * @return Collection
      */
-    public static function getAvailableInstances()
+    public static function getAvailableInstances(): Collection
     {
         return static::collection(static::$instances);
     }
@@ -506,7 +508,7 @@ abstract class AbstractObject extends \stdClass
      * @param bool $readonly
      * @return Collection
      */
-    public static function getInstances(array $ids, $readonly = true)
+    public static function getInstances(array $ids, bool $readonly = true): Collection
     {
         if (!$ids) {
             return static::collection([]);
@@ -546,7 +548,7 @@ abstract class AbstractObject extends \stdClass
      * @param $items
      * @return Collection
      */
-    protected static function collection($items)
+    protected static function collection(array $items): Collection
     {
         return new Collection($items);
     }
@@ -556,7 +558,7 @@ abstract class AbstractObject extends \stdClass
      *
      * @return  Table  The table object.
      */
-    protected static function getTable()
+    protected static function getTable(): Table
     {
         $database = Factory::getContainer()->get(DatabaseInterface::class);
 
@@ -576,7 +578,7 @@ abstract class AbstractObject extends \stdClass
     /**
      * @return \Joomla\Database\DatabaseQuery
      */
-    static protected function getQuery()
+    protected static function getQuery(): DatabaseQuery
     {
         $table = static::getTable();
         $db = Factory::getContainer()->get(DatabaseInterface::class);
@@ -589,7 +591,7 @@ abstract class AbstractObject extends \stdClass
     /**
      * @param \JDatabaseQuery|string $query
      */
-    protected static function loadInstances($query = null)
+    protected static function loadInstances(DatabaseQuery|string|null $query = null): void
     {
         if (!$query) {
             $query = static::getQuery();
