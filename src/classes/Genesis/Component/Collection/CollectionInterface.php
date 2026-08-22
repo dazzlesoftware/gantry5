@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -18,49 +20,43 @@ interface CollectionInterface extends \IteratorAggregate, \ArrayAccess, \Countab
     /**
      * @return array
      */
-    public function toArray();
+    public function toArray(): array;
 
     /**
      * @param mixed $item
      */
-    public function add($item);
+    public function add(mixed $item): static;
 
     /**
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
-    public function getIterator();
+    public function getIterator(): \Traversable;
 
     /**
      * @param string|int $offset
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function offsetExists($offset);
+    public function offsetExists(mixed $offset): bool;
 
     /**
      * @param string|int $offset
      * @param mixed $value
      */
-    #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value);
+    public function offsetSet(mixed $offset, mixed $value): void;
 
     /**
      * @param string|int $offset
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset);
+    public function offsetGet(mixed $offset): mixed;
 
     /**
      * @param string|int $offset
      */
-    #[\ReturnTypeWillChange]
-    public function offsetUnset($offset);
+    public function offsetUnset(mixed $offset): void;
 
     /**
      * @return int
      */
-    #[\ReturnTypeWillChange]
-    public function count();
+    public function count(): int;
 }

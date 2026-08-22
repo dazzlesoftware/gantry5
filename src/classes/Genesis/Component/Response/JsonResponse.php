@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -16,25 +18,25 @@ namespace Genesis\Component\Response;
 class JsonResponse extends Response
 {
     /** @var string */
-    public $mimeType = 'application/json';
+    public string $mimeType = 'application/json';
 
     /** @var bool */
-    protected $success = true;
+    protected bool $success = true;
     /** @var string */
-    protected $message;
+    protected string $message = '';
     /** @var array */
-    protected $exceptions = [];
+    protected array $exceptions = [];
     /** @var array */
-    protected $messages = [];
+    protected array $messages = [];
     /** @var array */
-    protected $content = [];
+    protected mixed $content = [];
 
     /**
      * JsonResponse constructor.
      * @param string|array|Response|\Exception $content
      * @param int $status
      */
-    public function __construct($content = '', $status = 200)
+    public function __construct(mixed $content = '', int $status = 200)
     {
         parent::__construct($content, $status);
     }
@@ -44,7 +46,7 @@ class JsonResponse extends Response
      * @param bool $success
      * @return $this
      */
-    public function setContent($content, $success = true)
+    public function setContent(mixed $content, bool $success = true): static
     {
         $this->success = (bool) $success;
 
@@ -62,7 +64,7 @@ class JsonResponse extends Response
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         // Empty output buffer to make sure that the response is clean and valid.
         while (($output = ob_get_clean()) !== false) {
@@ -94,7 +96,7 @@ class JsonResponse extends Response
      * @param int|string|null $key
      * @param mixed $value
      */
-    protected function parseValue($key, $value)
+    protected function parseValue(int|string|null $key, mixed $value): void
     {
         if ($value instanceof \Exception) {
             // Prepare the error response if we are dealing with an error.
@@ -123,7 +125,7 @@ class JsonResponse extends Response
      * @param \Exception $e
      * @return array
      */
-    protected function parseException(\Exception $e)
+    protected function parseException(\Throwable $e): array
     {
         $this->code = $e->getCode();
 

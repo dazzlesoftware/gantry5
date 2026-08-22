@@ -212,8 +212,7 @@ class ContentBlock implements ContentBlockInterface
      * @return array
      * @since 5.4.3
      */
-    #[\ReturnTypeWillChange]
-    public function __serialize()
+    public function __serialize(): array
     {
         return $this->toArray();
     }
@@ -222,8 +221,7 @@ class ContentBlock implements ContentBlockInterface
      * @param array $serialized
      * @since 5.4.3
      */
-    #[\ReturnTypeWillChange]
-    public function __unserialize($serialized)
+    public function __unserialize(array $serialized): void
     {
         $this->build($serialized);
     }

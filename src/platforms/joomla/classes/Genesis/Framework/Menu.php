@@ -85,8 +85,7 @@ class Menu extends AbstractMenu
      * @param string|int $offset
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return $this->offsetGet($offset) !== null;
     }
@@ -95,8 +94,7 @@ class Menu extends AbstractMenu
      * @param string|int $offset
      * @return Item|null
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): ?Item
     {
         $item = isset($this->items[$offset]) ? $this->items[$offset] : null;
         if (!$this->isAdmin) {

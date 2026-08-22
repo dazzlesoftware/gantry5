@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -22,13 +24,13 @@ class Collection implements CollectionInterface
     use ArrayAccess, Countable, Export;
 
     /** @var array */
-    protected $items = [];
+    protected array $items = [];
 
     /**
      * @param array $variables
      * @return Collection
      */
-    public static function __set_state($variables)
+    public static function __set_state(array $variables): static
     {
         $instance = new static();
         $instance->items = $variables['items'];
@@ -41,7 +43,7 @@ class Collection implements CollectionInterface
      *
      * @return static
      */
-    public function copy()
+    public function copy(): static
     {
         return clone $this;
     }
@@ -50,7 +52,7 @@ class Collection implements CollectionInterface
      * @param mixed $item
      * @return $this
      */
-    public function add($item)
+    public function add(mixed $item): static
     {
         $this->items[] = $item;
 
@@ -60,9 +62,43 @@ class Collection implements CollectionInterface
     /**
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
-    public function getIterator()
+    public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->items);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->items[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->items[$offset] ?? null;
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        if ($offset === null) {
+            $this->items[] = $value;
+            return;
+        }
+
+        $this->items[$offset] = $value;
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        unset($this->items[$offset]);
+    }
+
+    public function count(): int
+    {
+        return count($this->items);
+    }
+
+    public function toArray(): array
+    {
+        return $this->items;
     }
 }

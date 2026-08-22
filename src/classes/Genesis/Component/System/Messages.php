@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -15,14 +17,14 @@ namespace Genesis\Component\System;
  */
 class Messages
 {
-    protected $messages = [];
+    protected array $messages = [];
 
     /**
      * @param string $message
      * @param string $type
      * @return $this
      */
-    public function add($message, $type = 'warning')
+    public function add(string $message, string $type = 'warning'): static
     {
         $this->messages[] = ['type' => $type, 'message' => $message];
 
@@ -32,7 +34,7 @@ class Messages
     /**
      * @return array
      */
-    public function get()
+    public function get(): array
     {
         return $this->messages;
     }
@@ -40,7 +42,7 @@ class Messages
     /**
      * @return $this
      */
-    public function clean()
+    public function clean(): static
     {
         $this->messages = [];
 

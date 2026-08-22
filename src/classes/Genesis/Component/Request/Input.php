@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,7 +25,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
     use NestedArrayAccessWithGetters, Iterator, Export;
 
     /** @var array */
-    protected $items;
+    protected array $items;
 
     /**
      * Constructor to initialize array.
@@ -43,7 +45,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
      * @param string  $separator  Separator, defaults to '.'
      * @return array
      */
-    public function getArray($path = null, $default = null, $separator = '.')
+    public function getArray(?string $path = null, mixed $default = null, string $separator = '.'): array
     {
         $data = $path ? $this->get($path, $default, $separator) : $this->items;
 
@@ -58,7 +60,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
      * @param string  $separator  Separator, defaults to '.'
      * @return array
      */
-    public function getJsonArray($path = null, $default = null, $separator = '.')
+    public function getJsonArray(?string $path = null, mixed $default = null, string $separator = '.'): array
     {
         return (array) $this->getJson($path, $default, $separator, true);
     }
@@ -72,7 +74,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
      * @param bool         $assoc      True to return associative arrays instead of objects.
      * @return mixed
      */
-    public function getJson($path = null, $default = null, $separator = '.', $assoc = false)
+    public function getJson(?string $path = null, mixed $default = null, string $separator = '.', bool $assoc = false): mixed
     {
         $data = $this->get($path, null, $separator);
 
@@ -97,7 +99,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
      * @return array|mixed
      * @internal
      */
-    protected function getChildren(&$current)
+    protected function getChildren(mixed &$current): mixed
     {
         if (!is_array($current)) {
             return $current;
@@ -106,7 +108,7 @@ class Input implements \ArrayAccess, \Iterator, ExportInterface
         $array = [];
         foreach ($current as $key => &$value) {
             if ($key === '_json') {
-                $array += json_decode($value, true);
+                $array += (array) json_decode((string) $value, true);
             } else {
                 $array[$key] = $this->getChildren($value);
             }

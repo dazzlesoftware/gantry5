@@ -127,8 +127,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return array|mixed
      */
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'items' => $this->toArray(false),
@@ -176,8 +175,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @return array
      */
-    #[\ReturnTypeWillChange]
-    public function __serialize()
+    public function __serialize(): array
     {
         // TODO: need to create collection class to gather the sibling data.
         return [
@@ -192,8 +190,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     /**
      * @param array $serialized
      */
-    #[\ReturnTypeWillChange]
-    public function __unserialize($serialized)
+    public function __unserialize(array $serialized): void
     {
         // TODO: need to create collection class to gather the sibling data.
         if (!isset($serialized['version']) && $serialized['version'] === static::VERSION) {
@@ -495,8 +492,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return Item
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): ?Item
     {
         $current = key($this->children);
 
@@ -508,8 +504,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return mixed  Returns scalar on success, or NULL on failure.
      */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): mixed
     {
         return current($this->children);
     }
@@ -519,8 +514,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
-    public function next()
+    public function next(): void
     {
         while (false !== next($this->children)) {
             if ($this->current()) {
@@ -534,8 +528,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
-    public function rewind()
+    public function rewind(): void
     {
         reset($this->children);
         $current = key($this->children);
@@ -549,8 +542,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
-    public function count()
+    public function count(): int
     {
         return count($this->children());
     }
@@ -560,8 +552,7 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
      *
      * @return bool  Returns TRUE on success or FALSE on failure.
      */
-    #[\ReturnTypeWillChange]
-    public function valid()
+    public function valid(): bool
     {
         return key($this->children) !== null;
     }

@@ -255,8 +255,7 @@ class Config implements \ArrayAccess, \Countable, \Iterator, ExportInterface
      * @param string $separator
      * @return int
      */
-    #[\ReturnTypeWillChange]
-    public function count($path = null, $separator = '.')
+    public function count(?string $path = null, string $separator = '.'): int
     {
         $items = $path ? $this->get($path, null, $separator) : $this->items;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -12,7 +14,7 @@ namespace Genesis\Component\Serializable;
 /**
  * Serializable trait
  *
- * Adds backwards compatibility to PHP 5/7 Serializable interface.
+ * Bridges PHP's legacy Serializable interface to the modern serialization methods.
  *
  * Note: Remember to add: `implements \Serializable` to the classes which use this trait.
  */
@@ -21,8 +23,7 @@ trait Serializable
     /**
      * @return string
      */
-    #[\ReturnTypeWillChange]
-    final public function serialize()
+    final public function serialize(): string
     {
         return serialize($this->__serialize());
     }
@@ -31,8 +32,7 @@ trait Serializable
      * @param string $serialized
      * @return void
      */
-    #[\ReturnTypeWillChange]
-    final public function unserialize($serialized)
+    final public function unserialize(string $serialized): void
     {
         $this->__unserialize(unserialize($serialized, ['allowed_classes' => $this->getUnserializeAllowedClasses()]));
     }
@@ -40,7 +40,7 @@ trait Serializable
     /**
      * @return array|bool
      */
-    protected function getUnserializeAllowedClasses()
+    protected function getUnserializeAllowedClasses(): array|bool
     {
         return false;
     }

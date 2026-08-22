@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.WP.AlternativeFunctions.rand_mt_rand
 
 /**
@@ -24,11 +26,11 @@ use Symfony\Component\Yaml\Yaml;
 class Position extends Collection
 {
     /** @var string */
-    public $name;
+    public string $name;
     /** @var string */
-    public $title;
+    public string $title;
     /** @var array */
-    protected $modules = [];
+    protected array $modules = [];
 
     /**
      * Position constructor.
@@ -36,7 +38,7 @@ class Position extends Collection
      * @param string $name
      * @param array $items
      */
-    public function __construct($name, ?array $items = null)
+    public function __construct(string $name, ?array $items = null)
     {
         $this->name = $name;
 
@@ -48,7 +50,7 @@ class Position extends Collection
      *
      * @return $this
      */
-    public function save()
+    public function save(): static
     {
         $file = $this->file(true);
         $file->save($this->toArray());
@@ -62,7 +64,7 @@ class Position extends Collection
      * @param string $name
      * @return static
      */
-    public function duplicate($name)
+    public function duplicate(string $name): static
     {
         $new = clone $this;
         $new->name = $name;
@@ -83,7 +85,7 @@ class Position extends Collection
      * @param string $name
      * @return static
      */
-    public function rename($name)
+    public function rename(string $name): static
     {
         $new = $this->duplicate($name);
         $this->delete();
@@ -96,7 +98,7 @@ class Position extends Collection
      *
      * @return $this
      */
-    public function delete()
+    public function delete(): static
     {
         $file = $this->file(true);
         if ($file->exists()) {
@@ -117,11 +119,11 @@ class Position extends Collection
      * @param array $items
      * @return $this
      */
-    public function update(array $items)
+    public function update(array $items): static
     {
         $list = [];
         foreach ($items as $item) {
-            $name = ($item instanceof Module) ? $item->name : $item;
+            $name = ($item instanceof Module) ? $item->name : (string) $item;
 
             $list[] = $name;
             if (!in_array($name, $this->items, true)) {
@@ -147,14 +149,14 @@ class Position extends Collection
      * @param string        $name  Temporary name for the module.
      * @return $this
      */
-    public function add($item, $name = null)
+    public function add(mixed $item, ?string $name = null): static
     {
         if ($item instanceof Module) {
             $this->modules[$name ?: $item->name] = $item;
             $item = $name ?: $item->name;
         }
 
-        $this->items[] = $item;
+        $this->items[] = (string) $item;
 
         return $this;
     }
@@ -163,15 +165,17 @@ class Position extends Collection
      * @param array|Module $item
      * @return $this
      */
-    public function remove($item)
+    public function remove(mixed $item): static
     {
         if ($item instanceof Module) {
             $item = $item->name;
         }
 
+        $item = (string) $item;
+
         unset($this->modules[$item]);
 
-        $this->items = array_diff($this->items, $item);
+        $this->items = array_diff($this->items, [$item]);
 
         return $this;
     }
@@ -180,7 +184,7 @@ class Position extends Collection
      * @param string $name
      * @return Module
      */
-    public function get($name)
+    public function get(string $name): Module
     {
         if (!isset($this->modules[$name])) {
             $this->modules[$name] = $this->loadModule($name);
@@ -195,8 +199,7 @@ class Position extends Collection
      * @param string $offset  The offset to retrieve.
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->items[$offset]);
     }
@@ -207,8 +210,7 @@ class Position extends Collection
      * @param string $offset  The offset to retrieve.
      * @return Module|null
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): ?Module
     {
         if (!isset($this->items[$offset])) {
             return null;
@@ -229,11 +231,10 @@ class Position extends Collection
      * @param mixed $offset  The offset to assign the value to.
      * @param mixed $value   The value to set.
      */
-    #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
-        if (!$value instanceof Position) {
-            throw new \InvalidArgumentException('Value has to be instance of Position');
+        if (!$value instanceof Module) {
+            throw new \InvalidArgumentException('Value has to be an instance of Module');
         }
         if (null === $offset) {
             $this->items[] = $value->name;
@@ -249,16 +250,15 @@ class Position extends Collection
      *
      * @param mixed $offset  The offset to unset.
      */
-    #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
-        parent::offsetUnset($offset);
-
         if (!isset($this->items[$offset])) {
             return;
         }
 
         $name = $this->items[$offset];
+        parent::offsetUnset($offset);
+
         if (isset($this->modules[$name])) {
             unset($this->modules[$name]);
         }
@@ -267,8 +267,7 @@ class Position extends Collection
     /**
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
-    public function getIterator()
+    public function getIterator(): \ArrayIterator
     {
         $items = [];
         foreach ($this->items as $key => $name) {
@@ -282,7 +281,7 @@ class Position extends Collection
      * @param bool $includeModules
      * @return array
      */
-    public function toArray($includeModules = false)
+    public function toArray(bool $includeModules = false): array
     {
         $array = [
             'name' => $this->name,
@@ -309,24 +308,24 @@ class Position extends Collection
      * @param bool $includeModules
      * @return string
      */
-    public function toYaml($inline = 3, $indent = 2, $includeModules = false)
+    public function toYaml(mixed $inline = 3, mixed $indent = 2, bool $includeModules = false): string
     {
-        return Yaml::dump($this->toArray($includeModules), $inline, $indent);
+        return Yaml::dump($this->toArray($includeModules), (int) $inline, (int) $indent);
     }
 
     /**
      * @param bool $includeModules
      * @return string
      */
-    public function toJson($includeModules = false)
+    public function toJson(bool $includeModules = false): string
     {
-        return json_encode($this->toArray($includeModules));
+        return json_encode($this->toArray($includeModules), JSON_THROW_ON_ERROR);
     }
 
     /**
      * @return array
      */
-    public function listModules()
+    public function listModules(): array
     {
         $list = [];
         foreach ($this->items as $name) {
@@ -340,7 +339,7 @@ class Position extends Collection
      * @param bool $save
      * @return string
      */
-    public function folder($save = false)
+    public function folder(bool $save = false): string
     {
         return $this->locator()->findResource($this->path(), true, $save);
     }
@@ -348,7 +347,7 @@ class Position extends Collection
     /**
      * @param array|null $data
      */
-    protected function load($data)
+    protected function load(?array $data): void
     {
         if ($data === null) {
             $file = $this->file();
@@ -360,7 +359,8 @@ class Position extends Collection
 
         if (isset($data['modules'])) {
             foreach ($data['modules'] as $array) {
-                $this->add(new Module($array['id'], $this->name, $array), $array['id'] ?: (function_exists('wp_rand') ? wp_rand() : mt_rand()));
+                $temporaryName = $array['id'] ?: (function_exists('wp_rand') ? wp_rand() : mt_rand());
+                $this->add(new Module($array['id'], $this->name, $array), (string) $temporaryName);
             }
 
             return;
@@ -388,7 +388,7 @@ class Position extends Collection
      * @param  string $name
      * @return Module
      */
-    protected function loadModule($name)
+    protected function loadModule(string $name): Module
     {
         return new Module($name, $this->name);
     }
@@ -397,7 +397,7 @@ class Position extends Collection
      * @param bool $save
      * @return CompiledYamlFile
      */
-    protected function file($save = false)
+    protected function file(bool $save = false): CompiledYamlFile
     {
         return CompiledYamlFile::instance($this->locator()->findResource($this->path() . '.yaml', true, $save));
     }
@@ -405,7 +405,7 @@ class Position extends Collection
     /**
      * @return UniformResourceLocator
      */
-    protected function locator()
+    protected function locator(): UniformResourceLocator
     {
         return Genesis::instance()['locator'];
     }
@@ -413,7 +413,7 @@ class Position extends Collection
     /**
      * @return string
      */
-    protected function path()
+    protected function path(): string
     {
         return "genesis-positions://{$this->name}";
     }

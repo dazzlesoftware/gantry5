@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
 
 /**
@@ -17,23 +19,23 @@ namespace Genesis\Component\Whoops;
 class SystemFacade extends \Whoops\Util\SystemFacade
 {
     /** @var array */
-    protected $registeredPatterns;
+    protected array $registeredPatterns;
     /** @var callable */
-    protected $whoopsErrorHandler;
+    protected mixed $whoopsErrorHandler;
     /** @var callable */
-    protected $whoopsExceptionHandler;
+    protected mixed $whoopsExceptionHandler;
     /** @var callable */
-    protected $whoopsShutdownHandler;
+    protected mixed $whoopsShutdownHandler;
     /** @var callable|null */
-    protected $platformExceptionHandler;
+    protected mixed $platformExceptionHandler = null;
 
     /**
      * @param  array|string $patterns List or a single regex pattern to match for silencing errors in particular files.
      */
-    public function __construct($patterns = [])
+    public function __construct(array|string $patterns = [])
     {
         $this->registeredPatterns = array_map(
-            static function ($pattern) {
+            static function (string $pattern): array {
                 return ['pattern' => $pattern];
             },
             (array) $patterns
@@ -46,7 +48,7 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      *
      * @return callable|null
      */
-    public function setErrorHandler(callable $handler, $types = 'use-php-defaults')
+    public function setErrorHandler(callable $handler, mixed $types = 'use-php-defaults'): ?callable
     {
         $this->whoopsErrorHandler = $handler;
 
@@ -58,7 +60,7 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      *
      * @return void
      */
-    public function registerShutdownFunction(callable $function)
+    public function registerShutdownFunction(callable $function): void
     {
         $this->whoopsShutdownHandler = $function;
         register_shutdown_function([$this, 'handleShutdown']);
@@ -69,7 +71,7 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      *
      * @return callable|null
      */
-    public function setExceptionHandler(callable $handler)
+    public function setExceptionHandler(callable $handler): ?callable
     {
         $this->whoopsExceptionHandler = $handler;
         $this->platformExceptionHandler = parent::setExceptionHandler([$this, 'handleException']);
@@ -90,15 +92,8 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      * @return bool
      * @throws \ErrorException
      */
-    public function handleError($level, $message, $file = null, $line = null)
+    public function handleError(int $level, string $message, ?string $file = null, ?int $line = null): bool
     {
-        // TODO: remove when upgrading to Twig 2+
-        if (($level === E_DEPRECATED) && strpos($file, '/twig/') !== false) {
-            if (strpos($message, '#[\ReturnTypeWillChange]') !== false || strpos($message, 'Passing null to parameter') !== false) {
-                return true;
-            }
-        }
-
         $handler = $this->whoopsErrorHandler;
 
         if (!$this->registeredPatterns) {
@@ -127,7 +122,7 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      * @param  \Throwable $exception
      * @return void
      */
-    public function handleException($exception)
+    public function handleException(\Throwable $exception): void
     {
         $handler = $this->whoopsExceptionHandler;
 
@@ -152,7 +147,7 @@ class SystemFacade extends \Whoops\Util\SystemFacade
     /**
      * Special case to deal with Fatal errors and the like.
      */
-    public function handleShutdown()
+    public function handleShutdown(): void
     {
         $handler = $this->whoopsShutdownHandler;
 
@@ -170,8 +165,10 @@ class SystemFacade extends \Whoops\Util\SystemFacade
      * @param int $httpCode
      * @return int
      */
-    public function setHttpResponseCode($httpCode)
+    public function setHttpResponseCode(mixed $httpCode): int
     {
+        $httpCode = (int) $httpCode;
+
         if (!function_exists('http_response_code')) {
             return $httpCode;
         }

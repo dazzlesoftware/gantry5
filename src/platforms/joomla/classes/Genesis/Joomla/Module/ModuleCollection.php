@@ -22,7 +22,7 @@ class ModuleCollection extends Collection
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->__call('toArray', []);
     }

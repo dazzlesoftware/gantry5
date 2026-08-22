@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.WP.AlternativeFunctions.parse_url_parse_url
 
 /**
@@ -23,11 +25,11 @@ class Url
      * @param  bool   $queryArray
      * @return array|bool
      */
-    public static function parse($url, $queryArray = false)
+    public static function parse(string $url, bool $queryArray = false): array|false
     {
         $encodedUrl = preg_replace_callback(
             '%[^:/@?&=#]+%u',
-            static function ($matches) { return rawurlencode($matches[0]); },
+            static function (array $matches): string { return rawurlencode($matches[0]); },
             $url
         );
 
@@ -55,7 +57,7 @@ class Url
      * @param string $query
      * @return mixed
      */
-    public static function parseQuery($query)
+    public static function parseQuery(string $query): array
     {
         parse_str($query, $vars);
 
@@ -68,7 +70,7 @@ class Url
      * @param array $parsed_url
      * @return string
      */
-    public static function build(array $parsed_url)
+    public static function build(array $parsed_url): string
     {
         // Build query string from variables if they are set.
         if (isset($parsed_url['vars'])) {
@@ -96,11 +98,11 @@ class Url
      * @param array $vars
      * @return null|string
      */
-    public static function buildQuery(array $vars)
+    public static function buildQuery(array $vars): ?string
     {
         $list = [];
         foreach ($vars as $key => $var) {
-            $list[] = $key . '=' . rawurlencode($var);
+            $list[] = $key . '=' . rawurlencode((string) $var);
         }
 
         return $list ? implode('&', $list) : null;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,28 +22,28 @@ class RedirectResponse extends Response
      * @param string $content
      * @param int $status
      */
-    public function __construct($content = '', $status = 303)
+    public function __construct(mixed $content = '', int $status = 303)
     {
         parent::__construct('', $status);
 
-        $this->setHeader('Location', $content);
+        $this->setHeader('Location', (string) $content);
     }
 
     /**
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
-        return (string) $this->getHeaders()['Location'];
+        return (string) ($this->getHeaders()['Location'][0] ?? '');
     }
 
     /**
      * @param string $content
      * @return Response
      */
-    public function setContent($content)
+    public function setContent(mixed $content): static
     {
-        $this->setHeader('Location', $content);
+        $this->setHeader('Location', (string) $content);
 
         return $this;
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
 
 /**
@@ -17,18 +19,18 @@ namespace Genesis\Component\Request;
 class Request
 {
     /** @var string */
-    protected $method;
+    protected ?string $method = null;
 
     /** @var Input */
-    public $get;
+    public Input $get;
     /** @var Input */
-    public $post;
+    public Input $post;
     /** @var Input */
-    public $cookie;
+    public Input $cookie;
     /** @var Input */
-    public $server;
+    public Input $server;
     /** @var Input */
-    public $request;
+    public Input $request;
 
     public function __construct()
     {
@@ -38,7 +40,7 @@ class Request
     /**
      * @return string
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         if (!$this->method) {
             $method = $this->server['REQUEST_METHOD'] ?: 'GET';
@@ -46,13 +48,13 @@ class Request
                 $method = $this->server['X-HTTP-METHOD-OVERRIDE'] ?: $method;
                 $method = $this->post['METHOD'] ?: $method;
             }
-            $this->method = strtoupper($method);
+            $this->method = strtoupper((string) $method);
         }
 
         return $this->method;
     }
 
-    protected function init()
+    protected function init(): void
     {
         $this->get = new Input($_GET);
         $this->post = new Input($_POST);
