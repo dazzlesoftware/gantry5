@@ -22,7 +22,7 @@ class Genesis extends Base\Genesis
     /**
      * @throws \LogicException
      */
-    protected static function init()
+    protected static function init(): static
     {
         $container = parent::init();
 
@@ -47,7 +47,7 @@ class Genesis extends Base\Genesis
     /**
      * @return array
      */
-    protected function loadGlobal()
+    protected function loadGlobal(): array
     {
         $grav = Grav::instance();
 

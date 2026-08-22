@@ -24,7 +24,7 @@ class Genesis extends Base\Genesis
     /**
      * @return boolean
      */
-    public function admin()
+    public function admin(): bool
     {
         return \is_admin();
     }
@@ -34,7 +34,7 @@ class Genesis extends Base\Genesis
      * @param bool   $force
      * @return array
      */
-    public function styles($location = 'head', $force = false)
+    public function styles(string $location = 'head', bool $force = false): array
     {
         // Do not display head, WordPress will take care of it (most of the time).
         return !$force && $location === 'head' ? Document::$wp_styles : parent::styles($location);
@@ -45,7 +45,7 @@ class Genesis extends Base\Genesis
      * @param bool $force
      * @return array
      */
-    public function scripts($location = 'head', $force = false)
+    public function scripts(string $location = 'head', bool $force = false): array
     {
         // Do not display head and footer, WordPress will take care of it (most of the time).
         return !$force && in_array($location, ['head', 'footer']) ? Document::$wp_scripts[$location] : parent::scripts($location);
@@ -55,7 +55,7 @@ class Genesis extends Base\Genesis
      * @return static
      * @throws \LogicException
      */
-    protected static function init()
+    protected static function init(): static
     {
         $container = parent::init();
 
@@ -90,7 +90,7 @@ class Genesis extends Base\Genesis
     /**
      * @return array
      */
-    protected function loadGlobal()
+    protected function loadGlobal(): array
     {
         return (array) \get_option('genesis_plugin');
     }

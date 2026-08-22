@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -41,15 +43,15 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 abstract class Genesis extends Container
 {
     /** @var static|null */
-    protected static $instance;
+    protected static ?self $instance = null;
 
     /** @var mixed */
-    protected $wrapper;
+    protected mixed $wrapper = null;
 
     /**
      * @return static
      */
-    public static function instance()
+    public static function instance(): static
     {
         $instance = self::$instance;
         if (null === $instance) {
@@ -69,7 +71,7 @@ abstract class Genesis extends Container
     /**
      * @return static
      */
-    public static function restart()
+    public static function restart(): static
     {
         self::$instance = static::init();
 
@@ -81,12 +83,12 @@ abstract class Genesis extends Container
      *
      * @return boolean
      */
-    public function debug()
+    public function debug(): bool
     {
         /** @var Config $global */
         $global = $this['global'];
 
-        return $global->get('debug', false);
+        return (bool) $global->get('debug', false);
     }
 
     /**
@@ -94,7 +96,7 @@ abstract class Genesis extends Container
      *
      * @return boolean
      */
-    public function admin()
+    public function admin(): bool
     {
         return defined('GENESIS_ADMIN_PATH') || defined('GENESISADMIN_PATH');
     }
@@ -103,7 +105,7 @@ abstract class Genesis extends Container
     /**
      * @return string
      */
-    public function siteUrl()
+    public function siteUrl(): string
     {
         /** @var Document $document */
         $document = $this['document'];
@@ -115,7 +117,7 @@ abstract class Genesis extends Container
      * @param string $location
      * @return array
      */
-    public function styles($location = 'head')
+    public function styles(string $location = 'head'): array
     {
         /** @var Document $document */
         $document = $this['document'];
@@ -127,7 +129,7 @@ abstract class Genesis extends Container
      * @param string $location
      * @return array
      */
-    public function scripts($location = 'head')
+    public function scripts(string $location = 'head'): array
     {
         /** @var Document $document */
         $document = $this['document'];
@@ -141,7 +143,7 @@ abstract class Genesis extends Container
      * @param string $framework
      * @return bool
      */
-    public function load($framework)
+    public function load(string $framework): bool
     {
         /** @var Document $document */
         $document = $this['document'];
@@ -155,7 +157,7 @@ abstract class Genesis extends Container
      * @param string $id
      * @return mixed
      */
-    public function lock($id)
+    public function lock(string $id): mixed
     {
         $value = $this[$id];
 
@@ -179,7 +181,7 @@ abstract class Genesis extends Container
      * @param  Event  $event
      * @return Event
      */
-    public function fireEvent($eventName, ?Event $event = null)
+    public function fireEvent(string $eventName, ?Event $event = null): Event
     {
         /** @var EventDispatcher $events */
         $events = $this['events'];
@@ -194,7 +196,7 @@ abstract class Genesis extends Container
      * @param string $path
      * @return string
      */
-    public function route($path)
+    public function route(string $path): string
     {
         $routes = $this->offsetGet('routes');
         $route = isset($routes[$path]) ? $routes[$path] : $routes[1];
@@ -216,7 +218,7 @@ abstract class Genesis extends Container
      * @param string|null $id
      * @return bool
      */
-    public function authorize($action, $id = null)
+    public function authorize(string $action, mixed $id = null): bool
     {
         /** @var Platform $platform */
         $platform = $this['platform'];
@@ -228,7 +230,7 @@ abstract class Genesis extends Container
      * @param mixed|null $value
      * @return mixed|null
      */
-    public function wrapper($value = null)
+    public function wrapper(mixed $value = null): mixed
     {
         if ($value !== null) {
             $this->wrapper = $value;
@@ -240,7 +242,7 @@ abstract class Genesis extends Container
     /**
      * @return static
      */
-    protected static function init()
+    protected static function init(): static
     {
         $instance = new static();
 
@@ -349,7 +351,7 @@ abstract class Genesis extends Container
      * @param int|null $flags
      * @return array|string
      */
-    public static function pathinfo($path, $flags = null)
+    public static function pathinfo(string $path, ?int $flags = null): array|string
     {
         $path = str_replace(['%2F', '%5C'], ['/', '\\'], rawurlencode($path));
 
@@ -375,7 +377,7 @@ abstract class Genesis extends Container
      * @param string $suffix
      * @return string
      */
-    public static function basename($path, $suffix = '')
+    public static function basename(string $path, string $suffix = ''): string
     {
         return rawurldecode(basename(str_replace(['%2F', '%5C'], '/', rawurlencode($path)), $suffix));
     }
@@ -400,7 +402,7 @@ abstract class Genesis extends Container
      *
      * @return boolean Yes, if it is safe to use Genesis Framework.
      */
-    public function isCompatible($version)
+    public function isCompatible(string $version): bool
     {
         // If requested version is smaller than 5.0-rc, it's not compatible.
         if (version_compare($version, '5.0-rc', '<')) {
@@ -430,7 +432,7 @@ abstract class Genesis extends Container
      *
      * @return boolean True if Git repository or CI build is detected.
      */
-    public function isDev()
+    public function isDev(): bool
     {
         return '@version@' === GENESIS_VERSION || strpos(GENESIS_VERSION, 'dev-') === 0;
     }
@@ -438,7 +440,7 @@ abstract class Genesis extends Container
     /**
      * @return array
      */
-    protected function loadGlobal()
+    protected function loadGlobal(): array
     {
         return [];
     }

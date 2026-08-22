@@ -22,7 +22,7 @@ class Genesis extends Base\Genesis
     /**
      * @return bool
      */
-    public function debug()
+    public function debug(): bool
     {
         return JDEBUG;
     }
@@ -30,7 +30,7 @@ class Genesis extends Base\Genesis
     /**
      * @return bool
      */
-    public function admin()
+    public function admin(): bool
     {
         /** @var CMSApplication $application */
         $app = Factory::getApplication();
@@ -43,7 +43,7 @@ class Genesis extends Base\Genesis
      * @param bool   $force
      * @return array
      */
-    public function styles($location = 'head', $force = false)
+    public function styles(string $location = 'head', bool $force = false): array
     {
         // Do not display head, Joomla will take care of it (most of the time).
         return (!$force && $location === 'head') ? [] : parent::styles($location);
@@ -54,7 +54,7 @@ class Genesis extends Base\Genesis
      * @param bool $force
      * @return array
      */
-    public function scripts($location = 'head', $force = false)
+    public function scripts(string $location = 'head', bool $force = false): array
     {
         // Do not display head, Joomla will take care of it (most of the time).
         return (!$force && $location === 'head') ? [] : parent::scripts($location);
@@ -63,7 +63,7 @@ class Genesis extends Base\Genesis
     /**
      * @return array
      */
-    protected function loadGlobal()
+    protected function loadGlobal(): array
     {
         $global = null;
 
@@ -74,6 +74,6 @@ class Genesis extends Base\Genesis
         EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
         EventDispatcher::dispatch($app, 'onGenesisGlobalConfig', ['global' => &$global]);
 
-        return $global;
+        return (array) $global;
     }
 }

@@ -21,7 +21,7 @@ class Genesis extends Base\Genesis
     /**
      * @return static
      */
-    protected static function init()
+    protected static function init(): static
     {
         $container = parent::init();
 
@@ -39,7 +39,7 @@ class Genesis extends Base\Genesis
     /**
      * @return array
      */
-    protected function loadGlobal()
+    protected function loadGlobal(): array
     {
         /** @var \phpbb\config\config $config */
         $config = Runtime::service('config');
