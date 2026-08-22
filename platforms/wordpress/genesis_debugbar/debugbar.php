@@ -22,7 +22,13 @@ require_once dirname(__FILE__) . '/Debugger.php';
 
 function genesis_debugbar_php_version_warning()
 {
-    echo '<div class="error"><p>';
-    echo sprintf("You are running <b>PHP %s</b>, but <b>Genesis DebugBar</b> needs at least <b>PHP 8.3.0</b> to run.", PHP_VERSION);
-    echo '</p></div>';
+    printf(
+        '<div class="notice notice-error"><p>%s</p></div>',
+        sprintf(
+            /* translators: 1: current PHP version, 2: required PHP version. */
+            esc_html__('You are running PHP %1$s, but Genesis DebugBar needs at least PHP %2$s to run.', 'genesis'),
+            esc_html(PHP_VERSION),
+            '8.3.0'
+        )
+    );
 }

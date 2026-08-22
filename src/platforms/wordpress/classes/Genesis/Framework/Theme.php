@@ -20,10 +20,13 @@ use Genesis\WordPress\Widget\Particle;
 use Genesis\WordPress\Widgets;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Timber\Timber;
+use Timber\Loader;
+use Timber\PostQuery;
 use Timber\User;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
+use WP_Query;
 
 /**
  * Class Theme
@@ -164,6 +167,34 @@ class Theme extends AbstractTheme
         }
 
         $this->setLayout($selected);
+    }
+
+    /**
+     * Return posts for the current page, applying optional blog category filters
+     * without replacing WordPress's global main query.
+     */
+    public function getPosts(): PostQuery
+    {
+        global $wp_query;
+
+        $config = Genesis::instance()['config'];
+        $include = trim((string) $config->get('content.blog.query.categories.include'));
+        $exclude = trim((string) $config->get('content.blog.query.categories.exclude'));
+
+        if (!\is_home() || ($include === '' && $exclude === '')) {
+            return Timber::get_posts($wp_query);
+        }
+
+        $queryArgs = $wp_query->query_vars;
+
+        if ($include !== '') {
+            $queryArgs['cat'] = preg_replace('/\s+/', ',', $include);
+        } else {
+            $categories = preg_split('/\s+/', $exclude, -1, PREG_SPLIT_NO_EMPTY);
+            $queryArgs['category__not_in'] = array_map('intval', $categories);
+        }
+
+        return Timber::get_posts(new WP_Query($queryArgs));
     }
 
     public function widgets_init()
@@ -373,16 +404,6 @@ class Theme extends AbstractTheme
     }
 
     /**
-     * Timber cache location filter.
-     *
-     * @return string
-     */
-    public function timber_cache_location()
-    {
-        return $this->getCachePath('twig');
-    }
-
-    /**
      * Extend file type support in WP Theme Editor
      *
      * @param $default_types
@@ -429,6 +450,27 @@ class Theme extends AbstractTheme
         $locator = static::genesis()['locator'];
 
         return $locator->mergeResources(['genesis-theme://views', 'genesis-engine://views']);
+    }
+
+    /**
+     * Set Timber template lookup locations.
+     */
+    public function timberLocations(array $locations): array
+    {
+        return [Loader::MAIN_NAMESPACE => static::getTwigPaths()];
+    }
+
+    /**
+     * Configure Twig using Timber 2's environment-options filter.
+     */
+    public function timberEnvironmentOptions(array $options): array
+    {
+        $global = Genesis::instance()['global'];
+
+        $options['cache'] = $global->get('compile_twig', 1) ? $this->getCachePath('twig') : false;
+        $options['autoescape'] = false;
+
+        return $options;
     }
 
     /**
@@ -479,16 +521,6 @@ class Theme extends AbstractTheme
             $this->install();
         }
 
-        // Set lookup locations for Timber.
-        Timber::$locations = static::getTwigPaths();
-
-        // Enable caching in Timber.
-        Timber::$twig_cache =  (bool) $global->get('compile_twig', 1);
-        Timber::$cache = false;
-
-        // Set autoescape in Timber.
-        Timber::$autoescape = false;
-
         \add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets']);
         \add_theme_support('title-tag');
         \add_theme_support('post-formats', []);
@@ -497,10 +529,11 @@ class Theme extends AbstractTheme
         \add_theme_support('widgets');
 
         \add_filter('script_loader_tag', [Document::class, 'script_add_attributes'], 10, 2);
-        \add_filter('timber_context', [$this, 'getContext']);
+        \add_filter('timber/context', [$this, 'getContext']);
+        \add_filter('timber/locations', [$this, 'timberLocations']);
+        \add_filter('timber/twig/environment/options', [$this, 'timberEnvironmentOptions']);
         \add_filter('timber/loader/twig', [$this, 'timber_loader_twig']);
-        \add_filter('timber/cache/location', [$this, 'timber_cache_location']);
-        \add_filter('timber_compile_result', [$this, 'postProcessOutput']);
+        \add_filter('timber/output', [$this, 'postProcessOutput']);
         \add_filter('wp_theme_editor_filetypes', [$this, 'extend_theme_editor_filetypes']);
         \add_filter('timber/twig', [$this, 'extendTwig'], 100);
         \add_filter('the_content', [$this, 'url_filter'], 0);
@@ -519,7 +552,6 @@ class Theme extends AbstractTheme
         \add_action('init', [$this, 'register_post_types']);
         \add_action('init', [$this, 'register_taxonomies']);
         \add_action('init', [$this, 'register_menus']);
-
 //        add_action('after_setup_theme', [$this, 'register_nav_menus']);
         \add_action('template_redirect', [$this, 'set_template_layout'], -10000);
         \add_action('template_redirect', [$this, 'disable_wpautop'], 10000);
@@ -641,15 +673,15 @@ class Theme extends AbstractTheme
      */
     public function ajax_particle()
     {
-        $format = !empty($_GET['format']) ? \sanitize_key($_GET['format']) : 'html';
-        $outline = !empty($_GET['outline']) ? \sanitize_key($_GET['outline']) : 'default';
-        $identifier = !empty($_GET['id']) ? \sanitize_key($_GET['id']) : null;
+        $format = !empty($_GET['format']) ? \sanitize_key(\wp_unslash($_GET['format'])) : 'html';
+        $outline = !empty($_GET['outline']) ? \sanitize_key(\wp_unslash($_GET['outline'])) : 'default';
+        $identifier = !empty($_GET['id']) ? \sanitize_key(\wp_unslash($_GET['id'])) : null;
 
         if (!in_array($format, ['json', 'raw'], true)) {
             $this->ajax_not_found($format);
         }
 
-        $props = $_GET;
+        $props = \wp_unslash($_GET);
         unset($props['action'], $props['outline'], $props['id'], $props['format']);
 
         $genesis = Genesis::instance();

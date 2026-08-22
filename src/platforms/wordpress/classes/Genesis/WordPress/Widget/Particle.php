@@ -50,7 +50,8 @@ class Particle extends \WP_Widget
             $this->container = Genesis::instance();
         } catch (\Exception $e) {}
 
-        $ajax = $pagenow === 'admin-ajax.php' && isset($_POST['action']) && $_POST['action'] === 'save-widget';
+        $action = isset($_POST['action']) ? sanitize_key(wp_unslash($_POST['action'])) : '';
+        $ajax = $pagenow === 'admin-ajax.php' && $action === 'save-widget';
         if (\is_admin() && (in_array($pagenow, ['widgets.php', 'customize.php']) || $ajax)) {
             // Initialize administrator if already not done that.
             $this->initialiseGenesis();

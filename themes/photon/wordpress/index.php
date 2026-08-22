@@ -30,39 +30,13 @@ $theme  = $genesis['theme'];
 /** @var Config $config */
 $config = $genesis['config'];
 
-global $paged;
-
-if (!isset($paged) || !$paged) {
-    $paged = 1;
-}
-
 // We need to render contents of <head> before plugin content gets added.
 $context              = Timber::context();
 $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
-// Category variables for query manipulation
-$cat         = '';
-$cat_include = $config->get('content.blog.query.categories.include');
-$cat_exclude = $config->get('content.blog.query.categories.exclude');
-
-if ($cat_include) {
-    $cat = str_replace(' ', ',', $cat_include);
-} elseif ($cat_exclude) {
-    $cat_exclude = explode(' ', $cat_exclude);
-    $new_exclude = [];
-    foreach ($cat_exclude as $exclude) {
-        $new_exclude[] = '-' . $exclude;
-    }
-    $cat = implode(',', $new_exclude);
-}
-
-// Override the main query only when $cat variable is not empty
-if ($cat) {
-    query_posts(['cat' => $cat, 'paged' => $paged]);
-}
-
-$context['posts']      = Timber::get_posts();
-$context['pagination'] = \Timber\Pagination::get_pagination();
+// Genesis applies optional blog category filters without replacing the global query.
+$context['posts']      = $theme->getPosts();
+$context['pagination'] = $context['posts']->pagination();
 
 $templates = ['index.html.twig'];
 

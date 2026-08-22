@@ -12,7 +12,7 @@ use Timber\Timber;
 defined('ABSPATH') or die;
 
 // Extend Timber context
-add_filter('timber_context', array('GenesisThemeHelper', 'add_to_context'));
+add_filter('timber/context', array('GenesisThemeHelper', 'add_to_context'));
 
 // Modify the default Admin Bar margins to render properly in the mobile mode
 add_theme_support('admin-bar', array('callback' => array('GenesisThemeHelper', 'admin_bar_margins')));

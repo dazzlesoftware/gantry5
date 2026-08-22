@@ -2,8 +2,8 @@
 Contributors: Genesis
 Author URI: http://genesis.org
 Tags: Genesis, genesis, framework, theme, builder
-Requires at least: 5.2
-Tested up to: 7.0
+Requires at least: 6.8
+Tested up to: 7.1
 Requires PHP: 8.3.0
 Stable tag: @version@
 License: GPLv3 or later
@@ -27,7 +27,7 @@ Genesis uses the **Nucleus** grid system, built from scratch using Flexbox and t
 
 = Cross-platform Support =
 
-The new responsive Genesis framework is available for **WordPress 5.2+**, **Joomla 5.0+** and **Grav 1.7.25+**.
+The new responsive Genesis framework is available for **WordPress 6.8+**, **Joomla 5.0+** and **Grav 1.7.25+**.
 
 = Intuitive YAML-driven Configuration =
 
@@ -96,7 +96,7 @@ Please note that Genesis Framework plugin doesn't come up with the default theme
 
 We try to ensure that any Genesis theme and the Genesis Plugin specifically will work with any modern and secure server environment. The recommended minimum requirements are :
 
-* WordPress 5.2 or higher
+* WordPress 6.8 or higher
 * PHP 8.3.0+
 
 = Is there any documentation available ? =

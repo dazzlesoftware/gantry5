@@ -5,6 +5,7 @@
  * Plugin URI: https://dazzlesoftware.org/
  * Description: Genesis theme framework.
  * Version: @version@
+ * Requires at least: 6.8
  * Requires PHP: 8.3
  * Author: Dazzle Software
  * Author URI: https://dazzlesoftware.org/

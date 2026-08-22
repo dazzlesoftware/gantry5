@@ -6,4 +6,4 @@ Every platform (excluding common) has '''scss.sh''' script which runs in the bac
 ## common/ - Shared code between all platforms
 ## grav/ - Grav 1.7.25+ theme
 ## joomla/ - Joomla 5.0+ template
-## wordpress/ - WordPress 5.2+ theme
+## wordpress/ - WordPress 6.8+ theme
