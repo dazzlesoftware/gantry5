@@ -42,9 +42,9 @@ abstract class RealLoader
      */
     public static function getClassLoader()
     {
-        // Fail safe version check for PHP <5.6.20.
-        if (version_compare($phpVersion = PHP_VERSION, '5.6.20', '<')) {
-            throw new \RuntimeException(sprintf(self::$errorMessagePhpMin, $phpVersion, '5.6.20'));
+        // Fail safe version check for PHP <8.3.0.
+        if (version_compare($phpVersion = PHP_VERSION, '8.3.0', '<')) {
+            throw new \RuntimeException(sprintf(self::$errorMessagePhpMin, $phpVersion, '8.3.0'));
         }
 
         if (defined('GENESIS_VERSION')) {

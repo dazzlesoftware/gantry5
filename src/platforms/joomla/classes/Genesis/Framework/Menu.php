@@ -15,6 +15,7 @@ use Genesis\Component\Menu\Item;
 use Genesis\Joomla\MenuHelper;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Menu\MenuItem;
 use Joomla\CMS\Router\Route;
@@ -144,7 +145,7 @@ class Menu extends AbstractMenu
         static $items;
 
         if ($items === null) {
-            $db = Factory::getDbo();
+            $db = Factory::getContainer()->get(DatabaseInterface::class);
             $query = $db->getQuery(true)
                 ->select($db->quoteName('a.menutype'))
                 ->select($db->quoteName('a.title'))
@@ -168,7 +169,7 @@ class Menu extends AbstractMenu
      */
     public function getMenuIds()
     {
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->select('a.id')
             ->from('#__menu_types AS a');
@@ -794,7 +795,7 @@ class Menu extends AbstractMenu
      */
     private function getMenuItemIds($menutype)
     {
-        $db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->select('m.id, m.alias, m.path AS route, m.level, m.parent_id')
             ->from('#__menu AS m')
@@ -838,10 +839,10 @@ class Menu extends AbstractMenu
     {
         $loader = static function () use ($menutype) {
             try {
-                $db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
+                $db = Factory::getContainer()->get(DatabaseInterface::class);
             } catch (\Exception $e) {
                 // Fallback for older versions
-                $db = Factory::getDbo();
+                $db = Factory::getContainer()->get(DatabaseInterface::class);
             }
             
             $query = $db->getQuery(true)

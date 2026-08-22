@@ -11,6 +11,7 @@ namespace Genesis\Joomla;
 
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Cache\Cache;
+use Joomla\CMS\Cache\CacheControllerFactoryInterface;
 use Joomla\CMS\Cache\Exception\CacheExceptionInterface;
 use Joomla\CMS\Factory;
 
@@ -61,7 +62,7 @@ class CacheHelper
      */
     private static function cleanByType($group = null, $client_id = 0, $event = 'onContentCleanCache')
     {
-        $config = Factory::getConfig();
+        $config = Factory::getApplication()->getConfig();
 
         $options = [
             'defaultgroup' => $group,
@@ -71,7 +72,9 @@ class CacheHelper
 
         try {
             /** @var Cache $cache */
-            $cache = Cache::getInstance('callback', $options);
+            $cache = Factory::getContainer()
+                ->get(CacheControllerFactoryInterface::class)
+                ->createCacheController('callback', $options);
             $cache->clean();
         } catch (CacheExceptionInterface $e) {
             $options['result'] = false;

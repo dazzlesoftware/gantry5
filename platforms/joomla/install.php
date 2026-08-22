@@ -10,8 +10,10 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Application\CMSApplication;
+use Joomla\CMS\Cache\CacheControllerFactoryInterface;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Table\Table;
@@ -29,8 +31,8 @@ class Pkg_GenesisInstallerScript
      */
     protected $versions = array(
         'PHP' => array (
-            '8.1' => '8.1.0',
-            '0' => '8.2.0' // Preferred version
+            '8.3' => '8.3.0',
+            '0' => '8.3.0' // Preferred version
         ),
         'Joomla!' => array (
             // Require Joomla 5+ (minimum 5.0.0)
@@ -133,11 +135,13 @@ class Pkg_GenesisInstallerScript
     {
         // Clear Joomla system cache.
         /** @var JCache|JCacheController $cache */
-        $cache = Factory::getCache();
+        $cache = Factory::getContainer()
+            ->get(CacheControllerFactoryInterface::class)
+            ->createCacheController('callback', ['defaultgroup' => '']);
         $cache->clean('_system');
 
         // Clear Genesis cache.
-        $path = Factory::getConfig()->get('cache_path', JPATH_SITE . '/cache') . '/genesis';
+        $path = Factory::getApplication()->getConfig()->get('cache_path', JPATH_SITE . '/cache') . '/genesis';
         if (is_dir($path)) {
             Folder::delete($path);
         }
@@ -261,7 +265,7 @@ class Pkg_GenesisInstallerScript
 
     protected function registerTemplateUpdateSites()
     {
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->select('extension_id, element')
@@ -308,7 +312,7 @@ class Pkg_GenesisInstallerScript
         $type = trim((string) $server['type']) ?: 'extension';
         $enabled = isset($server['enabled']) ? (int) $server['enabled'] : 1;
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->select('us.update_site_id')

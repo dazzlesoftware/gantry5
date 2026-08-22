@@ -13,6 +13,7 @@ use Genesis\Framework\Genesis;
 use Genesis\Framework\Theme;
 use Genesis\Joomla\Object\AbstractObject;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Table\Table;
 use DazzleSoftware\Toolbox\ArrayTraits\Export;
 use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
@@ -58,7 +59,7 @@ class Module extends AbstractObject implements ExportInterface
             $this->_assignments = array_map('intval', array_values($assignments));
 
         } elseif (!isset($this->_assignments)) {
-            $db = Factory::getDbo();
+            $db = Factory::getContainer()->get(DatabaseInterface::class);
             $query = $db->getQuery(true);
             $query->select('menuid')->from('#__modules_menu')->where('moduleid = ' . $this->id);
             $db->setQuery($query);

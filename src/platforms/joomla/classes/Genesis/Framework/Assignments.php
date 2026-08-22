@@ -14,6 +14,7 @@ use Genesis\Joomla\CacheHelper;
 use Genesis\Joomla\StyleHelper;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
@@ -140,7 +141,7 @@ class Assignments extends AbstractAssignments
         if ($user && $user->authorise('core.edit', 'com_menus')) {
             $checked_out_default = Version::MAJOR_VERSION < 4 ? 'checked_out = 0' : 'checked_out IS null';
 
-            $db   = Factory::getDbo();
+            $db   = Factory::getContainer()->get(DatabaseInterface::class);
 
             if (!empty($active)) {
                 ArrayHelper::toInteger($active);

@@ -15,6 +15,7 @@ use Genesis\Framework\Genesis;
 use Genesis\Framework\Platform;
 use Genesis\Framework\ThemeInstaller;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
@@ -137,7 +138,7 @@ class ThemeList
         /** @var Platform $platform */
         $platform = $genesis['platform'];
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db
             ->getQuery(true)

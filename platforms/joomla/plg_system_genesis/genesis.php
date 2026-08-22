@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Document\HtmlDocument;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
@@ -415,7 +416,7 @@ class plgSystemGenesis extends CMSPlugin
         }
 
         if (($option === 'com_modules' || $option === 'com_advancedmodules') && (($view === 'genesis' || $view === 'modules') || empty($view)) && $type === 'html') {
-            $db    = Factory::getDbo();
+            $db    = Factory::getContainer()->get(DatabaseInterface::class);
             $query = $db->getQuery(true);
             $query->select('id, title, params');
             $query->from('#__modules');
@@ -735,7 +736,7 @@ class plgSystemGenesis extends CMSPlugin
 
         if ($list === null) {
             // Load styles
-            $db = Factory::getDbo();
+            $db = Factory::getContainer()->get(DatabaseInterface::class);
             $query = $db
                 ->getQuery(true)
                 ->select('s.id, s.template')

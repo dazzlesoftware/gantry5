@@ -19,6 +19,7 @@ use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Installer\Adapter\TemplateAdapter;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
@@ -264,7 +265,7 @@ class ThemeInstaller extends AbstractInstaller
     public function assignHomeStyle($style)
     {
         // Update the mapping for menu items that this style IS assigned to.
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->update('#__menu')
@@ -531,7 +532,7 @@ class ThemeInstaller extends AbstractInstaller
     public function unsetHome($type)
     {
         // Update the mapping for menu items that this style IS assigned to.
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->update('#__menu')
@@ -704,7 +705,7 @@ class ThemeInstaller extends AbstractInstaller
         $type = trim((string) $server['type']) ?: 'extension';
         $enabled = isset($server['enabled']) ? (int) $server['enabled'] : 1;
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->select('us.update_site_id')

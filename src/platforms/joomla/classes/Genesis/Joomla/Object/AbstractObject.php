@@ -11,6 +11,7 @@ namespace Genesis\Joomla\Object;
 
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Object\CMSObject;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Table\Table;
@@ -366,7 +367,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
         // Initialize table object.
         $table = self::getTable();
         $table->bind($this->getProperties());
-        $dbo = $table->getDbo();
+        $dbo = $table->getDatabase();
 
         $values = $this->getFieldValues($ignore);
 
@@ -391,7 +392,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
         // Initialize table object.
         $table = self::getTable();
         $table->bind($this->getProperties());
-        $dbo = $table->getDbo();
+        $dbo = $table->getDatabase();
 
         $values       = [];
         $tableColumns = $table->getFields();
@@ -428,7 +429,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
     protected function fixValue($table, $k, $v)
     {
         if (is_string($v)) {
-            $dbo = $table->getDbo();
+            $dbo = $table->getDatabase();
             $v = $dbo->quote($v);
         }
 
@@ -523,7 +524,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
     static protected function getQuery()
     {
         $table = static::getTable();
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true);
         $query->select('a.*')->from($table->getTableName().' AS a')->order(static::$order);
 
@@ -539,7 +540,7 @@ abstract class AbstractObject extends \Joomla\CMS\Object\CMSObject
             $query = static::getQuery();
         }
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $db->setQuery($query);
 
         /** @var Object[] $items */

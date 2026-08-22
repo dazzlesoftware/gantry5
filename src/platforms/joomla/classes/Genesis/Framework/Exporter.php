@@ -21,6 +21,7 @@ use Genesis\Joomla\Module\ModuleFinder;
 use Genesis\Joomla\StyleHelper;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
@@ -197,7 +198,7 @@ class Exporter
         /** @var Menu $menu */
         $menu = $genesis['menu'];
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db->getQuery(true)
             ->select('id, menutype, title, description')

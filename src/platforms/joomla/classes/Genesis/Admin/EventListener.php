@@ -347,7 +347,7 @@ class EventListener implements EventSubscriberInterface
     protected function getAll($menutype)
 	{
 	    $table = MenuHelper::getMenu();
-        $db = $table->getDbo();
+        $db = $table->getDatabase();
         $name = $table->getTableName();
 		$key = $table->getKeyName();
 

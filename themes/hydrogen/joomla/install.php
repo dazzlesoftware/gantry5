@@ -13,6 +13,7 @@ use Genesis\Framework\Genesis;
 use Genesis\Framework\ThemeInstaller;
 use Genesis\Loader;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Text;
 
 /**
@@ -78,7 +79,7 @@ class Genesis_HydrogenInstallerScript
         $template = $parent->getName();
 
         // Remove older duplicate template records left behind by renamed packages.
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->select('*')
             ->from('#__extensions')

@@ -134,7 +134,7 @@ class Category extends AbstractObject
         if ($k === '`created_time`' || $k === '`modified_time`') {
             $v = 'NOW()';
         } elseif (is_string($v)) {
-            $dbo = $table->getDbo();
+            $dbo = $table->getDatabase();
             $v = $dbo->quote($v);
         }
 

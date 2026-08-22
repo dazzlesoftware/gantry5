@@ -72,7 +72,7 @@ class Theme extends AbstractTheme
         $user = $application->getIdentity();
 
         // Get user timezone and if not set, use Joomla default.
-        $timezone = Factory::getConfig()->get('offset', 'UTC');
+        $timezone = Factory::getApplication()->getConfig()->get('offset', 'UTC');
         if ($user) {
             $timezone = $user->getParam('timezone', $timezone);
         }

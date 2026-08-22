@@ -15,6 +15,7 @@ use Genesis\Framework\Genesis;
 use Genesis\Framework\ThemeInstaller;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
 use Joomla\Component\Templates\Administrator\Model\StyleModel; // Joomla 4
@@ -52,7 +53,7 @@ class StyleHelper
      */
     public static function loadStyles($template)
     {
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
 
         $query = $db
             ->getQuery(true)
