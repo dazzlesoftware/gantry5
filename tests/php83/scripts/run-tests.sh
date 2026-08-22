@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Genesis PHP 8.3 Compatibility Test Runner
+# Genesis PHP 8.3–8.4 Compatibility Test Runner
 
-# Check if PHP 8.3 is available
+# Check if a supported PHP runtime is available
 if ! command -v php &> /dev/null; then
     echo "PHP not found. Please make sure PHP is installed and available in PATH."
     exit 1
@@ -11,7 +11,7 @@ fi
 PHP_VERSION=$(php -r "echo PHP_VERSION;")
 
 echo "----------------------------------------"
-echo "Genesis PHP 8.3 Compatibility Test Suite"
+echo "Genesis PHP 8.3–8.4 Compatibility Test Suite"
 echo "----------------------------------------"
 echo "Using PHP version: $PHP_VERSION"
 
@@ -32,7 +32,7 @@ if [ ! -f "$ROOT_DIR/tests/php83/phpunit.phar" ]; then
 fi
 
 # Run PHPUnit tests using the downloaded PHAR
-echo "Running PHP 8.3 compatibility tests..."
+echo "Running PHP compatibility tests..."
 php "$ROOT_DIR/tests/php83/phpunit.phar" -c "$ROOT_DIR/phpunit.xml.dist" --testdox
 
 # Exit with the status code from PHPUnit

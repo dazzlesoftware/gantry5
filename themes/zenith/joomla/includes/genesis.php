@@ -18,7 +18,7 @@ use Joomla\CMS\Language\Text;
  * @param Genesis|null $genesis
  * @return mixed|string
  */
-$genesis_theme_name = static function (Genesis $genesis = null) {
+$genesis_theme_name = static function (?Genesis $genesis = null) {
     // First attempt to look up the theme name from Genesis.
     if ($genesis && isset($genesis['theme.name'])) {
         return $genesis['theme.name'];

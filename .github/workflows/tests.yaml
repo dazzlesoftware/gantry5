@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        php: [ 8.3 ]
+        php: [ 8.3, 8.4 ]
         os: [ubuntu-latest]
     timeout-minutes: 10
     steps:
@@ -46,8 +46,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Build Genesis packages
         run: composer build-dev
-      - name: Run PHP 8.3 compatibility tests
-        if: matrix.php == '8.3'
+      - name: Run PHP compatibility tests
         run: ./tests/php83/scripts/run-tests.sh
 
 #  slack:

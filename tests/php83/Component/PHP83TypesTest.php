@@ -5,7 +5,7 @@ namespace Genesis\Tests\PHP83;
 use Genesis\Tests\PHP83\MockableTest;
 
 /**
- * Test PHP 8.3 specific type handling and compatibility
+ * Test PHP 8.3+ type handling and compatibility
  */
 class PHP83TypesTest extends MockableTest
 {

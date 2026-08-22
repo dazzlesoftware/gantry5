@@ -41,6 +41,7 @@ This changelog begins with the Genesis `1.0.0` release.
 - Updated all WordPress parent and child theme compatibility headers to require WordPress 6.8 and PHP 8.3, matching the bundled Timber runtime.
 - Modernized WordPress AJAX input handling, sanitization, Debug Bar notices, pagination, theme context, and production asset loading.
 - Added automated WordPress API compatibility coverage and validated the production plugin and theme packages with `WP_DEBUG` enabled on WordPress 7.1.
+- Added PHP 8.4 continuous-integration coverage and removed implicitly nullable parameter declarations from all Joomla theme bootstraps.
 
 ### Framework architecture
 

@@ -11,7 +11,7 @@
     </exclude>
   </coverage>
   <testsuites>
-    <testsuite name="PHP 8.3 Compatibility Tests">
+    <testsuite name="PHP 8.3–8.4 Compatibility Tests">
       <directory>tests/php83</directory>
     </testsuite>
   </testsuites>

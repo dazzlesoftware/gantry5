@@ -1,6 +1,6 @@
-# PHP 8.3 Compatibility Test Suite for Genesis
+# PHP 8.3 and 8.4 Compatibility Test Suite for Genesis
 
-This test suite is designed to validate Genesis compatibility with PHP 8.3. It includes tests for critical components that may be affected by PHP 8.3 changes.
+This test suite validates Genesis on the minimum supported PHP 8.3 runtime and the fully supported PHP 8.4 runtime. It includes tests for critical components affected by PHP language changes and deprecations.
 
 ## Test Categories
 

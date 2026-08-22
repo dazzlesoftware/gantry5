@@ -1,6 +1,6 @@
 <?php
 /**
- * Genesis Framework - PHP 8.3 Compatibility Test Suite
+ * Genesis Framework - PHP 8.3–8.4 Compatibility Test Suite
  *
  * @copyright (c) 2024
  */
