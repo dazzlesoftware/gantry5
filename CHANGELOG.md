@@ -27,6 +27,21 @@ This changelog begins with the Genesis `1.0.0` release.
 - Migrated the shared toolbox layer to modern Symfony components.
 - Added runtime-extension checks and graceful environment/version detection.
 
+### Joomla and WordPress compatibility modernization
+
+- Audited the Joomla integration against Joomla 6 and replaced removed or deprecated database access with `DatabaseInterface` services and constructor injection where supported.
+- Retained container lookups only in procedural entry points and installer code where dependency injection is not available.
+- Modernized Joomla application, menu, assignment, theme-installer, update-manifest, and administrator integration while preserving APIs that remain supported.
+- Moved new Joomla error and status messages from hardcoded PHP strings into language files.
+- Reviewed Joomla template overrides against the current core layouts and retained Gantry-specific message rendering without restoring obsolete Joomla 3 markup.
+- Added Joomla 6 compatibility to extension and theme update manifests and validated installation and frontend behavior against a local Joomla 6 installation.
+- Audited the complete WordPress plugin and theme catalog against WordPress 7.1, PHP 8.3, PHP 8.4, and Timber 2.5.
+- Replaced deprecated Timber static configuration and legacy hooks with the Timber 2 filter and environment APIs.
+- Replaced global `query_posts()` usage in all 48 WordPress parent themes with isolated `WP_Query` and `Timber\PostQuery` handling that preserves the main WordPress query.
+- Updated all WordPress parent and child theme compatibility headers to require WordPress 6.8 and PHP 8.3, matching the bundled Timber runtime.
+- Modernized WordPress AJAX input handling, sanitization, Debug Bar notices, pagination, theme context, and production asset loading.
+- Added automated WordPress API compatibility coverage and validated the production plugin and theme packages with `WP_DEBUG` enabled on WordPress 7.1.
+
 ### Framework architecture
 
 - Built a shared dependency-injection container, service-provider system, component model, platform abstraction, and theme runtime.

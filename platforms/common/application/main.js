@@ -157,6 +157,7 @@ ready(function() {
     let body     = dom('body'),
         sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
+    let adminThemeToggle = document.querySelector('[data-g-admin-theme]');
     let applyAdminTheme = function(mode) {
         let dark = mode === 'dark', container = document.querySelector('[data-genesis-container]');
         if (container) { container.classList.toggle('genesis-dark-mode', dark); }
@@ -172,9 +173,11 @@ ready(function() {
             }
         });
     };
-    let adminTheme = 'light';
-    try { adminTheme = window.localStorage.getItem('genesis-admin-color-mode') || 'light'; } catch (error) {}
-    applyAdminTheme(adminTheme);
+    if (adminThemeToggle) {
+        let adminTheme = 'light';
+        try { adminTheme = window.localStorage.getItem('genesis-admin-color-mode') || 'light'; } catch (error) {}
+        applyAdminTheme(adminTheme);
+    }
 
     body.delegate('change', '[data-g-admin-theme] [name="admin_color_mode"]', function(event, element) {
         let input = element[0] || element, mode = input.value === '1' ? 'dark' : 'light';
@@ -183,6 +186,8 @@ ready(function() {
     });
 
     body.delegate('click', '[data-g-extras]', function() {
+        if (!adminThemeToggle) return;
+
         setTimeout(function() {
             let container = document.querySelector('[data-genesis-container]');
             applyAdminTheme(container && container.classList.contains('genesis-dark-mode') ? 'dark' : 'light');
