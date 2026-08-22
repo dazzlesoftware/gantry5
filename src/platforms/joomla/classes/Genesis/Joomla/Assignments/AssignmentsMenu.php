@@ -23,9 +23,9 @@ use Joomla\CMS\Version;
 class AssignmentsMenu implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'menu';
+    public string $type = 'menu';
     /** @var int */
-    public $priority = 1;
+    public int $priority = 1;
 
     /**
      * Returns list of rules which apply to the current page.

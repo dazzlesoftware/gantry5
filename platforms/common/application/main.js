@@ -175,13 +175,17 @@ ready(function() {
     };
     if (adminThemeToggle) {
         let adminTheme = 'light';
-        try { adminTheme = window.localStorage.getItem('genesis-admin-color-mode') || 'light'; } catch (error) {}
+        try { adminTheme = window.localStorage.getItem('genesis-admin-color-mode') || 'light'; } catch (error) {
+            // Storage can be unavailable in privacy-restricted browser contexts.
+        }
         applyAdminTheme(adminTheme);
     }
 
     body.delegate('change', '[data-g-admin-theme] [name="admin_color_mode"]', function(event, element) {
         let input = element[0] || element, mode = input.value === '1' ? 'dark' : 'light';
-        try { window.localStorage.setItem('genesis-admin-color-mode', mode); } catch (error) {}
+        try { window.localStorage.setItem('genesis-admin-color-mode', mode); } catch (error) {
+            // Keep the in-page preference when persistent storage is unavailable.
+        }
         applyAdminTheme(mode);
     });
 

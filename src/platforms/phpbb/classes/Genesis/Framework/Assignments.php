@@ -22,7 +22,7 @@ use Genesis\Component\Assignments\AbstractAssignments;
  */
 class Assignments extends AbstractAssignments
 {
-    protected $platform = 'phpBB';
+    protected string $platform = 'phpBB';
 
     /**
      * @return array

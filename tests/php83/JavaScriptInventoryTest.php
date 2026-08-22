@@ -12,7 +12,7 @@ final class JavaScriptInventoryTest extends TestCase
     protected function setUp(): void
     {
         $this->root = dirname(__DIR__, 2);
-        $contents = file_get_contents($this->root . '/JAVASCRIPT-INVENTORY.json');
+        $contents = file_get_contents($this->root . '/local-notes/JAVASCRIPT-INVENTORY.json');
 
         self::assertIsString($contents);
         $this->inventory = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
@@ -61,7 +61,7 @@ final class JavaScriptInventoryTest extends TestCase
         self::assertContains('Internet Explorer unsupported', $this->inventory['scope']['browserBaseline']);
         self::assertFileExists($this->root . '/bin/audit-javascript.mjs');
 
-        $baseline = file_get_contents($this->root . '/JAVASCRIPT-SAFETY-BASELINE.md');
+        $baseline = file_get_contents($this->root . '/local-notes/JAVASCRIPT-SAFETY-BASELINE.md');
         self::assertIsString($baseline);
         self::assertStringContainsString('**Status:** Complete', $baseline);
         self::assertStringContainsString('No Phase 0 candidate is deleted solely because it is unreferenced.', $baseline);

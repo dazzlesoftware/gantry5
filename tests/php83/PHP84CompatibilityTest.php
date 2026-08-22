@@ -12,7 +12,7 @@ final class PHP84CompatibilityTest extends TestCase
     {
         $root = dirname(__DIR__, 2);
         $directories = ['bin', 'engines', 'platforms', 'src', 'themes'];
-        $pattern = '/\\bfunction\\s*(?:[A-Za-z_][A-Za-z0-9_]*\\s*)?\\(\\s*(?!\\?)[A-Za-z_\\\\][A-Za-z0-9_\\\\]*\\s+\\$[A-Za-z_][A-Za-z0-9_]*\\s*=\\s*null\\b/';
+        $pattern = '/\\bfunction\\s*(?:[A-Za-z_][A-Za-z0-9_]*\\s*)?\\(\\s*(?!\\?|mixed\\b)[A-Za-z_\\\\][A-Za-z0-9_\\\\]*\\s+\\$[A-Za-z_][A-Za-z0-9_]*\\s*=\\s*null\\b/';
 
         foreach ($directories as $directory) {
             $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root . '/' . $directory));

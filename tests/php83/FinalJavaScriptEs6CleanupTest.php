@@ -12,7 +12,7 @@ final class FinalJavaScriptEs6CleanupTest extends TestCase
     protected function setUp(): void
     {
         $this->root = dirname(__DIR__, 2);
-        $inventory = json_decode((string) file_get_contents($this->root . '/JAVASCRIPT-INVENTORY.json'), true, 512, JSON_THROW_ON_ERROR);
+        $inventory = json_decode((string) file_get_contents($this->root . '/local-notes/JAVASCRIPT-INVENTORY.json'), true, 512, JSON_THROW_ON_ERROR);
 
         foreach ($inventory['files'] as $file) {
             if ($file['classification'] === 'first_party_source') {
@@ -55,8 +55,8 @@ final class FinalJavaScriptEs6CleanupTest extends TestCase
     public function testReducedMotionAndFinalAuditAreRecorded(): void
     {
         self::assertStringContainsString('prefers-reduced-motion: reduce', $this->sources['platforms/common/application/utils/dom-effects.js']);
-        self::assertFileExists($this->root . '/JAVASCRIPT-ES6-MIGRATION-FINAL-REPORT.md');
-        $report = (string) file_get_contents($this->root . '/JAVASCRIPT-ES6-MIGRATION-FINAL-REPORT.md');
+        self::assertFileExists($this->root . '/local-notes/JAVASCRIPT-ES6-MIGRATION-FINAL-REPORT.md');
+        $report = (string) file_get_contents($this->root . '/local-notes/JAVASCRIPT-ES6-MIGRATION-FINAL-REPORT.md');
         self::assertStringContainsString('**Status:** Complete', $report);
         self::assertStringContainsString('Generated and third-party exceptions', $report);
     }

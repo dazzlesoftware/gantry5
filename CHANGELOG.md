@@ -22,6 +22,9 @@ This changelog begins with the Genesis `1.0.0` release.
 - Added Grav 1.7 support with themes, inheritance, streams, configuration, administration, and page content.
 - Restored and expanded phpBB support, including administration, packaging, layouts, menus, positions, forum content, and a Helium implementation.
 - Modernized the runtime for PHP 8.3 and newer.
+- Enabled strict types throughout all first-party PHP code while leaving bundled third-party sources unchanged.
+- Added native parameter, property, and return types across the shared framework, platform adapters, installers, entry points, and generated themes.
+- Added PHP 8.4-safe nullable declarations and corrected platform method contracts to remain compatible with their shared base classes.
 - Resolved PHP dynamic-property, namespace, class alias, warning, deprecation, and version compatibility issues.
 - Updated Composer dependencies across the framework, platform adapters, builder, and supporting tools.
 - Migrated the shared toolbox layer to modern Symfony components.
@@ -42,6 +45,7 @@ This changelog begins with the Genesis `1.0.0` release.
 - Modernized WordPress AJAX input handling, sanitization, Debug Bar notices, pagination, theme context, and production asset loading.
 - Added automated WordPress API compatibility coverage and validated the production plugin and theme packages with `WP_DEBUG` enabled on WordPress 7.1.
 - Added PHP 8.4 continuous-integration coverage and removed implicitly nullable parameter declarations from all Joomla theme bootstraps.
+- Added repository-wide PHP 8.3 and PHP 8.4 compatibility checks for maintained source files and corrected the nullable-parameter test to accept PHP's explicitly nullable `mixed` type.
 
 ### Framework architecture
 

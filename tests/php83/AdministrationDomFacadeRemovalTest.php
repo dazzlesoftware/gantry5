@@ -76,7 +76,7 @@ final class AdministrationDomFacadeRemovalTest extends TestCase
 
     public function testMigrationRegisterExists(): void
     {
-        self::assertFileExists($this->root . '/ADMINISTRATION-DOM-MIGRATION.md');
+        self::assertFileExists($this->root . '/local-notes/ADMINISTRATION-DOM-MIGRATION.md');
     }
 
     public function testSelectizeUsesTheNativeControlAsItsInitializationGuard(): void

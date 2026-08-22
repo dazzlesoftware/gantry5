@@ -71,7 +71,7 @@ final class AdministrationEsModulesBuildTest extends TestCase
 
     public function testPhaseSixBuildRegisterExists(): void
     {
-        self::assertFileExists($this->root . '/ADMINISTRATION-ES-MODULE-BUILD.md');
+        self::assertFileExists($this->root . '/local-notes/ADMINISTRATION-ES-MODULE-BUILD.md');
     }
 
     /** @return array<int, string> */

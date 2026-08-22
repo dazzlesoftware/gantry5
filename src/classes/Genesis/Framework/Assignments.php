@@ -31,7 +31,7 @@ class Assignments extends AbstractAssignments
      *
      * @return array
      */
-    public function page()
+    public function page(): array
     {
         return apply_filters('genesis_assignments_page', []);
     }

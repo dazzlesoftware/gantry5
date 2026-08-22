@@ -25,9 +25,9 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class AssignmentsStyle implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'style';
+    public string $type = 'style';
     /** @var int */
-    public $priority = 2;
+    public int $priority = 2;
 
     /**
      * Returns list of rules which apply to the current page.

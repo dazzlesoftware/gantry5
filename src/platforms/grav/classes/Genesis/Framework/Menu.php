@@ -95,7 +95,7 @@ class Menu extends AbstractMenu
     /**
      * @return array
      */
-    public function getGroupedItems()
+    public function getGroupedItems(): array
     {
         $grav = Grav::instance();
 
@@ -219,7 +219,7 @@ class Menu extends AbstractMenu
      * @param int $levels
      * @return array
      */
-    public function getItemsFromPlatformRecurse(PageInterface $page, $levels)
+    public function getItemsFromPlatformRecurse(PageInterface $page, int $levels): array
     {
         if (!$page->visible() || $page->isModule()) {
             return [];
@@ -242,7 +242,7 @@ class Menu extends AbstractMenu
      * @param array[] $items
      * @return Item[]
      */
-    public function createMenuItems($pages, $items)
+    public function createMenuItems(array $pages, array $items): array
     {
         $this->pathMap = new Config([]);
 
@@ -289,7 +289,7 @@ class Menu extends AbstractMenu
      * @param PageInterface $page
      * @return Item
      */
-    protected function createMenuItem($data, $page = null)
+    protected function createMenuItem(array $data, ?PageInterface $page = null): Item
     {
         $route = $page ? $page->rawRoute() : $data['id'];
         $level = substr_count($route, '/');

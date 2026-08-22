@@ -95,7 +95,7 @@ final class ThemeJavaScriptConsolidationTest extends TestCase
             self::assertStringNotContainsString('var ', $source, $name);
         }
 
-        self::assertFileExists($this->root . '/THEME-JAVASCRIPT-ASSET-REGISTER.md');
+        self::assertFileExists($this->root . '/local-notes/THEME-JAVASCRIPT-ASSET-REGISTER.md');
     }
 
     /** @return array<int, \SplFileInfo> */

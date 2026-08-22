@@ -46,8 +46,12 @@ final class FrontendCoreModulesTest extends TestCase
             self::assertStringContainsString($helper, $main);
         }
 
-        foreach (['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'requestAnimationFrame', 'cancelAnimationFrame'] as $nativeApi) {
-            self::assertStringContainsString($nativeApi, $offcanvas);
+        foreach (['window.bootstrap', 'Offcanvas', 'getOrCreateInstance', '.hide()'] as $bootstrapApi) {
+            self::assertStringContainsString($bootstrapApi, $offcanvas);
+        }
+
+        foreach (['pointerdown', 'pointermove', 'pointerup', 'pointercancel'] as $obsoleteCustomInteraction) {
+            self::assertStringNotContainsString($obsoleteCustomInteraction, $offcanvas);
         }
 
         foreach (['DocumentTouch', 'msPointerEnabled', 'MSPointer', 'data-g-offcanvas-css3', 'g-offcanvas-css2'] as $legacyApi) {

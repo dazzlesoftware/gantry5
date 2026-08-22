@@ -19,7 +19,7 @@ use Genesis\Component\Assignments\AbstractAssignments;
  */
 class Assignments extends AbstractAssignments
 {
-    protected $platform = 'Grav';
+    protected string $platform = 'Grav';
 
     /**
      * Assignments constructor.

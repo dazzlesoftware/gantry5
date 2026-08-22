@@ -24,9 +24,9 @@ use Grav\Common\Page\Interfaces\PageInterface;
 class AssignmentsLanguage implements AssignmentsInterface
 {
     /** @var string */
-    public $type = 'language';
+    public string $type = 'language';
     /** @var int */
-    public $priority = 1;
+    public int $priority = 1;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -78,7 +78,7 @@ class AssignmentsLanguage implements AssignmentsInterface
      * @param Language $language
      * @return array
      */
-    protected function getItems(Language $language)
+    protected function getItems(Language $language): array
     {
         $languages = $language->getLanguages();
         $languages = LanguageCodes::getNames($languages);
