@@ -167,7 +167,7 @@ class Menu extends AbstractMenu
      *
      * @return int[]
      */
-    public function getMenuIds()
+    public function getMenuIds(): array
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
@@ -184,7 +184,7 @@ class Menu extends AbstractMenu
     /**
      * @return array
      */
-    public function getGroupedItems()
+    public function getGroupedItems(): array
     {
         $groups = [];
 
@@ -337,7 +337,7 @@ class Menu extends AbstractMenu
      * @param array[] $items
      * @return Item[]
      */
-    public function createMenuItems($menuItems, $items)
+    public function createMenuItems(array $menuItems, array $items): array
     {
         // Generate lookup indexes using menu item ids and paths.
         $idLookup = [];
@@ -422,7 +422,7 @@ class Menu extends AbstractMenu
      * @param array $item
      * @return bool
      */
-    public static function updateJParams($params, $item)
+    public static function updateJParams(Registry $params, array $item): bool
     {
         $modified = false;
 
@@ -454,7 +454,7 @@ class Menu extends AbstractMenu
      * @param bool $defaultsAsNull
      * @return int[]
      */
-    public static function encodeJParams($item = [], $defaultsAsNull = true)
+    public static function encodeJParams(array $item = [], bool $defaultsAsNull = true): array
     {
         // These are stored in Joomla menu item.
         static $ignoreList = ['type', 'link', 'title', 'anchor_class', 'image', 'icon_only', 'target', 'enabled'];
@@ -511,7 +511,7 @@ class Menu extends AbstractMenu
      * @param iterable $params
      * @return array|null
      */
-    public static function decodeJParams($params)
+    public static function decodeJParams(iterable $params): ?array
     {
         $properties = [];
 
@@ -553,7 +553,7 @@ class Menu extends AbstractMenu
      * @param MenuItem|object|null $menuItem
      * @return Item
      */
-    protected function createMenuItem($data, $menuItem = null)
+    protected function createMenuItem(array $data, ?object $menuItem = null): Item
     {
         if ($menuItem) {
             // This logic was originally copied from Joomla 3.10 mod_menu/helper.php (joomla-cms/staging, 2021-11-09).
@@ -717,7 +717,7 @@ class Menu extends AbstractMenu
      * @param bool $keepDefaults
      * @return array
      */
-    protected static function normalizeMenuItem(array $item, array $ignore = [], $keepDefaults = false)
+    protected static function normalizeMenuItem(array $item, array $ignore = [], bool $keepDefaults = false): array
     {
         static $ignoreList = [
             // Never save derived values.
@@ -793,7 +793,7 @@ class Menu extends AbstractMenu
      * @param string $menutype
      * @return array
      */
-    private function getMenuItemIds($menutype)
+    private function getMenuItemIds(string $menutype): array
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
@@ -835,7 +835,7 @@ class Menu extends AbstractMenu
      * @param string $menutype
      * @return array
      */
-    private function getMenuItemsInAdmin($menutype)
+    private function getMenuItemsInAdmin(string $menutype): array
     {
         $loader = static function () use ($menutype) {
             try {

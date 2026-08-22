@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -25,13 +27,13 @@ use Joomla\CMS\Form\FormField;
 class JFormFieldParticle extends FormField
 {
     protected $type = 'Particle';
-    protected $container;
+    protected Genesis $container;
 
     /**
      * @return string
      * @throws Exception
      */
-    protected function getInput()
+    protected function getInput(): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();

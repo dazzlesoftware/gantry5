@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -31,7 +33,7 @@ class ModGenesisParticleHelper
      *
      * @return array|null|string
      */
-    public static function getAjax()
+    public static function getAjax(): array|string|null
     {
         /** @var CMSApplication $app */
         $app = Factory::getApplication();
@@ -52,7 +54,7 @@ class ModGenesisParticleHelper
      * @param string $format
      * @return array|null|string
      */
-    public static function ajax($id, $props = [], $format = 'raw')
+    public static function ajax(int $id, array $props = [], string $format = 'raw'): array|string|null
     {
         if (!in_array($format, ['json', 'raw', 'debug'])) {
             throw new \RuntimeException(Text::_('JERROR_PAGE_NOT_FOUND'), 404);
@@ -98,7 +100,7 @@ class ModGenesisParticleHelper
      * @param object $params
      * @return ContentBlockInterface
      */
-    public static function render($module, $params)
+    public static function render(object $module, Registry $params): ContentBlockInterface
     {
         if (\GENESIS_DEBUGGER) {
             Debugger::addMessage("Particle Module #{$module->id} was not cached");
@@ -153,7 +155,7 @@ class ModGenesisParticleHelper
      * @param $params
      * @return array
      */
-    public static function cache($module, $params)
+    public static function cache(object $module, Registry $params): array
     {
         return static::render($module, $params)->toArray();
     }
@@ -164,7 +166,7 @@ class ModGenesisParticleHelper
      * @param $cacheparams
      * @return ContentBlockInterface|null
      */
-    public static function moduleCache($module, $params, $cacheparams)
+    public static function moduleCache(object $module, Registry $params, object $cacheparams): ?ContentBlockInterface
     {
         $block = (array) ModuleHelper::moduleCache($module, $params, $cacheparams);
         try {
@@ -179,7 +181,7 @@ class ModGenesisParticleHelper
      * @param string $id
      * @return string
      */
-    public static function getIdentifier($particle, $id)
+    public static function getIdentifier(string $particle, string|int $id): string
     {
         return "module-{$particle}-{$id}";
     }

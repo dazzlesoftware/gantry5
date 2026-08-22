@@ -20,6 +20,7 @@ use Genesis\phpBB\Runtime;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
+use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 
 /**
@@ -106,7 +107,7 @@ class Theme extends AbstractTheme
      * @param array $attribs
      * @return ContentBlock
      */
-    public function getParticle($particle, array $attribs = [])
+    public function getParticle(string|array|object $particle, array $attribs = []): ContentBlock
     {
         if (\is_string($particle)) {
             $id = $particle;
@@ -160,7 +161,7 @@ class Theme extends AbstractTheme
     /**
      * @return array
      */
-    public static function getTwigPaths()
+    public static function getTwigPaths(): array
     {
         /** @var UniformResourceLocator $locator */
         $locator = static::genesis()['locator'];

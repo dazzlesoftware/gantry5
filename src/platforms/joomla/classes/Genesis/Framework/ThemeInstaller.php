@@ -38,14 +38,14 @@ use DazzleSoftware\Toolbox\File\YamlFile;
  */
 class ThemeInstaller extends AbstractInstaller
 {
-    protected $extension;
-    protected $manifest;
+    protected mixed $extension = null;
+    protected ?Manifest $manifest = null;
 
     /**
      * ThemeInstaller constructor.
      * @param TemplateAdapter|string|null $extension
      */
-    public function __construct($extension = null)
+    public function __construct(TemplateAdapter|string|null $extension = null)
     {
         parent::__construct();
 
@@ -61,7 +61,7 @@ class ThemeInstaller extends AbstractInstaller
      * @return $this
      * @throws \ReflectionException
      */
-    public function setInstaller(TemplateAdapter $install)
+    public function setInstaller(TemplateAdapter $install): static
     {
         // We need access to a protected variable $install->extension.
         $reflectionClass = new \ReflectionClass($install);
@@ -78,7 +78,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @param int|string|array $id
      */
-    public function loadExtension($id)
+    public function loadExtension(int|string|array $id): void
     {
         if ((string)(int) $id !== (string) $id) {
             $id = ['type' => 'template', 'element' => (string) $id, 'client_id' => 0];
@@ -132,7 +132,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string $title
      * @return string
      */
-    public function getStyleName($title)
+    public function getStyleName(string $title): string
     {
         return Text::sprintf($title, Text::_($this->extension->name));
     }
@@ -141,7 +141,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string|null $name
      * @return StyleTable|\TemplatesTableStyle
      */
-    public function getStyle($name = null)
+    public function getStyle(?string $name = null): object
     {
         if (is_numeric($name)) {
             $field = 'id';
@@ -162,7 +162,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return StyleTable|\TemplatesTableStyle
      */
-    public function getDefaultStyle()
+    public function getDefaultStyle(): object
     {
         return StyleHelper::getDefaultStyle();
     }
@@ -171,7 +171,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string $type
      * @return MenuTypeTable|\TableMenuType
      */
-    public function getMenu($type)
+    public function getMenu(string $type): object
     {
         return MenuHelper::getMenuType($type);
     }
@@ -185,7 +185,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return StyleTable|\TemplatesTableStyle
      */
-    public function createStyle()
+    public function createStyle(): object
     {
         $style = StyleHelper::getStyle();
         $style->reset();
@@ -201,7 +201,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param int $home
      * @return StyleTable|\TemplatesTableStyle
      */
-    public function addStyle($title, array $configuration = [], $home = 0)
+    public function addStyle(string $title, array $configuration = [], int $home = 0): object
     {
         // Make sure language debug is turned off.
         /** @var CMSApplication $application */
@@ -237,7 +237,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string|null $home
      * @return StyleTable|\TemplatesTableStyle
      */
-    public function updateStyle($name, array $configuration, $home = null)
+    public function updateStyle(string $name, array $configuration, ?int $home = null): object
     {
         $style = $this->getStyle($name);
 
@@ -263,7 +263,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @param StyleTable|\TemplatesTableStyle $style
      */
-    public function assignHomeStyle($style)
+    public function assignHomeStyle(object $style): void
     {
         // Update the mapping for menu items that this style IS assigned to.
         $db = Factory::getContainer()->get(DatabaseInterface::class);
@@ -357,7 +357,7 @@ class ThemeInstaller extends AbstractInstaller
      * @return int
      * @throws \Exception
      */
-    public function addMenuItem(array $item, $parent_id = 1, $load = false)
+    public function addMenuItem(array $item, int $parent_id = 1, bool $load = false): int
     {
         $component_id = $this->getComponent();
 
@@ -446,7 +446,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param int $parent
      * @throws \RuntimeException
      */
-    public function installMenus(?array $menus = null, $parent = 1)
+    public function installMenus(?array $menus = null, int $parent = 1): void
     {
         if ($menus === null) {
             $path = $this->getPath();
@@ -480,7 +480,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string $description
      * @throws \RuntimeException
      */
-    public function createMenu($type, $title, $description)
+    public function createMenu(string $type, string $title, string $description): void
     {
         /** @var MenuType $table */
         $table = MenuHelper::getMenuType();
@@ -506,7 +506,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param string $type
      * @param bool $force
      */
-    public function deleteMenu($type, $force = false)
+    public function deleteMenu(string $type, bool $force = false): void
     {
         if ($force) {
             $this->unsetHome($type);
@@ -530,7 +530,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @param $type
      */
-    public function unsetHome($type)
+    public function unsetHome(string $type): void
     {
         // Update the mapping for menu items that this style IS assigned to.
         $db = Factory::getContainer()->get(DatabaseInterface::class);
@@ -547,7 +547,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @deprecated 5.3.2
      */
-    public function cleanup()
+    public function cleanup(): void
     {
         $this->initialize();
         $this->finalize();
@@ -581,7 +581,7 @@ class ThemeInstaller extends AbstractInstaller
      *
      * @return void
      */
-    public function repairUpdateSite()
+    public function repairUpdateSite(): void
     {
         if (!$this->extension || !$this->extension->extension_id) {
             return;
@@ -596,7 +596,7 @@ class ThemeInstaller extends AbstractInstaller
      * @param $parent
      * @throws \Exception
      */
-    protected function addMenuItems($menutype, array $items, $parent)
+    protected function addMenuItems(string $menutype, array $items, int $parent): void
     {
         foreach ($items as $alias => $item) {
             $item = (array) $item;
@@ -655,7 +655,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return Manifest
      */
-    protected function getManifest()
+    protected function getManifest(): Manifest
     {
         if (!$this->manifest) {
             $this->manifest = new Manifest($this->extension->name);
@@ -667,7 +667,7 @@ class ThemeInstaller extends AbstractInstaller
     /**
      * @return int
      */
-    protected function getComponent()
+    protected function getComponent(): int
     {
         static $component_id;
 
@@ -687,7 +687,7 @@ class ThemeInstaller extends AbstractInstaller
      *
      * @param Manifest|null $manifest
      */
-    protected function registerUpdateSite(?Manifest $manifest = null)
+    protected function registerUpdateSite(?Manifest $manifest = null): void
     {
         $manifest = $manifest ?: $this->getManifest();
         $xml = $manifest->getXml();

@@ -23,11 +23,11 @@ use Genesis\phpBB\Runtime;
  */
 class AssignmentsType implements AssignmentsInterface
 {
-    public $type = 'type';
-    public $priority = 2;
+    public string $type = 'type';
+    public int $priority = 2;
 
     /** @var array Known phpBB front-controller page types and their labels. */
-    protected static $pageTypes = [
+    protected static array $pageTypes = [
         'index' => 'Forum Index',
         'viewforum' => 'View Forum',
         'viewtopic' => 'View Topic',
@@ -75,7 +75,7 @@ class AssignmentsType implements AssignmentsInterface
     /**
      * @return string
      */
-    public static function getCurrentPageType()
+    public static function getCurrentPageType(): string
     {
         if (!Runtime::isBooted()) {
             return 'index';

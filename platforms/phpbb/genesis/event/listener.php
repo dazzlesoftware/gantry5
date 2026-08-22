@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,13 +31,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
     /** @var ContainerInterface */
-    protected $container;
+    protected ContainerInterface $container;
 
     /** @var \phpbb\path_helper */
-    protected $pathHelper;
+    protected \phpbb\path_helper $pathHelper;
 
     /** @var bool */
-    protected $booted = false;
+    protected bool $booted = false;
 
     /**
      * @param ContainerInterface $container
@@ -50,7 +52,7 @@ class listener implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'core.page_header' => 'onPageHeader',
@@ -66,7 +68,7 @@ class listener implements EventSubscriberInterface
      *
      * @return void
      */
-    public function onPageHeader()
+    public function onPageHeader(): void
     {
         $this->getTheme()->renderer();
     }
@@ -75,7 +77,7 @@ class listener implements EventSubscriberInterface
      * @param data $event
      * @return void
      */
-    public function onPageFooterAfter(data $event)
+    public function onPageFooterAfter(data $event): void
     {
         if (!$event['display_template']) {
             // Something already suppressed the normal render (e.g. an AJAX response); leave it alone.
@@ -132,7 +134,7 @@ class listener implements EventSubscriberInterface
     /**
      * @return \Genesis\Framework\Theme
      */
-    protected function getTheme()
+    protected function getTheme(): \Genesis\Framework\Theme
     {
         $this->boot();
 
@@ -141,7 +143,7 @@ class listener implements EventSubscriberInterface
         if (!isset($genesis['theme'])) {
             $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_helium';
             $genesis['theme.name'] = 'genesis_helium';
-            $genesis['theme'] = static function ($c) {
+            $genesis['theme'] = static function ($c): \Genesis\Framework\Theme {
                 return new \Genesis\Framework\Theme($c['theme.path'], $c['theme.name']);
             };
 
@@ -158,7 +160,7 @@ class listener implements EventSubscriberInterface
      *
      * @return void
      */
-    protected function boot()
+    protected function boot(): void
     {
         if ($this->booted) {
             return;
@@ -172,14 +174,8 @@ class listener implements EventSubscriberInterface
         if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
             \define('GENESIS_PHPBB_ROOT_PATH', $rootPath);
         }
-        if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
-            \define('GENESIS_PHPBB_ROOT_PATH', GENESIS_PHPBB_ROOT_PATH);
-        }
         if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
             \define('GENESIS_PHPBB_EXT_PATH', $extPath);
-        }
-        if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
-            \define('GENESIS_PHPBB_EXT_PATH', GENESIS_PHPBB_EXT_PATH);
         }
 
         require_once $extPath . 'vendor/autoload.php';

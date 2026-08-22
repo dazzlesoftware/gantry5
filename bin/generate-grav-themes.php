@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Generate the Grav platform adapter for every Genesis theme that does not
  * already provide one. Theme-specific configuration is taken from WordPress
@@ -162,6 +164,8 @@ function gravThemePhp(string $class): string
     return str_replace('__CLASS__', $class, <<<'PHP'
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -178,15 +182,15 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class __CLASS__ extends Theme
 {
-    public $genesis = '5.5';
-    protected $theme;
+    public string $genesis = '5.5';
+    protected ?GenesisTheme $theme = null;
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return ['onThemeInitialized' => ['onThemeInitialized', 0]];
     }
 
-    public function onThemeInitialized()
+    public function onThemeInitialized(): void
     {
         if (defined('GRAV_CLI') && GRAV_CLI) {
             return;
@@ -210,7 +214,7 @@ class __CLASS__ extends Theme
         $genesis['theme.path'] = $path;
         $genesis['theme.name'] = $name;
         require $locator('theme://includes/theme.php');
-        $genesis['theme'] = static function ($c) {
+        $genesis['theme'] = static function ($c): GenesisTheme {
             return new \Genesis\Theme\__CLASS__($c['theme.path'], $c['theme.name']);
         };
     }
@@ -224,6 +228,8 @@ function genesisThemePhp(string $class): string
 {
     return str_replace('__CLASS__', $class, <<<'PHP'
 <?php
+
+declare(strict_types=1);
 
 namespace Genesis\Theme;
 

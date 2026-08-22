@@ -1,19 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 use Phing\Task;
 
 class JsonMapTask extends Task {
 
     /** @var string|null */
-    private $folder;
+    private ?string $folder = null;
     /** @var string|null */
-    private $commit;
+    private ?string $commit = null;
 
     /**
      * @param string $folder
      * @return void
      */
-    public function setFolder($folder)
+    public function setFolder(string $folder): void
     {
         $this->folder = $folder;
     }
@@ -22,7 +24,7 @@ class JsonMapTask extends Task {
      * @param string $commit
      * @return void
      */
-    public function setCommit($commit)
+    public function setCommit(string $commit): void
     {
         $this->commit = $commit;
     }
@@ -30,17 +32,21 @@ class JsonMapTask extends Task {
     /**
      * @return void
      */
-    public function init()
+    public function init(): void
     {
     }
 
     /**
      * @return void
      */
-    public function main()
+    public function main(): void
     {
         $folder = $this->folder;
         $commit = $this->commit;
+
+        if ($folder === null || $commit === null) {
+            throw new \RuntimeException('Both folder and commit must be configured.');
+        }
 
         $list = [];
         $iterator = new DirectoryIterator($folder);

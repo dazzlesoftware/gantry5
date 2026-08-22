@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -96,7 +98,7 @@ class plgGenesisPreset extends CMSPlugin implements SubscriberInterface
      * @param int $expire
      * @throws Exception
      */
-    protected function updateCookie($name, $value, $expire = 0)
+    protected function updateCookie(string $name, string|false $value, int $expire = 0): void
     {
         $path   = $this->getApplication()->get('cookie_path', '/');
         $domain = $this->getApplication()->get('cookie_domain');

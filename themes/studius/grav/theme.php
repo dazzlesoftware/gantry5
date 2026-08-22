@@ -18,15 +18,15 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class Genesis_Studius extends Theme
 {
-    public $genesis = '5.5';
-    protected $theme;
+    public string $genesis = '5.5';
+    protected ?GenesisTheme $theme = null;
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return ['onThemeInitialized' => ['onThemeInitialized', 0]];
     }
 
-    public function onThemeInitialized()
+    public function onThemeInitialized(): void
     {
         if (defined('GRAV_CLI') && GRAV_CLI) {
             return;
@@ -50,7 +50,7 @@ class Genesis_Studius extends Theme
         $genesis['theme.path'] = $path;
         $genesis['theme.name'] = $name;
         require $locator('theme://includes/theme.php');
-        $genesis['theme'] = static function ($c) {
+        $genesis['theme'] = static function ($c): GenesisTheme {
             return new \Genesis\Theme\Genesis_Studius($c['theme.path'], $c['theme.name']);
         };
     }

@@ -99,7 +99,7 @@ class Platform extends BasePlatform
      *
      * @return string
      */
-    protected function relativeExtensionPath()
+    protected function relativeExtensionPath(): string
     {
         $root = rtrim(Runtime::rootPath(), '/\\');
         $ext = rtrim(Runtime::extensionPath(), '/\\');
@@ -123,7 +123,7 @@ class Platform extends BasePlatform
      * @param string $position
      * @return int
      */
-    public function countModules($position)
+    public function countModules(string $position): int
     {
         return \count($this->getModules($position));
     }
@@ -132,7 +132,7 @@ class Platform extends BasePlatform
      * @param string $position
      * @return array
      */
-    public function getModules($position)
+    public function getModules(string $position): array
     {
         return (new Position($position))->listModules();
     }
@@ -142,7 +142,7 @@ class Platform extends BasePlatform
      * @param array $attribs
      * @return string
      */
-    public function displayModule($id, $attribs = [])
+    public function displayModule(string|array $id, array $attribs = []): string
     {
         $module = \is_array($id) ? $id : $this->getModule($id);
 
@@ -184,7 +184,7 @@ class Platform extends BasePlatform
      * @param array $attribs
      * @return string
      */
-    public function displayModules($position, $attribs = [])
+    public function displayModules(string $position, array $attribs = []): string
     {
         $html = '';
         foreach ($this->getModules($position) as $module) {
@@ -198,7 +198,7 @@ class Platform extends BasePlatform
      * @param string $id
      * @return array
      */
-    protected function getModule($id)
+    protected function getModule(string $id): array
     {
         [$position, $module] = explode('/', $id, 2);
 

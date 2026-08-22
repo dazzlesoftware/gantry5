@@ -40,7 +40,7 @@ class GenesisThemeHelper
      * @param array $context
      * @return array
      */
-    public static function add_to_context(array $context)
+    public static function add_to_context(array $context): array
     {
         $context['is_user_logged_in'] = is_user_logged_in();
         $context['pagination']        = \Timber\Pagination::get_pagination();
@@ -57,7 +57,7 @@ class GenesisThemeHelper
      * @param array $args
      * @param int $depth
      */
-    public static function comments($comment, $args, $depth)
+    public static function comments(object $comment, array $args, int $depth): void
     {
         $GLOBALS['comment'] = $comment; ?>
 
@@ -103,7 +103,7 @@ class GenesisThemeHelper
      * @param string $attributes
      * @return string
      */
-    public static function comments_pagination_attributes($attributes)
+    public static function comments_pagination_attributes(string $attributes): string
     {
         $attributes .= 'class="button"';
 
@@ -116,7 +116,7 @@ class GenesisThemeHelper
      * @param string $link
      * @return string
      */
-    public static function wp_link_pages_li_return($link)
+    public static function wp_link_pages_li_return(string $link): string
     {
         return '<li class="pagination-list-item">' . $link . '</li>';
     }
@@ -125,7 +125,7 @@ class GenesisThemeHelper
      * @param array $args
      * @return array
      */
-    public static function tag_cloud_widget_modified_args($args)
+    public static function tag_cloud_widget_modified_args(array $args): array
     {
         $new_args = array(
             'smallest' => '0.8',
@@ -141,7 +141,7 @@ class GenesisThemeHelper
     /**
      * Modify the default Admin Bar margins to render properly in the mobile mode
      */
-    public static function admin_bar_margins()
+    public static function admin_bar_margins(): void
     { ?>
         <style type="text/css" media="screen">
             html {

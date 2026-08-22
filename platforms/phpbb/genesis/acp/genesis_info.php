@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -11,7 +13,7 @@ namespace dazzlesoftware\genesis\acp;
 
 class genesis_info
 {
-    public function module()
+    public function module(): array
     {
         return [
             'filename' => '\dazzlesoftware\genesis\acp\genesis_module',

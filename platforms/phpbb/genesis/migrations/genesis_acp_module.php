@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -11,12 +13,12 @@ namespace dazzlesoftware\genesis\migrations;
 
 class genesis_acp_module extends \phpbb\db\migration\migration
 {
-    public static function depends_on()
+    public static function depends_on(): array
     {
         return ['\phpbb\db\migration\data\v33x\v3311'];
     }
 
-    public function effectively_installed()
+    public function effectively_installed(): bool
     {
         return $this->db_tools->sql_table_exists($this->table_prefix . 'modules')
             && $this->module_exists('\dazzlesoftware\genesis\acp\genesis_module');
@@ -26,7 +28,7 @@ class genesis_acp_module extends \phpbb\db\migration\migration
      * @param string $basename
      * @return bool
      */
-    protected function module_exists($basename)
+    protected function module_exists(string $basename): bool
     {
         $sql = 'SELECT module_id FROM ' . $this->table_prefix . "modules
 			WHERE module_basename = '" . $this->db->sql_escape($basename) . "'";
@@ -37,7 +39,7 @@ class genesis_acp_module extends \phpbb\db\migration\migration
         return (bool) $row;
     }
 
-    public function update_data()
+    public function update_data(): array
     {
         return [
             ['module.add', [

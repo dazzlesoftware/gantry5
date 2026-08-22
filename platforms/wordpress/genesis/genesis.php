@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 /**
  * Plugin Name: Genesis Framework
@@ -57,7 +59,7 @@ add_action('load-themes.php', 'genesis_refresh_wporg_theme_updates');
 register_activation_hook(__FILE__, 'genesis_plugin_defaults');
 add_action('admin_init', 'genesis_plugin_defaults');
 
-function genesis_register_private_theme_updaters()
+function genesis_register_private_theme_updaters(): void
 {
     $private_updaters = array(
         'genesis_helium'   => get_theme_root() . '/genesis_helium/private/theme-updates.php',
@@ -71,7 +73,7 @@ function genesis_register_private_theme_updaters()
     }
 }
 
-function genesis_maybe_reset_theme_update_cache()
+function genesis_maybe_reset_theme_update_cache(): void
 {
     if (!genesis_has_installed_theme_updates()) {
         return;
@@ -89,7 +91,7 @@ function genesis_maybe_reset_theme_update_cache()
     update_option($option_name, $refresh_signature);
 }
 
-function genesis_has_installed_theme_updates()
+function genesis_has_installed_theme_updates(): bool
 {
     $genesis_themes = array('genesis_helium', 'genesis_hydrogen');
     $installed_themes = wp_get_themes();
@@ -103,7 +105,7 @@ function genesis_has_installed_theme_updates()
     return false;
 }
 
-function genesis_refresh_wporg_theme_updates()
+function genesis_refresh_wporg_theme_updates(): void
 {
     if (!genesis_has_installed_theme_updates()) {
         return;
@@ -122,7 +124,7 @@ function genesis_refresh_wporg_theme_updates()
     set_site_transient('update_themes_last_checked', time(), HOUR_IN_SECONDS);
 }
 
-function genesis_plugin_defaults()
+function genesis_plugin_defaults(): void
 {
     $defaults = array(
         'production'       => '0',
@@ -144,7 +146,7 @@ function genesis_plugin_defaults()
 
 add_filter('kses_allowed_protocols', 'genesis_add_streams_to_kses');
 
-function genesis_add_streams_to_kses($protocols)
+function genesis_add_streams_to_kses(array $protocols): array
 {
     $streams = array(
         'genesis-cache',
@@ -169,7 +171,7 @@ function genesis_add_streams_to_kses($protocols)
 // Initialize plugin language on init to avoid WP 6.7+ early translation notices.
 add_action('init', 'genesis_load_textdomain', 1);
 
-function genesis_load_textdomain()
+function genesis_load_textdomain(): void
 {
     $domain = 'genesis';
     $languages_path = basename(GENESIS_PATH) . '/admin/languages';
@@ -181,7 +183,7 @@ function genesis_load_textdomain()
     }
 }
 
-function genesis_modify_locale($locale, $domain = null)
+function genesis_modify_locale(string $locale, ?string $domain = null): string
 {
     // Revert the genesis domain locale to en_US
     if ($domain === 'genesis' || $domain === 'nucleus') {
@@ -191,7 +193,7 @@ function genesis_modify_locale($locale, $domain = null)
     return $locale;
 }
 
-function genesis_php_version_error()
+function genesis_php_version_error(): void
 {
     printf(
         '<div class="error"><p>%s</p></div>',
@@ -207,7 +209,7 @@ function genesis_php_version_error()
 add_action('upgrader_pre_install', 'genesis_backup_theme_settings', 10, 2);
 add_action('upgrader_post_install', 'genesis_restore_theme_settings', 10, 2);
 
-function genesis_backup_theme_settings($return, $hook_extra)
+function genesis_backup_theme_settings(mixed $return, array $hook_extra): mixed
 {
     if (!genesis_is_managed_theme_update($hook_extra)) {
         return $return;
@@ -233,7 +235,7 @@ function genesis_backup_theme_settings($return, $hook_extra)
     return $return;
 }
 
-function genesis_restore_theme_settings($return, $hook_extra)
+function genesis_restore_theme_settings(mixed $return, array $hook_extra): mixed
 {
     if (!genesis_is_managed_theme_update($hook_extra)) {
         return $return;
@@ -254,7 +256,7 @@ function genesis_restore_theme_settings($return, $hook_extra)
     return $return;
 }
 
-function genesis_is_managed_theme_update($hook_extra)
+function genesis_is_managed_theme_update(array $hook_extra): bool
 {
     if (empty($hook_extra['theme'])) {
         return false;
@@ -263,7 +265,7 @@ function genesis_is_managed_theme_update($hook_extra)
     return in_array($hook_extra['theme'], array('genesis_helium', 'genesis_hydrogen'), true);
 }
 
-function genesis_get_filesystem()
+function genesis_get_filesystem(): \WP_Filesystem_Base|false
 {
     global $wp_filesystem;
 
@@ -278,7 +280,7 @@ function genesis_get_filesystem()
     return $wp_filesystem;
 }
 
-function genesis_copy_theme_settings_directory($source, $destination, $filesystem)
+function genesis_copy_theme_settings_directory(string $source, string $destination, \WP_Filesystem_Base $filesystem): void
 {
     if (!$filesystem->is_dir($source)) {
         return;

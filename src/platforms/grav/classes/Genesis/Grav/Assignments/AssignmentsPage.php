@@ -23,8 +23,8 @@ use Grav\Framework\Flex\Flex;
  */
 class AssignmentsPage implements AssignmentsInterface
 {
-    public $type = 'page';
-    public $priority = 3;
+    public string $type = 'page';
+    public int $priority = 3;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -68,7 +68,7 @@ class AssignmentsPage implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getItems()
+    protected function getItems(): array
     {
         $grav = Grav::instance();
 

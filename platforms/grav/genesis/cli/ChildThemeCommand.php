@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -30,12 +32,12 @@ use Symfony\Component\Console\Question\Question;
 class ChildThemeCommand extends ConsoleCommand
 {
     /** @var array */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('child-theme')
@@ -72,7 +74,7 @@ class ChildThemeCommand extends ConsoleCommand
     /**
      * @return int
      */
-    protected function serve()
+    protected function serve(): int
     {
         $this->options = [
             'parent' => $this->input->getOption('parent'),
@@ -221,7 +223,7 @@ PHP
         return 0;
     }
 
-    protected function validateOptions()
+    protected function validateOptions(): void
     {
         foreach (array_filter($this->options) as $type => $value) {
             $this->validate($type, $value);
@@ -233,7 +235,7 @@ PHP
      * @param string|null $value
      * @return string
      */
-    protected function validate($type, $value)
+    protected function validate(string $type, ?string $value): string
     {
         /** @var UniformResourceLocator $locator */
         $locator = Grav::instance()['locator'];
@@ -280,7 +282,7 @@ PHP
      * @param string $name
      * @return Theme|mixed
      */
-    protected function loadTheme($name)
+    protected function loadTheme(string $name): Theme
     {
         // NOTE: ALL THE LOCAL VARIABLES ARE USED INSIDE INCLUDED FILE, DO NOT REMOVE THEM!
         $grav = Grav::instance();

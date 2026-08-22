@@ -74,7 +74,7 @@ class Router extends BaseRouter
      * @param string $style
      * @return $this
      */
-    public function setTheme($theme, $style)
+    public function setTheme(string $theme, string $style): static
     {
         if ($style) {
             $theme = StyleHelper::getStyle($style)->template;
@@ -152,7 +152,7 @@ class Router extends BaseRouter
      *
      * @param Response $response
      */
-    protected function send(Response $response): void
+    protected function send(Response $response): mixed
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -185,5 +185,7 @@ class Router extends BaseRouter
         if ($response instanceof JsonResponse) {
             $application->close();
         }
+
+        return null;
     }
 }

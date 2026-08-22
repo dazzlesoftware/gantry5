@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -52,8 +54,8 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
 {
     protected $autoloadLanguage = true;
 
-    protected $styles;
-    protected $modules;
+    protected array $styles = [];
+    protected array $modules = [];
 
     public static function getSubscribedEvents(): array
     {
@@ -188,12 +190,12 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      *
      * @param array $global
      */
-    public function onGenesisGlobalConfig(&$global)
+    public function onGenesisGlobalConfig(mixed &$global): void
     {
         $global = $this->params->toArray();
     }
 
-    public function onAfterRoute()
+    public function onAfterRoute(): void
     {
         if ($this->getApplication()->isClient('site')) {
             $this->onAfterRouteSite();
@@ -206,14 +208,14 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Document gets set during dispatch, we need language and direction.
      */
-    public function onAfterDispatch()
+    public function onAfterDispatch(): void
     {
         if (class_exists('Genesis\Framework\Genesis')) {
             $this->onAfterDispatchSiteAdmin();
         }
     }
 
-    public function onAfterRender()
+    public function onAfterRender(): void
     {
         if ($this->getApplication()->isClient('site') && class_exists('Genesis\Framework\Genesis')) {
             $this->onAfterRenderSite();
@@ -227,7 +229,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param object $module
      * @param array $attribs
      */
-    public function onRenderModule(&$module, &$attribs)
+    public function onRenderModule(object &$module, array &$attribs): void
     {
         if (!$this->getApplication()->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
             return;
@@ -250,7 +252,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @return array|string|null
      * @throws RuntimeException
      */
-    public function onAjaxParticle()
+    public function onAjaxParticle(): mixed
     {
         if (!$this->getApplication()->isClient('site') || !class_exists('Genesis\Framework\Genesis')) {
             return null;
@@ -343,7 +345,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      *
      * @throws \RuntimeException
      */
-    private function onAfterRouteSite()
+    private function onAfterRouteSite(): void
     {
         $templateName = $this->getApplication()->getTemplate();
 
@@ -416,7 +418,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Re-route Genesis templates to Genesis Administration component.
      */
-    private function onAfterRouteAdmin()
+    private function onAfterRouteAdmin(): void
     {
         $input = $this->getApplication()->input;
 
@@ -454,7 +456,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Document gets set during dispatch, we need language and direction.
      */
-    public function onAfterDispatchSiteAdmin()
+    public function onAfterDispatchSiteAdmin(): void
     {
         $genesis = Genesis::instance();
         if (!isset($genesis['theme'])) {
@@ -474,7 +476,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Convert all stream uris into proper links.
      */
-    private function onAfterRenderSite()
+    private function onAfterRenderSite(): void
     {
         $genesis = Genesis::instance();
 
@@ -490,7 +492,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Convert links in com_templates to point into Genesis Administrator component.
      */
-    private function onAfterRenderAdmin()
+    private function onAfterRenderAdmin(): void
     {
         $document = $this->getApplication()->getDocument();
         $type   = $document->getType();
@@ -547,7 +549,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @throws RuntimeException
      * @see JModelAdmin::save()
      */
-    public function onGenesisSaveConfig(array $data)
+    public function onGenesisSaveConfig(array $data): bool
     {
         $name = 'plg_' . $this->_type . '_' . $this->_name;
 
@@ -600,7 +602,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param array $data
      * @return void
      */
-    public function onContentBeforeSave($context, $table, $isNew, $data = array())
+    public function onContentBeforeSave(string $context, object $table, bool $isNew, array $data = []): void
     {
         switch ($context) {
             case 'com_menus.item':
@@ -625,7 +627,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param object $table
      * @param bool $isNew
      */
-    public function onExtensionBeforeSave($context, $table, $isNew)
+    public function onExtensionBeforeSave(string $context, object $table, bool $isNew): void
     {
         if ($context === 'com_config.component' && $table && $table->type === 'component' && $table->name === 'com_genesis') {
             $name = 'plg_' . $this->_type . '_' . $this->_name;
@@ -650,7 +652,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param object $table
      * @param bool $isNew
      */
-    public function onExtensionAfterSave($context, $table, $isNew)
+    public function onExtensionAfterSave(string $context, object $table, bool $isNew): void
     {
         if ($context === 'com_config.component' && $table && $table->type === 'component' && $table->name === 'com_genesis') {
 
@@ -680,7 +682,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param string $context
      * @param object $table
      */
-    public function onExtensionBeforeDelete($context, $table)
+    public function onExtensionBeforeDelete(string $context, object $table): bool
     {
         if ($context !== 'com_templates.style' || $table->client_id || !$this->isGenesisTemplate($table->template)) {
             return true;
@@ -708,7 +710,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param object $data
      * @return bool
      */
-    public function onContentPrepareData($context, $data)
+    public function onContentPrepareData(string $context, object $data): bool
     {
         $name = 'plg_' . $this->_type . '_' . $this->_name;
 
@@ -738,7 +740,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param object $data
      * @return bool
      */
-    public function onContentPrepareForm($form, $data)
+    public function onContentPrepareForm(mixed $form, object $data): bool
     {
         // Check that we are manipulating a valid form.
         if (!($form instanceof \Joomla\CMS\Form\Form)) {
@@ -789,7 +791,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param string $type
      * @return string
      */
-    private function appendHtml(array $matches, $content = 'Genesis', $type = '')
+    private function appendHtml(array $matches, string $content = 'Genesis', string $type = ''): string
     {
         $html = $matches[0];
 
@@ -820,7 +822,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * @return array
      */
-    private function getStyles()
+    private function getStyles(): array
     {
         static $list;
 
@@ -854,7 +856,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param string $name
      * @return bool
      */
-    private function isGenesisTemplate($name)
+    private function isGenesisTemplate(string $name): bool
     {
         return file_exists(JPATH_SITE . "/templates/{$name}/genesis/theme.yaml");
     }
@@ -863,7 +865,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param string $name
      * @return \Genesis\Framework\Genesis
      */
-    protected function load($name)
+    protected function load(string $name): Genesis
     {
         Loader::setup();
 

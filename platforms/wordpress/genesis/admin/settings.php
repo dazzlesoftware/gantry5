@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.Security.NonceVerification.Recommended
 defined('ABSPATH') or die;
 
@@ -8,14 +10,14 @@ add_action('network_admin_menu', 'genesis_manage_settings');
 add_filter('plugin_action_links', 'genesis_modify_plugin_action_links', 10, 2);
 add_filter('network_admin_plugin_action_links', 'genesis_modify_plugin_action_links', 10, 2);
 
-function genesis_register_admin_settings()
+function genesis_register_admin_settings(): void
 {
     if (current_user_can('manage_options')) {
         register_setting('genesis_plugin_options', 'genesis_plugin', 'genesis_sanitize_plugin_settings');
     }
 }
 
-function genesis_sanitize_plugin_settings($input)
+function genesis_sanitize_plugin_settings(mixed $input): array
 {
     $input = is_array($input) ? $input : [];
 
@@ -33,14 +35,14 @@ function genesis_sanitize_plugin_settings($input)
     ];
 }
 
-function genesis_manage_settings()
+function genesis_manage_settings(): void
 {
     if (current_user_can('manage_options')) {
         add_options_page('Genesis Settings', 'Genesis Settings', 'manage_options', 'genesis-settings', 'genesis_plugin_settings');
     }
 }
 
-function genesis_modify_plugin_action_links($links, $file)
+function genesis_modify_plugin_action_links(array $links, string $file): array
 {
     // Return normal links if not Genesis or insufficient permissions
     if (plugin_basename(GENESIS_PATH . '/genesis.php') !== $file || !current_user_can('manage_options')) {
@@ -54,7 +56,7 @@ function genesis_modify_plugin_action_links($links, $file)
 
 }
 
-function genesis_plugin_settings()
+function genesis_plugin_settings(): void
 {
     $option = wp_parse_args(
         get_option('genesis_plugin'),

@@ -81,7 +81,7 @@ class Platform extends BasePlatform
     /**
      * @param string $html
      */
-    public function setModuleWrapper($html)
+    public function setModuleWrapper(string $html): void
     {
         $this->module_wrapper = $html;
     }
@@ -89,7 +89,7 @@ class Platform extends BasePlatform
     /**
      * @param string $html
      */
-    public function setComponentWrapper($html)
+    public function setComponentWrapper(string $html): void
     {
         $this->component_wrapper = $html;
     }
@@ -245,7 +245,7 @@ class Platform extends BasePlatform
      * @param string $position
      * @return int
      */
-    public function countModules($position)
+    public function countModules(string $position): int
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -258,7 +258,7 @@ class Platform extends BasePlatform
      * @param string $position
      * @return array
      */
-    public function getModules($position)
+    public function getModules(string $position): array
     {
         // TODO:
         return [];
@@ -269,7 +269,7 @@ class Platform extends BasePlatform
      * @param array $attribs
      * @return string
      */
-    public function displayModule($id, $attribs = [])
+    public function displayModule(string|object $id, array $attribs = []): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -326,7 +326,7 @@ class Platform extends BasePlatform
      * @param array $attribs
      * @return string
      */
-    public function displayModules($position, $attribs = [])
+    public function displayModules(string $position, array $attribs = []): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -347,7 +347,7 @@ class Platform extends BasePlatform
      * @param array $params
      * @return string
      */
-    public function displaySystemMessages($params = [])
+    public function displaySystemMessages(array $params = []): string
     {
         // We cannot use DocumentHtml renderer here as it fires too early to display any messages.
         return '<jdoc:include type="message" />';
@@ -358,7 +358,7 @@ class Platform extends BasePlatform
      * @param array $params
      * @return string
      */
-    public function displayContent($content, $params = [])
+    public function displayContent(string $content, array $params = []): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
@@ -387,7 +387,7 @@ class Platform extends BasePlatform
      * @param string $id
      * @return mixed|null
      */
-    public function getModule($id)
+    public function getModule(string $id): mixed
     {
         $modules = $this->getModuleList();
         return $id && isset($modules[$id]) ? $modules[$id] : null;
@@ -479,7 +479,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function update()
+    public function update(): string
     {
         return Route::_('index.php?option=com_installer&view=update', false) ?: '';
     }
@@ -487,7 +487,7 @@ class Platform extends BasePlatform
     /**
      * @return array
      */
-    public function updates()
+    public function updates(): array
     {
         if (!$this->authorize('updates.manage')) {
             return [];
@@ -539,7 +539,7 @@ class Platform extends BasePlatform
     /**
      * @return mixed|null
      */
-    public function factory()
+    public function factory(): mixed
     {
         $args = func_get_args();
         $method = [Factory::class, 'get'. ucfirst((string) array_shift($args))];
@@ -549,7 +549,7 @@ class Platform extends BasePlatform
     /**
      * @return mixed|null
      */
-    public function instance()
+    public function instance(): mixed
     {
         $args = func_get_args();
         $class = ucfirst((string) array_shift($args));
@@ -566,7 +566,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function route()
+    public function route(): string
     {
         return \call_user_func_array([Route::class, '_'], func_get_args()) ?: '';
     }
@@ -578,7 +578,7 @@ class Platform extends BasePlatform
      * @param mixed $options
      * @return string
      */
-    public function layout($layoutFile, $displayData = null, $basePath = '', $options = null)
+    public function layout(string $layoutFile, mixed $displayData = null, string $basePath = '', mixed $options = null): string
     {
         return LayoutHelper::render($layoutFile, $displayData, $basePath, $options);
     }
@@ -586,7 +586,7 @@ class Platform extends BasePlatform
     /**
      * @return string
      */
-    public function html()
+    public function html(): string
     {
         $args = func_get_args();
         if (isset($args[0]) && method_exists(HTMLHelper::class, $args[0])) {
@@ -599,7 +599,7 @@ class Platform extends BasePlatform
      * @param int|array $keys
      * @return Object
      */
-    public function article($keys)
+    public function article(int|array $keys): object
     {
         return Content::getInstance($keys);
     }
@@ -609,7 +609,7 @@ class Platform extends BasePlatform
      * @param array|null $options
      * @return CategoryFinder|ContentFinder|null
      */
-    public function finder($domain, $options = null)
+    public function finder(string $domain, ?array $options = null): CategoryFinder|ContentFinder|null
     {
         /** @var CMSApplication $app */
         $app = Factory::getApplication();
@@ -638,7 +638,7 @@ class Platform extends BasePlatform
      * @param bool $html
      * @return string
      */
-    public function truncate($text, $length, $html = false)
+    public function truncate(string $text, int $length, bool $html = false): string
     {
         return HTMLHelper::_('string.truncate', $text, $length, true, $html);
     }

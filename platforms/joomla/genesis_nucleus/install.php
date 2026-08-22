@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -21,7 +23,7 @@ class Genesis_NucleusInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function uninstall($parent)
+    public function uninstall(InstallerAdapter $parent): bool
     {
         // Remove all Nucleus files manually as file installer only uninstalls files.
         $manifest = $parent->getManifest();

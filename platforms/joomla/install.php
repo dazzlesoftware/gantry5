@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -29,7 +31,7 @@ class Pkg_GenesisInstallerScript
      * List of supported versions. Newest version first!
      * @var array
      */
-    protected $versions = array(
+    protected array $versions = array(
         'PHP' => array (
             '8.3' => '8.3.0',
             '0' => '8.3.0' // Preferred version
@@ -44,13 +46,13 @@ class Pkg_GenesisInstallerScript
      * List of required PHP extensions.
      * @var array
      */
-    protected $extensions = array('pcre');
+    protected array $extensions = array('pcre');
 
     /**
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function install($parent)
+    public function install(InstallerAdapter $parent): bool
     {
         return true;
     }
@@ -59,7 +61,7 @@ class Pkg_GenesisInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function discover_install($parent)
+    public function discover_install(InstallerAdapter $parent): bool
     {
         return self::install($parent);
     }
@@ -68,7 +70,7 @@ class Pkg_GenesisInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function update($parent)
+    public function update(InstallerAdapter $parent): bool
     {
         return self::install($parent);
     }
@@ -77,7 +79,7 @@ class Pkg_GenesisInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function uninstall($parent)
+    public function uninstall(InstallerAdapter $parent): bool
     {
         // Hack.. Joomla really doesn't give any information from the extension that's being uninstalled..
         $manifestFile = JPATH_MANIFESTS . '/packages/pkg_genesis.xml';
@@ -102,7 +104,7 @@ class Pkg_GenesisInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function preflight($type, $parent)
+    public function preflight(string $type, InstallerAdapter $parent): bool
     {
         $manifest = $parent->getManifest();
 
@@ -131,7 +133,7 @@ class Pkg_GenesisInstallerScript
      * @param InstallerAdapter $parent
      * @return bool
      */
-    public function postflight($type, $parent)
+    public function postflight(string $type, InstallerAdapter $parent): bool
     {
         // Clear Joomla system cache.
         /** @var JCache|JCacheController $cache */
@@ -187,7 +189,7 @@ class Pkg_GenesisInstallerScript
      * @param string $template
      * @param \SimpleXMLElement $manifest
      */
-    public function renderSplash($template, $manifest)
+    public function renderSplash(string $template, \SimpleXMLElement $manifest): void
     {
         // Define variables for the template file.
         $name = Text::sprintf($manifest->name);
@@ -202,7 +204,7 @@ class Pkg_GenesisInstallerScript
      * @param $manifest
      * @param int $state
      */
-    protected function prepareExtensions($manifest, $state = 1)
+    protected function prepareExtensions(\SimpleXMLElement $manifest, int $state = 1): void
     {
         foreach ($manifest->files->children() as $file) {
             $attributes = $file->attributes();
@@ -236,7 +238,7 @@ class Pkg_GenesisInstallerScript
         }
     }
 
-    protected function adjustTemplateSettings()
+    protected function adjustTemplateSettings(): void
     {
         $extension = new Extension(Factory::getContainer()->get(DatabaseInterface::class));
         if (!$extension->load(array('type' => 'component', 'element' => 'com_templates'))) {
@@ -256,14 +258,14 @@ class Pkg_GenesisInstallerScript
      * @param array $options
      * @return string
      */
-    protected function addParam($string, array $options)
+    protected function addParam(?string $string, array $options): string
     {
-        $items = array_flip(explode(',', $string)) + array_flip($options);
+        $items = array_flip(explode(',', (string) $string)) + array_flip($options);
 
         return implode(',', array_keys($items));
     }
 
-    protected function registerTemplateUpdateSites()
+    protected function registerTemplateUpdateSites(): void
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
 
@@ -286,7 +288,7 @@ class Pkg_GenesisInstallerScript
      * @param int $extensionId
      * @param string $template
      */
-    protected function registerTemplateUpdateSite($extensionId, $template)
+    protected function registerTemplateUpdateSite(int $extensionId, string $template): void
     {
         if (!$extensionId || !$template) {
             return;
@@ -393,7 +395,7 @@ class Pkg_GenesisInstallerScript
      * @param string $genesisVersion
      * @return array
      */
-    protected function checkRequirements($genesisVersion)
+    protected function checkRequirements(string $genesisVersion): array
     {
         $results = array();
         $this->checkVersion($results, 'PHP', PHP_VERSION);
@@ -408,7 +410,7 @@ class Pkg_GenesisInstallerScript
      * @param string $name
      * @param string $version
      */
-    protected function checkVersion(array &$results, $name, $version)
+    protected function checkVersion(array &$results, string $name, string $version): void
     {
         $major = $minor = 0;
         foreach ($this->versions[$name] as $major => $minor) {
@@ -453,7 +455,7 @@ class Pkg_GenesisInstallerScript
      * @param array $results
      * @param array $extensions
      */
-    protected function checkExtensions(array &$results, $extensions)
+    protected function checkExtensions(array &$results, array $extensions): void
     {
         foreach ($extensions as $name) {
             if (!extension_loaded($name)) {

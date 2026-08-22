@@ -22,8 +22,8 @@ use Grav\Plugin\AdminPlugin;
  */
 class AssignmentsType implements AssignmentsInterface
 {
-    public $type = 'type';
-    public $priority = 2;
+    public string $type = 'type';
+    public int $priority = 2;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -62,7 +62,7 @@ class AssignmentsType implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getItems()
+    protected function getItems(): array
     {
         $pageTypes = AdminPlugin::pagesTypes();
 

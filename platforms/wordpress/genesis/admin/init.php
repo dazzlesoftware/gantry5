@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.Security.NonceVerification.Recommended
 defined('ABSPATH') or die;
 
@@ -28,7 +30,7 @@ if (class_exists( 'Timber')) {
     // Load Genesis icon styling for the admin sidebar
     add_action(
         'admin_enqueue_scripts',
-        static function() {
+        static function(): void {
             if(is_admin()) {
                 $version = defined('GENESIS_VERSION') ? GENESIS_VERSION : null;
                 wp_enqueue_style('wordpress-admin-icon', Document::url('genesis-assets://css/wordpress-admin-icon.css'), [], $version);
@@ -39,7 +41,7 @@ if (class_exists( 'Timber')) {
     // Adjust menu to contain Genesis stuff.
     add_action(
         'admin_menu',
-        static function() {
+        static function(): void {
             $genesis = Genesis::instance();
 
             /** @var Theme $theme */
@@ -52,13 +54,13 @@ if (class_exists( 'Timber')) {
     );
 }
 
-function genesis_admin_start_buffer()
+function genesis_admin_start_buffer(): void
 {
     ob_start();
     ob_implicit_flush(false);
 }
 
-function genesis_init()
+function genesis_init(): Genesis
 {
     $genesis = Genesis::instance();
     if (!isset($genesis['router'])) {
@@ -69,7 +71,7 @@ function genesis_init()
     return $genesis;
 }
 
-function genesis_add_menu_item_type_particle()
+function genesis_add_menu_item_type_particle(): void
 {
     global $_nav_menu_placeholder, $nav_menu_selected_id;
 
@@ -110,7 +112,7 @@ function genesis_add_menu_item_type_particle()
     <?php
 }
 
-function genesis_customize_menu_item_label($menu_item)
+function genesis_customize_menu_item_label(\WP_Post $menu_item): \WP_Post
 {
     if ('custom' !== $menu_item->type || strpos($menu_item->attr_title, 'genesis-particle-') !== 0) {
         return $menu_item;
@@ -132,14 +134,14 @@ function genesis_customize_menu_item_label($menu_item)
     return $menu_item;
 }
 
-function genesis_wp_edit_nav_menu_walker()
+function genesis_wp_edit_nav_menu_walker(): string
 {
     genesis_init();
 
     return NavMenuEditWalker::class;
 }
 
-function genesis_wp_unique_post_slug($override_slug, $slug, $post_ID, $post_status, $post_type, $post_parent)
+function genesis_wp_unique_post_slug(?string $override_slug, string $slug, int $post_ID, string $post_status, string $post_type, int $post_parent): ?string
 {
     global $wpdb;
     if ($post_type !== 'nav_menu_item') {
@@ -168,12 +170,12 @@ function genesis_wp_unique_post_slug($override_slug, $slug, $post_ID, $post_stat
 }
 
 
-function genesis_add_menu_item_types()
+function genesis_add_menu_item_types(): void
 {
     add_meta_box('genesis_particles', __('Particles', 'genesis'), 'genesis_add_menu_item_type_particle', 'nav-menus', 'side', 'low');
 }
 
-function genesis_admin_scripts()
+function genesis_admin_scripts(): void
 {
     $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
     if ($page === 'layout-manager') {
@@ -181,7 +183,7 @@ function genesis_admin_scripts()
     }
 }
 
-function genesis_layout_manager()
+function genesis_layout_manager(): void
 {
     static $output = null;
 
@@ -189,7 +191,7 @@ function genesis_layout_manager()
         wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'genesis'));
     }
 
-    add_filter('admin_body_class', static function() {
+    add_filter('admin_body_class', static function(): string {
         return 'genesis genesis-wordpress';
     });
 
@@ -224,7 +226,7 @@ function genesis_layout_manager()
  */
 class GenesisTruthy extends SimpleXMLElement {}
 
-function genesis_upgrader_package_options($options)
+function genesis_upgrader_package_options(array $options): array
 {
     if (isset($options['hook_extra']['type']) && !$options['clear_destination']) {
         if ($options['hook_extra']['type'] === 'theme' && $options['abort_if_destination_exists']) {
@@ -240,7 +242,7 @@ function genesis_upgrader_package_options($options)
     return $options;
 }
 
-function genesis_upgrader_source_selection($source, $remote_source, $upgrader, $options = [])
+function genesis_upgrader_source_selection(mixed $source, mixed $remote_source, object $upgrader, array $options = []): mixed
 {
     // Allow upgrading Genesis themes from uploader.
     if (isset($options['genesis_abort']) && file_exists("{$source}/genesis/theme.yaml")) {
@@ -251,7 +253,7 @@ function genesis_upgrader_source_selection($source, $remote_source, $upgrader, $
     return $source;
 }
 
-function genesis_upgrader_post_install($success, $options, $result)
+function genesis_upgrader_post_install(bool $success, array $options, array $result): void
 {
     if ($success) {
         $theme = isset($options['genesis_abort']) && !$options['genesis_abort'];

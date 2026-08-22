@@ -24,21 +24,21 @@ use DazzleSoftware\Toolbox\Session\Message;
 class Genesis_Hydrogen extends Theme
 {
     /** @var string */
-    public $genesis = '5.5';
+    public string $genesis = '5.5';
     /** @var GenesisTheme */
-    protected $theme;
+    protected ?GenesisTheme $theme = null;
 
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'onThemeInitialized' => ['onThemeInitialized', 0]
         ];
     }
 
-    public function onThemeInitialized()
+    public function onThemeInitialized(): void
     {
         if (defined('GRAV_CLI') && GRAV_CLI) {
             return;
@@ -75,7 +75,7 @@ class Genesis_Hydrogen extends Theme
         require $locator('theme://includes/theme.php');
 
         // Define Genesis services.
-        $genesis['theme'] = static function ($c) {
+        $genesis['theme'] = static function ($c): GenesisTheme {
             return new \Genesis\Theme\Genesis_Hydrogen($c['theme.path'], $c['theme.name']);
         };
     }

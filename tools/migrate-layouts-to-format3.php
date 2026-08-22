@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Convert compact Genesis layout YAML files from percentage-based format 2
  * to Bootstrap-column format 3 without reformatting the YAML document.

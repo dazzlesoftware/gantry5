@@ -25,7 +25,7 @@ use Joomla\Filesystem\Folder;
 class Genesis_BaseInstallerScript
 {
     /** @var string */
-    public $requiredGenesisVersion = '5.5';
+    public string $requiredGenesisVersion = '5.5';
 
     /**
      * @param string $type
@@ -33,7 +33,7 @@ class Genesis_BaseInstallerScript
      * @return bool
      * @throws Exception
      */
-    public function preflight($type, $parent)
+    public function preflight(string $type, object $parent): bool
     {
         if ($type === 'uninstall') {
             return true;
@@ -72,7 +72,7 @@ class Genesis_BaseInstallerScript
      * @return bool
      * @throws Exception
      */
-    public function postflight($type, $parent)
+    public function postflight(string $type, TemplateAdapter $parent): bool
     {
         if ($type === 'uninstall') {
             return true;
@@ -113,7 +113,7 @@ class Genesis_BaseInstallerScript
      * @param ThemeInstaller $installer
      * @return void
      */
-    public function installDefaults(ThemeInstaller $installer)
+    public function installDefaults(ThemeInstaller $installer): void
     {
         // Create default outlines etc.
         $installer->createDefaults();
@@ -125,7 +125,7 @@ class Genesis_BaseInstallerScript
      * @param ThemeInstaller $installer
      * @return void
      */
-    public function installSampleData(ThemeInstaller $installer)
+    public function installSampleData(ThemeInstaller $installer): void
     {
         // Create sample data.
         $installer->createSampleData();

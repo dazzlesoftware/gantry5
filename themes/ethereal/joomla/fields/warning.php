@@ -24,7 +24,7 @@ class JFormFieldWarning extends JFormField
      * @return string
      * @throws \Exception
      */
-    protected function getInput()
+    protected function getInput(): string
     {
         $app = Factory::getApplication();
         if ($app->isClient('administrator')) {

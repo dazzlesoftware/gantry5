@@ -31,12 +31,12 @@ class Router extends BaseRouter
     /**
      * @return void
      */
-    protected function boot(): void
+    protected function boot(): mixed
     {
         static $booted = false;
 
         if ($booted) {
-            return;
+            return null;
         }
 
         $booted = true;
@@ -47,13 +47,13 @@ class Router extends BaseRouter
         /** @var Request $request */
         $request = $this->container['request'];
 
-        $path = trim((string) ($request->request['genesis_path'] ?: $request->request['genesis_path']), '/');
+        $path = trim((string) $request->request['genesis_path'], '/');
         $parts = $path !== '' ? explode('/', $path) : ['configurations', 'default', 'layout'];
 
         $this->method = $request->getMethod();
         $this->resource = array_shift($parts);
         $this->path = $parts;
-        $this->format = (string) ($request->request['genesis_format'] ?: $request->request['genesis_format']) ?: 'html';
+        $this->format = (string) $request->request['genesis_format'] ?: 'html';
         $this->params = [
             'ajax' => $this->format === 'json',
             'location' => $this->resource,
@@ -104,6 +104,8 @@ class Router extends BaseRouter
         $this->container['routes'] = [
             '1' => "{$webRoot}/adm/index.php?sid={$sid}&i={$moduleId}&mode=main&nonce={$nonce}&genesis_path=%s",
         ];
+
+        return null;
     }
 
     /**
@@ -113,7 +115,7 @@ class Router extends BaseRouter
      *
      * @return string
      */
-    public static function createNonce()
+    public static function createNonce(): string
     {
         /** @var \phpbb\user $user */
         $user = Runtime::service('user');

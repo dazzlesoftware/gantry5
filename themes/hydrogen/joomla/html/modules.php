@@ -20,7 +20,7 @@ use Joomla\Utilities\ArrayHelper;
  * @param object $params  The module parameters.
  * @param array  $attribs The module attributes.
  */
-function modChrome_genesis($module, &$params, &$attribs)
+function modChrome_genesis(object $module, object &$params, array &$attribs): void
 {
     if ((string) $module->content === '') {
         return;

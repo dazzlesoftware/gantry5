@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -44,18 +46,18 @@ use Symfony\Contracts\EventDispatcher\Event;
 class GenesisPlugin extends Plugin
 {
     /** @var string */
-    public $base;
+    public string $base = '';
     /** @var Theme */
-    protected $theme;
+    protected ?Theme $theme = null;
     /** @var string */
-    protected $outline;
+    protected string|int|null $outline = null;
     /** @var string */
-    protected $apiPath;
+    protected string $apiPath = '';
 
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'onBeforeCacheClear' => [
@@ -82,7 +84,7 @@ class GenesisPlugin extends Plugin
      *
      * @return ClassLoader
      */
-    public function autoload()
+    public function autoload(): ClassLoader
     {
         /** @var ClassLoader $loader */
         $loader = require __DIR__ . '/vendor/autoload.php';
@@ -97,7 +99,7 @@ class GenesisPlugin extends Plugin
     /**
      * @param Event $event
      */
-    public function onBeforeCacheClear(Event $event)
+    public function onBeforeCacheClear(Event $event): void
     {
         $remove = $event['remove'];
         $paths = $event['paths'];
@@ -111,7 +113,7 @@ class GenesisPlugin extends Plugin
     /**
      * Bootstrap Genesis loader.
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->grav['genesis_plugin'] = $this;
     }
@@ -119,7 +121,7 @@ class GenesisPlugin extends Plugin
     /**
      * Initialize Genesis admin if in Grav admin.
      */
-    public function initializeGenesisAdmin()
+    public function initializeGenesisAdmin(): void
     {
         /** @var Admin|null $admin */
         $admin = isset($this->grav['admin']) ? $this->grav['admin'] : null;
@@ -182,7 +184,7 @@ class GenesisPlugin extends Plugin
      *
      * Disables system cache.
      */
-    public function initializeGenesisTheme()
+    public function initializeGenesisTheme(): void
     {
         if (!class_exists(Genesis::class)) {
             return;
@@ -273,7 +275,7 @@ class GenesisPlugin extends Plugin
         }
     }
 
-    public function initAdminTheme()
+    public function initAdminTheme(): void
     {
         /** @var Themes $themes */
         $themes = $this->grav['themes'];
@@ -287,7 +289,7 @@ class GenesisPlugin extends Plugin
     /**
      * Serve particle AJAX requests in '/api/particles'.
      */
-    public function initializeApi()
+    public function initializeApi(): void
     {
         /** @var Uri $uri */
         $uri = $this->grav['uri'];
@@ -313,7 +315,7 @@ class GenesisPlugin extends Plugin
     /**
      * Initialize Widgets page.
      */
-    public function initializeParticleAjax()
+    public function initializeParticleAjax(): void
     {
         // make sure page is not frozen!
         unset($this->grav['page']);
@@ -347,7 +349,7 @@ class GenesisPlugin extends Plugin
      * @param Event $event
      * @since 5.4.3
      */
-    public function onGetPageTemplates(Event $event)
+    public function onGetPageTemplates(Event $event): void
     {
         /** @var Types $types */
         $types = $event->types;
@@ -357,7 +359,7 @@ class GenesisPlugin extends Plugin
     /**
      * Add navigation item to the admin plugin
      */
-    public function onAdminMenu()
+    public function onAdminMenu(): void
     {
         $nonce = Utils::getNonce('genesis-admin');
 
@@ -372,7 +374,7 @@ class GenesisPlugin extends Plugin
     /**
      * Replaces page object with admin one.
      */
-    public function onAdminPagesInitialized()
+    public function onAdminPagesInitialized(): void
     {
         // Create admin page.
         $page = new Page;
@@ -396,7 +398,7 @@ class GenesisPlugin extends Plugin
     /**
      * Add twig paths to plugin templates.
      */
-    public function onAdminTwigInitialized()
+    public function onAdminTwigInitialized(): void
     {
         /** @var Twig $twig */
         $twig = $this->grav['twig'];
@@ -411,7 +413,7 @@ class GenesisPlugin extends Plugin
     /**
      * Set all twig variables for generating output.
      */
-    public function onAdminTwigVariables()
+    public function onAdminTwigVariables(): void
     {
         /** @var Twig $twig */
         $twig = $this->grav['twig'];
@@ -422,7 +424,7 @@ class GenesisPlugin extends Plugin
     /**
      * @param Event $event
      */
-    public function onThemePagesInitialized(Event $event)
+    public function onThemePagesInitialized(Event $event): void
     {
         $genesis = Genesis::instance();
 
@@ -461,7 +463,7 @@ class GenesisPlugin extends Plugin
     /**
      * @param Event $event
      */
-    public function getMaintenancePage(Event $event)
+    public function getMaintenancePage(Event $event): void
     {
         if (\GENESIS_DEBUGGER) {
             Debugger::addMessage('Displaying Maintenance Page');
@@ -482,7 +484,7 @@ class GenesisPlugin extends Plugin
     /**
      * Select outline to be used.
      */
-    public function onThemePageInitialized()
+    public function onThemePageInitialized(): void
     {
         /** @var PageInterface $page */
         $page = $this->grav['page'];
@@ -527,7 +529,7 @@ class GenesisPlugin extends Plugin
     /**
      * Initialize nucleus layout engine.
      */
-    public function onThemeTwigTemplatePaths()
+    public function onThemeTwigTemplatePaths(): void
     {
         /** @var Twig $twig */
         $twig = $this->grav['twig'];
@@ -537,7 +539,7 @@ class GenesisPlugin extends Plugin
     /**
      * Initialize nucleus layout engine.
      */
-    public function onThemeTwigInitialized()
+    public function onThemeTwigInitialized(): void
     {
         $this->theme->renderer();
     }
@@ -545,7 +547,7 @@ class GenesisPlugin extends Plugin
     /**
      * Load current layout.
      */
-    public function onThemeTwigVariables()
+    public function onThemeTwigVariables(): void
     {
         /** @var Twig $twig */
         $twig = $this->grav['twig'];
@@ -555,7 +557,7 @@ class GenesisPlugin extends Plugin
     /**
      * Handle non-existing pages.
      */
-    public function onPageNotFound(Event $event)
+    public function onPageNotFound(Event $event): void
     {
         /** @var PageInterface $page */
         $page = $this->grav['page'];
@@ -586,7 +588,7 @@ class GenesisPlugin extends Plugin
         $permissions->addActions($actions);
     }
 
-    public function setPreset()
+    public function setPreset(): void
     {
         $genesis = Genesis::instance();
 
@@ -634,7 +636,7 @@ class GenesisPlugin extends Plugin
      * @param string $value
      * @param int $expire
      */
-    protected function updateCookie($name, $value, $expire = 0)
+    protected function updateCookie(string $name, string|false $value, int $expire = 0): void
     {
         /** @var Uri $uri */
         $uri = $this->grav['uri'];
@@ -648,12 +650,12 @@ class GenesisPlugin extends Plugin
         setcookie($name, $value, $expire, $path, $domain);
     }
 
-    public function onDataTypeExcludeFromDataManagerPluginHook()
+    public function onDataTypeExcludeFromDataManagerPluginHook(): void
     {
         $this->grav['admin']->dataTypesExcludedFromDataManagerPlugin[] = 'genesis';
     }
 
-    public function onOutputGenerated()
+    public function onOutputGenerated(): void
     {
         $genesis = Genesis::instance();
 

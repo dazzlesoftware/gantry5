@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ class ext extends \phpbb\extension\base
     /**
      * @return bool
      */
-    public function is_enableable()
+    public function is_enableable(): bool
     {
         return \phpbb_version_compare(PHPBB_VERSION, '3.3.0', '>=') && \version_compare(PHP_VERSION, '8.3.0', '>=');
     }

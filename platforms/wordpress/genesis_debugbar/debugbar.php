@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -20,7 +22,7 @@ if (version_compare(PHP_VERSION, '8.3.0', '<')) {
 
 require_once dirname(__FILE__) . '/Debugger.php';
 
-function genesis_debugbar_php_version_warning()
+function genesis_debugbar_php_version_warning(): void
 {
     printf(
         '<div class="notice notice-error"><p>%s</p></div>',

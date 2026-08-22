@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Compile every Joomla theme SCSS entry point with modern scssphp.
  *

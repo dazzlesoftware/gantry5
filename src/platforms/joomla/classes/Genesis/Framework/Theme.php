@@ -37,7 +37,7 @@ class Theme extends AbstractTheme
     use ThemeTrait;
 
     /** @var bool */
-    protected $joomla = false;
+    protected bool $joomla = false;
 
     /**
      * If parameter is set to true, loads bootstrap. Returns true if bootstrap has been loaded.
@@ -45,7 +45,7 @@ class Theme extends AbstractTheme
      * @param bool|null $enable
      * @return bool
      */
-    public function joomla($enable = null)
+    public function joomla(?bool $enable = null): bool
     {
         if ($enable && !$this->joomla) {
             $this->joomla = true;
@@ -105,7 +105,7 @@ class Theme extends AbstractTheme
      *
      * @return string The formatted date
      */
-    public function twig_dateFilter(Environment $env, $date, $format = null, $timezone = null)
+    public function twig_dateFilter(Environment $env, mixed $date, ?string $format = null, mixed $timezone = null): string
     {
         if (null === $format) {
             $formats = $env->getExtension(CoreExtension::class)->getDateFormat();
@@ -187,7 +187,6 @@ class Theme extends AbstractTheme
         PluginHelper::importPlugin('genesis');
 
         EventDispatcher::dispatch($application, 'onGenesisThemeInit', ['theme' => $this]);
-        EventDispatcher::dispatch($application, 'onGenesisThemeInit', ['theme' => $this]);
     }
 
     /**
@@ -195,7 +194,7 @@ class Theme extends AbstractTheme
      *
      * @return array
      */
-    public static function getTwigPaths()
+    public static function getTwigPaths(): array
     {
         /** @var UniformResourceLocator $locator */
         $locator = static::genesis()['locator'];

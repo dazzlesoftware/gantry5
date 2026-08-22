@@ -95,7 +95,7 @@ class AssignmentsMenu implements AssignmentsInterface
     /**
      * @return array
      */
-    protected function getMenulinks()
+    protected function getMenulinks(): array
     {
         // Works also in Joomla 4
         require_once JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus.php';

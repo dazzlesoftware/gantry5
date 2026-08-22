@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,7 +25,7 @@ class GenesisRouter extends RouterBase
      * @param   array  &$query  An array of URL arguments
      * @return  array  The URL arguments to use to assemble the subsequent URL.
      */
-    public function build(&$query)
+    public function build(array &$query): array
     {
         $segments = array();
 
@@ -38,7 +40,7 @@ class GenesisRouter extends RouterBase
      * @param   array  &$segments  The segments of the URL to parse.
      * @return  array  The URL attributes to be used by the application.
      */
-    public function parse(&$segments)
+    public function parse(array &$segments): array
     {
         if ($segments) {
             return array('genesis_not_found' => 1);
@@ -58,7 +60,7 @@ class GenesisRouter extends RouterBase
  *
  * @return  array  The URL arguments to use to assemble the subsequent URL.
  */
-function GenesisBuildRoute(&$query)
+function GenesisBuildRoute(array &$query): array
 {
     /** @var CMSApplication $app */
 	$app = Factory::getApplication();
@@ -76,7 +78,7 @@ function GenesisBuildRoute(&$query)
  * @param   array  $segments  The segments of the URL to parse.
  * @return  array  The URL attributes to be used by the application.
  */
-function GenesisParseRoute($segments)
+function GenesisParseRoute(array $segments): array
 {
     /** @var CMSApplication $app */
     $app = Factory::getApplication();

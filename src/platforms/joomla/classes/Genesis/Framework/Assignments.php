@@ -29,7 +29,7 @@ use Joomla\Utilities\ArrayHelper;
  */
 class Assignments extends AbstractAssignments
 {
-    protected $platform = 'Joomla';
+    protected string $platform = 'Joomla';
 
     /**
      * Load all assignments.
@@ -112,11 +112,11 @@ class Assignments extends AbstractAssignments
      * @param array $data
      * @return bool
      */
-    public function saveMenu($data)
+    public function saveMenu(array $data): bool
     {
         $active = [];
         foreach ($data as $menutype => $items) {
-            $active += array_filter($items, function($value) {return $value > 0; });
+            $active += array_filter($items, static function(mixed $value): bool { return $value > 0; });
 
         }
         $active = array_keys($active);
@@ -197,7 +197,7 @@ class Assignments extends AbstractAssignments
     /**
      * @param string $value
      */
-    public function saveAssignment($value)
+    public function saveAssignment(string $value): void
     {
         $options = $this->assignmentOptions();
 

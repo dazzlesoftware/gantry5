@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Validate theme layout YAML and exercise the Format 3 loader.
  *

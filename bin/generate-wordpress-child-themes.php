@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Generates a minimal WordPress child theme for every Genesis parent theme.
  */

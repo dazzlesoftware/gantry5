@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Compile every Grav theme SCSS entry point with modern scssphp.
  *

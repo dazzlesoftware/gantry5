@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -12,20 +14,20 @@ namespace dazzlesoftware\genesis\acp;
 class genesis_module
 {
     /** @var string */
-    public $page_title;
+    public string $page_title = '';
 
     /** @var string */
-    public $tpl_name;
+    public string $tpl_name = '';
 
     /** @var string */
-    public $u_action;
+    public string $u_action = '';
 
     /**
      * @param int|string $id
      * @param string $mode
      * @return void
      */
-    public function main($id, $mode)
+    public function main(int|string $id, string $mode): void
     {
         global $phpbb_container;
 
@@ -43,7 +45,7 @@ class genesis_module
         if (!isset($genesis['theme'])) {
             $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_helium';
             $genesis['theme.name'] = 'genesis_helium';
-            $genesis['theme'] = static function ($c) {
+            $genesis['theme'] = static function ($c): \Genesis\Framework\Theme {
                 return new \Genesis\Framework\Theme($c['theme.path'], $c['theme.name']);
             };
 
@@ -57,7 +59,7 @@ class genesis_module
         // If something fatals (not merely throws) inside dispatch(), make sure whatever ended up
         // in the output buffer -- including any error text phpBB or PHP itself printed -- still
         // reaches the browser instead of being silently swallowed by an open ob_start().
-        \register_shutdown_function(static function () {
+        \register_shutdown_function(static function (): void {
             while (\ob_get_level() > 0) {
                 \ob_end_flush();
             }
@@ -74,7 +76,7 @@ class genesis_module
         // rewritten URL would also carry genesis_path and would incorrectly get routed as ajax. Only
         // `genesis_format` (appended via Router's ajax_suffix, '&genesis_format=json') is exclusive to
         // JS-issued fetch() calls -- the URL rewrite deliberately never sets it.
-        $isGenesisAjax = $request->is_set('genesis_format') || $request->is_set('genesis_format');
+        $isGenesisAjax = $request->is_set('genesis_format');
 
         if ($isGenesisAjax) {
             // The admin JS fetches particle forms / save results to inject directly into a modal
@@ -120,7 +122,7 @@ class genesis_module
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      * @return void
      */
-    protected function boot($container)
+    protected function boot(\Symfony\Component\DependencyInjection\ContainerInterface $container): void
     {
         static $booted = false;
 
@@ -139,14 +141,8 @@ class genesis_module
         if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
             \define('GENESIS_PHPBB_ROOT_PATH', $rootPath);
         }
-        if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
-            \define('GENESIS_PHPBB_ROOT_PATH', GENESIS_PHPBB_ROOT_PATH);
-        }
         if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
             \define('GENESIS_PHPBB_EXT_PATH', $extPath);
-        }
-        if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
-            \define('GENESIS_PHPBB_EXT_PATH', GENESIS_PHPBB_EXT_PATH);
         }
 
         require_once $extPath . 'vendor/autoload.php';

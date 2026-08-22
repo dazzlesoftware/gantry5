@@ -26,7 +26,7 @@ use Joomla\Filesystem\Folder;
 class Rt_PhotonInstallerScript
 {
     /** @var string */
-    public $requiredGenesisVersion = '5.5';
+    public string $requiredGenesisVersion = '5.5';
 
     /**
      * @param string $type
@@ -34,7 +34,7 @@ class Rt_PhotonInstallerScript
      * @return bool
      * @throws Exception
      */
-    public function preflight($type, $parent)
+    public function preflight(string $type, object $parent): bool
     {
         if ($type === 'uninstall') {
             return true;
@@ -72,7 +72,7 @@ class Rt_PhotonInstallerScript
      * @param TemplateAdapter $parent
      * @throws Exception
      */
-    public function postflight($type, $parent)
+    public function postflight(string $type, TemplateAdapter $parent): bool
     {
         if ($type === 'uninstall') {
             return true;
@@ -135,7 +135,7 @@ class Rt_PhotonInstallerScript
      *
      * @param ThemeInstaller $installer
      */
-    public function installDefaults(ThemeInstaller $installer)
+    public function installDefaults(ThemeInstaller $installer): void
     {
         // Create default outlines etc.
         $installer->createDefaults();
@@ -146,7 +146,7 @@ class Rt_PhotonInstallerScript
      *
      * @param ThemeInstaller $installer
      */
-    public function installSampleData(ThemeInstaller $installer)
+    public function installSampleData(ThemeInstaller $installer): void
     {
         // Create sample data.
         $installer->createSampleData();

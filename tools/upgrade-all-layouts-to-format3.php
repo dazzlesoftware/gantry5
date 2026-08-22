@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Rewrite every packaged or saved Genesis layout into canonical format 3.
  *

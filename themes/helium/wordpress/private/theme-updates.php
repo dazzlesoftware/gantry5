@@ -15,7 +15,7 @@ add_filter('pre_set_site_transient_update_themes', 'genesis_helium_private_theme
  * @param string $version Theme version string.
  * @return string
  */
-function genesis_helium_private_normalize_version($version)
+function genesis_helium_private_normalize_version(string $version): string
 {
     $version = trim((string) $version);
 
@@ -28,7 +28,7 @@ function genesis_helium_private_normalize_version($version)
  * @param object $transient Theme update transient.
  * @return object
  */
-function genesis_helium_private_theme_updates($transient)
+function genesis_helium_private_theme_updates(mixed $transient): object
 {
     if (!is_object($transient)) {
         $transient = new stdClass();

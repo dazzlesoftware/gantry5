@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Add Bootstrap xs column metadata to legacy expanded (format 0) layouts.
  * Only `type: block` nodes are touched; particle attributes named `size` are

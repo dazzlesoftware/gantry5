@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @package   Genesis
  * @author    Dazzle Software https://dazzlesoftware.org
@@ -23,10 +25,10 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 class Debugger
 {
     /** @var static */
-    protected static $instance;
+    protected static ?self $instance = null;
 
     /** @var \Grav\Common\Debugger */
-    protected static $debugger;
+    protected static ?\Grav\Common\Debugger $debugger = null;
 
     /**
      * Debugger constructor.
@@ -39,7 +41,7 @@ class Debugger
     /**
      * @return static
      */
-    public static function instance()
+    public static function instance(): static
     {
         if (null === static::$instance) {
             static::$instance = new static;
@@ -55,7 +57,7 @@ class Debugger
      * @param string|null $description
      * @return static
      */
-    public static function startTimer($name, $description = null)
+    public static function startTimer(string $name, ?string $description = null): static
     {
         static::$debugger->startTimer("genesis_{$name}", "Genesis: {$description}");
 
@@ -68,7 +70,7 @@ class Debugger
      * @param string $name
      * @return static
      */
-    public static function stopTimer($name)
+    public static function stopTimer(string $name): static
     {
         static::$debugger->stopTimer("genesis_{$name}");
 
@@ -80,7 +82,7 @@ class Debugger
      *
      * @return static
      */
-    public static function assets()
+    public static function assets(): static
     {
         return static::instance();
     }
@@ -90,7 +92,7 @@ class Debugger
      *
      * @return string
      */
-    public static function render()
+    public static function render(): string
     {
         // Return nothing as Grav handles rendering for us.
         return '';
@@ -101,7 +103,7 @@ class Debugger
      *
      * @return static
      */
-    public static function sendDataInHeaders()
+    public static function sendDataInHeaders(): static
     {
         if (null !== static::$debugger && method_exists(static::$debugger, 'sendDataInHeaders')) {
             static::$debugger->sendDataInHeaders();
@@ -115,7 +117,7 @@ class Debugger
      *
      * @return array|null
      */
-    public static function getData()
+    public static function getData(): ?array
     {
         return null !== static::$debugger && method_exists(static::$debugger, 'getData') ? static::$debugger->getData() : null;
     }
@@ -127,7 +129,7 @@ class Debugger
      * @return DataCollectorInterface|null
      * @throws DebugBarException
      */
-    public static function getCollector($collector)
+    public static function getCollector(string $collector): ?DataCollectorInterface
     {
         if (null !== static::$debugger && method_exists(static::$debugger, 'getCollector')) {
             return static::$debugger->getCollector($collector);
@@ -143,7 +145,7 @@ class Debugger
      * @return static
      * @throws DebugBarException
      */
-    public static function addCollector($collector)
+    public static function addCollector(DataCollectorInterface $collector): static
     {
         if (null !== static::$debugger && method_exists(static::$debugger, 'addCollector')) {
             static::$debugger->addCollector($collector);
@@ -160,7 +162,7 @@ class Debugger
      * @param bool $isString
      * @return static
      */
-    public static function addMessage($message, $label = 'info', $isString = true)
+    public static function addMessage(mixed $message, string $label = 'info', bool $isString = true): static
     {
         if (null !== static::$debugger) {
             static::$debugger->addMessage($message, $label, $isString);
@@ -175,7 +177,7 @@ class Debugger
      * @param \Exception $e
      * @return Debugger
      */
-    public static function addException(\Exception $e)
+    public static function addException(\Exception $e): static
     {
         if (null !== static::$debugger && method_exists(static::$debugger, 'addException')) {
             static::$debugger->addException($e);
@@ -191,7 +193,7 @@ class Debugger
      * @return static
      * @throws \DebugBar\DebugBarException
      */
-    public static function setConfig(Config $config)
+    public static function setConfig(Config $config): static
     {
         if (null !== static::$debugger) {
             static::$debugger->addCollector(new ConfigCollector($config->toArray(), 'Genesis'));
@@ -207,7 +209,7 @@ class Debugger
      * @return static
      * @throws \DebugBar\DebugBarException
      */
-    public static function setLocator(UniformResourceLocator $locator)
+    public static function setLocator(UniformResourceLocator $locator): static
     {
         static $exists = false;
 

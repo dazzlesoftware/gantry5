@@ -23,7 +23,7 @@ class Genesis_GalateaInstallerScript
      *
      * @param ThemeInstaller $installer
      */
-    public function installDefaults(ThemeInstaller $installer)
+    public function installDefaults(ThemeInstaller $installer): void
     {
         // Create default outlines etc.
         $installer->createDefaults();
@@ -34,7 +34,7 @@ class Genesis_GalateaInstallerScript
      *
      * @param ThemeInstaller $installer
      */
-    public function installSampleData(ThemeInstaller $installer)
+    public function installSampleData(ThemeInstaller $installer): void
     {
         // Create sample data.
         $installer->createSampleData();
