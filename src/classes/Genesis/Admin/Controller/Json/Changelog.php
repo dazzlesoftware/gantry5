@@ -24,9 +24,9 @@ class Changelog extends JsonController
     /** @var string */
     protected string $url = 'https://raw.githubusercontent.com/genesis/genesis';
     /** @var string */
-    protected string $fullurl = 'https://github.com/genesis/genesis/blob/develop';
+    protected string $fullurl = 'https://github.com/dazzlesoftware/genesis/blob/develop';
     /** @var string */
-    protected string $issues = 'https://github.com/genesis/genesis/issues';
+    protected string $issues = 'https://github.com/dazzlesoftware/genesis/issues';
     /** @var string */
     protected string $contrib = 'https://github.com';
     /** @var string */

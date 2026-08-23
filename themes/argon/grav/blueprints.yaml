@@ -7,9 +7,9 @@ author:
   email: 'support@dazzlesoftware.org'
   url: 'https://dazzlesoftware.org'
 homepage: 'http://genesis.org'
-readme: 'https://github.com/genesis/genesis/blob/master/README.md'
+readme: 'https://github.com/dazzlesoftware/genesis/blob/master/README.md'
 keywords: genesis, genesis, theme
-bugs: 'https://github.com/genesis/genesis/issues'
+bugs: 'https://github.com/dazzlesoftware/genesis/issues'
 license: MIT
 
 dependencies:

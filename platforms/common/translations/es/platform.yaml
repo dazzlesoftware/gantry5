@@ -99,7 +99,7 @@ GENESIS_PLATFORM_MENU_EDITOR: "Editor de menú"
 GENESIS_PLATFORM_MODULE: "Módulo"
 GENESIS_PLATFORM_AVAILABLE_THEMES: "Temas Disponibles"
 GENESIS_PLATFORM_PLATFORM_SETTINGS: "Ajustes Genesis"
-GENESIS_PLATFORM_FOOTER: '<a href="http://genesis.org">Administración de Genesis</a> por <a href="https://dazzlesoftware.org">Dazzle Software</a>'
+GENESIS_PLATFORM_FOOTER: '<a href="https://dazzlecms.org">Administración de Genesis</a> por <a href="https://dazzlesoftware.org">Dazzle Software</a>'
 GENESIS_PLATFORM_BASE_OUTLINE: "Plantilla Base"
 GENESIS_PLATFORM_GLOBAL_DEFAULTS: "Valores Globales por defecto"
 GENESIS_PLATFORM_GENESIS_DETAILS: '<p>Genesis es la versión más personalizable y poderosa del marco hasta el momento. Repleto de funciones, como la creación de diseños de arrastrar y soltar y el potente sistema de partículas, Genesis ha sido diseñado desde cero para ser ultrarrápido y sin complicaciones.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Framework rápido, flexible y fácil de usar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Controles de diseño de arrastrar y soltar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Potente dinámica sistema de partículas</li></ul>'

@@ -113,9 +113,9 @@ author:
   email: 'support@dazzlesoftware.org'
   url: 'https://dazzlesoftware.org'
 homepage: 'https://dazzlesoftware.org'
-readme: 'https://github.com/genesis/genesis/blob/master/README.md'
+readme: 'https://github.com/dazzlesoftware/genesis/blob/master/README.md'
 keywords: genesis, theme
-bugs: 'https://github.com/genesis/genesis/issues'
+bugs: 'https://github.com/dazzlesoftware/genesis/issues'
 license: GPL-3.0-or-later
 
 dependencies:

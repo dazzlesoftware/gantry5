@@ -201,9 +201,9 @@
                 <echo message="Updating versions in ${project_dir} ..." />
 
                 <!-- Set SHA512 values -->
-                <httpget url="https://github.com/genesis/genesis/releases/download/${xml.version}/joomla-pkg_genesis_v${xml.version}.zip" dir="${package_dir}"/>
-                <httpget url="https://github.com/genesis/genesis/releases/download/${xml.version}/joomla-tpl_genesis_helium_v${xml.version}.zip" dir="${package_dir}"/>
-                <httpget url="https://github.com/genesis/genesis/releases/download/${xml.version}/joomla-tpl_genesis_hydrogen_v${xml.version}.zip" dir="${package_dir}"/>
+                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-pkg_genesis_v${xml.version}.zip" dir="${package_dir}"/>
+                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_genesis_helium_v${xml.version}.zip" dir="${package_dir}"/>
+                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_genesis_hydrogen_v${xml.version}.zip" dir="${package_dir}"/>
                 <filehash file="${package_dir}/joomla-pkg_genesis_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_package" />
                 <filehash file="${package_dir}/joomla-tpl_genesis_helium_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_helium" />
                 <filehash file="${package_dir}/joomla-tpl_genesis_hydrogen_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_hydrogen" />

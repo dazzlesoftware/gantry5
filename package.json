@@ -31,12 +31,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/genesis/genesis.git"
+    "url": "https://github.com/dazzlesoftware/genesis.git"
   },
   "author": "Djamil Legato",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/genesis/genesis/issues"
+    "url": "https://github.com/dazzlesoftware/genesis/issues"
   },
-  "homepage": "https://github.com/genesis/genesis"
+  "homepage": "https://github.com/dazzlesoftware/genesis"
 }
