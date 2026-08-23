@@ -1,9 +1,0 @@
-requiem-theme:
-  title: 'Requiem Theme'
-  description: 'Sample menu for Requiem theme.'
-
-  items:
-    requiem:
-      title: 'Home'
-      layout: home
-      home: 1

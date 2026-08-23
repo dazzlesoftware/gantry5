@@ -1,0 +1,9 @@
+omicron-theme:
+  title: 'Omicron Theme'
+  description: 'Sample menu for Omicron theme.'
+
+  items:
+    omicron:
+      title: 'Home'
+      layout: home
+      home: 1

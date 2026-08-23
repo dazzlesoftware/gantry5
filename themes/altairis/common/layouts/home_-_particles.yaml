@@ -1,0 +1,689 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1452869994
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-7172
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 3'
+      - 'menu-1283 9'
+  /slideshow/:
+    -
+      - flexslider-9434
+  /header/:
+    -
+      - 'promocontent-4166 6'
+      - 'promocontent-1533 6'
+  /above/:
+    -
+      - 'gridpromogallery-5021 6'
+      - 'gridpromogallery-3026 6'
+    -
+      - 'gridpromogallery-9495 6'
+      - 'gridpromogallery-9942 6'
+  /showcase/:
+    -
+      - promocontent-3899
+    -
+      - contenttabs-6066
+  /utility/:
+    -
+      - promocontent-2820
+    -
+      - blockcontent-9026
+    -
+      - animatedblock-5929
+  /feature/:
+    -
+      - promocontent-7524
+    -
+      - blockcontent-5964
+  /container-4448/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7': {  }
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - blockcontent-2993
+  /extension/:
+    -
+      - 'blockcontent-8003 6'
+      - 'promocontent-7355 6'
+  /bottom/:
+    -
+      - newsletter-8671
+  /footer/:
+    -
+      - 'logo-7113 4'
+      - 'horizontalmenu-5815 5'
+      - 'social-2396 4'
+  /copyright/:
+    -
+      - 'copyright-5748 6'
+      - 'horizontalmenu-4834 6'
+    -
+      - totop-6544
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+content:
+  social-7172:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  logo-5992:
+    title: 'Logo / Image'
+  flexslider-9434:
+    title: 'FP Slideshow A'
+    attributes:
+      class: fp-flexslider-slideshow
+      autoplay: '0'
+      sliderBottomIcon: 'fa fa-bookmark-o fa-fw'
+      sliderBottomLink: '#'
+      items:
+        -
+          image: ''
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayParallax: '1'
+          overlayParallaxRatio: '0.5'
+          subtitle: 'Intuitive Interface'
+          title: 'Ultimate <span>Framework!</span>'
+          desc: ''
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'Read Story'
+          buttontarget: _self
+          buttonclass: 'button-special button-arrow'
+          name: 'Ultimate Framework'
+        -
+          image: ''
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayParallax: '1'
+          overlayParallaxRatio: '0.5'
+          subtitle: 'Sliding Tabs'
+          title: 'Content <span>Tabs!</span>'
+          desc: ''
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'Read Story'
+          buttontarget: _self
+          buttonclass: 'button-special button-arrow'
+          name: 'Content Tabs'
+        -
+          image: ''
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayParallax: '1'
+          overlayParallaxRatio: '0.5'
+          subtitle: 'Content with Particles'
+          title: 'Grid <span>Blocks!</span>'
+          desc: ''
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'Read Story'
+          buttontarget: _self
+          buttonclass: 'button-special button-arrow'
+          name: 'Grid Blocks'
+    block:
+      class: fp-slideshow-a
+  promocontent-4166:
+    title: 'FP Header A'
+    attributes:
+      promostyle: superpromo
+      promo: Slider
+      readmore: Explore
+      readmoreclass: button-special
+      link: '#'
+    block:
+      class: fp-header-a
+  promocontent-1533:
+    title: 'FP Header B'
+    attributes:
+      class: ''
+      promostyle: promo
+      promo: Tabs
+      readmore: Explore
+      readmoreclass: button-special
+      link: '#'
+    block:
+      class: fp-header-b
+  gridpromogallery-5021:
+    title: 'FP Above A'
+    attributes:
+      cols: g-gridpromogallery-1cols
+      gridpromogalleryitems:
+        -
+          itemclass: g-promogallery-style-1
+          img: 'genesis-media://demo/home/above/img-01.jpg'
+          tag: 'Layout Configuration'
+          headtext: ''
+          desc: '<span>Easily configure complex layouts with the Powerful Genesis Drag & Drop interface for the whole site <span class="hidden-tablet">or specific pages</span></span>'
+          link: '#'
+          linktarget: _self
+          title: 'Easily configure complex layouts with Genesis Drag & Drop interface for the whole site or specific pages'
+    block:
+      class: fp-above-a
+  gridpromogallery-3026:
+    title: 'FP Above B'
+    attributes:
+      gridpromogalleryitems:
+        -
+          itemclass: g-promogallery-style-1
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: 'Menu Editor'
+          headtext: ''
+          desc: 'Advanced menu with dropdown, columns and more'
+          link: '#'
+          linktarget: _self
+          title: 'Advanced menu with dropdown, columns and more'
+        -
+          itemclass: 'g-promogallery-style-2 g-border-bottom'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: 'Adaptable Design'
+          headtext: ''
+          desc: 'Responsive Layout supporting desktop and mobile'
+          link: '#'
+          linktarget: _self
+          title: 'Responsive Layout supporting desktop and mobile'
+    block:
+      class: fp-above-b
+  gridpromogallery-9495:
+    title: 'FP Above C'
+    attributes:
+      gridpromogalleryitems:
+        -
+          itemclass: 'g-promogallery-style-2 g-border-right'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: Particle
+          headtext: ''
+          desc: 'A quick and easy way to create complex content'
+          link: '#'
+          linktarget: _self
+          title: 'A quick and easy way to create complex content'
+        -
+          itemclass: g-promogallery-style-2
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: Offcanvas
+          headtext: ''
+          desc: 'Adding menu and content to the mobile sidemenu'
+          link: '#'
+          linktarget: _self
+          title: 'Adding menu and content to the mobile sidemenu'
+    block:
+      class: fp-above-c
+  gridpromogallery-9942:
+    title: 'FP Above D'
+    attributes:
+      gridpromogalleryitems:
+        -
+          itemclass: g-promogallery-style-1
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: FlexSlider
+          headtext: ''
+          desc: 'Display volumes of content with FlexSlider particle'
+          link: '#'
+          linktarget: _self
+          title: 'Display volumes of content with FlexSlider particle'
+        -
+          itemclass: g-promogallery-style-2
+          img: 'genesis-media://demo/home/above/img-02.jpg'
+          tag: 'Social Icons'
+          headtext: ''
+          desc: 'Easily display any social media icons such as Facebook'
+          link: '#'
+          linktarget: _self
+          title: 'Easily display any social media icons such as Facebook'
+    block:
+      class: fp-above-d
+  promocontent-3899:
+    title: 'FP Showcase A'
+    attributes:
+      promostyle: superpromo
+      subpromo: 'Online Documentation for Altairis'
+      promo: Guides
+      readmore: 'Read Story'
+      readmoreclass: 'button-special button-arrow button-outline'
+      link: '#'
+      linkstyle: block
+      altLinkTarget: _self
+    block:
+      class: fp-showcase-a
+  contenttabs-6066:
+    title: 'FP Showcase B'
+    attributes:
+      class: g-contenttabs-style-center
+      animation: slide
+      items:
+        -
+          tabname: tab1
+          subtitle: '<span class="g-icon-triangle-stroked"></span>'
+          title: 'Extensive Documentation &amp; Guides'
+          desc: 'Genesis has a comprehensive library of written and video documentation to assist in its setup, use and customization, as well as associated template guides.'
+          tag: Tutorials
+          name: 'Extensive Documentation & Guides'
+        -
+          tabname: tab2
+          subtitle: '<span class="g-icon-square-stroked"></span>'
+          title: 'Self Contained Dynamic Blocks'
+          desc: 'Particles are powerful autonomous blocks with prebuilt code and configuration options, that provide an intuitive interface for complex content creations.'
+          tag: Particles
+          name: 'Self Contained Dynamic Blocks'
+        -
+          tabname: tab3
+          subtitle: '<span class="g-icon-circle-stroked"></span>'
+          title: 'OffCanvas Area for Mobile Blocks'
+          desc: 'The Offcanvas section is intended to enable you to place modules and positions in a special hidden-until-opened sidebar. This sidebar houses the Mobile Menu.'
+          tag: Mobile
+          name: 'OffCanvas Area for Mobile Blocks'
+    block:
+      class: fp-showcase-b
+  promocontent-2820:
+    title: 'FP Utility A'
+    attributes:
+      title: 'Genesis'
+      promostyle: standard
+      desc: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. It has been written from the ground up to focus on speed and performance, whether the frontend or backend.'
+      readmore: Explore
+      readmoreclass: 'button-alt button-special'
+      link: '#'
+      linkstyle: block
+      tags: {  }
+    block:
+      class: fp-utility-a
+  blockcontent-9026:
+    title: 'FP Utility B'
+    attributes:
+      class: g-blockcontent-style-1
+      linktarget: _self
+      subcontents:
+        -
+          name: Layout
+          icon: 'fa fa-th fa-fw fa-2x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'The Layout manager provides drag-and-drop functionality with power to move, resize, and configure content in seconds. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: Layout
+        -
+          name: Styling
+          icon: 'fa fa-leaf fa-fw fa-2x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'The Styles settings allow for customizing the stylistic elements of the template, such as links, font or background colors. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: Styling
+        -
+          name: Particles
+          icon: 'fa fa-plane fa-fw fa-2x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Particles operate as customizable blocks that form the flesh of the frontend, from placeholders to self contained content and functions. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: Particles
+    block:
+      class: fp-utility-b
+  animatedblock-5929:
+    title: 'FP Utility C'
+    attributes:
+      cols: g-5cols
+      blocks:
+        -
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
+          headline: ''
+          tag: Menu
+          desc: ''
+          icon: 'fa fa-list-ul fa-fw'
+          readmore: +
+          link: '#'
+          linktarget: _self
+          title: Menu
+        -
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
+          headline: ''
+          tag: Layout
+          desc: ''
+          icon: 'fa fa-th-large fa-fw'
+          readmore: +
+          link: '#'
+          linktarget: _self
+          title: Layout
+        -
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
+          headline: ''
+          tag: Style
+          desc: ''
+          icon: 'fa fa-modx fa-fw'
+          readmore: +
+          link: '#'
+          linktarget: _self
+          title: Style
+        -
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
+          headline: ''
+          tag: Twig
+          desc: ''
+          icon: 'fa fa-anchor fa-fw'
+          readmore: +
+          link: '#'
+          linktarget: _self
+          title: Twig
+        -
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
+          headline: ''
+          tag: YAML
+          desc: ''
+          icon: 'fa fa-balance-scale fa-fw'
+          readmore: +
+          link: '#'
+          linktarget: _self
+          title: YAML
+    block:
+      class: fp-utility-c
+  promocontent-7524:
+    title: 'FP Feature A'
+    attributes:
+      title: Responsive
+      promostyle: standard
+      desc: 'Altairis is built with a responsive layout, which means it automatically adapts to the viewing device, so it will expand and contract accordingly to the size and resolution of the screen, whether mobile, tablet or desktop.'
+      linkstyle: block
+      altLinkTarget: _self
+    block:
+      class: fp-feature-a
+  blockcontent-5964:
+    title: 'FP Feature B'
+    attributes:
+      class: g-blockcontent-style-2
+      subcontents:
+        -
+          name: Configuration
+          icon: ''
+          img: 'genesis-media://demo/home/feature/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Font Picker, and much more. '
+          class: ''
+          button: 'Read More'
+          buttonlink: '#'
+          buttonclass: 'button-special button-alt'
+          title: Configuration
+        -
+          name: Usability
+          icon: ''
+          img: 'genesis-media://demo/home/feature/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'The Genesis administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost. '
+          class: ''
+          button: 'Read More'
+          buttonlink: '#'
+          buttonclass: 'button-special button-alt'
+          title: Usability
+    block:
+      class: fp-feature-b
+  blockcontent-2993:
+    title: 'FP Expanded A'
+    attributes:
+      class: g-blockcontent-style-3
+      headline: 'Powerful Interface'
+      description: 'Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.'
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Twig Templating'
+          icon: 'fa fa-diamond fa-fw fa-2x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Genesis utilizes Twig - a flexible, fast, and secure template engine for PHP - to create powerful, dynamic themes quick and easy. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: 'Twig Templating'
+        -
+          name: 'YAML Driven'
+          icon: 'fa fa-cab fa-fw fa-2x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'YAML is a human-readable data serialization, making it easy to create and configure blueprints for back-end configuration options. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: 'YAML Driven'
+    block:
+      class: fp-expanded-a
+  blockcontent-8003:
+    title: 'FP Extension A'
+    attributes:
+      headline: 'Layout Manager'
+      description: 'Easily configure complex layouts with the Drag & Drop interface for the whole site or specific pages'
+      link: '#'
+      linktext: 'Backend Console'
+      linktarget: _self
+      linkclass: button-text-only
+      linkicon: 'fa fa-tasks fa-fw'
+      alttext: Innovation
+      subcontents:
+        -
+          name: ''
+          icon: ''
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'An intuitive admin interface to configure the template'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          title: 'Intuitive Admin Interface'
+    block:
+      class: fp-extension-a
+  promocontent-7355:
+    title: 'FP Extension B'
+    attributes:
+      class: g-promocontent-box
+      promostyle: standard
+      promo: 'Powerful <span>Framework</span>'
+      linkstyle: block
+      tags:
+        -
+          icon: 'fa fa-arrow-right fa-fw'
+          text: 'Flexible and Easy Layout Manager '
+          link: ''
+          title: 'Flexible and Easy Layout Manager'
+        -
+          icon: 'fa fa-arrow-right fa-fw'
+          text: 'Menu Editor with Icon Options '
+          link: ''
+          title: 'Menu Editor with Icon Options'
+        -
+          icon: 'fa fa-arrow-right fa-fw'
+          text: 'Unique content with block variations '
+          link: ''
+          title: 'Unique content with block variations'
+        -
+          icon: 'fa fa-arrow-right fa-fw'
+          text: 'Utilize icons easily with Font Awesome'
+          link: ''
+          title: 'Utilize icons easily with Font Awesome'
+        -
+          icon: 'fa fa-arrow-right fa-fw'
+          text: ' Human readable configuration files Code '
+          link: ''
+          title: 'Human readable configuration files Code'
+      altLinkText: 'All Features'
+      altLink: '#'
+      altLinkTarget: _self
+      altLinkClass: 'button-special button-arrow'
+    block:
+      class: fp-extension-b
+  newsletter-8671:
+    title: 'FP Bottom A'
+    attributes:
+      title: 'Stay Updated'
+      headtext: 'The best insight, stories, and publications from top authors in the industry!'
+      inputboxtext: 'Your Email Address'
+      buttontext: 'Sign Up'
+      buttonclass: button-alt
+    block:
+      class: fp-bottom-a
+  logo-7113:
+    title: 'Footer Logo'
+  horizontalmenu-5815:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'https://codex.dazzlecms.org/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Support
+        -
+          text: Download
+          link: 'https://dazzlesoftware.org/joomla/templates/altairis'
+          name: Download
+  social-2396:
+    title: 'Footer Social Icons'
+  horizontalmenu-4834:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/altairis'
+          name: Docs
+        -
+          text: Guides
+          link: 'https://codex.dazzlecms.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://dazzlesoftware.org/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Forum
+  totop-6544:
+    title: 'To Top'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

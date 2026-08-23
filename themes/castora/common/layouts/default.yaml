@@ -1,0 +1,416 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1483456698
+layout:
+  /container-overlay/:
+    -
+      -
+        'sideoverlay 5':
+          -
+            - accordionmenu-7045
+      -
+        'mainoverlay 7':
+          -
+            - custom-4659
+          -
+            - social-3757
+          -
+            - custom-4238
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 2'
+      - 'menu-2350 9'
+      - 'overlaytoggle-5085 1'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /feature/:
+    -
+      - position-position-7980
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 2':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - position-position-6548
+  /copyright/:
+    -
+      - 'branding-9192 2'
+      - 'simplemenu-6826 8'
+      - 'totop-5790 2'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  sideoverlay:
+    type: section
+    subtype: aside
+    title: 'Overlay Sidebar'
+  mainoverlay:
+    type: section
+    subtype: main
+    title: 'Overlay Main'
+  container-overlay:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  top:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-navigation'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  accordionmenu-7045:
+    title: 'Accordion Menu'
+    attributes:
+      title: Browse
+      group:
+        -
+          items:
+            -
+              link: '#'
+              target: _self
+              title: Overview
+            -
+              link: '#'
+              target: _self
+              title: Particles
+            -
+              link: '#'
+              target: _self
+              title: Typography
+            -
+              link: '#'
+              target: _blank
+              title: 'Block Variations'
+            -
+              link: '#'
+              target: _self
+              title: Documentation
+            -
+              link: '#'
+              target: _self
+              title: 'Forum Support'
+            -
+              link: '#'
+              target: _self
+              title: Download
+          title: Features
+        -
+          items:
+            -
+              link: '#'
+              target: _self
+              title: 'About Us'
+            -
+              link: '#'
+              target: _self
+              title: Pricing
+            -
+              link: '#'
+              target: _self
+              title: Blog
+            -
+              link: '#'
+              target: _self
+              title: Portfolio
+            -
+              link: '#'
+              target: _self
+              title: Contact
+            -
+              link: '#'
+              target: _self
+              title: Error
+            -
+              link: '#'
+              target: _self
+              title: 'Coming Soon'
+            -
+              link: '#'
+              target: _self
+              title: Offline
+          title: Pages
+        -
+          items:
+            -
+              link: '#'
+              target: _self
+              title: Fullwidth
+            -
+              link: '#'
+              target: _self
+              title: 'Left Sidebar'
+            -
+              link: '#'
+              target: _self
+              title: 'Right Sidebar'
+            -
+              link: '#'
+              target: _self
+              title: 'Two Sidebars'
+            -
+              link: '#'
+              target: _self
+              title: 'Two Sidebars Left'
+            -
+              link: '#'
+              target: _self
+              title: 'Two Sidebars Right'
+            -
+              link: '#'
+              target: _self
+              title: 'Rows & Columns'
+          title: Layouts
+        -
+          items:
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 1'
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 2'
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 3'
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 4'
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 5'
+            -
+              link: '#'
+              target: _self
+              title: 'Preset 6'
+          title: Styles
+  custom-4659:
+    title: Contact
+    attributes:
+      html: "<h2 class=\"g-title\">Contact</h2>\n<p class=\"g-demo-contact\">\nmail@castora-theme.com <br />\n+ 001 0231 123 32\n</p>"
+  social-3757:
+    attributes:
+      title: Follow
+  custom-4238:
+    title: Info
+    attributes:
+      html: "<h2 class=\"g-title\">Info</h2>\n<p class=\"g-demo-info\">\nAll demo content is for sample purposes only, intended to represent a live site. Please use the RocketLauncher to install an equivalent of the demo, all images will be replaced with sample images.\n</p>"
+  menu-2350:
+    block:
+      variations: align-right
+  overlaytoggle-5085:
+    title: 'Overlay Toggle'
+    block:
+      class: nopaddingright
+      variations: align-right
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-position-6548:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  branding-9192:
+    attributes:
+      content: '&copy; 2026 by <a href="https://dazzlesoftware.org/" title="Dazzle Software" class="g-powered-by">Dazzle Software</a>.'
+    block:
+      variations: align-left
+  simplemenu-6826:
+    title: 'Bottom Menu'
+    attributes:
+      title: ''
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: 'https://demo.rockettheme.com/live/joomla/castora'
+              target: _self
+              title: Demo
+            -
+              icon: ''
+              link: 'https://dazzlesoftware.org/joomla/templates/castora'
+              target: _self
+              title: Details
+            -
+              icon: ''
+              link: 'https://dazzlesoftware.org/forum/joomla-template-castora'
+              target: _self
+              title: Support
+            -
+              icon: ''
+              link: 'https://dazzlesoftware.org/docs/joomla/templates/castora'
+              target: _self
+              title: Guides
+          title: 'Bottom Menu'
+    block:
+      class: g-bottom-simplemenu
+      variations: center
+  totop-5790:
+    title: 'To Top'
+    block:
+      variations: align-right

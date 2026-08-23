@@ -1,0 +1,9 @@
+argon-theme:
+  title: 'Argon Theme'
+  description: 'Sample menu for Argon theme.'
+
+  items:
+    argon:
+      title: 'Home'
+      outline: home
+      home: 1

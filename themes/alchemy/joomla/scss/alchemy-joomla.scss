@@ -1,0 +1,44 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+@import "dependencies";
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "alchemy-joomla/styles/core";
+@import "alchemy-joomla/styles/typography";
+@import "alchemy-joomla/styles/forms";
+@import "alchemy-joomla/styles/tabs";
+@import "alchemy-joomla/styles/utilities";
+@import "alchemy-joomla/particles/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Main
+@import "alchemy-joomla/styles/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "alchemy-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

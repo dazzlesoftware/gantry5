@@ -1,0 +1,44 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Optional Nucleus Assets
+@import "nucleus/theme/alerts";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "wordpress/theme/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// Platform Specific Configuration
+@import "configuration-wordpress/base";
+
+// WORDPRESS THEME SPECIFIC
+
+// Core
+@import "firecrest-wordpress/core";
+
+// Pagination
+@import "firecrest-wordpress/pagination";
+
+// Meta
+@import "firecrest-wordpress/meta";
+
+// Comments
+@import "firecrest-wordpress/comments";
+
+// Particles
+@import "firecrest-wordpress/particles";
+
+// Widgets
+@import "firecrest-wordpress/widgets";

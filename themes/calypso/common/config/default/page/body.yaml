@@ -1,0 +1,9 @@
+doctype: html
+attribs:
+  id: ''
+  class: 'genesis g-calypso-style'
+  extra: {  }
+layout:
+  sections: '0'
+body_top: '<div id="g-offsidebar-overlay"></div>'
+body_bottom: ''

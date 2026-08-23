@@ -1,0 +1,1576 @@
+version: 3
+preset:
+  image: genesis-admin://images/layouts/home.png
+  name: Particles 2
+  timestamp: 1786258802
+layout:
+  /header/:
+  - - system-messages-6948
+  - - logo-8575 25
+    - horizontalmenu-6051 75
+  /navigation/:
+  - - menu-1228
+  /slideshow/:
+  - - featuresslider-5358
+  /showcase/:
+  - - advancedprogressbar-2300
+    - articlesscroller-2301
+    - button-2302
+  /feature/:
+  - - contentcarousel-2400
+    - custom-2401
+    - featuresslider-2402
+    - heading-2403
+  /container-particles-2/:
+  - - mainbar 8:
+      - - advancedprogressbar-2100
+      - - articlesscroller-2101
+      - - button-2102
+      - - contentcarousel-2103
+      - - custom-2104
+      - - featuresslider-2105
+      - - heading-2106
+      - - image-2107
+      - - imageoverlay-2108
+      - - logo-2109
+      - - openstreetmap-2110
+      - - progressbar-2111
+      - - soundcloud-2112
+      - - tabimage-2113
+      - - timeline-2114
+    - sidebar 4:
+      - - advancedprogressbar-2200
+      - - articlesscroller-2201
+      - - button-2202
+      - - contentcarousel-2203
+      - - custom-2204
+      - - featuresslider-2205
+      - - heading-2206
+      - - image-2207
+      - - imageoverlay-2208
+      - - logo-2209
+      - - openstreetmap-2210
+      - - progressbar-2211
+      - - soundcloud-2212
+      - - tabimage-2213
+      - - timeline-2214
+  offcanvas:
+  - - mobile-menu-8876
+structure:
+  header:
+    attributes:
+      boxed: ''
+      class: g-home
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-home
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  mainbar:
+    type: section
+    attributes:
+      class: particle-tests
+  sidebar:
+    type: section
+    attributes:
+      class: particle-tests
+  container-particles-2:
+    attributes:
+      boxed: ''
+content:
+  logo-8575:
+    block:
+      class: g-logo-block
+  horizontalmenu-6051:
+    title: Top Menu
+    attributes:
+      target: _blank
+      text:
+      - text: Features
+        link: https://codex.dazzlecms.org/basics/key-features
+        name: Features
+      - text: Genesis
+        link: https://dazzlecms.org/
+        name: Genesis
+      - text: Particles
+        link: https://codex.dazzlecms.org/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/nectarion
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        name: Support
+  system-messages-6948:
+    block:
+      variations: nomarginall nopaddingall
+  featuresslider-5358:
+    title: Features Slider
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  menu-1228:
+    block:
+      class: g-nectarion-menu
+  mobile-menu-8876:
+    title: Mobile Menu
+  advancedprogressbar-2100:
+    title: Advancedprogressbar — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      text: Progress
+      progress: 75
+      showpercentage: enable
+      type: primary
+      customcolor: '#3366ff'
+      trackcolor: '#e9ecef'
+      textcolor: '#ffffff'
+      height: 24
+      shape: rounded
+      striped: disable
+      animatedstripes: disable
+      animate: enable
+      duration: 1000
+    block:
+      class: particle-test particle-test-advancedprogressbar
+  advancedprogressbar-2200:
+    title: Advancedprogressbar — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      text: Progress
+      progress: 75
+      showpercentage: enable
+      type: primary
+      customcolor: '#3366ff'
+      trackcolor: '#e9ecef'
+      textcolor: '#ffffff'
+      height: 24
+      shape: rounded
+      striped: disable
+      animatedstripes: disable
+      animate: enable
+      duration: 1000
+    block:
+      class: particle-test particle-test-advancedprogressbar
+  articlesscroller-2101:
+    title: Articlesscroller — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      source: platform
+      layout: ticker
+      categories: Responsive particle test content for item 1.
+      articles: Responsive particle test content for item 1.
+      tags: Responsive particle test content for item 1.
+      limit: 12
+      orderby: date
+      ordering: DESC
+      showimage: enable
+      imagebackground: disable
+      showintro: enable
+      introlimit: 140
+      showcategory: enable
+      showdate: enable
+      showtime: disable
+      tickerheading: Breaking News
+      tickershape: arrow
+      scrollerlead: icon
+      scrollericon: fa fa-gamepad
+      scrollericonsize: 32
+      accentcolor: '#e91e63'
+      panelcolor: '#202025'
+      paneltextcolor: '#ffffff'
+      mutedcolor: '#aaaaaa'
+      imageheight: 320
+      gap: 24
+      scrollergap: 1
+      separatorcolor: rgba(255,255,255,0.7)
+      desktopitems: 3
+      tabletitems: 2
+      mobileitems: 1
+      move: 1
+      speed: 500
+      interval: 5000
+      autoplay: disable
+      touch: enable
+      arrows: enable
+      indicators: enable
+      alignment: left
+      items:
+      - title: Nectarion Test Item 1
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 1.
+        intro: Responsive particle test content for item 1.
+        date: Responsive particle test content for item 1.
+        category: Responsive particle test content for item 1.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 2.
+        intro: Responsive particle test content for item 2.
+        date: Responsive particle test content for item 2.
+        category: Responsive particle test content for item 2.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 3.
+        intro: Responsive particle test content for item 3.
+        date: Responsive particle test content for item 3.
+        category: Responsive particle test content for item 3.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-articlesscroller
+  articlesscroller-2201:
+    title: Articlesscroller — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      source: platform
+      layout: ticker
+      categories: Responsive particle test content for item 1.
+      articles: Responsive particle test content for item 1.
+      tags: Responsive particle test content for item 1.
+      limit: 12
+      orderby: date
+      ordering: DESC
+      showimage: enable
+      imagebackground: disable
+      showintro: enable
+      introlimit: 140
+      showcategory: enable
+      showdate: enable
+      showtime: disable
+      tickerheading: Breaking News
+      tickershape: arrow
+      scrollerlead: icon
+      scrollericon: fa fa-gamepad
+      scrollericonsize: 32
+      accentcolor: '#e91e63'
+      panelcolor: '#202025'
+      paneltextcolor: '#ffffff'
+      mutedcolor: '#aaaaaa'
+      imageheight: 320
+      gap: 24
+      scrollergap: 1
+      separatorcolor: rgba(255,255,255,0.7)
+      desktopitems: 3
+      tabletitems: 2
+      mobileitems: 1
+      move: 1
+      speed: 500
+      interval: 5000
+      autoplay: disable
+      touch: enable
+      arrows: enable
+      indicators: enable
+      alignment: left
+      items:
+      - title: Nectarion Test Item 1
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 1.
+        intro: Responsive particle test content for item 1.
+        date: Responsive particle test content for item 1.
+        category: Responsive particle test content for item 1.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 2.
+        intro: Responsive particle test content for item 2.
+        date: Responsive particle test content for item 2.
+        category: Responsive particle test content for item 2.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 3.
+        intro: Responsive particle test content for item 3.
+        date: Responsive particle test content for item 3.
+        category: Responsive particle test content for item 3.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-articlesscroller
+  button-2102:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      text: Button
+      link: '#'
+      target: _self
+      nofollow: false
+      download: disable
+      filename: Responsive particle test content for item 1.
+      arialabel: Responsive particle test content for item 1.
+      style: primary
+      appearance: flat
+      size: default
+      shape: rounded
+      fullwidth: disable
+      alignment: left
+      font: Responsive particle test content for item 1.
+      fontsize: 16
+      weight: '400'
+      padding: 8px 22px
+      icon: fa fa-star
+      iconposition: left
+      icongap: 8
+      color: '#ffffff'
+      background: '#3366ff'
+      bordercolor: '#3366ff'
+      hovercolor: '#ffffff'
+      hoverbackground: '#0037dd'
+      hoverbordercolor: '#0037dd'
+      label: Get a Quote
+    title: Button — Mainbar
+    block:
+      class: particle-test particle-test-button
+  button-2202:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      text: Button
+      link: '#'
+      target: _self
+      nofollow: false
+      download: disable
+      filename: Responsive particle test content for item 1.
+      arialabel: Responsive particle test content for item 1.
+      style: primary
+      appearance: flat
+      size: default
+      shape: rounded
+      fullwidth: disable
+      alignment: left
+      font: Responsive particle test content for item 1.
+      fontsize: 16
+      weight: '400'
+      padding: 8px 22px
+      icon: fa fa-star
+      iconposition: left
+      icongap: 8
+      color: '#ffffff'
+      background: '#3366ff'
+      bordercolor: '#3366ff'
+      hovercolor: '#ffffff'
+      hoverbackground: '#0037dd'
+      hoverbordercolor: '#0037dd'
+      label: Get a Quote
+    title: Button — Sidebar
+    block:
+      class: particle-test particle-test-button
+  contentcarousel-2103:
+    title: Contentcarousel — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      height: 480
+      alignment: center
+      autoplay: enable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 5000
+      speed: 500
+      arrows: enable
+      bullets: enable
+      titlecolor: '#ffffff'
+      titlesize: 42
+      contentcolor: '#ffffff'
+      contentsize: 18
+      overlay: rgba(0,0,0,0.45)
+      slides:
+      - title: Nectarion Test Item 1
+        content: Responsive particle test content for item 1.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        content: Responsive particle test content for item 2.
+        background: genesis-media://demo/home/mainbar/img-01.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        content: Responsive particle test content for item 3.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-contentcarousel
+  contentcarousel-2203:
+    title: Contentcarousel — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      height: 480
+      alignment: center
+      autoplay: enable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 5000
+      speed: 500
+      arrows: enable
+      bullets: enable
+      titlecolor: '#ffffff'
+      titlesize: 42
+      contentcolor: '#ffffff'
+      contentsize: 18
+      overlay: rgba(0,0,0,0.45)
+      slides:
+      - title: Nectarion Test Item 1
+        content: Responsive particle test content for item 1.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        content: Responsive particle test content for item 2.
+        background: genesis-media://demo/home/mainbar/img-01.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        content: Responsive particle test content for item 3.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-contentcarousel
+  custom-2104:
+    title: Custom — Mainbar
+    attributes:
+      enabled: true
+      title: Nectarion Test Item 1
+      titletag: Responsive particle test content for item 1.
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Whooops! Error!</h2>\n\
+        \t<div class=\"g-layercontent-subtitle\">Looks like something went wrong. Sorry!</div>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: flush center
+  custom-2204:
+    title: Custom — Sidebar
+    attributes:
+      enabled: true
+      title: Nectarion Test Item 1
+      titletag: Responsive particle test content for item 1.
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Whooops! Error!</h2>\n\
+        \t<div class=\"g-layercontent-subtitle\">Looks like something went wrong. Sorry!</div>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: flush center
+  featuresslider-2105:
+    title: Featuresslider — Mainbar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  featuresslider-2205:
+    title: Featuresslider — Sidebar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  heading-2106:
+    attributes:
+      enabled: true
+      class: ''
+      text: This is a heading
+      subtitle: particles
+      element: h3
+      link: '#'
+      target: _self
+      nofollow: false
+      font: Responsive particle test content for item 1.
+      fontsize: 32
+      tabletsize: 30
+      mobilesize: 26
+      lineheight: 1.2
+      letterspacing: 0
+      weight: '700'
+      transform: none
+      italic: normal
+      decoration: none
+      colortype: solid
+      color: '#222222'
+      gradientcolor: '#3366ff'
+      gradientangle: 90
+      textshadow: none
+      alignment: left
+      icon: fa fa-star
+      iconposition: before
+      iconcolor: '#222222'
+      iconsize: 28
+      icongap: 10
+      margin: '0'
+      padding: '0'
+      title: recent additions
+    title: Heading — Mainbar
+    block:
+      class: particle-test particle-test-heading
+  heading-2206:
+    attributes:
+      enabled: true
+      class: ''
+      text: This is a heading
+      subtitle: particles
+      element: h3
+      link: '#'
+      target: _self
+      nofollow: false
+      font: Responsive particle test content for item 1.
+      fontsize: 32
+      tabletsize: 30
+      mobilesize: 26
+      lineheight: 1.2
+      letterspacing: 0
+      weight: '700'
+      transform: none
+      italic: normal
+      decoration: none
+      colortype: solid
+      color: '#222222'
+      gradientcolor: '#3366ff'
+      gradientangle: 90
+      textshadow: none
+      alignment: left
+      icon: fa fa-star
+      iconposition: before
+      iconcolor: '#222222'
+      iconsize: 28
+      icongap: 10
+      margin: '0'
+      padding: '0'
+      title: recent additions
+    title: Heading — Sidebar
+    block:
+      class: particle-test particle-test-heading
+  image-2107:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      titleposition: before
+      titlecolor: '#7c4dff'
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      image2x: genesis-media://demo/home/mainbar/img-02.jpg
+      alt: Responsive particle test content for item 1.
+      imagetitle: Responsive particle test content for item 1.
+      alignment: center
+      width: 1
+      height: 1
+      fit: cover
+      position: center
+      shape: none
+      radius: 0
+      effect: none
+      zoom: disable
+      zoomscale: 1.1
+      lightbox: disable
+      overlay: rgba(0,0,0,0.25)
+      link: '#'
+      target: _self
+      fetchpriority: auto
+      wrapper: false
+    block:
+      variations: nomarginall nopaddingall align-right
+      extra:
+      - data-aos: fade-up
+      class: particle-test particle-test-image
+    title: Image — Mainbar
+  image-2207:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      titleposition: before
+      titlecolor: '#7c4dff'
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      image2x: genesis-media://demo/home/mainbar/img-02.jpg
+      alt: Responsive particle test content for item 1.
+      imagetitle: Responsive particle test content for item 1.
+      alignment: center
+      width: 1
+      height: 1
+      fit: cover
+      position: center
+      shape: none
+      radius: 0
+      effect: none
+      zoom: disable
+      zoomscale: 1.1
+      lightbox: disable
+      overlay: rgba(0,0,0,0.25)
+      link: '#'
+      target: _self
+      fetchpriority: auto
+      wrapper: false
+    block:
+      variations: nomarginall nopaddingall align-right
+      extra:
+      - data-aos: fade-up
+      class: particle-test particle-test-image
+    title: Image — Sidebar
+  imageoverlay-2108:
+    title: Imageoverlay — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      alt: Responsive particle test content for item 1.
+      height: 420
+      animation: zoom
+      contentposition: center
+      showonhover: disable
+      padding: 2rem
+      title: Image Overlay
+      titleicon: fa fa-star
+      heading: h2
+      titlecolor: '#ffffff'
+      subtitle: Responsive particle test content for item 1.
+      subtitleicon: fa fa-star
+      subtitlecolor: '#ffffff'
+      overlay: rgba(0,0,0,0.35)
+      hoveroverlay: rgba(0,0,0,0.6)
+      tag: Responsive particle test content for item 1.
+      tagcolor: '#ffffff'
+      tagbackground: '#3366ff'
+      link: '#'
+      lightbox: disable
+      buttontext: Learn More
+      buttonlink: '#'
+      buttonstyle: light
+      radius: 0
+      desc: Genesis is an advanced, versatile and multi-platform template framework designed for the modern web.
+      imagetitle: The Next Generation of Template Frameworks
+      imagetag: Genesis
+    block:
+      class: particle-test particle-test-imageoverlay
+  imageoverlay-2208:
+    title: Imageoverlay — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      alt: Responsive particle test content for item 1.
+      height: 420
+      animation: zoom
+      contentposition: center
+      showonhover: disable
+      padding: 2rem
+      title: Image Overlay
+      titleicon: fa fa-star
+      heading: h2
+      titlecolor: '#ffffff'
+      subtitle: Responsive particle test content for item 1.
+      subtitleicon: fa fa-star
+      subtitlecolor: '#ffffff'
+      overlay: rgba(0,0,0,0.35)
+      hoveroverlay: rgba(0,0,0,0.6)
+      tag: Responsive particle test content for item 1.
+      tagcolor: '#ffffff'
+      tagbackground: '#3366ff'
+      link: '#'
+      lightbox: disable
+      buttontext: Learn More
+      buttonlink: '#'
+      buttonstyle: light
+      radius: 0
+      desc: Genesis is an advanced, versatile and multi-platform template framework designed for the modern web.
+      imagetitle: The Next Generation of Template Frameworks
+      imagetag: Genesis
+    block:
+      class: particle-test particle-test-imageoverlay
+  logo-2109:
+    block:
+      class: g-logo-block
+    title: Logo — Mainbar
+    attributes:
+      enabled: true
+      url: '#'
+      target: _self
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      height: Responsive particle test content for item 1.
+      link: true
+      svg: Responsive particle test content for item 1.
+      text: Responsive particle test content for item 1.
+      tagline: Responsive particle test content for item 1.
+      readmore_label: Responsive particle test content for item 1.
+      readmore_link: '#'
+      readmore_target: _self
+      readmore_class: particle-test-option
+      class: particle-test-option
+  logo-2209:
+    block:
+      class: g-logo-block
+    title: Logo — Sidebar
+    attributes:
+      enabled: true
+      url: '#'
+      target: _self
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      height: Responsive particle test content for item 1.
+      link: true
+      svg: Responsive particle test content for item 1.
+      text: Responsive particle test content for item 1.
+      tagline: Responsive particle test content for item 1.
+      readmore_label: Responsive particle test content for item 1.
+      readmore_link: '#'
+      readmore_target: _self
+      readmore_class: particle-test-option
+      class: particle-test-option
+  openstreetmap-2110:
+    title: Openstreetmap — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      height: 400
+      tabletheight: 350
+      mobileheight: 300
+      latitude: '51.505'
+      longitude: '-0.09'
+      zoom: 13
+      style: standard
+      mousescroll: disable
+      dragging: enable
+      zoomcontrols: enable
+      attribution: enable
+      markercolor: '#e91e63'
+      locations:
+      - title: Nectarion Test Item 1
+        latitude: Responsive particle test content for item 1.
+        longitude: Responsive particle test content for item 1.
+        content: Responsive particle test content for item 1.
+        icon: genesis-media://demo/home/mainbar/img-02.jpg
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        latitude: Responsive particle test content for item 2.
+        longitude: Responsive particle test content for item 2.
+        content: Responsive particle test content for item 2.
+        icon: genesis-media://demo/home/mainbar/img-01.jpg
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        latitude: Responsive particle test content for item 3.
+        longitude: Responsive particle test content for item 3.
+        content: Responsive particle test content for item 3.
+        icon: genesis-media://demo/home/mainbar/img-02.jpg
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-openstreetmap
+  openstreetmap-2210:
+    title: Openstreetmap — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      height: 400
+      tabletheight: 350
+      mobileheight: 300
+      latitude: '51.505'
+      longitude: '-0.09'
+      zoom: 13
+      style: standard
+      mousescroll: disable
+      dragging: enable
+      zoomcontrols: enable
+      attribution: enable
+      markercolor: '#e91e63'
+      locations:
+      - title: Nectarion Test Item 1
+        latitude: Responsive particle test content for item 1.
+        longitude: Responsive particle test content for item 1.
+        content: Responsive particle test content for item 1.
+        icon: genesis-media://demo/home/mainbar/img-02.jpg
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        latitude: Responsive particle test content for item 2.
+        longitude: Responsive particle test content for item 2.
+        content: Responsive particle test content for item 2.
+        icon: genesis-media://demo/home/mainbar/img-01.jpg
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        latitude: Responsive particle test content for item 3.
+        longitude: Responsive particle test content for item 3.
+        content: Responsive particle test content for item 3.
+        icon: genesis-media://demo/home/mainbar/img-02.jpg
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-openstreetmap
+  progressbar-2111:
+    title: Progressbar — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      layout: stacked
+      height: 24
+      shape: rounded
+      trackcolor: '#e9ecef'
+      showpercentage: enable
+      animate: enable
+      duration: 1000
+      labelfont: Responsive particle test content for item 1.
+      labelfontsize: 14
+      labelcolor: '#222222'
+      progressbar:
+      - title: Initial Conceptual Design
+        progress: '80'
+        name: Item 1
+      - title: Wireframing and Structure
+        progress: '50'
+        name: Item 2
+      - title: User Interface Implementation
+        progress: '100'
+        name: Item 3
+      - title: Animation and Polish
+        progress: '75'
+        name: Item 4
+    block:
+      class: particle-test particle-test-progressbar
+  progressbar-2211:
+    title: Progressbar — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      layout: stacked
+      height: 24
+      shape: rounded
+      trackcolor: '#e9ecef'
+      showpercentage: enable
+      animate: enable
+      duration: 1000
+      labelfont: Responsive particle test content for item 1.
+      labelfontsize: 14
+      labelcolor: '#222222'
+      progressbar:
+      - title: Initial Conceptual Design
+        progress: '80'
+        name: Item 1
+      - title: Wireframing and Structure
+        progress: '50'
+        name: Item 2
+      - title: User Interface Implementation
+        progress: '100'
+        name: Item 3
+      - title: Animation and Polish
+        progress: '75'
+        name: Item 4
+    block:
+      class: particle-test particle-test-progressbar
+  soundcloud-2112:
+    title: Soundcloud — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      url: '#'
+      height: 166
+      color: '#ff5500'
+      autoplay: disable
+      hidecomments: disable
+      showuser: enable
+      showreposts: disable
+      visual: disable
+    block:
+      class: particle-test particle-test-soundcloud
+  soundcloud-2212:
+    title: Soundcloud — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      url: '#'
+      height: 166
+      color: '#ff5500'
+      autoplay: disable
+      hidecomments: disable
+      showuser: enable
+      showreposts: disable
+      visual: disable
+    block:
+      class: particle-test particle-test-soundcloud
+  tabimage-2113:
+    title: Tabimage — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      tabimages:
+      - title: Nectarion Test Item 1
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 1.
+        tag: Responsive particle test content for item 1.
+        subtag: Responsive particle test content for item 1.
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 2.
+        tag: Responsive particle test content for item 2.
+        subtag: Responsive particle test content for item 2.
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 3.
+        tag: Responsive particle test content for item 3.
+        subtag: Responsive particle test content for item 3.
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-tabimage
+  tabimage-2213:
+    title: Tabimage — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      tabimages:
+      - title: Nectarion Test Item 1
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 1.
+        tag: Responsive particle test content for item 1.
+        subtag: Responsive particle test content for item 1.
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 2.
+        tag: Responsive particle test content for item 2.
+        subtag: Responsive particle test content for item 2.
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        link: '#'
+        label: Learn More
+        text: Responsive particle test content for item 3.
+        tag: Responsive particle test content for item 3.
+        subtag: Responsive particle test content for item 3.
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-tabimage
+  timeline-2114:
+    title: Timeline — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Experience
+      alignment: alternate
+      linecolor: '#dddddd'
+      markercolor: '#3366ff'
+      datecolor: '#3366ff'
+      cardbackground: '#ffffff'
+      cardcolor: '#444444'
+      gap: 32
+      items:
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 1.
+        enddate: Responsive particle test content for item 1.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 1.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 1.
+        name: Test Item 1
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 2.
+        enddate: Responsive particle test content for item 2.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 2.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 2.
+        name: Test Item 2
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 3.
+        enddate: Responsive particle test content for item 3.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 3.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 3.
+        name: Test Item 3
+      timeline:
+      - subtitle: Template Designer
+        startyear: '2008'
+        endyear: '2009'
+        title: Dazzle Software
+      - subtitle: Senior Designer
+        startyear: '2009'
+        endyear: '2010'
+        title: Facebook Inc.
+      - subtitle: UI/UX Designer
+        startyear: '2010'
+        endyear: ''
+        title: Apple Inc.
+      - subtitle: Founder & CEO
+        startyear: '2010'
+        endyear: ''
+        title: Netflix Inc.
+      - subtitle: Senior Designer
+        startyear: '2012'
+        endyear: '2019'
+        title: Trilby Media
+      - subtitle: Founder & CEO
+        startyear: '2012'
+        endyear: '2019'
+        title: Google Inc.
+    block:
+      class: particle-test particle-test-timeline
+  timeline-2214:
+    title: Timeline — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Experience
+      alignment: alternate
+      linecolor: '#dddddd'
+      markercolor: '#3366ff'
+      datecolor: '#3366ff'
+      cardbackground: '#ffffff'
+      cardcolor: '#444444'
+      gap: 32
+      items:
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 1.
+        enddate: Responsive particle test content for item 1.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 1.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 1.
+        name: Test Item 1
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 2.
+        enddate: Responsive particle test content for item 2.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 2.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 2.
+        name: Test Item 2
+      - title: Timeline item
+        enabled: true
+        date: Responsive particle test content for item 3.
+        enddate: Responsive particle test content for item 3.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageshape: rounded
+        content: Responsive particle test content for item 3.
+        link: '#'
+        target: _self
+        subtitle: Responsive particle test content for item 3.
+        name: Test Item 3
+      timeline:
+      - subtitle: Template Designer
+        startyear: '2008'
+        endyear: '2009'
+        title: Dazzle Software
+      - subtitle: Senior Designer
+        startyear: '2009'
+        endyear: '2010'
+        title: Facebook Inc.
+      - subtitle: UI/UX Designer
+        startyear: '2010'
+        endyear: ''
+        title: Apple Inc.
+      - subtitle: Founder & CEO
+        startyear: '2010'
+        endyear: ''
+        title: Netflix Inc.
+      - subtitle: Senior Designer
+        startyear: '2012'
+        endyear: '2019'
+        title: Trilby Media
+      - subtitle: Founder & CEO
+        startyear: '2012'
+        endyear: '2019'
+        title: Google Inc.
+    block:
+      class: particle-test particle-test-timeline
+  advancedprogressbar-2300:
+    title: Advancedprogressbar — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      text: Progress
+      progress: 75
+      showpercentage: enable
+      type: primary
+      customcolor: '#3366ff'
+      trackcolor: '#e9ecef'
+      textcolor: '#ffffff'
+      height: 24
+      shape: rounded
+      striped: disable
+      animatedstripes: disable
+      animate: enable
+      duration: 1000
+    block:
+      class: particle-test particle-test-advancedprogressbar
+  articlesscroller-2301:
+    title: Articlesscroller — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      source: platform
+      layout: ticker
+      categories: Responsive particle test content for item 1.
+      articles: Responsive particle test content for item 1.
+      tags: Responsive particle test content for item 1.
+      limit: 12
+      orderby: date
+      ordering: DESC
+      showimage: enable
+      imagebackground: disable
+      showintro: enable
+      introlimit: 140
+      showcategory: enable
+      showdate: enable
+      showtime: disable
+      tickerheading: Breaking News
+      tickershape: arrow
+      scrollerlead: icon
+      scrollericon: fa fa-gamepad
+      scrollericonsize: 32
+      accentcolor: '#e91e63'
+      panelcolor: '#202025'
+      paneltextcolor: '#ffffff'
+      mutedcolor: '#aaaaaa'
+      imageheight: 320
+      gap: 24
+      scrollergap: 1
+      separatorcolor: rgba(255,255,255,0.7)
+      desktopitems: 3
+      tabletitems: 2
+      mobileitems: 1
+      move: 1
+      speed: 500
+      interval: 5000
+      autoplay: disable
+      touch: enable
+      arrows: enable
+      indicators: enable
+      alignment: left
+      items:
+      - title: Nectarion Test Item 1
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 1.
+        intro: Responsive particle test content for item 1.
+        date: Responsive particle test content for item 1.
+        category: Responsive particle test content for item 1.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 2.
+        intro: Responsive particle test content for item 2.
+        date: Responsive particle test content for item 2.
+        category: Responsive particle test content for item 2.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        link: '#'
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 3.
+        intro: Responsive particle test content for item 3.
+        date: Responsive particle test content for item 3.
+        category: Responsive particle test content for item 3.
+        categorylink: '#'
+        icon: fa fa-star
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-articlesscroller
+  button-2302:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      text: Button
+      link: '#'
+      target: _self
+      nofollow: false
+      download: disable
+      filename: Responsive particle test content for item 1.
+      arialabel: Responsive particle test content for item 1.
+      style: primary
+      appearance: flat
+      size: default
+      shape: rounded
+      fullwidth: disable
+      alignment: left
+      font: Responsive particle test content for item 1.
+      fontsize: 16
+      weight: '400'
+      padding: 8px 22px
+      icon: fa fa-star
+      iconposition: left
+      icongap: 8
+      color: '#ffffff'
+      background: '#3366ff'
+      bordercolor: '#3366ff'
+      hovercolor: '#ffffff'
+      hoverbackground: '#0037dd'
+      hoverbordercolor: '#0037dd'
+      label: Get a Quote
+    title: Button — Showcase
+    block:
+      class: particle-test particle-test-button
+  contentcarousel-2400:
+    title: Contentcarousel — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      height: 480
+      alignment: center
+      autoplay: enable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 5000
+      speed: 500
+      arrows: enable
+      bullets: enable
+      titlecolor: '#ffffff'
+      titlesize: 42
+      contentcolor: '#ffffff'
+      contentsize: 18
+      overlay: rgba(0,0,0,0.45)
+      slides:
+      - title: Nectarion Test Item 1
+        content: Responsive particle test content for item 1.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 1
+      - title: Nectarion Test Item 2
+        content: Responsive particle test content for item 2.
+        background: genesis-media://demo/home/mainbar/img-01.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 2
+      - title: Nectarion Test Item 3
+        content: Responsive particle test content for item 3.
+        background: genesis-media://demo/home/mainbar/img-02.jpg
+        buttontext: Learn More
+        buttonlink: '#'
+        buttonstyle: primary
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-contentcarousel
+  custom-2401:
+    title: Custom — Feature
+    attributes:
+      enabled: true
+      title: Nectarion Test Item 1
+      titletag: Responsive particle test content for item 1.
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Whooops! Error!</h2>\n\
+        \t<div class=\"g-layercontent-subtitle\">Looks like something went wrong. Sorry!</div>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: flush center
+  featuresslider-2402:
+    title: Featuresslider — Feature
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  heading-2403:
+    attributes:
+      enabled: true
+      class: ''
+      text: This is a heading
+      subtitle: particles
+      element: h3
+      link: '#'
+      target: _self
+      nofollow: false
+      font: Responsive particle test content for item 1.
+      fontsize: 32
+      tabletsize: 30
+      mobilesize: 26
+      lineheight: 1.2
+      letterspacing: 0
+      weight: '700'
+      transform: none
+      italic: normal
+      decoration: none
+      colortype: solid
+      color: '#222222'
+      gradientcolor: '#3366ff'
+      gradientangle: 90
+      textshadow: none
+      alignment: left
+      icon: fa fa-star
+      iconposition: before
+      iconcolor: '#222222'
+      iconsize: 28
+      icongap: 10
+      margin: '0'
+      padding: '0'
+      title: recent additions
+    title: Heading — Feature
+    block:
+      class: particle-test particle-test-heading

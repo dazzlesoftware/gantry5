@@ -1,0 +1,9 @@
+elara-theme:
+  title: 'Elara Theme'
+  description: 'Sample menu for Elara theme.'
+
+  items:
+    elara:
+      title: 'Home'
+      outline: home
+      home: 1

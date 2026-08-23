@@ -1,0 +1,9 @@
+nuclide-theme:
+  title: 'Nuclide Theme'
+  description: 'Sample menu for Nuclide theme.'
+
+  items:
+    nuclide:
+      title: 'Home'
+      outline: home
+      home: 1

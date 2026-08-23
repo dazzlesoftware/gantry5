@@ -1,0 +1,19 @@
+name: Footer Colors
+description: Footer colors for the Omicron theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#323337"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#9f9fa1"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://patterns/poly.png"

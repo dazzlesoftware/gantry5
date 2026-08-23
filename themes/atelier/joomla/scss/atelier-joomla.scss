@@ -1,0 +1,44 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+@import "dependencies";
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "atelier-joomla/styles/core";
+@import "atelier-joomla/styles/typography";
+@import "atelier-joomla/styles/forms";
+@import "atelier-joomla/styles/tabs";
+@import "atelier-joomla/styles/utilities";
+@import "atelier-joomla/particles/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Main
+@import "atelier-joomla/styles/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "atelier-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

@@ -1,0 +1,9 @@
+gryphon-theme:
+  title: 'Gryphon Theme'
+  description: 'Sample menu for Gryphon theme.'
+
+  items:
+    gryphon:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,1073 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1463006144
+layout:
+
+  /container-top/:
+    -
+      -
+        'topleft 2': {  }
+      -
+        'topmain 8':
+          -
+            - system-messages-9828
+      -
+        'topright 2': {  }
+  /container-header/:
+    -
+      -
+        'navigationleft 2':
+          -
+            - social-7220
+      -
+        'navigationmain 8':
+          -
+            - 'logo-5992 4'
+            - 'menu-7876 8'
+      -
+        'navigationright 2':
+          -
+            - position-position-7746
+    -
+      -
+        'headerleft 2': {  }
+      -
+        'headermain 8':
+          -
+            - 'custom-6075 8'
+            - 'swipercarousel-9683 4'
+      -
+        'headerright 2': {  }
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 2': {  }
+      -
+        'showcasemain 8':
+          -
+            - 'gridstatistic-6453 4'
+            - 'custom-7245 8'
+      -
+        'showcaseright 2': {  }
+  /container-slideshow/:
+    -
+      -
+        'slideshowleft 2': {  }
+      -
+        'slideshowmain 8':
+          -
+            - swipercarousel-6103
+      -
+        'slideshowright 2': {  }
+  /container-above/:
+    -
+      -
+        'aboveleft 2': {  }
+      -
+        'abovemain 8': {  }
+      -
+        'aboveright 2': {  }
+  /container-utility/:
+    -
+      -
+        'utilityleft 2': {  }
+      -
+        'utilitymain 8': {  }
+      -
+        'utilityright 2': {  }
+  /container-feature/:
+    -
+      -
+        'featureleft 2': {  }
+      -
+        'featuremain 8':
+          -
+            - bookblock-4028
+      -
+        'featureright 2': {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 8': {  }
+      -
+        'aside 2': {  }
+  /container-expanded/:
+    -
+      -
+        'expandedleft 2': {  }
+      -
+        'expandedmain 8': {  }
+      -
+        'expandedright 2': {  }
+  /container-extension/:
+    -
+      -
+        'extensionleft 2': {  }
+      -
+        'extensionmain 8': {  }
+      -
+        'extensionright 2': {  }
+  /container-bottom/:
+    -
+      -
+        'bottomleft 2': {  }
+      -
+        'bottommain 8':
+          -
+            - swipercarousel-7737
+          -
+            - 'spacer-4346 4'
+            - 'swipercarousel-6323 8'
+      -
+        'bottomright 2': {  }
+  /container-footer/:
+    -
+      -
+        'footerleft 2': {  }
+      -
+        'footermain 8':
+          -
+            - 'simplemenu-7117 7'
+            - 'social-2831 5'
+      -
+        'footerright 2': {  }
+  /container-copyright/:
+    -
+      -
+        'copyrightleft 2': {  }
+      -
+        'copyrightmain 8':
+          -
+            - 'logo-4776 2'
+            - 'custom-4604 10'
+          -
+            - 'spacer-9415 2'
+            - 'copyright-5748 10'
+      -
+        'copyrightright 2': {  }
+  offcanvas:
+    -
+      - mobile-menu-2702
+structure:
+  topleft:
+    type: section
+    subtype: aside
+    title: 'Top Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  topmain:
+    type: section
+    title: 'Top Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  topright:
+    type: section
+    subtype: aside
+    title: 'Top Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-top:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  navigationleft:
+    type: section
+    title: 'Navigation Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      variations: equal-height
+      fixed: '1'
+  navigationmain:
+    type: section
+    title: 'Navigation Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      variations: equal-height
+      fixed: '1'
+  navigationright:
+    type: section
+    title: 'Navigation Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      variations: equal-height
+      fixed: '1'
+  headerleft:
+    type: section
+    subtype: aside
+    title: 'Header Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  headermain:
+    type: section
+    subtype: header
+    title: 'Header Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  headerright:
+    type: section
+    subtype: aside
+    title: 'Header Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-header:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  showcaseleft:
+    type: section
+    subtype: aside
+    title: 'Showcase Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  showcasemain:
+    type: section
+    title: 'Showcase Main'
+    attributes:
+      class: fp-showcase
+    block:
+      class: g-middle-column
+      fixed: '1'
+  showcaseright:
+    type: section
+    subtype: aside
+    title: 'Showcase Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-showcase:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  slideshowleft:
+    type: section
+    subtype: aside
+    title: 'Slideshow Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  slideshowmain:
+    type: section
+    title: 'Slideshow Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  slideshowright:
+    type: section
+    subtype: aside
+    title: 'Slideshow Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-slideshow:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  aboveleft:
+    type: section
+    subtype: aside
+    title: 'Above Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  abovemain:
+    type: section
+    title: 'Above Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  aboveright:
+    type: section
+    subtype: aside
+    title: 'Above Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-above:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  utilityleft:
+    type: section
+    subtype: aside
+    title: 'Utility Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  utilitymain:
+    type: section
+    title: 'Utility Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  utilityright:
+    type: section
+    subtype: aside
+    title: 'Utility Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-utility:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  featureleft:
+    type: section
+    subtype: aside
+    title: 'Feature Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  featuremain:
+    type: section
+    title: 'Feature Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  featureright:
+    type: section
+    subtype: aside
+    title: 'Feature Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-feature:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  sidebar:
+    type: section
+    subtype: aside
+    block:
+      class: g-side-column
+      fixed: '1'
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    block:
+      class: g-middle-column
+      fixed: '1'
+  aside:
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: '3'
+  expandedleft:
+    type: section
+    subtype: aside
+    title: 'Expanded Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  expandedmain:
+    type: section
+    title: 'Expanded Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  expandedright:
+    type: section
+    subtype: aside
+    title: 'Expanded Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-expanded:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  extensionleft:
+    type: section
+    subtype: aside
+    title: 'Extension Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  extensionmain:
+    type: section
+    title: 'Extension Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  extensionright:
+    type: section
+    subtype: aside
+    title: 'Extension Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-extension:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  bottomleft:
+    type: section
+    subtype: aside
+    title: 'Bottom Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  bottommain:
+    type: section
+    title: 'Bottom Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  bottomright:
+    type: section
+    subtype: aside
+    title: 'Bottom Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-bottom:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  footerleft:
+    type: section
+    subtype: aside
+    title: 'Footer Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  footermain:
+    type: section
+    subtype: footer
+    title: 'Footer Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  footerright:
+    type: section
+    subtype: aside
+    title: 'Footer Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-footer:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyrightleft:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  copyrightmain:
+    type: section
+    title: 'Copyright Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  copyrightright:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-copyright:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+content:
+  menu-7876:
+    block:
+      variations: align-right
+  position-position-7746:
+    title: Search
+    attributes:
+      key: search
+    block:
+      class: 'hidden-phone hidden-tablet'
+      variations: box5
+  custom-6075:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h3 class=\"g-title\">Global Reports</h3>\n\n<h3 class=\"g-item-title\">\n<a href=\"#\">\n<strong>Create</strong>\na Professional Website\n</a>\n</h3>\n\n<div class=\"g-array-item-text\"> Citrine is an extremely versatile theme, perfect for modern content-driven websites. </div>\n\n<div class=\"g-array-item-text visible-tablet\"> <br>It features a uniquely flexible layout and a variety of well-designed particles to make your content shine. </div>"
+  swipercarousel-9683:
+    title: 'Swiper Carousel'
+    attributes:
+      title: Breaking
+      layout: showcase
+      nav: disabled
+      items:
+        -
+          image: 'genesis-media://demo/home/header/img-01.jpg'
+          icon: ''
+          title: Simple
+          subtitle: 'Experience the Simplicity of Using Genesis'
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Simple
+        -
+          image: 'genesis-media://demo/home/header/img-02.jpg'
+          icon: ''
+          title: Fast
+          subtitle: 'Citrine is PHP 7 Ready and Optimized for Speed'
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Fast
+        -
+          image: 'genesis-media://demo/home/header/img-03.jpg'
+          icon: ''
+          title: Versatile
+          subtitle: 'Citrine is Easily Customized to Meet Your Needs'
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Versatile
+    block:
+      class: 'nomarginleft nomarginbottom'
+      variations: nopaddingall
+  gridstatistic-6453:
+    title: 'This Month'
+    attributes:
+      class: fp-showcase-statistics
+      title: 'This Month'
+      cols: g-gridstatistic-1cols
+      gridstatisticitems:
+        -
+          text1: '32'
+          icon: 'fa fa-newspaper-o'
+          text2: 'New Articles'
+          title: 'New item'
+        -
+          text1: '10'
+          icon: 'fa fa-graduation-cap'
+          text2: 'New Authors'
+          title: 'New item'
+    block:
+      class: fp-showcase-left
+      variations: title-center
+  custom-7245:
+    title: 'This Week'
+    attributes:
+      html: "<div class=\"moduletable\">\n    <h3 class=\"g-title\">This Week</h3>\n    <div class=\"g-particle\">\n        <div class=\"g-content-array\">\n\n            <div class=\"row g-grid\">\n                <div class=\"col g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-01.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Quickly Select and Change Colors with the Color Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Take advantage of the uniquely powerful Genesis Color Picker and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row g-grid\">\n                <div class=\"col g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-02.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Find the Right Icon in a Snap with Genesis’s Icon Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Font Awesome icons are awesome, and they’re supported natively in Citrine. Use Genesis’s powerful Icon Picker to easily add icons to menus, particles, and more.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row g-grid\">\n                <div class=\"col g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-03.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\">Choose the Right Font in Seconds with Genesis’s Font Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Want to pick the perfect font for your content? Select from hundreds of fonts in the Google Font Library with Genesis’s Font Picker. Powered by Genesis.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n</div>\n"
+      twig: '0'
+      filter: '1'
+    block:
+      class: fp-showcase-right
+      variations: title-center
+  swipercarousel-6103:
+    title: 'Swiper Carousel'
+    attributes:
+      displayitems: '3'
+      items:
+        -
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          icon: ''
+          title: 'Built for Screens Big and Small'
+          subtitle: Responsive
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Responsive
+        -
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
+          icon: ''
+          title: 'Clean Design that Focuses on Content'
+          subtitle: Modern
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Modern
+        -
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
+          icon: ''
+          title: 'Choose From Six Premium Color Presets'
+          subtitle: Colorful
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Colorful
+        -
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          icon: ''
+          title: 'Built for Screens Big and Small'
+          subtitle: Responsive
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Responsive
+        -
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
+          icon: ''
+          title: 'Clean Design that Focuses on Content'
+          subtitle: Modern
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Modern
+        -
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
+          icon: ''
+          title: 'Choose From Six Premium Color Presets'
+          subtitle: Colorful
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Colorful
+  bookblock-4028:
+    title: BookBlock
+    attributes:
+      items:
+        -
+          category: 'Brilliant Framework'
+          intro: 'Citrine is a modern, professional theme that combines simplicity and elegance.'
+          content: "<p>Whether you’re building a website for your personal portfolio, or a large corporation, Citrine has you covered. It features a range of beautifully-designed particles that bring out the best in your content.</p>\n\n<p>Want to integrate your CMS content into your site without having to deal with the hassles of setting up modules? Genesis’s powerful particles make it easy to bring content directly from Joomla to your front page with drag-and-drop simplicity.</p>"
+          readmore: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          readmoreclass: 'button fa fa-chevron-circle-right'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          imagetitle: Powerful
+          imagedesc: 'Save countless hours of development time with Citrine, a perfect choice for professionals, corporations, and content-driven sites.'
+          title: 'Professional Websites Made Easy'
+        -
+          category: 'Latest Particle'
+          intro: 'This clever book-style particle presents your content in an engaging way.'
+          content: "<p>The BookBlock particle is a great way to feature your most important content that behaves like a book as it transitions from one piece of content to another. You can add images, pick out a specific quote and display it, and pull content directly from the CMS.</p>\n\n<p>This particle is incredibly engaging. It breaks free of traditional slideshow-style content navigation, ensuring that your site stands out without sacrificing in clean, modern simplicity your visitors have come to expect.</p>"
+          readmore: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          readmoreclass: 'button fa fa-chevron-circle-right'
+          image: 'genesis-media://demo/home/feature/img-02.jpg'
+          imagetitle: Powerful
+          imagedesc: 'Save countless hours of development time with Citrine, a perfect choice for professionals, corporations, and content-driven sites.'
+          title: 'Display Your Content Your Way with BookBlock'
+        -
+          category: 'Great Flexibility'
+          intro: 'The Swiper Carousel particle set is a brilliant way to display your visually-rich content. '
+          content: "<p>It is a fully responsive and touch optimized particle, easily configured in the back end. Use it to display your latest headlines and make it easier for your visitors to find what they need.</p>\n\n<p>There are several different particles available in Citrine powered by Swiper Carousel. These include content lists with image headings, popular image sliders with text overlays, and simple - yet gorgeous - image sliders that make it easy to display and navigate through multiple thumbnails at once.</p>"
+          readmore: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          readmoreclass: 'button fa fa-chevron-circle-right'
+          image: 'genesis-media://demo/home/feature/img-03.jpg'
+          imagetitle: Powerful
+          imagedesc: 'Save countless hours of development time with Citrine, a perfect choice for professionals, corporations, and content-driven sites.'
+          title: 'Swiper Carousel'
+    block:
+      variations: box5
+  swipercarousel-7737:
+    title: 'Swiper Carousel'
+    attributes:
+      layout: newsslider
+      items:
+        -
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
+          icon: 'fa fa-compass'
+          title: 'Menu Dropdown'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Navigate and organize your site’s menu and submenus with this elegantly-designed menu dropdown, configurable and highly expandable from the Genesis administrator.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Menu Dropdown'
+        -
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
+          icon: 'fa fa-cog'
+          title: 'Unlimited Positions'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Do you love module positions? You can create as many as you want, horizontally or vertically, within each section. Each position is created with drag-and-drop simplicity.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Unlimited Positions'
+        -
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
+          icon: 'fa fa-cubes'
+          title: 'Block Variations'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Quickly adjust the look of a section or content block with an easy-to-navigate list of preset block variations to choose from. Pick one, or pick several in seconds.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Block Variations'
+        -
+          image: 'genesis-media://demo/home/bottom/img-04.jpg'
+          icon: 'fa fa-coffee'
+          title: 'Multiple Presets'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'We have carefully configured six gorgeous color presets for you to switch between with a single slick. Want to configure your own color scheme? Don’t worry, that’s easy, too!'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Multiple Presets'
+        -
+          image: 'genesis-media://demo/home/bottom/img-05.jpg'
+          icon: 'fa fa-eye'
+          title: 'Responsive Layout'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Citrine is built from the ground up to look as good on a mobile phone as it does on a large desktop monitor. Customize which content appears on different screen types!'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Responsive Layout'
+        -
+          image: 'genesis-media://demo/home/bottom/img-06.jpg'
+          icon: 'fa fa-envelope-o'
+          title: 'Custom Typography'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Buttons, backgrounds, and more are available to you virtually anywhere you need them. Create a highlighted area of text to draw attention to important information, and more!'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Custom Typography'
+        -
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
+          icon: 'fa fa-building-o'
+          title: 'Menu Editor'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'Customizing your menus has never been easier. Citrine’s Menu Editor is simple to use, and powerful. Insert modules, particles, and icons with drag-and-drop simplicity.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Menu Editor'
+        -
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
+          icon: 'fa fa-align-justify'
+          title: 'Layout Manager'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'You don’t have to know how to code to create a unique layout for your site. Change virtually everything about your site’s layout in seconds with the Layout Manager.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Layout Manager'
+        -
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
+          icon: 'fa fa-angle-double-right'
+          title: 'Easy Settings'
+          subtitle: Heading
+          author: 'Grace Kelly'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
+          desc: 'If you can navigate a webpage, you can configure Citrine. The Genesis framework it is built on was built from the ground up to be quick, easy, and remarkably powerful.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Easy Settings'
+    block:
+      variations: nopaddingall
+  swipercarousel-6323:
+    title: 'Swiper Carousel'
+    attributes:
+      displayitems: '6'
+      prevText: '<i class="fa fa-chevron-left" aria-hidden="true"></i>'
+      nextText: '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+      items:
+        -
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+        -
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+        -
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+        -
+          image: 'genesis-media://demo/home/bottom/img-04.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+        -
+          image: 'genesis-media://demo/home/bottom/img-05.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+        -
+          image: 'genesis-media://demo/home/bottom/img-06.jpg'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'New item'
+    block:
+      class: g-bottom-aligned
+  simplemenu-7117:
+    title: 'Simple Menu'
+    attributes:
+      cols: '3'
+      items:
+        -
+          text: 'About Us'
+          link: '#'
+          target: _blank
+          name: 'About Us'
+        -
+          text: Team
+          link: '#'
+          target: _blank
+          name: Team
+        -
+          text: Blog
+          link: '#'
+          target: _blank
+          name: Blog
+        -
+          text: Advertise
+          link: '#'
+          target: _blank
+          name: Advertise
+        -
+          text: Privacy
+          link: '#'
+          target: _blank
+          name: Privacy
+        -
+          text: Terms
+          link: '#'
+          target: _blank
+          name: Terms
+        -
+          text: Contacts
+          link: '#'
+          target: _blank
+          name: Contacts
+        -
+          text: Jobs
+          link: '#'
+          target: _blank
+          name: Jobs
+    block:
+      class: nopaddingleft
+  social-2831:
+    block:
+      class: nopaddingright
+      variations: align-right
+  logo-4776:
+    title: 'Logo / Image'
+    block:
+      class: nopaddingleft
+  custom-4604:
+    title: 'Custom HTML'
+    attributes:
+      html: 'All demo content is for sample purposes only, intended to represent a live site. Please use the RocketLauncher to install an equivalent of the demo, all images will be replaced with sample images.'
+    block:
+      class: nopaddingright
+  copyright-5748:
+    block:
+      class: 'nopaddingright g-copyright nopaddingtop nomargintop'
+  mobile-menu-2702:
+    title: 'Mobile Menu'
+    block:
+      class: offsidebarmenu

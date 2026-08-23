@@ -1,0 +1,24 @@
+enabled: '1'
+class: ''
+target: _parent
+items:
+  -
+    text: Features
+    link: 'https://codex.dazzlecms.org/basics/key-features'
+    name: Features
+  -
+    text: 'Genesis'
+    link: 'https://dazzlecms.org/'
+    name: 'Genesis'
+  -
+    text: Particles
+    link: 'https://codex.dazzlecms.org/particles'
+    name: Particles
+  -
+    text: Download
+    link: 'https://dazzlesoftware.org/joomla/templates/nectarion'
+    name: Download
+  -
+    text: Support
+    link: 'https://dazzlesoftware.org/forum/joomla-template-nectarion'
+    name: Support

@@ -1,0 +1,46 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+@import "dependencies";
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "cadence-joomla/styles/core";
+@import "cadence-joomla/styles/typography";
+@import "cadence-joomla/styles/forms";
+@import "cadence-joomla/styles/tabs";
+@import "cadence-joomla/styles/utilities";
+@import "cadence-joomla/particles/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Showcase
+@import "cadence-joomla/styles/showcase";
+// Main
+@import "cadence-joomla/styles/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "cadence-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

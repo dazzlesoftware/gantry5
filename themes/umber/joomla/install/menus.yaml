@@ -1,0 +1,9 @@
+umber-theme:
+  title: 'Umber Theme'
+  description: 'Sample menu for Umber theme.'
+
+  items:
+    umber:
+      title: 'Home'
+      outline: home
+      home: 1

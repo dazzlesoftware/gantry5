@@ -1,0 +1,316 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1451342625
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-7172
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 3'
+      - 'menu-1283 9'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - 'position-position-7051 6'
+      - 'position-position-9641 6'
+  /above/:
+    -
+      - 'position-position-4422 6'
+      - 'position-position-5693 6'
+    -
+      - 'position-position-9262 6'
+      - 'position-position-6700 6'
+  /showcase/:
+    -
+      - position-position-9435
+    -
+      - position-position-3114
+  /utility/:
+    -
+      - position-position-5239
+    -
+      - position-position-1849
+    -
+      - position-position-5345
+  /feature/:
+    -
+      - position-position-7980
+    -
+      - position-position-9223
+  /container-4448/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7': {  }
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - position-position-6429
+  /extension/:
+    -
+      - 'position-position-4583 6'
+      - 'position-position-5009 6'
+  /bottom/:
+    -
+      - position-position-5600
+  /footer/:
+    -
+      - 'logo-7113 4'
+      - 'horizontalmenu-5815 5'
+      - 'social-2396 4'
+  /copyright/:
+    -
+      - 'copyright-5748 6'
+      - 'horizontalmenu-4834 6'
+    -
+      - totop-6544
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+content:
+  social-7172:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  logo-5992:
+    title: 'Logo / Image'
+  position-position-6661:
+    title: 'FP Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: fp-slideshow-a
+  position-position-7051:
+    title: 'FP Header A'
+    attributes:
+      key: header-a
+    block:
+      class: fp-header-a
+  position-position-9641:
+    title: 'FP Header B'
+    attributes:
+      key: header-b
+    block:
+      class: fp-header-b
+  position-position-4422:
+    title: 'FP Above A'
+    attributes:
+      key: above-a
+    block:
+      class: fp-above-a
+  position-position-5693:
+    title: 'FP Above B'
+    attributes:
+      key: above-b
+    block:
+      class: fp-above-b
+  position-position-9262:
+    title: 'FP Above C'
+    attributes:
+      key: above-c
+    block:
+      class: fp-above-c
+  position-position-6700:
+    title: 'FP Above D'
+    attributes:
+      key: above-d
+    block:
+      class: fp-above-d
+  position-position-9435:
+    title: 'FP Showcase A'
+    attributes:
+      key: showcase-a
+    block:
+      class: fp-showcase-a
+  position-position-3114:
+    title: 'FP Showcase B'
+    attributes:
+      key: showcase-b
+    block:
+      class: fp-showcase-b
+  position-position-5239:
+    title: 'FP Utility A'
+    attributes:
+      key: utility-a
+    block:
+      class: fp-utility-a
+  position-position-1849:
+    title: 'FP Utility B'
+    attributes:
+      key: utility-b
+    block:
+      class: fp-utility-b
+  position-position-5345:
+    title: 'FP Utility C'
+    attributes:
+      key: utility-c
+    block:
+      class: fp-utility-c
+  position-position-7980:
+    title: 'FP Feature A'
+    attributes:
+      key: feature-a
+    block:
+      class: fp-feature-a
+  position-position-9223:
+    title: 'FP Feature B'
+    attributes:
+      key: feature-b
+    block:
+      class: fp-feature-b
+  position-position-6429:
+    title: 'FP Expanded A'
+    attributes:
+      key: expanded-a
+    block:
+      class: fp-expanded-a
+  position-position-4583:
+    title: 'FP Extension A'
+    attributes:
+      key: extension-a
+    block:
+      class: fp-extension-a
+  position-position-5009:
+    title: 'FP Extension B'
+    attributes:
+      key: extension-b
+    block:
+      class: fp-extension-b
+  position-position-5600:
+    title: 'FP Bottom A'
+    attributes:
+      key: bottom-a
+    block:
+      class: fp-bottom-a
+  logo-7113:
+    title: 'Footer Logo'
+  horizontalmenu-5815:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'https://codex.dazzlecms.org/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Support
+        -
+          text: Download
+          link: 'https://dazzlesoftware.org/joomla/templates/altairis'
+          name: Download
+  social-2396:
+    title: 'Footer Social Icons'
+  horizontalmenu-4834:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/altairis'
+          name: Docs
+        -
+          text: Guides
+          link: 'https://codex.dazzlecms.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://dazzlesoftware.org/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Forum
+  totop-6544:
+    title: 'To Top'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

@@ -1,0 +1,24 @@
+name: Header Styles
+description: Header styles for the Altairis theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#282828"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"
+    background-text:
+      type: input.text
+      label: Background Text
+      description: Set background text
+      default: "Genesis"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/header/img-01.jpg"

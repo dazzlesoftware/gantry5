@@ -1,0 +1,46 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+@import "dependencies";
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "borealis-joomla/styles/core";
+@import "borealis-joomla/styles/typography";
+@import "borealis-joomla/styles/forms";
+@import "borealis-joomla/styles/tabs";
+@import "borealis-joomla/styles/utilities";
+@import "borealis-joomla/particles/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Showcase
+@import "borealis-joomla/styles/showcase";
+// Main
+@import "borealis-joomla/styles/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "borealis-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

@@ -1,0 +1,9 @@
+summit-theme:
+  title: 'Summit Theme'
+  description: 'Sample menu for Summit theme.'
+
+  items:
+    summit:
+      title: 'Home'
+      outline: home
+      home: 1

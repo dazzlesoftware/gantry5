@@ -1,0 +1,9 @@
+krypton-theme:
+  title: 'Krypton Theme'
+  description: 'Sample menu for Krypton theme.'
+
+  items:
+    krypton:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,15 @@
+name: Accent Colors
+description: Accent colors for the Vortex theme
+type: core
+
+form:
+  fields:
+
+    color-1:
+      type: input.colorpicker
+      label: Accent Color 1
+      default: "#7b00f7"
+    color-2:
+      type: input.colorpicker
+      label: Accent Color 2
+      default: "#ffe6a3"

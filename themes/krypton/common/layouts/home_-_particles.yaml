@@ -1,0 +1,872 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1448957599
+layout:
+  /overlay/:
+    -
+      - promocontent-2765
+    -
+      - 'pricingtable-9113 4'
+      - 'pricingtable-4601 4'
+      - 'pricingtable-9543 4'
+  /top/:
+    -
+      - system-messages-1931
+    -
+      - 'logo-9976 6'
+      - 'overlaytoggle-8248 4'
+      - 'social-4445 2'
+  /navigation/:
+    -
+      - menu-8681
+  /header/:
+    -
+      - flexslider-5516
+  /above/:
+    -
+      - newsticker-9686
+  /showcase/:
+    -
+      - popupgrid-3411
+  /utility/:
+    -
+      - flexslider-9502
+  /feature/:
+    -
+      - imagegrid-2896
+  /container-4448/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7': {  }
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - newsslider-1884
+  /extension/:
+    -
+      - 'chartist-9265 4'
+      - 'chartist-3967 4'
+      - 'chartist-4222 4'
+  /bottom/:
+    -
+      - testimonial-3968
+    -
+      - promocontent-7299
+  /footer/:
+    -
+      - 'infolist-8208 3'
+      - 'infolist-3306 3'
+      - 'custom-2356 3'
+      - 'newsletter-3707 3'
+  /copyright/:
+    -
+      - 'branding-6288 4'
+      - 'copyright-4648 4'
+      - 'totop-3618 4'
+  offcanvas:
+    -
+      - mobile-menu-7582
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  footer:
+    attributes:
+      boxed: '1'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+content:
+  promocontent-2765:
+    title: 'Pricing Table Particle'
+    attributes:
+      title: 'Pricing Table Particle'
+      desc: 'Quickly drive clicks-and-mortar catalysts for change'
+    block:
+      class: fp-overlay-top
+  pricingtable-9113:
+    title: Basic
+    attributes:
+      icon: 'fa fa-anchor fa-fw fa-3x'
+      columntitle: Basic
+      columnsubtitle: 'Standard Compliant Channels'
+      price: $50
+      desc: 'Completely synergize resource taxing relationships via premier market'
+      buttontext: 'Sign Up'
+      buttonlink: '#'
+      buttontarget: _self
+      buttonclass: button-2
+      items:
+        -
+          text: '1 GB of space'
+          title: '1 GB of space'
+        -
+          text: 'Support at $25/hour'
+          title: 'Support at $25/hour'
+  pricingtable-4601:
+    title: Premium
+    attributes:
+      icon: 'fa fa-anchor fa-fw fa-3x'
+      columntitle: Premium
+      columnsubtitle: 'Standard Compliant Channels'
+      price: $100
+      desc: 'Completely synergize resource taxing relationships via premier market'
+      buttontext: 'Sign Up'
+      buttonlink: '#'
+      buttontarget: _self
+      buttonclass: button-2
+      items:
+        -
+          text: '10 GB of space'
+          title: '10 GB of space'
+        -
+          text: 'Support at $15/hour'
+          title: 'Support at $15/hour'
+  pricingtable-9543:
+    title: Platinum
+    attributes:
+      icon: 'fa fa-anchor fa-fw fa-3x'
+      columntitle: Platinum
+      columnsubtitle: 'Standard Compliant Channels'
+      price: $250
+      desc: 'Completely synergize resource taxing relationships via premier market'
+      buttontext: 'Sign Up'
+      buttonlink: '#'
+      buttontarget: _self
+      buttonclass: button-2
+      items:
+        -
+          text: '30 GB of space'
+          title: '30 GB of space'
+        -
+          text: 'Support at $5/hour'
+          title: 'Support at $5/hour'
+  overlaytoggle-8248:
+    title: 'Pricing Information'
+    attributes:
+      menutext: 'Pricing Information'
+    block:
+      class: fp-top-a
+  social-4445:
+    block:
+      class: fp-top-b
+  flexslider-5516:
+    title: 'Header Flexslider'
+    attributes:
+      class: fp-flexslider-slideshow
+      autoplaySpeed: '5000'
+      items:
+        -
+          image: 'genesis-media://demo/home/header/img-01.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'Sky is the limit'
+          desc: 'Krypton is an excellent example of precision design, with refined elements and structures to combine vibrancy, elegant and flexible within one entity.'
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 01'
+        -
+          image: 'genesis-media://demo/home/header/img-01.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'Genesis Framework'
+          desc: 'The next generation in template configuration, customization and development. Genesis offers advanced and intuitive features.'
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 02'
+        -
+          image: 'genesis-media://demo/home/header/img-01.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'MegaMenu Support'
+          desc: 'The built in menu has multiple column and inline position/particle support, alongside a powerful drag & drop menu editor.'
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 03'
+    block:
+      class: fp-header-a
+  newsticker-9686:
+    title: Newsflash
+    attributes:
+      label: 'Newsflash:'
+      items:
+        -
+          content: 'Introducing the News Ticker particle, perfect for content snippets'
+          readmoretext: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          title: 'Introducing the News Ticker particle, perfect for content snippets'
+        -
+          content: 'Take advantage of the Popup Module, such as for site login'
+          readmoretext: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          title: 'Take advantage of the Popup Module, such as for site login'
+        -
+          content: 'Show data with Chartist for stylistic and animatied graphical charts'
+          readmoretext: 'Read More'
+          readmorelink: '#'
+          readmoretarget: _self
+          title: 'Show data with Chartist for stylistic and animatied graphical charts'
+  popupgrid-3411:
+    title: 'Showcase Popup Grid'
+    attributes:
+      items:
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x920.jpg'
+          width: 393px
+          datasize: 460x920
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Slider
+          desc: 'Krypton features a range of new interactive particles, including the News Slider particle, displayed below, with content previews in a continually scrolling side panel.'
+          animations: g-zoom
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Display volumes of content with the News Slider particle'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x280.jpg'
+          width: 393px
+          datasize: 460x280
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Charts
+          desc: 'Krypton features a range of new interactive particles, including the Chartist particle, demoed below, and is for presenting charts such as bar graphs.'
+          animations: 'g-zoom g-rotate'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Present data with stylish and animated graphs with Chartist'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
+          width: 393px
+          datasize: 460x460
+          overlay: g-overlay-disable
+          previewicon: ''
+          tag: Table
+          desc: 'Krypton features a range of new interactive particles, including the Tables particle, displayed in the popup above, which can be placed side by side for data comparison.'
+          animations: 'g-zoom g-blur'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'A custom styled table particle for content in singular columns'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
+          width: 393px
+          datasize: 460x460
+          overlay: g-overlay-disable
+          previewicon: ''
+          tag: Popup
+          desc: 'Krypton features a range of interactive particles, including the Popup Grid particle, which this content forms part of its demo, and is modal enhanced, alongside its mosaic grid structure.'
+          animations: 'g-zoom g-grayscale'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'An interactive mosaic structure for images and popup content'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
+          width: 393px
+          datasize: 460x460
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Menu
+          desc: 'Genesis features MegaMenu support with dropdowns, a mobile menu, drag & drop, multiple columns and inline positions/particles. All can be configured through the intuitive Menu Editor.'
+          animations: g-zoom
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Create beautiful and complex dropdowns with Genesis'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x960.jpg'
+          width: 393px
+          datasize: 460x960
+          overlay: g-overlay-disable
+          previewicon: ''
+          tag: Rotate
+          desc: 'Krypton features a range of interactive particles, including FlexSlider, which is demoed with varying layouts on this page, and is designed as a image, content or hybrid slideshow.'
+          animations: g-zoom
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'FlexSlider is a versatile slideshow particle with multiple layouts'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x280.jpg'
+          width: 393px
+          datasize: 460x280
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Social
+          desc: 'Krypton features a range of interactive particles, including Social, which shows FontAwesome based social media icons.'
+          animations: g-zoom
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Quick and easy display of social media icons such as Twitter'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x620.jpg'
+          width: 393px
+          datasize: 460x620
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Width
+          desc: 'Genesis provides section by section support for the responsive width types, whether fixed width intervals, or completely fluid, as well as boxed options for wrapped or unwrapped styling.'
+          animations: g-zoom
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Genesis supports both fluid and fixed responsive options'
+        -
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
+          width: 393px
+          datasize: 460x460
+          overlay: g-overlay-enable
+          previewicon: 'fa fa-search-plus fa-fw fa-2x'
+          tag: Offcanvas
+          desc: 'Offcanvas is designed as a dedicated area for mobile, such as the mobile menu, plus any other positions or particles you wish to place within it.'
+          animations: 'g-zoom g-blur g-rotate'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Offcanvas provides a dedicated panel for mobile specific elements'
+    block:
+      class: fp-showcase-a
+  flexslider-9502:
+    title: 'Utility FlexSlider'
+    attributes:
+      layout: testimonial
+      showcaseThumbWidth: '150'
+      autoplay: '1'
+      autoplaySpeed: '5000'
+      pauseOnHover: '1'
+      items:
+        -
+          image: ''
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'Genesis Controls'
+          desc: 'The Styles panel allows you to choose and individually configure the six preset style variations, section by section.'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
+          testimonialName: 'Taylor Forest'
+          testimonialPosition: 'Founder &amp; CEO'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 01'
+        -
+          image: ''
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'Genesis Controls'
+          desc: 'The Settings panel allows you to configure default values for the integrated particles and position parameters.'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
+          testimonialName: 'Ruth Mellanie'
+          testimonialPosition: Designer
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 02'
+        -
+          image: ''
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          title: 'Genesis Controls'
+          desc: 'The Pages Settings panel provides you options to control structural elements such as the head and body areas.'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
+          testimonialName: 'Logan Moore'
+          testimonialPosition: Developer
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 03'
+    block:
+      class: fp-utility-a
+  imagegrid-2896:
+    title: 'Feature Image Grid'
+    attributes:
+      cols: g-imagegrid-5cols
+      album: 'Lightcase Image Grid'
+      imagegriditems:
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Multiple columns available for menu dropdowns'
+          title: 'Item 01'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Insert positions or particles inside dropdown menus'
+          title: 'Item 02'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Built in mobile menu for intuitive navigation'
+          title: 'Item 03'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'A responsive layout for mobiles, tablets, laptops and desktops'
+          title: 'Item 04'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Many prebuilt particles for complex content creation'
+          title: 'Item 05'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Built using SASS for programmable stylesheets'
+          title: 'Item 06'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Built with Twig -  a PHP template engine'
+          title: 'Item 07'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Configurations are stored in a human readable YAML format'
+          title: 'Item 08'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Packaged with six preset style variations'
+          title: 'Item 09'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'A drag and drop layout manager'
+          title: 'Item 10'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Interactive controls for configuring styles'
+          title: 'Item 11'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Extensive documentation for both Genesis and Krypton'
+          title: 'Item 12'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Core Genesis caching to maximise performance'
+          title: 'Item 13'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'The RokBox plugin provides popup modal support'
+          title: 'Item 14'
+        -
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
+          caption: 'Cross browser compatible'
+          title: 'Item 15'
+    block:
+      class: fp-feature-a
+  newsslider-1884:
+    title: 'News Slider'
+    attributes:
+      height: 500px
+      items:
+        -
+          subtitle: 'For Joomla & WordPress'
+          headerdesc: 'The latest version of the framework is a ground-up rewrite, focusing on performance and intuitive features'
+          desc: 'Genesis offers several new features, for both end users and developers, such as the drag & drop interface for both the Layout Manager and Menu Editor. Alongside are powerful development features, such as Twig, YAML, SASS and extensive overridability.'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'The Genesis Framework is the powerhouse behind the Krypton template'
+        -
+          subtitle: 'Swift and Easy Layouts'
+          headerdesc: 'The Drag & Drop facility in the Layout Manager provides an intuitive interface for configuring the site structure'
+          desc: 'The Layout Manager features a sidebar with all the available particles listed, as well as module positions or instances. You can drag these into the main layout interface, where you can reorder, resize and individually configure.'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'The Layout Manager allows for complex structures to be created easily'
+        -
+          subtitle: 'MegaMenu Support'
+          headerdesc: 'The Genesis menu can handle singular or multiple column dropdowns alongside inline blocks'
+          desc: 'The Menu Editor also features Drag & Drop functionality, allowing for particles, module positions or module instances to be easily placed within the menu structure. Reorder and individually configure from this interface.'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'The advanced built-in menu provides for intricate dropdowns with mobile support'
+        -
+          subtitle: 'Creative Content Solutions'
+          headerdesc: 'Particles are a key feature of the Genesis Framework providing additional functionality to content'
+          desc: 'Particles are self contained blocks, with their own configuration, with dynamic interactive options such as collection lists, allowing for infinite sub parameters for a control item, image pickers and auto complete forms.'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'A diverse and numerous selection of particles to facilitate creative content'
+        -
+          subtitle: Development
+          headerdesc: 'Genesis utilizes key contemporary technologies to deliver performance and intuitive elements'
+          desc: 'SASS is a preprocessing language for CSS to maximise stylesheet development. Twig is a templating engine for PHP, for more dynamic PHP coding. YAML is a human readable format, ideal for storing configuration data.'
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-2
+          title: 'Extensive use of development features such as SASS, Twig and YAML'
+    block:
+      class: fp-expanded-a
+  chartist-9265:
+    title: 'Line Chart'
+    attributes:
+      class: title-center
+      title: 'Line Chart'
+      type: line
+      labelsData: '''1'', ''2'', ''3'', ''4'', ''5'', ''6'', ''7'', ''8'', ''9'', ''10'', ''11'', ''12'''
+      seriesData: "[12, 9, 7, 8, 5, 4, 6, 2, 3, 3, 4, 6],\n[4,  5, 3, 7, 3, 5, 5, 3, 4, 4, 5, 5],\n[5,  3, 4, 5, 6, 3, 3, 4, 5, 6, 3, 4]"
+    block:
+      class: fp-extension-a
+  chartist-3967:
+    title: 'Bar Chart'
+    attributes:
+      class: title-center
+      title: 'Bar Chart'
+      type: bar
+      labelsData: '''Term 1'', ''Term 2'', ''Term 3'', ''Term 4'''
+      seriesData: "[5, 4, 3, 7],\n[3, 2, 9, 5],\n[1, 5, 8, 4]"
+    block:
+      class: fp-extension-b
+  chartist-4222:
+    title: 'Pie Chart'
+    attributes:
+      class: title-center
+      title: 'Pie Chart'
+      type: pie
+      labelsData: '''30'','' 35'', ''50'', ''35'', ''45'''
+      seriesData: '[''CSS'', ''PHP'', ''jQuery'', ''Twig'', ''SCSS'']'
+    block:
+      class: fp-extension-c
+  testimonial-3968:
+    attributes:
+      cols: g-3cols
+      testimonials:
+        -
+          style: g-testimonial-standard
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
+          content: 'Install the RocketLauncher onto your server, to get a near equivalent copy of the demo, to help understand how Krypton is configured.'
+          author: 'Jeffrey Beck'
+          company: 'Creative Director'
+          companyurl: ''
+          title: 'Item 01'
+        -
+          style: g-testimonial-standard
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
+          content: 'Genesis is a free template framework from Dazzle Software, that is made available with the templates, as well as from GitHub.'
+          author: 'Emily Hudson'
+          company: 'Community Manager'
+          companyurl: ''
+          title: 'Item 02'
+        -
+          style: g-testimonial-standard
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
+          content: 'The theme supports all major browsers and uses the latest technologies to deliver its features across multiple devices, such as mobiles.'
+          author: 'Benjamin Morrison'
+          company: 'CEO & Founder'
+          companyurl: ''
+          title: 'Item 03'
+  promocontent-7299:
+    title: 'Promo Content'
+    attributes:
+      promostyle: promo
+      promo: 'We Are Hiring!'
+      desc: "<span class=\"hidden-tablet\">You think you have what it takes to work with us?</span>\n<span class=\"visible-tablet\">Work with us?</span>"
+      readmore: 'Apply for the job'
+      readmoreclass: button-2
+      link: '#'
+      linkstyle: aside
+    block:
+      class: fp-bottom-b
+  infolist-8208:
+    title: 'Useful Links'
+    attributes:
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Styles
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Pages
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: FAQ
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+    block:
+      class: fp-footer-a
+  infolist-3306:
+    title: Elsewhere
+    attributes:
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://www.facebook.com/Dazzle Software'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://www.youtube.com/user/Dazzle Software'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://www.twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Delicious
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://tookapic.com'
+          icon: ''
+          readmoreclass: ''
+          title: Tookapic
+    block:
+      class: fp-footer-b
+  custom-2356:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"moduletable \">\n\t<h3 class=\"g-title\">About</h3>\n\t<p>All demo content is for sample purposes only, to represent a live site.</p>\n\t<p><span class=\"hidden-tablet\">Note: Krypton is built on the latest version of the Genesis Framework.</span></p>\t\t\n</div>"
+    block:
+      class: fp-footer-c
+  newsletter-3707:
+    attributes:
+      title: Newsletter
+      headtext: 'Subscribe to our newsletter'
+      inputboxtext: Email
+      buttontext: Done!
+      buttonclass: button-2
+    block:
+      class: fp-footer-d
+  copyright-4648:
+    block:
+      variations: center
+  totop-3618:
+    title: 'To Top'
+    attributes:
+      icon: ''
+      content: 'To Top'
+    block:
+      variations: align-right
+  mobile-menu-7582:
+    title: 'Mobile Menu'

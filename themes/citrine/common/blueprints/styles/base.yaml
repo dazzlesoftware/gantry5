@@ -1,0 +1,29 @@
+name: Base Styles
+description: Base styles for the Citrine theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#656a7b"
+    overlay-left:
+      type: input.colorpicker
+      label: Left Overlay
+      default: "#8bc8c3"
+    overlay-right:
+      type: input.colorpicker
+      label: Right Overlay
+      default: "#e2fccb"
+    overlay-size:
+      type: input.text
+      label: Overlay Size
+      description: Set overlay size in rem, em, px or percentage unit values
+      default: "48rem"
+      pattern: '\d+(\.\d+){0,1}(rem|em|ex|ch|vw|vh|vmin|vmax|%|px|cm|mm|in|pt|pc)'

@@ -1,0 +1,9 @@
+aetheria-theme:
+  title: 'Aetheria Theme'
+  description: 'Sample menu for Aetheria theme.'
+
+  items:
+    aetheria:
+      title: 'Home'
+      outline: home
+      home: 1

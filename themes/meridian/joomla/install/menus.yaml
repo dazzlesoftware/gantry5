@@ -1,0 +1,9 @@
+meridian-theme:
+  title: 'Meridian Theme'
+  description: 'Sample menu for Meridian theme.'
+
+  items:
+    meridian:
+      title: 'Home'
+      outline: home
+      home: 1

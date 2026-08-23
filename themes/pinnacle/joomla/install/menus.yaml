@@ -1,0 +1,9 @@
+pinnacle-theme:
+  title: 'Pinnacle Theme'
+  description: 'Sample menu for Pinnacle theme.'
+
+  items:
+    pinnacle:
+      title: 'Home'
+      layout: home
+      home: 1

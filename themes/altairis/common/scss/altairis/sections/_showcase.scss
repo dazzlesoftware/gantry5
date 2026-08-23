@@ -1,0 +1,49 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color; 
+
+    position: relative;
+    z-index: 99;
+
+	@if $showcase-background-image {
+    	background: $showcase-background url($showcase-background-image) top center no-repeat;
+    	background-size: cover;
+	}
+
+    // Home
+    .g-home-positions.g-altairis-style &,
+    .g-home-particles.g-altairis-style & {
+        // Container
+        .g-container {
+        	padding: 11rem 0 8rem 0;
+            @include breakpoint(large-mobile-range) {
+              padding: 2rem 0 11rem 0;
+            }              
+            @include breakpoint(small-mobile-range) {
+              padding: 2rem 0 16rem 0;
+            }            
+        }
+    }
+
+    // FP Showcase A
+    .fp-showcase-a {
+    	text-align: center;
+    	.g-superpromo {
+    		color: $accent-color-1;
+    		margin: 3rem auto;
+    	}
+    	.g-block-action-button {
+    		margin-bottom: 3rem;
+			.button {
+				padding: 1rem 2rem;
+			}      		
+    	}  	
+    }
+
+    // FP Showcase B
+    .fp-showcase-b {
+        .g-contenttabs-style-center {
+            margin-bottom: 0;
+        }
+    }
+}

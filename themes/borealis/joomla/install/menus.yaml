@@ -1,0 +1,9 @@
+borealis-theme:
+  title: 'Borealis Theme'
+  description: 'Sample menu for Borealis theme.'
+
+  items:
+    borealis:
+      title: 'Home'
+      outline: home
+      home: 1

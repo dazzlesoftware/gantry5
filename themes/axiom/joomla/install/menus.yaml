@@ -1,0 +1,9 @@
+axiom-theme:
+  title: 'Axiom Theme'
+  description: 'Sample menu for Axiom theme.'
+
+  items:
+    axiom:
+      title: 'Home'
+      outline: home
+      home: 1

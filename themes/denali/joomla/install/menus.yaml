@@ -1,9 +1,0 @@
-denali-theme:
-  title: 'Denali Theme'
-  description: 'Sample menu for Denali theme.'
-
-  items:
-    denali:
-      title: 'Home'
-      outline: home
-      home: 1

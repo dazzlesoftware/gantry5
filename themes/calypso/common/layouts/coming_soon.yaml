@@ -1,0 +1,177 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: coming_soon
+  timestamp: 1455298817
+layout:
+  /offsidebar/: {  }
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - logo-7061
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-8012
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - simplecounter-1803
+      -
+        'aside 2': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - blockcontent-9078
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-9178 3'
+      - 'copyright-5759 6'
+      - 'totop-7382 3'
+  /offcanvas/: {  }
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      variations: center
+  infolist-8012:
+    title: 'Calypso is Coming Soon'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Good News! Something Awesome is in the Works'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: 'Calypso is Coming Soon'
+    block:
+      variations: center
+  simplecounter-1803:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      variations: center
+  blockcontent-9078:
+    title: 'Have Something to Tell Us?'
+    attributes:
+      class: center
+      headline: 'Have Something to Tell Us? '
+      description: 'Ideas, Suggestion, or Review '
+      linktext: 'Contact Us'
+      link: pages/contact
+      linkclass: button-2
+  copyright-5759:
+    block:
+      class: center
+  totop-7382:
+    title: 'To Top'
+    block:
+      class: align-right

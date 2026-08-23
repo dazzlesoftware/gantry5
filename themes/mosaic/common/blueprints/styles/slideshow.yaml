@@ -1,0 +1,19 @@
+name: Slideshow Colors
+description: Slideshow colors for the Mosaic theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Overlay Background
+      default: "#090d0f"
+    overlay-opacity:
+      type: input.text
+      label: Overlay Opacity
+      default: "0.5" 
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"     

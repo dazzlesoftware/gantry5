@@ -1,9 +1,0 @@
-ethereal-theme:
-  title: 'Ethereal Theme'
-  description: 'Sample menu for Ethereal theme.'
-
-  items:
-    ethereal:
-      title: 'Home'
-      outline: home
-      home: 1

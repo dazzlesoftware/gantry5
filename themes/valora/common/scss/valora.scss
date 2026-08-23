@@ -1,0 +1,189 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+@import "dependencies";
+
+// THEME COMPONENTS
+
+// Base
+@import "nucleus/theme/base";
+
+// Core
+@import "valora/styles/core";
+
+// Valora Styling
+@import "valora/styles/valora-style";
+
+// Typography
+@import "valora/styles/typography";
+
+// Main Nav
+@import "valora/sections/mainnav";
+
+// Navigation
+@import "valora/sections/navigation";
+
+// Showcase
+@import "valora/sections/showcase";
+
+// Breadcrumb
+@import "valora/sections/breadcrumb";
+
+// Feature
+@import "valora/sections/feature";
+
+// Utility
+@import "valora/sections/utility";
+
+// MainTop
+@import "valora/sections/maintop";
+
+// Main
+@import "valora/sections/main";
+
+// MainBottom
+@import "valora/sections/mainbottom";
+
+// Extension
+@import "valora/sections/extension";
+
+// Bottom
+@import "valora/sections/bottom";
+
+// Footer
+@import "valora/sections/footer";
+
+// Copyright
+@import "valora/sections/copyright";
+
+// Variations
+@import "valora/styles/variations";
+
+// Buttons
+@import "valora/styles/buttons";
+
+// Tables
+@import "valora/styles/tables";
+
+// Forms
+@import "valora/styles/forms";
+
+// Off Canvas
+@import "valora/sections/offcanvas";
+
+// Error
+@import "valora/layouts/error";
+
+// Coming Soon
+@import "valora/layouts/comingsoon";
+
+// Offline
+@import "valora/layouts/offline";
+
+// Dropdown Animations
+@import "valora/styles/dropdownanimations";
+
+// Utilities
+@import "valora/styles/utilities";
+
+//-------------------------------------------
+
+// PARTICLES
+
+// Strips
+@import "valora/particles/strips";
+
+// Horizontal Menu
+@import "valora/particles/horizontalmenu";
+
+// ProgressBar
+@import "valora/particles/progressbar";
+
+// Content Tabs
+@import "valora/particles/contenttabs";
+
+// Headlines
+@import "valora/particles/headlines";
+
+// Slider
+@import "valora/particles/slider";
+
+// Swiper
+@import "valora/particles/swiper";
+
+// Showcase
+@import "valora/particles/showcase";
+
+// Image Slider
+@import "valora/particles/imageslider";
+
+// Link Tabs
+@import "valora/particles/linktabs";
+
+// Audio Player
+@import "valora/particles/audioplayer";
+
+// Block Content
+@import "valora/particles/blockcontent";
+
+// Calendar
+@import "valora/particles/calendar";
+
+// Contact
+@import "valora/particles/contact";
+
+// Content Array
+@import "valora/particles/contentarray";
+
+// Content List
+@import "valora/particles/contentlist";
+
+// Image Grid
+@import "valora/particles/imagegrid";
+
+// Testimonials
+@import "valora/particles/testimonials";
+
+// Info List
+@import "valora/particles/infolist";
+
+// Feature Tabs
+@import "valora/particles/featuretabs";
+
+// Lists
+@import "valora/particles/lists";
+
+// Newsletter
+@import "valora/particles/mailchimp";
+
+// Pricing Table
+@import "valora/particles/pricingtable";
+
+// Promo Image
+@import "valora/particles/promoimage";
+
+// Simple Counter
+@import "valora/particles/simplecounter";
+
+// Swiper Carousel
+@import "valora/particles/swipercarousel";
+
+// Mosaic
+@import "valora/particles/mosaic";
+
+// Video
+@import "valora/particles/video";
+
+//-------------------------------------------
+
+// ADDITIONAL PARTICLES
+
+// Tab Image
+@import "valora/particles/tabimage";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "nucleus/theme/menu-visibility";
+@import "nucleus/theme/breakpoints/base";
+
+//-------------------------------------------

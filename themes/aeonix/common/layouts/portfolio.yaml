@@ -1,0 +1,422 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: portfolio
+  timestamp: 1443176112
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-8468
+  top: {  }
+  utility: {  }
+  feature: {  }
+  /maintop/:
+    -
+      - mosaic-6251
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 7':
+          -
+            - custom-8755
+      -
+        'sidebar 5': {  }
+  expandedbottom: {  }
+  mainbottom: {  }
+  /extension/:
+    -
+      - stripsslider-9607
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - custom-4488
+        /footer/:
+          -
+            - 'custom-5551 6'
+            - 'custom-2913 6'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-8468:
+    title: Portfolio
+    attributes:
+      title: 'Portfolio<span class="rt-title-tag">What We have already done</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  mosaic-6251:
+    title: 'Case Studies'
+    attributes:
+      cols: cols-4
+      cases:
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Spectral
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Acacia
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Corvus
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Praxis
+          title: App
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Stratos
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Oculus
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Hexeris
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Alerion
+          title: Logo
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Afterburner
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Chapelco
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Lumiere
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Leviathan
+          title: Web
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Cerulean
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Metropolis
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Graffito
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Fracture
+          title: Pixel
+  custom-8755:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Our Work <span class="rt-title-tag">Check Out Our Latest Projects</span>'
+      html: "<div class=\"promo2 rt-center largemargintop xlargemarginbottom\">\n  <p>Please take a look at our large awesome portfolio of previous clients, with general information and a photo gallery of each project</p>\n</div>\n\n<div class=\"rt-center\">\n <a href=\"#\" class=\"readon\"><span><span class=\"fa fa-eye\"></span> <span>View All</span></span></a> <span class=\"hidden-phone\"> or </span> <span class=\"visible-phone\"><br /></span> <a href=\"#\" class=\"readon\"><span><span class=\"fa fa-info-circle\"></span> <span>Get Quote</span></span></a>\n</div>"
+    block:
+      class: rt-big-title
+      variations: center
+  stripsslider-9607:
+    title: 'Strips Slider'
+    attributes:
+      class: ''
+      title: '<div class="center">Our Clients<span class="rt-title-tag">Review Our Previous Work</span></div>'
+      description: ''
+      displayitems: '4'
+      nav: enabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'genesis-media://pages/portfolio/img17.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 1'
+        -
+          image: 'genesis-media://pages/portfolio/img18.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 2'
+        -
+          image: 'genesis-media://pages/portfolio/img19.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 3'
+        -
+          image: 'genesis-media://pages/portfolio/img20.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 4'
+        -
+          image: 'genesis-media://pages/portfolio/img21.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 5'
+        -
+          image: 'genesis-media://pages/portfolio/img22.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 6'
+        -
+          image: 'genesis-media://pages/portfolio/img23.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 7'
+        -
+          image: 'genesis-media://pages/portfolio/img24.jpg'
+          title: Lorem
+          desc: 'Lorem ipsum dolor sit amet aenean modo'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 8'
+    block:
+      class: 'rt-demo-clients rt-big-title'
+  custom-4488:
+    title: 'More Details'
+    attributes:
+      title: 'More Details <span class="rt-title-tag">Help guides are available to assist</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-5551:
+    title: 'Pages Demo Footer'
+    attributes:
+      title: ''
+      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Aeonix RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Aeonix is only available as part of the Club Subscription.</p>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Aeonix Center, LLC</span><br />\n\t\t<span>123 Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@aeonix.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  custom-2913:
+    title: 'Pages Footer Form'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-email-form\">\n\t<form action=\"#\">\n\t\t<input type=\"text\" placeholder=\"Full Name\" size=\"18\" alt=\"fullname\" class=\"inputbox\" name=\"fullname\">\n\t\t<input type=\"text\" placeholder=\"Your Email\" size=\"28\" alt=\"email\" class=\"inputbox\" name=\"email\">\n\t\t<textarea placeholder=\"Your Message\" name=\"message\" cols=\"30\" rows=\"5\"></textarea>\n\t\t<input type=\"submit\" value=\"Send Message\" class=\"button\" name=\"send\">\n\t</form>\t\n</div>"

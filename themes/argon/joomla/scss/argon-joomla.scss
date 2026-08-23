@@ -1,0 +1,47 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Optional Nucleus Assets
+@import "nucleus/theme/alerts";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "argon-joomla/styles/core";
+@import "argon-joomla/styles/typography";
+@import "argon-joomla/styles/forms";
+@import "argon-joomla/styles/buttons";
+@import "argon-joomla/styles/tabs";
+@import "argon-joomla/styles/tags";
+@import "argon-joomla/styles/utilities";
+@import "argon-joomla/styles/modules";
+
+// JOOMLA TEMPLATE SPECIFIC COMPONENTS STYLING
+@import "argon-joomla/components/content";
+@import "argon-joomla/components/contact";
+@import "argon-joomla/components/users";
+@import "argon-joomla/components/search";
+
+// JOOMLA TEMPLATE SPECIFIC PARTICLES STYLING
+@import "argon-joomla/particles/popupmodule";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

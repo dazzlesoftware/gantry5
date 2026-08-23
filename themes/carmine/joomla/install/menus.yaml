@@ -1,0 +1,9 @@
+carmine-theme:
+  title: 'Carmine Theme'
+  description: 'Sample menu for Carmine theme.'
+
+  items:
+    carmine:
+      title: 'Home'
+      layout: home
+      home: 1

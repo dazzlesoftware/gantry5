@@ -1,0 +1,9 @@
+relic-theme:
+  title: 'Relic Theme'
+  description: 'Sample menu for Relic theme.'
+
+  items:
+    relic:
+      title: 'Home'
+      outline: home
+      home: 1

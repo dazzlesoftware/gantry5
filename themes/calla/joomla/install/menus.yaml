@@ -1,9 +1,0 @@
-calla-theme:
-  title: 'Calla Theme'
-  description: 'Sample menu for Calla theme.'
-
-  items:
-    calla:
-      title: 'Home'
-      outline: home
-      home: 1

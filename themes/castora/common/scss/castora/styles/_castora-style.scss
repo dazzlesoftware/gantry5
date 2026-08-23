@@ -1,0 +1,102 @@
+// Bottom Simplemenu
+.g-bottom-simplemenu {
+    h6 {
+        display: none;
+    }
+    .g-simplemenu-particle {
+        justify-content: center;
+        .g-simplemenu {
+            display: flex;
+            @include breakpoint(mobile-only) {
+              justify-content: center;
+            }
+            li {
+                padding-right: $content-padding;
+                white-space: nowrap;
+                @include breakpoint(mobile-only) {
+                  padding-right: $content-padding - 0.5;
+                }
+            }
+        }
+    }
+}
+
+// Logo
+.g-logo {
+    svg {
+        max-width: 100px;
+        min-width: 100px;
+        max-height: 20px;
+        min-height: 20px;
+    }
+}
+
+// Overlay tweaks
+.g-demo-info {
+    opacity: 0.5;
+}
+.g-demo-contact {
+    font-size: $core-font-size + 0.2;
+    line-height: $core-line-height + 0.2;
+}
+
+// Intro
+.g-castora-intro {
+    @include responsive-font(2.5vw, $core-font-size + 1, $core-font-size + 2, $core-font-size + 2);
+    & { font-weight: $font-weight-thin; }
+    & { color: $black; }
+    strong {
+        font-weight: $font-weight-bold;
+    }
+}
+
+// Slideshow Blockcontent
+.fp-slideshow {
+    .g-blockcontent-subcontent {
+        @include breakpoint(tablet-range) {
+          flex-direction: column;
+        }
+    }
+}
+
+// Newsletter
+.g-utility-newsletter {
+    .g-content {
+        display: inline-block;
+        background: $white;
+        box-shadow: 0px 0px 0px 15px $white;
+    }
+}
+
+// Navigation
+#g-navigation {
+    &.g-default-navigation {
+        padding-bottom: 25rem;
+        @include breakpoint(mobile-only) {
+            padding-bottom: 0;
+        }
+    }
+    &.fp-navigation {
+        padding-bottom: 25rem;
+        @include breakpoint(mobile-only) {
+            padding-bottom: 0;
+        }
+    }    
+}
+
+// Utility Negative Overlay
+.fp-utility {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 7rem;
+    .g-utility-newsletter {
+        margin-bottom: -7rem;
+    }
+}
+
+// Expanded Section More padding
+.g-home-particles {
+    #g-expanded {
+        padding-bottom: 4rem;
+    }
+}

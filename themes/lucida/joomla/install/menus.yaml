@@ -1,0 +1,9 @@
+lucida-theme:
+  title: 'Lucida Theme'
+  description: 'Sample menu for Lucida theme.'
+
+  items:
+    lucida:
+      title: 'Home'
+      outline: home
+      home: 1

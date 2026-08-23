@@ -1,9 +1,0 @@
-photon-theme:
-  title: 'Photon Theme'
-  description: 'Sample menu for Photon theme.'
-
-  items:
-    photon:
-      title: 'Home'
-      layout: home
-      home: 1

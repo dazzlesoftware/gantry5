@@ -1,0 +1,392 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/error.png'
+  name: _error
+  timestamp: 1505834698
+layout:
+  /top/:
+    -
+      - system-messages-1996
+    -
+      - 'position-5693 4'
+      - 'position-7810 4'
+      - 'position-4863 4'
+  /navigation/:
+    -
+      - 'logo-6111 2'
+      - 'menu-1265 7'
+      - 'custom-4799 1'
+      - 'social-7370 2'
+  /header/:
+    -
+      - 'position-3954 4'
+      - 'position-7606 4'
+      - 'position-2485 4'
+  /slideshow/:
+    -
+      - 'position-7155 4'
+      - 'position-6809 4'
+      - 'position-4642 4'
+  /showcase/:
+    -
+      - 'position-2603 4'
+      - 'position-2598 4'
+      - 'position-6263 4'
+  /above/:
+    -
+      - 'position-5986 4'
+      - 'position-4942 4'
+      - 'position-7303 4'
+  /utility/:
+    -
+      - 'position-4673 4'
+      - 'position-7636 4'
+      - 'position-8309 4'
+  /feature/:
+    -
+      - 'position-9794 4'
+      - 'position-7645 4'
+      - 'position-9968 4'
+    -
+      - 'spacer-4610 6'
+      - 'custom-1611 6'
+  /container-7295/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-3210
+      -
+        'mainbar 7':
+          -
+            - 'position-8510 4'
+            - 'position-1245 4'
+            - 'position-2263 4'
+          -
+            - system-content-9934
+      -
+        'aside 2':
+          -
+            - position-8850
+  /expanded/:
+    -
+      - 'position-1759 4'
+      - 'position-7263 4'
+      - 'position-1648 4'
+  /extension/:
+    -
+      - 'position-2259 4'
+      - 'position-1236 4'
+      - 'position-2716 4'
+    -
+      - custom-1226
+  /bottom/:
+    -
+      - 'position-3679 4'
+      - 'position-9936 4'
+      - 'position-7469 4'
+  /container-5573/:
+    -
+      -
+        'footer 9':
+          -
+            - 'position-5040 4'
+            - 'position-3641 4'
+            - 'position-4123 4'
+      -
+        'footside 3':
+          -
+            - position-6256
+  /copyright/:
+    -
+      - 'logo-8164 4'
+      - 'totop-5809 4'
+      - 'social-1092 4'
+  offcanvas:
+    -
+      - mobile-menu-1318
+    -
+      - custom-3998
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-7295:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footside:
+    type: section
+  container-5573:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  system-messages-1996:
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-5693:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-7810:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-4863:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  logo-6111:
+    attributes:
+      rel: home
+      alt: pinnacle
+  custom-4799:
+    title: 'Off Canvas Toggle'
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-indent\"></i>\n</div>"
+  position-3954:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-7606:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-2485:
+    title: 'Header C'
+    attributes:
+      key: header-c
+  position-7155:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-6809:
+    title: 'Slideshow B'
+    attributes:
+      key: slideshow-b
+  position-4642:
+    title: 'Slideshow C'
+    attributes:
+      key: slideshow-c
+  position-2603:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-2598:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-6263:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-5986:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-4942:
+    title: 'Above B'
+    attributes:
+      key: above-b
+  position-7303:
+    title: 'Above C'
+    attributes:
+      key: above-c
+  position-4673:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-7636:
+    title: 'Utility B'
+    attributes:
+      key: utility-b
+  position-8309:
+    title: 'Utility C'
+    attributes:
+      key: utility-c
+  position-9794:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-7645:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-9968:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  custom-1611:
+    title: 'Whooops! Error!'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Whooops! Error!</h2>\n\t<div class=\"g-layercontent-subtitle\">Looks like something went wrong. Sorry!</div>\n</div>"
+    block:
+      class: g-overlay
+      variations: 'center nomarginall'
+  position-3210:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-8510:
+    title: 'Mainbar A'
+    attributes:
+      key: mainbar-a
+  position-1245:
+    title: 'Mainbar B'
+    attributes:
+      key: mainbar-b
+  position-2263:
+    title: 'Mainbar C'
+    attributes:
+      key: mainbar-c
+  system-content-9934:
+    block:
+      class: g-error
+      variations: center
+  position-8850:
+    title: Aside
+    attributes:
+      key: aside
+  position-1759:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-7263:
+    title: 'Expanded B'
+    attributes:
+      key: expanded-b
+  position-1648:
+    title: 'Expanded C'
+    attributes:
+      key: expanded-c
+  position-2259:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-1236:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-2716:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  custom-1226:
+    title: 'Nothing to See Here'
+    attributes:
+      html: "<div class=\"g-layercontent\">\n\t<h2 class=\"g-layercontent-title\">Nothing to See Here</h2>\n\t<div class=\"g-layercontent-subtitle\">Please use the navigation above or contact us to find what you are looking for.</div>\n\t<a href=\"#\" class=\"button\">Contact Us</a>\n</div>"
+    block:
+      variations: 'center nopaddingall nomarginall'
+  position-3679:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-9936:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-7469:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-5040:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-3641:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-4123:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  position-6256:
+    title: 'Footside A'
+    attributes:
+      key: footside-a
+  logo-8164:
+    attributes:
+      rel: home
+      image: 'genesis-media://logo/logo-footer.png'
+      alt: Pinnacle
+      class: g-footer-logo
+  totop-5809:
+    title: 'To Top'
+  social-1092:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org'
+          name: Google
+        -
+          icon: 'fa fa-rss fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org/product-updates?rss'
+          name: RSS
+  mobile-menu-1318:
+    title: 'Mobile Menu'
+  custom-3998:
+    title: Offcanvas
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Pinnacle</h2>\n\n<p>Pinnacle is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/pinnacle\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

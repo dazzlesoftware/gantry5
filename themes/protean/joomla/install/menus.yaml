@@ -1,9 +1,0 @@
-protean-theme:
-  title: 'Protean Theme'
-  description: 'Sample menu for Protean theme.'
-
-  items:
-    protean:
-      title: 'Home'
-      outline: home
-      home: 1

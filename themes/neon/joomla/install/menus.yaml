@@ -1,0 +1,9 @@
+neon-theme:
+  title: 'Neon Theme'
+  description: 'Sample menu for Neon theme.'
+
+  items:
+    neon:
+      title: 'Home'
+      outline: home
+      home: 1

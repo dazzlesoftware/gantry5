@@ -1,0 +1,9 @@
+atelier-theme:
+  title: 'Atelier Theme'
+  description: 'Sample menu for Atelier theme.'
+
+  items:
+    atelier:
+      title: 'Home'
+      outline: home
+      home: 1

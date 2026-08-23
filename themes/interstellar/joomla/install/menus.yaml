@@ -1,9 +1,0 @@
-interstellar-theme:
-  title: 'Interstellar Theme'
-  description: 'Sample menu for Interstellar theme.'
-
-  items:
-    interstellar:
-      title: 'Home'
-      layout: home
-      home: 1

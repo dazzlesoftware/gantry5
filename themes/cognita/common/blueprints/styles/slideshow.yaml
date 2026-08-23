@@ -1,0 +1,14 @@
+name: Slideshow Styles
+description: Slideshow styles for the Cognita theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#4f4e53"

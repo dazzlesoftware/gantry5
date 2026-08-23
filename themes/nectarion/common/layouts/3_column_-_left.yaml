@@ -1,0 +1,186 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/3-col-left.png'
+  name: 3_column_-_left
+  timestamp: 1516112276
+layout:
+  /top/:
+    -
+      - system-messages-2228
+    -
+      - position-2866
+  /header/:
+    -
+      - 'logo-5602 3'
+      - 'horizontalmenu-4395 9'
+    -
+      - position-3211
+  /navigation/:
+    -
+      - menu-8097
+  /slideshow/:
+    -
+      - position-2902
+  /showcase/:
+    -
+      - position-1838
+  /feature/:
+    -
+      - position-7370
+  /main/:
+    -
+      - position-6073
+  /container-4684/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-8406
+      -
+        'aside 2':
+          -
+            - position-4967
+      -
+        'mainbar 7':
+          -
+            - system-content-3536
+  /extension/:
+    -
+      - position-8403
+  /bottom/:
+    -
+      - position-9198
+  /footer/:
+    -
+      - position-6390
+  /copyright/:
+    -
+      - copyright-9168
+  offcanvas:
+    -
+      - mobile-menu-6452
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-4684:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  system-messages-2228:
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-2866:
+    title: Top
+    attributes:
+      key: top
+  logo-5602:
+    block:
+      class: g-logo-block
+  horizontalmenu-4395:
+    title: 'Horizontal Menu'
+    attributes:
+      target: _blank
+      text:
+        -
+          text: Features
+          link: 'https://codex.dazzlecms.org/basics/key-features'
+          name: Features
+        -
+          text: 'Genesis'
+          link: 'https://dazzlecms.org/'
+          name: 'Genesis'
+        -
+          text: Particles
+          link: 'https://codex.dazzlecms.org/particles'
+          name: Particles
+        -
+          text: Download
+          link: 'https://dazzlesoftware.org/joomla/templates/nectarion'
+          name: Download
+        -
+          text: Support
+          link: 'https://dazzlesoftware.org/forum/joomla-template-nectarion'
+          name: Support
+  position-3211:
+    title: Header
+    attributes:
+      key: header
+  position-2902:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-1838:
+    title: Showcase
+    attributes:
+      key: showcase
+  position-7370:
+    title: Feature
+    attributes:
+      key: feature
+  position-6073:
+    title: Main
+    attributes:
+      key: main
+  position-8406:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-4967:
+    title: Aside
+    attributes:
+      key: aside
+  position-8403:
+    title: Extension
+    attributes:
+      key: extension
+  position-9198:
+    title: Bottom
+    attributes:
+      key: bottom
+  position-6390:
+    title: Footer
+    attributes:
+      key: footer

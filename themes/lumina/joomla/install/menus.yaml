@@ -1,0 +1,9 @@
+lumina-theme:
+  title: 'Lumina Theme'
+  description: 'Sample menu for Lumina theme.'
+
+  items:
+    lumina:
+      title: 'Home'
+      layout: home
+      home: 1

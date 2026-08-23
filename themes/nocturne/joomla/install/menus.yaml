@@ -1,0 +1,9 @@
+nocturne-theme:
+  title: 'Nocturne Theme'
+  description: 'Sample menu for Nocturne theme.'
+
+  items:
+    nocturne:
+      title: 'Home'
+      layout: home
+      home: 1

@@ -1,0 +1,9 @@
+morphos-theme:
+  title: 'Morphos Theme'
+  description: 'Sample menu for Morphos theme.'
+
+  items:
+    morphos:
+      title: 'Home'
+      outline: home
+      home: 1

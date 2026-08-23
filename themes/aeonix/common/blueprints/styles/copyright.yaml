@@ -1,0 +1,15 @@
+name: Copyright Colors
+description: Copyright colors for the Aeonix theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#2d2d2d"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#5f5f5f"

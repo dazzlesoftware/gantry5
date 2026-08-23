@@ -1,0 +1,160 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+@import "dependencies";
+
+//-------------------------------------------
+
+
+// THEME COMPONENTS
+
+// Base
+@import "nucleus/theme/base";
+
+// Core
+@import "elara/styles/core";
+
+// PageSurround
+@import "elara/sections/pagesurround";
+
+// Typography
+@import "elara/styles/typography";
+
+// Utilities
+@import "elara/styles/utilities";
+
+// Header
+@import "elara/sections/header";
+
+// Navigation
+@import "elara/sections/navigation";
+
+// Main Nav
+@import "elara/sections/mainnav";
+
+// Showcase
+@import "elara/sections/showcase";
+
+// Feature
+@import "elara/sections/feature";
+
+// Main
+@import "elara/sections/main";
+
+// Extension
+@import "elara/sections/extension";
+
+// Footer
+@import "elara/sections/footer";
+
+// Copyright
+@import "elara/sections/copyright";
+
+// Variations
+@import "elara/styles/variations";
+
+// Buttons
+@import "elara/styles/buttons";
+
+// Tables
+@import "elara/styles/tables";
+
+// Forms
+@import "elara/styles/forms";
+
+// Social
+@import "elara/particles/social";
+
+// Content Array
+@import "elara/particles/contentarray";
+
+// Off Canvas
+@import "elara/sections/offcanvas";
+
+// Error
+@import "elara/layouts/error";
+
+// Dropdown Animations
+@import "elara/styles/dropdownanimations";
+
+// Offline
+@import "elara/layouts/offline";
+
+//-------------------------------------------
+
+
+// ROCKETTHEME EXTENSIONS
+
+// RokAjaxSearch
+@import "elara/particles/rokajaxsearch";
+
+// RokSprocket
+@import "elara/particles/roksprocket";
+
+//-------------------------------------------
+
+
+// ADDITIONAL PARTICLES
+
+// Elara Content
+@import "elara/particles/contentlist";
+
+// Icon Menu
+@import "elara/particles/iconmenu";
+
+// Calendar
+@import "elara/particles/calendar";
+
+// Swiper
+@import "elara/particles/swiper";
+
+// Audio Player
+@import "elara/particles/audioplayer";
+
+// Fixed Header
+@import "elara/particles/fixedheader";
+
+// Block Content
+@import "elara/particles/blockcontent";
+
+// Video
+@import "elara/particles/video";
+
+// Info List
+@import "elara/particles/infolist";
+
+// Contact
+@import "elara/particles/contact";
+
+// Image Grid
+@import "elara/particles/imagegrid";
+
+// Promo Image
+@import "elara/particles/promoimage";
+
+// Layer Content
+@import "elara/particles/layercontent";
+
+// Newsletter
+@import "elara/particles/newsletter";
+
+// Pricing Table
+@import "elara/particles/pricingtable";
+
+// Simple Counter
+@import "elara/particles/simplecounter";
+
+// Tabs Particle
+@import "elara/particles/contenttabs";
+
+// SwiperCarousel Based Particles
+@import "elara/particles/swipercarousel";
+
+// SwiperCarousel Based Particles
+@import "elara/particles/search";
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "nucleus/theme/menu-visibility";
+@import "nucleus/theme/breakpoints/base";
+
+//-------------------------------------------

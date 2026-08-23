@@ -1,0 +1,9 @@
+cognita-theme:
+  title: 'Cognita Theme'
+  description: 'Sample menu for Cognita theme.'
+
+  items:
+    cognita:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,620 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1456244407
+layout:
+  /offsidebar/:
+    -
+      - menu-4196
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 2'
+      - 'logo-5992 7'
+      - 'social-7220 2'
+  /slideshow/:
+    -
+      - swipercarousel-5492
+  /header/:
+    -
+      - mosaicgrid-1440
+  /above/: {  }
+  /showcase/: {  }
+  /utility/:
+    -
+      - gridstatistic-7694
+  /feature/:
+    -
+      - imagegrid-4085
+  /container-main/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-position-8538
+      -
+        'mainbar 7':
+          -
+            - blockcontent-6312
+      -
+        'aside 2':
+          -
+            - position-position-8807
+  /expanded/: {  }
+  /extension/:
+    -
+      - blockcontent-1521
+  /bottom/:
+    -
+      - 'infolist-6113 4'
+      - 'infolist-4978 4'
+      - 'custom-3225 4'
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-5976 3'
+      - 'copyright-5748 6'
+      - 'totop-6544 3'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-flushed
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-5992:
+    block:
+      class: center
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  swipercarousel-5492:
+    title: 'About Us Swiper Carousel'
+    attributes:
+      class: center-block
+      width: g-swipercarousel-compact
+      animateOut: fadeOut
+      prevText: '&larr;'
+      nextText: '&rarr;'
+      dots: '0'
+      items:
+        -
+          image: 'genesis-media://pages/about-us/slideshow/img-01.jpg'
+          title: 'About Us'
+          desc: 'Calypso is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 1'
+        -
+          image: 'genesis-media://pages/about-us/slideshow/img-02.jpg'
+          title: 'About Us'
+          desc: 'Calypso is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 2'
+        -
+          image: 'genesis-media://pages/about-us/slideshow/img-03.jpg'
+          title: 'About Us'
+          desc: 'Calypso is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 3'
+  mosaicgrid-1440:
+    title: 'About Us Mosaic Grid'
+    attributes:
+      class: 'nopadding nomargin'
+      columns: g-mosaicgrid-4-col
+      items:
+        -
+          style: g-mosaicgrid-style1
+          img: 'genesis-media://pages/about-us/header/img-01.jpg'
+          titleText: Sam
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Layout
+          tagicons: {  }
+          title: Sam
+        -
+          style: g-mosaicgrid-style1
+          img: 'genesis-media://pages/about-us/header/img-02.jpg'
+          titleText: Alex
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-blur
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Page
+          tagicons: {  }
+          title: Alex
+        -
+          style: g-mosaicgrid-style1
+          img: 'genesis-media://pages/about-us/header/img-03.jpg'
+          titleText: Joe
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-rotate
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Table
+          tagicons: {  }
+          title: Joe
+        -
+          style: g-mosaicgrid-style1
+          img: 'genesis-media://pages/about-us/header/img-04.jpg'
+          titleText: Kim
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-grayscale
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Content
+          tagicons: {  }
+          title: Kim
+  gridstatistic-7694:
+    title: 'About Us Grid Statistic'
+    attributes:
+      class: center
+      footerdesc: 'Aliquam ante augue, iaculis eget fringilla vel, gravida non nibh. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu, eu fermentum elit metus vel mauris. In sed nunc tincidunt, faucibus quam vel, finibus arcu. Proin nec euismod nisi, id tristique augue. Nam in erat est.'
+      cols: g-gridstatistic-4cols
+      gridstatisticitems:
+        -
+          text1: '25'
+          text2: 'Years Experience'
+          title: 'Item 1'
+        -
+          text1: '50123'
+          text2: 'Happy Clients'
+          title: 'Item 2'
+        -
+          text1: '1234'
+          text2: 'New Innovations'
+          title: 'Item 3'
+        -
+          text1: '817'
+          text2: Locations
+          title: 'Item 4'
+  imagegrid-4085:
+    title: 'About Us Image Grid'
+    attributes:
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+        -
+          image: 'genesis-media://pages/about-us/feature/img-01.jpg'
+          caption: 'Image 1'
+          title: 'Image 1'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-02.jpg'
+          caption: 'Image 2'
+          title: 'Image 2'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-03.jpg'
+          caption: 'Image 3'
+          title: 'Image 3'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-04.jpg'
+          caption: 'Image 4'
+          title: 'Image 4'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-05.jpg'
+          caption: 'Image 5'
+          title: 'Image 5'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-06.jpg'
+          caption: 'Image 6'
+          title: 'Image 6'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-07.jpg'
+          caption: 'Image 7'
+          title: 'Image 7'
+        -
+          image: 'genesis-media://pages/about-us/feature/img-08.jpg'
+          caption: 'Image 8'
+          title: 'Image 8'
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  blockcontent-6312:
+    title: 'About Us - Introduction - Mission - Business'
+    attributes:
+      class: center
+      headline: 'Why You Should Join Us'
+      description: 'Choose the theme that suits your needs. 100% satisfaction guaranteed.'
+      subcontents:
+        -
+          name: Introduction
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Introduction
+        -
+          name: Mission
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Mission
+        -
+          name: Business
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Business
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  blockcontent-1521:
+    title: 'About Us Block Content'
+    attributes:
+      class: title-center
+      title: 'We are a very creative team'
+      description: '<div class="center">We love what we do and you will love it too, that''s a promise.</div>'
+      subcontents:
+        -
+          name: Sophisticated
+          icon: 'fa fa-align-right'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: 'box4 title4'
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Sophisticated
+        -
+          name: Powerful
+          icon: 'fa fa-sliders'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: 'box4 title4'
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Powerful
+        -
+          name: Reliable
+          icon: 'fa fa-bar-chart-o'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: 'box4 title4'
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Reliable
+        -
+          name: Social
+          icon: 'fa fa-calendar'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: 'box4 title4'
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Social
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/wordpress/themes/calypso'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/docs/wordpress/themes/calypso'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://codex.dazzlecms.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Genesis
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/forum/wordpress-theme-calypso'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/Dazzle Software/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialDazzle Software'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/genesis/genesis'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Calypso is built on the latest version of the Genesis Framework.</span></p>\t"
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

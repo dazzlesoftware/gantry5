@@ -1,0 +1,195 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: overview
+  timestamp: 1443176112
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3243
+  top: {  }
+  utility: {  }
+  /feature/:
+    -
+      - 'custom-9512 6'
+      - 'custom-8090 6'
+  /maintop/:
+    -
+      - custom-2510
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 7':
+          -
+            - custom-1878
+      -
+        'sidebar 5': {  }
+  expandedbottom: {  }
+  mainbottom: {  }
+  extension: {  }
+  /footer-surround/:
+    -
+      -
+        bottom: {  }
+        footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-3243:
+    title: 'Various Pages'
+    attributes:
+      title: 'Various Pages<span class="rt-title-tag">Flexible and adaptable sample pages</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-9512:
+    title: 'Chart 1'
+    attributes:
+      title: ''
+      html: "<canvas id=\"myChart-a\" height=\"320\" width=\"600\"></canvas>\n\n<script type=\"text/javascript\">\n\tvar lineChartData = {\n\t\tlabels : [\"Cerulean\",\"Chapelco\",\"Lumiere\",\"Hexeris\",\"Oculus\",\"Stratos\",\"Corvus\"],\n\t\tdatasets : [\n\t\t\t{\n\t\t\t\tfillColor : \"transparent\",\n\t\t\t\tstrokeColor : \"#97DBF2\",\n\t\t\t\tpointColor : \"#97DBF2\",\n\t\t\t\tpointStrokeColor : \"#97DBF2\",\n\t\t\t\tdata : [600,500,900,800,500,400,700]\n\t\t\t},\n\t\t\t{\n\t\t\t\tfillColor : \"transparent\",\n\t\t\t\tstrokeColor : \"#DE4E33\",\n\t\t\t\tpointColor : \"#DE4E33\",\n\t\t\t\tpointStrokeColor : \"#DE4E33\",\n\t\t\t\tdata : [200,400,600,300,900,200,500]\n\t\t\t},\t\t\n\t\t]\n\t},\n\toptions = {\n\t\t//Boolean - If we want to override with a hard coded scale\n\t\tscaleOverride : true,\n\t\t\n\t\t//** Required if scaleOverride is true **\n\t\t//Number - The number of steps in a hard coded scale\n\t\tscaleSteps : 9,\n\t\t//Number - The value jump in the hard coded scale\n\t\tscaleStepWidth : 100,\n\t\t//Number - The scale starting value\n\t\tscaleStartValue : 100,\n\n\t\t//String - Scale label font colour\t\n\t\tscaleFontColor : \"#A8A8A8\",\n\n\t\t//String - Colour of the scale line\n\t\tscaleLineColor : \"#A8A8A8\",\n\n\t\t//String - Colour of the grid lines\n\t\tscaleGridLineColor : \"#A8A8A8\",\t\n\n\t\t//Boolean - Whether the line is curved between points\n\t\tbezierCurve : false,\t\n\n\t\t//Number - Radius of each point dot in pixels\n\t\tpointDotRadius : 8,\n\n\t\t//Number - Pixel width of point dot stroke\n\t\tpointDotStrokeWidth : 5,\n\t\t\n\t\t//Number - Pixel width of dataset stroke\n\t\tdatasetStrokeWidth : 6,\n\t\t\n\t\t//Boolean - Whether to fill the dataset with a colour\n\t\tdatasetFill : true,\n\n\t}\n\n\t//Get the context of the canvas element we want to select\n\tvar ctx = document.getElementById(\"myChart-a\").getContext(\"2d\");\n\tvar myNewChart = new Chart(ctx).Line(lineChartData, options);\n\n</script>"
+  custom-8090:
+    title: 'Chart 2'
+    attributes:
+      title: ''
+      html: "<canvas id=\"myChart-b\" height=\"320\" width=\"600\"></canvas>\n\n<script type=\"text/javascript\">\n\tvar barChartData = {\n\t\tlabels : [\"\"],\n\t\tdatasets : [\n\t\t\t{\n\t\t\t\tfillColor : \"#D95240\",\n\t\t\t\tstrokeColor : \"#D95240\",\n\t\t\t\tdata : [300]\n\t\t\t},\n\t\t\t{\n\t\t\t\tfillColor : \"#6FC6A0\",\n\t\t\t\tstrokeColor : \"#6FC6A0\",\n\t\t\t\tdata : [800]\n\t\t\t},\n\t\t\t{\n\t\t\t\tfillColor : \"#D6A842\",\n\t\t\t\tstrokeColor : \"#D6A842\",\n\t\t\t\tdata : [600]\n\t\t\t},\n\t\t\t{\n\t\t\t\tfillColor : \"#6FB4C5\",\n\t\t\t\tstrokeColor : \"#6FB4C5\",\n\t\t\t\tdata : [1000]\n\t\t\t},\n\t\t\t{\n\t\t\t\tfillColor : \"#D49245\",\n\t\t\t\tstrokeColor : \"#D49245\",\n\t\t\t\tdata : [400]\n\t\t\t}\t\t\t\t\t\t\t\t\t\n\t\t]\n\t},\n\toptions = {\n\t\t//Boolean - If we want to override with a hard coded scale\n\t\tscaleOverride : true,\n\t\t\n\t\t//** Required if scaleOverride is true **\n\t\t//Number - The number of steps in a hard coded scale\n\t\tscaleSteps : 9,\n\t\t//Number - The value jump in the hard coded scale\n\t\tscaleStepWidth : 100,\n\t\t//Number - The scale starting value\n\t\tscaleStartValue : 100,\n\n\t\t//String - Scale label font colour\t\n\t\tscaleFontColor : \"#A8A8A8\",\n\n\t\t//String - Colour of the scale line\n\t\tscaleLineColor : \"#A8A8A8\",\n\n\t\t//String - Colour of the grid lines\n\t\tscaleGridLineColor : \"#A8A8A8\",\t\n\n\t\t//Number - Spacing between data sets within X values\n\t\tbarDatasetSpacing : 30,\t\n\t}\n\n\t//Get the context of the canvas element we want to select\n\tvar ctx = document.getElementById(\"myChart-b\").getContext(\"2d\");\n\tvar myNewChart = new Chart(ctx).Bar(barChartData, options);\n\n</script>"
+  custom-2510:
+    title: 'Graphic Charts by ChartJS'
+    attributes:
+      title: 'Graphic Charts by ChartJS'
+      html: "<p><strong>NOTE: </strong>The canvas only works on modern browsers (Firefox, Opera, Chrome, Safari, and Internet Explorer 9+) that support the HTML5 canvas element. <a href=\"http://www.w3schools.com/html/html5_canvas.asp\" target=\"_blank\">Internet Explorer 8 and earlier versions, do not support the canvas element.</a></p>\n\n<p>The two charts shown above are the sample chart we used on our demo pages. It's based on <a href=\"http://www.chartjs.org/\">Chart.js</a>. Chart.js is an easy, object oriented client side graphs for designers and developers.</p>\n\n<p class=\"nomarginbottom\">For more information how to create great looking charts using Chart.js, please visit <a href=\"http://www.chartjs.org/\">Chart.js</a> homepage or download the script <a href=\"https://github.com/nnnick/Chart.js\">here</a>.</p>"
+    block:
+      variations: title2
+  custom-1878:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-center largemargintop largemarginbottom\">\n  <p class=\"promo1\">Aeonix Sample Pages</p>\n  <p class=\"promo2\">These examples are intended to show how Aeonix can be constructed on your site, above and beyond the frontpage demonstration. These include content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n</div>\n\n<br />\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />\n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Pages Overview</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />\n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>About Us</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />\n    </div>\n    <h3><a href=\"#\"><span>Team</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Services</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />    \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Pricing</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Portfolio</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Blog</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>FAQ</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"contact\" target=\"_blank\"><span>Contact</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Offline Page</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>Coming Soon</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-center\">\n  <div class=\"genesis-width-spacer\">\n    <div class=\"rt-image\">\n      <img src=\"genesis-media://pages/pages-overview/img1.jpg\" alt=\"image\" />      \n    </div>\n    <h3><a href=\"#\" target=\"_blank\"><span>404 Error</span></a></h3>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolores esse quam libero harum excepturi ea.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"

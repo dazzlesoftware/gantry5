@@ -1,0 +1,11 @@
+name: Logo Background
+description: Logo background color for the Verbatim theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#1a1c1e"

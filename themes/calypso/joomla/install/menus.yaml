@@ -1,0 +1,9 @@
+calypso-theme:
+  title: 'Calypso Theme'
+  description: 'Sample menu for Calypso theme.'
+
+  items:
+    calypso:
+      title: 'Home'
+      outline: home
+      home: 1

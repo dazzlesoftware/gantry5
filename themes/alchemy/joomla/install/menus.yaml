@@ -1,0 +1,9 @@
+alchemy-theme:
+  title: 'Alchemy Theme'
+  description: 'Sample menu for Alchemy theme.'
+
+  items:
+    alchemy:
+      title: 'Home'
+      outline: home
+      home: 1

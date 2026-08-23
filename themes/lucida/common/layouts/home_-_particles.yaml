@@ -1,0 +1,705 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1578305036
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - slideshow-3065
+  /header/:
+    -
+      - 'logo-6155 6'
+      - 'simplecontent-5743 6'
+  /above/:
+    -
+      - simplecontent-5055
+    -
+      - 'simplecontent-3821 4'
+      - 'logo-9446 4'
+      - 'simplecontent-1167 4'
+  /feature/:
+    -
+      - 'simplecontent-6077 7'
+      - 'verticalslideshow-9275 5'
+  /showcase/:
+    -
+      - latestnews-9056
+  /utility/:
+    -
+      - testimonials-3460
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - system-content-1120
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - socialfeed-9871
+  /extension/: {  }
+  /bottom/: {  }
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    attributes:
+      class: 'menu-absolute'
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  header:
+    attributes:
+      boxed: '2'
+      class: services
+      variations: section-vertical-paddings
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings largepaddingtop'
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  slideshow-3065:
+    attributes:
+      source: particle
+      height: 80vh
+      heightMobile: 665px
+      direction: vertical
+      centered: enabled
+      bullets: enabled
+      arrows: disabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'genesis-media://home/slideshow/img-01.jpg'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal_mobile: 80%
+          bg_vertical_mobile: ''
+          main_title: 'Lucida is a beautiful mobile-first design featuring incredible typography, color, and imagery.'
+          top_title: 'Dozens of particles make creating a stunning website that caters to your content easy. Your website will look perfect on mobile and desktop.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 1'
+        -
+          class: ''
+          image: 'genesis-media://home/slideshow/img-01.jpg'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal_mobile: 80%
+          bg_vertical_mobile: ''
+          main_title: 'The Slideshow particle is designed to naturally deliver your brand’s message on any device.'
+          top_title: 'Easily configure the slideshow’s height, content source, direction, navigation, speed, and more in seconds from Genesis’s Layout Manager.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 2'
+        -
+          class: ''
+          image: 'genesis-media://home/slideshow/img-01.jpg'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal_mobile: 90%
+          bg_vertical_mobile: ''
+          main_title: 'Build experiences that introduce your brand to the world in a whole new way.'
+          top_title: 'Lucida isn’t just another cookie-cutter design. Its bold typography and unparalleled flexibility makes it the perfect choice for your next website.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 3'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          category:
+            enabled: show
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: enabled
+            target: _self
+  logo-6155:
+    title: 'Logo / Image'
+    attributes:
+      url: ''
+      image: 'genesis-media://home/header/header-1.jpg'
+      link: '0'
+  simplecontent-5743:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: 'MOBILE FIRST'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'The majority of the world’s internet traffic now occurs from smartphones and other mobile platforms.'
+          author: ''
+          leading_content: ''
+          main_content: 'Lucida takes a mobile-first approach to design, without sacrificing on its full-featured desktop user experience. Visitors will enjoy a natural user experience that works perfectly on any screen.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+  simplecontent-5055:
+    title: 'Simple Content'
+    attributes:
+      class: center
+      title: 'Genesis Framework'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Genesis is a powerful, infinitely flexible framework for Joomla, WordPress, and Grav that makes customizing your website easier than ever.'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+  simplecontent-3821:
+    title: 'Simple Content'
+    attributes:
+      class: 'left-column columns'
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Layout Manager'
+          author: ''
+          leading_content: ''
+          main_content: 'Create gorgeous page layouts with drag-and-drop simplicity.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Layout Manager'
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Menu Editor'
+          author: ''
+          leading_content: ''
+          main_content: 'Arrange, configure, and customize your site’s menus in seconds.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Menu Editor'
+    block:
+      variations: 'nopaddingbottom nomarginbottom'
+  logo-9446:
+    title: 'Logo / Image'
+    attributes:
+      image: 'genesis-media://home/above/above-1.jpg'
+      class: g-logo
+      readmore_label: 'Learn more'
+      readmore_link: '#'
+      readmore_class: 'button button-3 white'
+    block:
+      class: heightstrech
+      variations: 'nopaddingall nomarginall'
+  simplecontent-1167:
+    title: 'Simple Content'
+    attributes:
+      class: 'right-column columns'
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: Inheritance
+          author: ''
+          leading_content: ''
+          main_content: 'Save time by managing common elements using inheritance.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Inheritance
+        -
+          layout: standard
+          created_date: ''
+          content_title: Particles
+          author: ''
+          leading_content: ''
+          main_content: 'Add pre-designed content blocks and populate them with ease.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Particles
+    block:
+      variations: 'nopaddingbottom nomarginbottom'
+  simplecontent-6077:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: 'Vertical Slideshow'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Give your photos the attention they deserve with Lucida’s Vertical Slideshow particle.'
+          author: ''
+          leading_content: ''
+          main_content: 'Not only can you add your own photos directly to the particle, but you can also pull photos and titles directly from your site’s content.'
+          readmore_label: 'Get Started'
+          readmore_link: '#'
+          readmore_class: 'button button-3 black'
+          readmore_target: _self
+          title: 'New item'
+    block:
+      class: middle
+      variations: title3
+  verticalslideshow-9275:
+    title: 'Vertical Slideshow'
+    attributes:
+      source: particle
+      height: 900px
+      arrows: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '750'
+      touchmove: enabled
+      effect: slide
+      items:
+        -
+          image: 'genesis-media://home/feature/img-1.jpg'
+          title: 'One Photo'
+        -
+          image: 'genesis-media://home/feature/img-1.jpg'
+          title: 'Another Photo'
+        -
+          image: 'genesis-media://home/feature/img-1.jpg'
+          title: 'More Photos'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: enabled
+            target: _self
+    block:
+      variations: 'align-right nomarginall nopaddingall'
+  latestnews-9056:
+    title: 'Included Particles'
+    attributes:
+      class: ''
+      title: 'Included Particles'
+      uppertitle: ''
+      allitems: 'Full blog archive'
+      allitems_link: ''
+      allitems_class: 'button button-3 black'
+      allitems_target: _self
+      selected: all
+      cols: cols-2
+      date_format: 'F d, Y'
+      items:
+        -
+          layout: text
+          variant: light
+          date: '2020-07-20'
+          image: 'genesis-media://home/showcase/show-01.jpg'
+          description: 'Create beautiful price displays in minutes using Pricing Table.'
+          url: ''
+          target: _self
+          title: 'Create beautiful price displays in minutes using Pricing Table.'
+        -
+          layout: text
+          variant: light
+          date: '2020-07-27'
+          image: 'genesis-media://home/showcase/show-02.jpg'
+          description: 'Bring attention to important numbers with Grid Statistic.'
+          url: ''
+          target: _self
+          title: 'Bring attention to important numbers with Grid Statistic.'
+        -
+          layout: text
+          variant: light
+          date: '2020-08-10'
+          image: 'genesis-media://home/showcase/show-04.jpg'
+          description: 'Showcase your images with Lucida’s Image Grid.'
+          url: ''
+          target: _self
+          title: 'Showcase your images with Lucida’s Image Grid.'
+        -
+          layout: text
+          variant: light
+          date: '2020-08-03'
+          image: 'genesis-media://home/showcase/show-03.jpg'
+          description: 'Promote your social media pages using the Social and Social Feed particles.'
+          url: ''
+          target: _self
+          title: 'Promote your social media pages using the Social and Social Feed particles.'
+        -
+          layout: text
+          variant: light
+          date: '2020-08-24'
+          image: 'genesis-media://home/showcase/show-05.jpg'
+          description: 'Grow your newsletter subscriber base with the powerful Newsletter particle.'
+          url: ''
+          target: _self
+          title: 'Grow your newsletter subscriber base with the powerful Newsletter particle.'
+    block:
+      variations: title1
+  testimonials-3460:
+    attributes:
+      source: particle
+      class: ''
+      title: 'Our clients'
+      cols: cols-4
+      testimonial:
+        -
+          content: 'Dazzle Software has been producing exceptional templates and themes for over a decade, and Lucida is the best yet.'
+          author: 'Willie Ryan'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: First
+        -
+          content: 'With Lucida’s bold color presets and wide range of included particles, it has never been easier to get started!'
+          author: 'Beverly Foster'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Second
+        -
+          content: 'Genesis is a cutting-edge theming framework made for Joomla, Wordpress, and Grav.'
+          author: 'Dorothy Ferguson'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Third
+        -
+          content: 'With Lucida’s RocketLauncher, you can create a new website in no time, complete with demo content to start from.'
+          author: 'Willie Ryan'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Forth
+        -
+          content: 'Dazzle Software’s support forums are second to none. The Rockettheme team is ready to answer your most challenging questions. '
+          author: 'Beverly Foster'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Fifth
+        -
+          content: "Have multiple website builds in mind? Dazzle Software makes site licensing easy with Club membership plans to meet your needs.\n"
+          author: 'Dorothy Ferguson'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Sixth
+        -
+          content: 'Whether you’re building a new blog or a corporate website for a large enterprise, Lucida’s versatile design has you covered.'
+          author: 'Willie Ryan'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Seventh
+        -
+          content: 'Every Dazzle Software product is made to last. Your website will look and work years from now as well as it does on day one.'
+          author: 'Beverly Foster'
+          position: 'CEO of Company Inc.'
+          photo: 'genesis-media://home/utility/img-01.jpg'
+          alttext: Testimonial
+          name: Eigth
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          title:
+            enabled: show
+            limit: ''
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          link:
+            enabled: show
+            label: ''
+            target: _self
+    block:
+      variations: title1
+  socialfeed-9871:
+    title: 'Social Feed'
+    attributes:
+      class: ''
+      source: particle
+      title: ''
+      user_id: ''
+      accesstoken: ''
+      subtitle: ''
+      cols: cols-8
+      image_height: 240px
+      feed:
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 1'
+          feed: img-1
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 2'
+          feed: img-2
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 3'
+          feed: img-3
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 4'
+          feed: img-4
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 5'
+          feed: img-5
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 6'
+          feed: img-6
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 7'
+          feed: img-7
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 8'
+          feed: img-8
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 9'
+          feed: img-9
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 10'
+          feed: img-10
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 11'
+          feed: img-11
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 12'
+          feed: img-12
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 13'
+          feed: img-13
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 14'
+          feed: img-14
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 15'
+          feed: img-15
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 16'
+          feed: img-16
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 17'
+          feed: img-17
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 18'
+          feed: img-18
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 19'
+          feed: img-19
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 20'
+          feed: img-20
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 21'
+          feed: img-21
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 22'
+          feed: img-22
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 23'
+          feed: img-23
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          title: 'Image 24'
+          feed: img-24
+    block:
+      class: flush

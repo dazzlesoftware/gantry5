@@ -1,0 +1,15 @@
+name: ExpandedBottom Colors
+description: ExpandedBottom colors for the Omicron theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#edeced"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#818181"

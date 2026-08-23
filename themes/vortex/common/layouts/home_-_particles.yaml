@@ -1,0 +1,528 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1496839015
+layout:
+  top:
+    -
+      - system-messages-1675
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - slider-2062
+  /header/:
+    -
+      - 'simplecontent-2034 6'
+      - 'simplecontent-2493 6'
+    -
+      - video-8571
+    -
+      - custom-1999
+  /above/:
+    -
+      - simplecontent-6947
+    -
+      - charts-2228
+  /feature/:
+    -
+      - 'simplecontent-7114 5'
+      - 'cards-2993 7'
+  /showcase/:
+    -
+      - 'logo-7825 5'
+      - 'infolist-1645 7'
+    -
+      - newsletter-7287
+  expanded:
+    -
+      - testimonials-4298
+  /extension/: {  }
+  /utility/:
+    -
+      - 'simplecontent-2735 6'
+      - 'calendar-1758 6'
+  /bottom/:
+    -
+      - carousel-8273
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-fluid-navigation g-absolute-navigation fp-navigation'
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-slideshow
+  header:
+    attributes:
+      boxed: '3'
+      class: 'fp-header section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-above section-vertical-paddings section-horizontal-paddings'
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-feature section-horizontal-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings fp-showcase'
+  expanded:
+    type: section
+    attributes:
+      class: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-extension section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: section-horizontal-paddings
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-bottom section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'g-default-footer section-horizontal-paddings section-vertical-paddings'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  system-messages-1675:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: system-messages-9828
+  slider-2062:
+    attributes:
+      loop: enabled
+      items_amount: '3'
+      items:
+        -
+          image: 'genesis-media://home/slideshow/img-01.jpg'
+          icon: 'fa fa-search'
+          title: 'Good Morning'
+        -
+          image: 'genesis-media://home/slideshow/img-02.jpg'
+          icon: 'fa fa-search'
+          title: Welcome
+        -
+          image: 'genesis-media://home/slideshow/img-03.jpg'
+          icon: 'fa fa-search'
+          title: 'Good Evening'
+    block:
+      variations: 'nomarginall nopaddingall'
+  simplecontent-2034:
+    title: 'Build Great Websites'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Build Great Websites'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Build Great Websites'
+    block:
+      class: g-border-right
+  simplecontent-2493:
+    title: 'Consectetur odi...'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: ''
+          main_content: 'Vortex is a brilliant theme for displaying big, beautiful images alongside modern charts and text. It features several new premium particles that make it easy to create easy-to-read charts, calendars, and more.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Cosectur...
+  video-8571:
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          caption: 'Embed videos that live natively in your website''s design.'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=IKSg3J4KOIs'
+          local: {  }
+          posterimage: ''
+          loop: disabled
+          autoplay: disabled
+          controls: disabled
+          info: disabled
+          related: disabled
+          muted: enabled
+          title: Video
+  custom-1999:
+    title: Button
+    attributes:
+      html: '<a href="#" class="button">Watch more</a>'
+    block:
+      variations: center
+  simplecontent-6947:
+    title: 'Cities Visited'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Charts Particle'
+          author: ''
+          leading_content: 'Create great charts.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Charts Particle'
+    block:
+      variations: center
+  charts-2228:
+    attributes:
+      label: 'How many cities'
+      items:
+        -
+          xkey: '2008'
+          ykey: '0'
+          title: 'Key 1'
+        -
+          xkey: '2009'
+          ykey: '5'
+          title: 'Key 2'
+        -
+          xkey: '2010'
+          ykey: '45'
+          title: 'Key 3'
+        -
+          xkey: '2011'
+          ykey: '10'
+          title: 'Key 4'
+        -
+          xkey: '2012'
+          ykey: '80'
+          title: 'Key 5'
+  simplecontent-7114:
+    title: 'Genesis Features'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Genesis Features'
+          author: ''
+          leading_content: 'Genesis is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
+          main_content: 'Themes powered by Genesis come with an industry-leading set of core features, including: style, menu, layout, content, and page management tools. Find out why thousands of websites are switching to the powerful Genesis framework.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Genesis Features'
+    block:
+      class: section-vertical-paddings
+  cards-2993:
+    attributes:
+      class: ''
+      title: ''
+      subcontents:
+        -
+          accent: accent2
+          headline1: 'May 9th, 2017'
+          headline2: Amsterdam
+          img: 'genesis-media://home/feature/img-01.jpg'
+          tag: 'Your host'
+          fullname: 'Jesse Johnson'
+          title: 'How to Manipulate the Menu Editor'
+        -
+          accent: accent2_light
+          headline1: 'June 5th, 2017'
+          headline2: London
+          img: 'genesis-media://home/feature/img-02.jpg'
+          tag: 'Your host'
+          fullname: 'Evelyn Estrada'
+          title: 'What You Need to Know About the Style Panel'
+        -
+          accent: accent2_light
+          headline1: 'July 13th, 2017'
+          headline2: 'Mexico City'
+          img: 'genesis-media://home/feature/img-03.jpg'
+          tag: 'Your host'
+          fullname: 'Sean Phillips'
+          title: 'How to Perform Magic in the Layout Manager'
+        -
+          accent: accent2
+          headline1: 'August 25th, 2017'
+          headline2: Manchester
+          img: 'genesis-media://home/feature/img-04.jpg'
+          tag: 'Your host'
+          fullname: 'Mark Powell'
+          title: 'What You Need to Know About Assignments'
+    block:
+      class: 'nomarginright nopaddingright nomargintop nopaddingtop nomarginbottom nopaddingbottom fp-cards'
+  logo-7825:
+    title: 'Book Image'
+    attributes:
+      image: 'genesis-media://home/showcase/img-01.jpg'
+  infolist-1645:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: 'Genesis Pickers'
+      intro: 'Genesis''s Pickers Simplify Site Configuration'
+      cols: g-2cols
+      infolists:
+        -
+          icon: 'fa fa-plane'
+          iconloc: inline
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Font Picker enables you to browse hundreds of fonts, see real-time previews of your text, and use them in your site.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Font Picker'
+        -
+          icon: 'fa fa-suitcase'
+          iconloc: inline
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: "Color Picker makes choosing colors for your website a breeze. Enjoy full control over your site's color scheme.\n"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Color Picker'
+        -
+          icon: 'fa fa-camera-retro'
+          iconloc: inline
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: "Powered by the popular Font Awesome icon library, Genesis's Icon Picker makes browsing and using icons easy.\n"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Icon Picker'
+        -
+          icon: 'fa fa-dollar'
+          iconloc: inline
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: "Browse, upload, and select images, video, and other files with ease from Genesis's modern File Picker tool.\n"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'File Picker'
+  testimonials-4298:
+    attributes:
+      nav: disabled
+      items:
+        -
+          image: 'genesis-media://home/expanded/img-01.jpg'
+          position: 'CEO of a Company Inc.'
+          testimonial: 'Vortex is an excellent choice for photographers and design-oriented businesses. Display big, beautiful images that accent your website''s content.'
+          author: 'Timothy Turner'
+        -
+          image: 'genesis-media://home/expanded/img-02.jpg'
+          position: 'CEO of a Company Inc.'
+          testimonial: 'Vortex utilizes bold imagery and elegant data that businesses both small and large love. It is an excellent choice for startups that want to showcase the next big thing.'
+          author: 'Albert Arnold'
+        -
+          image: 'genesis-media://home/expanded/img-03.jpg'
+          position: 'CEO of a Company Inc.'
+          testimonial: 'Artists and designers will love Vortex''s variety of beautifully-designed particles that perfectly showcase your work. Vortex is excellent for portfolios and blogs.'
+          author: 'Vincent Ortega'
+  simplecontent-2735:
+    title: 'Create More'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Create More'
+          author: ''
+          leading_content: 'Create the perfect website for your needs with this versatile theme.'
+          main_content: 'Vortex is an incredible design that was created from the ground up for simplicity and versatility. Whether you''re building a corporate website or a personal portfolio, Vortex is packed with features you''ll love.'
+          readmore_label: 'Pick it Up &rarr;'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Create More'
+  calendar-1758:
+    attributes:
+      firstdayofweek: '0'
+      events:
+        -
+          begin: '2017-06-08'
+          end: '2017-06-10'
+          description: "The Orange Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled around every turn that make the Orange a can’t-miss summer event for music fans from around the world.<br/><br/>\n\nThe festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy and The Orange Stage. The Orange offers three different passes options; general admission, Backstage, and All Access.<br/><br/>\n\nA number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV in what The Orange calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents, beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge."
+          link: ''
+          target: _blank
+          title: 'Orange Festival'
+        -
+          begin: '2017-06-12'
+          end: '2017-06-12'
+          description: "The internationally acclaimed Joe County Fair is one of the most spectacular events and one of the oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the Joe County Fair is a great celebration, a salute to everything good in the world.<br /><br />\n\nThe Joe Country Fair, the inspiration for the original novel “Average Joe Fair”, three motion pictures and Roofers and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />\n\nNational media frequently rank the Fair as one of the top events in the country. In 2010, the People's Choice ranked it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it's the greatest fair ever."
+          link: ''
+          target: _blank
+          title: 'Joe County Fair'
+        -
+          begin: '2017-06-22'
+          end: '2017-06-24'
+          description: "The Blue Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled around every turn that make the Blue a can’t-miss summer event for music fans from around the world.<br/><br/>\n\nThe festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy and The Blue Stage. The Blue offers three different passes options; general admission, Backstage, and All Access.<br/><br/>\n\nA number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV in what The Blue calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents, beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge."
+          link: ''
+          target: _blank
+          title: 'Blue Festival'
+        -
+          begin: '2017-06-26'
+          end: '2017-06-26'
+          description: "The internationally acclaimed Jill County Fair is one of the most spectacular events and one of the oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the Jill County Fair is a great celebration, a salute to everything good in the world.<br /><br />\n\nThe Jill Country Fair, the inspiration for the original novel “Average Jill Fair”, three motion pictures and Roofers and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />\n\nNational media frequently rank the Fair as one of the top events in the country. In 2010, the People's Choice ranked it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it's the greatest fair ever."
+          link: ''
+          target: _blank
+          title: 'Jill County Fair'
+        -
+          begin: '2017-07-06'
+          end: '2017-07-08'
+          description: "The Red Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled around every turn that make the Red a can’t-miss summer event for music fans from around the world.<br/><br/>\n\nThe festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy and The Red Stage. The Red offers three different passes options; general admission, Backstage, and All Access.<br/><br/>\n\nA number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV in what The Red calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents, beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge."
+          link: ''
+          target: _self
+          title: 'Red Festival'
+        -
+          begin: '2017-07-10'
+          end: '2017-07-10'
+          description: "The internationally acclaimed Jane County Fair is one of the most spectacular events and one of the oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the Jane County Fair is a great celebration, a salute to everything good in the world.<br /><br />\n\nThe Jane Country Fair, the inspiration for the original novel “Average Jane Fair”, three motion pictures and Roofers and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />\n\nNational media frequently rank the Fair as one of the top events in the country. In 2010, the People's Choice ranked it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it's the greatest fair ever."
+          link: ''
+          target: _blank
+          title: 'Jane County Fair'
+        -
+          begin: '2017-07-20'
+          end: '2017-07-22'
+          description: "The Green Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled around every turn that make the Green a can’t-miss summer event for music fans from around the world.<br/><br/>\n\nThe festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy and The Green Stage. The Green offers three different passes options; general admission, Backstage, and All Access.<br/><br/>\n\nA number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV in what The Green calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents, beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge."
+          link: ''
+          target: _blank
+          title: 'Green Festival'
+        -
+          begin: '2017-07-24'
+          end: '2017-07-24'
+          description: "The internationally acclaimed Jack County Fair is one of the most spectacular events and one of the oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the Jack County Fair is a great celebration, a salute to everything good in the world.<br /><br />\n\nThe Jack Country Fair, the inspiration for the original novel “Average Jack Fair”, three motion pictures and Roofers and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />\n\nNational media frequently rank the Fair as one of the top events in the country. In 2010, the People's Choice ranked it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it's the greatest fair ever."
+          link: ''
+          target: _blank
+          title: 'Jack Country Fair'
+  carousel-8273:
+    attributes:
+      items:
+        -
+          image: 'genesis-media://home/bottom/img-01.jpg'
+          icon: 'fa fa-search'
+          caption: Elegant
+          linkto: image
+          link: ''
+          name: 'Item 1'
+        -
+          image: 'genesis-media://home/bottom/img-02.jpg'
+          icon: 'fa fa-search'
+          caption: Modern
+          linkto: image
+          link: ''
+          name: 'Item 2'
+        -
+          image: 'genesis-media://home/bottom/img-04.jpg'
+          icon: 'fa fa-search'
+          caption: Versatile
+          linkto: image
+          link: ''
+          name: 'Item 3'
+        -
+          image: 'genesis-media://home/bottom/img-03.jpg'
+          icon: 'fa fa-search'
+          caption: Simple
+          linkto: image
+          link: ''
+          name: 'Item 4'
+    block:
+      class: flush

@@ -1,0 +1,19 @@
+name: Base Styles
+description: Base styles for the Verbatim theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#cbd2d7"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/pagesurround/preset1/pattern.png"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#333333"

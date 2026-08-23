@@ -1,0 +1,9 @@
+valora-theme:
+  title: 'Valora Theme'
+  description: 'Sample menu for Valora theme.'
+
+  items:
+    valora:
+      title: 'Home'
+      layout: home
+      home: 1

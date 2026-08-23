@@ -1,0 +1,9 @@
+altairis-theme:
+  title: 'Altairis Theme'
+  description: 'Sample menu for Altairis theme.'
+
+  items:
+    altairis:
+      title: 'Home'
+      outline: home
+      home: 1

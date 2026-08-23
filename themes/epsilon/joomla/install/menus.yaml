@@ -1,9 +1,0 @@
-epsilon-theme:
-  title: 'Epsilon Theme'
-  description: 'Sample menu for Epsilon theme.'
-
-  items:
-    epsilon:
-      title: 'Home'
-      layout: home
-      home: 1

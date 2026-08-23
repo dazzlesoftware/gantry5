@@ -1,0 +1,1922 @@
+version: 3
+preset:
+  image: genesis-admin://images/layouts/home.png
+  name: Particles 4
+  timestamp: 1786258804
+layout:
+  /header/:
+  - - system-messages-6948
+  - - logo-8575 25
+    - horizontalmenu-6051 75
+  /navigation/:
+  - - menu-1228
+  /slideshow/:
+  - - featuresslider-5358
+  /showcase/:
+  - - alert-4300
+    - blockcontent-4301
+    - calendar-4302
+  /feature/:
+  - - contentlist-4400
+    - divider-4401
+    - flipboxpro-4402
+    - horizontalmenu-4403
+  /container-particles-4/:
+  - - mainbar 8:
+      - - alert-4100
+      - - blockcontent-4101
+      - - calendar-4102
+      - - contentlist-4103
+      - - divider-4104
+      - - flipboxpro-4105
+      - - horizontalmenu-4106
+      - - imagecontent-4107
+      - - infolist-4108
+      - - mobile-menu-4109
+      - - pieprogress-4110
+      - - simplecounter-4111
+      - - swiper-4112
+      - - testimonialcard-4113
+      - - video-4114
+    - sidebar 4:
+      - - alert-4200
+      - - blockcontent-4201
+      - - calendar-4202
+      - - contentlist-4203
+      - - divider-4204
+      - - flipboxpro-4205
+      - - horizontalmenu-4206
+      - - imagecontent-4207
+      - - infolist-4208
+      - - mobile-menu-4209
+      - - pieprogress-4210
+      - - simplecounter-4211
+      - - swiper-4212
+      - - testimonialcard-4213
+      - - video-4214
+  offcanvas:
+  - - mobile-menu-8876
+structure:
+  header:
+    attributes:
+      boxed: ''
+      class: g-home
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-home
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  mainbar:
+    type: section
+    attributes:
+      class: particle-tests
+  sidebar:
+    type: section
+    attributes:
+      class: particle-tests
+  container-particles-4:
+    attributes:
+      boxed: ''
+content:
+  logo-8575:
+    block:
+      class: g-logo-block
+  horizontalmenu-6051:
+    title: Top Menu
+    attributes:
+      target: _blank
+      text:
+      - text: Features
+        link: https://codex.dazzlecms.org/basics/key-features
+        name: Features
+      - text: Genesis
+        link: https://dazzlecms.org/
+        name: Genesis
+      - text: Particles
+        link: https://codex.dazzlecms.org/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/nectarion
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        name: Support
+  system-messages-6948:
+    block:
+      variations: nomarginall nopaddingall
+  featuresslider-5358:
+    title: Features Slider
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  menu-1228:
+    block:
+      class: g-nectarion-menu
+  mobile-menu-8876:
+    title: Mobile Menu
+  alert-4100:
+    title: Alert — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      text: This is an alert message.
+      type: info
+      dismissible: enable
+      icon: fa fa-star
+      fontsize: 16
+      padding: 16px
+      radius: 4
+    block:
+      class: particle-test particle-test-alert
+  alert-4200:
+    title: Alert — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      text: This is an alert message.
+      type: info
+      dismissible: enable
+      icon: fa fa-star
+      fontsize: 16
+      padding: 16px
+      radius: 4
+    block:
+      class: particle-test particle-test-alert
+  blockcontent-4101:
+    title: Blockcontent — Mainbar
+    attributes:
+      enabled: true
+      class: ''
+      title: Nectarion Test Item 1
+      icon: fa fa-star
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      headline: Maintenance Mode
+      description: Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.
+      linktext: Learn More
+      link: '#'
+      linkclass: particle-test-option
+      linktarget: _self
+      subcontents:
+      - name: Nectarion Test Item 1
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 1.
+        subtitle: Responsive particle test content for item 1.
+        description: Responsive particle test content for item 1.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 2
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboxcaption: Responsive particle test content for item 2.
+        subtitle: Responsive particle test content for item 2.
+        description: Responsive particle test content for item 2.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 3
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 3.
+        subtitle: Responsive particle test content for item 3.
+        description: Responsive particle test content for item 3.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+    block:
+      class: g-title-large
+      variations: center
+  blockcontent-4201:
+    title: Blockcontent — Sidebar
+    attributes:
+      enabled: true
+      class: ''
+      title: Nectarion Test Item 1
+      icon: fa fa-star
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      headline: Maintenance Mode
+      description: Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.
+      linktext: Learn More
+      link: '#'
+      linkclass: particle-test-option
+      linktarget: _self
+      subcontents:
+      - name: Nectarion Test Item 1
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 1.
+        subtitle: Responsive particle test content for item 1.
+        description: Responsive particle test content for item 1.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 2
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboxcaption: Responsive particle test content for item 2.
+        subtitle: Responsive particle test content for item 2.
+        description: Responsive particle test content for item 2.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 3
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 3.
+        subtitle: Responsive particle test content for item 3.
+        description: Responsive particle test content for item 3.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+    block:
+      class: g-title-large
+      variations: center
+  calendar-4102:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      eventsheader: Responsive particle test content for item 1.
+      titlefontsize: 1
+      numbersfontsize: 1
+      iconprev: fa fa-arrow-circle-left
+      iconnext: fa fa-arrow-circle-right
+      iconsize: 1
+      iconcolor: '#7c4dff'
+      closeicon: fa fa-close
+      closeiconsize: 1
+      closeiconcolor: '#7c4dff'
+      closebuttoncolor: '#7c4dff'
+      closebuttonhovercolor: '#7c4dff'
+      eventtitlefontsize: 1
+      eventdescfontsize: 1
+      events:
+      - begin: '2017-06-08'
+        end: '2017-06-10'
+        description: 'The Orange Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Orange a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Orange Stage. The Orange offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Orange calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Orange Festival
+      - begin: '2017-06-12'
+        end: '2017-06-12'
+        description: 'The internationally acclaimed Joe County Fair is one of the most spectacular events and one of the oldest
+          and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the
+          Joe County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Joe Country Fair, the inspiration for the original novel “Average Joe Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Joe County Fair
+      - begin: '2017-06-22'
+        end: '2017-06-24'
+        description: 'The Blue Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Blue a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Blue Stage. The Blue offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Blue calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Blue Festival
+      - begin: '2017-06-26'
+        end: '2017-06-26'
+        description: 'The internationally acclaimed Jill County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jill County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jill Country Fair, the inspiration for the original novel “Average Jill Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jill County Fair
+      - begin: '2017-07-06'
+        end: '2017-07-08'
+        description: 'The Red Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Red a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Red Stage. The Red offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Red calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _self
+        title: Red Festival
+      - begin: '2017-07-10'
+        end: '2017-07-10'
+        description: 'The internationally acclaimed Jane County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jane County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jane Country Fair, the inspiration for the original novel “Average Jane Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jane County Fair
+      - begin: '2017-07-20'
+        end: '2017-07-22'
+        description: 'The Green Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Green a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Green Stage. The Green offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Green calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Green Festival
+      - begin: '2017-07-24'
+        end: '2017-07-24'
+        description: 'The internationally acclaimed Jack County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jack County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jack Country Fair, the inspiration for the original novel “Average Jack Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jack Country Fair
+      firstdayofweek: '0'
+    title: Calendar — Mainbar
+    block:
+      class: particle-test particle-test-calendar
+  calendar-4202:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      eventsheader: Responsive particle test content for item 1.
+      titlefontsize: 1
+      numbersfontsize: 1
+      iconprev: fa fa-arrow-circle-left
+      iconnext: fa fa-arrow-circle-right
+      iconsize: 1
+      iconcolor: '#7c4dff'
+      closeicon: fa fa-close
+      closeiconsize: 1
+      closeiconcolor: '#7c4dff'
+      closebuttoncolor: '#7c4dff'
+      closebuttonhovercolor: '#7c4dff'
+      eventtitlefontsize: 1
+      eventdescfontsize: 1
+      events:
+      - begin: '2017-06-08'
+        end: '2017-06-10'
+        description: 'The Orange Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Orange a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Orange Stage. The Orange offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Orange calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Orange Festival
+      - begin: '2017-06-12'
+        end: '2017-06-12'
+        description: 'The internationally acclaimed Joe County Fair is one of the most spectacular events and one of the oldest
+          and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the
+          Joe County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Joe Country Fair, the inspiration for the original novel “Average Joe Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Joe County Fair
+      - begin: '2017-06-22'
+        end: '2017-06-24'
+        description: 'The Blue Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Blue a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Blue Stage. The Blue offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Blue calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Blue Festival
+      - begin: '2017-06-26'
+        end: '2017-06-26'
+        description: 'The internationally acclaimed Jill County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jill County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jill Country Fair, the inspiration for the original novel “Average Jill Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jill County Fair
+      - begin: '2017-07-06'
+        end: '2017-07-08'
+        description: 'The Red Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Red a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Red Stage. The Red offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Red calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _self
+        title: Red Festival
+      - begin: '2017-07-10'
+        end: '2017-07-10'
+        description: 'The internationally acclaimed Jane County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jane County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jane Country Fair, the inspiration for the original novel “Average Jane Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jane County Fair
+      - begin: '2017-07-20'
+        end: '2017-07-22'
+        description: 'The Green Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Green a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Green Stage. The Green offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Green calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Green Festival
+      - begin: '2017-07-24'
+        end: '2017-07-24'
+        description: 'The internationally acclaimed Jack County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jack County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jack Country Fair, the inspiration for the original novel “Average Jack Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jack Country Fair
+      firstdayofweek: '0'
+    title: Calendar — Sidebar
+    block:
+      class: particle-test particle-test-calendar
+  contentlist-4103:
+    title: Contentlist — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagetag: Elara
+      headline: Construct unique and dynamic content <span class="hidden-tablet">creations </span>with RokSprocket
+      subtitle: Intuitive and Versatile
+      desc: RokSprocket is a powerful, content switchblade extension, that brings a vast portfolio of different layouts and
+        themes into a single extension and UI.
+      readmore: Read More
+      link: '#'
+      icon: fa fa-star
+      readmoreclass: particle-test-option
+      cols: g-listgrid-2cols
+      listgriditems:
+      - icon: fa fa-file-text-o fa-fw
+        text: Custom administrator with intuitive controls and powerful features
+        link: '#'
+        title: List Item 1
+      - icon: fa fa-file-text-o fa-fw
+        text: Multiple layouts and themes for diverse content possibilities
+        link: '#'
+        title: List Item 2
+      - icon: fa fa-file-text-o fa-fw
+        text: Support for multiple content providers or its own simple provider
+        link: '#'
+        title: List Item 3
+      - icon: fa fa-file-text-o fa-fw
+        text: Module shortcoding to allow for inline inclusion of RokSprocket instances
+        link: '#'
+        title: List Item 4
+      - icon: fa fa-file-text-o fa-fw
+        text: Fully responsive for the modern and mobile web environment
+        link: '#'
+        title: List Item 5
+      - icon: fa fa-file-text-o fa-fw
+        text: Advanced cumulative filters for sophisticated content selection
+        link: '#'
+        title: List Item 6
+    block:
+      class: fp-contentlist
+      variations: box2 rounded
+  contentlist-4203:
+    title: Contentlist — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagetag: Elara
+      headline: Construct unique and dynamic content <span class="hidden-tablet">creations </span>with RokSprocket
+      subtitle: Intuitive and Versatile
+      desc: RokSprocket is a powerful, content switchblade extension, that brings a vast portfolio of different layouts and
+        themes into a single extension and UI.
+      readmore: Read More
+      link: '#'
+      icon: fa fa-star
+      readmoreclass: particle-test-option
+      cols: g-listgrid-2cols
+      listgriditems:
+      - icon: fa fa-file-text-o fa-fw
+        text: Custom administrator with intuitive controls and powerful features
+        link: '#'
+        title: List Item 1
+      - icon: fa fa-file-text-o fa-fw
+        text: Multiple layouts and themes for diverse content possibilities
+        link: '#'
+        title: List Item 2
+      - icon: fa fa-file-text-o fa-fw
+        text: Support for multiple content providers or its own simple provider
+        link: '#'
+        title: List Item 3
+      - icon: fa fa-file-text-o fa-fw
+        text: Module shortcoding to allow for inline inclusion of RokSprocket instances
+        link: '#'
+        title: List Item 4
+      - icon: fa fa-file-text-o fa-fw
+        text: Fully responsive for the modern and mobile web environment
+        link: '#'
+        title: List Item 5
+      - icon: fa fa-file-text-o fa-fw
+        text: Advanced cumulative filters for sophisticated content selection
+        link: '#'
+        title: List Item 6
+    block:
+      class: fp-contentlist
+      variations: box2 rounded
+  divider-4104:
+    title: Divider — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      type: border
+      orientation: horizontal
+      borderwidth: 1
+      borderstyle: solid
+      bordercolor: '#cccccc'
+      borderradius: 0
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      repeat: no-repeat
+      imagesize: auto
+      width: 100
+      tabletwidth: 100
+      mobilewidth: 100
+      widthunit: percent
+      height: 10
+      tabletheight: 10
+      mobileheight: 10
+      verticalheight: 100
+      alignment: center
+      margintop: 30
+      marginbottom: 30
+    block:
+      class: particle-test particle-test-divider
+  divider-4204:
+    title: Divider — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      type: border
+      orientation: horizontal
+      borderwidth: 1
+      borderstyle: solid
+      bordercolor: '#cccccc'
+      borderradius: 0
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      repeat: no-repeat
+      imagesize: auto
+      width: 100
+      tabletwidth: 100
+      mobilewidth: 100
+      widthunit: percent
+      height: 10
+      tabletheight: 10
+      mobileheight: 10
+      verticalheight: 100
+      alignment: center
+      margintop: 30
+      marginbottom: 30
+    block:
+      class: particle-test particle-test-divider
+  flipboxpro-4105:
+    title: Flipboxpro — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      behavior: hover
+      direction: horizontal
+      height: 360
+      alignment: center
+      fronttitle: Front Title
+      frontcontent: Front description
+      fronticon: fa fa-star
+      frontimage: genesis-media://demo/home/mainbar/img-02.jpg
+      frontbackground: '#3366ff'
+      frontcolor: '#ffffff'
+      frontbutton: Learn More
+      frontlink: '#'
+      backtitle: Back Title
+      backcontent: Back description
+      backicon: fa fa-star
+      backimage: genesis-media://demo/home/mainbar/img-02.jpg
+      backbackground: '#222222'
+      backcolor: '#ffffff'
+      backbutton: Learn More
+      backlink: '#'
+      iconsize: 48
+      titlesize: 28
+      padding: 30
+      radius: 6
+    block:
+      class: particle-test particle-test-flipboxpro
+  flipboxpro-4205:
+    title: Flipboxpro — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      behavior: hover
+      direction: horizontal
+      height: 360
+      alignment: center
+      fronttitle: Front Title
+      frontcontent: Front description
+      fronticon: fa fa-star
+      frontimage: genesis-media://demo/home/mainbar/img-02.jpg
+      frontbackground: '#3366ff'
+      frontcolor: '#ffffff'
+      frontbutton: Learn More
+      frontlink: '#'
+      backtitle: Back Title
+      backcontent: Back description
+      backicon: fa fa-star
+      backimage: genesis-media://demo/home/mainbar/img-02.jpg
+      backbackground: '#222222'
+      backcolor: '#ffffff'
+      backbutton: Learn More
+      backlink: '#'
+      iconsize: 48
+      titlesize: 28
+      padding: 30
+      radius: 6
+    block:
+      class: particle-test particle-test-flipboxpro
+  horizontalmenu-4106:
+    title: Horizontalmenu — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      target: _blank
+      items:
+      - name: Nectarion Test Item 1
+        text: Responsive particle test content for item 1.
+        link: '#'
+      - name: Nectarion Test Item 2
+        text: Responsive particle test content for item 2.
+        link: '#'
+      - name: Nectarion Test Item 3
+        text: Responsive particle test content for item 3.
+        link: '#'
+      text:
+      - text: Features
+        link: https://codex.dazzlecms.org/basics/key-features
+        name: Features
+      - text: Genesis
+        link: https://dazzlecms.org/
+        name: Genesis
+      - text: Particles
+        link: https://codex.dazzlecms.org/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/nectarion
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        name: Support
+    block:
+      class: particle-test particle-test-horizontalmenu
+  horizontalmenu-4206:
+    title: Horizontalmenu — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      target: _blank
+      items:
+      - name: Nectarion Test Item 1
+        text: Responsive particle test content for item 1.
+        link: '#'
+      - name: Nectarion Test Item 2
+        text: Responsive particle test content for item 2.
+        link: '#'
+      - name: Nectarion Test Item 3
+        text: Responsive particle test content for item 3.
+        link: '#'
+      text:
+      - text: Features
+        link: https://codex.dazzlecms.org/basics/key-features
+        name: Features
+      - text: Genesis
+        link: https://dazzlecms.org/
+        name: Genesis
+      - text: Particles
+        link: https://codex.dazzlecms.org/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/nectarion
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        name: Support
+    block:
+      class: particle-test particle-test-horizontalmenu
+  imagecontent-4107:
+    title: Imagecontent — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagealt: Responsive particle test content for item 1.
+      imageposition: left
+      imagecolumns: 6
+      imagefit: cover
+      imageheight: 360
+      radius: 0
+      title: Image Content
+      heading: h2
+      titlecolor: '#7c4dff'
+      text: Add your content here.
+      textcolor: '#7c4dff'
+      alignment: left
+      padding: 2rem
+      background: rgba(0,0,0,0)
+      buttontext: Learn More
+      buttonlink: '#'
+      buttontarget: _self
+      buttonstyle: primary
+      buttonoutline: solid
+      buttonsize: default
+      buttonicon: fa fa-star
+      buttoniconposition: left
+    block:
+      class: particle-test particle-test-imagecontent
+  imagecontent-4207:
+    title: Imagecontent — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagealt: Responsive particle test content for item 1.
+      imageposition: left
+      imagecolumns: 6
+      imagefit: cover
+      imageheight: 360
+      radius: 0
+      title: Image Content
+      heading: h2
+      titlecolor: '#7c4dff'
+      text: Add your content here.
+      textcolor: '#7c4dff'
+      alignment: left
+      padding: 2rem
+      background: rgba(0,0,0,0)
+      buttontext: Learn More
+      buttonlink: '#'
+      buttontarget: _self
+      buttonstyle: primary
+      buttonoutline: solid
+      buttonsize: default
+      buttonicon: fa fa-star
+      buttoniconposition: left
+    block:
+      class: particle-test particle-test-imagecontent
+  infolist-4108:
+    title: Infolist — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Useful Links
+      intro: Responsive particle test content for item 1.
+      cols: g-1cols
+      infolists:
+      - image: ''
+        link: https://dazzlesoftware.org/docs/joomla/templates/nectarion
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Online Guides for the Nectarion Template
+      - image: ''
+        link: https://codex.dazzlecms.org/
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Documentation for the Genesis Framework
+      - image: ''
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Community forum for theme discussion
+    block:
+      class: particle-test particle-test-infolist
+  infolist-4208:
+    title: Infolist — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Useful Links
+      intro: Responsive particle test content for item 1.
+      cols: g-1cols
+      infolists:
+      - image: ''
+        link: https://dazzlesoftware.org/docs/joomla/templates/nectarion
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Online Guides for the Nectarion Template
+      - image: ''
+        link: https://codex.dazzlecms.org/
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Documentation for the Genesis Framework
+      - image: ''
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        textstyle: compact
+        imagestyle: compact
+        desc: ''
+        tag: ''
+        subtag: ''
+        title: Community forum for theme discussion
+    block:
+      class: particle-test particle-test-infolist
+  mobile-menu-4109:
+    title: Mobile Menu — Mainbar
+    attributes:
+      enabled: true
+    block:
+      class: particle-test particle-test-mobile-menu
+  mobile-menu-4209:
+    title: Mobile Menu — Sidebar
+    attributes:
+      enabled: true
+    block:
+      class: particle-test particle-test-mobile-menu
+  pieprogress-4110:
+    title: Pieprogress — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      percentage: 75
+      duration: 1800
+      circlesize: 180
+      borderwidth: 10
+      trackcolor: '#e5e5e5'
+      activecolor: '#3366ff'
+      percentagecolor: '#222222'
+      percentagesize: 32
+      icon: fa fa-star
+      iconsize: 28
+      text: Responsive particle test content for item 1.
+      alignment: center
+    block:
+      class: particle-test particle-test-pieprogress
+  pieprogress-4210:
+    title: Pieprogress — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      percentage: 75
+      duration: 1800
+      circlesize: 180
+      borderwidth: 10
+      trackcolor: '#e5e5e5'
+      activecolor: '#3366ff'
+      percentagecolor: '#222222'
+      percentagesize: 32
+      icon: fa fa-star
+      iconsize: 28
+      text: Responsive particle test content for item 1.
+      alignment: center
+    block:
+      class: particle-test particle-test-pieprogress
+  simplecounter-4111:
+    title: Simplecounter — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Stay Tuned
+      desc: We are working on a new and exciting template that we think you will really like.
+      titlefont: Responsive particle test content for item 1.
+      titlefontsize: 1
+      titlecolor: '#7c4dff'
+      descriptionfont: Responsive particle test content for item 1.
+      descriptionfontsize: 1
+      descriptioncolor: '#7c4dff'
+      numberfont: Responsive particle test content for item 1.
+      numberfontsize: 32
+      numbertextcolor: '#ffffff'
+      labelfont: Responsive particle test content for item 1.
+      labelfontsize: 14
+      labelcolor: '#7c4dff'
+      blockcolor: primary
+      customcolor: '#3366ff'
+      gradient: disable
+      gradientcolor: '#0037dd'
+      gradientangle: 135
+      blockshape: rounded
+      blockheight: 80
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      class: center
+  simplecounter-4211:
+    title: Simplecounter — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Stay Tuned
+      desc: We are working on a new and exciting template that we think you will really like.
+      titlefont: Responsive particle test content for item 1.
+      titlefontsize: 1
+      titlecolor: '#7c4dff'
+      descriptionfont: Responsive particle test content for item 1.
+      descriptionfontsize: 1
+      descriptioncolor: '#7c4dff'
+      numberfont: Responsive particle test content for item 1.
+      numberfontsize: 32
+      numbertextcolor: '#ffffff'
+      labelfont: Responsive particle test content for item 1.
+      labelfontsize: 14
+      labelcolor: '#7c4dff'
+      blockcolor: primary
+      customcolor: '#3366ff'
+      gradient: disable
+      gradientcolor: '#0037dd'
+      gradientangle: 135
+      blockshape: rounded
+      blockheight: 80
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      class: center
+  swiper-4112:
+    title: Swiper — Mainbar
+    attributes:
+      enabled: true
+      class: multislides
+      source: particle
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      height: 70vh
+      heightMobile: 400px
+      nav: enabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      slides_linkable: disabled
+      touchmove: enabled
+      overlaycolor: rgba(0, 0, 0, 0.4)
+      direction: horizontal
+      effect: slide
+      items:
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Exclusive Design
+        text: Splendid choice for your website
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 1
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Premium Features
+        text: Over 30 Particles Available
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 2
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Mobile Responsive
+        text: Slide and Thumb Breakpoints
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 3
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '1'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsHeight: 15vh
+      thumbsMobileHeight: 150px
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article.filter.articles: Responsive particle test content for item 1.
+      article.filter.featured: ''
+      article.limit.total: 5
+      article.limit.start: 0
+      article.sort.orderby: publish_up
+      article.sort.ordering: ASC
+      article.display.image.enabled: intro
+      article.display.text.type: intro
+      article.display.text.limit: Responsive particle test content for item 1.
+      article.display.title.enabled: show
+      article.display.title.limit: Responsive particle test content for item 1.
+      article.display.link.enabled: show
+      article.display.link.label: Learn More
+      article.display.link.target: _self
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+    block:
+      class: particle-test particle-test-swiper
+  swiper-4212:
+    title: Swiper — Sidebar
+    attributes:
+      enabled: true
+      class: multislides
+      source: particle
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      height: 70vh
+      heightMobile: 400px
+      nav: enabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      slides_linkable: disabled
+      touchmove: enabled
+      overlaycolor: rgba(0, 0, 0, 0.4)
+      direction: horizontal
+      effect: slide
+      items:
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Exclusive Design
+        text: Splendid choice for your website
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 1
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Premium Features
+        text: Over 30 Particles Available
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 2
+      - class: ''
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imageMobile: ''
+        bgcolor: ''
+        kb: ''
+        duration: '7000'
+        video: ''
+        title: Mobile Responsive
+        text: Slide and Thumb Breakpoints
+        thumb_title: ''
+        imageThumb: ''
+        button_text: Read More
+        button_link: '#'
+        linktarget: _self
+        name: Item 3
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '1'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsHeight: 15vh
+      thumbsMobileHeight: 150px
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article.filter.articles: Responsive particle test content for item 1.
+      article.filter.featured: ''
+      article.limit.total: 5
+      article.limit.start: 0
+      article.sort.orderby: publish_up
+      article.sort.ordering: ASC
+      article.display.image.enabled: intro
+      article.display.text.type: intro
+      article.display.text.limit: Responsive particle test content for item 1.
+      article.display.title.enabled: show
+      article.display.title.limit: Responsive particle test content for item 1.
+      article.display.link.enabled: show
+      article.display.link.label: Learn More
+      article.display.link.target: _self
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+    block:
+      class: particle-test particle-test-swiper
+  testimonialcard-4113:
+    title: Testimonialcard — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      review: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+      name: John Doe
+      designation: CEO, Company
+      link: '#'
+      target: _self
+      avatar: genesis-media://demo/home/mainbar/img-02.jpg
+      avataralt: Responsive particle test content for item 1.
+      avatarsize: 64
+      avatarshape: circle
+      authorposition: bottom
+      authorlayout: inline
+      alignment: left
+      showquote: enable
+      quotesize: 48
+      quotecolor: '#edeef2'
+      ratingenabled: disable
+      rating: 5
+      ratingcolor: '#f5a623'
+      unratedcolor: '#d5d5d5'
+      reviewcolor: '#7c4dff'
+      namecolor: '#7c4dff'
+      designationcolor: '#7c4dff'
+    block:
+      class: particle-test particle-test-testimonialcard
+  testimonialcard-4213:
+    title: Testimonialcard — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      review: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+      name: John Doe
+      designation: CEO, Company
+      link: '#'
+      target: _self
+      avatar: genesis-media://demo/home/mainbar/img-02.jpg
+      avataralt: Responsive particle test content for item 1.
+      avatarsize: 64
+      avatarshape: circle
+      authorposition: bottom
+      authorlayout: inline
+      alignment: left
+      showquote: enable
+      quotesize: 48
+      quotecolor: '#edeef2'
+      ratingenabled: disable
+      rating: 5
+      ratingcolor: '#f5a623'
+      unratedcolor: '#d5d5d5'
+      reviewcolor: '#7c4dff'
+      namecolor: '#7c4dff'
+      designationcolor: '#7c4dff'
+    block:
+      class: particle-test particle-test-testimonialcard
+  video-4114:
+    attributes:
+      enabled: true
+      class: ''
+      headertext: Responsive particle test content for item 1.
+      title: ''
+      description: Responsive particle test content for item 1.
+      columns: 1
+      items:
+      - caption: ''
+        source: local
+        video: ''
+        local:
+        - file: genesis-media://videos/slideshow/sample.webm
+          title: Sample webm
+        - file: genesis-media://videos/slideshow/sample.mp4
+          title: Sample mp4
+        loop: enabled
+        autoplay: enabled
+        controls: disabled
+        muted: enabled
+        title: Slideshow Video
+    block:
+      class: fp-slideshow-video
+    title: Video — Mainbar
+  video-4214:
+    attributes:
+      enabled: true
+      class: ''
+      headertext: Responsive particle test content for item 1.
+      title: ''
+      description: Responsive particle test content for item 1.
+      columns: 1
+      items:
+      - caption: ''
+        source: local
+        video: ''
+        local:
+        - file: genesis-media://videos/slideshow/sample.webm
+          title: Sample webm
+        - file: genesis-media://videos/slideshow/sample.mp4
+          title: Sample mp4
+        loop: enabled
+        autoplay: enabled
+        controls: disabled
+        muted: enabled
+        title: Slideshow Video
+    block:
+      class: fp-slideshow-video
+    title: Video — Sidebar
+  alert-4300:
+    title: Alert — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      heading: h3
+      text: This is an alert message.
+      type: info
+      dismissible: enable
+      icon: fa fa-star
+      fontsize: 16
+      padding: 16px
+      radius: 4
+    block:
+      class: particle-test particle-test-alert
+  blockcontent-4301:
+    title: Blockcontent — Showcase
+    attributes:
+      enabled: true
+      class: ''
+      title: Nectarion Test Item 1
+      icon: fa fa-star
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      headline: Maintenance Mode
+      description: Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.
+      linktext: Learn More
+      link: '#'
+      linkclass: particle-test-option
+      linktarget: _self
+      subcontents:
+      - name: Nectarion Test Item 1
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 1.
+        subtitle: Responsive particle test content for item 1.
+        description: Responsive particle test content for item 1.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 2
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-01.jpg
+        rokboxcaption: Responsive particle test content for item 2.
+        subtitle: Responsive particle test content for item 2.
+        description: Responsive particle test content for item 2.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+      - name: Nectarion Test Item 3
+        accent: none
+        icon: fa fa-star
+        img: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboximage: genesis-media://demo/home/mainbar/img-02.jpg
+        rokboxcaption: Responsive particle test content for item 3.
+        subtitle: Responsive particle test content for item 3.
+        description: Responsive particle test content for item 3.
+        class: particle-test-option
+        button: Learn More
+        buttonlink: '#'
+        buttonclass: particle-test-option
+        buttontarget: _self
+    block:
+      class: g-title-large
+      variations: center
+  calendar-4302:
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      eventsheader: Responsive particle test content for item 1.
+      titlefontsize: 1
+      numbersfontsize: 1
+      iconprev: fa fa-arrow-circle-left
+      iconnext: fa fa-arrow-circle-right
+      iconsize: 1
+      iconcolor: '#7c4dff'
+      closeicon: fa fa-close
+      closeiconsize: 1
+      closeiconcolor: '#7c4dff'
+      closebuttoncolor: '#7c4dff'
+      closebuttonhovercolor: '#7c4dff'
+      eventtitlefontsize: 1
+      eventdescfontsize: 1
+      events:
+      - begin: '2017-06-08'
+        end: '2017-06-10'
+        description: 'The Orange Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Orange a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Orange Stage. The Orange offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Orange calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Orange Festival
+      - begin: '2017-06-12'
+        end: '2017-06-12'
+        description: 'The internationally acclaimed Joe County Fair is one of the most spectacular events and one of the oldest
+          and largest bazaars in the country. Annually attracting more than a billion people from all over the world, the
+          Joe County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Joe Country Fair, the inspiration for the original novel “Average Joe Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Joe County Fair
+      - begin: '2017-06-22'
+        end: '2017-06-24'
+        description: 'The Blue Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Blue a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Blue Stage. The Blue offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Blue calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Blue Festival
+      - begin: '2017-06-26'
+        end: '2017-06-26'
+        description: 'The internationally acclaimed Jill County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jill County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jill Country Fair, the inspiration for the original novel “Average Jill Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jill County Fair
+      - begin: '2017-07-06'
+        end: '2017-07-08'
+        description: 'The Red Festival is a premier music experience set among the opulent jungles of Borneo, featuring acclaimed
+          headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions nestled
+          around every turn that make the Red a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Red Stage. The Red offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Red calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _self
+        title: Red Festival
+      - begin: '2017-07-10'
+        end: '2017-07-10'
+        description: 'The internationally acclaimed Jane County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jane County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jane Country Fair, the inspiration for the original novel “Average Jane Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jane County Fair
+      - begin: '2017-07-20'
+        end: '2017-07-22'
+        description: 'The Green Festival is a premier music experience set among the opulent jungles of Borneo, featuring
+          acclaimed headliners and up-and-coming artists. Watch extraordinary performances and discover the alluring attractions
+          nestled around every turn that make the Green a can’t-miss summer event for music fans from around the world.<br/><br/>
+
+
+          The festival includes seven stages; The Terrace, The Gazebo, The Portico, The Citadel, The Tea House, The Canopy
+          and The Green Stage. The Green offers three different passes options; general admission, Backstage, and All Access.<br/><br/>
+
+
+          A number of lodging options exist at the festival. Attendees of the festival can choose to camp in a tent or RV
+          in what The Green calls The Tropic. Additionally, attendees can pay for access to private, air-conditioned tents,
+          beds with sheets, access to private and air-conditioned showers and bathrooms, and access to a private food lounge.'
+        link: ''
+        target: _blank
+        title: Green Festival
+      - begin: '2017-07-24'
+        end: '2017-07-24'
+        description: 'The internationally acclaimed Jack County Fair is one of the most spectacular events and one of the
+          oldest and largest bazaars in the country. Annually attracting more than a billion people from all over the world,
+          the Jack County Fair is a great celebration, a salute to everything good in the world.<br /><br />
+
+
+          The Jack Country Fair, the inspiration for the original novel “Average Jack Fair”, three motion pictures and Roofers
+          and Hummerstein’s Broadway musical, is without a doubt the country’s greatest fair.<br /><br />
+
+
+          National media frequently rank the Fair as one of the top events in the country. In 2010, the People''s Choice ranked
+          it the #1 choice for summer fun, dominating any and all other events. Fun Living magazine named the Fair one of
+          the “Top Things to Do.” The Fair is also included in many other magazines and articles that clearly show it''s the
+          greatest fair ever.'
+        link: ''
+        target: _blank
+        title: Jack Country Fair
+      firstdayofweek: '0'
+    title: Calendar — Showcase
+    block:
+      class: particle-test particle-test-calendar
+  contentlist-4400:
+    title: Contentlist — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Nectarion Test Item 1
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagetag: Elara
+      headline: Construct unique and dynamic content <span class="hidden-tablet">creations </span>with RokSprocket
+      subtitle: Intuitive and Versatile
+      desc: RokSprocket is a powerful, content switchblade extension, that brings a vast portfolio of different layouts and
+        themes into a single extension and UI.
+      readmore: Read More
+      link: '#'
+      icon: fa fa-star
+      readmoreclass: particle-test-option
+      cols: g-listgrid-2cols
+      listgriditems:
+      - icon: fa fa-file-text-o fa-fw
+        text: Custom administrator with intuitive controls and powerful features
+        link: '#'
+        title: List Item 1
+      - icon: fa fa-file-text-o fa-fw
+        text: Multiple layouts and themes for diverse content possibilities
+        link: '#'
+        title: List Item 2
+      - icon: fa fa-file-text-o fa-fw
+        text: Support for multiple content providers or its own simple provider
+        link: '#'
+        title: List Item 3
+      - icon: fa fa-file-text-o fa-fw
+        text: Module shortcoding to allow for inline inclusion of RokSprocket instances
+        link: '#'
+        title: List Item 4
+      - icon: fa fa-file-text-o fa-fw
+        text: Fully responsive for the modern and mobile web environment
+        link: '#'
+        title: List Item 5
+      - icon: fa fa-file-text-o fa-fw
+        text: Advanced cumulative filters for sophisticated content selection
+        link: '#'
+        title: List Item 6
+    block:
+      class: fp-contentlist
+      variations: box2 rounded
+  divider-4401:
+    title: Divider — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      type: border
+      orientation: horizontal
+      borderwidth: 1
+      borderstyle: solid
+      bordercolor: '#cccccc'
+      borderradius: 0
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      repeat: no-repeat
+      imagesize: auto
+      width: 100
+      tabletwidth: 100
+      mobilewidth: 100
+      widthunit: percent
+      height: 10
+      tabletheight: 10
+      mobileheight: 10
+      verticalheight: 100
+      alignment: center
+      margintop: 30
+      marginbottom: 30
+    block:
+      class: particle-test particle-test-divider
+  flipboxpro-4402:
+    title: Flipboxpro — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      behavior: hover
+      direction: horizontal
+      height: 360
+      alignment: center
+      fronttitle: Front Title
+      frontcontent: Front description
+      fronticon: fa fa-star
+      frontimage: genesis-media://demo/home/mainbar/img-02.jpg
+      frontbackground: '#3366ff'
+      frontcolor: '#ffffff'
+      frontbutton: Learn More
+      frontlink: '#'
+      backtitle: Back Title
+      backcontent: Back description
+      backicon: fa fa-star
+      backimage: genesis-media://demo/home/mainbar/img-02.jpg
+      backbackground: '#222222'
+      backcolor: '#ffffff'
+      backbutton: Learn More
+      backlink: '#'
+      iconsize: 48
+      titlesize: 28
+      padding: 30
+      radius: 6
+    block:
+      class: particle-test particle-test-flipboxpro
+  horizontalmenu-4403:
+    title: Horizontalmenu — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      target: _blank
+      items:
+      - name: Nectarion Test Item 1
+        text: Responsive particle test content for item 1.
+        link: '#'
+      - name: Nectarion Test Item 2
+        text: Responsive particle test content for item 2.
+        link: '#'
+      - name: Nectarion Test Item 3
+        text: Responsive particle test content for item 3.
+        link: '#'
+      text:
+      - text: Features
+        link: https://codex.dazzlecms.org/basics/key-features
+        name: Features
+      - text: Genesis
+        link: https://dazzlecms.org/
+        name: Genesis
+      - text: Particles
+        link: https://codex.dazzlecms.org/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/nectarion
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-nectarion
+        name: Support
+    block:
+      class: particle-test particle-test-horizontalmenu

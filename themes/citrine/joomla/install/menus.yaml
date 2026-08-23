@@ -1,0 +1,9 @@
+citrine-theme:
+  title: 'Citrine Theme'
+  description: 'Sample menu for Citrine theme.'
+
+  items:
+    citrine:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,527 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1443176112
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - showcase-6764
+  /top/:
+    -
+      - custom-9611
+  /utility/:
+    -
+      - mosaic-3193
+  /feature/:
+    -
+      - custom-6361
+    -
+      - custom-4876
+  maintop: {  }
+  /expandedtop/:
+    -
+      - pricingtable-7110
+  main:
+    -
+      -
+        'mainbody 7': {  }
+      -
+        'sidebar 5': {  }
+  /expandedbottom/:
+    -
+      - custom-6265
+  /mainbottom/:
+    -
+      - 'contenttabs-4941 8'
+      - 'lists-8642 4'
+  /extension/:
+    -
+      - testimonials-3553
+    -
+      - custom-2298
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - custom-5902
+        /footer/:
+          -
+            - 'custom-3619 4'
+            - 'custom-4573 4'
+            - 'newsletter-9198 4'
+  /copyright/: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'top-to-bottom rt-overlay-dark'
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'rt-overlay-light fp-top'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  main:
+    type: container
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'rt-overlay-light fp-expandedbottom'
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+    inherit:
+      outline: default
+      include:
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  showcase-6764:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeInUp
+      animateOut: fadeOut
+      nav: enabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: ''
+          title: 'Maximize Site Utility,<br />with the Dynamic Header'
+          desc: ''
+          link1: features/overview
+          linktext1: 'Read More'
+          buttontarget1: _self
+          buttonclass1: readon
+          link2: 'https://dazzlesoftware.org/joomla/templates/aeonix'
+          linktext2: Download
+          buttontarget2: _self
+          buttonclass2: readon2
+          name: 'Item 1'
+        -
+          image: ''
+          title: 'Unlimited Positions,<br />with the Layout Manager  '
+          desc: ''
+          link1: features/overview
+          linktext1: 'Read More'
+          buttontarget1: _self
+          buttonclass1: readon
+          link2: 'https://dazzlesoftware.org/joomla/templates/aeonix'
+          linktext2: Download
+          buttontarget2: _self
+          buttonclass2: readon2
+          name: 'Item 2'
+        -
+          image: ''
+          title: 'Genesis Framework,<br />Powerful Features &amp; Extras'
+          desc: ''
+          link1: features/overview
+          linktext1: 'Read More'
+          buttontarget1: _self
+          buttonclass1: readon
+          link2: 'https://dazzlesoftware.org/joomla/templates/aeonix'
+          linktext2: Download
+          buttontarget2: _self
+          buttonclass2: readon2
+          name: 'Item 3'
+    block:
+      class: fp-showcase
+  custom-9611:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Welcome to Aeonix'
+      html: '<p>Aeonix is a vibrant, highly adaptable and engaging template, ideal for a vast selection of possible sites, from community to business. Subtle visual elements in the sectioned design, add character and division to the page, without compromising on content focus.</p>'
+    block:
+      class: rt-big-title
+      variations: center
+  mosaic-3193:
+    attributes:
+      cols: cols-3
+      cases:
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'Genesis is a powerful core template framework that provides extensive, standardized features.'
+              url: ''
+              target: _blank
+              title: Framework
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'Dropdown, is a CSS based dropdown menu system, with advanced features, such as multi-columns.'
+              url: ''
+              target: _blank
+              title: Navigation
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'A selection of eight, configurable preset style variations are available with varying color schemes.'
+              url: ''
+              target: _blank
+              title: Styling
+          title: Gallery
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'A selection of eight, configurable preset style variations are available with varying color schemes.'
+              url: ''
+              target: _blank
+              title: Variation
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'Create versatile layouts with over 80 module positions spread across many grid rows.'
+              url: ''
+              target: _blank
+              title: Versatile
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'Customize your menu styling and inject particles in seconds with the powerful Menu Editor'
+              url: ''
+              target: _blank
+              title: 'Menu Editor'
+          title: News
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'Create gorgeous layouts with drag-and-drop simplicity using the Layout Manager'
+              url: ''
+              target: _blank
+              title: 'Layout Manager'
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'A beautiful and rich selection of typography, based on Bootstrap, to emphasize the content.'
+              url: ''
+              target: _blank
+              title: Typography
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://home/utility/img1.jpg'
+              subtitle: 'An extensive assortment of free and online documentation is available for Aeonix.'
+              url: ''
+              target: _blank
+              title: Documentation
+          title: Video
+  custom-6361:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Dynamic, Scrolling Header'
+      html: "<div class=\"genesis-width-80 genesis-width-block rt-center rt-margin-auto\">\n\t<p>The Dynamic, Scrolling Header, is a custom design feature that adds an animation effect the header, where the logo and menu are contained, whereby the header elegantly collapses upon downward scroll and smoothly reappears on upward scroll.</p>\n</div>\n\n<div class=\"clear\"></div>\n\n<span class=\"rt-title-divider\"></span>\n\n"
+    block:
+      class: 'fp-feature rt-big-title nomarginbottom'
+      variations: 'center nopaddingall'
+  custom-4876:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n      <h2><span class=\"title-icon fa fa-th\"></span><span>Responsive</span></h2>\n      <p>A responsive layout adapts to the viewing device, whether mobile, tablet or a small or larger desktop, to ensure your site is accessible on all devices.</p>\n    </div>\n</div>\n<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n    <h2><span class=\"title-icon fa fa-signal\"></span><span>Site Performance</span></h2>\n      <p>Dazzle Software creates sleek, dynamic themes that take full advantage of the latest Web technologies to deliver your content quickly and efficiently.</p>\n    </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n    <h2><span class=\"title-icon fa fa-thumbs-up\"></span><span>Great Support</span></h2> \n    <p>Receive exclusive access to the Aeonix communty forum board for additional assistance, alongside the free and online documentation.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"
+    block:
+      class: 'nomargintop nopaddingtop'
+  pricingtable-7110:
+    title: 'Pricing Table'
+    attributes:
+      class: fp-pricing-table
+      title: 'Pay as You Grow Pricing'
+      headertext: 'All plans come with awesome support by email and phone. There is no hidden fee!'
+      footertext: 'Free <strong>30 days trial</strong> on all plans. No credit card needed! Need a bigger plan? <a href="#">View Professional Plan</a>.'
+      columns: g-pricingtable-3-col
+      tables:
+        -
+          class: ''
+          plan: Basic
+          price: $28
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '5GB Storage'
+              title: Storage
+            -
+              text: '10 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 1'
+        -
+          class: ''
+          plan: Standard
+          price: $58
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '25GB Storage'
+              title: Storage
+            -
+              text: '20 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 2'
+        -
+          class: ''
+          plan: Ultimate
+          price: $88
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '50GB Storage'
+              title: Storage
+            -
+              text: '30 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 3'
+    block:
+      class: rt-big-title
+      variations: center
+  custom-6265:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Extensive Color Chooser Options'
+      html: '<p>Aeonix has an extensive Color Chooser in the template manager to provide intricate controls for each section of Aeonix, inclusive of overlay type, text color, background color, as well as background images. Edit preexisting or create new presets.</p>'
+    block:
+      class: 'fp-expandedbottom rt-big-title nopaddingleft nopaddingright'
+      variations: center
+  contenttabs-4941:
+    title: 'Content Tabs'
+    attributes:
+      items:
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"genesis-width-40 genesis-width-block\">\n  <div class=\"rt-about-img\">\n    <div class=\"rt-center\">\n      <img alt=\"image\" src=\"genesis-media://home/mainbottom/img1.jpg\"> <span class=\"rt-about-info\">Modern. Powerful.</span>\n    </div>\n  </div>\n</div>\n<div class=\"genesis-width-60 genesis-width-block\">\n  <h2 class=\"nomargintop\">Replicate the Demo.</h2>\n  <p><span class=\"rt-label-1\">Particles</span></p>\n  <p><span class=\"rt-label-2\">Multiple Platforms</span></p>\n  <p>The RocketLauncher is a customized install, that replaces the default sample data with the data from the demo, alongside images, the extensions and template. It is a quick way to replicate the demo onto your server.</p>\n</div>\n<div class=\"clear\"></div>"
+          title: About
+        -
+          linklabel: ''
+          link: ''
+          content: "<h2 class=\"nomargintop\">Layered Image Sources.</h2><p>Aeonix is distributed with Adobe Fireworks PNG sources, layered and editable, to allow for quick and easy customization.</p><div class=\"fp-team-tab\">\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">John Doe</span>\t\t\t\t<span class=\"fp-team-position\">CEO</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mary Burke</span>\t\t\t\t<span class=\"fp-team-position\">Designer</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Hans Jose</span>\t\t\t\t<span class=\"fp-team-position\">Developer</span>\t\t\t</p>\t\t</div>\t</div>\t\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mark Riley</span>\t\t\t\t<span class=\"fp-team-position\">Support</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"clear\"></div>\t</div>"
+          title: Team
+        -
+          linklabel: ''
+          link: ''
+          content: '<h2 class="nomargintop"><span class="fa fa-question-circle"></span> Flexible &amp; Adaptable Sample Pages.</h2><p>There are a series of example pages beyond the frontpage, to show how flexible the layout system, with varying page types, module uses, and layout distributions.</p><h4 class=" nomarginbottom">Graphic Charts by ChartJS</h4><p>Create exquisite graphical charts using HTML5 and Chart.js, which is built-in with Aeonix.</p><h4 class="nomarginbottom">Coming Soon / Offline Page</h4><p>Aeonix supports a simple coming soon or offline style page with a time counter.</p>'
+          title: FAQ
+  lists-8642:
+    attributes:
+      class: ''
+      title: '<span class="title-icon fa fa-puzzle-piece"></span><span>Why Aeonix</span>'
+      description: ''
+      displayitems: '4'
+      accordion: enabled
+      nav: disabled
+      dots: disabled
+      loop: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+        -
+          title: 'Unlimited Positions'
+          desc: 'Genesis''s uniquely powerful layout system gives you maximum versatility.'
+          link: '#'
+          name: 'Grid System'
+        -
+          image: ''
+          title: 'Custom Interface'
+          desc: 'Controlled via an advanced user interface, with tabs, toggles, sliders and modals, to allow easy configuration.'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Custom Interface'
+        -
+          image: ''
+          title: 'Built-in Features'
+          desc: 'Features are self contained elements of functionality. They can easily hook into a Genesis template.'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Built-in Features'
+        -
+          image: ''
+          title: 'Top Notch Support'
+          desc: 'Community forum support as well as publicly available online documentation, to assist and guide.'
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Top Notch Support'
+  testimonials-3553:
+    attributes:
+      class: ''
+      title: 'What Our Clients Say'
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: disabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          title: ''
+          desc: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 1'
+        -
+          title: ''
+          desc: 'Grav is an award-winning content management system (CMS), which enables you to build web sites and powerful online applications. This makes Genesis-powered themes like Aeonix the perfect match for this sleek, modern content management system.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 2'
+        -
+          title: ''
+          desc: 'Speed is important, not only at the browser level, but in development. The Genesis administrative interface makes creating a new website and configuring it to meet your individual needs a breeze. Hit the ground running with Aeonix, today!'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 3'
+    block:
+      class: 'rt-big-title fp-testimonials'
+      variations: center
+  custom-2298:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img1.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img2.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img3.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img4.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img5.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+    block:
+      class: fp-extension
+      variations: center
+  custom-5902:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\">Versatile, Flexible Features Powered by the Genesis Framework.</h2>\n\n<p>Genesis is a free framework for both Joomla, WordPress, and Grav.</p>\n<a href=\"https://dazzlesoftware.org/joomla/templates/aeonix\" class=\"readon2 rt-big-button\">Join Aeonix Now</a>"
+    block:
+      class: fp-bottom
+      variations: center
+  custom-3619:
+    title: 'Custom HTML'
+    attributes:
+      html: "<span class=\"rt-icon\"><span class=\"fa fa-info-circle\"></span></span>\n<span class=\"rt-footer-logo\"></span>\n<p>All demo content is for sample purposes only, intended to show a live site. All images are licensed from ShutterStock for exclusive use on this demo site only. Use the Aeonix RocketLauncher for demo replication.</p>"
+    block:
+      variations: center
+  custom-4573:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "  <div class=\"center\">\n    <span class=\"rt-icon\"><span class=\"fa fa-file-text\"></span></span>\n    <h2 class=\"title\">Latest News</h2>\n  </div>\n  <ul>\n    <li>\n      <a href=\"#\"><span>Dynamic Control of Page Layouts</span></a>\n    </li>\n    <li>\n      <a href=\"#\"><span>Configurable Preset Styles</span></a>\n    </li>\n    <li>\n      <a href=\"#\"><span>The Theme is Optimized for Speed</span></a>\n    </li>\n    <li>\n      <a href=\"#\"><span>Complete Set of Font Awesome Icons</span></a>\n    </li>\n    <li>\n      <a href=\"#\"><span>CSS Dropdown Menu and Extended Menu</span></a>\n    </li>\n  </ul>"
+      twig: '0'
+    block:
+      class: fp-latest-news
+  newsletter-9198:
+    attributes:
+      action: 'https://rockettheme.us7.list-manage.com/subscribe/post?u=15e44abe1131903bf897546b4&amp;id=77eb86ad37'
+      width: g-newsletter-fullwidth
+      layout: g-newsletter-stack-fullwidth
+      style: g-newsletter-rounded
+      title: '<span class="rt-icon"><span class="fa fa-envelope"></span></span>'
+      headtext: '<h2 class="title">Newsletter</h2>'
+      inputboxtext: your@email.com
+      buttonclass: ''
+    block:
+      class: fp-newsletter
+      variations: center

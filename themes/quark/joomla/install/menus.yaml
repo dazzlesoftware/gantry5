@@ -1,0 +1,9 @@
+quark-theme:
+  title: 'Quark Theme'
+  description: 'Sample menu for Quark theme.'
+
+  items:
+    quark:
+      title: 'Home'
+      layout: home
+      home: 1

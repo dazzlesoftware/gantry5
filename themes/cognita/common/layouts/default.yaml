@@ -1,0 +1,438 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1502298442
+layout:
+  /top/:
+    -
+      - system-messages-1675
+  /navigation/:
+    -
+      - 'logo-1876 2'
+      - 'menu-9498 9'
+      - 'search-9995 1'
+  /container-main/:
+    -
+      -
+        '/slideshow/ 6':
+          -
+            - position-position-9851
+        /header/:
+          -
+            - position-position-3616
+        /above/:
+          -
+            - position-position-3476
+        /feature/:
+          -
+            - position-position-4752
+        /mainbar/:
+          -
+            - position-position-3207
+          -
+            - system-content-9187
+        /showcase/:
+          -
+            - position-position-7825
+        /expanded/:
+          -
+            - position-position-9404
+        /extension/:
+          -
+            - position-position-7840
+        /utility/:
+          -
+            - position-position-9746
+        /bottom/:
+          -
+            - position-position-3308
+      -
+        'aside 3':
+          -
+            - position-position-5769
+      -
+        'sidebar 3':
+          -
+            - position-position-6896
+  /footer/:
+    -
+      - 'simplemenu-5648 10'
+      - 'branding-2510 2'
+  /copyright/:
+    -
+      - position-position-7288
+  offcanvas:
+    -
+      - mobile-menu-3294
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-top section-horizontal-paddings'
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings g-default-navigation'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-slideshow
+  header:
+    attributes:
+      boxed: '3'
+      class: g-default-header
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-above
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-feature
+  mainbar:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-default-main
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-showcase
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-expanded
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-extension
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-utility
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: g-default-bottom
+  aside:
+    attributes:
+      class: g-default-aside
+    block:
+      fixed: '1'
+  sidebar:
+    type: section
+    attributes:
+      class: 'expand-sidebar-bg expand-right g-default-sidebar'
+  container-main:
+    attributes:
+      boxed: '3'
+      class: section-horizontal-paddings
+      extra: {  }
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings g-default-footer'
+  copyright:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-copyright section-horizontal-paddings'
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  menu-9498:
+    block:
+      variations: align-right
+  search-9995:
+    attributes:
+      title: ''
+      placeholder: ''
+    block:
+      variations: flush-mobile
+  position-position-9851:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-3616:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3476:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-4752:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-3207:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-7825:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-9404:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-7840:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-9746:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-3308:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-position-5769:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-6896:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  simplemenu-5648:
+    title: 'Footer Menu'
+    attributes:
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Today''s Opinion'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Op-Ed Columnists'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Editorials
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Contributing Writers'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Op-Ed Contributors'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Opinionator
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Letters
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Sunday Review'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Taking Note'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Room for Debate'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Public Editor'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Video: Opinion'
+          title: Opinion
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Today''s Arts'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Art & Design'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Books
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Dance
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Movies
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Music
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'N.Y.C Events Guide'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Television
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Theater
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Video: Arts'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Design
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Interiors
+          title: Arts
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Automobiles
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Crossword
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Food
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Education
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Fashion & Style'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Health
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Jobs
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Magazine
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'N.Y.C Events Guide'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Real Estate'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'T Magazine'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Travel
+          title: Lifestyle
+        -
+          items:
+            -
+              title: Classifieds
+            -
+              title: 'Tools & Services'
+            -
+              title: 'Times Topics'
+            -
+              title: 'Public Editor'
+            -
+              title: 'N.Y.C Events Guide'
+            -
+              title: Blogs
+            -
+              title: Multimedia
+            -
+              title: Photography
+            -
+              title: Video
+            -
+              title: 'NYT Store'
+            -
+              title: 'Times Journeys'
+            -
+              title: 'Manage My Account'
+          title: More
+  branding-2510:
+    attributes:
+      content: "<h2 class=\"g-title\">Cognita.</h2>\n&copy; Copyright 2026 by <a href=\"https://dazzlesoftware.org/\" title=\"Dazzle Software\" class=\"g-powered-by\">Dazzle Software</a>. All rights reserved."
+  position-position-7288:
+    title: 'Copyright A'
+    attributes:
+      key: copyright-a

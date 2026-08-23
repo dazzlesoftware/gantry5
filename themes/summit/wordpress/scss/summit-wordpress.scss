@@ -1,0 +1,44 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Optional Nucleus Assets
+@import "nucleus/theme/alerts";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "wordpress/theme/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// Platform Specific Configuration
+@import "configuration-wordpress/base";
+
+// WORDPRESS THEME SPECIFIC
+
+// Core
+@import "summit-wordpress/core";
+
+// Pagination
+@import "summit-wordpress/pagination";
+
+// Meta
+@import "summit-wordpress/meta";
+
+// Comments
+@import "summit-wordpress/comments";
+
+// Particles
+@import "summit-wordpress/particles";
+
+// Widgets
+@import "summit-wordpress/widgets";

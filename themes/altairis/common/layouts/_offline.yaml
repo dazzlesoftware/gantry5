@@ -1,0 +1,237 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: _offline
+  timestamp: 1451993126
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-5351
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - logo-7061
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-8012
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - system-content-5841
+      -
+        'aside 2': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - infolist-3744
+  /bottom/:
+    -
+      - 'custom-2368 6'
+      - 'newsletter-4577 6'
+  /footer/:
+    -
+      - 'logo-1173 4'
+      - 'horizontalmenu-9390 5'
+      - 'social-5844 4'
+  /copyright/:
+    -
+      - 'copyright-3234 6'
+      - 'horizontalmenu-3135 6'
+    -
+      - totop-8262
+  /offcanvas/: {  }
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  social-5351:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      class: center
+  infolist-8012:
+    title: Offline
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Sorry, We are Down for Maintenance'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: Offline
+    block:
+      variations: center
+  infolist-3744:
+    title: 'Maintenance Mode'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-grey
+          title: 'Maintenance Mode'
+    block:
+      variations: center
+  custom-2368:
+    title: 'About Altairis'
+    attributes:
+      html: "<h3 class=\"g-title\">About Altairis</h3>\nAltairis is available for purchase or part of a club membership from Dazzle Software, inclusive of the RocketLauncher, template and addons.."
+  newsletter-4577:
+    title: 'Subscribe Here'
+    attributes:
+      title: 'Subscribe Here'
+      headtext: 'Subscribe to our newsletter and stay updated on the latest developments and special offers!'
+      inputboxtext: 'Email Address'
+      buttontext: Join
+      uri: rocketthemeblog
+      buttonclass: 'button-alt button-special'
+  logo-1173:
+    title: 'Footer Logo'
+  horizontalmenu-9390:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'https://codex.dazzlecms.org/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Support
+        -
+          text: Download
+          link: 'https://dazzlesoftware.org/joomla/templates/altairis'
+          name: Download
+  social-5844:
+    title: 'Footer Social Icons'
+  horizontalmenu-3135:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/altairis'
+          name: Docs
+        -
+          text: Guides
+          link: 'https://codex.dazzlecms.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://dazzlesoftware.org/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Forum
+  totop-8262:
+    title: 'To Top'

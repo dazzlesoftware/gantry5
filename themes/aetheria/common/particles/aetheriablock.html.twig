@@ -1,0 +1,86 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+  {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+  <div class="g-aetheriablock {{ particle.class|e }}">
+    
+    <div class="row g-grid">
+      <div class="col g-block g-aetheriablock-item g-aetheriablock-item-1 col-{{ particle.left|default(4)|e }}" style="background-image: url('{{ url(particle.image1)|e }}');">
+        <div class="g-content">
+          <div class="g-aetheriablock-content">
+            <div class="g-tag"><a href="{{ particle.link1|e }}">{{ particle.title1|e }}</a></div>
+            <p>{{ particle.desc1|e }}</p>
+            {% if particle.listgriditems1 %}
+            <ul class="g-horizontalmenu">
+              {% for listgriditem1 in particle.listgriditems1 %}
+              <li>
+                <a href="{{ particle.link1|e }}">
+                  <span class="{{ listgriditem1.icon }}"></span>
+                  {{ listgriditem1.text }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="col g-block g-aetheriablock-item col-{{ particle.right|default(8)|e }}">
+        <div class="row g-grid">
+          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-2" style="background-image: url('{{ url(particle.image2)|e }}');">
+            <div class="g-content">
+              <div class="g-aetheriablock-content">
+                <h2 class="g-larger"><a href="{{ particle.link2|e }}">{{ particle.title2|e }}</a></h2>
+                <p>{{ particle.desc2|e }}</p>
+                <a class="button button-3" href="{{ particle.link2|e }}"><i class="{{ particle.icon2|e }}"></i> {{ particle.readmore2|e }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-grid">
+          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-3">
+            <div class="g-content">
+              <div class="g-aetheriablock-content">
+                <div class="g-headline">{{ particle.desc3|e }}</div>
+                {% if particle.listgriditems3 %}
+                <ul class="g-horizontalmenu">
+                  {% for listgriditem3 in particle.listgriditems3 %}
+                  <li>
+                    <a href="{{ particle.link3|e }}">
+                      <span class="{{ listgriditem3.icon }}"></span>
+                      {{ listgriditem3.text }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>    
+            </div>
+          </div>
+          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-4" style="background-image: url('{{ url(particle.image4)|e }}');">
+            <div class="g-content">
+              <div class="g-aetheriablock-content">
+                {% if particle.listgriditems4 %}
+                <ul class="g-horizontalmenu">
+                  {% for listgriditem4 in particle.listgriditems4 %}
+                  <li>
+                    <a href="{{ particle.link4|e }}">
+                      <span class="{{ listgriditem4.icon }}"></span>
+                      {{ listgriditem4.text }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

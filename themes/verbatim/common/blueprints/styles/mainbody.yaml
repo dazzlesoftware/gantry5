@@ -1,0 +1,15 @@
+name: Mainbody Colors
+description: Mainbody colors for the Verbatim theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#6e6e6e"

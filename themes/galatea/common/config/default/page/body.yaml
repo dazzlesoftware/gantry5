@@ -1,9 +1,0 @@
-doctype: html
-attribs:
-  id: ''
-  class: 'genesis g-galatea-style'
-  extra: {  }
-layout:
-  sections: '0'
-body_top: '<div id="g-offsidebar-overlay"></div>'
-body_bottom: ''

@@ -1,0 +1,9 @@
+kovana-theme:
+  title: 'Kovana Theme'
+  description: 'Sample menu for Kovana theme.'
+
+  items:
+    kovana:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,9 @@
+pelagia-theme:
+  title: 'Pelagia Theme'
+  description: 'Sample menu for Pelagia theme.'
+
+  items:
+    pelagia:
+      title: 'Home'
+      outline: home
+      home: 1

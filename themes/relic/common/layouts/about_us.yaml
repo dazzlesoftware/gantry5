@@ -1,0 +1,275 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1472048538
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-1482
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - blockcontent-5018
+      -
+        'aside 2': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - blockcontent-8069
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+content:
+  simplecontent-1482:
+    title: 'Header - About Us'
+    attributes:
+      class: center
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'About Us'
+          author: ''
+          leading_content: 'We are specializing in a large array of music industry related services. To each new challenge, we bring over 20 years of experience and a tradition of excellence.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'About Us'
+  blockcontent-5018:
+    title: 'About Us - Who we are'
+    attributes:
+      class: center
+      title: 'This is who we are'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Rick Grimes'
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Producer
+          description: "Relic's RocketLauncher comes complete with several preset pages that enable you to hit the ground running with a complete, feature-rich website in a fraction of the time.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Rick Grimes'
+        -
+          name: 'Maggie Greene'
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: 'Rock Star'
+          description: "Relic features a number of uniquely-designed particles that make adding content to your website easy. These particles are a great way to display your content.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Maggie Greene'
+        -
+          name: 'Daryl Dixon'
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Agent
+          description: "The Genesis framework is packed with features that empower you to create a website that perfectly matches your vision and branding - no scripting experience necessary.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Daryl Dixon'
+    block:
+      variations: 'title6 title-center'
+  blockcontent-8069:
+    title: 'About Us - What we do'
+    attributes:
+      class: 'center g-blockcontent-spacing'
+      title: 'This is what we do'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Special Effects'
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Special Effects'
+        -
+          name: Songwriting
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Songwriting
+        -
+          name: Recording
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Recording
+    block:
+      class: title-white
+      variations: 'title6 center'

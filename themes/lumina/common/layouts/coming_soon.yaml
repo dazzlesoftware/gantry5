@@ -1,0 +1,188 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: coming_soon
+  timestamp: 1456863155
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 6'
+      - 'social-7220 6'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-5551
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - simplecounter-7217
+      -
+        'aside 2': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - blockcontent-4574
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 7'
+      - 'newsletter-9635 5'
+    -
+      - copyright-5748
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-5551:
+    title: 'Lumina is Coming Soon'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Lumina is Coming Soon'
+          author: ''
+          leading_content: 'The Coming Soon layout provides an alternative approach to an offline page, with the configurable countdown, via the Simple Counter particle.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Lumina is Coming Soon'
+    block:
+      variations: center
+  simplecounter-7217:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: "We are working on a new and exciting template that we think you will really like.\n"
+      date: '31'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      class: g-title-large
+      variations: center
+  blockcontent-4574:
+    title: 'Have Something to Tell Us?'
+    attributes:
+      class: ''
+      headline: 'Have Something to Tell Us?'
+      description: 'Ideas, Suggestions, or Review'
+      linktext: 'Contact us'
+      link: '#'
+    block:
+      class: g-title-large
+      variations: center
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Lumina
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'

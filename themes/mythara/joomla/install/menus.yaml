@@ -1,0 +1,9 @@
+mythara-theme:
+  title: 'Mythara Theme'
+  description: 'Sample menu for Mythara theme.'
+
+  items:
+    mythara:
+      title: 'Home'
+      layout: home
+      home: 1

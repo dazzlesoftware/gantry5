@@ -1,0 +1,377 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/home.png'
+  name: home_positions
+  timestamp: 1505834698
+layout:
+  /top/:
+    -
+      - system-messages-4936
+  /navigation/:
+    -
+      - 'logo-6593 2'
+      - 'menu-9816 7'
+      - 'custom-9502 1'
+      - 'social-1210 2'
+  /header/:
+    -
+      - position-6935
+  /slideshow/:
+    -
+      -
+        'slideleft 3':
+          -
+            - position-3257
+          -
+            - position-2954
+      -
+        'slidecenter 6':
+          -
+            - position-7679
+      -
+        'slideright 3':
+          -
+            - position-4354
+          -
+            - position-6944
+          -
+            - position-8242
+  /showcase/:
+    -
+      - position-1103
+    -
+      - position-8823
+  /above/:
+    -
+      - 'position-2807 4'
+      - 'position-5444 4'
+      - 'position-3455 4'
+  /utility/:
+    -
+      - 'spacer-4766 6'
+      - 'position-5033 6'
+  /feature/:
+    -
+      - 'spacer-4220 6'
+      - 'position-7876 6'
+  /container-2331/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-7350
+      -
+        'mainbar 7':
+          -
+            - 'position-9297 4'
+            - 'position-3128 4'
+            - 'position-5362 4'
+          -
+            - system-content-4186
+      -
+        'aside 2':
+          -
+            - position-1886
+  /expanded/:
+    -
+      - position-8109
+  /extension/:
+    -
+      - 'position-4226 6'
+      - 'position-9585 6'
+  /bottom/:
+    -
+      - position-4009
+  /container-8240/:
+    -
+      -
+        'footer 6':
+          -
+            - position-2573
+      -
+        'footside 6':
+          -
+            - position-8031
+          -
+            - 'position-3393 6'
+            - 'position-6802 6'
+  /copyright/:
+    -
+      - 'logo-7806 4'
+      - 'totop-2583 4'
+      - 'social-7881 4'
+  offcanvas:
+    -
+      - mobile-menu-4246
+    -
+      - custom-3832
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+  slideleft:
+    type: section
+    title: SlideLeft
+    attributes:
+      class: ''
+  slidecenter:
+    type: section
+    title: SlideCenter
+    attributes:
+      class: ''
+  slideright:
+    type: section
+    title: SlideRight
+    attributes:
+      class: ''
+  slideshow:
+    type: container
+    attributes:
+      boxed: ''
+      class: fp-slideshow-blocks
+      id: g-slideshow
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+    attributes:
+      class: fp-mainbar
+  container-2331:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-extension
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footside:
+    type: section
+  container-8240:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-6593:
+    attributes:
+      rel: home
+      alt: pinnacle
+  custom-9502:
+    title: 'Off Canvas Toggle'
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-indent\"></i>\n</div>"
+  position-6935:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-3257:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      variations: nopaddingall
+  position-2954:
+    title: 'Slideshow A Below'
+    attributes:
+      key: slideshow-a-below
+    block:
+      variations: nopaddingall
+  position-7679:
+    title: 'Slideshow B'
+    attributes:
+      key: slideshow-b
+    block:
+      variations: nopaddingall
+  position-4354:
+    title: 'Slideshow C Above'
+    attributes:
+      key: slideshow-c-above
+    block:
+      variations: nopaddingall
+  position-6944:
+    title: 'Slideshow C'
+    attributes:
+      key: slideshow-c
+    block:
+      variations: nopaddingall
+  position-8242:
+    title: 'Slideshow C Below'
+    attributes:
+      key: slideshow-c-below
+    block:
+      variations: nopaddingall
+  position-1103:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-8823:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+    block:
+      class: 'flush fp-showcase-b'
+  position-2807:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-5444:
+    title: 'Above B'
+    attributes:
+      key: above-b
+  position-3455:
+    title: 'Above C'
+    attributes:
+      key: above-c
+  position-5033:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+    block:
+      class: 'nomarginall nopaddingall'
+  position-7876:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+    block:
+      class: 'nomarginall nopaddingall'
+  position-7350:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-9297:
+    title: 'Mainbar A'
+    attributes:
+      key: mainbar-a
+  position-3128:
+    title: 'Mainbar B'
+    attributes:
+      key: mainbar-b
+  position-5362:
+    title: 'Mainbar C'
+    attributes:
+      key: mainbar-c
+  position-1886:
+    title: Aside
+    attributes:
+      key: aside
+  position-8109:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+    block:
+      variations: title1
+  position-4226:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-9585:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-4009:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+    block:
+      variations: title1
+  position-2573:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+    block:
+      class: 'nomarginall nopaddingall'
+  position-8031:
+    title: 'Footside A'
+    attributes:
+      key: footside-a
+    block:
+      class: 'nomarginall fp-footside-a'
+      variations: box1
+  position-3393:
+    title: 'Footside B'
+    attributes:
+      key: footside-b
+    block:
+      class: fp-footside-b
+      variations: title1
+  position-6802:
+    title: 'Footside C'
+    attributes:
+      key: footside-c
+    block:
+      variations: title1
+  logo-7806:
+    attributes:
+      rel: home
+      image: 'genesis-media://logo/logo-footer.png'
+      alt: Pinnacle
+      class: g-footer-logo
+  totop-2583:
+    title: 'To Top'
+  social-7881:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org'
+          name: Google
+        -
+          icon: 'fa fa-rss fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org/product-updates?rss'
+          name: RSS
+  mobile-menu-4246:
+    title: 'Mobile Menu'
+  custom-3832:
+    title: Offcanvas
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Pinnacle</h2>\n\n<p>Pinnacle is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/pinnacle\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

@@ -1,9 +1,0 @@
-anacron-theme:
-  title: 'Anacron Theme'
-  description: 'Sample menu for Anacron theme.'
-
-  items:
-    anacron:
-      title: 'Home'
-      layout: home
-      home: 1

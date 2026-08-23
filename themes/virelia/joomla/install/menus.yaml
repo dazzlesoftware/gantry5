@@ -1,0 +1,9 @@
+virelia-theme:
+  title: 'Virelia Theme'
+  description: 'Sample menu for Virelia theme.'
+
+  items:
+    virelia:
+      title: 'Home'
+      outline: home
+      home: 1

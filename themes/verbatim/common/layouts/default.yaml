@@ -1,0 +1,435 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1556042795
+layout:
+  /navigation/:
+    -
+      - 'logo-5679 4'
+      - 'menu-2875 8'
+  /top/:
+    -
+      - 'position-position-5939 3'
+      - 'position-position-7490 3'
+      - 'position-position-2336 3'
+      - 'position-position-7291 3'
+  /utility/:
+    -
+      - 'position-position-3724 3'
+      - 'position-position-2653 3'
+      - 'position-position-3401 3'
+      - 'position-position-1491 3'
+  /showcase/:
+    -
+      - 'position-position-2621 3'
+      - 'position-position-4680 3'
+      - 'position-position-4839 3'
+      - 'position-position-1217 3'
+  /breadcrumb/:
+    -
+      - position-position-5071
+  /feature/:
+    -
+      - 'position-position-4543 3'
+      - 'position-position-5434 3'
+      - 'position-position-5489 3'
+      - 'position-position-8898 3'
+  /maintop/:
+    -
+      - 'position-position-2723 3'
+      - 'position-position-7137 3'
+      - 'position-position-3102 3'
+      - 'position-position-1823 3'
+  /expandedtop/:
+    -
+      - 'position-position-1000 3'
+      - 'position-position-7873 3'
+      - 'position-position-6835 3'
+      - 'position-position-3436 3'
+  /main/:
+    -
+      -
+        'sidebar 4':
+          -
+            - position-position-7684
+      -
+        'mainbody 7':
+          -
+            - system-content-6489
+      -
+        'aside 1':
+          -
+            - position-position-2410
+  /expandedbottom/:
+    -
+      - 'position-position-5349 3'
+      - 'position-position-9431 3'
+      - 'position-position-9746 3'
+      - 'position-position-9170 3'
+  /mainbottom/:
+    -
+      - 'position-position-7827 3'
+      - 'position-position-4155 3'
+      - 'position-position-2697 3'
+      - 'position-position-1720 3'
+  /extension/:
+    -
+      - 'position-position-3769 3'
+      - 'position-position-2063 3'
+      - 'position-position-6577 3'
+      - 'position-position-1027 3'
+  /bottom/:
+    -
+      - 'position-position-2796 3'
+      - 'position-position-7267 3'
+      - 'position-position-5690 3'
+      - 'position-position-7655 3'
+  /footer/:
+    -
+      - 'position-position-4077 3'
+      - 'position-position-4480 3'
+      - 'position-position-9100 3'
+      - 'position-position-6570 3'
+  /copyright/:
+    -
+      - 'position-position-6188 3'
+      - 'position-position-7324 3'
+      - 'position-position-4223 3'
+      - 'position-position-8541 3'
+  offcanvas:
+    -
+      - custom-5348
+    -
+      - mobile-menu-4892
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  sidebar:
+    type: section
+  mainbody:
+    type: section
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  offcanvas:
+    attributes:
+      position: g-offcanvas-left
+      class: ''
+      extra: {  }
+      swipe: '0'
+      css3animation: '1'
+content:
+  logo-5679:
+    attributes:
+      image: 'genesis-media://logo/preset1/logo.png'
+      link: '1'
+      class: g-logo
+    block:
+      variations: nomarginall
+  menu-2875:
+    block:
+      class: g-verbatim-menu
+      variations: 'center nomarginall nopaddingall'
+  position-position-5939:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-position-7490:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-position-2336:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  position-position-7291:
+    title: 'Top D'
+    attributes:
+      key: top-d
+  position-position-3724:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-2653:
+    title: 'Utility B'
+    attributes:
+      key: utility-b
+  position-position-3401:
+    title: 'Utility C'
+    attributes:
+      key: utility-c
+  position-position-1491:
+    title: 'Utility D'
+    attributes:
+      key: utility-d
+  position-position-2621:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-4680:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-position-4839:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-position-1217:
+    title: 'Showcase D'
+    attributes:
+      key: showcase-d
+  position-position-5071:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-4543:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-5434:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-position-5489:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-position-8898:
+    title: 'Feature D'
+    attributes:
+      key: feature-d
+  position-position-2723:
+    title: 'Maintop A'
+    attributes:
+      key: maintop-a
+  position-position-7137:
+    title: 'MainTop B'
+    attributes:
+      key: maintop-b
+  position-position-3102:
+    title: 'MainTop C'
+    attributes:
+      key: maintop-c
+  position-position-1823:
+    title: 'MainTop D'
+    attributes:
+      key: maintop-d
+  position-position-1000:
+    title: 'ExpandedTop A'
+    attributes:
+      key: expandedtop-a
+  position-position-7873:
+    title: 'ExpandedTop B'
+    attributes:
+      key: expandedtop-b
+  position-position-6835:
+    title: 'ExpandedTop C'
+    attributes:
+      key: expandedtop-c
+  position-position-3436:
+    title: 'ExpandedTop D'
+    attributes:
+      key: expandedtop-d
+  position-position-7684:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-2410:
+    title: Aside
+    attributes:
+      key: aside
+  position-position-5349:
+    title: 'ExpandedBottom A'
+    attributes:
+      key: expandedbottom-a
+  position-position-9431:
+    title: 'ExpandedBottom B'
+    attributes:
+      key: expandedbottom-b
+  position-position-9746:
+    title: 'ExpandedBottom C'
+    attributes:
+      key: expandedbottom-c
+  position-position-9170:
+    title: 'ExpandedBottom D'
+    attributes:
+      key: expandedbottom-d
+  position-position-7827:
+    title: 'MainBottom A'
+    attributes:
+      key: mainbottom-a
+  position-position-4155:
+    title: 'MainBottom B'
+    attributes:
+      key: mainbottom-b
+  position-position-2697:
+    title: 'MainBottom C'
+    attributes:
+      key: mainbottom-c
+  position-position-1720:
+    title: 'MainBottom D'
+    attributes:
+      key: mainbottom-d
+  position-position-3769:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+    block:
+      variations: box2
+  position-position-2063:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-position-6577:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  position-position-1027:
+    title: 'Extension D'
+    attributes:
+      key: extension-d
+  position-position-2796:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-position-7267:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-position-5690:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-position-7655:
+    title: 'Bottom D'
+    attributes:
+      key: bottom-d
+  position-position-4077:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-position-4480:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-position-9100:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  position-position-6570:
+    title: 'Footer D'
+    attributes:
+      key: footer-d
+  position-position-6188:
+    title: 'Copyright A'
+    attributes:
+      key: copyright-a
+  position-position-7324:
+    title: 'Copyright B'
+    attributes:
+      key: copyright-b
+  position-position-4223:
+    title: 'Copyright C'
+    attributes:
+      key: copyright-c
+  position-position-8541:
+    title: 'Copyright D'
+    attributes:
+      key: copyright-d
+  custom-5348:
+    title: 'Custom HTML'
+    attributes:
+      title: 'About Verbatim'
+      titletag: ''
+      html: '<p>A feature rich and highly configurable, professional Joomla theme.</p>'
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'box1 nopaddingright'
+  mobile-menu-4892:
+    title: 'Mobile Menu'

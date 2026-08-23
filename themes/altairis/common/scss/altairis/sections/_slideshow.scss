@@ -1,0 +1,42 @@
+#g-slideshow {
+	background: $slideshow-background;
+	color: $slideshow-text-color;
+	position: relative;
+	z-index: 100;
+
+	// Home
+	.g-home-positions.g-altairis-style &,
+	.g-home-particles.g-altairis-style & {
+		margin-top: -6rem;
+	}
+
+	// FP Slideshow A
+	.fp-slideshow-a {
+		.g-flexslider-slideshow-item-subtitle {
+			margin-bottom: 3rem;
+		}
+		.g-flexslider-slideshow-item-link {
+			margin: 3rem auto;
+			.button {
+				padding: 1rem 2rem;
+			}
+		}
+		.flex-control-paging li a {
+			color: $slideshow-text-color;
+		}
+
+		.g-flexslider-testimonial-item-link {
+			margin: 3rem auto;
+			.button {
+				padding: 1rem 2rem;
+			}
+		}		
+	}
+}
+
+@media print {
+	#g-slideshow {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,9 +1,0 @@
-myriad-theme:
-  title: 'Myriad Theme'
-  description: 'Sample menu for Myriad theme.'
-
-  items:
-    myriad:
-      title: 'Home'
-      layout: home
-      home: 1

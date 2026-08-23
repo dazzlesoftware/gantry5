@@ -1,0 +1,9 @@
+akari-theme:
+  title: 'Akari Theme'
+  description: 'Sample menu for Akari theme.'
+
+  items:
+    akari:
+      title: 'Home'
+      outline: home
+      home: 1

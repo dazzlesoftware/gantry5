@@ -1,0 +1,300 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1640623888
+layout:
+  /container-top/:
+    -
+      -
+        /top/:
+          -
+            - system-messages-9828
+    -
+      -
+        /navigation/:
+          -
+            - 'logo-3453 2'
+            - 'menu-2872 8'
+            - 'social-6056 2'
+    -
+      -
+        /slideshow/:
+          -
+            - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-position-9414
+      -
+        'mainbar 7':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 2':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /container-footer/:
+    -
+      -
+        /footer/:
+          -
+            - logo-8247
+          -
+            - horizmenu-5481
+        /copyright/:
+          -
+            - copyright-6444
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+      variations: section-horizontal-paddings
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  container-top:
+    attributes:
+      boxed: ''
+      class: no-background-image
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings-large
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  logo-3453:
+    title: 'Logo / Image'
+    attributes:
+      image: ''
+      link: '1'
+      svg: "\n<svg width=\"40\" height=\"38\" viewBox=\"0 0 40 38\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M8.84811 16.2912C9.49893 16.5484 10.0982 16.8623 10.735 17.0216C12.38 17.4334 12.9138 18.3878 12.792 20.1199C12.6141 22.6582 12.739 25.2169 12.7468 27.7678C12.7577 31.3125 14.9989 33.57 18.5199 33.5558C19.9198 33.5494 21.3229 33.5274 22.7166 33.4122C25.451 33.185 27.1709 31.0254 27.277 28.1275C27.391 25.0024 27.3223 21.871 27.2911 18.7427C27.2848 18.1133 27.4862 17.7883 28.0621 17.5738C28.8892 17.2677 29.6821 16.867 30.503 16.5421C30.8963 16.3859 31.0696 16.1713 31.054 15.7265C31.0227 14.7595 31.0446 13.7893 31.0446 12.7039C29.5744 13.3223 28.1932 13.8997 26.8151 14.485C24.758 15.3589 22.7135 16.2628 20.6424 17.0989C20.2819 17.2441 19.7591 17.2472 19.4017 17.0974C13.2712 14.5197 7.15474 11.9041 1.03518 9.29488C0.808874 9.19708 0.591935 9.07245 0.200195 8.87368C0.576327 8.6828 0.788585 8.56133 1.01021 8.4651C7.12664 5.85113 13.2415 3.23085 19.3704 0.645275C19.731 0.492254 20.2616 0.474902 20.6175 0.624767C26.8197 3.23401 33.0095 5.87795 39.1993 8.51874C39.3601 8.58815 39.5052 8.69384 39.8018 8.86737C39.4943 9.03932 39.2976 9.17341 39.0823 9.26649C38.0085 9.73028 36.9425 10.2162 35.85 10.6295C35.2554 10.8551 34.9682 11.1595 35.0244 11.8379C35.0853 12.5683 35.0088 13.3113 35.0478 14.0448C35.079 14.6301 34.8683 14.9756 34.319 15.1791C33.6135 15.4394 32.9409 15.7943 32.2307 16.0388C31.5518 16.2707 31.2834 16.6288 31.2943 17.405C31.3442 20.9008 31.3833 24.3998 31.2959 27.894C31.2209 30.926 30.1846 33.5936 27.7827 35.5655C26.261 36.8134 24.4849 37.4239 22.534 37.468C20.9998 37.5027 19.4641 37.4712 17.9299 37.4743C13.1463 37.4838 9.23205 34.0669 8.92771 29.238C8.66551 25.0781 8.78881 20.8913 8.7451 16.7172C8.74354 16.6146 8.79037 16.5152 8.84811 16.2912ZM29.7554 8.86895C26.5435 7.4965 23.5157 6.1903 20.4708 4.92512C20.1805 4.80365 19.7481 4.85571 19.4422 4.97876C17.7801 5.64921 16.1351 6.36541 14.487 7.07056C13.1401 7.64636 11.7947 8.23005 10.4198 8.8232C10.5025 8.91154 10.515 8.93678 10.5352 8.94625C13.613 10.2698 16.6907 11.5949 19.7747 12.9059C19.9167 12.9674 20.129 12.9658 20.2725 12.9059C23.3799 11.5918 26.4826 10.2651 29.7554 8.86895Z\" fill=\"#193564\"/>\n</svg>"
+      title: atelier
+  menu-2872:
+    block:
+      variations: center
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      variations: center
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  logo-8247:
+    title: 'Logo / Image'
+    attributes:
+      svg: "<svg width=\"40\" height=\"38\" viewBox=\"0 0 40 38\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M8.84811 16.2912C9.49893 16.5484 10.0982 16.8623 10.735 17.0216C12.38 17.4334 12.9138 18.3878 12.792 20.1199C12.6141 22.6582 12.739 25.2169 12.7468 27.7678C12.7577 31.3125 14.9989 33.57 18.5199 33.5558C19.9198 33.5494 21.3229 33.5274 22.7166 33.4122C25.451 33.185 27.1709 31.0254 27.277 28.1275C27.391 25.0024 27.3223 21.871 27.2911 18.7427C27.2848 18.1133 27.4862 17.7883 28.0621 17.5738C28.8892 17.2677 29.6821 16.867 30.503 16.5421C30.8963 16.3859 31.0696 16.1713 31.054 15.7265C31.0227 14.7595 31.0446 13.7893 31.0446 12.7039C29.5744 13.3223 28.1932 13.8997 26.8151 14.485C24.758 15.3589 22.7135 16.2628 20.6424 17.0989C20.2819 17.2441 19.7591 17.2472 19.4017 17.0974C13.2712 14.5197 7.15474 11.9041 1.03518 9.29488C0.808874 9.19708 0.591935 9.07245 0.200195 8.87368C0.576327 8.6828 0.788585 8.56133 1.01021 8.4651C7.12664 5.85113 13.2415 3.23085 19.3704 0.645275C19.731 0.492254 20.2616 0.474902 20.6175 0.624767C26.8197 3.23401 33.0095 5.87795 39.1993 8.51874C39.3601 8.58815 39.5052 8.69384 39.8018 8.86737C39.4943 9.03932 39.2976 9.17341 39.0823 9.26649C38.0085 9.73028 36.9425 10.2162 35.85 10.6295C35.2554 10.8551 34.9682 11.1595 35.0244 11.8379C35.0853 12.5683 35.0088 13.3113 35.0478 14.0448C35.079 14.6301 34.8683 14.9756 34.319 15.1791C33.6135 15.4394 32.9409 15.7943 32.2307 16.0388C31.5518 16.2707 31.2834 16.6288 31.2943 17.405C31.3442 20.9008 31.3833 24.3998 31.2959 27.894C31.2209 30.926 30.1846 33.5936 27.7827 35.5655C26.261 36.8134 24.4849 37.4239 22.534 37.468C20.9998 37.5027 19.4641 37.4712 17.9299 37.4743C13.1463 37.4838 9.23205 34.0669 8.92771 29.238C8.66551 25.0781 8.78881 20.8913 8.7451 16.7172C8.74354 16.6146 8.79037 16.5152 8.84811 16.2912ZM29.7554 8.86895C26.5435 7.4965 23.5157 6.1903 20.4708 4.92512C20.1805 4.80365 19.7481 4.85571 19.4422 4.97876C17.7801 5.64921 16.1351 6.36541 14.487 7.07056C13.1401 7.64636 11.7947 8.23005 10.4198 8.8232C10.5025 8.91154 10.515 8.93678 10.5352 8.94625C13.613 10.2698 16.6907 11.5949 19.7747 12.9059C19.9167 12.9674 20.129 12.9658 20.2725 12.9059C23.3799 11.5918 26.4826 10.2651 29.7554 8.86895Z\" fill=\"#193564\"/>\n</svg>"
+      text: atelier
+    block:
+      variations: center
+  horizmenu-5481:
+    title: 'Horizontal Menu'
+    attributes:
+      items:
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: About
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: Features
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: Pricing
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: Careers
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: Help
+        -
+          icon: ''
+          link: '#'
+          target: _blank
+          title: 'Privacy Policy'
+    block:
+      variations: center
+  copyright-6444:
+    attributes:
+      date:
+        start: ''
+        end: ''
+      owner: 'All rights reserved. Designed & Developed by <a href="" target="_blank">Dazzle Software</a>.'
+    block:
+      class: border-top
+  mobile-menu-2576:
+    title: 'Mobile Menu'

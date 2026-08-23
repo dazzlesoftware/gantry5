@@ -1,9 +1,0 @@
-topaz-theme:
-  title: 'Topaz Theme'
-  description: 'Sample menu for Topaz theme.'
-
-  items:
-    topaz:
-      title: 'Home'
-      outline: home
-      home: 1

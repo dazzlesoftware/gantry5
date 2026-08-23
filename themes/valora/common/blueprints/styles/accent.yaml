@@ -1,0 +1,15 @@
+name: Accent Colors
+description: Accent colors for the Valora theme
+type: core
+
+form:
+  fields:
+
+    color-1:
+      type: input.colorpicker
+      label: Accent Color 1
+      default: "#e10a30"
+    color-2:
+      type: input.colorpicker
+      label: Accent Color 2
+      default: "#f0600b"

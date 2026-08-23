@@ -1,0 +1,9 @@
+nectarion-theme:
+  title: 'Nectarion Theme'
+  description: 'Sample menu for Nectarion theme.'
+
+  items:
+    nectarion:
+      title: 'Home'
+      layout: home
+      home: 1

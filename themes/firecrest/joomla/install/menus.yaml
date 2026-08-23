@@ -1,0 +1,9 @@
+firecrest-theme:
+  title: 'Firecrest Theme'
+  description: 'Sample menu for Firecrest theme.'
+
+  items:
+    firecrest:
+      title: 'Home'
+      outline: home
+      home: 1

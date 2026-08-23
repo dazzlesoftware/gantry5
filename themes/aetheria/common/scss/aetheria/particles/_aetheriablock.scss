@@ -1,0 +1,58 @@
+.g-aetheriablock {
+	.g-aetheriablock-item {
+		position: relative;
+		min-height: 280px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		.g-aetheriablock-content {
+			position: absolute;
+		    bottom: 2rem;
+		    left: 2rem;
+		    right: 2rem;
+			@include breakpoint(tablet-range) {
+			    bottom: 1.5rem;
+			    left: 1.5rem;
+			    right: 1.5rem;
+			}
+		}
+		&:before {
+		    position: absolute;
+		    content: '';
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    transition: background 0.2s;
+		}	
+	}
+	.g-headline {
+		margin-bottom: 1rem;
+		font-size: $core-font-size + 0.4;
+		@include breakpoint(large-desktop-range) {
+			font-size: $core-font-size + 0.65;
+		}
+		@include breakpoint(tablet-range) {
+			font-size: $core-font-size + 0.3;
+		}		
+	}
+	.g-aetheriablock-item-2 {
+		.g-aetheriablock-content {
+			width: 45%;
+			@include breakpoint(mobile-only) {
+				width: auto;
+			}			
+		}
+	}	
+	.g-aetheriablock-item-4 {
+		margin-top: -7rem;
+		border-top: 3px solid $accent-color-1;
+		@include breakpoint(mobile-only) {
+			margin-top: 0;
+		}			
+	}
+	@include breakpoint(small-mobile-range) {
+		.g-larger {
+			font-size: $core-font-size + 1;
+		}
+	}
+}

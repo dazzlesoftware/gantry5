@@ -1,9 +1,0 @@
-antares-theme:
-  title: 'Antares Theme'
-  description: 'Sample menu for Antares theme.'
-
-  items:
-    antares:
-      title: 'Home'
-      outline: home
-      home: 1

@@ -1,0 +1,328 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1519832806
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 2'
+      - 'menu-2350 8'
+      - 'social-1608 2'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /feature/:
+    -
+      - position-position-7980
+  /container-main/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-position-9414
+      -
+        'mainbar 7':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 2':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - 'simplemenu-6826 6'
+      - 'simplecontent-4123 6'
+  /copyright/:
+    -
+      - branding-2782
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings'
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  header:
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  logo-5992:
+    block:
+      class: summit-logo
+  menu-2350:
+    block:
+      variations: center
+  social-1608:
+    block:
+      class: flush
+      variations: align-right
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  simplemenu-6826:
+    title: 'Bottom Menu'
+    attributes:
+      title: ''
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Overview
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Particles
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Typography
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Block Variations'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Documentation
+          title: Features
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'About Us'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Pricing
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Blog
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Portfolio
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Contact
+          title: Pages
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Fullwidth
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Left Sidebar'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Right Sidebar'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Two Sidebars'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Rows & Columns'
+          title: Layouts
+    block:
+      class: g-bottom-simplemenu
+  simplecontent-4123:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: '<h6>About</h6>'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: ''
+          main_content: 'All demo content is for sample purposes to represent a live site. Demo content, including images, will appear differently in the RocketLauncher. Summit is built on the latest Genesis framework.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Demo Content'
+    block:
+      class: 'nomargintop nopaddingtop hidden-phone'
+  branding-2782:
+    attributes:
+      content: '&copy; 2026 by <a href="https://dazzlesoftware.org/" title="Dazzle Software" class="g-powered-by">Dazzle Software</a>. All rights reserved.'
+    block:
+      variations: center

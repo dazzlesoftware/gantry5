@@ -1,0 +1,451 @@
+settings: {  }
+ordering:
+  home: ''
+  features:
+    overview: ''
+    typography: ''
+    block-variations: ''
+    2015-05-29-15-29-38: ''
+    2015-05-29-15-30-21: ''
+  pages:
+    -
+      about-us: ''
+      our-team: ''
+      services: ''
+    -
+      pricing: ''
+      portfolio: ''
+      clients: ''
+    -
+      faq: ''
+      blog: ''
+      contact: ''
+    -
+      error: ''
+      coming-soon: ''
+      offline: ''
+  styles: ''
+  2015-06-01-09-45-25: ''
+items:
+  home:
+    id: '101'
+    type: component
+    alias: home
+    path: home
+    link: 'index.php?option=com_genesis&view=custom'
+    title: Home
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 1
+    parent_id: ''
+  features:
+    id: '104'
+    type: separator
+    alias: features
+    path: features
+    link: ''
+    title: Features
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 1
+    parent_id: ''
+  features/overview:
+    id: '105'
+    type: component
+    alias: overview
+    path: features/overview
+    link: 'index.php?option=com_content&view=article&id=1'
+    title: Overview
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: features
+  features/typography:
+    id: '106'
+    type: component
+    alias: typography
+    path: features/typography
+    link: 'index.php?option=com_content&view=article&id=2'
+    title: Typography
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: features
+  features/block-variations:
+    id: '107'
+    type: component
+    alias: block-variations
+    path: features/block-variations
+    link: 'index.php?option=com_content&view=article&id=3'
+    title: 'Block Variations'
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: features
+  features/2015-05-29-15-29-38:
+    id: '108'
+    type: url
+    alias: 2015-05-29-15-29-38
+    path: features/2015-05-29-15-29-38
+    link: 'https://dazzlesoftware.org/docs/joomla/templates/aetheria'
+    title: Documentation
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: features
+  features/2015-05-29-15-30-21:
+    id: '109'
+    type: url
+    alias: 2015-05-29-15-30-21
+    path: features/2015-05-29-15-30-21
+    link: 'https://dazzlesoftware.org/forum/joomla-template-aetheria'
+    title: 'Forum Support'
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: features
+  pages:
+    id: '110'
+    type: separator
+    alias: pages
+    path: pages
+    link: ''
+    title: Pages
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns:
+      - 25
+      - 25
+      - 25
+      - 25
+    level: 1
+    parent_id: ''
+  pages/about-us:
+    id: '111'
+    type: component
+    alias: about-us
+    path: pages/about-us
+    link: 'index.php?option=com_content&view=article&id=4'
+    title: 'About Us'
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/our-team:
+    id: '112'
+    type: component
+    alias: our-team
+    path: pages/our-team
+    link: 'index.php?option=com_content&view=article&id=5'
+    title: 'Our Team'
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/services:
+    id: '113'
+    type: component
+    alias: services
+    path: pages/services
+    link: 'index.php?option=com_content&view=article&id=6'
+    title: Services
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/pricing:
+    id: '114'
+    type: component
+    alias: pricing
+    path: pages/pricing
+    link: 'index.php?option=com_content&view=article&id=7'
+    title: Pricing
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 1
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/portfolio:
+    id: '115'
+    type: component
+    alias: portfolio
+    path: pages/portfolio
+    link: 'index.php?option=com_content&view=article&id=8'
+    title: Portfolio
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 1
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/clients:
+    id: '116'
+    type: component
+    alias: clients
+    path: pages/clients
+    link: 'index.php?option=com_content&view=article&id=9'
+    title: Clients
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 1
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/faq:
+    id: '117'
+    type: component
+    alias: faq
+    path: pages/faq
+    link: 'index.php?option=com_content&view=article&id=10'
+    title: FAQ
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 2
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/blog:
+    id: '118'
+    type: component
+    alias: blog
+    path: pages/blog
+    link: 'index.php?option=com_content&view=category&layout=blog&id=10'
+    title: Blog
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 2
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/contact:
+    id: '119'
+    type: component
+    alias: contact
+    path: pages/contact
+    link: 'index.php?option=com_contact&view=contact&id=1'
+    title: Contact
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 2
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/error:
+    id: '120'
+    type: url
+    alias: error
+    path: pages/error
+    link: 'index.php?option=com_genesis&view=error'
+    title: Error
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 3
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/coming-soon:
+    id: '121'
+    type: component
+    alias: coming-soon
+    path: pages/coming-soon
+    link: 'index.php?option=com_genesis&view=custom'
+    title: 'Coming Soon'
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 3
+    columns: {  }
+    level: 2
+    parent_id: pages
+  pages/offline:
+    id: '122'
+    type: component
+    alias: offline
+    path: pages/offline
+    link: 'index.php?option=com_content&view=article&id=11'
+    title: Offline
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 3
+    columns: {  }
+    level: 2
+    parent_id: pages
+  styles:
+    id: '123'
+    type: separator
+    alias: styles
+    path: styles
+    link: ''
+    title: Styles
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 1
+    parent_id: ''
+  2015-06-01-09-45-25:
+    id: '124'
+    type: url
+    alias: 2015-06-01-09-45-25
+    path: 2015-06-01-09-45-25
+    link: 'https://dazzlesoftware.org/joomla/templates/aetheria'
+    title: Download
+    subtitle: ''
+    image: ''
+    icon_only: false
+    target: _self
+    layout: list
+    dropdown: ''
+    icon: ''
+    visible: true
+    group: 0
+    columns: {  }
+    level: 1
+    parent_id: ''

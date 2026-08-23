@@ -1,0 +1,385 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: gala_-_twosidebarsright
+  timestamp: 1456245260
+layout:
+  /offsidebar/:
+    -
+      - menu-4196
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 2'
+      - 'logo-5992 7'
+      - 'social-7220 2'
+  /slideshow/: {  }
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'mainbar 5':
+          -
+            - 'spacer-2663 1'
+            - 'custom-2116 11'
+            - 'spacer-2071 1'
+      -
+        'sidebar 4':
+          -
+            - logo-8106
+          -
+            - custom-9066
+      -
+        'aside 3':
+          -
+            - custom-9563
+          -
+            - 'logo-2392 6'
+            - 'logo-5449 6'
+          -
+            - custom-5912
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - 'infolist-6113 4'
+      - 'infolist-4978 4'
+      - 'custom-3225 4'
+  /footer/:
+    -
+      - position-position-5600
+  /copyright/:
+    -
+      - 'branding-5976 3'
+      - 'copyright-5748 6'
+      - 'totop-6544 3'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  sidebar:
+    type: section
+    attributes:
+      class: g-sidebar-offset
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-5992:
+    title: 'Logo / Image'
+    block:
+      class: center
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+  custom-2116:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"page-header nomarginbottom nopaddingbottom\">\n  <h2 class=\"nomarginbottom nopaddingbottom\">\n    <a href=\"#\">Mainbody Area</a>\n  </h2>\n</div>\n<div class=\"entry-meta muted\">\n  <div class=\"meta-author\">Written by <a href-\"author\">Author</a></div>\n  <div class=\"meta-date\">Published: 01 January 2011</div>\n</div>\n<p class=\"g-lead nomargintop\"><span class=\"g-shadow-letter\">C</span>Cuaqum ante augue, iaculis eget fringilla vel, gravida non nibh. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu, eu fermentum elit metus vel mauris.</p>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at sem ut ipsum vestibulum euismod. Mauris et massa porta leo facilisis feugiat. Suspendisse id neque a sem facilisis blandit. Aliquam sem leo, commodo ut, rutrum auctor, iaculis nec, eros. Aenean massa.</p>\n\n<p>Nullam eget neque. Nullam <a href=\"#\">imperdiet venenatis</a> ligula. Integer a leo. Nunc consectetur. Maecenas sem. Proin vulputate, massa vel volutpat laoreet, purus erat pretium ligula, eget varius arcu nibh sed libero. Fusce ante. Nullam interdum aliquet metus. Ut ultrices vestibulum tellus. Praesent quis erat. Nam id turpis sit amet neque cursus luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque id tortor. In vitae sapien. Nunc quis tellus. </p>"
+  logo-8106:
+    title: 'Logo / Image'
+    attributes:
+      image: 'genesis-media://demo/layouts/img-02.jpg'
+      text: ''
+      class: ''
+    block:
+      class: 'nopaddingall nomargintop nomarginbottom'
+  custom-9066:
+    title: 'Left Sidebar'
+    attributes:
+      html: "<h3 class=\"g-title\">Left Sidebar</h3>\n<p>A left column layout example. The sidebar is independent from the Mainbody so can have multiple rows and columns, separate from the Mainbody area.</p>"
+    block:
+      class: 'nomargintop padding3x'
+      variations: box3
+  custom-9563:
+    title: 'Aside Sidebar'
+    attributes:
+      html: "<h3 class=\"g-title\">Aside Sidebar</h3>\n<p>This page provides an example of both a left and right sidebar being used. Each column can have its own width in intervals of 1%, so can be equal or all different.</p>\n<p>Either use the drag and resize interface in the administrator, or individually set the numbers the block settings, to adjust the widths of all blocks in a row.</p>"
+    block:
+      variations: 'box4 title6'
+  logo-2392:
+    title: 'Logo / Image'
+    attributes:
+      image: 'genesis-media://features/overview/img-04.jpg'
+      text: ''
+      class: ''
+    block:
+      variations: nopaddingall
+  logo-5449:
+    title: 'Logo / Image'
+    attributes:
+      image: 'genesis-media://features/overview/img-08.jpg'
+      text: ''
+      class: ''
+    block:
+      variations: nopaddingall
+  custom-5912:
+    title: 'Custom HTML'
+    attributes:
+      html: '<p>Above is an example of two blocks side by side. Therefore, you can create complex layouts of independent rows, such as full width, two columns and full width again.</p>'
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/wordpress/themes/calypso'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/docs/wordpress/themes/calypso'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://codex.dazzlecms.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Genesis
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org/forum/wordpress-theme-calypso'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/Dazzle Software/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://dazzlesoftware.org'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialDazzle Software'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/genesis/genesis'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Calypso is built on the latest version of the Genesis Framework.</span></p>\t"
+  position-position-5600:
+    title: Footer
+    attributes:
+      key: footer
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

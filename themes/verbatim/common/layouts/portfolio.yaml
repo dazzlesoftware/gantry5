@@ -1,0 +1,379 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: portfolio
+  timestamp: 1527100073
+layout:
+  navigation: {  }
+  /top/: {  }
+  /utility/:
+    -
+      - position-position-5798
+  /showcase/:
+    -
+      - custom-3952
+  breadcrumb: {  }
+  /feature/:
+    -
+      - mosaic-6251
+  /maintop/:
+    -
+      - testimonials-5205
+  /expandedtop/: {  }
+  /main/:
+    -
+      -
+        'mainbody 7':
+          -
+            - custom-7122
+      -
+        'sidebar 5':
+          -
+            - position-position-7684
+  /expandedbottom/:
+    -
+      - position-position-1527
+  /mainbottom/: {  }
+  /extension/:
+    -
+      - custom-2633
+  /bottom/: {  }
+  footer:
+    -
+      - 'custom-7934 6'
+      - 'custom-1158 6'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  main:
+    type: container
+    attributes:
+      boxed: ''
+    subtype: main
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  footer:
+    type: section
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: 'Custom HTML'
+    attributes:
+      title: Portfolio
+      titletag: 'What We Have Already Done'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: rt-title-large
+      variations: 'center nomodulecontent'
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9711:
+    title: Showcase
+    attributes:
+      key: showcase
+  mosaic-6251:
+    attributes:
+      allitems: ''
+      allposition: left
+      selected: all
+      cols: cols-4
+      cases:
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Spectral
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Acacia
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Corvus
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: '#'
+              target: _blank
+              title: Praxis
+          title: App
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Stratos
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Oculus
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Hexeris
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Alerion
+          title: Logo
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Afterburner
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Chapelco
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Lumiere
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Leviathan
+          title: Web
+        -
+          items:
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Cerulean
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Metropolis
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Graffito
+            -
+              layout: alt-bottom
+              variation: dark
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
+              subtitle: 'Objectively innovate empowered manufactured products'
+              url: ''
+              target: _blank
+              title: Fracture
+          title: Pixel
+  custom-7122:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h3>Our Awesome Project</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-container\">\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<span class=\"rt-image\">\n\t\t\t\t\t<img src=\"genesis-media://pages/portfolio/img-17.jpg\" alt=\"image\" />\n\t\t\t\t</span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<h3>Project Description</h3>\n\t\t\t\t<p>Efficiently unleash cross-media information without cross-media value.<span class=\"hidden-tablet\"> Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</span></p>\n\t\t\t\t<h3>Project Details</h3>\n\t\t\t\t<div class=\"genesis-row\">\n\t\t\t\t\t<div class=\"genesis-width-30\">\n\t\t\t\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Customer:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Live Demo:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Published<span class=\"hidden-tablet\"> Date</span>:</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"genesis-width-70\">\n\t\t\t\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Dazzle Software</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">https://dazzlesoftware.org</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">08 March, 2014</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t<p class=\"largemargintop\"><a href=\"#\" class=\"readon\">Learn More</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  testimonials-5205:
+    attributes:
+      class: ''
+      title: 'What Our Clients Say'
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          title: ''
+          desc: '<p class="promo2">Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 1'
+        -
+          image: ''
+          title: ''
+          desc: '<p class="promo2">The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable. You can easily enable and disable automatic recompilation of SCSS files.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 2'
+        -
+          image: ''
+          title: ''
+          desc: '<p class="promo2">Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'Item 3'
+    block:
+      variations: 'center box3'
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  position-position-1527:
+    title: 'Expanded Bottom A'
+    attributes:
+      key: expandedbottom-a
+  custom-2633:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Our Satisfied Clients'
+      titletag: ''
+      html: "<p>Will You be the Next to Join Our Happy Clients?</p>\n\n<br />\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-container\">\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-18.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-19.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-20.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-21.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-22.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br /><br />\n\n<p><a href=\"#\" class=\"readon\">Join Now</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'center box2'
+  custom-7934:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Verbatim Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Verbatim can be constructed on your site, above and beyond the frontpage demonstration. These include Grav content and component pages, with varying modular content, main widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"https://dazzlesoftware.org/grav/themes/verbatim\">Verbatim RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+    block:
+      class: rt-phone-center
+  custom-1158:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"genesis-width-container\">\n\t<div class=\"genesis-width-40\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<img src=\"genesis-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"genesis-width-60\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Verbatim Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: rt-phone-center
+      variations: 'nomarginbottom nopaddingbottom'

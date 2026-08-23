@@ -1,0 +1,9 @@
+castora-theme:
+  title: 'Castora Theme'
+  description: 'Sample menu for Castora theme.'
+
+  items:
+    castora:
+      title: 'Home'
+      outline: home
+      home: 1

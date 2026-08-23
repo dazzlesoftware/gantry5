@@ -1,0 +1,559 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1505834698
+layout:
+  /top/:
+    -
+      - system-messages-8881
+  /navigation/:
+    -
+      - 'logo-4443 2'
+      - 'menu-4742 7'
+      - 'custom-8580 1'
+      - 'social-1061 2'
+  /header/:
+    -
+      - promocontent-5353
+  /slideshow/:
+    -
+      -
+        'slideleft 3':
+          -
+            - animatedblock-4656
+          -
+            - animatedblock-5260
+      -
+        'slidecenter 6':
+          -
+            - animatedblock-5590
+      -
+        'slideright 3':
+          -
+            - custom-2215
+          -
+            - animatedblock-8513
+          -
+            - animatedblock-8117
+  /showcase/:
+    -
+      - promocontent-5934
+    -
+      - blockcontent-4339
+  /above/: {  }
+  /utility/:
+    -
+      - 'spacer-7436 6'
+      - 'promocontent-4075 6'
+  /feature/:
+    -
+      - 'spacer-8336 6'
+      - 'promocontent-2232 6'
+  /container-7146/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        '/mainbar/ 7':
+          -
+            - blockcontent-8769
+          -
+            - system-content-1269
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - promocontent-1639
+  /extension/:
+    -
+      - 'promocontent-5644 6'
+      - 'promocontent-2945 6'
+  /bottom/:
+    -
+      - testimonial-9871
+  /container-4598/:
+    -
+      -
+        'footer 6':
+          -
+            - contact-7431
+      -
+        'footside 6':
+          -
+            - promocontent-1543
+          -
+            - 'contact-1073 6'
+            - 'contact-5467 6'
+  /copyright/:
+    -
+      - 'logo-3485 4'
+      - 'totop-5363 4'
+      - 'social-5659 4'
+  offcanvas:
+    -
+      - mobile-menu-4294
+    -
+      - custom-6240
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+  slideleft:
+    type: section
+    title: SlideLeft
+    attributes:
+      class: ''
+  slidecenter:
+    type: section
+    title: SlideCenter
+    attributes:
+      class: ''
+  slideright:
+    type: section
+    title: SlideRight
+    attributes:
+      class: ''
+  slideshow:
+    type: container
+    attributes:
+      boxed: ''
+      class: fp-slideshow-blocks
+      id: g-slideshow
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-mainbar
+  container-7146:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-extension
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footside:
+    type: section
+  container-4598:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-4443:
+    attributes:
+      rel: home
+      alt: pinnacle
+  custom-8580:
+    title: 'Off Canvas Toggle'
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-indent\"></i>\n</div>"
+  promocontent-5353:
+    title: 'A next-generation'
+    attributes:
+      promostyle: promo
+      promo: 'A next-generation theme built for success.'
+      readmore: '&rarr;'
+      readmoreclass: 'button-arrow nopaddingall'
+      link: '#'
+      linkstyle: block
+  animatedblock-4656:
+    title: '100+ Templates'
+    attributes:
+      bgclass: g-bg-2
+      animationclass: g-animatedblock-animation-1
+      image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+      headline: 100+
+      desc: Templates
+      readmore: '&rarr;'
+      link: '#'
+    block:
+      variations: nopaddingall
+  animatedblock-5260:
+    title: '36 Projects'
+    attributes:
+      bgclass: g-bg-4
+      animationclass: g-animatedblock-animation-2
+      image: 'genesis-media://demo/home/slideshow/img-02.png'
+      headline: '36'
+      desc: Projects
+      readmore: '&rarr;'
+      link: '#'
+      button: Join
+      buttonclass: button-4
+    block:
+      variations: nopaddingall
+  animatedblock-5590:
+    title: Fresh
+    attributes:
+      bgclass: g-bg-1
+      animationclass: g-animatedblock-animation-1
+      image: 'genesis-media://demo/home/slideshow/img-03.jpg'
+      headline: Fresh
+      desc: 'Simple & Clean'
+      readmore: '&rarr;'
+      link: '#'
+    block:
+      variations: nopaddingall
+  custom-2215:
+    title: 'Grey Blocks'
+    attributes:
+      html: '<img src="genesis-media://demo/home/slideshow/img-04.png" alt="Pinnacle" />'
+    block:
+      class: 'g-animatedblock hidden-phone'
+      variations: nopaddingall
+  animatedblock-8513:
+    title: '5 Team Members'
+    attributes:
+      bgclass: g-bg-5
+      animationclass: g-animatedblock-animation-3
+      image: 'genesis-media://demo/home/slideshow/img-05.png'
+      headline: '5'
+      desc: 'Team Members'
+      readmore: '&rarr;'
+      link: '#'
+      button: Hire
+      buttonclass: button-4
+    block:
+      variations: nopaddingall
+  animatedblock-8117:
+    title: '7 Sample Pages'
+    attributes:
+      bgclass: g-bg-3
+      animationclass: g-animatedblock-animation-1
+      image: 'genesis-media://demo/home/slideshow/img-06.jpg'
+      headline: '7'
+      desc: 'Sample Pages'
+      readmore: '&rarr;'
+      link: '#'
+    block:
+      variations: nopaddingall
+  promocontent-5934:
+    title: 'An excellent design'
+    attributes:
+      promostyle: subpromo
+      promo: 'An excellent design with a fresh approach for the ever-changing Web.'
+      desc: ''
+      readmore: More
+      readmoreclass: button-3
+      link: '#'
+      linkstyle: aside
+  blockcontent-4339:
+    title: 'Block Content'
+    attributes:
+      subcontents:
+        -
+          name: ''
+          icon: ''
+          img: 'genesis-media://demo/home/showcase/img-01.png'
+          subtitle: ''
+          description: ''
+          class: ''
+          title: 'Item 1'
+        -
+          name: ''
+          icon: ''
+          img: 'genesis-media://demo/home/showcase/img-02.png'
+          subtitle: ''
+          description: ''
+          class: ''
+          title: 'Item 2'
+        -
+          name: ''
+          icon: ''
+          img: 'genesis-media://demo/home/showcase/img-03.png'
+          subtitle: ''
+          description: ''
+          class: ''
+          title: 'Item 3'
+        -
+          name: ''
+          icon: ''
+          img: 'genesis-media://demo/home/showcase/img-04.png'
+          subtitle: ''
+          description: ''
+          class: ''
+          title: 'Item 4'
+        -
+          name: ''
+          icon: ''
+          img: 'genesis-media://demo/home/showcase/img-05.png'
+          subtitle: ''
+          description: ''
+          class: ''
+          title: 'Item 5'
+  promocontent-4075:
+    title: 'Contemporary Interface'
+    attributes:
+      promostyle: superpromo
+      promo: 'Contemporary <br />Interface'
+      desc: '<p>Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.</p>'
+      readmore: '&rarr;'
+      readmoreclass: 'button-arrow nopaddingall'
+      link: '#'
+      tags:
+        -
+          icon: ''
+          text: Intuitive
+          link: '#'
+          title: Intuitive
+        -
+          icon: ''
+          text: Powerful
+          link: '#'
+          title: Powerful
+  promocontent-2232:
+    title: 'Mobile Responsive'
+    attributes:
+      promostyle: superpromo
+      promo: 'Mobile <br />Responsive'
+      desc: '<p>Pinnacle is built with a responsive layout, which means it automatically adapts to the viewing device, so it will expand and contract accordingly to the size and resolution of the screen, whether mobile, tablet or desktop.</p>'
+      readmore: '&rarr;'
+      readmoreclass: 'button-arrow nopaddingall'
+      link: '#'
+      tags:
+        -
+          icon: ''
+          text: Flexible
+          link: '#'
+          title: Flexible
+        -
+          icon: ''
+          text: Resilient
+          link: '#'
+          title: Resilient
+  blockcontent-8769:
+    title: Capabilities
+    attributes:
+      headline: Capabilities
+      subcontents:
+        -
+          name: Styling
+          icon: ''
+          img: 'genesis-media://demo/home/mainbar/img-01.png'
+          subtitle: '<a href="#">01.</a>'
+          description: 'The Styles settings allows for customizing the stylistic elements of the template, such as links, font or background colors.'
+          class: ''
+          title: Styling
+        -
+          name: Particles
+          icon: ''
+          img: 'genesis-media://demo/home/mainbar/img-02.png'
+          subtitle: '<a href="#">02.</a>'
+          description: 'Particles operate as customizable blocks that form the flesh of the frontend, from placeholders to self contained content and functions.'
+          class: ''
+          title: Particles
+        -
+          name: Layout
+          icon: ''
+          img: 'genesis-media://demo/home/mainbar/img-03.png'
+          subtitle: '<a href="#">03.</a>'
+          description: 'The Layout manager provides drag-and-drop functionality with power to move, resize, and configure content in seconds.'
+          class: ''
+          title: Layout
+  promocontent-1639:
+    title: 'Open Positions'
+    attributes:
+      title: 'Open Positions'
+      promostyle: subpromo
+      promo: 'Genesis features an advanced Menu Editor, which augments the core menu with a rich, drag and drop interface. '
+      readmore: '&rarr;'
+      readmoreclass: button-arrow
+      link: '#'
+      linkstyle: inline
+    block:
+      variations: title1
+  promocontent-5644:
+    title: 'Extensive Documentation'
+    attributes:
+      promostyle: standard
+      title: 'Extensive Documentation'
+      desc: '<p>Genesis benefits from an extensive, and ever expanding, catalog of online and free documentation covering basic to more advanced topics.</p>'
+      readmore: 'Know More'
+      link: '#'
+      linkstyle: block
+      tags:
+        -
+          icon: ''
+          text: Manual
+          link: '#'
+          title: Manual
+        -
+          icon: ''
+          text: Tutorial
+          link: '#'
+          title: Tutorial
+  promocontent-2945:
+    title: 'YAML-Driven / Twig Templating'
+    attributes:
+      promostyle: standard
+      title: 'YAML-Driven / Twig Templating'
+      desc: '<p>Genesis is built with several modern web technologies, such as the Twig PHP templating engine and YAML for human readable configuration files.</p>'
+      readmore: 'Know More'
+      link: '#'
+      linkstyle: block
+      tags:
+        -
+          icon: ''
+          text: Computing
+          link: '#'
+          title: Computing
+        -
+          icon: ''
+          text: Programming
+          link: '#'
+          title: Programming
+  testimonial-9871:
+    attributes:
+      title: Testimonial
+      cols: g-1cols
+      testimonials:
+        -
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
+          content: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+          author: 'Eddie Lobanovsky'
+          company: 'Super Corporation'
+          companyurl: '#'
+          title: 'Eddie Lobanovsky'
+    block:
+      variations: title1
+  contact-7431:
+    title: Map
+    attributes:
+      mapposition: top
+      maps:
+        -
+          img: 'genesis-media://demo/home/footer/img-01.jpg'
+          overlay: enabled
+          marker: enabled
+          icon: 'fa fa-map-marker fa-fw'
+          height: 400px
+          top: 140px
+          left: 170px
+          label: London
+    block:
+      variations: 'nomarginall nopaddingall'
+  promocontent-1543:
+    title: +1(555)666.777.8888
+    attributes:
+      class: ''
+      promostyle: subpromo
+      title: +1(555)666.777.8888
+      desc: '<p>hello@pinnacle-genesis.com</p>'
+    block:
+      class: fp-footside-a
+      variations: 'box1 nomarginall'
+  contact-1073:
+    title: Address
+    attributes:
+      class: g-contact-compact
+      title: Address
+      contactitems:
+        -
+          icon: ''
+          text: '23 Pinnacle Road'
+          label: '23 Pinnacle Road'
+        -
+          icon: ''
+          text: '<strong>London</strong>, United Kingdom'
+          label: 'London, United Kingdom'
+        -
+          icon: ''
+          text: 'PO-LDN 123'
+          label: 'PO-LDN 123'
+    block:
+      variations: title1
+  contact-5467:
+    title: Hours
+    attributes:
+      class: g-contact-compact
+      title: Hours
+      contactitems:
+        -
+          icon: ''
+          text: 'Monday - Friday'
+          label: 'Monday - Friday'
+        -
+          icon: ''
+          text: '09:00 - 17:00 (GMT 0)'
+          label: '09:00 - 17:00 (GMT 0)'
+    block:
+      variations: title1
+  logo-3485:
+    attributes:
+      rel: home
+      image: 'genesis-media://logo/logo-footer.png'
+      alt: Pinnacle
+      class: g-footer-logo
+  totop-5363:
+    title: 'To Top'
+  social-5659:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org'
+          name: Google
+        -
+          icon: 'fa fa-rss fa-fw'
+          text: ''
+          link: 'https://dazzlesoftware.org/product-updates?rss'
+          name: RSS
+  mobile-menu-4294:
+    title: 'Mobile Menu'
+  custom-6240:
+    title: Offcanvas
+    attributes:
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Pinnacle</h2>\n\n<p>Pinnacle is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/pinnacle\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

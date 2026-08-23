@@ -1,0 +1,9 @@
+verbatim-theme:
+  title: 'Verbatim Theme'
+  description: 'Sample menu for Verbatim theme.'
+
+  items:
+    verbatim:
+      title: 'Home'
+      layout: home
+      home: 1

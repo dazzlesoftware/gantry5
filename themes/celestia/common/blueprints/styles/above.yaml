@@ -1,0 +1,19 @@
+name: Above Styles
+description: Above styles for the Celestia theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/above/img-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#283963"

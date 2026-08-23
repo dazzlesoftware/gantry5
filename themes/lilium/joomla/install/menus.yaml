@@ -1,0 +1,9 @@
+lilium-theme:
+  title: 'Lilium Theme'
+  description: 'Sample menu for Lilium theme.'
+
+  items:
+    lilium:
+      title: 'Home'
+      outline: home
+      home: 1

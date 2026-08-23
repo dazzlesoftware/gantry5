@@ -1,0 +1,9 @@
+aeonix-theme:
+  title: 'Aeonix Theme'
+  description: 'Sample menu for Aeonix theme.'
+
+  items:
+    aeonix:
+      title: 'Home'
+      layout: home
+      home: 1

@@ -1,0 +1,227 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1451990383
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-9802
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - 'logo-7061 3'
+      - 'menu-2019 9'
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-3465
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - system-content-6444
+      -
+        'aside 2': {  }
+  /expanded/:
+    -
+      - infolist-8094
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'logo-5065 4'
+      - 'horizontalmenu-1887 5'
+      - 'social-1554 4'
+  /copyright/:
+    -
+      - 'copyright-3234 6'
+      - 'horizontalmenu-4429 6'
+    -
+      - totop-8262
+  /offcanvas/:
+    -
+      - mobile-menu-6235
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  social-9802:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  infolist-3465:
+    title: 'Whooops! Error!'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Looks like something went wrong. Sorry!'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: 'Whooops! Error!'
+    block:
+      variations: center
+  system-content-6444:
+    block:
+      class: g-error
+      variations: center
+  infolist-8094:
+    title: 'Nothing to See Here'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Please use the navigation above or contact us to find what you are looking for.'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-special
+          title: 'Nothing to See Here'
+    block:
+      variations: center
+  logo-5065:
+    title: 'Footer Logo'
+  horizontalmenu-1887:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'https://codex.dazzlecms.org/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Support
+        -
+          text: Download
+          link: 'https://dazzlesoftware.org/joomla/templates/altairis'
+          name: Download
+  social-1554:
+    title: 'Footer Social Icons'
+  horizontalmenu-4429:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/altairis'
+          name: Docs
+        -
+          text: Guides
+          link: 'https://codex.dazzlecms.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://dazzlesoftware.org/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://dazzlesoftware.org/forum/joomla-template-altairis'
+          name: Forum
+  totop-8262:
+    title: 'To Top'
+  mobile-menu-6235:
+    title: 'Mobile Menu'

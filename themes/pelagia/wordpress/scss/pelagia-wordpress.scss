@@ -1,0 +1,44 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Optional Nucleus Assets
+@import "nucleus/theme/alerts";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "wordpress/theme/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// Platform Specific Configuration
+@import "configuration-wordpress/base";
+
+// WORDPRESS THEME SPECIFIC
+
+// Core
+@import "pelagia-wordpress/core";
+
+// Pagination
+@import "pelagia-wordpress/pagination";
+
+// Meta
+@import "pelagia-wordpress/meta";
+
+// Comments
+@import "pelagia-wordpress/comments";
+
+// Particles
+@import "pelagia-wordpress/particles";
+
+// Widgets
+@import "pelagia-wordpress/widgets";

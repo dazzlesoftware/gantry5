@@ -1,0 +1,21 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Bourbon library
+
+//-------------------------------------------
+
+// Load Nucleus Configuration Defaults
+@import "configuration/nucleus/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// PHPBB THEME SPECIFIC
+
+// Real Argon-native styling for phpBB's own (prosilver-derived) forum markup -- see the file
+// itself for why this can't just reuse the shared "argon" partial's own CSS output.
+@import "phpbb";
+
+//-------------------------------------------

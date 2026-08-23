@@ -1,0 +1,9 @@
+bastion-theme:
+  title: 'Bastion Theme'
+  description: 'Sample menu for Bastion theme.'
+
+  items:
+    bastion:
+      title: 'Home'
+      outline: home
+      home: 1

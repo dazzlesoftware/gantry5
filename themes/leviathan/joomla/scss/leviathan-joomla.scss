@@ -1,0 +1,38 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "leviathan-joomla/styles/core";
+@import "leviathan-joomla/styles/typography";
+@import "leviathan-joomla/styles/forms";
+@import "leviathan-joomla/styles/tabs";
+@import "leviathan-joomla/styles/utilities";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "leviathan-joomla/components/rokajaxsearch";
+@import "leviathan-joomla/components/roksprocket";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

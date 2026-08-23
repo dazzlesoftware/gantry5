@@ -1,0 +1,9 @@
+apogee-theme:
+  title: 'Apogee Theme'
+  description: 'Sample menu for Apogee theme.'
+
+  items:
+    apogee:
+      title: 'Home'
+      outline: home
+      home: 1

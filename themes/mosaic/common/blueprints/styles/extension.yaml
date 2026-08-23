@@ -1,0 +1,19 @@
+name: Extension Colors
+description: Extension colors for the Mosaic theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/extension/preset1/bg.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#090d0f"

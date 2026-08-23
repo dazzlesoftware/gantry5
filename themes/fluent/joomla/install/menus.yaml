@@ -1,9 +1,0 @@
-fluent-theme:
-  title: 'Fluent Theme'
-  description: 'Sample menu for Fluent theme.'
-
-  items:
-    fluent:
-      title: 'Home'
-      outline: home
-      home: 1

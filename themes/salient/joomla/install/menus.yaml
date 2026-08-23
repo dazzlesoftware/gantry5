@@ -1,9 +1,0 @@
-salient-theme:
-  title: 'Salient Theme'
-  description: 'Sample menu for Salient theme.'
-
-  items:
-    salient:
-      title: 'Home'
-      layout: home
-      home: 1

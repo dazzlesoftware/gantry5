@@ -1,0 +1,15 @@
+name: Copyright Colors
+description: Copyright colors for the Mosaic theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#090d0f"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#686868"

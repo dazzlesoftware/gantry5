@@ -1,0 +1,175 @@
+.g-swipercarousel-showcase {
+    .g-swipercarousel {
+        .g-swipercarousel-item-image {
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+        }
+
+        .g-swipercarousel-content {
+            float: none;
+            width: 100%;
+            text-align: center;
+
+            .g-swipercarousel-item-title {
+                font-family: get-font-family($font-family-regular);
+                font-size: 3.5em;
+                line-height: 1.3em;
+                text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.2);
+                @include breakpoint(desktop-range) {
+                    font-size: 3.2em;
+                }
+                @include breakpoint(tablet-range) {
+                    font-size: 2.8em;
+                }
+                @include breakpoint(mobile-only) {
+                    font-size: 2em;
+                }
+                @media only screen and (max-width: 480px) {
+                    font-size: 1.5em;
+                    line-height: 1.5em;
+                    margin: auto;
+                    width: 90%;
+                }
+            }
+
+            .g-swipercarousel-item-desc {
+                width: 60%;
+                margin: 0 auto;
+            }
+
+            .rt-button-group {
+                margin: 40px auto;
+                @media only screen and (max-width: 480px) {
+                    margin-top: 20px;
+                }
+
+                .readon, .readon2, .readon3 {
+                    display: inline-block;
+                    font-size: $base-font-size + 2;
+                    margin: 0 5px;
+                    padding: 15px 25px;
+                    width: 200px;
+
+                    &:hover {
+                        color: #ffffff !important;
+                        background-color: #05121a !important;
+                        border-bottom: 2px solid #000000 !important;
+                    }
+
+                    @include breakpoint(mobile-only) {
+                        font-size: 15px;
+                        display: block;
+                        margin: 0 auto 15px auto;
+                    }
+
+                    @media only screen and (max-width: 480px) {
+                        font-size: 13px;
+                        width: 150px;
+                    }
+
+                    &:hover {
+                        color: $white;
+                        background: darken($showcase-background, 50%);
+                        border-bottom: 2px solid darken($showcase-background, 70%) !important;
+                    }
+                }
+            }
+        }
+
+        .swiper-navigation {
+
+            button.swiper-button-prev, button.swiper-button-next {
+                background: darken($showcase-background, 12%);
+                font-size: 4em;
+                width: 80px;
+                height: 80px;
+                border-radius: 3px;
+                opacity: 1;
+                border: none;
+                box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
+                transition: all 0.2s ease-in;
+                z-index: 100;
+
+                // Preserve Aeonix's original ::before chevron and suppress
+                // the additional icon supplied by the shared Swiper markup.
+                > .fa {
+                    display: none;
+                }
+
+                &:hover {
+                    background: darken($showcase-background, 50%);
+                }
+
+                span {
+                  display: none;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 50px;
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 2em;
+                }
+            }
+
+            .swiper-button-next {
+                right: 0;
+                @media only screen and (max-width: 480px) {
+                    right: 1rem;
+                }
+
+                &:before {
+
+                  content: '\f105';
+                  font-family: FontAwesome;
+                }
+            }
+
+            .swiper-button-prev {
+                left: 0;
+                @media only screen and (max-width: 480px) {
+                    left: 1rem;
+                }
+
+                &:before {
+                  content: '\f104';
+                  font-family: FontAwesome;
+                }
+            }
+        }
+
+        .swiper-pagination {
+            margin-top: 15px;
+
+            &.img {
+                bottom: 10%;
+            }
+
+            @media only screen and (max-width: 480px) {
+                margin-top: -20px;
+            }
+
+            .swiper-pagination-bullet {
+                margin: 0 5px;
+                opacity: 0.5;
+                padding: 5px;
+                width: 0;
+                height: 0;
+                background: rgba(0, 0, 0, 0.7);
+                transition: opacity 0.2s ease-in;
+
+                &.active {
+                    background: transparent;
+                    border: 2px solid;
+                    padding: 7px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.rt-button-group {
+    display: block;
+}

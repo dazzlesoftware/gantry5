@@ -1,0 +1,22 @@
+name: Slideshow Styles
+description: Slideshow styles for the Akari theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#e0202c"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/slideshow/background-01.jpg"
+    background-path:
+      type: input.imagepicker
+      label: Background Path
+      default: "genesis-media://backgrounds/slideshow/preset1/path-01.svg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

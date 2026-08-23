@@ -1,0 +1,37 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "nuclide-joomla/styles/core";
+@import "nuclide-joomla/styles/typography";
+@import "nuclide-joomla/styles/forms";
+@import "nuclide-joomla/styles/tabs";
+@import "nuclide-joomla/styles/utilities";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "nuclide-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

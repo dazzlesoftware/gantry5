@@ -1,0 +1,9 @@
+mosaic-theme:
+  title: 'Mosaic Theme'
+  description: 'Sample menu for Mosaic theme.'
+
+  items:
+    mosaic:
+      title: 'Home'
+      layout: home
+      home: 1

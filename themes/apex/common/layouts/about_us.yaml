@@ -1,0 +1,272 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1495135884
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-7175
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 2': {  }
+      -
+        'mainbar 7':
+          -
+            - blockcontent-7801
+      -
+        'aside 2': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - blockcontent-5466
+  footer: {  }
+  /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-slideshow section-horizontal-paddings'
+  header:
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: section-horizontal-paddings
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings'
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-7175:
+    title: 'Header - About Us'
+    attributes:
+      class: ''
+      title: About
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: '<strong>About</strong> Us'
+          author: ''
+          leading_content: 'Use beautiful Google Web Fonts to individualize your site and add character to your content. There are hundreds to choose from, in various styles and weights.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'About Us'
+  blockcontent-7801:
+    title: 'About Us - Who we are'
+    attributes:
+      class: center
+      title: 'This is who we are'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          accent: none
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: CEO
+          description: 'Apex''s RocketLauncher comes complete with several preset pages that enable you to hit the ground running with a complete, feature-rich website.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Rick Grimes'
+        -
+          accent: none
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: HR
+          description: 'Apex features a number of uniquely-designed particles that make adding content to your website easy.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Maggie Greene'
+        -
+          accent: none
+          icon: ''
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Designer
+          description: 'The Genesis framework is packed with features that empower you to create a website that perfectly matches your vision and branding.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Daryl Dixon'
+    block:
+      variations: center
+  blockcontent-5466:
+    title: 'About Us - What we do'
+    attributes:
+      class: 'center g-blockcontent-spacing'
+      title: 'This is what we do'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          accent: none
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: Introduction
+        -
+          name: Mission
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Sell Goods'
+        -
+          name: Business
+          icon: ''
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Make Profit'
+    block:
+      variations: center

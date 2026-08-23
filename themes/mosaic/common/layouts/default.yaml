@@ -1,0 +1,490 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1527122282
+layout:
+  /navigation/:
+    -
+      - menu-1228
+  /header/:
+    -
+      - 'position-position-6831 3'
+      - 'position-position-2020 3'
+      - 'position-position-3327 3'
+      - 'position-position-4369 3'
+  /slideshow/:
+    -
+      - position-position-6234
+  /drawer/:
+    -
+      - position-position-5551
+  /top/:
+    -
+      - 'position-position-9101 3'
+      - 'position-position-4013 3'
+      - 'position-position-2365 3'
+      - 'position-position-1439 3'
+  /showcase/:
+    -
+      - 'position-position-2755 3'
+      - 'position-position-1270 3'
+      - 'position-position-6347 3'
+      - 'position-position-9222 3'
+  /fullstrip/:
+    -
+      - position-position-6568
+  /firstfullwidth/:
+    -
+      - position-position-3648
+  /breadcrumb/:
+    -
+      - position-position-3611
+  /feature/:
+    -
+      - 'position-position-8324 3'
+      - 'position-position-3216 3'
+      - 'position-position-5758 3'
+      - 'position-position-3972 3'
+  /utility/:
+    -
+      - 'position-position-5798 3'
+      - 'position-position-6205 3'
+      - 'position-position-1927 3'
+      - 'position-position-7876 3'
+  /secondfullwidth/:
+    -
+      - position-position-4392
+  /maintop/:
+    -
+      - 'position-position-3278 3'
+      - 'position-position-9129 3'
+      - 'position-position-6918 3'
+      - 'position-position-8372 3'
+  /expandedtop/:
+    -
+      - 'position-position-8368 3'
+      - 'position-position-1610 3'
+      - 'position-position-8591 3'
+      - 'position-position-1723 3'
+  /container-8478/:
+    -
+      -
+        'mainbody 8':
+          -
+            - system-content-6489
+      -
+        'sidebar 4':
+          -
+            - position-position-7684
+  /expandedbottom/:
+    -
+      - 'position-position-1604 3'
+      - 'position-position-2563 3'
+      - 'position-position-3663 3'
+      - 'position-position-2659 3'
+  /mainbottom/:
+    -
+      - 'position-position-2329 3'
+      - 'position-position-1292 3'
+      - 'position-position-8316 3'
+      - 'position-position-7421 3'
+  /thirdfullwidth/:
+    -
+      - position-position-7936
+  /extension/:
+    -
+      - 'position-position-6823 3'
+      - 'position-position-8317 3'
+      - 'position-position-7280 3'
+      - 'position-position-4063 3'
+  /bottom/:
+    -
+      - 'position-position-4905 3'
+      - 'position-position-8586 3'
+      - 'position-position-3998 3'
+      - 'position-position-5349 3'
+  /footer/:
+    -
+      - horizontalmenu-6069
+  /copyright/:
+    -
+      - 'branding-7005 4'
+      - 'copyright-9042 4'
+      - 'totop-9181 4'
+  offcanvas:
+    -
+      - mobile-menu-3469
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  drawer:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  fullstrip:
+    type: section
+    attributes:
+      boxed: ''
+  firstfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  secondfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  container-8478:
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  thirdfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  menu-1228:
+    block:
+      class: 'g-mosaic-menu nomargintop'
+      variations: center
+  position-position-6831:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-2020:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-position-3327:
+    title: 'Header C'
+    attributes:
+      key: header-c
+  position-position-4369:
+    title: 'Header D'
+    attributes:
+      key: header-d
+  position-position-6234:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-position-5551:
+    title: Drawer
+    attributes:
+      key: drawer
+  position-position-9101:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-position-4013:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-position-2365:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  position-position-1439:
+    title: 'Top D'
+    attributes:
+      key: top-d
+  position-position-2755:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+    block:
+      class: nopaddingbottom
+      variations: nomarginall
+  position-position-1270:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-position-6347:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-position-9222:
+    title: 'Showcase D'
+    attributes:
+      key: showcase-d
+  position-position-6568:
+    title: FullStrip
+    attributes:
+      key: fullstrip
+  position-position-3648:
+    title: FirstFullWidth
+    attributes:
+      key: firstfullwidth
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-8324:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-3216:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-position-5758:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-position-3972:
+    title: 'Feature D'
+    attributes:
+      key: feature-d
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-6205:
+    title: 'Utility B'
+    attributes:
+      key: utility-b
+  position-position-1927:
+    title: 'Utility C'
+    attributes:
+      key: utility-c
+  position-position-7876:
+    title: 'Utility D'
+    attributes:
+      key: utility-d
+  position-position-4392:
+    title: SecondFullWidth
+    attributes:
+      key: secondfullwidth
+  position-position-3278:
+    title: 'MainTop A'
+    attributes:
+      key: maintop-a
+  position-position-9129:
+    title: 'MainTop B'
+    attributes:
+      key: maintop-b
+  position-position-6918:
+    title: 'MainTop C'
+    attributes:
+      key: maintop-c
+  position-position-8372:
+    title: 'MainTop D'
+    attributes:
+      key: maintop-d
+  position-position-8368:
+    title: 'ExpandedTop A'
+    attributes:
+      key: expandedtop-a
+  position-position-1610:
+    title: 'ExpandedTop B'
+    attributes:
+      key: expandedtop-b
+  position-position-8591:
+    title: 'ExpandedTop C'
+    attributes:
+      key: expandedtop-c
+  position-position-1723:
+    title: 'ExpandedTop D'
+    attributes:
+      key: expandedtop-d
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  position-position-1604:
+    title: 'ExpandedBottom A'
+    attributes:
+      key: expandedbottom-a
+  position-position-2563:
+    title: 'ExpandedBottom B'
+    attributes:
+      key: expandedbottom-b
+  position-position-3663:
+    title: 'ExpandedBottom C'
+    attributes:
+      key: expandedbottom-c
+  position-position-2659:
+    title: 'ExpandedBottom D'
+    attributes:
+      key: expandedbottom-d
+  position-position-2329:
+    title: 'MainBottom A'
+    attributes:
+      key: mainbottom-a
+  position-position-1292:
+    title: 'MainBottom B'
+    attributes:
+      key: mainbottom-b
+  position-position-8316:
+    title: 'MainBottom C'
+    attributes:
+      key: mainbottom-c
+  position-position-7421:
+    title: 'MainBottom D'
+    attributes:
+      key: mainbottom-d
+  position-position-7936:
+    title: ThirdFullWidth
+    attributes:
+      key: thirdfullwidth
+  position-position-6823:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-8317:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-position-7280:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  position-position-4063:
+    title: 'Extension D'
+    attributes:
+      key: extension-d
+  position-position-4905:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-position-8586:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-position-3998:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-position-5349:
+    title: 'Bottom D'
+    attributes:
+      key: bottom-d
+  horizontalmenu-6069:
+    title: 'Horizontal Menu'
+    attributes:
+      items:
+        -
+          text: 'About Mosaic Theme'
+          link: 'https://dazzlesoftware.org/joomla/templates/mosaic'
+          name: 'About Mosaic Theme'
+        -
+          text: 'Guide and Documentation'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/mosaic'
+          name: 'Guide and Documentation'
+        -
+          text: 'Forum Support and Community'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-mosaic'
+          name: 'Forum Support and Community'
+    block:
+      class: 'rt-horizmenu nomargintop nopaddingtop nopaddingbottom nomarginbottom hidden-phone'
+      variations: center
+      extra:
+        -
+          data-aos: fade-up
+        -
+          data-aos-anchor: '#g-footer'
+        -
+          data-aos-anchor-placement: bottom-bottom
+  branding-7005:
+    attributes:
+      content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
+    block:
+      class: 'nomargintop nopaddingtop nomarginleft nopaddingleft rt-branding'
+      extra:
+        -
+          data-aos: fade-right
+        -
+          data-aos-anchor: '#g-copyright'
+        -
+          data-aos-anchor-placement: bottom-bottom
+  copyright-9042:
+    attributes:
+      date:
+        start: '2007'
+    block:
+      class: 'g-copyright center nomargintop nopaddingtop'
+  totop-9181:
+    title: 'To Top'
+    attributes:
+      css:
+        class: 'genesis-totop'
+    block:
+      class: 'hidden-phone'
+      extra:
+        -
+          data-aos: slide-up
+        -
+          data-aos-anchor: '#g-copyright'
+        -
+          data-aos-anchor-placement: bottom-bottom
+        -
+          data-aos-delay: '500'
+        -
+          data-aos-easing: ease-in-out-back
+  mobile-menu-3469:
+    title: 'Mobile Menu'

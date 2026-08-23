@@ -1,0 +1,338 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1443176112
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - 'custom-5910 4'
+      - 'custom-2606 4'
+      - 'custom-6369 4'
+  top: {  }
+  utility: {  }
+  feature: {  }
+  maintop: {  }
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 8':
+          -
+            - custom-7493
+          -
+            - lists-8294
+      -
+        'sidebar 4':
+          -
+            - custom-7343
+  expandedbottom: {  }
+  /mainbottom/:
+    -
+      - custom-3683
+  /extension/:
+    -
+      - 'custom-4831 6'
+      - 'custom-6040 6'
+    -
+      - 'custom-7289 6'
+      - 'custom-9196 6'
+    -
+      - 'custom-7203 6'
+      - 'custom-4207 6'
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - custom-4488
+        /footer/:
+          -
+            - 'custom-5551 6'
+            - 'custom-2913 6'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'rt-overlay-dark faq-showcase'
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    attributes:
+      class: ''
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'rt-overlay-dark largepaddingtop'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-5910:
+    title: 'Need Support?'
+    attributes:
+      title: '<i class="fa fa-info-circle title-icon"></i>Need Support?'
+      html: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptate pariatur officia accusantium sapiente expedita eius fugiat</p>\n\n<a href=\"#\">Contact Us</a>"
+    block:
+      class: xlargemargintop
+      variations: 'box2 center'
+  custom-2606:
+    title: 'Check Forum'
+    attributes:
+      title: '<i class="fa fa-comments title-icon"></i>Check Forum'
+      html: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptate pariatur officia accusantium sapiente expedita eius fugiat</p>\n\n<a href=\"#\">Join the Community</a>"
+    block:
+      class: xlargemargintop
+      variations: 'box2 center'
+  custom-6369:
+    title: 'Questions?'
+    attributes:
+      title: '<i class="fa fa-question-circle title-icon"></i>Questions?'
+      html: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptate pariatur officia accusantium sapiente expedita eius fugiat</p>\n\n<a href=\"#\">Ask Now</a>"
+    block:
+      class: xlargemargintop
+      variations: 'box2 center'
+  custom-7493:
+    title: 'Custom HTML'
+    attributes:
+      title: FAQ
+      html: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida.</p>\n\n<p class=\"info\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ut illum illo accusantium nostrum quas distinctio consequatur mollitia explicabo repudiandae magnam voluptate nihil tempore tempora esse. Fugit, ipsa asperiores corrupti.</p>\n\n<h2>Common Queries and Questions</h2>\n\n<ol>\n\t<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\n\t<li>Aliquam tincidunt mauris eu risus.</li>\n</ol>\n\n<blockquote class=\"nomarginbottom\"><p class=\"nomarginbottom\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>"
+    block:
+      class: nomarginbottom
+  lists-8294:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '9'
+      accordion: enabled
+      nav: enabled
+      dots: enabled
+      loop: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+        -
+          title: 'What prices are our services?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 1'
+        -
+          title: 'What is our refund policy?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 2'
+        -
+          title: 'What payments methods do we accept?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 3'
+        -
+          title: 'What delivery options do we offer?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 4'
+        -
+          title: 'What support options are available?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 5'
+        -
+          title: 'What additional services are available?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 6'
+        -
+          title: 'Who are our partners?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 7'
+        -
+          title: 'What languages do we offer support in?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 8'
+        -
+          title: 'What job opportunities are available?'
+          desc: 'Lorem ipsum dolor sit amet aenean modo ligula eget dolor massa sociis nato viva etus consec quat partur sit amet aenean modo ligula eget dolor massa sociis'
+          link: ''
+          name: 'Item 9'
+    block:
+      class: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  custom-7343:
+    title: 'Main Menu'
+    attributes:
+      title: 'Main Menu'
+      html: "<ul class=\"nav menu\">\n<li><a href=\"#\">Home</a></li><li><span class=\"separator \">Features</span>\n<ul><li><a href=\"#\">Features Overview</a></li><li><a href=\"#\">Typography</a></li><li><a href=\"#\">Documentation</a></li><li><a href=\"#\">Forum Support</a></li></ul></li><li><span class=\"separator\">Pages</span>\n<ul><li><a href=\"#\">Pages Overview</a></li><li><a href=\"#\">About Us</a></li><li><a href=\"#\">Our Team</a></li><li><a href=\"#\">Services</a></li><li><a href=\"#\">Pricing Tables</a></li><li><a href=\"#\">Portfolio</a></li><li class=\"current active\"><a href=\"#\">Blog</a></li><li><a href=\"#\">FAQ</a></li><li><a href=\"#\">Contact Us</a></li><li><a href=\"#\">Offline Page</a></li><li><a href=\"#\">Coming Soon</a></li><li><a href=\"error\">404 Error</a></li></ul></li><li><a href=\"#\">Aeonix</a></li><li><span class=\"separator \">Styles</span>\n</li><li class=\"item-110\"><a href=\"#\" target=\"_blank\">Download</a></li><li class=\"item-141\"><a href=\"#\" target=\"_blank\">Support</a></li></ul>"
+    block:
+      variations: 'box3 title2'
+  custom-3683:
+    title: 'FAQ didn''t solve your problem?'
+    attributes:
+      title: 'FAQ didn''t solve your problem?'
+      html: "<h3>Get direct access to the team via phone, email or live chat.</h3>\n\n<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href=\"#\">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>"
+    block:
+      variations: title4
+  custom-4831:
+    title: 'Contact Us'
+    attributes:
+      title: '<i class="fa fa-envelope title-icon"></i>Contact Us'
+      html: "<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>\n<a class=\"readon\" href=\"#\">Contact Us</a>"
+    block:
+      variations: 'center box3'
+  custom-6040:
+    title: 'Need Guidance?'
+    attributes:
+      title: '<i class="fa fa-question-circle title-icon"></i>Need Guidance?'
+      html: "<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>\n<a class=\"readon\" href=\"#\">Download Docs</a>"
+    block:
+      variations: 'box3 center'
+  custom-7289:
+    title: 'Telephone Support'
+    attributes:
+      title: '<i class="fa fa-check-square-o title-icon"></i>Telephone Support'
+      html: '<p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>'
+    block:
+      class: 'nomargintop nomarginbottom'
+  custom-9196:
+    title: 'Online Live Chat'
+    attributes:
+      title: '<i class="fa fa-check-square-o title-icon"></i>Online Live Chat'
+      html: '<p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>'
+    block:
+      class: 'nomargintop nomarginbottom'
+  custom-7203:
+    title: 'Ticket System'
+    attributes:
+      title: '<i class="fa fa-check-square-o title-icon"></i>Ticket System'
+      html: '<p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>'
+    block:
+      class: 'nomargintop nopaddingtop'
+  custom-4207:
+    title: 'Downloadable PDFs'
+    attributes:
+      title: '<i class="fa fa-check-square-o title-icon"></i>Downloadable PDFs'
+      html: '<p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>'
+    block:
+      class: 'nomargintop nopaddingtop'
+  custom-4488:
+    title: 'More Details'
+    attributes:
+      title: 'More Details <span class="rt-title-tag">Help guides are available to assist</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-5551:
+    title: 'Pages Demo Footer'
+    attributes:
+      title: ''
+      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Aeonix RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Aeonix is only available as part of the Club Subscription.</p>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Aeonix Center, LLC</span><br />\n\t\t<span>123 Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@aeonix.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  custom-2913:
+    title: 'Pages Footer Form'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-email-form\">\n\t<form action=\"#\">\n\t\t<input type=\"text\" placeholder=\"Full Name\" size=\"18\" alt=\"fullname\" class=\"inputbox\" name=\"fullname\">\n\t\t<input type=\"text\" placeholder=\"Your Email\" size=\"28\" alt=\"email\" class=\"inputbox\" name=\"email\">\n\t\t<textarea placeholder=\"Your Message\" name=\"message\" cols=\"30\" rows=\"5\"></textarea>\n\t\t<input type=\"submit\" value=\"Send Message\" class=\"button\" name=\"send\">\n\t</form>\t\n</div>"

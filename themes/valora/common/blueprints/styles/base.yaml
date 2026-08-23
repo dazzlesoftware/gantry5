@@ -1,0 +1,15 @@
+name: Base Styles
+description: Base styles for the Valora theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#e8e8e8"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#686868"

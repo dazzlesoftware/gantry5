@@ -1,0 +1,19 @@
+name: Feature Colors
+description: Feature colors for the Aeonix theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f5f6f8"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#8b8b8b"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "genesis-media://backgrounds/feature/preset1/bg.png"

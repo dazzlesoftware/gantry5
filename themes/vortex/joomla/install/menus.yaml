@@ -1,0 +1,9 @@
+vortex-theme:
+  title: 'Vortex Theme'
+  description: 'Sample menu for Vortex theme.'
+
+  items:
+    vortex:
+      title: 'Home'
+      outline: home
+      home: 1

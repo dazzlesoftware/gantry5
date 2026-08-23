@@ -1,9 +1,0 @@
-studius-theme:
-  title: 'Studius Theme'
-  description: 'Sample menu for Studius theme.'
-
-  items:
-    studius:
-      title: 'Home'
-      outline: home
-      home: 1

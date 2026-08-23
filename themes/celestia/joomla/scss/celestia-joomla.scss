@@ -1,0 +1,38 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "celestia-joomla/styles/core";
+@import "celestia-joomla/styles/typography";
+@import "celestia-joomla/styles/forms";
+@import "celestia-joomla/styles/tabs";
+@import "celestia-joomla/styles/utilities";
+@import "celestia-joomla/particles/popupmodule";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "celestia-joomla/components/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

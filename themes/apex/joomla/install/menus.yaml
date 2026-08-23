@@ -1,0 +1,9 @@
+apex-theme:
+  title: 'Apex Theme'
+  description: 'Sample menu for Apex theme.'
+
+  items:
+    apex:
+      title: 'Home'
+      outline: home
+      home: 1

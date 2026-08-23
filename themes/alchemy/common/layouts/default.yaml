@@ -1,0 +1,298 @@
+version: 3
+preset:
+  image: 'genesis-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1582666992
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-3453 2'
+      - 'menu-2872 10'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 2':
+          -
+            - position-position-9414
+      -
+        'mainbar 7':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 2':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /container-footer/:
+    -
+      -
+        /footer/:
+          -
+            - 'newsletter-5881 4'
+            - 'simplemenu-2324 8'
+        /copyright/:
+          -
+            - copyright-6444
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      variations: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings-large
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings medpaddingbottom'
+      variations: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  logo-3453:
+    title: 'Logo / Image'
+    attributes:
+      text: Alchemy
+      title: ''
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: ''
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  newsletter-5881:
+    attributes:
+      layout: g-newsletter-aside
+      title: 'Before you go...'
+      headtext: 'Maecenas mattis, mi et gravida tincidunt, neque eros dictum lectus, vitae egestas lorem.'
+      inputboxtext: 'Enter your email address'
+      buttontext: ''
+      buttonclass: ''
+  simplemenu-2324:
+    title: 'Simple Menu'
+    attributes:
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'About Rational'
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'Our Projects'
+            -
+              title: 'The Team'
+            -
+              title: Jobs
+            -
+              title: Blog
+            -
+              title: Press
+          title: About
+        -
+          items:
+            -
+              title: Contact
+            -
+              title: Helpcentre
+            -
+              title: 'Our Offices'
+            -
+              title: Facebook
+            -
+              title: Twitter
+            -
+              title: Instagram
+          title: Contact
+        -
+          items:
+            -
+              title: 'Live Chat'
+            -
+              title: '(401) 123-4578'
+            -
+              title: 'Send us an email'
+            -
+              title: FAQ
+          title: Online
+    block:
+      variations: 'largepaddingtop largepaddingbottom'
+  copyright-6444:
+    attributes:
+      date:
+        start: ''
+        end: ''
+      owner: 'All rights reserved. Designed & Developed by <a href="" target="_blank">Dazzle Software</a>.'
+    block:
+      variations: center
+  mobile-menu-2576:
+    title: 'Mobile Menu'

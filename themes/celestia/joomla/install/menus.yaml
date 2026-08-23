@@ -1,0 +1,9 @@
+celestia-theme:
+  title: 'Celestia Theme'
+  description: 'Sample menu for Celestia theme.'
+
+  items:
+    celestia:
+      title: 'Home'
+      layout: home
+      home: 1

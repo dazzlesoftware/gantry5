@@ -1,0 +1,23 @@
+name: Font Families
+description: Font families for the Carmine theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Default Font
+      default: 'lato, Verdana, Helvetica, Arial, sans-serif'
+    family-alt:
+      type: input.fonts
+      label: Alternative Font
+      default: 'lato-light, Verdana, Helvetica, Arial, sans-serif'
+    family-promo:
+      type: input.fonts
+      label: Promo Font
+      default: 'lato-italic, Verdana, Helvetica, Arial, sans-serif'
+    family-promo-alt:
+      type: input.fonts
+      label: Alt Promo Font
+      default: 'lato-light-italic, Verdana, Helvetica, Arial, sans-serif'

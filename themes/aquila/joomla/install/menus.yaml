@@ -1,0 +1,9 @@
+aquila-theme:
+  title: 'Aquila Theme'
+  description: 'Sample menu for Aquila theme.'
+
+  items:
+    aquila:
+      title: 'Home'
+      outline: home
+      home: 1

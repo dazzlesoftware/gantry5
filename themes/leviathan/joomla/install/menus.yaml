@@ -1,0 +1,9 @@
+leviathan-theme:
+  title: 'Leviathan Theme'
+  description: 'Sample menu for Leviathan theme.'
+
+  items:
+    leviathan:
+      title: 'Home'
+      layout: home
+      home: 1

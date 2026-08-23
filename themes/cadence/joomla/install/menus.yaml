@@ -1,0 +1,9 @@
+cadence-theme:
+  title: 'Cadence Theme'
+  description: 'Sample menu for Cadence theme.'
+
+  items:
+    cadence:
+      title: 'Home'
+      outline: home
+      home: 1

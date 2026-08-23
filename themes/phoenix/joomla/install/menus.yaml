@@ -1,9 +1,0 @@
-phoenix-theme:
-  title: 'Phoenix Theme'
-  description: 'Sample menu for Phoenix theme.'
-
-  items:
-    phoenix:
-      title: 'Home'
-      outline: home
-      home: 1
