@@ -7,7 +7,7 @@ param(
     [string] $WordPressContent,
 
     [Parameter(Mandatory = $true)]
-    [ValidatePattern('^[A-Za-z0-9_-]+$')]
+    [ValidatePattern('^[A-Za-z0-9_.-]+$')]
     [string] $BuildSuffix
 )
 

@@ -235,7 +235,7 @@ GENESIS_PLATFORM_JS_SAVE_SUCCESS: "¡El {{type}} {{verb}} se ha guardado con éx
 GENESIS_PLATFORM_SAVED: "Guardado"
 GENESIS_PLATFORM_LAST_SAVED: "Último guardado"
 GENESIS_PLATFORM_JS_CSS_COMPILED: "¡La hoja de estilos CSS se ha compilado con éxito!"
-GENESIS_PLATFORM_PHP54_WARNING: 'Actualmente está ejecutando PHP <strong>% s </strong>, que pronto dejará de ser compatible con Genesis. Por favor, actualice lo antes posible. <a target: "_blank" href: "http://genesis.org/blog/php54-end-of-support">Más detalles.</a>'
+GENESIS_PLATFORM_PHP82_WARNING: 'Actualmente está ejecutando PHP <strong>% s </strong>, que pronto dejará de ser compatible. Por favor, actualice lo antes posible. <a target: "_blank" href: "https://www.php.net/supported-versions.php">Más detalles.</a>'
 GENESIS_PLATFORM_SAMPLE_DATA_INSTALLED: "Datos de ejemplo instalados"
 GENESIS_PLATFORM_CHROME: "Chrome"
 GENESIS_PLATFORM_MENU_EDIT_UNAUTHORIZED: "No tiene permiso para editar este menú.."

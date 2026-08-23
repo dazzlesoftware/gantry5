@@ -734,8 +734,8 @@ msgstr "Last Saved"
 msgid "GENESIS_PLATFORM_JS_CSS_COMPILED"
 msgstr "The CSS was successfully compiled!"
 
-msgid "GENESIS_PLATFORM_PHP54_WARNING"
-msgstr "You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Genesis. Please upgrade as soon as possible. <a target=\"_blank\" href=\"http://genesis.org/blog/php54-end-of-support\">More Details.</a>"
+msgid "GENESIS_PLATFORM_PHP82_WARNING"
+msgstr "You are currently running PHP <strong>%s</strong> which will soon no longer be supported. Please upgrade as soon as possible. <a target=\"_blank\" href=\"https://www.php.net/supported-versions.php\">More Details.</a>"
 
 msgid "GENESIS_PLATFORM_SAMPLE_DATA_INSTALLED"
 msgstr "Sample Data Installed"

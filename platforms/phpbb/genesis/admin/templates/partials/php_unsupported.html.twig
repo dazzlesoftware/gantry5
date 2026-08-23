@@ -1,9 +1,9 @@
 {% set php_version = constant('PHP_VERSION') %}
 
-{% if php_version starts with '5.4' %}
+{% if php_version starts with '8.2' %}
 <div class="g-grid">
     <div class="g-block alert alert-warning g-php-outdated">
-        {{ 'GENESIS_PLATFORM_PHP54_WARNING'|trans(php_version)|raw }}
+        {{ 'GENESIS_PLATFORM_PHP82_WARNING'|trans(php_version)|raw }}
     </div>
 </div>
 {% endif %}

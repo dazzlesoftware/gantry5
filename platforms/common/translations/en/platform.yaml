@@ -99,7 +99,7 @@ GENESIS_PLATFORM_MENU_EDITOR: "Menu Editor"
 GENESIS_PLATFORM_MODULE: "Module"
 GENESIS_PLATFORM_AVAILABLE_THEMES: "Available Themes"
 GENESIS_PLATFORM_PLATFORM_SETTINGS: "Platform Settings"
-GENESIS_PLATFORM_FOOTER: '<a href="http://genesis.org">Genesis Administration</a> by <a href="https://dazzlesoftware.org">Dazzle Software</a>'
+GENESIS_PLATFORM_FOOTER: '<a href="https://dazzlecms.org">Genesis Administration</a> by <a href="https://dazzlesoftware.org">Dazzle Software</a>'
 GENESIS_PLATFORM_BASE_OUTLINE: "Base Outline"
 GENESIS_PLATFORM_GLOBAL_DEFAULTS: "Global Defaults"
 GENESIS_PLATFORM_GENESIS_DETAILS: '<p>Genesis is a fast, flexible framework for building highly customizable themes. It combines drag-and-drop layout creation with a powerful particle system while preserving compatibility with the Genesis ecosystem.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Fast, flexible, easy to use framework</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Drag-n-drop layout controls</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Powerful dynamic particles system</li></ul>'
@@ -260,7 +260,7 @@ GENESIS_PLATFORM_JS_SAVE_SUCCESS: "The {{type}} {{verb}} been successfully saved
 GENESIS_PLATFORM_SAVED: "Saved"
 GENESIS_PLATFORM_LAST_SAVED: "Last Saved"
 GENESIS_PLATFORM_JS_CSS_COMPILED: "The CSS was successfully compiled!"
-GENESIS_PLATFORM_PHP54_WARNING: 'You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Genesis. Please upgrade as soon as possible. <a target: "_blank" href: "http://genesis.org/blog/php54-end-of-support">More Details.</a>'
+GENESIS_PLATFORM_PHP82_WARNING: 'You are currently running PHP <strong>%s</strong> which will soon be no longer be supported. Please upgrade as soon as possible. <a target: "_blank" href: "https://www.php.net/supported-versions.php">More Details.</a>'
 GENESIS_PLATFORM_SAMPLE_DATA_INSTALLED: "Sample Data Installed"
 GENESIS_PLATFORM_CHROME: "Chrome"
 GENESIS_PLATFORM_MENU_EDIT_UNAUTHORIZED: "You are not allowed to edit this menu."
