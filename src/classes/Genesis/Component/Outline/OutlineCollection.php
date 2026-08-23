@@ -45,11 +45,15 @@ class OutlineCollection extends Collection
     }
 
     /**
-     * @param string $id
+     * @param string|int|null $id
      * @return string|null
      */
-    public function name(string|int $id): ?string
+    public function name(string|int|null $id): ?string
     {
+        if ($id === null) {
+            return null;
+        }
+
         return isset($this->items[$id]) ? $this->items[$id] : null;
     }
 
@@ -127,7 +131,7 @@ class OutlineCollection extends Collection
         $list = [];
         foreach ($this->items as $name => $title) {
             try {
-                $index = Layout::index($name);
+                $index = Layout::index((string) $name);
 
                 $list += $index['positions'];
             } catch (\Exception $e) {

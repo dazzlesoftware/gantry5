@@ -59,4 +59,13 @@ class TwigTest extends MockableTest
         $this->assertContains('url', $functionNames);
     }
 
+    public function testUrlFunctionAcceptsUnsetParticleValues(): void
+    {
+        $source = file_get_contents(dirname(__DIR__, 3) . '/src/classes/Genesis/Component/Twig/TwigExtension.php');
+
+        $this->assertIsString($source);
+        $this->assertStringContainsString('public function urlFunc(?string $input,', $source);
+        $this->assertStringContainsString('trim($input ?? \'\')', $source);
+    }
+
 }

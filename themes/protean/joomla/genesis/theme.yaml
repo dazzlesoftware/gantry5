@@ -15,7 +15,7 @@ details:
     link: https://gitter.im/genesis/genesis
 
   updates:
-    link: http://updates.rockettheme.com/themes/protean.yaml
+    link: https://updates.genesis.org/5.0/joomla/tpl_genesis_protean.xml
 
   copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv3 and later
@@ -30,7 +30,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: rt_protean
+    parent: genesis_protean
     base: genesis-theme://common
     file: genesis-theme://include/theme.php
     class: \Genesis\Framework\Theme

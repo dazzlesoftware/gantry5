@@ -110,7 +110,7 @@ class Pkg_GenesisInstallerScript
 
         if ($type !== 'uninstall') {
             // Prevent installation if requirements are not met.
-            $errors = $this->checkRequirements($manifest->version);
+            $errors = $this->checkRequirements((string) $manifest->version);
             if ($errors) {
                 /** @var CMSApplication $app */
                 $app = Factory::getApplication();

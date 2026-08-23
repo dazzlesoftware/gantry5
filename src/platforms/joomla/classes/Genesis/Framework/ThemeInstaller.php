@@ -326,12 +326,12 @@ class ThemeInstaller extends AbstractInstaller
         // Copy configuration for the new layout.
         if (($this->copyCustom($folder, $target) || $created) && isset($style)) {
             // Update layout and save it.
-            $layout = Layout::load($target, $preset);
+            $layout = Layout::load((string) $target, $preset);
             $layout->save()->saveIndex();
 
             if ($id !== $target) {
                 // Default outline: Inherit everything from the base.
-                $layout->inheritAll()->name = $id;
+                $layout->inheritAll()->name = (string) $id;
                 $layout->save()->saveIndex();
 
                 $this->actions[] = ['action' => 'base_outline_created', 'text' => $this->translate('GENESIS_INSTALLER_ACTION_BASE_OUTLINE_CREATED', $title)];

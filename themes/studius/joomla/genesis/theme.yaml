@@ -30,7 +30,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: rt_studius
+    parent: genesis_studius
     base: 'genesis-theme://common'
     file: 'genesis-theme://includes/theme.php'
     class: '\Genesis\Framework\Theme'

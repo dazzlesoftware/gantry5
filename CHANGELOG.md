@@ -52,6 +52,13 @@ This changelog begins with the Genesis `1.0.0` release.
 - Corrected the default WordPress and Joomla administrator routes to open the Base Outline layout instead of treating a legacy boolean placeholder as outline ID `1`.
 - Restored nullable input handling in Twig's nested-value helper so forms can safely resolve missing style/default data.
 - Allowed Twig select-field comparisons against unset values so unconfigured options render without a type error.
+- Allowed the Twig URL helper to accept unset particle URLs and images, preventing logo rendering failures with default configurations.
+- Restored WordPress menu discovery by initializing its lazy menu cache as unresolved instead of as an already-loaded empty list.
+- Corrected the WordPress menu metadata hook to accept both saved `WP_Post` menu items and the `stdClass` post-type or taxonomy items supplied by the menu editor.
+- Corrected the WordPress menu-editor particle-label callback to support the same complete menu-item object contract.
+- Allowed outline-name resolution to handle an unset inheritance selection while rendering administrator fields.
+- Normalized legacy false layout subtypes before compact-layout title generation, preventing Articles Scroller and other saved layouts from failing under strict types.
+- Made compiled YAML loading recover automatically when cache cleanup races with a request or leaves a missing, truncated, or unreadable generated PHP artifact.
 
 ### Framework architecture
 

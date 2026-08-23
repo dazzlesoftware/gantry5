@@ -112,7 +112,7 @@ function genesis_add_menu_item_type_particle(): void
     <?php
 }
 
-function genesis_customize_menu_item_label(\WP_Post $menu_item): \WP_Post
+function genesis_customize_menu_item_label(object $menu_item): object
 {
     if ('custom' !== $menu_item->type || strpos($menu_item->attr_title, 'genesis-particle-') !== 0) {
         return $menu_item;

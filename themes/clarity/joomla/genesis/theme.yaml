@@ -15,7 +15,7 @@ details:
     link: https://gitter.im/genesis/genesis
 
   updates:
-    link: http://updates.rockettheme.com/themes/clarity.yaml
+    link: https://updates.genesis.org/5.0/joomla/tpl_genesis_clarity.xml
 
   news:
     link: http://news.rockettheme.com/prime/themes.yaml
@@ -33,7 +33,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: rt_clarity
+    parent: genesis_clarity
     base: genesis-theme://common
     file: genesis-theme://include/theme.php
     class: \Genesis\Framework\Theme

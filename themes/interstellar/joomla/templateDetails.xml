@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>rt_interstellar</name>
+    <name>genesis_interstellar</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -8,7 +8,7 @@
     <authorUrl>https://dazzlesoftware.org</authorUrl>
     <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
     <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
-    <description>TPL_RT_INTERSTELLAR_DESC</description>
+    <description>TPL_GENESIS_INTERSTELLAR_DESC</description>
 
     <scriptfile>install.php</scriptfile>
 
@@ -90,7 +90,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/rt_interstellar/fields">
+        <fields name="params" addfieldpath="/templates/genesis_interstellar/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>
@@ -98,6 +98,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Interstellar Template">http://updates.rockettheme.org/joomla/tpl_rt_interstellar.xml</server -->
+        <!-- server type="extension" priority="1" name="Interstellar Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_interstellar.xml</server -->
     </updateservers>
 </extension>

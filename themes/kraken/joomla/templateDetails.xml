@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>rt_kraken</name>
+    <name>genesis_kraken</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -8,7 +8,7 @@
     <authorUrl>https://dazzlesoftware.org</authorUrl>
     <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
     <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
-    <description>TPL_RT_KRAKEN_DESC</description>
+    <description>TPL_GENESIS_KRAKEN_DESC</description>
 
     <scriptfile>install.php</scriptfile>
 
@@ -94,7 +94,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/rt_kraken/fields">
+        <fields name="params" addfieldpath="/templates/genesis_kraken/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>
@@ -102,6 +102,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Kraken Template">http://updates.rockettheme.org/joomla/tpl_rt_kraken.xml</server -->
+        <!-- server type="extension" priority="1" name="Kraken Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_kraken.xml</server -->
     </updateservers>
 </extension>

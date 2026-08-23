@@ -37,7 +37,7 @@ class Outlines extends OutlineCollection
     public function preset(string|int $id): string|int
     {
         if (is_numeric($id)) {
-            $style = StyleHelper::getStyle($id);
+            $style = StyleHelper::getStyle((int) $id);
             $params = json_decode($style->params, true);
 
             $id = isset($params['preset']) ? $params['preset'] : 'default';

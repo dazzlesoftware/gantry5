@@ -70,18 +70,20 @@ class Router extends BaseRouter
     }
 
     /**
-     * @param string $theme
-     * @param string $style
+     * @param string|null $theme
+     * @param int|string|null $style
      * @return $this
      */
-    public function setTheme(string $theme, string $style): static
+    public function setTheme(?string $theme, int|string|null $style = null): static
     {
         if ($style) {
-            $theme = StyleHelper::getStyle($style)->template;
+            $theme = StyleHelper::getStyle((int) $style)->template;
         }
         if (!$theme) {
             $theme = StyleHelper::getDefaultStyle()->template;
         }
+
+        $theme = (string) $theme;
 
         $path = JPATH_SITE . '/templates/' . $theme;
 

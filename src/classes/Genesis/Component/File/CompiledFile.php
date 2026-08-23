@@ -80,7 +80,18 @@ trait CompiledFile
 
                 $class = get_class($this);
 
-                $cache = $file->exists() ? $file->content() : null;
+                $cache = null;
+                if ($file->exists()) {
+                    try {
+                        $cache = $file->content();
+                    } catch (\Throwable) {
+                        // Cache cleanup can remove a compiled file between
+                        // exists() and include(). Treat missing, truncated, or
+                        // otherwise unreadable artifacts as a cache miss and
+                        // rebuild them from the source file below.
+                        $cache = null;
+                    }
+                }
 
                 // Load real file if cache isn't up to date (or is invalid).
                 if (!isset($cache['@class'])

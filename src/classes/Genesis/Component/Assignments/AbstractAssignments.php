@@ -83,7 +83,7 @@ abstract class AbstractAssignments
     {
         $scores = $this->scores();
 
-        return key($scores) ?: $default;
+        return (string) (key($scores) ?: $default);
     }
 
     /**

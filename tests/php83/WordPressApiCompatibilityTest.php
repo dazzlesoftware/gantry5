@@ -75,6 +75,35 @@ final class WordPressApiCompatibilityTest extends TestCase
         self::assertStringNotContainsString("['configurations', true]", $router);
     }
 
+    public function testMenuCacheStartsUninitializedSoWordPressMenusAreLoaded(): void
+    {
+        $menu = file_get_contents(
+            dirname(__DIR__, 2) . '/src/platforms/wordpress/classes/Genesis/Framework/Menu.php'
+        );
+
+        self::assertIsString($menu);
+        self::assertStringContainsString('protected ?array $menus = null;', $menu);
+        self::assertMatchesRegularExpression('/if\s*\(\$this->menus === null\)/', $menu);
+    }
+
+    public function testMenuMetadataHookAcceptsEveryWordPressMenuObject(): void
+    {
+        $theme = file_get_contents(
+            dirname(__DIR__, 2) . '/src/platforms/wordpress/classes/Genesis/Framework/Theme.php'
+        );
+        $admin = file_get_contents(
+            dirname(__DIR__, 2) . '/platforms/wordpress/genesis/admin/init.php'
+        );
+
+        self::assertIsString($theme);
+        self::assertIsString($admin);
+        self::assertStringContainsString('public function addMenuMeta(object $menu_item): object', $theme);
+        self::assertStringContainsString(
+            'function genesis_customize_menu_item_label(object $menu_item): object',
+            $admin
+        );
+    }
+
     public function testWordPressPackagesDeclareCompatibilityMetadata(): void
     {
         $root = dirname(__DIR__, 2);

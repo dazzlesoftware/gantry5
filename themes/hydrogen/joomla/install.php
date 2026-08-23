@@ -17,6 +17,7 @@ use Genesis\Loader;
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Installer\Adapter\TemplateAdapter;
 
 /**
  * Class Genesis_HydrogenInstallerScript

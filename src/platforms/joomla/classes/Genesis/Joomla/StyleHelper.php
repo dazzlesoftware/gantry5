@@ -111,7 +111,7 @@ class StyleHelper
         }
 
         $installer = new ThemeInstaller($name);
-        $installer->updateStyle($new, ['configuration' => $new]);
+        $installer->updateStyle((string) $new, ['configuration' => $new]);
     }
 
     /**

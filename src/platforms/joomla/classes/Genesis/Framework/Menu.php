@@ -38,6 +38,9 @@ class Menu extends AbstractMenu
     protected mixed $application;
     /** @var \Joomla\CMS\Menu\AbstractMenu */
     protected mixed $menu;
+    protected ?MenuItem $defaultItem = null;
+    protected ?MenuItem $activeItem = null;
+    protected ?MenuItem $baseItem = null;
 
     public function __construct()
     {
@@ -57,12 +60,16 @@ class Menu extends AbstractMenu
                     $tag = '*';
                 }
                 
-                $this->default = $this->menu->getDefault($tag);
-                $this->active = $this->menu->getActive();
+                $this->defaultItem = $this->menu->getDefault($tag);
+                $this->activeItem = $this->menu->getActive();
+                $this->default = $this->defaultItem?->id;
+                $this->active = $this->activeItem?->id;
             } catch (\Exception $e) {
                 // If we can't get site application in admin, set defaults to null
                 $this->application = $app;
                 $this->menu = null;
+                $this->defaultItem = null;
+                $this->activeItem = null;
                 $this->default = null;
                 $this->active = null;
             }
@@ -78,8 +85,10 @@ class Menu extends AbstractMenu
             }
             
             $this->menu = $this->application->getMenu();
-            $this->default = $this->menu->getDefault($tag);
-            $this->active = $this->menu->getActive();
+            $this->defaultItem = $this->menu->getDefault($tag);
+            $this->activeItem = $this->menu->getActive();
+            $this->default = $this->defaultItem?->id;
+            $this->active = $this->activeItem?->id;
         }
     }
 
@@ -218,7 +227,7 @@ class Menu extends AbstractMenu
      */
     public function getDefaultMenuName(): ?string
     {
-        return $this->default ? $this->default->menutype : null;
+        return $this->defaultItem?->menutype;
     }
 
     /**
@@ -238,7 +247,7 @@ class Menu extends AbstractMenu
      */
     public function getActiveMenuName(): ?string
     {
-        return $this->active ? $this->active->menutype : null;
+        return $this->activeItem?->menutype;
     }
 
     /**
@@ -264,7 +273,7 @@ class Menu extends AbstractMenu
             return null;
         }
 
-        return $this->active ? $this->active->id : 0;
+        return $this->active ? (string) $this->active : '0';
     }
 
     /**
@@ -273,7 +282,7 @@ class Menu extends AbstractMenu
      */
     public function isActive(mixed $item): bool
     {
-        $tree = $this->base->tree;
+        $tree = $this->baseItem?->tree ?? [];
         if (\in_array($item->id, $tree, false)) {
             return true;
         }
@@ -299,8 +308,8 @@ class Menu extends AbstractMenu
      */
     public function isCurrent(mixed $item): bool
     {
-        return $item->id == $this->active->id
-        || ($item->type === 'alias' && $item->getParams()->get('aliasoptions') == $this->active->id);
+        return $item->id == $this->active
+        || ($item->type === 'alias' && $item->getParams()->get('aliasoptions') == $this->active);
     }
 
     /**
@@ -746,7 +755,7 @@ class Menu extends AbstractMenu
         $base = $itemid && $itemid !== '/' ? $menu->getItem($itemid) : null;
 
         // Use active menu item or fall back to default menu item.
-        return $base ?: $this->active ?: $this->default;
+        return $base ?: $this->activeItem ?: $this->defaultItem;
     }
 
     /**
@@ -758,14 +767,15 @@ class Menu extends AbstractMenu
     public function getList(array $params, array $items): void
     {
         // Get base menu item for this menu (defaults to active menu item).
-        $this->base = $this->calcBase($params['base']);
+        $this->baseItem = $this->calcBase($params['base']);
+        $this->base = $this->baseItem?->id;
 
         // Make sure that the menu item exists.
         if (!$this->base && !$this->application->isClient('administrator')) {
             return;
         }
 
-        $tree = isset($this->base->tree) ? $this->base->tree : [];
+        $tree = $this->baseItem?->tree ?? [];
         $start = (int)$params['startLevel'];
         $max = (int)$params['maxLevels'];
         $end = $max ? $start + $max - 1 : 0;

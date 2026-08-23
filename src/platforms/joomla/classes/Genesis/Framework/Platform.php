@@ -354,17 +354,17 @@ class Platform extends BasePlatform
     }
 
     /**
-     * @param string $content
+     * @param string|null $content
      * @param array $params
      * @return string
      */
-    public function displayContent(string $content, array $params = []): string
+    public function displayContent(?string $content, array $params = []): string
     {
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
         $document = $application->getDocument();
         if (!$document instanceof HtmlDocument) {
-            return $content;
+            return $content ?? '';
         }
 
         $renderer = $document->loadRenderer('component');

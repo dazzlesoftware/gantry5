@@ -10,6 +10,20 @@ use Genesis\Component\Layout\Layout;
  */
 class LayoutTest extends MockableTest
 {
+    public function testCompactLayoutNormalizesLegacyFalseSubtype(): void
+    {
+        $source = file_get_contents(
+            dirname(__DIR__, 4) . '/src/classes/Genesis/Component/Layout/Version/CompactFormat.php'
+        );
+
+        $this->assertIsString($source);
+        $this->assertStringContainsString('is_string($child[\'subtype\'] ?? null)', $source);
+        $this->assertStringContainsString(
+            'protected function getTitle(string $type, ?string $subtype, string|int|null $id): ?string',
+            $source
+        );
+    }
+
     /**
      * Test layout initialization
      */

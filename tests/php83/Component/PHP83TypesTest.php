@@ -9,6 +9,30 @@ use Genesis\Tests\PHP83\MockableTest;
  */
 class PHP83TypesTest extends MockableTest
 {
+    public function testOutlineNameAcceptsAnUnsetInheritanceSelection(): void
+    {
+        $source = file_get_contents(
+            dirname(__DIR__, 3) . '/src/classes/Genesis/Component/Outline/OutlineCollection.php'
+        );
+
+        $this->assertIsString($source);
+        $this->assertStringContainsString('public function name(string|int|null $id): ?string', $source);
+        $this->assertStringContainsString('if ($id === null)', $source);
+    }
+
+    public function testUnreadableCompiledYamlIsTreatedAsACacheMiss(): void
+    {
+        $source = file_get_contents(
+            dirname(__DIR__, 3) . '/src/classes/Genesis/Component/File/CompiledFile.php'
+        );
+
+        $this->assertIsString($source);
+        $this->assertMatchesRegularExpression(
+            '/try\s*\{\s*\$cache = \$file->content\(\);\s*\}\s*catch\s*\(\\\\Throwable\)/s',
+            $source
+        );
+    }
+
     /**
      * Test that nullable types and union types work correctly
      * 

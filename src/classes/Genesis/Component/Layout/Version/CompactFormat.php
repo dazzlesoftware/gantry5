@@ -262,7 +262,12 @@ abstract class CompactFormat
             $widthToken = null;
             $id = $child['id'];
             $type = $child['type'];
-            $subtype = $child['subtype'];
+            // Older and partially configured layouts can store false for an
+            // unset subtype. Normalize that persistence sentinel at the
+            // parser boundary before passing it to strictly typed helpers.
+            $subtype = is_string($child['subtype'] ?? null) && $child['subtype'] !== ''
+                ? $child['subtype']
+                : null;
             $isSection = in_array($type, $this->sections, true);
 
             if (empty($child['inherit']['outline']) || empty($child['inherit']['include'])) {
@@ -326,7 +331,7 @@ abstract class CompactFormat
 
             if ($ctype === 'block') {
                 // Embed the Bootstrap span into the compact array key/value.
-                $widthToken = $this->getCompactWidth($content['attributes']);
+                $widthToken = $this->getCompactWidth((array) ($content['attributes'] ?? []));
                 // Embed parent block.
                 if (!empty($content['attributes'])) {
                     $child['block'] = $content['attributes'];
@@ -490,11 +495,11 @@ abstract class CompactFormat
 
     /**
      * @param string $type
-     * @param string $subtype
+     * @param string|null $subtype
      * @param string $id
      * @return string|null
      */
-    protected function getTitle(string $type, string $subtype, string|int|null $id): ?string
+    protected function getTitle(string $type, ?string $subtype, string|int|null $id): ?string
     {
         $id = (string) ($id ?? '');
         if (in_array($type, $this->sections, true)) {

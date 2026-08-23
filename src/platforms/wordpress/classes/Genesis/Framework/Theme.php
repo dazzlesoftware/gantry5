@@ -493,7 +493,13 @@ class Theme extends AbstractTheme
         return $menuItems;
     }
 
-    public function addMenuMeta(\WP_Post $menu_item): \WP_Post
+    /**
+     * Add Genesis metadata to any menu item object produced by WordPress.
+     *
+     * WordPress passes WP_Post instances for saved menu items and stdClass
+     * instances for post-type and taxonomy items shown in the menu editor.
+     */
+    public function addMenuMeta(object $menu_item): object
     {
         $meta = \get_post_meta($menu_item->ID, '_menu_item_genesis', true);
 
