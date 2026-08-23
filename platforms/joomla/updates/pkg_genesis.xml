@@ -16,7 +16,7 @@
 			<tag>stable</tag>
 		</tags>
 		<maintainer>Dazzle Software, LLC</maintainer>
-		<maintainerurl>http://genesis.org</maintainerurl>
+		<maintainerurl>https://dazzlecms.org</maintainerurl>
 		<section>Updates</section>
 		<targetplatform name="joomla" version="(5.0)|(5.1)|(5.2)|(5.3)|(5.4)|(6.0)|(6.1)"/>
 		<php_minimum>8.3.0</php_minimum>

@@ -6,7 +6,7 @@
                type="package"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/pkg_genesis.xml"/>
+               detailsurl="https://updates.dazzlecms.org/joomla/genesis/pkg_genesis.xml"/>
     <extension name="Hydrogen"
                description="Hydrogen Template"
                element="genesis_hydrogen"

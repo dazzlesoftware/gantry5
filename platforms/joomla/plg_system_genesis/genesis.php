@@ -146,7 +146,9 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
 
     public function handleContentPrepareData(Model\PrepareDataEvent $event): void
     {
-        $this->onContentPrepareData($event->getContext(), $event->getData());
+        $data = $event->getData();
+        $this->onContentPrepareData($event->getContext(), $data);
+        $event->updateData($data);
     }
 
     public function handleContentPrepareForm(Model\PrepareFormEvent $event): void
@@ -544,7 +546,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
     /**
      * Save plugin parameters and trigger the save events.
      *
-     * @param array $data
+     * @param object|array $data
      * @return bool
      * @throws RuntimeException
      * @see JModelAdmin::save()
@@ -602,7 +604,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
      * @param array $data
      * @return void
      */
-    public function onContentBeforeSave(string $context, object $table, bool $isNew, array $data = []): void
+    public function onContentBeforeSave(string $context, object $table, bool $isNew, object|array $data = []): void
     {
         switch ($context) {
             case 'com_menus.item':
@@ -707,10 +709,10 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
 
     /**
      * @param string $context
-     * @param object $data
+     * @param object|array $data
      * @return bool
      */
-    public function onContentPrepareData(string $context, object $data): bool
+    public function onContentPrepareData(string $context, object|array &$data): bool
     {
         $name = 'plg_' . $this->_type . '_' . $this->_name;
 
@@ -719,15 +721,23 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
             case 'com_menus.item':
                 Loader::setup();
 
-                $isNew = $data->parent_id === null;
-                $menuParams = Menu::decodeJParams($data->params);
-                $isGenesis = !empty($data->params['genesis']) || is_array($menuParams);
+                $params = is_array($data) ? ($data['params'] ?? []) : ($data->params ?? []);
+                $params = $params instanceof Registry ? $params->toArray() : (array) $params;
+                $parentId = is_array($data) ? ($data['parent_id'] ?? null) : ($data->parent_id ?? null);
+                $isNew = $parentId === null;
+                $menuParams = Menu::decodeJParams($params);
+                $isGenesis = !empty($params['genesis']) || is_array($menuParams);
                 if ($isNew || $isGenesis) {
                     // Add default Genesis params to menu item.
                     if (null === $menuParams) {
                         $menuParams = [];
                     }
-                    $data->params = array_merge($data->params, Menu::encodeJParams($menuParams, false));
+                    $params = array_merge($params, Menu::encodeJParams($menuParams, false));
+                    if (is_array($data)) {
+                        $data['params'] = $params;
+                    } else {
+                        $data->params = $params;
+                    }
                 }
                 break;
         }
@@ -737,10 +747,10 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
 
     /**
      * @param Form $form
-     * @param object $data
+     * @param object|array $data
      * @return bool
      */
-    public function onContentPrepareForm(mixed $form, object $data): bool
+    public function onContentPrepareForm(mixed $form, object|array $data): bool
     {
         // Check that we are manipulating a valid form.
         if (!($form instanceof \Joomla\CMS\Form\Form)) {
@@ -771,8 +781,11 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
             case 'com_menus.item':
                 Loader::setup();
 
-                $isNew = $data->parent_id === null;
-                $isGenesis = !empty($data->params['genesis']) || is_array(Menu::decodeJParams($data->params));
+                $params = is_array($data) ? ($data['params'] ?? []) : ($data->params ?? []);
+                $params = $params instanceof Registry ? $params->toArray() : (array) $params;
+                $parentId = is_array($data) ? ($data['parent_id'] ?? null) : ($data->parent_id ?? null);
+                $isNew = $parentId === null;
+                $isGenesis = !empty($params['genesis']) || is_array(Menu::decodeJParams($params));
                 if ($isNew || $isGenesis) {
                     // Add Genesis Menu tab to the form.
                     \Joomla\CMS\Form\Form::addFormPath(__DIR__ . '/forms');

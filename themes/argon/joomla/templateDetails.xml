@@ -74,6 +74,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="Genesis Argon">https://updates.genesis.org/5.0/joomla/tpl_genesis_argon.xml</server>
+        <server type="extension" priority="1" name="Genesis Argon">https://updates.dazzlecms.org/joomla/genesis/tpl_argon.xml</server>
     </updateservers>
 </extension>

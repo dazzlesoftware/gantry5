@@ -59,6 +59,8 @@ This changelog begins with the Genesis `1.0.0` release.
 - Allowed outline-name resolution to handle an unset inheritance selection while rendering administrator fields.
 - Normalized legacy false layout subtypes before compact-layout title generation, preventing Articles Scroller and other saved layouts from failing under strict types.
 - Made compiled YAML loading recover automatically when cache cleanup races with a request or leaves a missing, truncated, or unreadable generated PHP artifact.
+- Updated Joomla content-data and form event handling for Joomla's documented `object|array` payload contract, including propagation of modified array data back into the event.
+- Updated Joomla's content-before-save callback to accept both array submissions and the `stdClass` data payloads emitted by current model save events.
 
 ### Framework architecture
 

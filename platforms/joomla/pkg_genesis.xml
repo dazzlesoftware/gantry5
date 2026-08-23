@@ -36,7 +36,7 @@
     </languages>
 
     <updateservers>
-        <server type="extension" priority="1" name="Genesis">http://updates.genesis.org/5.0/joomla/pkg_genesis.xml</server>
+        <server type="extension" priority="1" name="Genesis">https://updates.dazzlecms.org/joomla/genesis/pkg_genesis.xml</server>
         <server type="collection" priority="2" name="Genesis">http://updates.genesis.org/5.0/joomla/list.xml</server>
     </updateservers>
 </extension>

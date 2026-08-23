@@ -8,6 +8,25 @@ use RecursiveIteratorIterator;
 
 final class JoomlaApiCompatibilityTest extends TestCase
 {
+    public function testPrepareDataEventsSupportJoomlaArrayAndObjectPayloads(): void
+    {
+        $source = file_get_contents(
+            dirname(__DIR__, 2) . '/platforms/joomla/plg_system_genesis/genesis.php'
+        );
+
+        self::assertIsString($source);
+        self::assertStringContainsString(
+            'onContentPrepareData(string $context, object|array &$data): bool',
+            $source
+        );
+        self::assertStringContainsString('onContentPrepareForm(mixed $form, object|array $data): bool', $source);
+        self::assertStringContainsString(
+            'onContentBeforeSave(string $context, object $table, bool $isNew, object|array $data = []): void',
+            $source
+        );
+        self::assertStringContainsString('$event->updateData($data);', $source);
+    }
+
     public function testGenesisPluginsUseServiceProvidersAndSubscribers(): void
     {
         $root = dirname(__DIR__, 2) . '/platforms/joomla';

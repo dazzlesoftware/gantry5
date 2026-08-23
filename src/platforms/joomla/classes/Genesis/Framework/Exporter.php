@@ -517,7 +517,7 @@ SELECT @theme_id := LAST_INSERT_ID();
 # Update sites
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`,  `extra_query`) VALUES
-('Genesis','extension','http://updates.genesis.org/5.0/joomla/pkg_genesis.xml',1,'');
+('Genesis','extension','https://updates.dazzlecms.org/joomla/genesis/pkg_genesis.xml',1,'');
 INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALUES (LAST_INSERT_ID(),@package_id);
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`, `extra_query`) VALUES

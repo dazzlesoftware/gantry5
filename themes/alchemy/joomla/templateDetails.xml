@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Alchemy Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_alchemy.xml</server -->
+        <!-- server type="extension" priority="1" name="Alchemy Template">https://updates.dazzlecms.org/joomla/genesis/tpl_alchemy.xml</server -->
     </updateservers>
 </extension>

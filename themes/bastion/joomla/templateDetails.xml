@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Bastion Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_bastion.xml</server -->
+        <!-- server type="extension" priority="1" name="Bastion Template">https://updates.dazzlecms.org/joomla/genesis/tpl_bastion.xml</server -->
     </updateservers>
 </extension>

@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Pelagia Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_pelagia.xml</server -->
+        <!-- server type="extension" priority="1" name="Pelagia Template">https://updates.dazzlecms.org/joomla/genesis/tpl_pelagia.xml</server -->
     </updateservers>
 </extension>

@@ -16,7 +16,7 @@ details:
 
   updates:
     link: 'https://genesis.org/downloads#joomla'
-    server: 'https://updates.genesis.org/5.0/joomla/tpl_genesis_argon.xml'
+    server: 'https://updates.dazzlecms.org/joomla/genesis/tpl_argon.xml'
 
   copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv3 and later

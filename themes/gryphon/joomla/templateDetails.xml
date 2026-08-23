@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Gryphon Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_gryphon.xml</server -->
+        <!-- server type="extension" priority="1" name="Gryphon Template">https://updates.dazzlecms.org/joomla/genesis/tpl_gryphon.xml</server -->
     </updateservers>
 </extension>

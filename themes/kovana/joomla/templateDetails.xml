@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Kovana Template">https://updates.genesis.org/5.0/joomla/tpl_genesis_kovana.xml</server -->
+        <!-- server type="extension" priority="1" name="Kovana Template">https://updates.dazzlecms.org/joomla/genesis/tpl_kovana.xml</server -->
     </updateservers>
 </extension>
