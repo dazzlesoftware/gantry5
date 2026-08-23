@@ -52,12 +52,16 @@ class Particles
     }
 
     /**
-     * @param string $outline
+     * @param string|null $outline
      * @param string|null $particle
      * @return bool
      */
-    public function overrides(string $outline, ?string $particle = null): bool
+    public function overrides(?string $outline, ?string $particle = null): bool
     {
+        if ($outline === null || $outline === '') {
+            return false;
+        }
+
         if ($outline === 'default') {
             return true;
         }

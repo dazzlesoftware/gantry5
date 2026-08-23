@@ -46,6 +46,12 @@ This changelog begins with the Genesis `1.0.0` release.
 - Added automated WordPress API compatibility coverage and validated the production plugin and theme packages with `WP_DEBUG` enabled on WordPress 7.1.
 - Added PHP 8.4 continuous-integration coverage and removed implicitly nullable parameter declarations from all Joomla theme bootstraps.
 - Added repository-wide PHP 8.3 and PHP 8.4 compatibility checks for maintained source files and corrected the nullable-parameter test to accept PHP's explicitly nullable `mixed` type.
+- Added PHP_CodeSniffer 4.0.4 and project-level `phpcs`/`phpcbf` development commands with a first-party source ruleset.
+- Corrected the shared router dispatch contract to allow platform response objects, including WordPress redirects, instead of incorrectly requiring a boolean result.
+- Allowed administrator particle-override checks to handle pages without an active outline, preventing secondary Twig failures while rendering error pages.
+- Corrected the default WordPress and Joomla administrator routes to open the Base Outline layout instead of treating a legacy boolean placeholder as outline ID `1`.
+- Restored nullable input handling in Twig's nested-value helper so forms can safely resolve missing style/default data.
+- Allowed Twig select-field comparisons against unset values so unconfigured options render without a type error.
 
 ### Framework architecture
 

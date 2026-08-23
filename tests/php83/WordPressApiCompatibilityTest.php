@@ -61,6 +61,20 @@ final class WordPressApiCompatibilityTest extends TestCase
         self::assertStringNotContainsString("add_action('pre_get_posts'", $theme);
     }
 
+    public function testMainAdminRouteOpensTheDefaultOutlineLayout(): void
+    {
+        $router = file_get_contents(
+            dirname(__DIR__, 2) . '/src/platforms/wordpress/classes/Genesis/Admin/Router.php'
+        );
+
+        self::assertIsString($router);
+        self::assertStringContainsString(
+            "['configurations', 'default', 'layout']",
+            $router
+        );
+        self::assertStringNotContainsString("['configurations', true]", $router);
+    }
+
     public function testWordPressPackagesDeclareCompatibilityMetadata(): void
     {
         $root = dirname(__DIR__, 2);

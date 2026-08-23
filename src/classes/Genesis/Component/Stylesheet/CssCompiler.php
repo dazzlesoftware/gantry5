@@ -388,8 +388,9 @@ abstract class CssCompiler implements CssCompilerInterface
     /**
      * @param string $out
      * @param string $md5
+     * @param string|null $path
      */
-    protected function createMeta(string $out, string $md5): void
+    protected function createMeta(string $out, string $md5, ?string $path = null): void
     {
         $genesis = Genesis::instance();
 
@@ -404,7 +405,7 @@ abstract class CssCompiler implements CssCompilerInterface
         $metaFile = PhpFile::instance($locator->findResource("genesis-cache://theme/scss/{$uri}.php", true, true));
         $data = [
             'file' => $out,
-            'timestamp' => filemtime($locator->findResource($out)),
+            'timestamp' => filemtime($path ?? $locator->findResource($out)),
             'md5' => $md5,
             'variables' => $this->getVariables(),
             'imports' => $this->getIncludedFiles()

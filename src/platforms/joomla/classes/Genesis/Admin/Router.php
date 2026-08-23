@@ -52,7 +52,7 @@ class Router extends BaseRouter
         $request = $this->container['request'];
 
         $this->method = $request->getMethod();
-        $this->path = $path ?: (isset($this->container['theme.name']) ? ['configurations', true] : ['themes']);
+        $this->path = $path ?: (isset($this->container['theme.name']) ? ['configurations', 'default', 'layout'] : ['themes']);
         $this->resource = array_shift($this->path);
         $this->format = strtolower($input->getCmd('format', 'html'));
         $ajax = ($this->format === 'json');
@@ -98,7 +98,7 @@ class Router extends BaseRouter
             $global = $this->container['global'];
 
             CompiledYamlFile::$defaultCachePath = $locator->findResource('genesis-cache://theme/compiled/yaml', true, true);
-            CompiledYamlFile::$defaultCaching = $global->get('compile_yaml', 1);
+            CompiledYamlFile::$defaultCaching = (bool) $global->get('compile_yaml', true);
         }
 
         $this->container['base_url'] = Uri::base(true) . '/index.php?option=com_genesis';

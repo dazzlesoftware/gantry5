@@ -292,7 +292,7 @@ abstract class ThemeInstaller
         $global = $genesis['global'];
 
         CompiledYamlFile::$defaultCachePath = $locator->findResource('genesis-cache://theme/compiled/yaml', true, true);
-        CompiledYamlFile::$defaultCaching = $global->get('compile_yaml', 1);
+        CompiledYamlFile::$defaultCaching = (bool) $global->get('compile_yaml', true);
 
         $this->initialized = true;
     }

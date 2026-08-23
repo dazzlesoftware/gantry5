@@ -226,9 +226,9 @@ abstract class CompactFormat
 
     /**
      * @param array $content
-     * @return array|null
+     * @return array|string|null
      */
-    protected function build(array &$content): ?array
+    protected function build(array &$content): array|string|null
     {
         $result = [];
         $ctype = isset($content['type']) ? $content['type'] : null;
@@ -411,7 +411,7 @@ abstract class CompactFormat
      * @param object $item
      * @param int|float $widthToken
      */
-    protected function applyWidthToken(object $item, mixed $widthToken): int|float|null
+    protected function applyWidthToken(object $item, mixed $widthToken): void
     {
         $columns = isset($item->attributes->columns)
             ? (array) $item->attributes->columns

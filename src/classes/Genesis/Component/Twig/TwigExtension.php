@@ -445,10 +445,10 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      * @example ['data-id' => 'id', 'data-key' => 'key'] => ' data-id="id" data-key="key"'
      * @example [['data-id' => 'id'], ['data-key' => 'key']] => ' data-id="id" data-key="key"'
      *
-     * @param string|array $input
+     * @param string|array|null $input
      * @return string
      */
-    public function attributeArrayFilter(string|array $input): string
+    public function attributeArrayFilter(string|array|null $input): string
     {
         if (\is_string($input)) {
             return $input;
@@ -477,10 +477,10 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
 
     /**
      * @param string $a
-     * @param string|array $b
+     * @param string|array|null $b
      * @return bool
      */
-    public function is_selectedFunc(string|int|float|bool|null $a, string|array $b): bool
+    public function is_selectedFunc(string|int|float|bool|null $a, string|array|null $b): bool
     {
         $b = (array) $b;
         array_walk(
@@ -557,14 +557,18 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *
      * @example {{ nested(array, 'this.is.my.nested.variable')|json_encode }}
      *
-     * @param array|object $items Array of items.
+     * @param array|object|null $items Array of items, or null when the source is unavailable.
      * @param string  $name       Dot separated path to the requested value.
      * @param mixed   $default    Default value (or null).
      * @param string  $separator  Separator, defaults to '.'
      * @return mixed  Value.
      */
-    public function nestedFunc(array|object $items, string $name, mixed $default = null, string $separator = '.'): mixed
+    public function nestedFunc(array|object|null $items, string $name, mixed $default = null, string $separator = '.'): mixed
     {
+        if ($items === null) {
+            return $default;
+        }
+
         if (is_callable([$items, 'getNestedProperty'])) {
             return $items->getNestedProperty($name, $default, $separator);
         }
@@ -588,20 +592,20 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
      *
      * @example {{ url('theme://images/logo.png')|default('http://www.placehold.it/150x100/f4f4f4') }}
      *
-     * @param  string $input       Resource to be located.
+     * @param  string|null $input  Resource to be located.
      * @param  bool|null $domain   True to include domain name.
      * @param  int $timestamp_age  Append timestamp to files that are less than x seconds old. Defaults to a week.
      *                             Use value <= 0 to disable the feature.
      * @return string|null         Returns url to the resource or null if resource was not found.
      */
-    public function urlFunc(string $input, ?bool $domain = null, ?int $timestamp_age = null): ?string
+    public function urlFunc(?string $input, ?bool $domain = null, ?int $timestamp_age = null): ?string
     {
         $genesis = Genesis::instance();
 
         /** @var Document $document */
         $document = $genesis['document'];
 
-        return $document::url(trim((string) $input), $domain, $timestamp_age);
+        return $document::url(trim($input ?? ''), $domain, $timestamp_age);
     }
 
     /**

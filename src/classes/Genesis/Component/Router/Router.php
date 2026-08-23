@@ -57,7 +57,7 @@ abstract class Router implements RouterInterface
      * @return ResponseInterface|bool
      * @throws ErrorException
      */
-    public function dispatch(): bool
+    public function dispatch(): ResponseInterface|Response|bool|null
     {
         $this->boot();
         $this->load();

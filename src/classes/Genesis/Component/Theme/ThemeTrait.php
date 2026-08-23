@@ -589,7 +589,7 @@ trait ThemeTrait
             if (!empty($item->children)) {
                 $fixed = true;
                 foreach ($item->children as $child) {
-                    $fixed &= !empty($child->attributes->fixed);
+                    $fixed = $fixed && !empty($child->attributes->fixed);
                 }
 
                 $this->prepareLayout($item->children, $fixed, $temporary);

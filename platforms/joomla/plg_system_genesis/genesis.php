@@ -896,7 +896,7 @@ class plgSystemGenesis extends CMSPlugin implements SubscriberInterface
             $locator->addPath('genesis-cache', 'theme', array($cachePath), true, true);
 
             CompiledYamlFile::$defaultCachePath = $locator->findResource('genesis-cache://theme/compiled/yaml', true, true);
-            CompiledYamlFile::$defaultCaching = $global->get('compile_yaml', 1);
+            CompiledYamlFile::$defaultCaching = (bool) $global->get('compile_yaml', true);
         }
 
         return $genesis;

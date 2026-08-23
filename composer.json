@@ -4,13 +4,25 @@
     "type": "metapackage",
     "license": "MIT",
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
+            "no-api": true
+        }
+    ],
     "require": {
         "php": ">=8.3.0",
         "ext-zip": "*",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "4.0.4"
+    },
     "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
         "install-deps": "bin/composer-install",
         "update-deps": "bin/composer-update",
         "build-dev": [

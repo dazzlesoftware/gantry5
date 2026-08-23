@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="Genesis">
+    <description>PHP coding standards for Genesis-maintained code.</description>
+
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+
+    <file>bin</file>
+    <file>platforms</file>
+    <file>src</file>
+    <file>themes</file>
+    <file>tools</file>
+
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/third-party/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/Parsedown.php</exclude-pattern>
+    <exclude-pattern>*/ParsedownExtra.php</exclude-pattern>
+    <exclude-pattern>*/ParsedownTrait.php</exclude-pattern>
+    <exclude-pattern>src/classes/Genesis/Component/FontAwesome/*</exclude-pattern>
+
+    <rule ref="PSR12"/>
+</ruleset>

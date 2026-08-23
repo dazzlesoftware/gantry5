@@ -58,4 +58,5 @@ class TwigTest extends MockableTest
         $this->assertContains('trans', $functionNames);
         $this->assertContains('url', $functionNames);
     }
+
 }

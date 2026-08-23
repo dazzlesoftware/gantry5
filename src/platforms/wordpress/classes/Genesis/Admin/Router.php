@@ -36,7 +36,7 @@ class Router extends BaseRouter
         $path = array_filter(explode('/', (string) $request->get->get('view')), function($var) { return $var !== ''; });
 
         $this->method = $request->getMethod();
-        $this->path = $path ?: ['configurations', true];
+        $this->path = $path ?: ['configurations', 'default', 'layout'];
         $this->resource = array_shift($this->path);
 
         // FIXME: make it better by detecting admin-ajax.php..

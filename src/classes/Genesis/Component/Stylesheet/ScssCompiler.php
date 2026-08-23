@@ -243,7 +243,7 @@ WARN;
         $file->unlock();
         $file->free();
 
-        $this->createMeta($out, md5($css));
+        $this->createMeta($out, md5($css), $path);
 
         $this->reset();
 
@@ -333,7 +333,7 @@ WARN;
 
         $list = [];
         foreach($variables as $key => $value) {
-            $list[$key] = ValueConverter::parseValue($value);
+            $list[$key] = ValueConverter::parseValue((string) $value);
         }
 
         return $list;

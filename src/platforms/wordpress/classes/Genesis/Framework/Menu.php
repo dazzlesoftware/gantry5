@@ -28,8 +28,8 @@ class Menu extends AbstractMenu
     const WRITE_META = true;
     const WRITE_YAML = true;
 
-    /** @var array */
-    protected array $menus = [];
+    /** @var array|null */
+    protected ?array $menus = null;
     /** @var int|null */
     protected mixed $object = null;
     /** @var array */

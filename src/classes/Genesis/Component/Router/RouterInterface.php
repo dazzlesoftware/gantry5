@@ -11,11 +11,14 @@ declare(strict_types=1);
 
 namespace Genesis\Component\Router;
 
+use Genesis\Component\Response\Response;
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * Interface RouterInterface
  * @package Genesis\Component\Router
  */
 interface RouterInterface
 {
-    public function dispatch(): bool;
+    public function dispatch(): ResponseInterface|Response|bool|null;
 }
