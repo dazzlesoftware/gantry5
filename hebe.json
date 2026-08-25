@@ -78,19 +78,19 @@
                 "templates":[
                     {
                         "source":"/themes/neon/joomla",
-                        "destination":"/templates/genesis_neon"
+                        "destination":"/templates/tmpl_neon"
                     },
                     {
                         "source":"/themes/neon/common",
-                        "destination":"/templates/genesis_neon/common"
+                        "destination":"/templates/tmpl_neon/common"
                     },
                     {
                         "source":"/themes/argon/joomla",
-                        "destination":"/templates/genesis_argon"
+                        "destination":"/templates/tmpl_Argon"
                     },
                     {
                         "source":"/themes/argon/common",
-                        "destination":"/templates/genesis_argon/common"
+                        "destination":"/templates/tmpl_Argon/common"
                     }
                 ]
             }
@@ -130,35 +130,35 @@
                 "themes":[
                     {
                         "source":"/themes/neon/wordpress",
-                        "destination":"/wp-content/themes/genesis_neon"
+                        "destination":"/wp-content/themes/neon"
                     },
                     {
                         "source":"/themes/neon/common",
-                        "destination":"/wp-content/themes/genesis_neon/common"
+                        "destination":"/wp-content/themes/neon/common"
                     },
                     {
                         "source":"/themes/neon-child/wordpress",
-                        "destination":"/wp-content/themes/genesis_neon_child"
+                        "destination":"/wp-content/themes/neon-child"
                     },
                     {
                         "source":"/themes/neon/common",
-                        "destination":"/wp-content/themes/genesis_neon_child/common"
+                        "destination":"/wp-content/themes/neon-child/common"
                     },
                     {
                         "source":"/themes/argon/wordpress",
-                        "destination":"/wp-content/themes/genesis_argon"
+                        "destination":"/wp-content/themes/argon"
                     },
                     {
                         "source":"/themes/argon/common",
-                        "destination":"/wp-content/themes/genesis_argon/common"
+                        "destination":"/wp-content/themes/argon/common"
                     },
                     {
                         "source":"/themes/argon-child/wordpress",
-                        "destination":"/wp-content/themes/genesis_argon_child"
+                        "destination":"/wp-content/themes/argon-child"
                     },
                     {
                         "source":"/themes/argon/common",
-                        "destination":"/wp-content/themes/genesis_argon_child/common"
+                        "destination":"/wp-content/themes/argon-child/common"
                     }
                 ]
             }
@@ -194,19 +194,19 @@
                 "themes":[
                     {
                         "source":"/themes/neon/grav",
-                        "destination":"/user/themes/genesis_neon"
+                        "destination":"/user/themes/neon"
                     },
                     {
                         "source":"/themes/neon/common",
-                        "destination":"/user/themes/genesis_neon/common"
+                        "destination":"/user/themes/neon/common"
                     },
                     {
                         "source":"/themes/argon/grav",
-                        "destination":"/user/themes/genesis_argon"
+                        "destination":"/user/themes/argon"
                     },
                     {
                         "source":"/themes/argon/common",
-                        "destination":"/user/themes/genesis_argon/common"
+                        "destination":"/user/themes/argon/common"
                     }
                 ]
             }

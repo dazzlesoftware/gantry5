@@ -35,13 +35,13 @@ $context['page_head'] = $theme->render('partials/page_head.html.twig', $context)
 
 $templates = ['archive.html.twig', 'index.html.twig'];
 
-$context['title'] = __('Archive', 'genesis_neon');
+$context['title'] = __('Archive', 'neon');
 if (is_day()) {
-    $context['title'] = __('Archive:', 'genesis_neon') . ' ' . get_the_date('j F Y');
+    $context['title'] = __('Archive:', 'neon') . ' ' . get_the_date('j F Y');
 } else if (is_month()) {
-    $context['title'] = __('Archive:', 'genesis_neon') . ' ' . get_the_date('F Y');
+    $context['title'] = __('Archive:', 'neon') . ' ' . get_the_date('F Y');
 } else if (is_year()) {
-    $context['title'] = __('Archive:', 'genesis_neon') . ' ' . get_the_date('Y');
+    $context['title'] = __('Archive:', 'neon') . ' ' . get_the_date('Y');
 } else if (is_tag()) {
     $context['title'] = single_tag_title('', false);
 } else if (is_category()) {

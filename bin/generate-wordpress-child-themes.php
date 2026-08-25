@@ -33,7 +33,7 @@ foreach (new DirectoryIterator($themesDirectory) as $theme) {
 
     $style = file_get_contents($templateFiles . '/style.css');
     $style = str_replace(
-        ['Argon Child', 'the Argon Genesis theme', 'genesis_argon'],
+        ['Argon Child', 'the Argon Genesis theme', 'argon'],
         ["{$displayName} Child", "the {$displayName} Genesis theme", "genesis_{$name}"],
         $style
     );

@@ -16,7 +16,7 @@ details:
 
   updates:
     link: 'https://genesis.org/downloads#joomla'
-    server: 'https://updates.dazzlecms.org/joomla/genesis/tpl_argon.xml'
+    server: 'https://updates.dazzlecms.org/joomla/genesis/tmpl_Argon.xml'
 
   copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv3 and later
@@ -31,7 +31,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_argon
+    parent: tmpl_Argon
     base: 'genesis-theme://common'
     file: 'genesis-theme://includes/theme.php'
     class: '\Genesis\Framework\Theme'

@@ -21,7 +21,7 @@ use Genesis\phpBB\Runtime;
  * @package Genesis\Admin
  *
  * phpBB has no per-theme admin picker like Grav/WordPress/Joomla -- there is exactly one
- * installed Genesis theme (genesis_argon), so this router always administers that theme. The ACP
+ * installed Genesis theme (argon), so this router always administers that theme. The ACP
  * module (platforms/phpbb/genesis/acp/genesis_module.php) has a single fixed URL
  * (adm/index.php?i=genesis&mode=main) and encodes the actual Genesis resource/path/format Genesis's
  * admin JS wants to hit via a `genesis_path` query/POST variable instead of pretty path segments.
@@ -41,8 +41,8 @@ class Router extends BaseRouter
 
         $booted = true;
 
-        $this->container['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_argon';
-        $this->container['theme.name'] = 'genesis_argon';
+        $this->container['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/argon';
+        $this->container['theme.name'] = 'argon';
 
         /** @var Request $request */
         $request = $this->container['request'];

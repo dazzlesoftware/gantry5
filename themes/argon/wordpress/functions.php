@@ -23,7 +23,7 @@ defined('ABSPATH') or die;
 
 // Check min. required version of Genesis
 $requiredGenesisVersion = '5.5';
-$translationDomain = 'genesis_argon';
+$translationDomain = 'argon';
 
 if (is_admin()) {
     $genesis_private_updater = __DIR__ . '/private/theme-updates.php';

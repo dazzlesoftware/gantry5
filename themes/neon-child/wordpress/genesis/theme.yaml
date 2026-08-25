@@ -30,11 +30,11 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_neon
+    parent: neon
     base: genesis-theme://common
     file: genesis-theme://includes/theme.php
     class: \Genesis\Framework\Theme
-    textdomain: genesis_neon
+    textdomain: neon
 
   fonts:
     roboto:

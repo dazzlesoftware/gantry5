@@ -24,7 +24,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_argon
+    parent: argon
     base: 'genesis-theme://common'
 
   fonts:

@@ -30,11 +30,11 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_argon
+    parent: argon
     base: 'genesis-theme://common'
     file: 'genesis-theme://includes/theme.php'
     class: '\Genesis\Framework\Theme'
-    textdomain: genesis_argon
+    textdomain: argon
 
   fonts:
     Raleway:

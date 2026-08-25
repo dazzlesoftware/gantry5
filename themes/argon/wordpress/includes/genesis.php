@@ -54,10 +54,10 @@ try {
 
     add_filter('template_include', static function () {
         if (is_customize_preview() && !class_exists('Timber')) {
-            _e('Timber library plugin not found. ', 'genesis_argon');
+            _e('Timber library plugin not found. ', 'argon');
         }
 
-        _e('Theme cannot be used. For more information, please see the notice in administration.', 'genesis_argon');
+        _e('Theme cannot be used. For more information, please see the notice in administration.', 'argon');
 
         die();
     });

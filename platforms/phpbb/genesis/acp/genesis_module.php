@@ -43,8 +43,8 @@ class genesis_module
         $genesis = \Genesis\Framework\Genesis::instance();
 
         if (!isset($genesis['theme'])) {
-            $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_argon';
-            $genesis['theme.name'] = 'genesis_argon';
+            $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/argon';
+            $genesis['theme.name'] = 'argon';
             $genesis['theme'] = static function ($c): \Genesis\Framework\Theme {
                 return new \Genesis\Framework\Theme($c['theme.path'], $c['theme.name']);
             };

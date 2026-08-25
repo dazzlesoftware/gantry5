@@ -9,16 +9,16 @@
                detailsurl="https://updates.dazzlecms.org/joomla/genesis/pkg_genesis.xml"/>
     <extension name="Neon"
                description="Neon Template"
-               element="genesis_neon"
+               element="tmpl_neon"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_neon.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tmpl_neon.xml"/>
     <extension name="Argon"
                description="Argon Template"
-               element="genesis_argon"
+               element="tmpl_Argon"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_argon.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tmpl_Argon.xml"/>
 </extensionset>

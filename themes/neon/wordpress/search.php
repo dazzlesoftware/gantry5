@@ -28,7 +28,7 @@ $theme  = $genesis['theme'];
 $context              = Timber::context();
 $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
-$context['title'] = __('Search results for:', 'genesis_neon') . ' ' . get_search_query();
+$context['title'] = __('Search results for:', 'neon') . ' ' . get_search_query();
 $context['posts'] = Timber::get_posts();
 
 $templates = ['search.html.twig', 'archive.html.twig', 'index.html.twig'];

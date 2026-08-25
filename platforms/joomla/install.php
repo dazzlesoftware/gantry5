@@ -274,7 +274,7 @@ class Pkg_GenesisInstallerScript
             ->from('#__extensions')
             ->where('type=' . $db->quote('template'))
             ->where('client_id=0')
-            ->where('element IN (' . $db->quote('genesis_neon') . ',' . $db->quote('genesis_argon') . ')');
+            ->where('element IN (' . $db->quote('tmpl_neon') . ',' . $db->quote('tmpl_Argon') . ')');
         $db->setQuery($query);
 
         $templates = (array) $db->loadObjectList();

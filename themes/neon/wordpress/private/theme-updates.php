@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 defined('ABSPATH') || die;
 
-add_filter('pre_set_site_transient_update_themes', 'genesis_neon_private_theme_updates');
+add_filter('pre_set_site_transient_update_themes', 'neon_private_theme_updates');
 
 /**
  * Normalize Genesis theme versions for developer builds.
@@ -15,7 +15,7 @@ add_filter('pre_set_site_transient_update_themes', 'genesis_neon_private_theme_u
  * @param string $version Theme version string.
  * @return string
  */
-function genesis_neon_private_normalize_version(string $version): string
+function neon_private_normalize_version(string $version): string
 {
     $version = trim((string) $version);
 
@@ -28,7 +28,7 @@ function genesis_neon_private_normalize_version(string $version): string
  * @param object $transient Theme update transient.
  * @return object
  */
-function genesis_neon_private_theme_updates(mixed $transient): object
+function neon_private_theme_updates(mixed $transient): object
 {
     if (!is_object($transient)) {
         $transient = new stdClass();
@@ -38,8 +38,8 @@ function genesis_neon_private_theme_updates(mixed $transient): object
         $transient->response = array();
     }
 
-    $slug = 'genesis_neon';
-    $url = 'https://updates.genesis.org/wp-updates/genesis_neon_copy.json';
+    $slug = 'neon';
+    $url = 'https://updates.genesis.org/wp-updates/neon_copy.json';
     $theme = wp_get_theme($slug);
 
     if (!$theme->exists()) {
@@ -69,8 +69,8 @@ function genesis_neon_private_theme_updates(mixed $transient): object
 
     $installed_version = (string) $theme->get('Version');
     $available_version = (string) $payload['version'];
-    $installed_stable_version = genesis_neon_private_normalize_version($installed_version);
-    $available_stable_version = genesis_neon_private_normalize_version($available_version);
+    $installed_stable_version = neon_private_normalize_version($installed_version);
+    $available_stable_version = neon_private_normalize_version($available_version);
     $is_dev_build = $installed_version !== $installed_stable_version;
 
     $has_direct_update = version_compare($installed_version, $available_version, '<');

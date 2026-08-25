@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <updates>
 	<update>
-		<name>genesis_neon</name>
-		<description>Neon Template</description>
-		<element>genesis_neon</element>
+		<name>tmpl_Argon</name>
+		<description>Argon Template</description>
+		<element>tmpl_Argon</element>
 		<type>template</type>
 		<client>site</client>
 		<version>@version@</version>
-		<infourl title="Neon @version@">https://codex.dazzlecms.org</infourl>
-        <sha512>@sha512_joomla_neon@</sha512>
+		<infourl title="Argon @version@">https://codex.dazzlecms.org</infourl>
+        <sha512>@sha512_joomla_argon@</sha512>
 		<downloads>
-			<downloadurl type="full" format="zip">http://updates.genesis.org/download/@version@/joomla-tpl_neon_v@version@.zip</downloadurl>
+			<downloadurl type="full" format="zip">http://updates.genesis.org/download/@version@/joomla-tmpl_Argon_v@version@.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
