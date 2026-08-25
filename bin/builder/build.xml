@@ -202,11 +202,11 @@
 
                 <!-- Set SHA512 values -->
                 <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-pkg_genesis_v${xml.version}.zip" dir="${package_dir}"/>
-                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_genesis_helium_v${xml.version}.zip" dir="${package_dir}"/>
-                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_genesis_hydrogen_v${xml.version}.zip" dir="${package_dir}"/>
+                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_argon_v${xml.version}.zip" dir="${package_dir}"/>
+                <httpget url="https://github.com/dazzlesoftware/genesis/releases/download/${xml.version}/joomla-tpl_neon_v${xml.version}.zip" dir="${package_dir}"/>
                 <filehash file="${package_dir}/joomla-pkg_genesis_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_package" />
-                <filehash file="${package_dir}/joomla-tpl_genesis_helium_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_helium" />
-                <filehash file="${package_dir}/joomla-tpl_genesis_hydrogen_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_hydrogen" />
+                <filehash file="${package_dir}/joomla-tpl_argon_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_argon" />
+                <filehash file="${package_dir}/joomla-tpl_neon_v${xml.version}.zip" algorithm="sha512" propertyname="sha512_joomla_neon" />
 
                 <!-- Add version information to all xml files -->
                 <filterchain id="filter_sha">
@@ -215,8 +215,8 @@
                         <token key="versiondate" value="${version.date}" />
                         <token key="genesis_version" value="${genesis.version}" />
                         <token key="sha512_joomla_package" value="${sha512_joomla_package}" />
-                        <token key="sha512_joomla_helium" value="${sha512_joomla_helium}" />
-                        <token key="sha512_joomla_hydrogen" value="${sha512_joomla_hydrogen}" />
+                        <token key="sha512_joomla_argon" value="${sha512_joomla_argon}" />
+                        <token key="sha512_joomla_neon" value="${sha512_joomla_neon}" />
                     </replacetokens>
                 </filterchain>
                 <reflexive>

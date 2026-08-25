@@ -143,7 +143,7 @@ function gravThemeYaml(string $yaml, string $slug, string $sourcePlatform): stri
     $yaml = str_replace($slug . '-' . $sourcePlatform, $slug . '-grav', $yaml);
     $yaml = preg_replace('/\Rchrome:\R[\s\S]*$/', "\n", $yaml);
 
-    // Keep the platform stylesheet compiled with the base stylesheet, matching Helium.
+    // Keep the platform stylesheet compiled with the base stylesheet, matching Argon.
     $persistent = "/(\n    persistent:\R(?:      - .*\R)+)/";
     if (preg_match($persistent, $yaml, $match) && !str_contains($match[1], $slug . '-grav')) {
         $replacement = rtrim($match[1]) . "\n      - {$slug}-grav\n";

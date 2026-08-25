@@ -28,7 +28,7 @@ and extension lifecycle.
 | **Joomla 5 and 6** | Native components, modules, template styles, menus, assignments, articles, frontend editing, extension updates, and particle modules. No compatibility plugin is required. |
 | **WordPress 7** | Themes, widgets, menus, sidebars, page assignments, template hierarchy, posts, pages, archives, search, comments, metadata, updates, BuddyPress, and bbPress views. |
 | **Grav 1.7** | Plugin and theme integration, pages, modular content, taxonomy, streams, configuration inheritance, assets, URL helpers, and administration support. |
-| **phpBB** | Extension and theme integration, administration, layouts, menus, positions, widgets, forum content, template events, and a Helium implementation. |
+| **phpBB** | Extension and theme integration, administration, layouts, menus, positions, widgets, forum content, template events, and a Argon implementation. |
 
 PHP **8.3 or newer** is required. The standard package builder currently emits
 Joomla, WordPress, and Grav distributions. phpBB is maintained in the source
@@ -52,7 +52,7 @@ tree but is not included in the standard `dev` and `prod` package targets.
 
 ### Themes and content components
 
-- **52 theme families**, including Hydrogen and Helium as maintained starter
+- **52 theme families**, including Neon and Argon as maintained starter
   themes and reference implementations.
 - Reusable **Particles** for visible content such as branding, menus, images,
   buttons, accordions, tabs, people, pricing, testimonials, timelines, media,

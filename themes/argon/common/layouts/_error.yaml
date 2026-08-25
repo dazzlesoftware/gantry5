@@ -112,7 +112,7 @@ content:
       items:
         -
           text: Genesis
-          link: 'http://genesis.org'
+          link: 'https://dazzlecms.org'
           name: Genesis
         -
           text: Documentation
@@ -120,7 +120,7 @@ content:
           name: Documentation
         -
           text: Download
-          link: 'http://genesis.org/downloads'
+          link: 'https://dazzlecms.org/downloads'
           name: Download
   totop-8670:
     title: 'To Top'

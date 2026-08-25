@@ -118,7 +118,7 @@ final class ThemeSynchronizationTest extends TestCase
     /** @return array<int, string> */
     private function fullThemeDirectories(): array
     {
-        $excluded = ['base', 'hydrogen-demo'];
+        $excluded = ['base', 'neon-demo'];
         $themes = [];
 
         foreach (glob($this->root . '/themes/*', GLOB_ONLYDIR) ?: [] as $path) {

@@ -49,7 +49,7 @@ const classify = (file, source) => {
     const name = posix.basename(file);
     if (generatedFiles.has(file)) return 'generated_bundle';
     if (name === 'gulpfile.js' || file === 'bin/audit-javascript.mjs') return 'build_tool';
-    if (/themes\/helium\/phpbb\/template\//.test(file)) return 'platform_owned_integration';
+    if (/themes\/argon\/phpbb\/template\//.test(file)) return 'platform_owned_integration';
     if (file.startsWith('assets/common/application/') || file.startsWith('platforms/common/application/')) {
         return 'first_party_source';
     }

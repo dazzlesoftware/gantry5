@@ -135,7 +135,7 @@ content:
   custom-2069:
     title: 'FP Promo Desc'
     attributes:
-      html: "<p>Not only that, but thanks to the powerful Genesis framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"http://www.genesis.org\" class=\"button\">Learn More</a>"
+      html: "<p>Not only that, but thanks to the powerful Genesis framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"https://dazzlecms.org\" class=\"button\">Learn More</a>"
   swipercarousel-7547:
     title: 'FP Slideshow Services'
     attributes:

@@ -176,7 +176,7 @@
 
     </target>
 
-    <!-- Hydrogen -->
+    <!-- Build Themes -->
     <target name="build-grav-themes" depends="build-grav-installer">
         <echo message="Building Themes.." />
 

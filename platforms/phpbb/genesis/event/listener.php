@@ -24,7 +24,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * overall_footer.html). This listener suppresses phpBB's own final render/echo of that handle
  * (via the `display_template` override on `core.page_footer_after`), captures the fully
  * rendered HTML as a string instead, splits it at the `<!-- Genesis:HEAD_END -->` marker (see
- * themes/helium/phpbb/template/overall_header.html) into a <head> fragment and a body fragment,
+ * themes/argon/phpbb/template/overall_header.html) into a <head> fragment and a body fragment,
  * and hands both to Genesis's own page.html.twig so Genesis can build the real <html>/<head>/
  * <body> around them with its own positions.
  */
@@ -141,8 +141,8 @@ class listener implements EventSubscriberInterface
         $genesis = \Genesis\Framework\Genesis::instance();
 
         if (!isset($genesis['theme'])) {
-            $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_helium';
-            $genesis['theme.name'] = 'genesis_helium';
+            $genesis['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/genesis_argon';
+            $genesis['theme.name'] = 'genesis_argon';
             $genesis['theme'] = static function ($c): \Genesis\Framework\Theme {
                 return new \Genesis\Framework\Theme($c['theme.path'], $c['theme.name']);
             };

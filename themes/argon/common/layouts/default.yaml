@@ -137,7 +137,7 @@ content:
           name: Documentation
         -
           text: Download
-          link: 'http://genesis.org/downloads'
+          link: 'https://dazzlecms.org/downloads'
           name: Download
   totop-8670:
     title: 'To Top'

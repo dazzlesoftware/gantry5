@@ -20,7 +20,7 @@ This changelog begins with the Genesis `1.0.0` release.
 - Added native Joomla 5 and Joomla 6 compatibility without requiring a compatibility plugin.
 - Added WordPress 7 compatibility with theme, widget, menu, assignment, update, and content integrations.
 - Added Grav 1.7 support with themes, inheritance, streams, configuration, administration, and page content.
-- Restored and expanded phpBB support, including administration, packaging, layouts, menus, positions, forum content, and a Helium implementation.
+- Restored and expanded phpBB support, including administration, packaging, layouts, menus, positions, forum content, and a Argon implementation.
 - Modernized the runtime for PHP 8.3 and newer.
 - Enabled strict types throughout all first-party PHP code while leaving bundled third-party sources unchanged.
 - Added native parameter, property, and return types across the shared framework, platform adapters, installers, entry points, and generated themes.
@@ -143,7 +143,7 @@ This changelog begins with the Genesis `1.0.0` release.
 ### Themes
 
 - Added 52 theme families with shared core assets and platform implementations where applicable.
-- Added Hydrogen and Helium as maintained starter themes and reference implementations.
+- Added Neon and Argon as maintained starter themes and reference implementations.
 - Added production themes with presets, typography, particles, layouts, styles, imagery, languages, and demo assignments.
 - Added WordPress headers, footers, sidebars, comments, search, archives, pages, posts, widgets, and content blueprints.
 - Added Grav implementations and automated generation for the supported catalog.

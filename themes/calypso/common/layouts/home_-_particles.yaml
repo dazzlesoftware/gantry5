@@ -309,7 +309,7 @@ content:
   custom-6584:
     title: 'FP Showcase A'
     attributes:
-      html: "<h2 class=\"g-title\">Genesis is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.genesis.org\" class=\"readon\">Read more about Genesis</a></p>"
+      html: "<h2 class=\"g-title\">Genesis is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"https://dazzlecms.org\" class=\"readon\">Read more about Genesis</a></p>"
     block:
       class: 'g-title-large g-title-300 g-center-vertical'
   logo-4844:

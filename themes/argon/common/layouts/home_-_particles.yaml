@@ -101,7 +101,7 @@ content:
           image: 'genesis-media://header/img01.jpg'
           title: 'Argon is here!'
           desc: 'Begin your journey with a brand new &raquo;free&laquo; Genesis template from Dazzle Software.'
-          link: 'http://genesis.org/downloads'
+          link: 'https://dazzlecms.org/downloads'
           linktext: 'Download Now'
           buttonicon: 'fa fa-rocket'
           buttonclass: button-outline
@@ -110,7 +110,7 @@ content:
           image: 'genesis-media://header/img02.jpg'
           title: 'Argon is Genesis powered!'
           desc: 'Argon is based on the powerful Genesis framework.'
-          link: 'http://genesis.org/downloads'
+          link: 'https://dazzlecms.org/downloads'
           linktext: 'Download Now'
           buttonclass: button-outline
           name: 'Item 2'
@@ -182,7 +182,7 @@ content:
               link: '#'
               target: _self
               text: Photo
-          link: 'http://genesis.org/blog/genesis-wins-joscar'
+          link: 'https://blog.dazzlecms.org'
           linktext: '&rarr;'
           buttonclass: ''
           buttontarget: _self
@@ -203,7 +203,7 @@ content:
               link: '#'
               target: _self
               text: 'Website Creation'
-          link: 'http://genesis.org'
+          link: 'https://dazzlecms.org'
           linktext: '&rarr;'
           buttonclass: ''
           buttontarget: _self

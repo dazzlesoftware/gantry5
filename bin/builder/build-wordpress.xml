@@ -178,7 +178,7 @@
 
     </target>
 
-    <!-- Hydrogen -->
+    <!-- Build Themes -->
     <target name="build-wordpress-themes" depends="build-wordpress-installer">
         <echo message="Building Themes.." />
 

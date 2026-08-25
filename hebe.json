@@ -77,20 +77,20 @@
                 ],
                 "templates":[
                     {
-                        "source":"/themes/hydrogen/joomla",
-                        "destination":"/templates/genesis_hydrogen"
+                        "source":"/themes/neon/joomla",
+                        "destination":"/templates/genesis_neon"
                     },
                     {
-                        "source":"/themes/hydrogen/common",
-                        "destination":"/templates/genesis_hydrogen/common"
+                        "source":"/themes/neon/common",
+                        "destination":"/templates/genesis_neon/common"
                     },
                     {
-                        "source":"/themes/helium/joomla",
-                        "destination":"/templates/genesis_helium"
+                        "source":"/themes/argon/joomla",
+                        "destination":"/templates/genesis_argon"
                     },
                     {
-                        "source":"/themes/helium/common",
-                        "destination":"/templates/genesis_helium/common"
+                        "source":"/themes/argon/common",
+                        "destination":"/templates/genesis_argon/common"
                     }
                 ]
             }
@@ -129,36 +129,36 @@
                 ],
                 "themes":[
                     {
-                        "source":"/themes/hydrogen/wordpress",
-                        "destination":"/wp-content/themes/genesis_hydrogen"
+                        "source":"/themes/neon/wordpress",
+                        "destination":"/wp-content/themes/genesis_neon"
                     },
                     {
-                        "source":"/themes/hydrogen/common",
-                        "destination":"/wp-content/themes/genesis_hydrogen/common"
+                        "source":"/themes/neon/common",
+                        "destination":"/wp-content/themes/genesis_neon/common"
                     },
                     {
-                        "source":"/themes/hydrogen-child/wordpress",
-                        "destination":"/wp-content/themes/genesis_hydrogen_child"
+                        "source":"/themes/neon-child/wordpress",
+                        "destination":"/wp-content/themes/genesis_neon_child"
                     },
                     {
-                        "source":"/themes/hydrogen/common",
-                        "destination":"/wp-content/themes/genesis_hydrogen_child/common"
+                        "source":"/themes/neon/common",
+                        "destination":"/wp-content/themes/genesis_neon_child/common"
                     },
                     {
-                        "source":"/themes/helium/wordpress",
-                        "destination":"/wp-content/themes/genesis_helium"
+                        "source":"/themes/argon/wordpress",
+                        "destination":"/wp-content/themes/genesis_argon"
                     },
                     {
-                        "source":"/themes/helium/common",
-                        "destination":"/wp-content/themes/genesis_helium/common"
+                        "source":"/themes/argon/common",
+                        "destination":"/wp-content/themes/genesis_argon/common"
                     },
                     {
-                        "source":"/themes/helium-child/wordpress",
-                        "destination":"/wp-content/themes/genesis_helium_child"
+                        "source":"/themes/argon-child/wordpress",
+                        "destination":"/wp-content/themes/genesis_argon_child"
                     },
                     {
-                        "source":"/themes/helium/common",
-                        "destination":"/wp-content/themes/genesis_helium_child/common"
+                        "source":"/themes/argon/common",
+                        "destination":"/wp-content/themes/genesis_argon_child/common"
                     }
                 ]
             }
@@ -193,20 +193,20 @@
                 ],
                 "themes":[
                     {
-                        "source":"/themes/hydrogen/grav",
-                        "destination":"/user/themes/genesis_hydrogen"
+                        "source":"/themes/neon/grav",
+                        "destination":"/user/themes/genesis_neon"
                     },
                     {
-                        "source":"/themes/hydrogen/common",
-                        "destination":"/user/themes/genesis_hydrogen/common"
+                        "source":"/themes/neon/common",
+                        "destination":"/user/themes/genesis_neon/common"
                     },
                     {
-                        "source":"/themes/helium/grav",
-                        "destination":"/user/themes/genesis_helium"
+                        "source":"/themes/argon/grav",
+                        "destination":"/user/themes/genesis_argon"
                     },
                     {
-                        "source":"/themes/helium/common",
-                        "destination":"/user/themes/genesis_helium/common"
+                        "source":"/themes/argon/common",
+                        "destination":"/user/themes/genesis_argon/common"
                     }
                 ]
             }

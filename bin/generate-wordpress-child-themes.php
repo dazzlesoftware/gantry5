@@ -7,7 +7,7 @@ declare(strict_types=1);
  */
 
 $themesDirectory = dirname(__DIR__) . '/themes';
-$templateFiles = $themesDirectory . '/helium-child/wordpress';
+$templateFiles = $themesDirectory . '/argon-child/wordpress';
 
 foreach (new DirectoryIterator($themesDirectory) as $theme) {
     if (!$theme->isDir() || $theme->isDot() || str_ends_with($theme->getFilename(), '-child')) {
@@ -33,7 +33,7 @@ foreach (new DirectoryIterator($themesDirectory) as $theme) {
 
     $style = file_get_contents($templateFiles . '/style.css');
     $style = str_replace(
-        ['Helium Child', 'the Helium Genesis theme', 'genesis_helium'],
+        ['Argon Child', 'the Argon Genesis theme', 'genesis_argon'],
         ["{$displayName} Child", "the {$displayName} Genesis theme", "genesis_{$name}"],
         $style
     );

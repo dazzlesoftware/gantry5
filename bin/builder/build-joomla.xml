@@ -282,7 +282,7 @@
         </phingcall>
     </target>
 
-    <!-- Hydrogen -->
+    <!-- Build Themes -->
     <target name="build-joomla-themes" depends="build-joomla-installer">
         <echo message="Building Themes.." />
 

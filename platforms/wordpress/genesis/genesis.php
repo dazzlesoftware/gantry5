@@ -62,8 +62,8 @@ add_action('admin_init', 'genesis_plugin_defaults');
 function genesis_register_private_theme_updaters(): void
 {
     $private_updaters = array(
-        'genesis_helium'   => get_theme_root() . '/genesis_helium/private/theme-updates.php',
-        'genesis_hydrogen' => get_theme_root() . '/genesis_hydrogen/private/theme-updates.php',
+        'genesis_argon'   => get_theme_root() . '/genesis_argon/private/theme-updates.php',
+        'genesis_neon' => get_theme_root() . '/genesis_neon/private/theme-updates.php',
     );
 
     foreach ($private_updaters as $updater) {
@@ -93,7 +93,7 @@ function genesis_maybe_reset_theme_update_cache(): void
 
 function genesis_has_installed_theme_updates(): bool
 {
-    $genesis_themes = array('genesis_helium', 'genesis_hydrogen');
+    $genesis_themes = array('genesis_argon', 'genesis_neon');
     $installed_themes = wp_get_themes();
 
     foreach ($genesis_themes as $slug) {
@@ -262,7 +262,7 @@ function genesis_is_managed_theme_update(array $hook_extra): bool
         return false;
     }
 
-    return in_array($hook_extra['theme'], array('genesis_helium', 'genesis_hydrogen'), true);
+    return in_array($hook_extra['theme'], array('genesis_argon', 'genesis_neon'), true);
 }
 
 function genesis_get_filesystem(): \WP_Filesystem_Base|false

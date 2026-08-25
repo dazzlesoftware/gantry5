@@ -222,7 +222,7 @@ content:
           image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">New and Powerful</span><span class="rt-title-tag">Advanced Multi-Platform Framework</span>'
           linklabel: 'Download Now'
-          link: 'http://genesis.org/downloads'
+          link: 'https://dazzlecms.org/downloads'
           buttontarget: _blank
           buttonclass: readon
           title: Genesis
@@ -255,7 +255,7 @@ content:
         -
           title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
-          link: 'http://genesis.org/'
+          link: 'https://dazzlecms.org/'
           target: _blank
           class: ''
           name: 'Genesis Framework'
@@ -530,7 +530,7 @@ content:
         -
           title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
-          link: 'http://genesis.org/'
+          link: 'https://dazzlecms.org/'
           target: _blank
           class: ''
           name: 'Genesis Framework'

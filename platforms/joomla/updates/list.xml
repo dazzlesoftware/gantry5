@@ -7,18 +7,18 @@
                client="site"
                version="@version@"
                detailsurl="https://updates.dazzlecms.org/joomla/genesis/pkg_genesis.xml"/>
-    <extension name="Hydrogen"
-               description="Hydrogen Template"
-               element="genesis_hydrogen"
+    <extension name="Neon"
+               description="Neon Template"
+               element="genesis_neon"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_hydrogen.xml"/>
-    <extension name="Helium"
-               description="Helium Template"
-               element="genesis_helium"
+               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_neon.xml"/>
+    <extension name="Argon"
+               description="Argon Template"
+               element="genesis_argon"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_helium.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_argon.xml"/>
 </extensionset>
