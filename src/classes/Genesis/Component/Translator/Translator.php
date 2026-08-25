@@ -41,7 +41,19 @@ class Translator implements TranslatorInterface
         if (preg_match('|^GENESIS(_[A-Z0-9]+){2,}$|', $string)) {
             list(, $section, $code) = explode('_', $string, 3);
 
-            $string = ($this->find($this->active, $section, $string) ?: $this->find($this->default, $section, $string)) ?: $string;
+            $translated = $this->find($this->active, $section, $string)
+                ?: $this->find($this->default, $section, $string);
+
+            // Translation catalogs retain the historical GANTRY5_* keys for compatibility
+            // with existing language packs. Genesis templates use GENESIS_* keys, so fall back
+            // to the corresponding legacy key until those external catalogs are migrated.
+            if (!$translated && str_starts_with($string, 'GENESIS_')) {
+                $legacy = 'GANTRY5_' . substr($string, 8);
+                $translated = $this->find($this->active, $section, $legacy)
+                    ?: $this->find($this->default, $section, $legacy);
+            }
+
+            $string = $translated ?: $string;
         }
 
         if ($arguments === []) {

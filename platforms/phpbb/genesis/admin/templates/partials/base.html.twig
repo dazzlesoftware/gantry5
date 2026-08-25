@@ -14,12 +14,12 @@
 {% endblock %}
 
 {% block content %}
-    <div id="main-header" data-mode-indicator="production">
-        {% include "@genesis-admin/partials/php_unsupported.html.twig" %}
-        {% include "@genesis-admin/partials/header.html.twig" %}
-    </div>
-    <div class="inner-container">
-        {% include "@genesis-admin/partials/updates.html.twig" %}
+	<div id="main-header" data-mode-indicator="production">
+		{% include "@genesis-admin/partials/php_unsupported.html.twig" %}
+		{% include "@genesis-admin/partials/header.html.twig" %}
+	</div>
+	<div class="inner-container">
+		{% include "@genesis-admin/partials/updates.html.twig" %}
         {% block genesis_content_wrapper %}
             <div data-genesis-content-wrapper="">
                 {% include "@genesis-admin/partials/navigation.html.twig" %}

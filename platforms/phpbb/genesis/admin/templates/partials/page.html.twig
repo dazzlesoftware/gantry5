@@ -44,7 +44,44 @@
 {{ genesis.styles('head')|join("\n")|raw }}
 {{ genesis.scripts('head')|join("\n")|raw }}
 
-<div id="genesis-container" data-genesis-container="">
+<style>
+    /* Genesis is embedded inside phpBB's ACP, not rendered as a standalone admin page. */
+    html {
+        width: auto;
+        overflow-x: auto;
+        box-sizing: content-box;
+    }
+
+    body {
+        margin: 10px 15px;
+    }
+
+    @media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
+        body {
+            margin: 5px 5px 0;
+        }
+    }
+
+    @media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
+        body {
+            margin: 0;
+        }
+    }
+
+    [data-genesis-container],
+    [data-genesis-container] *,
+    [data-genesis-container] *::before,
+    [data-genesis-container] *::after {
+        box-sizing: border-box;
+    }
+
+    [data-genesis-container].genesis-platform-phpbb > .inner-container {
+        margin: 0;
+        box-shadow: none;
+    }
+</style>
+
+<div id="genesis-container" class="genesis-platform-phpbb" data-genesis-container="">
     {% block content %}
     {% endblock %}
 
