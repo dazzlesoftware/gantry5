@@ -23,10 +23,10 @@ if errorlevel 1 (
     exit /b 1
 )
 
-call :link-source "platforms\grav\genesis" || exit /b 1
-call :link-source "platforms\joomla\lib_genesis" || exit /b 1
-call :link-source "platforms\wordpress\genesis" || exit /b 1
-call :link-source "platforms\phpbb\genesis" || exit /b 1
+call :link-source "platforms\grav\genesis" "grav" || exit /b 1
+call :link-source "platforms\joomla\lib_genesis" "joomla" || exit /b 1
+call :link-source "platforms\wordpress\genesis" "wordpress" || exit /b 1
+call :link-source "platforms\phpbb\genesis" "phpbb" || exit /b 1
 
 call :install "." || exit /b 1
 call :install "bin\builder" || exit /b 1
@@ -43,14 +43,29 @@ exit /b 0
 
 :link-source
 set "project=%~1"
+set "platform=%~2"
 set "sourceLink=%REPOSITORY_ROOT%%~1\src"
 
-if exist "%sourceLink%\" exit /b 0
+if exist "%sourceLink%\platforms\%platform%\" exit /b 0
 
-echo Creating source link for %project% ...
-mklink /J "%sourceLink%" "%REPOSITORY_ROOT%src" >nul
+if exist "%sourceLink%\" (
+    echo Replacing legacy full-source link for %project% ...
+    rmdir "%sourceLink%" 2>nul
+    if exist "%sourceLink%\" (
+        echo ERROR: Existing source directory for %project% is not a removable junction.
+        exit /b 1
+    )
+)
+
+echo Creating platform-specific source links for %project% ...
+mkdir "%sourceLink%\platforms" || exit /b 1
+mklink /J "%sourceLink%\classes" "%REPOSITORY_ROOT%src\classes" >nul || exit /b 1
+mklink /J "%sourceLink%\platforms\%platform%" "%REPOSITORY_ROOT%src\platforms\%platform%" >nul || exit /b 1
+mklink /H "%sourceLink%\bootstrap.php" "%REPOSITORY_ROOT%src\bootstrap.php" >nul || exit /b 1
+mklink /H "%sourceLink%\Loader.php" "%REPOSITORY_ROOT%src\Loader.php" >nul || exit /b 1
+mklink /H "%sourceLink%\RealLoader.php" "%REPOSITORY_ROOT%src\RealLoader.php" >nul
 if errorlevel 1 (
-    echo ERROR: Could not create the src junction for %project%.
+    echo ERROR: Could not create source links for %project%.
     exit /b 1
 )
 exit /b 0

@@ -1,5 +1,5 @@
 {
-    "name": "dazzlesoftware/genesis-phpbb",
+    "name": "dazzlesoftware/genesis",
     "type": "phpbb-extension",
     "description": "Genesis Framework for phpBB",
     "version": "5.6.1",
