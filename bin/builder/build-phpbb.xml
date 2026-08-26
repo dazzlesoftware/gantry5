@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project name="genesis-phpbb" basedir="." description="Phing Build Script" default="prod">
+
+    <target name="build-phpbb-installer">
+        <echo message="Building phpBB installer files..." />
+
+        <copy file="${project_dir}/README.md" tofile="${build_dir}/distribution/README.md" overwrite="true">
+            <filterchain refid="filter"/>
+        </copy>
+    </target>
+
+    <target name="build-phpbb-extension" depends="build-phpbb-installer">
+        <echo message="Building phpBB extension..." />
+
+        <!-- phpBB extensions must be extracted to ext/vendor/extension. -->
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis" overwrite="true">
+            <fileset dir="${path.platforms}/phpbb/genesis">
+                <exclude name=".sass-cache/"/>
+                <exclude name="assets/"/>
+                <exclude name="**/common/"/>
+                <exclude name="engines/"/>
+                <exclude name="src/"/>
+                <exclude name="vendor/"/>
+                <exclude name="gulpfile.js"/>
+                <exclude name="package.json"/>
+                <exclude name="scss.sh"/>
+                <exclude name="**/*.js.map"/>
+                <exclude name="**/*.css.map"/>
+                <exclude name="compat/"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/admin" overwrite="true">
+            <fileset dir="${path.platforms}/common">
+                <exclude name=".sass-cache/"/>
+                <exclude name="application/"/>
+                <exclude name="node_modules/"/>
+                <exclude name="gulpfile.js"/>
+                <exclude name="package.json"/>
+                <exclude name="scss.sh"/>
+                <exclude name="**/*.js.map"/>
+                <exclude name="**/*.css.map"/>
+            </fileset>
+            <fileset dir="${path.platforms}/phpbb/genesis/admin">
+                <exclude name=".sass-cache/"/>
+                <exclude name="common/"/>
+                <exclude name="gulpfile.js"/>
+                <exclude name="package.json"/>
+                <exclude name="scss.sh"/>
+                <exclude name="**/*.js.map"/>
+                <exclude name="**/*.css.map"/>
+            </fileset>
+        </copy>
+
+        <phingcall target="build-phpbb-library" />
+        <phingcall target="build-phpbb-media" />
+
+        <phingcall target="checksum">
+            <property name="source" value="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis" />
+        </phingcall>
+
+        <phingcall target="archive">
+            <property name="destination.file" value="${package_dir}/phpbb-ext_dazzlesoftware_genesis${str.fileversion}" />
+            <property name="base.directory" value="${tmp_dir}/phpbb/extensions" />
+        </phingcall>
+    </target>
+
+    <target name="build-phpbb-library">
+        <echo message="Building phpBB Genesis library..." />
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/src" overwrite="true">
+            <filterchain refid="filter" />
+            <fileset dir="${path.src}">
+                <include name="*.php"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/src/classes" overwrite="true">
+            <fileset dir="${path.src}/classes">
+                <exclude name="Leafo/"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/src" overwrite="true">
+            <fileset dir="${path.src}/platforms/phpbb"/>
+        </copy>
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/vendor" overwrite="true">
+            <fileset dir="${path.platforms}/phpbb/genesis/vendor">
+                <exclude name="bin/"/>
+                <exclude name="**/test/"/>
+                <exclude name="**/tests/"/>
+                <exclude name="**/Tests/"/>
+                <exclude name="**/doc/"/>
+                <exclude name="**/docs/"/>
+                <exclude name="**/examples/"/>
+                <exclude name="**/ext/"/>
+                <exclude name="**/bin/"/>
+                <exclude name="**/site/"/>
+                <exclude name="**/.github/"/>
+                <exclude name="**/.mailmap"/>
+                <exclude name="**/.*.yml"/>
+                <exclude name="**/.editor*"/>
+                <exclude name="**/phpcs.xml*"/>
+                <exclude name="**/.php_cs*"/>
+                <exclude name="**/phpunit.xml*"/>
+                <exclude name="**/*.md"/>
+                <exclude name="**/*.rst"/>
+                <exclude name="**/*.sh"/>
+                <exclude name="**/readme.txt"/>
+                <exclude name="**/CHANGELOG*"/>
+                <exclude name="**/LICENSE*"/>
+                <exclude name="**/Makefile"/>
+                <exclude name="**/composer.lock"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="build-phpbb-media">
+        <echo message="Building phpBB media and engines..." />
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/assets" overwrite="true">
+            <fileset dir="${path.assets}/common">
+                <exclude name="application/**"/>
+                <exclude name="**/*.js.map"/>
+                <exclude name="**/*.css.map"/>
+                <exclude name="**/*.sh"/>
+                <exclude name="node_modules/"/>
+                <exclude name="gulpfile.js"/>
+                <exclude name="package.json"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${tmp_dir}/phpbb/extensions/dazzlesoftware/genesis/engines" overwrite="true">
+            <fileset dir="${path.engines}/common">
+                <exclude name="**/*.sh"/>
+                <exclude name="**/.sass-cache/"/>
+                <exclude name="**/node_modules/"/>
+                <exclude name="**/gulpfile.js"/>
+                <exclude name="**/package.json"/>
+                <exclude name="**/scss.sh"/>
+                <exclude name="**/*.js.map"/>
+                <exclude name="**/*.css.map"/>
+            </fileset>
+            <fileset dir="${path.engines}/phpbb">
+                <exclude name="**/*.sh"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="build-phpbb-themes" depends="build-phpbb-installer">
+        <echo message="Building phpBB styles..." />
+
+        <foreach param="directory" target="build-phpbb-theme">
+            <fileset dir="${path.themes}">
+                <exclude name="*-child"/>
+                <type type="dir" />
+                <depth max="0" min="0" />
+            </fileset>
+        </foreach>
+    </target>
+
+    <target name="build-phpbb-theme">
+        <if>
+            <available file="${path.themes}/${directory}/phpbb/genesis/theme.yaml" type="file" />
+            <then>
+                <echo message="Building phpBB style ${directory}..." />
+
+                <copy todir="${tmp_dir}/phpbb/styles/${directory}" overwrite="true">
+                    <fileset dir="${path.themes}/${directory}/common">
+                        <exclude name="custom/**"/>
+                    </fileset>
+                    <fileset dir="${path.themes}/${directory}/phpbb">
+                        <exclude name="common/**"/>
+                        <exclude name="custom/**"/>
+                        <exclude name="**/*.js.map"/>
+                        <exclude name="**/*.css.map"/>
+                    </fileset>
+                </copy>
+
+                <copy todir="${tmp_dir}/phpbb/styles/${directory}" overwrite="true">
+                    <filterchain refid="filter"/>
+                    <fileset dir="${path.themes}/${directory}/phpbb">
+                        <include name="style.cfg"/>
+                        <include name="genesis/theme.yaml"/>
+                    </fileset>
+                </copy>
+
+                <phingcall target="checksum">
+                    <property name="source" value="${tmp_dir}/phpbb/styles/${directory}" />
+                </phingcall>
+
+                <phingcall target="archive">
+                    <property name="destination.file" value="${package_dir}/phpbb-style_${directory}${str.fileversion}" />
+                    <property name="base.directory" value="${tmp_dir}/phpbb/styles/${directory}" />
+                    <property name="prefix" value="${directory}/" />
+                </phingcall>
+            </then>
+        </if>
+    </target>
+</project>

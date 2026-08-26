@@ -94,6 +94,7 @@
     <import file="build-joomla.xml" />
     <import file="build-wordpress.xml" />
     <import file="build-grav.xml" />
+    <import file="build-phpbb.xml" />
 
     <!-- Preflight check to see if we can even run the build script -->
     <target name="preflight">
@@ -124,6 +125,7 @@
         <mkdir dir="${tmp_dir}/templates" />
         <mkdir dir="${tmp_dir}/themes" />
         <mkdir dir="${tmp_dir}/wordpress" />
+        <mkdir dir="${tmp_dir}/phpbb" />
         <mkdir dir="${build_dir}" />
         <mkdir dir="${build_dir}/distribution" />
         <mkdir dir="${build_dir}/distribution/packages" />
@@ -163,6 +165,14 @@
 
         <phingcall target="build-grav-plugin" />
         <phingcall target="build-grav-themes" />
+    </target>
+
+    <target name="phpbb">
+        <phingcall target="cleanup" />
+        <phingcall target="mkdir" />
+
+        <phingcall target="build-phpbb-extension" />
+        <phingcall target="build-phpbb-themes" />
     </target>
 
     <target name="reset-git">
@@ -249,13 +259,15 @@
     </target>
 
 
-    <target name="dev" depends="preflight,info,mkdir,joomla,wordpress,grav,create-map,cleanup,postflight" />
-    <target name="prod" depends="preflight,info,mkdir,joomla,wordpress,grav,cleanup,postflight" />
+    <target name="dev" depends="preflight,info,mkdir,joomla,wordpress,grav,phpbb,create-map,cleanup,postflight" />
+    <target name="prod" depends="preflight,info,mkdir,joomla,wordpress,grav,phpbb,cleanup,postflight" />
     <target name="joomla-dev" depends="preflight,info,mkdir,joomla,create-map,cleanup,postflight" />
     <target name="wordpress-dev" depends="preflight,info,mkdir,wordpress,create-map,cleanup,postflight" />
     <target name="grav-dev" depends="preflight,info,mkdir,grav,create-map,cleanup,postflight" />
+    <target name="phpbb-dev" depends="preflight,info,mkdir,phpbb,create-map,cleanup,postflight" />
     <target name="joomla-prod" depends="preflight,info,mkdir,joomla,cleanup,postflight" />
     <target name="wordpress-prod" depends="preflight,info,mkdir,wordpress,cleanup,postflight" />
     <target name="grav-prod" depends="preflight,info,mkdir,grav,cleanup,postflight" />
+    <target name="phpbb-prod" depends="preflight,info,mkdir,phpbb,cleanup,postflight" />
 
 </project>
