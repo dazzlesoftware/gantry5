@@ -7,6 +7,20 @@
         margin: $content-margin 0;
     }
 
+    // Compact Argon identity for the narrow footer logo column.
+    .g-logo {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        margin: 0 auto;
+        background: url('../images/argon-mark.svg') center / contain no-repeat;
+
+        svg,
+        img {
+            display: none;
+        }
+    }
+
     // Copyright
     .g-copyright {
         font-size: 0.8125rem;

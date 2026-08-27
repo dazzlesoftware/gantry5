@@ -1519,6 +1519,17 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 #g-footer .g-content {
   margin: 0.625rem 0;
 }
+#g-footer .g-logo {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  background: url("../images/argon-mark.svg") center/contain no-repeat;
+}
+#g-footer .g-logo svg,
+#g-footer .g-logo img {
+  display: none;
+}
 #g-footer .g-copyright {
   font-size: 0.8125rem;
   line-height: 1.25rem;
