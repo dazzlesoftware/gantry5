@@ -1,21 +1,27 @@
 <section
     {%- if particle.css.id %} id="{{ particle.css.id }}"{% endif %} class="menu-selector-bar{%- if particle.css.class %} {{ particle.css.class }}{% endif %}" role="navigation">
-    <ul class="g-grid g-toplevel menu-selector" data-mm-id="" data-mm-base="" data-mm-base-level="1">
+    <ul class="row g-grid g-toplevel menu-selector" data-mm-id="" data-mm-base="" data-mm-base-level="1">
         {% for child in item %}
             {% set is_particle = child.type == 'particle' or child.type == 'module' %}
             {% set active = (child.path|split('/')|first) == (path|split('/')|first) ? ' active' : '' %}
             <li data-mm-id="{{ child.path }}"
                 data-mm-level="{{ child.level }}"
                 {% if is_particle %}
-                class="g-menu-removable g-menu-item-{{ child.type }}{{ active }}{% if child.options.particle.enabled == false %} g-menu-item-disabled{% endif %}"
+                class="col-auto g-menu-removable g-menu-item-{{ child.type }}{{ active }}{% if child.options.particle.enabled == false %} g-menu-item-disabled{% endif %}"
                 data-mm-original-type="{{ child.type }}"
                 {% else %}
-                class="{{ active }}{% if child.enabled == false %} g-menu-item-disabled{% endif %}"
+                class="col-auto{{ active }}{% if child.enabled == false %} g-menu-item-disabled{% endif %}"
                 {% endif %}
             >
                 {% include 'menu/item.html.twig' with {'item': child, 'target': 'columns' } %}
             </li>
         {% endfor %}
+        <li class="col-auto menu-root-dropzone" data-lm-nodrag>
+            <button type="button" data-mm-root-dropzone data-lm-nodrag
+                aria-label="{{ 'GENESIS_PLATFORM_MENU_PARTICLE_SETTINGS'|trans }}">
+                <span aria-hidden="true" data-lm-nodrag>+</span>
+            </button>
+        </li>
     </ul>
     <a class="global-menu-settings" href="{{ genesis.route('menu/edit', id) }}">
         <i aria-label="{{ 'GENESIS_PLATFORM_MENU_GLOBAL_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>

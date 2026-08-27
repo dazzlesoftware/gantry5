@@ -6,6 +6,9 @@
     border-color: $navbar-border;
     position: relative;
     #genesis-logo {
+        color: $navbar-color;
+        height: 32px;
+        width: 148px;
         right: $content-padding + $content-margin;
         top: $content-padding;
         position: absolute;

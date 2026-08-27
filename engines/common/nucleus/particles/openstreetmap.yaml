@@ -7,19 +7,20 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
-    height: {type: input.number, label: Desktop Height, min: 100, default: 400}
-    tabletheight: {type: input.number, label: Tablet Height, min: 100, default: 350}
-    mobileheight: {type: input.number, label: Mobile Height, min: 100, default: 300}
+    height: {type: input.number, label: Override Desktop Height, min: 100, default: 400}
+    tabletheight: {type: input.number, label: Override Tablet Height, min: 100, default: 350}
+    mobileheight: {type: input.number, label: Override Mobile Height, min: 100, default: 300}
     latitude: {type: input.text, label: Center Latitude, default: '51.505'}
     longitude: {type: input.text, label: Center Longitude, default: '-0.09'}
     zoom: {type: input.number, label: Zoom, min: 1, max: 19, default: 13}
-    style: {type: select.select, label: Map Style, default: standard, options: {standard: Standard, humanitarian: Humanitarian, topographic: Topographic}}
+    style: {type: select.select, label: Override Map Style, default: standard, options: {standard: Standard, humanitarian: Humanitarian, topographic: Topographic}}
     mousescroll: {type: select.select, label: Mouse-Wheel Zoom, default: disable, options: {enable: Enable, disable: Disable}}
     dragging: {type: select.select, label: Dragging, default: enable, options: {enable: Enable, disable: Disable}}
     zoomcontrols: {type: select.select, label: Zoom Controls, default: enable, options: {enable: Show, disable: Hide}}
     attribution: {type: select.select, label: Attribution, default: enable, options: {enable: Show, disable: Hide}}
-    markercolor: {type: input.colorpicker, label: Default Marker Color, default: '#e91e63'}
+    markercolor: {type: input.colorpicker, label: Override Default Marker Color, default: '#e91e63'}
     locations:
       type: collection.list
       array: true

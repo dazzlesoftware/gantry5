@@ -1,0 +1,16 @@
+name: Image
+description: Shared visual defaults for Image particles in this outline
+type: particle
+
+form:
+  fields:
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titleposition: {type: select.select, label: Title Position, default: before, options: {before: Above Image, after: Below Image}}
+    titlecolor: {type: input.colorpicker, label: Title Color}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    width: {type: input.number, label: Width, description: Pixel width; leave empty for responsive width., min: 1}
+    height: {type: input.number, label: Height, description: Pixel height; leave empty for natural height., min: 1}
+    position: {type: select.select, label: Image Position, default: center, options: {center: Center, top: Top, bottom: Bottom, left: Left, right: Right}}
+    shape: {type: select.select, label: Image Shape, default: none, options: {none: None, rounded: Rounded, circle: Circle, bevel: Bevel, star: Star, pentagon: Pentagon, triangle: Triangle, rightarrow: Right Arrow}}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    overlay: {type: input.colorpicker, label: Hover Overlay Color, default: 'rgba(0,0,0,0.25)'}

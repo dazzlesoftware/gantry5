@@ -1,0 +1,159 @@
+name: Feature
+description: Shared visual defaults for Feature particles in this outline
+type: particle
+
+form:
+  fields:
+    icon: {type: input.icon, label: Feature Icon, default: fa fa-star}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 36}
+    iconcolor: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}
+    iconhovercolor: {type: input.colorpicker, label: Icon Hover Color}
+    iconbackground: {type: input.colorpicker, label: Icon Background}
+    iconhoverbackground: {type: input.colorpicker, label: Icon Hover Background}
+    iconpadding: {type: input.number, label: Icon Padding, min: 0, default: 0}
+    iconborderwidth: {type: input.number, label: Icon Border Width, min: 0, default: 0}
+    iconbordercolor: {type: input.colorpicker, label: Icon Border Color}
+    iconradius: {type: input.number, label: Icon Border Radius, min: 0, default: 0}
+    imagewidth: {type: input.number, label: Image Width, description: Width in pixels; leave empty for responsive width., min: 1}
+    imageradius: {type: input.number, label: Image Border Radius, min: 0, default: 0}
+    mediagap: {type: input.number, label: Media Gap, min: 0, default: 20}
+    background: {type: input.colorpicker, label: Background Color}
+    hoverbackground: {type: input.colorpicker, label: Hover Background Color}
+    borderwidth: {type: input.number, label: Box Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Box Border Color, default: '#dddddd'}
+    boxradius: {type: input.number, label: Box Border Radius, min: 0, default: 0}
+    padding: {type: input.text, label: Content Padding, description: CSS spacing such as 30px or 20px 30px.}
+    titlecolor: {type: input.colorpicker, label: Title Color}
+    titlehovercolor: {type: input.colorpicker, label: Title Hover Color}
+    textcolor: {type: input.colorpicker, label: Text Color}
+    texthovercolor: {type: input.colorpicker, label: Text Hover Color}
+    titlefont: {type: input.fonts, label: Title Font}
+    textfont: {type: input.fonts, label: Content Font}
+    titlefontsize: {type: input.number, label: Title Font Size, min: 1}
+    textfontsize: {type: input.number, label: Content Font Size, min: 1}
+    titlemargin: {type: input.number, label: Title Bottom Margin, min: 0, default: 12}
+    button1icon: {type: input.icon, label: Primary Button Icon}
+    button1font: {type: input.fonts, label: Primary Button Text Font}
+    button1fontsize: {type: input.number, label: Primary Button Text Size, min: 1}
+    button1color: {type: input.colorpicker, label: Primary Custom Text Color, default: '#ffffff'}
+    button1background: {type: input.colorpicker, label: Primary Custom Background, default: '#e91e63'}
+    button1border: {type: input.colorpicker, label: Primary Custom Border, default: '#e91e63'}
+    button1hovercolor: {type: input.colorpicker, label: Primary Custom Hover Text, default: '#ffffff'}
+    button1hoverbackground: {type: input.colorpicker, label: Primary Custom Hover Background, default: '#c2185b'}
+    button1hoverborder: {type: input.colorpicker, label: Primary Custom Hover Border, default: '#c2185b'}
+    button2icon: {type: input.icon, label: Secondary Button Icon}
+    button2font: {type: input.fonts, label: Secondary Button Text Font}
+    button2fontsize: {type: input.number, label: Secondary Button Text Size, min: 1}
+    button2color: {type: input.colorpicker, label: Secondary Custom Text Color, default: '#e91e63'}
+    button2background: {type: input.colorpicker, label: Secondary Custom Background, default: '#ffffff'}
+    button2border: {type: input.colorpicker, label: Secondary Custom Border, default: '#e91e63'}
+    button2hovercolor: {type: input.colorpicker, label: Secondary Custom Hover Text, default: '#ffffff'}
+    button2hoverbackground: {type: input.colorpicker, label: Secondary Custom Hover Background, default: '#e91e63'}
+    button2hoverborder: {type: input.colorpicker, label: Secondary Custom Hover Border, default: '#e91e63'}
+    buttongap: {type: input.number, label: Button Gap, min: 0, default: 10}
+    buttonmargin: {type: input.number, label: Buttons Top Margin, min: 0, default: 25}
+    heading:
+      type: select.select
+      label: Title Element
+      default: h3
+      options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}
+    position:
+      type: select.select
+      label: Media Position
+      default: top
+      options: {top: Above Content, bottom: Below Content, left: Left, right: Right}
+    mediaalignment:
+      type: select.select
+      label: Icon / Image Alignment
+      description: Align the feature icon or image independently from the text when placed above or below the content.
+      default: inherit
+      options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
+    alignment:
+      type: select.select
+      label: Content Alignment
+      default: left
+      options: {left: Left, center: Center, right: Right}
+    titlealignment:
+      type: select.select
+      label: Feature Title Alignment
+      default: inherit
+      options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
+    textalignment:
+      type: select.select
+      label: Feature Content Alignment
+      default: inherit
+      options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
+    buttonalignment:
+      type: select.select
+      label: Button Alignment
+      default: inherit
+      options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
+    boxborder:
+      type: select.select
+      label: Feature Box Border
+      default: hide
+      options: {hide: Hide, show: Show}
+    boxshadow:
+      type: input.text
+      label: Box Shadow
+      description: CSS box-shadow value. Leave empty for no shadow.
+    button1fontweight:
+      type: select.select
+      label: Primary Button Text Weight
+      default: inherit
+      options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
+    button1iconposition:
+      type: select.select
+      label: Primary Icon Position
+      default: left
+      options: {left: Left, right: Right}
+    button1style:
+      type: select.select
+      label: Primary Button Style
+      default: primary
+      options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, outline-primary: Outline Primary, link: Link, custom: Custom}
+    button1shape:
+      type: select.select
+      label: Primary Button Shape
+      default: rounded
+      options: {rounded: Rounded, square: Square, pill: Pill}
+    button1fullwidth:
+      type: select.select
+      label: Primary Button Full Width
+      default: disable
+      options: {enable: Yes, disable: No}
+    button1size:
+      type: select.select
+      label: Primary Button Size
+      default: normal
+      options: {normal: Normal, sm: Small, lg: Large}
+    button2fontweight:
+      type: select.select
+      label: Secondary Button Text Weight
+      default: inherit
+      options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
+    button2iconposition:
+      type: select.select
+      label: Secondary Icon Position
+      default: left
+      options: {left: Left, right: Right}
+    button2style:
+      type: select.select
+      label: Secondary Button Style
+      default: outline-primary
+      options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, outline-primary: Outline Primary, link: Link, custom: Custom}
+    button2shape:
+      type: select.select
+      label: Secondary Button Shape
+      default: rounded
+      options: {rounded: Rounded, square: Square, pill: Pill}
+    button2fullwidth:
+      type: select.select
+      label: Secondary Button Full Width
+      default: disable
+      options: {enable: Yes, disable: No}
+    button2size:
+      type: select.select
+      label: Secondary Button Size
+      default: normal
+      options: {normal: Normal, sm: Small, lg: Large}

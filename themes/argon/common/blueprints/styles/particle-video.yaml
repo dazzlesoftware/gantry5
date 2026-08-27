@@ -1,0 +1,17 @@
+name: Video
+description: Shared visual defaults for Video particles in this outline
+type: particle
+
+form:
+  fields:
+    columns:
+      type: select.selectize
+      label: Columns
+      description: Select the number of columns.
+      default: 1
+      options:
+        1: 1 column
+        2: 2 columns
+        3: 3 columns
+        4: 4 columns
+

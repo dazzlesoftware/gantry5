@@ -1,0 +1,20 @@
+name: To Top
+description: Shared visual defaults for To Top particles in this outline
+type: particle
+
+form:
+  fields:
+    icon:
+      type: input.icon
+      label: Icon
+      description: A Font Awesome icon to be displayed for the link.
+
+    iconposition:
+      type: input.select
+      label: Icon Position
+      description: Choose whether the icon appears before or after the label text.
+      default: before
+      options:
+        before: Before Text
+        after: After Text
+

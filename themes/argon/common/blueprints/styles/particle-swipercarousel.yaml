@@ -1,0 +1,30 @@
+name: Swiper Carousel
+description: Shared visual defaults for Swiper Carousel particles in this outline
+type: particle
+
+form:
+  fields:
+    width:
+      type: select.select
+      label: Width
+      description: Full width spans the particle's container; boxed keeps slide content constrained.
+      default: g-swipercarousel-fullwidth
+      options:
+        g-swipercarousel-fullwidth: Full Width
+        g-swipercarousel-boxed: Boxed
+
+    footerShadow:
+      type: select.select
+      label: Footer Shadow
+      description: Overlay a gradient shadow at the bottom of each slide image, useful for legibility under overlaid text.
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    footerShadowColor:
+      type: input.colorpicker
+      label: Footer Shadow Color
+      description: Color the gradient fades into.
+      default: '#ffffff'
+

@@ -7,22 +7,23 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
-    preset: {type: select.select, label: Style Preset, default: card, options: {card: Card, overlay: Overlay, inline: Inline, minimal: Minimal}}
+    preset: {type: select.select, label: Override Style Preset, default: card, options: {card: Card, overlay: Overlay, inline: Inline, minimal: Minimal}}
     image: {type: input.imagepicker, label: Person Image}
     alt: {type: input.text, label: Image Alternative Text}
-    imageheight: {type: input.number, label: Image Height, min: 1, default: 360}
+    imageheight: {type: input.number, label: Override Image Height, min: 1, default: 360}
     name: {type: input.text, label: Name, default: Person Name}
     designation: {type: input.text, label: Designation}
     intro: {type: textarea.textarea, label: Introduction}
     profilelink: {type: input.text, label: Profile Link}
-    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
-    background: {type: input.colorpicker, label: Background, default: '#ffffff'}
-    color: {type: input.colorpicker, label: Text Color, default: '#444444'}
-    accent: {type: input.colorpicker, label: Accent Color, default: '#3366ff'}
-    overlay: {type: input.colorpicker, label: Overlay Background, default: 'rgba(0,0,0,0.7)'}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
-    socialposition: {type: select.select, label: Social Position, default: bottom, options: {top: Above Biography, bottom: Below Biography}}
+    alignment: {type: select.select, label: Override Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    background: {type: input.colorpicker, label: Override Background, default: '#ffffff'}
+    color: {type: input.colorpicker, label: Override Text Color, default: '#444444'}
+    accent: {type: input.colorpicker, label: Override Accent Color, default: '#3366ff'}
+    overlay: {type: input.colorpicker, label: Override Overlay Background, default: 'rgba(0,0,0,0.7)'}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 0}
+    socialposition: {type: select.select, label: Override Social Position, default: bottom, options: {top: Above Biography, bottom: Below Biography}}
     socials:
       type: collection.list
       array: true

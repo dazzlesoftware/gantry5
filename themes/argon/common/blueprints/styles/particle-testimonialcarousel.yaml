@@ -1,0 +1,17 @@
+name: Testimonial Carousel
+description: Shared visual defaults for Testimonial Carousel particles in this outline
+type: particle
+
+form:
+  fields:
+    layout: {type: select.select, label: Layout, default: card, options: {card: Card, centered: Centered, split: Split}}
+    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 24}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    showquote: {type: select.select, label: Quote Icon, default: enable, options: {enable: Show, disable: Hide}}
+    showrating: {type: select.select, label: Rating, default: enable, options: {enable: Show, disable: Hide}}
+    background: {type: input.colorpicker, label: Item Background, default: '#ffffff'}
+    color: {type: input.colorpicker, label: Text Color, default: '#555555'}
+    accent: {type: input.colorpicker, label: Accent Color, default: '#3366ff'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    padding: {type: input.text, label: Item Padding, default: '2rem'}

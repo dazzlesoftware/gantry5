@@ -12,12 +12,13 @@ form:
     text: {type: input.text, label: Progress Label, default: Progress}
     progress: {type: input.number, label: Progress, min: 0, max: 100, default: 75}
     showpercentage: {type: select.select, label: Show Percentage, default: enable, options: {enable: Show, disable: Hide}}
-    type: {type: select.select, label: Bootstrap Color, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, custom: Custom}}
-    customcolor: {type: input.colorpicker, label: Custom Bar Color, default: '#3366ff'}
-    trackcolor: {type: input.colorpicker, label: Track Color, default: '#e9ecef'}
-    textcolor: {type: input.colorpicker, label: Text Color, default: '#ffffff'}
-    height: {type: input.number, label: Bar Height, min: 4, default: 24}
-    shape: {type: select.select, label: Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
+    colorsource: {type: select.select, label: Override Color Source, default: inherit, description: Inherit the outline defaults from Styles or override them for this particle., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
+    type: {type: select.select, label: Override Bootstrap Color, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, custom: Custom}}
+    customcolor: {type: input.colorpicker, label: Override Custom Bar Color, default: '#3366ff'}
+    trackcolor: {type: input.colorpicker, label: Override Track Color, default: '#e9ecef'}
+    textcolor: {type: input.colorpicker, label: Override Text Color, default: '#ffffff'}
+    height: {type: input.number, label: Override Bar Height, min: 4, default: 24}
+    shape: {type: select.select, label: Override Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
     striped: {type: select.select, label: Striped, default: disable, options: {enable: Enable, disable: Disable}}
     animatedstripes: {type: select.select, label: Animated Stripes, default: disable, options: {enable: Enable, disable: Disable}}
     animate: {type: select.select, label: Animate When Visible, default: enable, options: {enable: Enable, disable: Disable}}

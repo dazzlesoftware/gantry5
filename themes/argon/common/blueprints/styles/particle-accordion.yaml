@@ -1,0 +1,24 @@
+name: Accordion
+description: Shared visual defaults for Accordion particles in this outline
+type: particle
+
+form:
+  fields:
+    iconposition: {type: select.select, label: Toggle Icon Position, default: right, options: {left: Left, right: Right}}
+    togglicon: {type: input.icon, label: Toggle Icon, default: 'fa fa-chevron-right'}
+    iconrotate: {type: input.number, label: Active Icon Rotation, default: 90}
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlefont: {type: input.fonts, label: Item Title Font}
+    titlefontsize: {type: input.number, label: Item Title Size, min: 1, default: 18}
+    titlecolor: {type: input.colorpicker, label: Header Text Color, default: '#222222'}
+    titlebackground: {type: input.colorpicker, label: Header Background, default: '#f5f5f5'}
+    activetitlecolor: {type: input.colorpicker, label: Active Header Text Color, default: '#ffffff'}
+    activebackground: {type: input.colorpicker, label: Active Header Background, default: '#3366ff'}
+    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
+    contentcolor: {type: input.colorpicker, label: Content Color, default: '#555555'}
+    headerpadding: {type: input.text, label: Header Padding, default: '16px 20px'}
+    contentpadding: {type: input.text, label: Content Padding, default: '20px'}
+    itemgap: {type: input.number, label: Item Gap, min: 0, default: 10}
+    borderwidth: {type: input.number, label: Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#dddddd'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}

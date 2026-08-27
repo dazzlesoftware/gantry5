@@ -1,0 +1,31 @@
+name: Image Carousel
+description: Shared visual defaults for Image Carousel particles in this outline
+type: particle
+
+form:
+  fields:
+    layout:
+      type: select.select
+      label: Layout
+      default: overlay
+      options:
+        overlay: Overlay Caption
+        below: Caption Below
+        image: Image Only
+        split: Split Image / Content
+
+    height:
+      type: input.number
+      label: Image Height
+      description: Image height in pixels. Use 0 for the image's natural height.
+      min: 0
+      default: 500
+
+    indicators:
+      type: select.select
+      label: Indicators
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+

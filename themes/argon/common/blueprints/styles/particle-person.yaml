@@ -1,0 +1,15 @@
+name: Person
+description: Shared visual defaults for Person particles in this outline
+type: particle
+
+form:
+  fields:
+    preset: {type: select.select, label: Style Preset, default: card, options: {card: Card, overlay: Overlay, inline: Inline, minimal: Minimal}}
+    imageheight: {type: input.number, label: Image Height, min: 1, default: 360}
+    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    background: {type: input.colorpicker, label: Background, default: '#ffffff'}
+    color: {type: input.colorpicker, label: Text Color, default: '#444444'}
+    accent: {type: input.colorpicker, label: Accent Color, default: '#3366ff'}
+    overlay: {type: input.colorpicker, label: Overlay Background, default: 'rgba(0,0,0,0.7)'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    socialposition: {type: select.select, label: Social Position, default: bottom, options: {top: Above Biography, bottom: Below Biography}}

@@ -1,0 +1,15 @@
+name: Pie Progress
+description: Shared visual defaults for Pie Progress particles in this outline
+type: particle
+
+form:
+  fields:
+    circlesize: {type: input.number, label: Circle Size, min: 40, default: 180}
+    borderwidth: {type: input.number, label: Stroke Width, min: 1, default: 10}
+    trackcolor: {type: input.colorpicker, label: Track Color, default: '#e5e5e5'}
+    activecolor: {type: input.colorpicker, label: Active Color, default: '#3366ff'}
+    percentagecolor: {type: input.colorpicker, label: Percentage Color, default: '#222222'}
+    percentagesize: {type: input.number, label: Percentage Size, min: 1, default: 32}
+    icon: {type: input.icon, label: Center Icon}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 28}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}

@@ -1,0 +1,11 @@
+name: Advanced Table
+description: Shared visual defaults for Advanced Table particles in this outline
+type: particle
+
+form:
+  fields:
+    headings: {type: input.text, label: Column Headings, description: 'Pipe-separated headings, for example Name|Role|Location.', default: 'Name|Value'}
+    bordered: {type: select.select, label: Bootstrap Borders, default: enable, options: {enable: Enable, disable: Disable}}
+    alignment: {type: select.select, label: Text Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    headerbackground: {type: input.colorpicker, label: Header Background, default: '#222222'}
+    headercolor: {type: input.colorpicker, label: Header Color, default: '#ffffff'}

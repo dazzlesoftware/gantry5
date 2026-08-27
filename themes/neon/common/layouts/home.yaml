@@ -40,7 +40,7 @@ content:
   sample-1:
     title: 'Genesis'
     attributes:
-      image: 'genesis-assets://images/genesis-logo.png'
+      image: 'genesis-assets://images/genesis-logo.svg'
       headline: ''
       description: '<p>Genesis is the most customizable and powerful version of the framework yet. Packed full of features such as <a href="https://codex.dazzlecms.org/configure/layout-manager">drag-and-drop layout creation</a> and the powerful particle system, Genesis has been designed from the ground up to be lightning fast and hassle free.</p>'
       link: 'https://codex.dazzlecms.org'

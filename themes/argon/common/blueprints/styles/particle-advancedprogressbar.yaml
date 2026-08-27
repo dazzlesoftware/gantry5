@@ -1,0 +1,12 @@
+name: Advanced Progress Bar
+description: Shared visual defaults for Advanced Progress Bar particles in this outline
+type: particle
+
+form:
+  fields:
+    type: {type: select.select, label: Bootstrap Color, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, custom: Custom}}
+    customcolor: {type: input.colorpicker, label: Custom Bar Color, default: '#3366ff'}
+    trackcolor: {type: input.colorpicker, label: Track Color, default: '#e9ecef'}
+    textcolor: {type: input.colorpicker, label: Text Color, default: '#ffffff'}
+    height: {type: input.number, label: Bar Height, min: 4, default: 24}
+    shape: {type: select.select, label: Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}

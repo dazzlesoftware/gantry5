@@ -1,0 +1,109 @@
+name: Text Block
+description: Shared visual defaults for Text Block particles in this outline
+type: particle
+
+form:
+  fields:
+    heading:
+      type: select.select
+      label: Title Element
+      default: h3
+      options:
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+        h5: H5
+        h6: H6
+
+    alignment:
+      type: select.select
+      label: Alignment
+      default: left
+      options:
+        left: Left
+        center: Center
+        right: Right
+        justify: Justify
+
+    textcolor:
+      type: input.colorpicker
+      label: Text Color
+
+    fontsize:
+      type: input.number
+      label: Font Size
+      description: Font size in pixels. Leave empty to inherit the theme.
+      min: 0
+
+    lineheight:
+      type: input.number
+      label: Line Height
+      description: Unitless line height. Leave empty to inherit the theme.
+      min: 0
+      step: 0.1
+
+    columns:
+      type: input.number
+      label: Desktop Columns
+      min: 1
+      max: 5
+      default: 1
+
+    columns_tablet:
+      type: input.number
+      label: Tablet Columns
+      min: 1
+      max: 5
+      default: 1
+
+    columns_mobile:
+      type: input.number
+      label: Mobile Columns
+      min: 1
+      max: 5
+      default: 1
+
+    columngap:
+      type: input.number
+      label: Column Gap
+      description: Gap between columns in pixels.
+      min: 0
+      max: 200
+      default: 30
+
+    dropcap:
+      type: select.select
+      label: Drop Cap
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    dropcapsize:
+      type: input.number
+      label: Drop Cap Size
+      description: Drop cap size in pixels.
+      min: 0
+      max: 200
+      default: 56
+
+    dropcapcolor:
+      type: input.colorpicker
+      label: Drop Cap Color
+
+    actioncolor:
+      type: input.colorpicker
+      label: Action Color
+      default: '#3366ff'
+
+    titlecolor:
+      type: input.colorpicker
+      label: Title Color
+
+    titlemargin:
+      type: input.number
+      label: Title Bottom Margin
+      description: Bottom margin in pixels.
+      min: 0
+      default: 10

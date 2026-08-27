@@ -19,13 +19,14 @@ form:
       type: input.selectize
       label: CSS Classes
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
 
     layout:
       type: select.select
-      label: Layout
+      label: Override Layout
       default: overlay
       options:
         overlay: Overlay Caption
@@ -35,7 +36,7 @@ form:
 
     height:
       type: input.number
-      label: Image Height
+      label: Override Image Height
       description: Image height in pixels. Use 0 for the image's natural height.
       min: 0
       default: 500
@@ -97,7 +98,7 @@ form:
 
     indicators:
       type: select.select
-      label: Indicators
+      label: Override Indicators
       default: enable
       options:
         enable: Enable

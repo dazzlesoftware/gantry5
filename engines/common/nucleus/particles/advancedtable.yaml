@@ -8,8 +8,9 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Title}
-    headings: {type: input.text, label: Column Headings, description: 'Pipe-separated headings, for example Name|Role|Location.', default: 'Name|Value'}
+    headings: {type: input.text, label: Override Column Headings, description: 'Pipe-separated headings, for example Name|Role|Location.', default: 'Name|Value'}
     searchable: {type: select.select, label: Search, default: enable, options: {enable: Enable, disable: Disable}}
     sortable: {type: select.select, label: Sorting, default: enable, options: {enable: Enable, disable: Disable}}
     pagination: {type: select.select, label: Pagination, default: enable, options: {enable: Enable, disable: Disable}}
@@ -18,10 +19,10 @@ form:
     responsive: {type: select.select, label: Responsive Scrolling, default: enable, options: {enable: Enable, disable: Disable}}
     striped: {type: select.select, label: Bootstrap Striped Rows, default: enable, options: {enable: Enable, disable: Disable}}
     hover: {type: select.select, label: Bootstrap Hover Rows, default: enable, options: {enable: Enable, disable: Disable}}
-    bordered: {type: select.select, label: Bootstrap Borders, default: enable, options: {enable: Enable, disable: Disable}}
-    alignment: {type: select.select, label: Text Alignment, default: left, options: {left: Left, center: Center, right: Right}}
-    headerbackground: {type: input.colorpicker, label: Header Background, default: '#222222'}
-    headercolor: {type: input.colorpicker, label: Header Color, default: '#ffffff'}
+    bordered: {type: select.select, label: Override Bootstrap Borders, default: enable, options: {enable: Enable, disable: Disable}}
+    alignment: {type: select.select, label: Override Text Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    headerbackground: {type: input.colorpicker, label: Override Header Background, default: '#222222'}
+    headercolor: {type: input.colorpicker, label: Override Header Color, default: '#ffffff'}
     rows:
       type: collection.list
       array: true

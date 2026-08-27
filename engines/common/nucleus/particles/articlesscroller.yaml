@@ -15,6 +15,7 @@ form:
       type: input.selectize
       label: CSS Classes
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -30,7 +31,7 @@ form:
 
     layout:
       type: select.select
-      label: Layout
+      label: Override Layout
       default: ticker
       options:
         ticker: News Ticker
@@ -87,7 +88,7 @@ form:
 
     imagebackground:
       type: select.select
-      label: Scroller Image Background
+      label: Override Scroller Image Background
       default: disable
       options:
         enable: Enable
@@ -138,7 +139,7 @@ form:
 
     tickershape:
       type: select.select
-      label: Ticker Heading Shape
+      label: Override Ticker Heading Shape
       default: arrow
       options:
         arrow: Arrow
@@ -157,58 +158,58 @@ form:
 
     scrollericon:
       type: input.icon
-      label: Scroller Icon
+      label: Override Scroller Icon
       default: fa fa-gamepad
 
     scrollericonsize:
       type: input.number
-      label: Scroller Icon Size
+      label: Override Scroller Icon Size
       description: Custom icon size in pixels.
       min: 1
       default: 32
 
     accentcolor:
       type: input.colorpicker
-      label: Accent Color
+      label: Override Accent Color
       default: '#e91e63'
 
     panelcolor:
       type: input.colorpicker
-      label: Panel Color
+      label: Override Panel Color
       default: '#202025'
 
     paneltextcolor:
       type: input.colorpicker
-      label: Panel Text Color
+      label: Override Panel Text Color
       default: '#ffffff'
 
     mutedcolor:
       type: input.colorpicker
-      label: Muted Text Color
+      label: Override Muted Text Color
       default: '#aaaaaa'
 
     imageheight:
       type: input.number
-      label: Carousel Image Height
+      label: Override Carousel Image Height
       min: 100
       default: 320
 
     gap:
       type: input.number
-      label: Carousel Gap
+      label: Override Carousel Gap
       min: 0
       default: 24
 
     scrollergap:
       type: input.number
-      label: Scroller Article Spacing
+      label: Override Scroller Article Spacing
       description: Width of the separator between vertically scrolling articles, in pixels.
       min: 0
       default: 1
 
     separatorcolor:
       type: input.colorpicker
-      label: Scroller Separator Color
+      label: Override Scroller Separator Color
       default: 'rgba(255,255,255,0.7)'
 
     desktopitems:
@@ -278,7 +279,7 @@ form:
 
     indicators:
       type: select.select
-      label: Indicators
+      label: Override Indicators
       default: enable
       options:
         enable: Show
@@ -286,7 +287,7 @@ form:
 
     alignment:
       type: select.select
-      label: Content Alignment
+      label: Override Content Alignment
       default: left
       options:
         left: Left

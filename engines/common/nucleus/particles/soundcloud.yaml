@@ -8,11 +8,12 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Title}
-    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    heading: {type: select.select, label: Override Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
     url: {type: input.text, label: SoundCloud URL, description: 'Enter a SoundCloud track, playlist, or profile URL.'}
-    height: {type: input.number, label: Player Height, min: 80, default: 166}
-    color: {type: input.colorpicker, label: Player Color, default: '#ff5500'}
+    height: {type: input.number, label: Override Player Height, min: 80, default: 166}
+    color: {type: input.colorpicker, label: Override Player Color, default: '#ff5500'}
     autoplay: {type: select.select, label: Autoplay, default: disable, options: {enable: Enable, disable: Disable}}
     hidecomments: {type: select.select, label: Hide Comments, default: disable, options: {enable: Hide, disable: Show}}
     showuser: {type: select.select, label: Show User, default: enable, options: {enable: Show, disable: Hide}}

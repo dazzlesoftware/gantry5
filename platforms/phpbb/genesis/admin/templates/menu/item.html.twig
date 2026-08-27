@@ -2,7 +2,9 @@
 
 {% set attributes = 'data-genesis-ajaxify="" data-genesis-ajaxify-params="' ~ ('{"inline":1}'|escape('html_attr')) ~ '" ' ~ ajaxTarget %}
 
-{% if item.path %}
+{% set is_extra = item.type == 'particle' or item.type == 'module' %}
+
+{% if item.path and not is_extra %}
 <a {{ attributes|raw }} href="{{ genesis.route('menu', id, item.path) }}" class="menu-item">
 {% else %}
 <span class="menu-item">
@@ -29,10 +31,15 @@
         <span class="parent-indicator"></span>
     {%- endif %}
 {% endif %}
-{% if not item.path %}
+{% if not item.path or is_extra %}
 </span>
 {% else %}
 </a>
+{% endif %}
+{% if is_extra %}
+<button type="button" class="menu-item-remove" data-lm-nodrag data-mm-item-remove aria-label="{{ 'GENESIS_PLATFORM_JS_LM_REMOVE'|trans }}">
+    <i class="fa fa-times" aria-hidden="true" data-lm-nodrag></i>
+</button>
 {% endif %}
 <a class="config-cog" href="{{ item.type == 'particle' ? genesis.route('menu/particle') : genesis.route('menu/edit', id, item.path) }}">
     <i aria-label="{{ 'GENESIS_PLATFORM_MENU_ITEM_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>

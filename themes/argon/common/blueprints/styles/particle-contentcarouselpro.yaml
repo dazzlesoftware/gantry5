@@ -1,0 +1,12 @@
+name: Content Carousel Pro
+description: Shared visual defaults for Content Carousel Pro particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Carousel Height, min: 150, default: 520}
+    contentwidth: {type: input.number, label: Content Width Percent, min: 20, max: 100, default: 50}
+    fullwidth: {type: select.select, label: Full Width Content, default: disable, options: {enable: Enable, disable: Disable}}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#ffffff'}
+    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: 'rgba(0,0,0,0.45)'}

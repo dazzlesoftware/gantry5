@@ -2,11 +2,15 @@
 
 {% block particle %}
     {% do genesis.load('bootstrap.5') %}
-    <section class="g-advanced-progress {{ particle.class|e }}" data-advanced-progress data-progress="{{ particle.progress|default(75)|e }}" data-animate="{{ particle.animate|default('enable')|e }}" data-duration="{{ particle.duration|default(1000)|e }}" style="--gap-height:{{ particle.height|default(24)|e('html_attr') }}px;--gap-track:{{ particle.trackcolor|default('#e9ecef')|e('html_attr') }};--gap-color:{{ particle.textcolor|default('#ffffff')|e('html_attr') }};--gap-custom:{{ particle.customcolor|default('#3366ff')|e('html_attr') }};">
+    {% set progress_type = particle.type|default('primary') %}
+    {% set progress_custom_color = particle.customcolor|default('#3366ff') %}
+    {% set progress_track_color = particle.trackcolor|default('#e9ecef') %}
+    {% set progress_text_color = particle.textcolor|default('#ffffff') %}
+    <section class="g-advanced-progress {{ particle.class|e }}" data-advanced-progress data-progress="{{ particle.progress|default(75)|e }}" data-animate="{{ particle.animate|default('enable')|e }}" data-duration="{{ particle.duration|default(1000)|e }}" style="--gap-height:{{ particle.height|default(24)|e('html_attr') }}px;--gap-track:{{ progress_track_color|e('html_attr') }};--gap-color:{{ progress_text_color|e('html_attr') }};--gap-custom:{{ progress_custom_color|e('html_attr') }};">
         {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
         <div class="g-advanced-progress-heading"><span>{{ particle.text|default('Progress')|e }}</span>{% if particle.showpercentage|default('enable') == 'enable' %}<span>{{ particle.progress|default(75)|e }}%</span>{% endif %}</div>
         <div class="progress g-progress-shape-{{ particle.shape|default('rounded')|e }}" role="progressbar" aria-valuenow="{{ particle.progress|default(75)|e }}" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar{% if particle.type|default('primary') != 'custom' %} bg-{{ particle.type|default('primary')|e }}{% else %} g-progress-custom{% endif %}{% if particle.striped|default('disable') == 'enable' %} progress-bar-striped{% endif %}{% if particle.animatedstripes|default('disable') == 'enable' %} progress-bar-animated{% endif %}"></div>
+            <div class="progress-bar{% if progress_type != 'custom' %} bg-{{ progress_type|e }}{% else %} g-progress-custom{% endif %}{% if particle.striped|default('disable') == 'enable' %} progress-bar-striped{% endif %}{% if particle.animatedstripes|default('disable') == 'enable' %} progress-bar-animated{% endif %}"></div>
         </div>
     </section>
 {% endblock %}

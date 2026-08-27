@@ -1,0 +1,9 @@
+name: SoundCloud
+description: Shared visual defaults for SoundCloud particles in this outline
+type: particle
+
+form:
+  fields:
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    height: {type: input.number, label: Player Height, min: 80, default: 166}
+    color: {type: input.colorpicker, label: Player Color, default: '#ff5500'}

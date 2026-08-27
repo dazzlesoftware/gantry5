@@ -1,0 +1,14 @@
+name: Instagram Gallery
+description: Shared visual defaults for Instagram Gallery particles in this outline
+type: particle
+
+form:
+  fields:
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlealignment: {type: select.select, label: Title Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    layout: {type: select.select, label: Layout, default: grid, options: {grid: Grid, masonry: Masonry}}
+    columns: {type: input.number, label: Desktop Columns, min: 1, max: 8, default: 4}
+    tabletcolumns: {type: input.number, label: Tablet Columns, min: 1, max: 6, default: 3}
+    mobilecolumns: {type: input.number, label: Mobile Columns, min: 1, max: 4, default: 2}
+    gap: {type: input.number, label: Gap, min: 0, default: 10}
+    overlay: {type: input.colorpicker, label: Hover Overlay, default: 'rgba(0,0,0,0.55)'}

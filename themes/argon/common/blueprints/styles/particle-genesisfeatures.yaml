@@ -1,0 +1,16 @@
+name: Genesis Features
+description: Shared visual defaults for Genesis Features particles in this outline
+type: particle
+
+form:
+  fields:
+    columns:
+      type: select.select
+      label: Columns
+      description: Select the number of platform cards displayed per row.
+      default: 4
+      options:
+        6: 2 Columns
+        4: 3 Columns
+        3: 4 Columns
+

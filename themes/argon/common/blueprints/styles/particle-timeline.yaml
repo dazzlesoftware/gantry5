@@ -1,0 +1,13 @@
+name: Timeline
+description: Shared visual defaults for Timeline particles in this outline
+type: particle
+
+form:
+  fields:
+    alignment: {type: select.select, label: Timeline Layout, default: alternate, options: {alternate: Alternating, left: Content Right, right: Content Left}}
+    linecolor: {type: input.colorpicker, label: Line Color, default: '#dddddd'}
+    markercolor: {type: input.colorpicker, label: Marker Color, default: '#3366ff'}
+    datecolor: {type: input.colorpicker, label: Date Color, default: '#3366ff'}
+    cardbackground: {type: input.colorpicker, label: Card Background, default: '#ffffff'}
+    cardcolor: {type: input.colorpicker, label: Card Text Color, default: '#444444'}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 32}

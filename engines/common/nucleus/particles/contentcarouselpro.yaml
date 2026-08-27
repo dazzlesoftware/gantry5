@@ -7,20 +7,21 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
-    height: {type: input.number, label: Carousel Height, min: 150, default: 520}
-    contentwidth: {type: input.number, label: Content Width Percent, min: 20, max: 100, default: 50}
-    fullwidth: {type: select.select, label: Full Width Content, default: disable, options: {enable: Enable, disable: Disable}}
+    height: {type: input.number, label: Override Carousel Height, min: 150, default: 520}
+    contentwidth: {type: input.number, label: Override Content Width Percent, min: 20, max: 100, default: 50}
+    fullwidth: {type: select.select, label: Override Full Width Content, default: disable, options: {enable: Enable, disable: Disable}}
     autoplay: {type: select.select, label: Autoplay, default: enable, options: {enable: Enable, disable: Disable}}
     pausehover: {type: select.select, label: Pause on Hover, default: enable, options: {enable: Enable, disable: Disable}}
     loop: {type: select.select, label: Loop, default: enable, options: {enable: Enable, disable: Disable}}
     randomize: {type: select.select, label: Randomize, default: disable, options: {enable: Enable, disable: Disable}}
     interval: {type: input.number, label: Interval, min: 1000, default: 5000}
     speed: {type: input.number, label: Transition Speed, min: 0, default: 600}
-    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    arrows: {type: select.select, label: Override Arrows, default: enable, options: {enable: Show, disable: Hide}}
     bullets: {type: select.select, label: Bullets, default: enable, options: {enable: Show, disable: Hide}}
-    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#ffffff'}
-    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: 'rgba(0,0,0,0.45)'}
+    arrowcolor: {type: input.colorpicker, label: Override Arrow Color, default: '#ffffff'}
+    arrowbackground: {type: input.colorpicker, label: Override Arrow Background, default: 'rgba(0,0,0,0.45)'}
     slides:
       type: collection.list
       array: true

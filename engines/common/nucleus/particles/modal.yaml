@@ -7,50 +7,51 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
     trigger: {type: select.select, label: Trigger Type, default: button, options: {button: Button, image: Image, icon: Icon}}
     label: {type: input.text, label: Trigger Label, default: 'Launch Modal'}
-    alignment: {type: select.select, label: Trigger Alignment, default: left, options: {left: Left, center: Center, right: Right}}
-    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: custom, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+    alignment: {type: select.select, label: Override Trigger Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    buttonstyle: {type: select.select, label: Override Bootstrap Button Style, default: custom, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
     buttonappearance: {type: select.select, label: Button Appearance, default: flat, options: {flat: Flat, outline: Outline}}
-    buttonsize: {type: select.select, label: Button Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
-    buttonfullwidth: {type: select.select, label: Full Width Button, default: disable, options: {enable: Enable, disable: Disable}}
-    buttonfont: {type: input.fonts, label: Button Font}
-    buttonfontsize: {type: input.number, label: Button Font Size, min: 1, default: 16}
-    buttonweight: {type: select.select, label: Button Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
-    buttonpadding: {type: input.text, label: Custom Button Padding, default: '8px 22px'}
-    buttonradius: {type: input.number, label: Button Border Radius, min: 0, default: 4}
-    buttoncolor: {type: input.colorpicker, label: Custom Button Text Color, default: '#ffffff'}
-    buttonbackground: {type: input.colorpicker, label: Custom Button Background, default: '#3366ff'}
-    buttonbordercolor: {type: input.colorpicker, label: Custom Button Border Color, default: '#3366ff'}
-    buttonhovercolor: {type: input.colorpicker, label: Custom Button Hover Text Color, default: '#ffffff'}
-    buttonhoverbackground: {type: input.colorpicker, label: Custom Button Hover Background, default: '#0037dd'}
-    buttonhoverbordercolor: {type: input.colorpicker, label: Custom Button Hover Border Color, default: '#0037dd'}
-    buttonicon: {type: input.icon, label: Button Icon}
-    buttoniconposition: {type: select.select, label: Button Icon Position, default: left, options: {left: Left, right: Right}}
-    buttonicongap: {type: input.number, label: Button Icon Gap, min: 0, default: 8}
+    buttonsize: {type: select.select, label: Override Button Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+    buttonfullwidth: {type: select.select, label: Override Full Width Button, default: disable, options: {enable: Enable, disable: Disable}}
+    buttonfont: {type: input.fonts, label: Override Button Font}
+    buttonfontsize: {type: input.number, label: Override Button Font Size, min: 1, default: 16}
+    buttonweight: {type: select.select, label: Override Button Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
+    buttonpadding: {type: input.text, label: Override Custom Button Padding, default: '8px 22px'}
+    buttonradius: {type: input.number, label: Override Button Border Radius, min: 0, default: 4}
+    buttoncolor: {type: input.colorpicker, label: Override Custom Button Text Color, default: '#ffffff'}
+    buttonbackground: {type: input.colorpicker, label: Override Custom Button Background, default: '#3366ff'}
+    buttonbordercolor: {type: input.colorpicker, label: Override Custom Button Border Color, default: '#3366ff'}
+    buttonhovercolor: {type: input.colorpicker, label: Override Custom Button Hover Text Color, default: '#ffffff'}
+    buttonhoverbackground: {type: input.colorpicker, label: Override Custom Button Hover Background, default: '#0037dd'}
+    buttonhoverbordercolor: {type: input.colorpicker, label: Override Custom Button Hover Border Color, default: '#0037dd'}
+    buttonicon: {type: input.icon, label: Override Button Icon}
+    buttoniconposition: {type: select.select, label: Override Button Icon Position, default: left, options: {left: Left, right: Right}}
+    buttonicongap: {type: input.number, label: Override Button Icon Gap, min: 0, default: 8}
     triggerimage: {type: input.imagepicker, label: Trigger Image}
     triggerimagealt: {type: input.text, label: Trigger Image Alternative Text}
-    triggerimagewidth: {type: input.number, label: Trigger Image Width, min: 1, default: 320}
-    triggerimageheight: {type: input.number, label: Trigger Image Height, min: 1, default: 180}
-    triggericon: {type: input.icon, label: Trigger Icon, default: 'fa fa-play'}
-    triggericonsize: {type: input.number, label: Trigger Icon Size, min: 1, default: 32}
-    triggericoncolor: {type: input.colorpicker, label: Trigger Icon Color, default: '#ffffff'}
-    triggericonbackground: {type: input.colorpicker, label: Trigger Icon Background, default: '#3366ff'}
-    triggericonpadding: {type: input.number, label: Trigger Icon Padding, min: 0, default: 20}
-    triggericonradius: {type: input.number, label: Trigger Icon Border Radius, min: 0, default: 50}
-    triggericonborderwidth: {type: input.number, label: Trigger Icon Border Width, min: 0, default: 0}
-    triggericonbordercolor: {type: input.colorpicker, label: Trigger Icon Border Color, default: '#3366ff'}
-    triggertextsize: {type: input.number, label: Image/Icon Label Size, min: 1, default: 16}
-    triggertextcolor: {type: input.colorpicker, label: Image/Icon Label Color, default: '#222222'}
-    triggertextgap: {type: input.number, label: Image/Icon Label Gap, min: 0, default: 10}
+    triggerimagewidth: {type: input.number, label: Override Trigger Image Width, min: 1, default: 320}
+    triggerimageheight: {type: input.number, label: Override Trigger Image Height, min: 1, default: 180}
+    triggericon: {type: input.icon, label: Override Trigger Icon, default: 'fa fa-play'}
+    triggericonsize: {type: input.number, label: Override Trigger Icon Size, min: 1, default: 32}
+    triggericoncolor: {type: input.colorpicker, label: Override Trigger Icon Color, default: '#ffffff'}
+    triggericonbackground: {type: input.colorpicker, label: Override Trigger Icon Background, default: '#3366ff'}
+    triggericonpadding: {type: input.number, label: Override Trigger Icon Padding, min: 0, default: 20}
+    triggericonradius: {type: input.number, label: Override Trigger Icon Border Radius, min: 0, default: 50}
+    triggericonborderwidth: {type: input.number, label: Override Trigger Icon Border Width, min: 0, default: 0}
+    triggericonbordercolor: {type: input.colorpicker, label: Override Trigger Icon Border Color, default: '#3366ff'}
+    triggertextsize: {type: input.number, label: Override Image/Icon Label Size, min: 1, default: 16}
+    triggertextcolor: {type: input.colorpicker, label: Override Image/Icon Label Color, default: '#222222'}
+    triggertextgap: {type: input.number, label: Override Image/Icon Label Gap, min: 0, default: 10}
     ripple: {type: select.select, label: Ripple Effect, default: disable, options: {enable: Enable, disable: Disable}}
 
     modaltitle: {type: input.text, label: Modal Title, description: Shown in the modal header, and used for aria-labelledby., default: 'Modal title'}
     showheader: {type: select.select, label: Show Header, default: enable, options: {enable: Enable, disable: Disable}}
     modaldescription: {type: input.text, label: Modal Description, description: Optional. Sets aria-describedby for screen readers — not shown visually.}
 
-    size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, xl: Extra Large}}
+    size: {type: select.select, label: Override Size, default: default, options: {default: Default, sm: Small, lg: Large, xl: Extra Large}}
     scrollable: {type: select.select, label: Scrollable Body, description: Long content scrolls independently of the page instead of growing the modal., default: disable, options: {enable: Enable, disable: Disable}}
     centered: {type: select.select, label: Vertically Centered, default: disable, options: {enable: Enable, disable: Disable}}
     fullscreen: {type: select.select, label: Fullscreen, description: Cover the entire viewport, optionally only below a given breakpoint., default: disable, options: {disable: Disable, always: Always, sm-down: 'Below Small (≥576px)', md-down: 'Below Medium (≥768px)', lg-down: 'Below Large (≥992px)', xl-down: 'Below X-Large (≥1200px)', xxl-down: 'Below XX-Large (≥1400px)'}}
@@ -66,6 +67,6 @@ form:
     showfooter: {type: select.select, label: Show Footer, default: disable, options: {enable: Enable, disable: Disable}}
     footercontent: {type: textarea.textarea, label: Footer Content, default: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>'}
 
-    background: {type: input.colorpicker, label: Custom Content Background, description: Leave empty to use Bootstrap's default modal styling.}
-    color: {type: input.colorpicker, label: Custom Content Text Color, description: Leave empty to use Bootstrap's default modal styling.}
-    radius: {type: input.number, label: Custom Border Radius, description: Pixels. Leave empty to use Bootstrap's default., min: 0}
+    background: {type: input.colorpicker, label: Override Custom Content Background, description: Leave empty to use Bootstrap's default modal styling.}
+    color: {type: input.colorpicker, label: Override Custom Content Text Color, description: Leave empty to use Bootstrap's default modal styling.}
+    radius: {type: input.number, label: Override Custom Border Radius, description: Pixels. Leave empty to use Bootstrap's default., min: 0}

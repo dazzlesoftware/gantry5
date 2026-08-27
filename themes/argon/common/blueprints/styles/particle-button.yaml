@@ -1,0 +1,24 @@
+name: Button
+description: Shared visual defaults for Button particles in this outline
+type: particle
+
+form:
+  fields:
+    style: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+    size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+    shape: {type: select.select, label: Shape, default: rounded, options: {rounded: Rounded, square: Square, pill: Pill}}
+    fullwidth: {type: select.select, label: Full Width, default: disable, options: {enable: Enable, disable: Disable}}
+    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    font: {type: input.fonts, label: Font}
+    fontsize: {type: input.number, label: Font Size, min: 1, default: 16}
+    weight: {type: select.select, label: Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
+    padding: {type: input.text, label: Custom Padding, default: '8px 22px'}
+    icon: {type: input.icon, label: Icon}
+    iconposition: {type: select.select, label: Icon Position, default: left, options: {left: Left, right: Right}}
+    icongap: {type: input.number, label: Icon Gap, min: 0, default: 8}
+    color: {type: input.colorpicker, label: Custom Text Color, default: '#ffffff'}
+    background: {type: input.colorpicker, label: Custom Background, default: '#3366ff'}
+    bordercolor: {type: input.colorpicker, label: Custom Border Color, default: '#3366ff'}
+    hovercolor: {type: input.colorpicker, label: Hover Text Color, default: '#ffffff'}
+    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#0037dd'}
+    hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#0037dd'}

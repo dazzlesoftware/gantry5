@@ -1,0 +1,8 @@
+name: Button Group
+description: Shared visual defaults for Button Group particles in this outline
+type: particle
+
+form:
+  fields:
+    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    gap: {type: input.number, label: Button Gap, min: 0, default: 10}

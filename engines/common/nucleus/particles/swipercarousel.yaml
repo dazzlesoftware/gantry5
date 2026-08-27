@@ -21,6 +21,7 @@ form:
       label: CSS Classes
       description: CSS class name for the particle.
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -125,7 +126,7 @@ form:
 
     width:
       type: select.select
-      label: Width
+      label: Override Width
       description: Full width spans the particle's container; boxed keeps slide content constrained.
       default: g-swipercarousel-fullwidth
       options:
@@ -134,7 +135,7 @@ form:
 
     footerShadow:
       type: select.select
-      label: Footer Shadow
+      label: Override Footer Shadow
       description: Overlay a gradient shadow at the bottom of each slide image, useful for legibility under overlaid text.
       default: disable
       options:
@@ -143,7 +144,7 @@ form:
 
     footerShadowColor:
       type: input.colorpicker
-      label: Footer Shadow Color
+      label: Override Footer Shadow Color
       description: Color the gradient fades into.
       default: '#ffffff'
 

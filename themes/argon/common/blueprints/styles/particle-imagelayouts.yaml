@@ -1,0 +1,22 @@
+name: Image Layouts
+description: Shared visual defaults for Image Layouts particles in this outline
+type: particle
+
+form:
+  fields:
+    preset: {type: select.select, label: Layout Preset, default: card, options: {inline: Inline, stack: Stack, poster: Poster, card: Card, overlap: Overlap}}
+    imageposition: {type: select.select, label: Image Position, default: left, options: {left: Left, right: Right}}
+    imagecolumns: {type: input.number, label: Image Width, description: Bootstrap columns out of 12 for Inline and Overlap., min: 1, max: 11, default: 6}
+    imageheight: {type: input.number, label: Image Height, min: 1, default: 420}
+    imageradius: {type: input.number, label: Image Border Radius, min: 0, default: 0}
+    heading: {type: select.select, label: Title Element, default: h2, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    alignment: {type: select.select, label: Content Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    contentpadding: {type: input.text, label: Content Padding, default: '2rem'}
+    contentcolor: {type: input.colorpicker, label: Content Color, default: '#222222'}
+    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
+    captionposition: {type: select.select, label: Caption Position, default: bottom, options: {top: Top, bottom: Bottom, overlay: Image Overlay}}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark}}
+    wrapperborder: {type: input.number, label: Wrapper Border Width, min: 0, default: 0}
+    wrapperbordercolor: {type: input.colorpicker, label: Wrapper Border Color, default: '#dddddd'}
+    wrapperradius: {type: input.number, label: Wrapper Border Radius, min: 0, default: 0}
+    shadow: {type: select.select, label: Box Shadow, default: disable, options: {enable: Enable, disable: Disable}}

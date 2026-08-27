@@ -8,6 +8,7 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
     networks:
       type: select.selectize
@@ -33,29 +34,29 @@ form:
         email: Email
         whatsapp: WhatsApp
     shownames: {type: select.select, label: Show Network Names, default: disable, options: {enable: Show, disable: Hide}}
-    style: {type: select.select, label: Style, default: custom, options: {brand: Brand Colors, custom: Custom}}
-    customcolormode: {type: select.select, label: Custom Color Mode, description: Choose one shared button color or individual colors for every network when Style is set to Custom., default: shared, options: {shared: One Color for All, individual: Individual Network Colors}}
-    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
-    iconcolor: {type: input.colorpicker, label: Icon Color, default: '#ffffff'}
-    background: {type: input.colorpicker, label: Background, default: '#3366ff'}
-    hovercolor: {type: input.colorpicker, label: Hover Icon Color, default: '#ffffff'}
-    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#0037dd'}
+    style: {type: select.select, label: Override Style, default: custom, options: {brand: Brand Colors, custom: Custom}}
+    customcolormode: {type: select.select, label: Override Custom Color Mode, description: Choose one shared button color or individual colors for every network when Style is set to Custom., default: shared, options: {shared: One Color for All, individual: Individual Network Colors}}
+    alignment: {type: select.select, label: Override Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    iconcolor: {type: input.colorpicker, label: Override Icon Color, default: '#ffffff'}
+    background: {type: input.colorpicker, label: Override Background, default: '#3366ff'}
+    hovercolor: {type: input.colorpicker, label: Override Hover Icon Color, default: '#ffffff'}
+    hoverbackground: {type: input.colorpicker, label: Override Hover Background, default: '#0037dd'}
     individualcolors_note: {type: separator.note, class: alert alert-info, content: Individual Network Colors — used when Style is Custom and Custom Color Mode is Individual Network Colors.}
-    facebookbackground: {type: input.colorpicker, label: Facebook Background, default: '#1877f2'}
-    facebookhoverbackground: {type: input.colorpicker, label: Facebook Hover Background, default: '#0d65d9'}
-    xbackground: {type: input.colorpicker, label: X / Twitter Background, default: '#111111'}
-    xhoverbackground: {type: input.colorpicker, label: X / Twitter Hover Background, default: '#333333'}
-    linkedinbackground: {type: input.colorpicker, label: LinkedIn Background, default: '#0a66c2'}
-    linkedinhoverbackground: {type: input.colorpicker, label: LinkedIn Hover Background, default: '#084f96'}
-    pinterestbackground: {type: input.colorpicker, label: Pinterest Background, default: '#bd081c'}
-    pinteresthoverbackground: {type: input.colorpicker, label: Pinterest Hover Background, default: '#930616'}
-    redditbackground: {type: input.colorpicker, label: Reddit Background, default: '#ff4500'}
-    reddithoverbackground: {type: input.colorpicker, label: Reddit Hover Background, default: '#d93b00'}
-    emailbackground: {type: input.colorpicker, label: Email Background, default: '#5f6368'}
-    emailhoverbackground: {type: input.colorpicker, label: Email Hover Background, default: '#44474b'}
-    whatsappbackground: {type: input.colorpicker, label: WhatsApp Background, default: '#25d366'}
-    whatsapphoverbackground: {type: input.colorpicker, label: WhatsApp Hover Background, default: '#1da851'}
-    iconsize: {type: input.number, label: Icon Size, min: 1, default: 18}
-    boxsize: {type: input.number, label: Button Size, min: 20, default: 42}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
-    gap: {type: input.number, label: Gap, min: 0, default: 8}
+    facebookbackground: {type: input.colorpicker, label: Override Facebook Background, default: '#1877f2'}
+    facebookhoverbackground: {type: input.colorpicker, label: Override Facebook Hover Background, default: '#0d65d9'}
+    xbackground: {type: input.colorpicker, label: Override X / Twitter Background, default: '#111111'}
+    xhoverbackground: {type: input.colorpicker, label: Override X / Twitter Hover Background, default: '#333333'}
+    linkedinbackground: {type: input.colorpicker, label: Override LinkedIn Background, default: '#0a66c2'}
+    linkedinhoverbackground: {type: input.colorpicker, label: Override LinkedIn Hover Background, default: '#084f96'}
+    pinterestbackground: {type: input.colorpicker, label: Override Pinterest Background, default: '#bd081c'}
+    pinteresthoverbackground: {type: input.colorpicker, label: Override Pinterest Hover Background, default: '#930616'}
+    redditbackground: {type: input.colorpicker, label: Override Reddit Background, default: '#ff4500'}
+    reddithoverbackground: {type: input.colorpicker, label: Override Reddit Hover Background, default: '#d93b00'}
+    emailbackground: {type: input.colorpicker, label: Override Email Background, default: '#5f6368'}
+    emailhoverbackground: {type: input.colorpicker, label: Override Email Hover Background, default: '#44474b'}
+    whatsappbackground: {type: input.colorpicker, label: Override WhatsApp Background, default: '#25d366'}
+    whatsapphoverbackground: {type: input.colorpicker, label: Override WhatsApp Hover Background, default: '#1da851'}
+    iconsize: {type: input.number, label: Override Icon Size, min: 1, default: 18}
+    boxsize: {type: input.number, label: Override Button Size, min: 20, default: 42}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 4}
+    gap: {type: input.number, label: Override Gap, min: 0, default: 8}

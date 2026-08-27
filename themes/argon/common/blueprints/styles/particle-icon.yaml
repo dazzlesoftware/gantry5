@@ -1,0 +1,20 @@
+name: Icon
+description: Shared visual defaults for Icon particles in this outline
+type: particle
+
+form:
+  fields:
+    icon: {type: input.icon, label: Icon, default: 'fa fa-star'}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 48}
+    width: {type: input.number, label: Container Width, min: 1, default: 80}
+    height: {type: input.number, label: Container Height, min: 1, default: 80}
+    color: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}
+    background: {type: input.colorpicker, label: Background Color, default: 'rgba(0,0,0,0)'}
+    borderwidth: {type: input.number, label: Border Width, min: 0, default: 0}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#3366ff'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    hovercolor: {type: input.colorpicker, label: Hover Icon Color, default: '#ffffff'}
+    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#3366ff'}
+    hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#3366ff'}
+    margin: {type: input.text, label: Margin, description: CSS margin value., default: '0'}

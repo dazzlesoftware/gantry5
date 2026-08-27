@@ -1,0 +1,109 @@
+name: Testimonial
+description: Shared visual defaults for Testimonial particles in this outline
+type: particle
+
+form:
+  fields:
+    heading:
+      type: select.select
+      label: Title Element
+      default: h3
+      options:
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+        h5: H5
+        h6: H6
+
+    avatarsize:
+      type: input.number
+      label: Avatar Size
+      description: Avatar width and height in pixels.
+      min: 16
+      max: 400
+      default: 64
+
+    avatarshape:
+      type: select.select
+      label: Avatar Shape
+      default: circle
+      options:
+        circle: Circle
+        rounded: Rounded
+        square: Square
+
+    authorposition:
+      type: select.select
+      label: Author Position
+      default: bottom
+      options:
+        top: Above Testimonial
+        bottom: Below Testimonial
+
+    authorlayout:
+      type: select.select
+      label: Author Layout
+      default: inline
+      options:
+        inline: Inline
+        stacked: Stacked
+
+    alignment:
+      type: select.select
+      label: Alignment
+      default: left
+      options:
+        left: Left
+        center: Center
+        right: Right
+
+    showquote:
+      type: select.select
+      label: Quote Icon
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    quotesize:
+      type: input.number
+      label: Quote Size
+      min: 12
+      max: 200
+      default: 48
+
+    quotecolor:
+      type: input.colorpicker
+      label: Quote Color
+      default: '#edeef2'
+
+    ratingenabled:
+      type: select.select
+      label: Rating
+      default: disable
+      options:
+        enable: Show
+        disable: Hide
+
+    ratingcolor:
+      type: input.colorpicker
+      label: Rated Star Color
+      default: '#f5a623'
+
+    unratedcolor:
+      type: input.colorpicker
+      label: Unrated Star Color
+      default: '#d5d5d5'
+
+    reviewcolor:
+      type: input.colorpicker
+      label: Testimonial Color
+
+    namecolor:
+      type: input.colorpicker
+      label: Name Color
+
+    designationcolor:
+      type: input.colorpicker
+      label: Designation Color

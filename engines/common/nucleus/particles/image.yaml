@@ -8,26 +8,27 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Title}
-    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
-    titleposition: {type: select.select, label: Title Position, default: before, options: {before: Above Image, after: Below Image}}
-    titlecolor: {type: input.colorpicker, label: Title Color}
+    heading: {type: select.select, label: Override Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titleposition: {type: select.select, label: Override Title Position, default: before, options: {before: Above Image, after: Below Image}}
+    titlecolor: {type: input.colorpicker, label: Override Title Color}
     image: {type: input.imagepicker, label: Image}
     image2x: {type: input.imagepicker, label: Retina Image (2x)}
     alt: {type: input.text, label: Alternative Text}
     imagetitle: {type: input.text, label: Image Title}
-    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
-    width: {type: input.number, label: Width, description: Pixel width; leave empty for responsive width., min: 1}
-    height: {type: input.number, label: Height, description: Pixel height; leave empty for natural height., min: 1}
+    alignment: {type: select.select, label: Override Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    width: {type: input.number, label: Override Width, description: Pixel width; leave empty for responsive width., min: 1}
+    height: {type: input.number, label: Override Height, description: Pixel height; leave empty for natural height., min: 1}
     fit: {type: select.select, label: Image Fit, default: cover, options: {cover: Cover, contain: Contain, fill: Fill, none: Natural}}
-    position: {type: select.select, label: Image Position, default: center, options: {center: Center, top: Top, bottom: Bottom, left: Left, right: Right}}
-    shape: {type: select.select, label: Image Shape, default: none, options: {none: None, rounded: Rounded, circle: Circle, bevel: Bevel, star: Star, pentagon: Pentagon, triangle: Triangle, rightarrow: Right Arrow}}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    position: {type: select.select, label: Override Image Position, default: center, options: {center: Center, top: Top, bottom: Bottom, left: Left, right: Right}}
+    shape: {type: select.select, label: Override Image Shape, default: none, options: {none: None, rounded: Rounded, circle: Circle, bevel: Bevel, star: Star, pentagon: Pentagon, triangle: Triangle, rightarrow: Right Arrow}}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 0}
     effect: {type: select.select, label: Image Effect, default: none, options: {none: None, grayscale: Grayscale, sepia: Sepia, blur: Blur}}
     zoom: {type: select.select, label: Zoom on Hover, default: disable, options: {enable: Enable, disable: Disable}}
     zoomscale: {type: input.number, label: Hover Zoom Scale, min: 1, step: 0.05, default: 1.1}
     lightbox: {type: select.select, label: Open in Lightbox, default: disable, options: {enable: Enable, disable: Disable}}
-    overlay: {type: input.colorpicker, label: Hover Overlay Color, default: 'rgba(0,0,0,0.25)'}
+    overlay: {type: input.colorpicker, label: Override Hover Overlay Color, default: 'rgba(0,0,0,0.25)'}
     link: {type: input.text, label: Link, description: Used when lightbox is disabled.}
     target: {type: select.select, label: Link Target, default: _self, options: {_self: Same Window, _blank: New Window}}
     fetchpriority: {type: select.select, label: Fetch Priority, default: auto, options: {auto: Auto, high: High, low: Low}}

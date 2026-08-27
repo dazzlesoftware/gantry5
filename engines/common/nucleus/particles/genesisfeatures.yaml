@@ -22,6 +22,7 @@ form:
       description: CSS class names for the particle.
       default: fp-features
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -29,7 +30,7 @@ form:
 
     columns:
       type: select.select
-      label: Columns
+      label: Override Columns
       description: Select the number of platform cards displayed per row.
       default: 4
       options:

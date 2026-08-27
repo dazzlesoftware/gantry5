@@ -12,46 +12,47 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
     layout:
       type: select.select
-      label: Team Layout
+      label: Override Team Layout
       default: layout1
       options: {layout1: Image with Content Below, layout2: Image Overlay, layout3: Split Image and Content}
-    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
-    overlaycolor: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.65)'}
-    imageheight: {type: input.number, label: Image Height, min: 100, default: 360}
-    gap: {type: input.number, label: Item Gap, min: 0, default: 20}
-    contentpadding: {type: input.number, label: Content Padding, min: 0, default: 24}
+    contentbackground: {type: input.colorpicker, label: Override Content Background, default: '#ffffff'}
+    overlaycolor: {type: input.colorpicker, label: Override Overlay Color, default: 'rgba(0,0,0,0.65)'}
+    imageheight: {type: input.number, label: Override Image Height, min: 100, default: 360}
+    gap: {type: input.number, label: Override Item Gap, min: 0, default: 20}
+    contentpadding: {type: input.number, label: Override Content Padding, min: 0, default: 24}
     carouselborder:
       type: select.select
-      label: Carousel Border
+      label: Override Carousel Border
       default: hide
       options:
         hide: Hide
         show: Show
-    borderwidth: {type: input.number, label: Carousel Border Width, min: 0, default: 1}
-    bordercolor: {type: input.colorpicker, label: Carousel Border Color, default: '#dddddd'}
-    borderradius: {type: input.number, label: Carousel Border Radius, min: 0, default: 0}
+    borderwidth: {type: input.number, label: Override Carousel Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Override Carousel Border Color, default: '#dddddd'}
+    borderradius: {type: input.number, label: Override Carousel Border Radius, min: 0, default: 0}
     alignment:
       type: select.select
-      label: Content Alignment
+      label: Override Content Alignment
       default: center
       options: {left: Left, center: Center, right: Right}
-    namecolor: {type: input.colorpicker, label: Name Color, default: '#222222'}
-    designationcolor: {type: input.colorpicker, label: Designation Color, default: '#777777'}
-    namefont: {type: input.fonts, label: Name Font}
-    designationfont: {type: input.fonts, label: Designation Font}
-    namesize: {type: input.number, label: Name Font Size, min: 1, default: 22}
-    designationsize: {type: input.number, label: Designation Font Size, min: 1, default: 15}
-    socialsize: {type: input.number, label: Social Icon Size, min: 1, default: 16}
-    socialcolor: {type: input.colorpicker, label: Social Icon Color, default: '#555555'}
-    socialhovercolor: {type: input.colorpicker, label: Social Icon Hover Color, default: '#3366ff'}
-    socialwidth: {type: input.number, label: Social Icon Width, min: 1, default: 34}
-    socialheight: {type: input.number, label: Social Icon Height, min: 1, default: 34}
-    socialborderwidth: {type: input.number, label: Social Border Width, min: 0, default: 0}
-    socialbordercolor: {type: input.colorpicker, label: Social Border Color, default: '#dddddd'}
-    socialradius: {type: input.number, label: Social Border Radius, min: 0, default: 50}
+    namecolor: {type: input.colorpicker, label: Override Name Color, default: '#222222'}
+    designationcolor: {type: input.colorpicker, label: Override Designation Color, default: '#777777'}
+    namefont: {type: input.fonts, label: Override Name Font}
+    designationfont: {type: input.fonts, label: Override Designation Font}
+    namesize: {type: input.number, label: Override Name Font Size, min: 1, default: 22}
+    designationsize: {type: input.number, label: Override Designation Font Size, min: 1, default: 15}
+    socialsize: {type: input.number, label: Override Social Icon Size, min: 1, default: 16}
+    socialcolor: {type: input.colorpicker, label: Override Social Icon Color, default: '#555555'}
+    socialhovercolor: {type: input.colorpicker, label: Override Social Icon Hover Color, default: '#3366ff'}
+    socialwidth: {type: input.number, label: Override Social Icon Width, min: 1, default: 34}
+    socialheight: {type: input.number, label: Override Social Icon Height, min: 1, default: 34}
+    socialborderwidth: {type: input.number, label: Override Social Border Width, min: 0, default: 0}
+    socialbordercolor: {type: input.colorpicker, label: Override Social Border Color, default: '#dddddd'}
+    socialradius: {type: input.number, label: Override Social Border Radius, min: 0, default: 50}
     desktopitems: {type: input.number, label: Desktop Items, min: 1, max: 8, default: 3}
     tabletitems: {type: input.number, label: Tablet Items, min: 1, max: 6, default: 2}
     mobileitems: {type: input.number, label: Mobile Items, min: 1, max: 3, default: 1}
@@ -84,27 +85,27 @@ form:
       options: {enable: Enable, disable: Disable}
     arrows:
       type: select.select
-      label: Arrows
+      label: Override Arrows
       default: enable
       options: {enable: Show, disable: Hide}
     arrowstyle:
       type: select.select
-      label: Arrow Style
+      label: Override Arrow Style
       default: angle
       options: {angle: Angle, long: Long Arrow}
-    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#333333'}
-    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: '#ffffff'}
-    arrowsize: {type: input.number, label: Arrow Icon Size, min: 1, default: 22}
-    arrowboxsize: {type: input.number, label: Arrow Box Size, min: 20, default: 44}
-    arrowradius: {type: input.number, label: Arrow Border Radius, min: 0, default: 0}
+    arrowcolor: {type: input.colorpicker, label: Override Arrow Color, default: '#333333'}
+    arrowbackground: {type: input.colorpicker, label: Override Arrow Background, default: '#ffffff'}
+    arrowsize: {type: input.number, label: Override Arrow Icon Size, min: 1, default: 22}
+    arrowboxsize: {type: input.number, label: Override Arrow Box Size, min: 20, default: 44}
+    arrowradius: {type: input.number, label: Override Arrow Border Radius, min: 0, default: 0}
     bullets:
       type: select.select
       label: Bullets
       default: enable
       options: {enable: Show, disable: Hide}
-    bulletcolor: {type: input.colorpicker, label: Bullet Color, default: '#cccccc'}
-    bulletactivecolor: {type: input.colorpicker, label: Active Bullet Color, default: '#3366ff'}
-    bulletsize: {type: input.number, label: Bullet Size, min: 2, default: 10}
+    bulletcolor: {type: input.colorpicker, label: Override Bullet Color, default: '#cccccc'}
+    bulletactivecolor: {type: input.colorpicker, label: Override Active Bullet Color, default: '#3366ff'}
+    bulletsize: {type: input.number, label: Override Bullet Size, min: 2, default: 10}
     members:
       type: collection.list
       array: true

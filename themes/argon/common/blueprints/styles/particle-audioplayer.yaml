@@ -1,0 +1,24 @@
+name: Audio Player
+description: Shared visual defaults for Audio Player particles in this outline
+type: particle
+
+form:
+  fields:
+    scrollbar:
+      type: select.selectize
+      label: Playlist Layout
+      description: Display the complete playlist or constrain it to a scrolling region.
+      placeholder: Select...
+      default: noscrollbar
+      options:
+        scrollbar: With Scrollbar
+        noscrollbar: Without Scrollbar
+
+    overflow:
+      type: input.number
+      label: Overflow Height
+      description: Set the playlist height in pixels when using the scrolling layout.
+      placeholder: 350
+      default: 350
+      min: 1
+

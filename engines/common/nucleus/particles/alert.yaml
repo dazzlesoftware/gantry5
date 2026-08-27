@@ -8,12 +8,13 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
-    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    heading: {type: select.select, label: Override Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
     text: {type: textarea.textarea, label: Alert Content, default: 'This is an alert message.'}
     type: {type: select.select, label: Alert Type, default: info, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, light: Light, dark: Dark}}
     dismissible: {type: select.select, label: Dismissible, default: enable, options: {enable: Enable, disable: Disable}}
-    icon: {type: input.icon, label: Icon}
-    fontsize: {type: input.number, label: Content Font Size, min: 1, default: 16}
-    padding: {type: input.text, label: Padding, default: '16px'}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    icon: {type: input.icon, label: Override Icon}
+    fontsize: {type: input.number, label: Override Content Font Size, min: 1, default: 16}
+    padding: {type: input.text, label: Override Padding, default: '16px'}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 4}

@@ -22,6 +22,7 @@ form:
       label: CSS Classes
       description: CSS class name for the particle.
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -37,7 +38,7 @@ form:
 
     scrollbar:
       type: select.selectize
-      label: Playlist Layout
+      label: Override Playlist Layout
       description: Display the complete playlist or constrain it to a scrolling region.
       placeholder: Select...
       default: noscrollbar
@@ -47,7 +48,7 @@ form:
 
     overflow:
       type: input.number
-      label: Overflow Height
+      label: Override Overflow Height
       description: Set the playlist height in pixels when using the scrolling layout.
       placeholder: 350
       default: 350

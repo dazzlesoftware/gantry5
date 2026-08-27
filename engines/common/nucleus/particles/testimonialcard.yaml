@@ -19,13 +19,14 @@ form:
       type: input.selectize
       label: CSS Classes
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
 
     heading:
       type: select.select
-      label: Title Element
+      label: Override Title Element
       default: h3
       options:
         h1: H1
@@ -72,7 +73,7 @@ form:
 
     avatarsize:
       type: input.number
-      label: Avatar Size
+      label: Override Avatar Size
       description: Avatar width and height in pixels.
       min: 16
       max: 400
@@ -80,7 +81,7 @@ form:
 
     avatarshape:
       type: select.select
-      label: Avatar Shape
+      label: Override Avatar Shape
       default: circle
       options:
         circle: Circle
@@ -89,7 +90,7 @@ form:
 
     authorposition:
       type: select.select
-      label: Author Position
+      label: Override Author Position
       default: bottom
       options:
         top: Above Testimonial
@@ -97,7 +98,7 @@ form:
 
     authorlayout:
       type: select.select
-      label: Author Layout
+      label: Override Author Layout
       default: inline
       options:
         inline: Inline
@@ -105,7 +106,7 @@ form:
 
     alignment:
       type: select.select
-      label: Alignment
+      label: Override Alignment
       default: left
       options:
         left: Left
@@ -114,7 +115,7 @@ form:
 
     showquote:
       type: select.select
-      label: Quote Icon
+      label: Override Quote Icon
       default: enable
       options:
         enable: Show
@@ -122,19 +123,19 @@ form:
 
     quotesize:
       type: input.number
-      label: Quote Size
+      label: Override Quote Size
       min: 12
       max: 200
       default: 48
 
     quotecolor:
       type: input.colorpicker
-      label: Quote Color
+      label: Override Quote Color
       default: '#edeef2'
 
     ratingenabled:
       type: select.select
-      label: Rating
+      label: Override Rating
       default: disable
       options:
         enable: Show
@@ -149,22 +150,22 @@ form:
 
     ratingcolor:
       type: input.colorpicker
-      label: Rated Star Color
+      label: Override Rated Star Color
       default: '#f5a623'
 
     unratedcolor:
       type: input.colorpicker
-      label: Unrated Star Color
+      label: Override Unrated Star Color
       default: '#d5d5d5'
 
     reviewcolor:
       type: input.colorpicker
-      label: Testimonial Color
+      label: Override Testimonial Color
 
     namecolor:
       type: input.colorpicker
-      label: Name Color
+      label: Override Name Color
 
     designationcolor:
       type: input.colorpicker
-      label: Designation Color
+      label: Override Designation Color

@@ -8,27 +8,28 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
-    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
     openfirst: {type: select.select, label: First Item, default: open, options: {open: Open, closed: Closed}}
     multiopen: {type: select.select, label: Keep Multiple Items Open, default: disable, options: {enable: Enable, disable: Disable}}
-    iconposition: {type: select.select, label: Toggle Icon Position, default: right, options: {left: Left, right: Right}}
-    togglicon: {type: input.icon, label: Toggle Icon, default: 'fa fa-chevron-right'}
-    iconrotate: {type: input.number, label: Active Icon Rotation, default: 90}
-    titlefont: {type: input.fonts, label: Item Title Font}
-    titlefontsize: {type: input.number, label: Item Title Size, min: 1, default: 18}
-    titlecolor: {type: input.colorpicker, label: Header Text Color, default: '#222222'}
-    titlebackground: {type: input.colorpicker, label: Header Background, default: '#f5f5f5'}
-    activetitlecolor: {type: input.colorpicker, label: Active Header Text Color, default: '#ffffff'}
-    activebackground: {type: input.colorpicker, label: Active Header Background, default: '#3366ff'}
-    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
-    contentcolor: {type: input.colorpicker, label: Content Color, default: '#555555'}
-    headerpadding: {type: input.text, label: Header Padding, default: '16px 20px'}
-    contentpadding: {type: input.text, label: Content Padding, default: '20px'}
-    itemgap: {type: input.number, label: Item Gap, min: 0, default: 10}
-    borderwidth: {type: input.number, label: Border Width, min: 0, default: 1}
-    bordercolor: {type: input.colorpicker, label: Border Color, default: '#dddddd'}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    iconposition: {type: select.select, label: Override Toggle Icon Position, default: right, options: {left: Left, right: Right}}
+    togglicon: {type: input.icon, label: Override Toggle Icon, default: 'fa fa-chevron-right'}
+    iconrotate: {type: input.number, label: Override Active Icon Rotation, default: 90}
+    heading: {type: select.select, label: Override Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlefont: {type: input.fonts, label: Override Item Title Font}
+    titlefontsize: {type: input.number, label: Override Item Title Size, min: 1, default: 18}
+    titlecolor: {type: input.colorpicker, label: Override Header Text Color, default: '#222222'}
+    titlebackground: {type: input.colorpicker, label: Override Header Background, default: '#f5f5f5'}
+    activetitlecolor: {type: input.colorpicker, label: Override Active Header Text Color, default: '#ffffff'}
+    activebackground: {type: input.colorpicker, label: Override Active Header Background, default: '#3366ff'}
+    contentbackground: {type: input.colorpicker, label: Override Content Background, default: '#ffffff'}
+    contentcolor: {type: input.colorpicker, label: Override Content Color, default: '#555555'}
+    headerpadding: {type: input.text, label: Override Header Padding, default: '16px 20px'}
+    contentpadding: {type: input.text, label: Override Content Padding, default: '20px'}
+    itemgap: {type: input.number, label: Override Item Gap, min: 0, default: 10}
+    borderwidth: {type: input.number, label: Override Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Override Border Color, default: '#dddddd'}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 4}
     items:
       type: collection.list
       array: true

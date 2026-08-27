@@ -10,10 +10,12 @@ bin/tools/unix/assets-build.sh all
 bin/tools/unix/php83-tests.sh
 bin/tools/unix/scss-validate-all.sh
 bin/tools/unix/package-build.sh dev
+bin/tools/unix/phpbb-deploy-builds.sh /var/www/phpbb develop
 ```
 
 The scripts resolve the repository root from their own location and can be
 launched from any working directory. Deployment defaults use `/var/www/grav`,
-`/var/www/joomla`, and `/var/www/wordpress/wp-content`; pass another target as
-the first argument and a build suffix as the second. Joomla deployments can use
-a non-default PHP binary through the `PHP_EXECUTABLE` environment variable.
+`/var/www/joomla`, `/var/www/phpbb`, and `/var/www/wordpress/wp-content`; pass
+another target as the first argument and a build suffix as the second. Joomla
+and phpBB deployments can use a non-default PHP binary through the
+`PHP_EXECUTABLE` environment variable.

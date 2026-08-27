@@ -1,5 +1,46 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}
-<div class="g-accordion {{ particle.class|e }}" data-accordion data-multi="{{ particle.multiopen|default('disable')|e }}" data-title-font="{{ particle.titlefont|default('')|e('html_attr') }}" style="--gacc-title-size:{{ particle.titlefontsize|default(18)|e('html_attr') }}px;--gacc-title-color:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gacc-title-bg:{{ particle.titlebackground|default('#f5f5f5')|e('html_attr') }};--gacc-active-color:{{ particle.activetitlecolor|default('#ffffff')|e('html_attr') }};--gacc-active-bg:{{ particle.activebackground|default('#3366ff')|e('html_attr') }};--gacc-content-bg:{{ particle.contentbackground|default('#ffffff')|e('html_attr') }};--gacc-content-color:{{ particle.contentcolor|default('#555555')|e('html_attr') }};--gacc-header-padding:{{ particle.headerpadding|default('16px 20px')|e('html_attr') }};--gacc-content-padding:{{ particle.contentpadding|default('20px')|e('html_attr') }};--gacc-gap:{{ particle.itemgap|default(10)|e('html_attr') }}px;--gacc-border-width:{{ particle.borderwidth|default(1)|e('html_attr') }}px;--gacc-border-color:{{ particle.bordercolor|default('#dddddd')|e('html_attr') }};--gacc-radius:{{ particle.radius|default(4)|e('html_attr') }}px;--gacc-icon-rotate:{{ particle.iconrotate|default(90)|e('html_attr') }}deg;">
-{% if particle.title %}<{{ particle.heading|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}
-{% set shown = 0 %}{% for item in particle.items|default([]) %}{% if not item.disable %}{% set active = shown == 0 and particle.openfirst|default('open') == 'open' %}<div class="g-accordion-item{% if active %} is-open{% endif %}"><button type="button" class="g-accordion-header g-accordion-icon-{{ particle.iconposition|default('right')|e }}" aria-expanded="{% if active %}true{% else %}false{% endif %}" aria-controls="g-accordion-{{ id }}-{{ shown }}" data-accordion-toggle>{% if particle.iconposition|default('right') == 'left' %}<i class="g-accordion-toggle-icon {{ particle.togglicon|default('fa fa-chevron-right')|e }}" aria-hidden="true"></i>{% endif %}<span class="g-accordion-title">{% if item.visual == 'icon' and item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% elseif item.visual == 'image' and item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.imagealt|default(item.title)|e }}" loading="lazy">{% endif %}<span>{{ item.title|raw }}</span></span>{% if particle.iconposition|default('right') == 'right' %}<i class="g-accordion-toggle-icon {{ particle.togglicon|default('fa fa-chevron-right')|e }}" aria-hidden="true"></i>{% endif %}</button><div id="g-accordion-{{ id }}-{{ shown }}" class="g-accordion-panel"{% if not active %} hidden{% endif %}><div class="g-accordion-content">{{ item.content|raw }}</div></div></div>{% set shown = shown + 1 %}{% endif %}{% endfor %}</div>
-{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-accordion.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% set accordion_heading = particle.heading|default('h3') %}
+    {% set accordion_title_font = particle.titlefont|default('') %}
+    {% set accordion_title_size = particle.titlefontsize|default(18) %}
+    {% set accordion_title_color = particle.titlecolor|default('#222222') %}
+    {% set accordion_title_background = particle.titlebackground|default('#f5f5f5') %}
+    {% set accordion_active_title_color = particle.activetitlecolor|default('#ffffff') %}
+    {% set accordion_active_background = particle.activebackground|default('#3366ff') %}
+    {% set accordion_content_background = particle.contentbackground|default('#ffffff') %}
+    {% set accordion_content_color = particle.contentcolor|default('#555555') %}
+    {% set accordion_header_padding = particle.headerpadding|default('16px 20px') %}
+    {% set accordion_content_padding = particle.contentpadding|default('20px') %}
+    {% set accordion_item_gap = particle.itemgap|default(10) %}
+    {% set accordion_border_width = particle.borderwidth|default(1) %}
+    {% set accordion_border_color = particle.bordercolor|default('#dddddd') %}
+    {% set accordion_border_radius = particle.radius|default(4) %}
+
+    <div class="g-accordion {{ particle.class|e }}" data-accordion data-multi="{{ particle.multiopen|default('disable')|e }}" data-title-font="{{ accordion_title_font|e('html_attr') }}" style="--gacc-title-size:{{ accordion_title_size|e('html_attr') }}px;--gacc-title-color:{{ accordion_title_color|e('html_attr') }};--gacc-title-bg:{{ accordion_title_background|e('html_attr') }};--gacc-active-color:{{ accordion_active_title_color|e('html_attr') }};--gacc-active-bg:{{ accordion_active_background|e('html_attr') }};--gacc-content-bg:{{ accordion_content_background|e('html_attr') }};--gacc-content-color:{{ accordion_content_color|e('html_attr') }};--gacc-header-padding:{{ accordion_header_padding|e('html_attr') }};--gacc-content-padding:{{ accordion_content_padding|e('html_attr') }};--gacc-gap:{{ accordion_item_gap|e('html_attr') }}px;--gacc-border-width:{{ accordion_border_width|e('html_attr') }}px;--gacc-border-color:{{ accordion_border_color|e('html_attr') }};--gacc-radius:{{ accordion_border_radius|e('html_attr') }}px;--gacc-icon-rotate:{{ particle.iconrotate|default(90)|e('html_attr') }}deg;">
+        {% if particle.title %}<{{ accordion_heading|e }} class="g-title">{{ particle.title|raw }}</{{ accordion_heading|e }}>{% endif %}
+        {% set shown = 0 %}
+        {% for item in particle.items|default([]) %}
+            {% if not item.disable %}
+                {% set active = shown == 0 and particle.openfirst|default('open') == 'open' %}
+                <div class="g-accordion-item{% if active %} is-open{% endif %}">
+                    <button type="button" class="g-accordion-header g-accordion-icon-{{ particle.iconposition|default('right')|e }}" aria-expanded="{% if active %}true{% else %}false{% endif %}" aria-controls="g-accordion-{{ id }}-{{ shown }}" data-accordion-toggle>
+                        {% if particle.iconposition|default('right') == 'left' %}<i class="g-accordion-toggle-icon {{ particle.togglicon|default('fa fa-chevron-right')|e }}" aria-hidden="true"></i>{% endif %}
+                        <span class="g-accordion-title">
+                            {% if item.visual == 'icon' and item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% elseif item.visual == 'image' and item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.imagealt|default(item.title)|e }}" loading="lazy">{% endif %}
+                            <span>{{ item.title|raw }}</span>
+                        </span>
+                        {% if particle.iconposition|default('right') == 'right' %}<i class="g-accordion-toggle-icon {{ particle.togglicon|default('fa fa-chevron-right')|e }}" aria-hidden="true"></i>{% endif %}
+                    </button>
+                    <div id="g-accordion-{{ id }}-{{ shown }}" class="g-accordion-panel"{% if not active %} hidden{% endif %}><div class="g-accordion-content">{{ item.content|raw }}</div></div>
+                </div>
+                {% set shown = shown + 1 %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-accordion.js'), 11, 'footer') %}
+{% endblock %}

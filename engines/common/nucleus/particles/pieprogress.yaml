@@ -8,16 +8,17 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
     percentage: {type: input.number, label: Percentage, min: 0, max: 100, default: 75}
     duration: {type: input.number, label: Animation Duration, min: 0, default: 1800}
-    circlesize: {type: input.number, label: Circle Size, min: 40, default: 180}
-    borderwidth: {type: input.number, label: Stroke Width, min: 1, default: 10}
-    trackcolor: {type: input.colorpicker, label: Track Color, default: '#e5e5e5'}
-    activecolor: {type: input.colorpicker, label: Active Color, default: '#3366ff'}
-    percentagecolor: {type: input.colorpicker, label: Percentage Color, default: '#222222'}
-    percentagesize: {type: input.number, label: Percentage Size, min: 1, default: 32}
-    icon: {type: input.icon, label: Center Icon}
-    iconsize: {type: input.number, label: Icon Size, min: 1, default: 28}
+    circlesize: {type: input.number, label: Override Circle Size, min: 40, default: 180}
+    borderwidth: {type: input.number, label: Override Stroke Width, min: 1, default: 10}
+    trackcolor: {type: input.colorpicker, label: Override Track Color, default: '#e5e5e5'}
+    activecolor: {type: input.colorpicker, label: Override Active Color, default: '#3366ff'}
+    percentagecolor: {type: input.colorpicker, label: Override Percentage Color, default: '#222222'}
+    percentagesize: {type: input.number, label: Override Percentage Size, min: 1, default: 32}
+    icon: {type: input.icon, label: Override Center Icon}
+    iconsize: {type: input.number, label: Override Icon Size, min: 1, default: 28}
     text: {type: textarea.textarea, label: Content}
-    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    alignment: {type: select.select, label: Override Alignment, default: center, options: {left: Left, center: Center, right: Right}}

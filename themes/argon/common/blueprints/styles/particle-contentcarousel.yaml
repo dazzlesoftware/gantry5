@@ -1,0 +1,14 @@
+name: Content Carousel
+description: Shared visual defaults for Content Carousel particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Height, min: 100, default: 480}
+    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#ffffff'}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 42}
+    contentcolor: {type: input.colorpicker, label: Content Color, default: '#ffffff'}
+    contentsize: {type: input.number, label: Content Size, min: 1, default: 18}
+    overlay: {type: input.colorpicker, label: Overlay, default: 'rgba(0,0,0,0.45)'}

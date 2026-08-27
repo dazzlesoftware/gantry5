@@ -7,28 +7,29 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
     behavior: {type: select.select, label: Flip Behavior, default: hover, options: {hover: Hover or Focus, click: Click}}
     direction: {type: select.select, label: Flip Direction, default: horizontal, options: {horizontal: Horizontal, vertical: Vertical}}
-    height: {type: input.number, label: Height, min: 100, default: 360}
-    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    height: {type: input.number, label: Override Height, min: 100, default: 360}
+    alignment: {type: select.select, label: Override Alignment, default: center, options: {left: Left, center: Center, right: Right}}
     fronttitle: {type: input.text, label: Front Title, default: 'Front Title'}
     frontcontent: {type: textarea.textarea, label: Front Content, default: 'Front description'}
-    fronticon: {type: input.icon, label: Front Icon, default: 'fa fa-star'}
-    frontimage: {type: input.imagepicker, label: Front Background Image}
-    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
-    frontcolor: {type: input.colorpicker, label: Front Color, default: '#ffffff'}
+    fronticon: {type: input.icon, label: Override Front Icon, default: 'fa fa-star'}
+    frontimage: {type: input.imagepicker, label: Override Front Background Image}
+    frontbackground: {type: input.colorpicker, label: Override Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Override Front Color, default: '#ffffff'}
     frontbutton: {type: input.text, label: Front Button Text}
     frontlink: {type: input.text, label: Front Button Link, default: '#'}
     backtitle: {type: input.text, label: Back Title, default: 'Back Title'}
     backcontent: {type: textarea.textarea, label: Back Content, default: 'Back description'}
-    backicon: {type: input.icon, label: Back Icon}
-    backimage: {type: input.imagepicker, label: Back Background Image}
-    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
-    backcolor: {type: input.colorpicker, label: Back Color, default: '#ffffff'}
+    backicon: {type: input.icon, label: Override Back Icon}
+    backimage: {type: input.imagepicker, label: Override Back Background Image}
+    backbackground: {type: input.colorpicker, label: Override Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Override Back Color, default: '#ffffff'}
     backbutton: {type: input.text, label: Back Button Text, default: 'Learn More'}
     backlink: {type: input.text, label: Back Button Link, default: '#'}
-    iconsize: {type: input.number, label: Icon Size, min: 1, default: 48}
-    titlesize: {type: input.number, label: Title Size, min: 1, default: 28}
-    padding: {type: input.number, label: Padding, min: 0, default: 30}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 6}
+    iconsize: {type: input.number, label: Override Icon Size, min: 1, default: 48}
+    titlesize: {type: input.number, label: Override Title Size, min: 1, default: 28}
+    padding: {type: input.number, label: Override Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 6}

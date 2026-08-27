@@ -1,0 +1,15 @@
+name: Animated Number
+description: Shared visual defaults for Animated Number particles in this outline
+type: particle
+
+form:
+  fields:
+    layout: {type: select.select, label: Layout, default: stacked, options: {stacked: Number Above Title, inline: Number Beside Title}}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    numberfont: {type: input.fonts, label: Number Font}
+    numbersize: {type: input.number, label: Number Size, min: 1, default: 48}
+    numbercolor: {type: input.colorpicker, label: Number Color, default: '#3366ff'}
+    titlefont: {type: input.fonts, label: Title Font}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 18}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#555555'}
+    gap: {type: input.number, label: Number and Title Gap, min: 0, default: 10}

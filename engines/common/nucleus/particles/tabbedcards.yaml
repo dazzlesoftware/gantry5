@@ -21,6 +21,7 @@ form:
       label: CSS Classes
       description: CSS class names for the particle.
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -33,7 +34,7 @@ form:
 
     tab_position:
       type: select.select
-      label: Tab Position
+      label: Override Tab Position
       description: Position the tab navigation above or beside the cards.
       default: top
       options:
@@ -43,7 +44,7 @@ form:
 
     columns:
       type: select.select
-      label: Columns
+      label: Override Columns
       description: Select the maximum number of cards per row.
       default: 3
       options:

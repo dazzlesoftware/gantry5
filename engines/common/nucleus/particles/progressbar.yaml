@@ -8,25 +8,26 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
 
     layout:
       type: select.select
-      label: Layout
+      label: Override Layout
       description: Stacked shows each bar on its own labeled row. Segmented packs every bar into one shared track (Bootstrap's "multiple bars" pattern).
       default: stacked
       options: {stacked: Stacked, segmented: Segmented}
 
-    height: {type: input.number, label: Bar Height, description: Pixels., min: 4, default: 24}
-    shape: {type: select.select, label: Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
-    trackcolor: {type: input.colorpicker, label: Track Background Color, default: '#e9ecef'}
+    height: {type: input.number, label: Override Bar Height, description: Pixels., min: 4, default: 24}
+    shape: {type: select.select, label: Override Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
+    trackcolor: {type: input.colorpicker, label: Override Track Background Color, default: '#e9ecef'}
     showpercentage: {type: select.select, label: Show Percentage, default: enable, options: {enable: Show, disable: Hide}}
     animate: {type: select.select, label: Animate When Visible, description: Fill each bar from 0 to its target when it scrolls into view., default: enable, options: {enable: Enable, disable: Disable}}
     duration: {type: input.number, label: Animation Duration, description: Milliseconds., min: 0, default: 1000}
 
-    labelfont: {type: input.fonts, label: Label Font}
-    labelfontsize: {type: input.number, label: Label Font Size, description: Pixels., min: 1, default: 14}
-    labelcolor: {type: input.colorpicker, label: Label Color, default: '#222222'}
+    labelfont: {type: input.fonts, label: Override Label Font}
+    labelfontsize: {type: input.number, label: Override Label Font Size, description: Pixels., min: 1, default: 14}
+    labelcolor: {type: input.colorpicker, label: Override Label Color, default: '#222222'}
 
     progressbar:
       type: collection.list

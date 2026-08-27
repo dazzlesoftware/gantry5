@@ -8,14 +8,15 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
-    alignment: {type: select.select, label: Timeline Layout, default: alternate, options: {alternate: Alternating, left: Content Right, right: Content Left}}
-    linecolor: {type: input.colorpicker, label: Line Color, default: '#dddddd'}
-    markercolor: {type: input.colorpicker, label: Marker Color, default: '#3366ff'}
-    datecolor: {type: input.colorpicker, label: Date Color, default: '#3366ff'}
-    cardbackground: {type: input.colorpicker, label: Card Background, default: '#ffffff'}
-    cardcolor: {type: input.colorpicker, label: Card Text Color, default: '#444444'}
-    gap: {type: input.number, label: Item Gap, min: 0, default: 32}
+    alignment: {type: select.select, label: Override Timeline Layout, default: alternate, options: {alternate: Alternating, left: Content Right, right: Content Left}}
+    linecolor: {type: input.colorpicker, label: Override Line Color, default: '#dddddd'}
+    markercolor: {type: input.colorpicker, label: Override Marker Color, default: '#3366ff'}
+    datecolor: {type: input.colorpicker, label: Override Date Color, default: '#3366ff'}
+    cardbackground: {type: input.colorpicker, label: Override Card Background, default: '#ffffff'}
+    cardcolor: {type: input.colorpicker, label: Override Card Text Color, default: '#444444'}
+    gap: {type: input.number, label: Override Item Gap, min: 0, default: 32}
     items:
       type: collection.list
       array: true

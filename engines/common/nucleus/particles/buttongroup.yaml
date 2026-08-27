@@ -7,9 +7,10 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
-    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
-    gap: {type: input.number, label: Button Gap, min: 0, default: 10}
+    alignment: {type: select.select, label: Override Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    gap: {type: input.number, label: Override Button Gap, min: 0, default: 10}
     wrap: {type: select.select, label: Wrap Buttons, default: enable, options: {enable: Enable, disable: Disable}}
     buttons:
       type: collection.list

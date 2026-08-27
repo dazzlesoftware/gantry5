@@ -1,0 +1,15 @@
+name: Image Popover
+description: Shared visual defaults for Image Popover particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Minimum Height, min: 100, default: 520}
+    mode: {type: select.select, label: Marker Interaction, default: click, options: {click: Click, hover: Hover}}
+    ripple: {type: select.select, label: Marker Ripple Effect, default: enable, options: {enable: Enable, disable: Disable}}
+    markercolor: {type: input.colorpicker, label: Marker Color, default: '#3366ff'}
+    markertextcolor: {type: input.colorpicker, label: Marker Icon Color, default: '#ffffff'}
+    popoverbackground: {type: input.colorpicker, label: Popover Background, default: '#ffffff'}
+    popovercolor: {type: input.colorpicker, label: Popover Text Color, default: '#333333'}
+    popoverwidth: {type: input.number, label: Popover Width, min: 160, default: 280}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}

@@ -1,0 +1,19 @@
+name: Progress Bar
+description: Shared visual defaults for Progress Bar particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Bar Height, description: Pixels., min: 4, default: 24}
+    shape: {type: select.select, label: Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
+    trackcolor: {type: input.colorpicker, label: Track Background Color, default: '#e9ecef'}
+    labelfont: {type: input.fonts, label: Label Font}
+    labelfontsize: {type: input.number, label: Label Font Size, description: Pixels., min: 1, default: 14}
+    labelcolor: {type: input.colorpicker, label: Label Color, default: '#222222'}
+    layout:
+      type: select.select
+      label: Layout
+      description: Stacked shows each bar on its own labeled row. Segmented packs every bar into one shared track (Bootstrap's "multiple bars" pattern).
+      default: stacked
+      options: {stacked: Stacked, segmented: Segmented}
+

@@ -1,0 +1,27 @@
+name: Tabbed Cards
+description: Shared visual defaults for Tabbed Cards particles in this outline
+type: particle
+
+form:
+  fields:
+    tab_position:
+      type: select.select
+      label: Tab Position
+      description: Position the tab navigation above or beside the cards.
+      default: top
+      options:
+        top: Top
+        left: Left
+        right: Right
+
+    columns:
+      type: select.select
+      label: Columns
+      description: Select the maximum number of cards per row.
+      default: 3
+      options:
+        1: 1 Column
+        2: 2 Columns
+        3: 3 Columns
+        4: 4 Columns
+

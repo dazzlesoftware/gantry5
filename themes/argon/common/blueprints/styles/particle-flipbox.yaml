@@ -1,0 +1,16 @@
+name: Flip Box
+description: Shared visual defaults for Flip Box particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Height, min: 100, default: 320}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Front Text Color, default: '#ffffff'}
+    frontimage: {type: input.imagepicker, label: Front Background Image}
+    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Back Text Color, default: '#ffffff'}
+    backimage: {type: input.imagepicker, label: Back Background Image}
+    padding: {type: input.number, label: Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}

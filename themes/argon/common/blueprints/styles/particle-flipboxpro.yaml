@@ -1,0 +1,20 @@
+name: Flip Box Pro
+description: Shared visual defaults for Flip Box Pro particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Height, min: 100, default: 360}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    fronticon: {type: input.icon, label: Front Icon, default: 'fa fa-star'}
+    frontimage: {type: input.imagepicker, label: Front Background Image}
+    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Front Color, default: '#ffffff'}
+    backicon: {type: input.icon, label: Back Icon}
+    backimage: {type: input.imagepicker, label: Back Background Image}
+    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Back Color, default: '#ffffff'}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 48}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 28}
+    padding: {type: input.number, label: Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 6}

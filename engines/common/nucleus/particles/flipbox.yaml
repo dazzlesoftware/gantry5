@@ -7,18 +7,19 @@ configuration: {caching: {type: static}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class: {type: input.selectize, label: CSS Classes}
     behavior: {type: select.select, label: Flip Behavior, default: hover, options: {hover: Hover or Focus, click: Click}}
     direction: {type: select.select, label: Flip Direction, default: horizontal, options: {horizontal: Horizontal, vertical: Vertical}}
-    height: {type: input.number, label: Height, min: 100, default: 320}
-    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    height: {type: input.number, label: Override Height, min: 100, default: 320}
+    alignment: {type: select.select, label: Override Alignment, default: center, options: {left: Left, center: Center, right: Right}}
     fronttext: {type: textarea.textarea, label: Front Content, default: '<h3>Front side</h3><p>Add content here.</p>'}
-    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
-    frontcolor: {type: input.colorpicker, label: Front Text Color, default: '#ffffff'}
-    frontimage: {type: input.imagepicker, label: Front Background Image}
+    frontbackground: {type: input.colorpicker, label: Override Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Override Front Text Color, default: '#ffffff'}
+    frontimage: {type: input.imagepicker, label: Override Front Background Image}
     backtext: {type: textarea.textarea, label: Back Content, default: '<h3>Back side</h3><p>Add content here.</p>'}
-    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
-    backcolor: {type: input.colorpicker, label: Back Text Color, default: '#ffffff'}
-    backimage: {type: input.imagepicker, label: Back Background Image}
-    padding: {type: input.number, label: Padding, min: 0, default: 30}
-    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    backbackground: {type: input.colorpicker, label: Override Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Override Back Text Color, default: '#ffffff'}
+    backimage: {type: input.imagepicker, label: Override Back Background Image}
+    padding: {type: input.number, label: Override Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Override Border Radius, min: 0, default: 4}

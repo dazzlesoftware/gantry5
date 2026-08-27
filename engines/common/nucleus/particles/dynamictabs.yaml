@@ -8,17 +8,18 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Particle Title}
-    navposition: {type: select.select, label: Navigation Position, default: top, options: {top: Top, bottom: Bottom, left: Left, right: Right}}
-    alignment: {type: select.select, label: Navigation Alignment, default: left, options: {left: Left, center: Center, right: Right, justified: Justified}}
-    style: {type: select.select, label: Bootstrap Tab Style, default: tabs, options: {tabs: Tabs, pills: Pills, underline: Underline}}
-    navwidth: {type: input.number, label: Side Navigation Width, description: 'Percentage when navigation is left or right.', min: 10, max: 60, default: 25}
-    gap: {type: input.number, label: Navigation Gap, min: 0, default: 8}
-    navcolor: {type: input.colorpicker, label: Navigation Text Color, default: '#333333'}
-    activecolor: {type: input.colorpicker, label: Active Text Color, default: '#ffffff'}
-    activebackground: {type: input.colorpicker, label: Active Background, default: '#3366ff'}
-    contentbackground: {type: input.colorpicker, label: Content Background, default: 'rgba(0,0,0,0)'}
-    contentpadding: {type: input.text, label: Content Padding, default: '1.5rem'}
+    navposition: {type: select.select, label: Override Navigation Position, default: top, options: {top: Top, bottom: Bottom, left: Left, right: Right}}
+    alignment: {type: select.select, label: Override Navigation Alignment, default: left, options: {left: Left, center: Center, right: Right, justified: Justified}}
+    style: {type: select.select, label: Override Bootstrap Tab Style, default: tabs, options: {tabs: Tabs, pills: Pills, underline: Underline}}
+    navwidth: {type: input.number, label: Override Side Navigation Width, description: 'Percentage when navigation is left or right.', min: 10, max: 60, default: 25}
+    gap: {type: input.number, label: Override Navigation Gap, min: 0, default: 8}
+    navcolor: {type: input.colorpicker, label: Override Navigation Text Color, default: '#333333'}
+    activecolor: {type: input.colorpicker, label: Override Active Text Color, default: '#ffffff'}
+    activebackground: {type: input.colorpicker, label: Override Active Background, default: '#3366ff'}
+    contentbackground: {type: input.colorpicker, label: Override Content Background, default: 'rgba(0,0,0,0)'}
+    contentpadding: {type: input.text, label: Override Content Padding, default: '1.5rem'}
     transition: {type: select.select, label: Content Transition, default: fade, options: {none: None, fade: Fade, slide: Slide}}
     items:
       type: collection.list

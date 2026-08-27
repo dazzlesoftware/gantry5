@@ -1,0 +1,11 @@
+name: OpenStreetMap
+description: Shared visual defaults for OpenStreetMap particles in this outline
+type: particle
+
+form:
+  fields:
+    height: {type: input.number, label: Desktop Height, min: 100, default: 400}
+    tabletheight: {type: input.number, label: Tablet Height, min: 100, default: 350}
+    mobileheight: {type: input.number, label: Mobile Height, min: 100, default: 300}
+    style: {type: select.select, label: Map Style, default: standard, options: {standard: Standard, humanitarian: Humanitarian, topographic: Topographic}}
+    markercolor: {type: input.colorpicker, label: Default Marker Color, default: '#e91e63'}

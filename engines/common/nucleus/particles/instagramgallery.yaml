@@ -8,9 +8,10 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Title, default: Instagram Gallery}
-    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
-    titlealignment: {type: select.select, label: Title Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    heading: {type: select.select, label: Override Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlealignment: {type: select.select, label: Override Title Alignment, default: center, options: {left: Left, center: Center, right: Right}}
     source: {type: select.select, label: Media Source, default: instagram, options: {instagram: Instagram Feed, manual: Manual Gallery}}
     feedhelp: {type: separator.note, class: alert alert-info, content: 'Instagram requires a Meta access token and an authenticated professional Instagram account. The target username must be a Business or Creator account.'}
     profile: {type: input.text, label: Target Instagram Username, description: 'Enter the username without @.'}
@@ -22,15 +23,15 @@ form:
     manualfallback: {type: select.select, label: Use Manual Items if Feed Fails, default: disable, options: {enable: Enable, disable: Disable}}
     showfeederror: {type: select.select, label: Show Feed Error, default: enable, options: {enable: Show, disable: Hide}}
     profilelink: {type: input.text, label: Custom Profile Link, description: 'Optional. The Instagram profile URL is generated automatically when empty.'}
-    layout: {type: select.select, label: Layout, default: grid, options: {grid: Grid, masonry: Masonry}}
-    columns: {type: input.number, label: Desktop Columns, min: 1, max: 8, default: 4}
-    tabletcolumns: {type: input.number, label: Tablet Columns, min: 1, max: 6, default: 3}
-    mobilecolumns: {type: input.number, label: Mobile Columns, min: 1, max: 4, default: 2}
-    gap: {type: input.number, label: Gap, min: 0, default: 10}
+    layout: {type: select.select, label: Override Layout, default: grid, options: {grid: Grid, masonry: Masonry}}
+    columns: {type: input.number, label: Override Desktop Columns, min: 1, max: 8, default: 4}
+    tabletcolumns: {type: input.number, label: Override Tablet Columns, min: 1, max: 6, default: 3}
+    mobilecolumns: {type: input.number, label: Override Mobile Columns, min: 1, max: 4, default: 2}
+    gap: {type: input.number, label: Override Gap, min: 0, default: 10}
     ratio: {type: select.select, label: Grid Image Ratio, default: square, options: {square: Square, portrait: Portrait, landscape: Landscape, natural: Natural}}
     showstats: {type: select.select, label: Show Likes and Comments, default: enable, options: {enable: Show, disable: Hide}}
     lightbox: {type: select.select, label: Open Media in Lightbox, default: enable, options: {enable: Enable, disable: Disable}}
-    overlay: {type: input.colorpicker, label: Hover Overlay, default: 'rgba(0,0,0,0.55)'}
+    overlay: {type: input.colorpicker, label: Override Hover Overlay, default: 'rgba(0,0,0,0.55)'}
     items:
       type: collection.list
       array: true

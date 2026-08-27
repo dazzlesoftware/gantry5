@@ -12,10 +12,11 @@ form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title: {type: input.text, label: Title, default: Feature Title}
     heading:
       type: select.select
-      label: Title Element
+      label: Override Title Element
       default: h3
       options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}
     text:
@@ -29,80 +30,80 @@ form:
       options: {icon: Icon, image: Image, both: Image and Icon, none: None}
     position:
       type: select.select
-      label: Media Position
+      label: Override Media Position
       default: top
       options: {top: Above Content, bottom: Below Content, left: Left, right: Right}
     mediaalignment:
       type: select.select
-      label: Icon / Image Alignment
+      label: Override Icon / Image Alignment
       description: Align the feature icon or image independently from the text when placed above or below the content.
       default: inherit
       options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
-    icon: {type: input.icon, label: Feature Icon, default: fa fa-star}
-    iconsize: {type: input.number, label: Icon Size, min: 1, default: 36}
-    iconcolor: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}
-    iconhovercolor: {type: input.colorpicker, label: Icon Hover Color}
-    iconbackground: {type: input.colorpicker, label: Icon Background}
-    iconhoverbackground: {type: input.colorpicker, label: Icon Hover Background}
-    iconpadding: {type: input.number, label: Icon Padding, min: 0, default: 0}
-    iconborderwidth: {type: input.number, label: Icon Border Width, min: 0, default: 0}
-    iconbordercolor: {type: input.colorpicker, label: Icon Border Color}
-    iconradius: {type: input.number, label: Icon Border Radius, min: 0, default: 0}
+    icon: {type: input.icon, label: Override Feature Icon, default: fa fa-star}
+    iconsize: {type: input.number, label: Override Icon Size, min: 1, default: 36}
+    iconcolor: {type: input.colorpicker, label: Override Icon Color, default: '#3366ff'}
+    iconhovercolor: {type: input.colorpicker, label: Override Icon Hover Color}
+    iconbackground: {type: input.colorpicker, label: Override Icon Background}
+    iconhoverbackground: {type: input.colorpicker, label: Override Icon Hover Background}
+    iconpadding: {type: input.number, label: Override Icon Padding, min: 0, default: 0}
+    iconborderwidth: {type: input.number, label: Override Icon Border Width, min: 0, default: 0}
+    iconbordercolor: {type: input.colorpicker, label: Override Icon Border Color}
+    iconradius: {type: input.number, label: Override Icon Border Radius, min: 0, default: 0}
     image: {type: input.imagepicker, label: Feature Image}
     imagealt: {type: input.text, label: Image Alternative Text}
-    imagewidth: {type: input.number, label: Image Width, description: Width in pixels; leave empty for responsive width., min: 1}
-    imageradius: {type: input.number, label: Image Border Radius, min: 0, default: 0}
+    imagewidth: {type: input.number, label: Override Image Width, description: Width in pixels; leave empty for responsive width., min: 1}
+    imageradius: {type: input.number, label: Override Image Border Radius, min: 0, default: 0}
     imagezoom:
       type: select.select
       label: Zoom Image on Hover
       default: disable
       options: {enable: Enable, disable: Disable}
     zoomscale: {type: input.number, label: Image Zoom Scale, min: 1, step: 0.1, default: 1.2}
-    mediagap: {type: input.number, label: Media Gap, min: 0, default: 20}
+    mediagap: {type: input.number, label: Override Media Gap, min: 0, default: 20}
     alignment:
       type: select.select
-      label: Content Alignment
+      label: Override Content Alignment
       default: left
       options: {left: Left, center: Center, right: Right}
     titlealignment:
       type: select.select
-      label: Feature Title Alignment
+      label: Override Feature Title Alignment
       default: inherit
       options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
     textalignment:
       type: select.select
-      label: Feature Content Alignment
+      label: Override Feature Content Alignment
       default: inherit
       options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
     buttonalignment:
       type: select.select
-      label: Button Alignment
+      label: Override Button Alignment
       default: inherit
       options: {inherit: Follow Content Alignment, left: Left, center: Center, right: Right}
-    background: {type: input.colorpicker, label: Background Color}
-    hoverbackground: {type: input.colorpicker, label: Hover Background Color}
+    background: {type: input.colorpicker, label: Override Background Color}
+    hoverbackground: {type: input.colorpicker, label: Override Hover Background Color}
     boxborder:
       type: select.select
-      label: Feature Box Border
+      label: Override Feature Box Border
       default: hide
       options: {hide: Hide, show: Show}
-    borderwidth: {type: input.number, label: Box Border Width, min: 0, default: 1}
-    bordercolor: {type: input.colorpicker, label: Box Border Color, default: '#dddddd'}
-    boxradius: {type: input.number, label: Box Border Radius, min: 0, default: 0}
+    borderwidth: {type: input.number, label: Override Box Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Override Box Border Color, default: '#dddddd'}
+    boxradius: {type: input.number, label: Override Box Border Radius, min: 0, default: 0}
     boxshadow:
       type: input.text
-      label: Box Shadow
+      label: Override Box Shadow
       description: CSS box-shadow value. Leave empty for no shadow.
-    padding: {type: input.text, label: Content Padding, description: CSS spacing such as 30px or 20px 30px.}
-    titlecolor: {type: input.colorpicker, label: Title Color}
-    titlehovercolor: {type: input.colorpicker, label: Title Hover Color}
-    textcolor: {type: input.colorpicker, label: Text Color}
-    texthovercolor: {type: input.colorpicker, label: Text Hover Color}
-    titlefont: {type: input.fonts, label: Title Font}
-    textfont: {type: input.fonts, label: Content Font}
-    titlefontsize: {type: input.number, label: Title Font Size, min: 1}
-    textfontsize: {type: input.number, label: Content Font Size, min: 1}
-    titlemargin: {type: input.number, label: Title Bottom Margin, min: 0, default: 12}
+    padding: {type: input.text, label: Override Content Padding, description: CSS spacing such as 30px or 20px 30px.}
+    titlecolor: {type: input.colorpicker, label: Override Title Color}
+    titlehovercolor: {type: input.colorpicker, label: Override Title Hover Color}
+    textcolor: {type: input.colorpicker, label: Override Text Color}
+    texthovercolor: {type: input.colorpicker, label: Override Text Hover Color}
+    titlefont: {type: input.fonts, label: Override Title Font}
+    textfont: {type: input.fonts, label: Override Content Font}
+    titlefontsize: {type: input.number, label: Override Title Font Size, min: 1}
+    textfontsize: {type: input.number, label: Override Content Font Size, min: 1}
+    titlemargin: {type: input.number, label: Override Title Bottom Margin, min: 0, default: 12}
     link: {type: input.text, label: Feature Link}
     linktarget:
       type: select.select
@@ -116,22 +117,22 @@ form:
       options: {title: Title, media: Media, both: Title and Media}
     button1: {type: input.text, label: Primary Button Text}
     button1link: {type: input.text, label: Primary Button Link}
-    button1icon: {type: input.icon, label: Primary Button Icon}
-    button1font: {type: input.fonts, label: Primary Button Text Font}
-    button1fontsize: {type: input.number, label: Primary Button Text Size, min: 1}
+    button1icon: {type: input.icon, label: Override Primary Button Icon}
+    button1font: {type: input.fonts, label: Override Primary Button Text Font}
+    button1fontsize: {type: input.number, label: Override Primary Button Text Size, min: 1}
     button1fontweight:
       type: select.select
-      label: Primary Button Text Weight
+      label: Override Primary Button Text Weight
       default: inherit
       options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
     button1iconposition:
       type: select.select
-      label: Primary Icon Position
+      label: Override Primary Icon Position
       default: left
       options: {left: Left, right: Right}
     button1style:
       type: select.select
-      label: Primary Button Style
+      label: Override Primary Button Style
       default: primary
       options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, outline-primary: Outline Primary, link: Link, custom: Custom}
     button1appearance:
@@ -141,23 +142,23 @@ form:
       options: {flat: Flat, outline: Outline}
     button1shape:
       type: select.select
-      label: Primary Button Shape
+      label: Override Primary Button Shape
       default: rounded
       options: {rounded: Rounded, square: Square, pill: Pill}
     button1fullwidth:
       type: select.select
-      label: Primary Button Full Width
+      label: Override Primary Button Full Width
       default: disable
       options: {enable: Yes, disable: No}
-    button1color: {type: input.colorpicker, label: Primary Custom Text Color, default: '#ffffff'}
-    button1background: {type: input.colorpicker, label: Primary Custom Background, default: '#e91e63'}
-    button1border: {type: input.colorpicker, label: Primary Custom Border, default: '#e91e63'}
-    button1hovercolor: {type: input.colorpicker, label: Primary Custom Hover Text, default: '#ffffff'}
-    button1hoverbackground: {type: input.colorpicker, label: Primary Custom Hover Background, default: '#c2185b'}
-    button1hoverborder: {type: input.colorpicker, label: Primary Custom Hover Border, default: '#c2185b'}
+    button1color: {type: input.colorpicker, label: Override Primary Custom Text Color, default: '#ffffff'}
+    button1background: {type: input.colorpicker, label: Override Primary Custom Background, default: '#e91e63'}
+    button1border: {type: input.colorpicker, label: Override Primary Custom Border, default: '#e91e63'}
+    button1hovercolor: {type: input.colorpicker, label: Override Primary Custom Hover Text, default: '#ffffff'}
+    button1hoverbackground: {type: input.colorpicker, label: Override Primary Custom Hover Background, default: '#c2185b'}
+    button1hoverborder: {type: input.colorpicker, label: Override Primary Custom Hover Border, default: '#c2185b'}
     button1size:
       type: select.select
-      label: Primary Button Size
+      label: Override Primary Button Size
       default: normal
       options: {normal: Normal, sm: Small, lg: Large}
     button1target:
@@ -167,22 +168,22 @@ form:
       options: {_self: Current Window, _blank: New Window}
     button2: {type: input.text, label: Secondary Button Text}
     button2link: {type: input.text, label: Secondary Button Link}
-    button2icon: {type: input.icon, label: Secondary Button Icon}
-    button2font: {type: input.fonts, label: Secondary Button Text Font}
-    button2fontsize: {type: input.number, label: Secondary Button Text Size, min: 1}
+    button2icon: {type: input.icon, label: Override Secondary Button Icon}
+    button2font: {type: input.fonts, label: Override Secondary Button Text Font}
+    button2fontsize: {type: input.number, label: Override Secondary Button Text Size, min: 1}
     button2fontweight:
       type: select.select
-      label: Secondary Button Text Weight
+      label: Override Secondary Button Text Weight
       default: inherit
       options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
     button2iconposition:
       type: select.select
-      label: Secondary Icon Position
+      label: Override Secondary Icon Position
       default: left
       options: {left: Left, right: Right}
     button2style:
       type: select.select
-      label: Secondary Button Style
+      label: Override Secondary Button Style
       default: outline-primary
       options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, outline-primary: Outline Primary, link: Link, custom: Custom}
     button2appearance:
@@ -192,23 +193,23 @@ form:
       options: {flat: Flat, outline: Outline}
     button2shape:
       type: select.select
-      label: Secondary Button Shape
+      label: Override Secondary Button Shape
       default: rounded
       options: {rounded: Rounded, square: Square, pill: Pill}
     button2fullwidth:
       type: select.select
-      label: Secondary Button Full Width
+      label: Override Secondary Button Full Width
       default: disable
       options: {enable: Yes, disable: No}
-    button2color: {type: input.colorpicker, label: Secondary Custom Text Color, default: '#e91e63'}
-    button2background: {type: input.colorpicker, label: Secondary Custom Background, default: '#ffffff'}
-    button2border: {type: input.colorpicker, label: Secondary Custom Border, default: '#e91e63'}
-    button2hovercolor: {type: input.colorpicker, label: Secondary Custom Hover Text, default: '#ffffff'}
-    button2hoverbackground: {type: input.colorpicker, label: Secondary Custom Hover Background, default: '#e91e63'}
-    button2hoverborder: {type: input.colorpicker, label: Secondary Custom Hover Border, default: '#e91e63'}
+    button2color: {type: input.colorpicker, label: Override Secondary Custom Text Color, default: '#e91e63'}
+    button2background: {type: input.colorpicker, label: Override Secondary Custom Background, default: '#ffffff'}
+    button2border: {type: input.colorpicker, label: Override Secondary Custom Border, default: '#e91e63'}
+    button2hovercolor: {type: input.colorpicker, label: Override Secondary Custom Hover Text, default: '#ffffff'}
+    button2hoverbackground: {type: input.colorpicker, label: Override Secondary Custom Hover Background, default: '#e91e63'}
+    button2hoverborder: {type: input.colorpicker, label: Override Secondary Custom Hover Border, default: '#e91e63'}
     button2size:
       type: select.select
-      label: Secondary Button Size
+      label: Override Secondary Button Size
       default: normal
       options: {normal: Normal, sm: Small, lg: Large}
     button2target:
@@ -216,5 +217,5 @@ form:
       label: Secondary Button Target
       default: _self
       options: {_self: Current Window, _blank: New Window}
-    buttongap: {type: input.number, label: Button Gap, min: 0, default: 10}
-    buttonmargin: {type: input.number, label: Buttons Top Margin, min: 0, default: 25}
+    buttongap: {type: input.number, label: Override Button Gap, min: 0, default: 10}
+    buttonmargin: {type: input.number, label: Override Buttons Top Margin, min: 0, default: 25}

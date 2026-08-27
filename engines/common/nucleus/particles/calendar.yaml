@@ -21,6 +21,7 @@ form:
       label: CSS Classes
       description: CSS class name for the particle.
 
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     title:
       type: input.text
       label: Title
@@ -35,72 +36,72 @@ form:
 
     titlefontsize:
       type: input.number
-      label: Title Font Size
+      label: Override Title Font Size
       description: Pixels; size of the month/year title. Leave empty to inherit the theme's responsive default.
       min: 1
 
     numbersfontsize:
       type: input.number
-      label: Day Numbers Font Size
+      label: Override Day Numbers Font Size
       description: Pixels; size of the day numbers in the grid. Leave empty to inherit the theme's responsive default.
       min: 1
 
     iconprev:
       type: input.icon
-      label: Previous Arrow Icon
+      label: Override Previous Arrow Icon
       default: 'fa fa-arrow-circle-left'
 
     iconnext:
       type: input.icon
-      label: Next Arrow Icon
+      label: Override Next Arrow Icon
       default: 'fa fa-arrow-circle-right'
 
     iconsize:
       type: input.number
-      label: Arrow Icon Size
+      label: Override Arrow Icon Size
       description: Pixels. Leave empty to inherit the theme's responsive default.
       min: 1
 
     iconcolor:
       type: input.colorpicker
-      label: Arrow Icon Color
+      label: Override Arrow Icon Color
       description: Leave empty to inherit the theme's color.
 
     closeicon:
       type: input.icon
-      label: Close Event Icon
+      label: Override Close Event Icon
       default: 'fa fa-close'
 
     closeiconsize:
       type: input.number
-      label: Close Icon Size
+      label: Override Close Icon Size
       description: Pixels. Leave empty to inherit the theme's responsive default.
       min: 1
 
     closeiconcolor:
       type: input.colorpicker
-      label: Close Icon Color
+      label: Override Close Icon Color
       description: Leave empty to inherit the theme's color.
 
     closebuttoncolor:
       type: input.colorpicker
-      label: Close Button Color
+      label: Override Close Button Color
       description: Background of the close button. Leave empty to inherit the theme's color.
 
     closebuttonhovercolor:
       type: input.colorpicker
-      label: Close Button Hover Color
+      label: Override Close Button Hover Color
       description: Background of the close button on hover. Leave empty to inherit the theme's color.
 
     eventtitlefontsize:
       type: input.number
-      label: Event Title Font Size
+      label: Override Event Title Font Size
       description: Pixels; size of each event's title in the events list. Leave empty to inherit the theme's responsive default.
       min: 1
 
     eventdescfontsize:
       type: input.number
-      label: Event Description Font Size
+      label: Override Event Description Font Size
       description: Pixels; size of each event's description in the events list. Leave empty to inherit the theme's responsive default.
       min: 1
 

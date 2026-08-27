@@ -1,0 +1,20 @@
+name: Image Content
+description: Shared visual defaults for Image Content particles in this outline
+type: particle
+
+form:
+  fields:
+    imageposition: {type: select.select, label: Image Position, default: left, options: {left: Left, right: Right}}
+    imagecolumns: {type: input.number, label: Image Columns, description: Bootstrap columns out of 12., min: 1, max: 11, default: 6}
+    imageheight: {type: input.number, label: Minimum Image Height, min: 0, default: 360}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    heading: {type: select.select, label: Title Element, default: h2, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlecolor: {type: input.colorpicker, label: Title Color}
+    textcolor: {type: input.colorpicker, label: Content Color}
+    alignment: {type: select.select, label: Content Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    padding: {type: input.text, label: Content Padding, description: CSS padding value., default: '2rem'}
+    background: {type: input.colorpicker, label: Background Color, default: 'rgba(0,0,0,0)'}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, link: Link}}
+    buttonsize: {type: select.select, label: Button Size, default: default, options: {small: Small, default: Default, large: Large}}
+    buttonicon: {type: input.icon, label: Button Icon}
+    buttoniconposition: {type: select.select, label: Button Icon Position, default: left, options: {left: Left, right: Right}}

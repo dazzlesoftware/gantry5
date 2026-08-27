@@ -1,0 +1,41 @@
+name: Modal Popup
+description: Shared visual defaults for Modal Popup particles in this outline
+type: particle
+
+form:
+  fields:
+    alignment: {type: select.select, label: Trigger Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: custom, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+    buttonsize: {type: select.select, label: Button Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+    buttonfullwidth: {type: select.select, label: Full Width Button, default: disable, options: {enable: Enable, disable: Disable}}
+    buttonfont: {type: input.fonts, label: Button Font}
+    buttonfontsize: {type: input.number, label: Button Font Size, min: 1, default: 16}
+    buttonweight: {type: select.select, label: Button Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
+    buttonpadding: {type: input.text, label: Custom Button Padding, default: '8px 22px'}
+    buttonradius: {type: input.number, label: Button Border Radius, min: 0, default: 4}
+    buttoncolor: {type: input.colorpicker, label: Custom Button Text Color, default: '#ffffff'}
+    buttonbackground: {type: input.colorpicker, label: Custom Button Background, default: '#3366ff'}
+    buttonbordercolor: {type: input.colorpicker, label: Custom Button Border Color, default: '#3366ff'}
+    buttonhovercolor: {type: input.colorpicker, label: Custom Button Hover Text Color, default: '#ffffff'}
+    buttonhoverbackground: {type: input.colorpicker, label: Custom Button Hover Background, default: '#0037dd'}
+    buttonhoverbordercolor: {type: input.colorpicker, label: Custom Button Hover Border Color, default: '#0037dd'}
+    buttonicon: {type: input.icon, label: Button Icon}
+    buttoniconposition: {type: select.select, label: Button Icon Position, default: left, options: {left: Left, right: Right}}
+    buttonicongap: {type: input.number, label: Button Icon Gap, min: 0, default: 8}
+    triggerimagewidth: {type: input.number, label: Trigger Image Width, min: 1, default: 320}
+    triggerimageheight: {type: input.number, label: Trigger Image Height, min: 1, default: 180}
+    triggericon: {type: input.icon, label: Trigger Icon, default: 'fa fa-play'}
+    triggericonsize: {type: input.number, label: Trigger Icon Size, min: 1, default: 32}
+    triggericoncolor: {type: input.colorpicker, label: Trigger Icon Color, default: '#ffffff'}
+    triggericonbackground: {type: input.colorpicker, label: Trigger Icon Background, default: '#3366ff'}
+    triggericonpadding: {type: input.number, label: Trigger Icon Padding, min: 0, default: 20}
+    triggericonradius: {type: input.number, label: Trigger Icon Border Radius, min: 0, default: 50}
+    triggericonborderwidth: {type: input.number, label: Trigger Icon Border Width, min: 0, default: 0}
+    triggericonbordercolor: {type: input.colorpicker, label: Trigger Icon Border Color, default: '#3366ff'}
+    triggertextsize: {type: input.number, label: Image/Icon Label Size, min: 1, default: 16}
+    triggertextcolor: {type: input.colorpicker, label: Image/Icon Label Color, default: '#222222'}
+    triggertextgap: {type: input.number, label: Image/Icon Label Gap, min: 0, default: 10}
+    size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, xl: Extra Large}}
+    background: {type: input.colorpicker, label: Custom Content Background, description: Leave empty to use Bootstrap's default modal styling.}
+    color: {type: input.colorpicker, label: Custom Content Text Color, description: Leave empty to use Bootstrap's default modal styling.}
+    radius: {type: input.number, label: Custom Border Radius, description: Pixels. Leave empty to use Bootstrap's default., min: 0}

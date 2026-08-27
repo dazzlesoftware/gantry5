@@ -15,6 +15,15 @@
         {% endif %}
     {% endif %}
 
+    {# Outline-level particle styles are the default. Individual particles can opt out. #}
+    {% set particle_style_source = particle.stylesource|default(particle.colorsource|default('inherit')) %}
+    {% if particle_style_source != 'override' %}
+        {% set particle_styles = genesis.config.get('styles.particle-' ~ segment.subtype, {}) %}
+        {% if particle_styles %}
+            {% set particle = particle|merge(particle_styles) %}
+        {% endif %}
+    {% endif %}
+
     {% set html %}
         {% if enabled and (segment.attributes.enabled is null or segment.attributes.enabled) %}
             {% include ['particles/' ~ segment.subtype ~ '.html.twig',

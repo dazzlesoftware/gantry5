@@ -1,0 +1,63 @@
+name: Team Carousel
+description: Shared visual defaults for Team Carousel particles in this outline
+type: particle
+
+form:
+  fields:
+    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
+    overlaycolor: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.65)'}
+    imageheight: {type: input.number, label: Image Height, min: 100, default: 360}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 20}
+    contentpadding: {type: input.number, label: Content Padding, min: 0, default: 24}
+    borderwidth: {type: input.number, label: Carousel Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Carousel Border Color, default: '#dddddd'}
+    borderradius: {type: input.number, label: Carousel Border Radius, min: 0, default: 0}
+    namecolor: {type: input.colorpicker, label: Name Color, default: '#222222'}
+    designationcolor: {type: input.colorpicker, label: Designation Color, default: '#777777'}
+    namefont: {type: input.fonts, label: Name Font}
+    designationfont: {type: input.fonts, label: Designation Font}
+    namesize: {type: input.number, label: Name Font Size, min: 1, default: 22}
+    designationsize: {type: input.number, label: Designation Font Size, min: 1, default: 15}
+    socialsize: {type: input.number, label: Social Icon Size, min: 1, default: 16}
+    socialcolor: {type: input.colorpicker, label: Social Icon Color, default: '#555555'}
+    socialhovercolor: {type: input.colorpicker, label: Social Icon Hover Color, default: '#3366ff'}
+    socialwidth: {type: input.number, label: Social Icon Width, min: 1, default: 34}
+    socialheight: {type: input.number, label: Social Icon Height, min: 1, default: 34}
+    socialborderwidth: {type: input.number, label: Social Border Width, min: 0, default: 0}
+    socialbordercolor: {type: input.colorpicker, label: Social Border Color, default: '#dddddd'}
+    socialradius: {type: input.number, label: Social Border Radius, min: 0, default: 50}
+    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#333333'}
+    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: '#ffffff'}
+    arrowsize: {type: input.number, label: Arrow Icon Size, min: 1, default: 22}
+    arrowboxsize: {type: input.number, label: Arrow Box Size, min: 20, default: 44}
+    arrowradius: {type: input.number, label: Arrow Border Radius, min: 0, default: 0}
+    bulletcolor: {type: input.colorpicker, label: Bullet Color, default: '#cccccc'}
+    bulletactivecolor: {type: input.colorpicker, label: Active Bullet Color, default: '#3366ff'}
+    bulletsize: {type: input.number, label: Bullet Size, min: 2, default: 10}
+    layout:
+      type: select.select
+      label: Team Layout
+      default: layout1
+      options: {layout1: Image with Content Below, layout2: Image Overlay, layout3: Split Image and Content}
+    carouselborder:
+      type: select.select
+      label: Carousel Border
+      default: hide
+      options:
+        hide: Hide
+        show: Show
+    alignment:
+      type: select.select
+      label: Content Alignment
+      default: center
+      options: {left: Left, center: Center, right: Right}
+    arrows:
+      type: select.select
+      label: Arrows
+      default: enable
+      options: {enable: Show, disable: Hide}
+    arrowstyle:
+      type: select.select
+      label: Arrow Style
+      default: angle
+      options: {angle: Angle, long: Long Arrow}

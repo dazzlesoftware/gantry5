@@ -14,19 +14,20 @@ form:
       type: input.checkbox
       label: Enabled
       default: true
+    stylesource: {type: select.select, label: Style Source, default: inherit, description: Inherit the outline defaults from Particle Styles or use the values below., options: {inherit: Inherit from Particle Styles, override: Override in This Particle}}
     class:
       type: input.selectize
       label: CSS Classes
     mode:
       type: select.select
-      label: Heading Style
+      label: Override Heading Style
       default: animation
       options:
         animation: Text Animation
         highlighted: Highlighted Text
     heading:
       type: select.select
-      label: Heading Element
+      label: Override Heading Element
       default: h2
       options: {h1: H1, h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}
     before:
@@ -63,7 +64,7 @@ form:
       default: remarkable
     shape:
       type: select.select
-      label: Highlight Shape
+      label: Override Highlight Shape
       default: circle
       options:
         bg-fill: Background Fill
@@ -80,84 +81,84 @@ form:
         wave: Wave
     headingcolor:
       type: input.colorpicker
-      label: Heading Color
+      label: Override Heading Color
     accentcolor:
       type: input.colorpicker
-      label: Animated / Highlighted Text Color
+      label: Override Animated / Highlighted Text Color
       default: '#3366ff'
     shapecolor:
       type: input.colorpicker
-      label: Shape Color
+      label: Override Shape Color
       default: '#3366ff'
     fontsize:
       type: input.number
-      label: Font Size
+      label: Override Font Size
       description: Pixels; leave empty to inherit the theme.
       min: 1
     lineheight:
       type: input.number
-      label: Line Height
+      label: Override Line Height
       min: 0
       step: 0.1
     fontweight:
       type: select.select
-      label: Font Weight
+      label: Override Font Weight
       default: inherit
       options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
     headingfont:
       type: input.fonts
-      label: Heading Font
+      label: Override Heading Font
       description: Select the font for the complete heading. Leave blank to inherit the theme.
     animatedfont:
       type: input.fonts
-      label: Animated / Highlighted Font
+      label: Override Animated / Highlighted Font
       description: Optionally use a different font for the animated or highlighted words.
     wordspacebefore:
       type: input.number
-      label: Space Before Animated Word
+      label: Override Space Before Animated Word
       min: 0
       default: 12
     wordspaceafter:
       type: input.number
-      label: Space After Animated Word
+      label: Override Space After Animated Word
       min: 0
       default: 8
     marker:
       type: select.select
-      label: Clip Marker
+      label: Override Clip Marker
       default: line
       options: {line: Line, icon: Custom Icon, none: None}
     markericon:
       type: input.icon
-      label: Clip Marker Icon
+      label: Override Clip Marker Icon
       default: fa fa-pencil
     markercolor:
       type: input.colorpicker
-      label: Clip Marker Color
+      label: Override Clip Marker Color
       default: '#3366ff'
     markersize:
       type: input.number
-      label: Clip Marker Size
+      label: Override Clip Marker Size
       min: 1
       default: 60
     markerwidth:
       type: input.number
-      label: Clip Line Width
+      label: Override Clip Line Width
       min: 1
       default: 3
     markergap:
       type: input.number
-      label: Space Before Clip Marker
+      label: Override Space Before Clip Marker
       min: 0
       default: 4
     markeraftergap:
       type: input.number
-      label: Space After Clip Marker
+      label: Override Space After Clip Marker
       min: 0
       default: 12
     alignment:
       type: select.select
-      label: Alignment
+      label: Override Alignment
       default: left
       options: {left: Left, center: Center, right: Right}
     duration:
@@ -174,12 +175,12 @@ form:
       default: 2500
     shapewidth:
       type: input.number
-      label: Shape Stroke Width
+      label: Override Shape Stroke Width
       min: 1
       default: 8
     shaperounded:
       type: select.select
-      label: Rounded Shape Lines
+      label: Override Rounded Shape Lines
       default: enable
       options: {enable: Enable, disable: Disable}
     marqueedirection:
@@ -195,7 +196,7 @@ form:
       default: 15
     marqueegap:
       type: input.number
-      label: Marquee Gap
+      label: Override Marquee Gap
       min: 0
       default: 40
     pausehover:

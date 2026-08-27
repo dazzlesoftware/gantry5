@@ -1,0 +1,49 @@
+name: Simple Counter
+description: Shared visual defaults for Simple Counter particles in this outline
+type: particle
+
+form:
+  fields:
+    titlefontsize: {type: input.number, label: Title Font Size, description: Pixels. Leave empty to inherit the theme's size., min: 1}
+    titlecolor: {type: input.colorpicker, label: Title Color, description: Leave empty to inherit the theme's color.}
+    descriptionfontsize: {type: input.number, label: Description Font Size, description: Pixels. Leave empty to inherit the theme's size., min: 1}
+    descriptioncolor: {type: input.colorpicker, label: Description Color, description: Leave empty to inherit the theme's color.}
+    numberfontsize: {type: input.number, label: Number Font Size, description: Pixels., min: 1, default: 32}
+    numbertextcolor: {type: input.colorpicker, label: Number Text Color, default: '#ffffff'}
+    labelfontsize: {type: input.number, label: Unit Label Font Size, description: Pixels., min: 1, default: 14}
+    labelcolor: {type: input.colorpicker, label: Unit Label Color, description: Leave empty to inherit the theme's color.}
+    customcolor: {type: input.colorpicker, label: Custom Block Color, default: '#3366ff'}
+    gradientcolor: {type: input.colorpicker, label: Gradient End Color, default: '#0037dd'}
+    blockshape: {type: select.select, label: Block Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
+    blockheight: {type: input.number, label: Block Height, description: Pixels., min: 1, default: 80}
+    titlefont:
+      type: input.fonts
+      label: Title Font
+      description: Select a font for the title. Leave blank to inherit the theme font.
+
+    descriptionfont:
+      type: input.fonts
+      label: Description Font
+      description: Select a font for the description. Leave blank to inherit the theme font.
+
+    numberfont:
+      type: input.fonts
+      label: Number Font
+      description: Select a font for the countdown numbers. Leave blank to inherit the theme font.
+
+    labelfont:
+      type: input.fonts
+      label: Unit Label Font
+      description: Select a font for the Days, Hours, Minutes, and Seconds labels. Leave blank to inherit the theme font.
+
+    blockstyle:
+      type: separator.separator
+      label: Block Style
+
+    blockcolor:
+      type: select.select
+      label: Block Color
+      description: Bootstrap color for each number block's background, or choose Custom.
+      default: primary
+      options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, custom: Custom}
+

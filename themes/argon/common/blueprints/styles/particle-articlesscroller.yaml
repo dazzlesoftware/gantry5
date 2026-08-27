@@ -1,0 +1,106 @@
+name: Articles Scroller
+description: Shared visual defaults for Articles Scroller particles in this outline
+type: particle
+
+form:
+  fields:
+    layout:
+      type: select.select
+      label: Layout
+      default: ticker
+      options:
+        ticker: News Ticker
+        scroller: Date Scroller
+        carousel: Article Carousel
+
+    imagebackground:
+      type: select.select
+      label: Scroller Image Background
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    tickershape:
+      type: select.select
+      label: Ticker Heading Shape
+      default: arrow
+      options:
+        arrow: Arrow
+        slanted-left: Slanted Left
+        slanted-right: Slanted Right
+        none: None
+
+    scrollericon:
+      type: input.icon
+      label: Scroller Icon
+      default: fa fa-gamepad
+
+    scrollericonsize:
+      type: input.number
+      label: Scroller Icon Size
+      description: Custom icon size in pixels.
+      min: 1
+      default: 32
+
+    accentcolor:
+      type: input.colorpicker
+      label: Accent Color
+      default: '#e91e63'
+
+    panelcolor:
+      type: input.colorpicker
+      label: Panel Color
+      default: '#202025'
+
+    paneltextcolor:
+      type: input.colorpicker
+      label: Panel Text Color
+      default: '#ffffff'
+
+    mutedcolor:
+      type: input.colorpicker
+      label: Muted Text Color
+      default: '#aaaaaa'
+
+    imageheight:
+      type: input.number
+      label: Carousel Image Height
+      min: 100
+      default: 320
+
+    gap:
+      type: input.number
+      label: Carousel Gap
+      min: 0
+      default: 24
+
+    scrollergap:
+      type: input.number
+      label: Scroller Article Spacing
+      description: Width of the separator between vertically scrolling articles, in pixels.
+      min: 0
+      default: 1
+
+    separatorcolor:
+      type: input.colorpicker
+      label: Scroller Separator Color
+      default: 'rgba(255,255,255,0.7)'
+
+    indicators:
+      type: select.select
+      label: Indicators
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    alignment:
+      type: select.select
+      label: Content Alignment
+      default: left
+      options:
+        left: Left
+        center: Center
+        right: Right
+

@@ -1,0 +1,23 @@
+name: Google Map
+description: Shared visual defaults for Google Map particles in this outline
+type: particle
+
+form:
+  fields:
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlefont: {type: input.fonts, label: Title Font}
+    titlesize: {type: input.number, label: Title Font Size, min: 1, default: 28}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#222222'}
+    titlemarginbottom: {type: input.number, label: Title Bottom Margin, min: 0, default: 20}
+    titlealignment: {type: select.select, label: Title Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    infowindow: {type: textarea.textarea, label: Primary Marker Information}
+    markericon: {type: input.imagepicker, label: Primary Marker Icon}
+    height: {type: input.number, label: Desktop Height, min: 100, max: 2000, default: 300}
+    tabletheight: {type: input.number, label: Tablet Height, min: 100, max: 2000, default: 300}
+    mobileheight: {type: input.number, label: Mobile Height, min: 100, max: 2000, default: 300}
+    fitbounds: {type: select.select, label: Fit All Markers, default: disable, options: {enable: Enable, disable: Disable}}
+    styles: {type: textarea.textarea, label: Google Map Styles JSON}
+    border: {type: select.select, label: Map Border, default: hide, options: {hide: Hide, show: Show}}
+    borderwidth: {type: input.number, label: Map Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Map Border Color, default: '#dddddd'}
+    radius: {type: input.number, label: Map Border Radius, min: 0, default: 0}
