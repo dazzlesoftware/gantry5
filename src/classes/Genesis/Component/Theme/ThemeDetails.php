@@ -58,6 +58,22 @@ class ThemeDetails implements \ArrayAccess
         $this->offsetSet('name', $theme);
 
         $parent = (string) $this->get('configuration.theme.parent', $theme);
+
+        // Some platforms (eg. WordPress) install themes under a prefixed folder name to avoid collisions,
+        // while 'configuration.theme.parent' always refers to the theme's own (unprefixed) name.
+        $prefix = (string) $genesis['platform']->getThemeFolderPrefix();
+        if ($prefix !== '' && strpos($parent, $prefix) !== 0) {
+            if ($prefix . $parent === $theme) {
+                // Self-reference under the installed (prefixed) name.
+                $parent = $theme;
+            } elseif (
+                $locator->findResource("genesis-themes://{$parent}/genesis/theme.yaml") === false
+                && $locator->findResource("genesis-themes://{$prefix}{$parent}/genesis/theme.yaml") !== false
+            ) {
+                $parent = $prefix . $parent;
+            }
+        }
+
         $parent = $parent !== $theme ? $parent : null;
 
         $this->offsetSet('parent', $parent);

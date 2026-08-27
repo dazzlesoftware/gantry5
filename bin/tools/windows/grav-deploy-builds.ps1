@@ -33,7 +33,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $grav 'index.php') -PathType Leaf)) 
 
 $pluginArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "grav-pkg_genesis_${BuildSuffix}.zip")
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "grav-tpl_genesis_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "grav-tpl_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 
@@ -59,7 +59,13 @@ if (Test-Path -LiteralPath $genesisPlugin) {
     Remove-Item -LiteralPath $genesisPlugin -Recurse -Force
 }
 
-$oldThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*')
+$themeNames = @($themeArchives | ForEach-Object {
+    if ($_.BaseName -notmatch '^grav-tpl_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
+        throw "Unable to determine theme name from archive: $($_.Name)"
+    }
+    $Matches[1]
+})
+$oldThemes = @($themeNames | ForEach-Object { Get-Item -LiteralPath (Join-Path $themes $_) -ErrorAction SilentlyContinue })
 Write-Host "Removing $($oldThemes.Count) old Genesis themes..."
 foreach ($theme in $oldThemes) {
     if (-not $theme.FullName.StartsWith("$resolvedThemes\", [StringComparison]::OrdinalIgnoreCase)) {
@@ -77,7 +83,7 @@ foreach ($archive in $themeArchives) {
     Expand-Archive -LiteralPath $archive.FullName -DestinationPath $themes -Force
 }
 
-$installedThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*')
+$installedThemes = @($themeNames | ForEach-Object { Get-Item -LiteralPath (Join-Path $themes $_) -ErrorAction SilentlyContinue })
 if (-not (Test-Path -LiteralPath (Join-Path $genesisPlugin 'genesis.php') -PathType Leaf)) {
     throw 'The deployed Grav Genesis plugin is missing genesis.php.'
 }

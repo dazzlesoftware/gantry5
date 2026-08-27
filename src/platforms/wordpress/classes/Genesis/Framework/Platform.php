@@ -143,6 +143,14 @@ class Platform extends BasePlatform
     }
 
     /**
+     * @return string
+     */
+    public function getThemeFolderPrefix(): string
+    {
+        return 'wp_';
+    }
+
+    /**
      * @return array
      */
     public function getMediaPaths(): array

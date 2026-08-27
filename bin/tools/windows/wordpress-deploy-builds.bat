@@ -23,7 +23,7 @@ echo Source:  %REPOSITORY_ROOT%dist
 echo Target:  %wp_content%
 echo Variant: %build_suffix%
 echo.
-echo Existing genesis and genesis_* directories will be deleted.
+echo Existing genesis plugin and wp_* theme directories will be deleted.
 echo Other WordPress plugins and themes will be preserved.
 echo ============================================================
 

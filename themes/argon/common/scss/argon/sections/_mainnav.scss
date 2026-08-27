@@ -17,6 +17,59 @@
 .g-main-nav {
     z-index: 20;
 
+    // Bootstrap adds a caret to dropdown toggles, but Argon supplies its own
+    // Font Awesome parent indicator. Keep only Argon's indicator and center it
+    // alongside the menu label.
+    .g-menu-item-container.dropdown-toggle:after {
+        display: none;
+    }
+
+    .g-menu-parent-indicator.dropdown-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:after {
+            border: 0;
+            margin-left: 0;
+            vertical-align: baseline;
+        }
+    }
+
+    // The toggle class can live on the parent button while the indicator is a
+    // plain child span (notably for particle menu items).
+    .g-menu-parent-indicator:after {
+        font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    .g-toplevel > li.g-parent > .g-menu-parent-indicator:after {
+        content: $fa-angle-down;
+        opacity: 0.75;
+    }
+
+    .g-sublevel > li.g-parent > .g-menu-parent-indicator:after {
+        content: $fa-caret-right;
+    }
+
+    // Embedded particles must behave like a menu label at the top level.
+    // Their headings are block-level by default, which otherwise pushes the
+    // label and parent arrow onto separate lines.
+    .g-toplevel .menu-item-particle {
+        white-space: nowrap;
+
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            display: inline;
+            margin-right: 0.25rem;
+        }
+    }
+
     .g-standard {
         .g-dropdown {
             @extend %dropdown-column;
@@ -28,6 +81,7 @@
             > .g-menu-item-container {
                 text-decoration: none;
                 line-height: 1;
+                white-space: nowrap;
                 @extend %item-container;
             }
 
@@ -39,9 +93,15 @@
             }
 
             &.g-parent .g-menu-parent-indicator:after {
-                width: 1.25rem;
-                padding: 0.1rem 0.25rem 0.25rem 0rem;
-                height: 1.25rem;
+                content: "";
+                display: inline-block;
+                width: 0.4rem;
+                height: 0.4rem;
+                padding: 0;
+                border: 0;
+                border-right: 2px solid currentColor;
+                border-bottom: 2px solid currentColor;
+                transform: rotate(45deg) translateY(-0.1rem);
             }
         }
 

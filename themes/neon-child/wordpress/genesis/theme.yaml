@@ -21,8 +21,8 @@ details:
   license: GPLv3 and later
   description: Neon Child Theme
   images:
-    thumbnail: admin/images/preset1.png
-    preview: admin/images/preset1.png
+    thumbnail: screenshot.png
+    preview: screenshot.png
 
 configuration:
   genesis:

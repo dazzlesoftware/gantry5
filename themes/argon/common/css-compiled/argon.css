@@ -1058,6 +1058,9 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 #g-navigation .g-container {
   position: relative;
 }
+#g-navigation .row.g-grid {
+  align-items: center;
+}
 #g-navigation .g-logo {
   color: #ffffff;
   line-height: 2.8rem;
@@ -1116,6 +1119,13 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 #g-navigation .g-main-nav .g-toplevel > li > .g-menu-item-container i {
   opacity: 1;
+}
+#g-navigation .g-main-nav .g-toplevel > li.g-parent > .g-menu-item-container {
+  padding-right: 1.75rem;
+}
+.dir-rtl #g-navigation .g-main-nav .g-toplevel > li.g-parent > .g-menu-item-container {
+  padding-right: 0;
+  padding-left: 1.75rem;
 }
 #g-navigation .g-main-nav .g-toplevel > li:hover > .g-menu-item-container {
   color: rgba(255, 255, 255, 0.7);
@@ -1221,18 +1231,62 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-main-nav {
   z-index: 20;
 }
+.g-main-nav .g-menu-item-container.dropdown-toggle:after {
+  display: none;
+}
+.g-main-nav .g-menu-parent-indicator.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.g-main-nav .g-menu-parent-indicator.dropdown-toggle:after {
+  border: 0;
+  margin-left: 0;
+  vertical-align: baseline;
+}
+.g-main-nav .g-menu-parent-indicator:after {
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome;
+  font-weight: 900;
+  line-height: 1;
+}
+.g-main-nav .g-toplevel > li.g-parent > .g-menu-parent-indicator:after {
+  content: "\f107";
+  opacity: 0.75;
+}
+.g-main-nav .g-sublevel > li.g-parent > .g-menu-parent-indicator:after {
+  content: "\f0da";
+}
+.g-main-nav .g-toplevel .menu-item-particle {
+  white-space: nowrap;
+}
+.g-main-nav .g-toplevel .menu-item-particle > h1,
+.g-main-nav .g-toplevel .menu-item-particle > h2,
+.g-main-nav .g-toplevel .menu-item-particle > h3,
+.g-main-nav .g-toplevel .menu-item-particle > h4,
+.g-main-nav .g-toplevel .menu-item-particle > h5,
+.g-main-nav .g-toplevel .menu-item-particle > h6 {
+  display: inline;
+  margin-right: 0.25rem;
+}
 .g-main-nav .g-toplevel > li > .g-menu-item-container {
   text-decoration: none;
   line-height: 1;
+  white-space: nowrap;
 }
 .g-main-nav .g-toplevel > li > .g-menu-item-container > .g-menu-item-content {
   word-break: normal;
   line-height: normal;
 }
 .g-main-nav .g-toplevel > li.g-parent .g-menu-parent-indicator:after {
-  width: 1.25rem;
-  padding: 0.1rem 0.25rem 0.25rem 0rem;
-  height: 1.25rem;
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  padding: 0;
+  border: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.1rem);
 }
 .g-main-nav .g-toplevel i {
   opacity: 0.6;
@@ -1814,7 +1868,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   background: linear-gradient(45deg, #8f4dae, #4db2b3);
   color: #ffffff;
 }
-.g-contentcubes .cube-items-wrapper .cube-row.g-grid.image-position-right {
+.g-contentcubes .cube-items-wrapper .cube-row.row.image-position-right {
   flex-flow: row-reverse wrap;
 }
 .g-contentcubes .cube-items-wrapper .cube-image-wrapper {
@@ -1960,12 +2014,15 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 
 .g-contenttabs .g-contenttabs-tab-wrapper-container {
+  display: flex;
   list-style: none;
+  padding: 0;
   margin: 0 0 1rem 0;
   border-bottom: 1px solid #e0e0e5;
 }
 @media only all and (max-width: 47.99rem) {
   .g-contenttabs .g-contenttabs-tab-wrapper-container {
+    flex-direction: column;
     border: 0 none;
   }
 }
@@ -2005,6 +2062,13 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   display: flex;
   flex-flow: row wrap;
   flex-wrap: wrap;
+}
+.g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content > * {
+  flex-basis: 100%;
+}
+.g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content .g-grid {
+  display: flex;
+  flex-flow: row wrap;
 }
 .g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content a:hover {
   color: inherit;

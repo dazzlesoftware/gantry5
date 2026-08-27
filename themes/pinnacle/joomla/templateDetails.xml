@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>genesis_pinnacle</name>
+    <name>tpl_pinnacle</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -94,7 +94,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/genesis_pinnacle/fields">
+        <fields name="params" addfieldpath="/templates/tpl_pinnacle/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>

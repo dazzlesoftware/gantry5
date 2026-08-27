@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>genesis_elara</name>
+    <name>tpl_elara</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -51,7 +51,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/genesis_elara/fields">
+        <fields name="params" addfieldpath="/templates/tpl_elara/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>

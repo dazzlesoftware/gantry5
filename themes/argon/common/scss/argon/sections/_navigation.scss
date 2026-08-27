@@ -9,6 +9,12 @@
         position: relative;
     }
 
+    // Preserve the original shared centerline after the Bootstrap grid
+    // migration. Each column has different intrinsic content height.
+    .row.g-grid {
+        align-items: center;
+    }
+
     // Logo
     .g-logo {
         color: $navigation-text-color;
@@ -80,6 +86,17 @@
 
                     i {
                         opacity: 1;
+                    }
+                }
+
+                // The Bootstrap submenu toggle is positioned over the right
+                // edge; reserve room so its chevron sits after the label.
+                &.g-parent > .g-menu-item-container {
+                    padding-right: 1.75rem;
+
+                    .dir-rtl & {
+                        padding-right: 0;
+                        padding-left: 1.75rem;
                     }
                 }
 

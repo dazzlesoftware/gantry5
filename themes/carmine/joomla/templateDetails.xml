@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>genesis_carmine</name>
+    <name>tpl_carmine</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -78,7 +78,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/genesis_carmine/fields">
+        <fields name="params" addfieldpath="/templates/tpl_carmine/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>
@@ -86,6 +86,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Carmine Template">http://updates.rockettheme.org/joomla/tpl_genesis_carmine.xml</server -->
+        <!-- server type="extension" priority="1" name="Carmine Template">http://updates.rockettheme.org/joomla/tpl_carmine.xml</server -->
     </updateservers>
 </extension>

@@ -126,7 +126,8 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
         foreach ($ordering as $path => $children) {
             $tree = $parents;
             if (!$isGroup) {
-                $tree[] = Genesis::basename($path);
+                // PHP converts numeric-looking array keys to integers.
+                $tree[] = Genesis::basename((string) $path);
                 $name = implode('/', $tree);
                 $list[0][$name] = ++$i;
             }
@@ -177,7 +178,7 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
             if ($isGroup) {
                 $counts[] = $count;
             } else {
-                $tree[] = Genesis::basename($path);
+                $tree[] = Genesis::basename((string) $path);
             }
             if (\is_array($children)) {
                 static::embedOrderingRecurse($items, $children, $tree, $isGroup ? $pos : 0);

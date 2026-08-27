@@ -23,7 +23,7 @@ echo Source:  %REPOSITORY_ROOT%dist
 echo Target:  %grav_root%
 echo Variant: %build_suffix%
 echo.
-echo Existing user\plugins\genesis and user\themes\genesis_* directories
+echo Existing user\plugins\genesis and matching user\themes directories
 echo will be deleted. Other Grav plugins and themes will be preserved.
 echo ============================================================
 

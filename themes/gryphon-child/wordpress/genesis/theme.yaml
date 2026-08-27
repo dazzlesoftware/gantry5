@@ -24,8 +24,8 @@ details:
   license: GPLv3 and later
   description: Gryphon Child Theme
   images:
-    thumbnail: admin/images/preset1.png
-    preview: admin/images/preset1.png
+    thumbnail: screenshot.png
+    preview: screenshot.png
 
 configuration:
   genesis:
@@ -33,7 +33,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_gryphon
+    parent: wp_gryphon
     base: genesis-theme://common
     file: 'genesis-theme://includes/theme.php'
     class: '\Genesis\Framework\Theme'

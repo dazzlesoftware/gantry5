@@ -46,7 +46,7 @@
 {% block javascript_footer %}
 <script>
 (() => {
-    const tabs = document.getElementById('{{ id }}');
+    const tabs = document.getElementById('g-contenttabs-{{ id }}');
     if (!tabs || tabs.dataset.tabsReady) return;
     tabs.dataset.tabsReady = 'true';
     const links = [...tabs.querySelectorAll('.g-contenttabs-tab')];

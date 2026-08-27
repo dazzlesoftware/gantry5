@@ -43,7 +43,7 @@ if (-not (Get-Command $PhpExecutable -ErrorAction SilentlyContinue)) {
 
 $packageArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "joomla-pkg_genesis_${BuildSuffix}.zip")
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "joomla-tpl_genesis_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "joomla-tpl_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 if ($packageArchives.Count -ne 1) {
@@ -55,7 +55,7 @@ if ($themeArchives.Count -eq 0) {
 
 $themeSlugs = @(
     $themeArchives | ForEach-Object {
-        if ($_.BaseName -notmatch '^joomla-tpl_genesis_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
+        if ($_.BaseName -notmatch '^joomla-tpl_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
             throw "Unable to determine theme name from archive: $($_.Name)"
         }
         $Matches[1]
@@ -79,18 +79,11 @@ foreach ($archive in $themeArchives) {
 
 $installedTemplates = @(
     foreach ($slug in $themeSlugs) {
-        $matches = @(
-            foreach ($prefix in @('genesis_', 'rt_')) {
-                $candidate = Join-Path $templates ($prefix + $slug)
-                if (Test-Path -LiteralPath $candidate -PathType Container) {
-                    Get-Item -LiteralPath $candidate
-                }
-            }
-        )
-        if ($matches.Count -ne 1) {
-            throw "Expected exactly one installed template directory for '$slug'; found $($matches.Count)."
+        $candidate = Join-Path $templates ('tpl_' + $slug)
+        if (-not (Test-Path -LiteralPath $candidate -PathType Container)) {
+            throw "Expected installed template directory for '$slug': $candidate"
         }
-        $matches[0]
+        Get-Item -LiteralPath $candidate
     }
 )
 if (-not (Test-Path -LiteralPath (Join-Path $joomla 'administrator\components\com_genesis\genesis.php') -PathType Leaf)) {

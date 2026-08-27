@@ -34,7 +34,7 @@ foreach (new DirectoryIterator($themesDirectory) as $theme) {
     $style = file_get_contents($templateFiles . '/style.css');
     $style = str_replace(
         ['Argon Child', 'the Argon Genesis theme', 'argon'],
-        ["{$displayName} Child", "the {$displayName} Genesis theme", "genesis_{$name}"],
+        ["{$displayName} Child", "the {$displayName} Genesis theme", "wp_{$name}"],
         $style
     );
     file_put_contents($childDirectory . '/style.css', $style);
@@ -47,7 +47,7 @@ foreach (new DirectoryIterator($themesDirectory) as $theme) {
     $yaml = preg_replace('/^(\s*description:\s*).+$/m', '$1' . $displayName . ' Child Theme', $yaml, 1);
     $yaml = preg_replace(
         '/^(\s{2}theme:\s*\R)(?!\s{4}parent:)/m',
-        "$1    parent: genesis_{$name}\n",
+        "$1    parent: wp_{$name}\n",
         $yaml,
         1
     );

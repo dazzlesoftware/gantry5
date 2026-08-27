@@ -21,8 +21,8 @@ details:
   license: GPLv3 and later
   description: Relic Theme
   images:
-    thumbnail: admin/images/preset1.png
-    preview: admin/images/preset1.png
+    thumbnail: screenshot.png
+    preview: screenshot.png
 
 configuration:
   genesis:
@@ -30,7 +30,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_relic
+    parent: wp_relic
     base: genesis-theme://common
     file: 'genesis-theme://includes/theme.php'
     class: '\Genesis\Framework\Theme'

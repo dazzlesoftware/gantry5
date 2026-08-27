@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
-    <name>genesis_akari</name>
+    <name>tpl_akari</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -87,7 +87,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/genesis_akari/fields">
+        <fields name="params" addfieldpath="/templates/tpl_akari/fields">
             <fieldset name="basic">
                 <field name="warning" type="warning" />
             </fieldset>

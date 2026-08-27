@@ -198,13 +198,13 @@
         <if>
             <available file='${path.themes}/${directory}/wordpress/genesis/theme.yaml' type='file' />
             <then>
-                <copy todir="${tmp_dir}/wordpress/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/wordpress/themes/${directory}/wp_${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/common">
                         <exclude name="custom/**"/>
                     </fileset>
                 </copy>
 
-                <copy todir="${tmp_dir}/wordpress/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/wordpress/themes/${directory}/wp_${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/wordpress">
                         <exclude name="common/**"/>
                         <exclude name="custom/**"/>
@@ -212,7 +212,7 @@
                 </copy>
 
                 <!-- Add version information to all xml files -->
-                <copy todir="${tmp_dir}/wordpress/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/wordpress/themes/${directory}/wp_${directory}" overwrite="true">
                     <filterchain refid="filter"/>
                     <fileset dir="${path.themes}/${directory}/wordpress">
                         <include name="**/*.xml"/>
@@ -223,12 +223,12 @@
 
                 <!-- Generate Manifest files -->
                 <phingcall target="checksum">
-                    <property name="source" value="${tmp_dir}/wordpress/themes/${directory}/genesis_${directory}" />
+                    <property name="source" value="${tmp_dir}/wordpress/themes/${directory}/wp_${directory}" />
                 </phingcall>
 
                 <!-- Zip the theme -->
                 <phingcall target="archive">
-                    <property name="destination.file" value="${package_dir}/wordpress-tpl_genesis_${directory}${str.fileversion}" />
+                    <property name="destination.file" value="${package_dir}/wordpress-tpl_${directory}${str.fileversion}" />
                     <property name="base.directory" value="${tmp_dir}/wordpress/themes/${directory}" />
                 </phingcall>
             </then>

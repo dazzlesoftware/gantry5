@@ -197,13 +197,13 @@
             <then>
                 <mkdir dir="${tmp_dir}/themes/${directory}" />
 
-                <copy todir="${tmp_dir}/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/themes/${directory}/${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/common">
                         <exclude name="custom/**"/>
                     </fileset>
                 </copy>
 
-                <copy todir="${tmp_dir}/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/themes/${directory}/${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/grav">
                         <exclude name="common/**"/>
                         <exclude name="custom/**"/>
@@ -211,7 +211,7 @@
                 </copy>
 
                 <!-- Add version information to all xml files -->
-                <copy todir="${tmp_dir}/themes/${directory}/genesis_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/themes/${directory}/${directory}" overwrite="true">
                     <filterchain refid="filter"/>
                     <fileset dir="${path.themes}/${directory}/grav">
                         <include name="blueprints.yaml"/>
@@ -222,12 +222,12 @@
 
                 <!-- Generate Manifest files -->
                 <phingcall target="checksum">
-                    <property name="source" value="${tmp_dir}/themes/${directory}/genesis_${directory}" />
+                    <property name="source" value="${tmp_dir}/themes/${directory}/${directory}" />
                 </phingcall>
 
                 <!-- Zip the theme -->
                 <phingcall target="archive">
-                    <property name="destination.file" value="${package_dir}/grav-tpl_genesis_${directory}${str.fileversion}" />
+                    <property name="destination.file" value="${package_dir}/grav-tpl_${directory}${str.fileversion}" />
                     <property name="base.directory" value="${tmp_dir}/themes/${directory}" />
                 </phingcall>
             </then>

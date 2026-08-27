@@ -24,8 +24,8 @@ details:
   license: GPLv3 and later
   description: Kovana Theme
   images:
-    thumbnail: admin/images/preset1.png
-    preview: admin/images/preset1.png
+    thumbnail: template_preview.png
+    preview: template_preview.png
 
 configuration:
   genesis:
@@ -33,7 +33,7 @@ configuration:
     engine: nucleus
 
   theme:
-    parent: genesis_kovana
+    parent: tpl_kovana
     base: genesis-theme://common
     file: genesis-theme://include/theme.php
     class: \Genesis\Framework\Theme

@@ -126,7 +126,7 @@ class EventListener implements EventSubscriberInterface
             }
         }
 
-        $menus = array_flip($event->Genesis['menu']->getMenus());
+        $menus = array_flip($event->genesis['menu']->getMenus());
         $menuId = isset($menus[$event->resource]) ? $menus[$event->resource] : 0;
 
         // Save global menu settings into Wordpress.

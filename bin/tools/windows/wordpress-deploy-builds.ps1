@@ -34,7 +34,7 @@ $pluginArchives = @(
     Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-pkg_genesis_${BuildSuffix}.zip"
 )
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-tpl_genesis_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-tpl_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 
@@ -63,7 +63,8 @@ if (Test-Path -LiteralPath $genesisPlugin) {
 }
 
 $oldThemes = @(
-    Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*'
+    Get-ChildItem -LiteralPath $themes -Directory |
+        Where-Object { $_.Name -like 'wp_*' -or $_.Name -like 'genesis_*' }
 )
 
 Write-Host "Removing $($oldThemes.Count) old Genesis themes..."
@@ -85,7 +86,7 @@ foreach ($archive in $themeArchives) {
 }
 
 $installedThemes = @(
-    Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*'
+    Get-ChildItem -LiteralPath $themes -Directory -Filter 'wp_*'
 )
 
 if (-not (Test-Path -LiteralPath (Join-Path $genesisPlugin 'genesis.php') -PathType Leaf)) {

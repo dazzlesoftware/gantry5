@@ -147,6 +147,17 @@ abstract class Platform
     abstract public function getMediaPaths(): array;
 
     /**
+     * Prefix prepended to a theme's own name to get its installed folder name, if the platform renames
+     * theme folders on install (eg. WordPress installs 'argon' as 'wp_argon' to avoid collisions).
+     *
+     * @return string
+     */
+    public function getThemeFolderPrefix(): string
+    {
+        return '';
+    }
+
+    /**
      * @return $this
      */
     public function init(): static

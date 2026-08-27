@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
-    <name>genesis_base</name>
+    <name>tpl_base</name>
     <version>@version@</version>
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
@@ -38,7 +38,7 @@
     </positions>
 
     <config>
-        <fields name="params" addfieldpath="/templates/genesis_base/fields">
+        <fields name="params" addfieldpath="/templates/tpl_base/fields">
             <fieldset name="basic">
             </fieldset>
         </fields>

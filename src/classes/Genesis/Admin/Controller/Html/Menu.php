@@ -597,9 +597,12 @@ class Menu extends HtmlController
         krsort($order);
         $ordering = ['' => []];
         foreach ($order as $path => $columns) {
+            // Numeric JSON object keys are converted to integers by json_decode().
+            $path = (string) $path;
             foreach ($columns as $column => $colitems) {
                 $list = [];
                 foreach ($colitems as $item) {
+                    $item = (string) $item;
                     $name = trim(substr($item, strlen($path)), '/');
                     if (isset($ordering[$item])) {
                         $list[$name] = $ordering[$item];
