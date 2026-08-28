@@ -367,12 +367,12 @@ content:
         -
           icon: 'fa fa-twitter fa-fw'
           text: ''
-          link: 'http://twitter.com/rockettheme'
+          link: 'https://x.com/dazzlesoftware'
           name: Twitter
         -
           icon: 'fa fa-facebook fa-fw'
           text: ''
-          link: 'http://facebook.com/rockettheme'
+          link: 'https://facebook.com/dazzlesoftware'
           name: Facebook
         -
           icon: 'fa fa-google fa-fw'

@@ -211,7 +211,7 @@ content:
   custom-7658:
     title: 'Customer Testimonials'
     attributes:
-      html: "<div class=\"fp-testimonials\">\n    <blockquote>\n        <img src=\"genesis-media://testimonials/face.jpg\" alt=\"Avatar\" class=\"g-img-circle\" height=\"80\" width=\"80\">\n        <p class=\"h3\">\"Argon is a beautiful, free theme made by the Dazzle Software team in appreciation of the incredible Genesis community.\"</p>\n        <footer>Andy Miller</footer>\n    </blockquote>\n</div>"
+      html: "<div class=\"fp-testimonials\">\n    <blockquote>\n        <img src=\"genesis-media://testimonials/face.jpg\" alt=\"Avatar\" class=\"g-img-circle\" height=\"80\" width=\"80\">\n        <p class=\"h3\">\"Argon is a beautiful, free theme made by the Dazzle Software team in appreciation of the incredible Genesis community.\"</p>\n        <footer>Stephen Bishop</footer>\n    </blockquote>\n</div>"
     block:
       variations: center
   custom-6355:

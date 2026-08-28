@@ -15,7 +15,7 @@ include __DIR__ . '/style.php';
         <a href="<?php echo $edit_url; ?>" class="genesis-button">Configure <?php echo $name; ?> <span class="genesis-icon icon-chevron-right"></span></a>
     </div>
 
-    <div class="genesis-rockettheme">
+    <div class="genesis-brand">
         <a href="https://dazzlesoftware.org"><span>Dazzle Software</span></a>
     </div>
 </div>

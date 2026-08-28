@@ -578,7 +578,7 @@ content:
         -
           image: 'genesis-media://home/extension/avatar-01.png'
           tooltipstyle: dori
-          tooltip: 'Andy Miller'
+          tooltip: 'Stephen Bishop'
           name: Avatar
         -
           image: 'genesis-media://home/extension/avatar-01.png'

@@ -18,7 +18,7 @@ include __DIR__ . '/style.php';
         The next step is to install a Genesis-compatible template. For more information, please read the <a href="https://codex.dazzlecms.org/basics/installation">documentation</a>.
     </p>
 
-    <div class="genesis-rockettheme">
+    <div class="genesis-brand">
         <a href="https://dazzlesoftware.org"><span>Dazzle Software</span></a>
     </div>
 </div>
