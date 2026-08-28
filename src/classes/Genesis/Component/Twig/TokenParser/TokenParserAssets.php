@@ -24,7 +24,7 @@ use Twig\TokenParser\AbstractTokenParser;
  *
  * {% assets in 'head' with { priority: 2 } %}
  *   <script type="text/javascript" src="{{ url('genesis-theme://js/my.js') }}"></script>
- *   <link rel="stylesheet" href="{{ url('genesis-assets://css/font-awesome.min.css') }}" type="text/css"/>
+ *   <link rel="stylesheet" href="{{ url('genesis-assets://css/font-awesome7-all.min.css') }}" type="text/css"/>
  * {% endassets -%}
  */
 class TokenParserAssets extends AbstractTokenParser

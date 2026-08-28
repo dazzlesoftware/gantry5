@@ -33,13 +33,15 @@ class Icons extends JsonController
         /** @var Config $config */
         $config = $this->container['config'];
 
-        $version = $config->get('page.fontawesome.version', $config->get('page.fontawesome.default_version', 'fa4'));
-        if ($version === 'fa4') {
-            $list = include __DIR__ . '/Icons/FontAwesome4.php';
+        $version = $config->get('page.fontawesome.version', $config->get('page.fontawesome.default_version', 'fa7css'));
+        if ($version === 'fa5css' || $version === 'fa5js') {
+            $list = include __DIR__ . '/Icons/FontAwesome5.php';
+        } elseif ($version === 'fa6css' || $version === 'fa6js') {
+            $list = include __DIR__ . '/Icons/FontAwesome6.php';
         } elseif ($version === 'fa7css' || $version === 'fa7js') {
             $list = include __DIR__ . '/Icons/FontAwesome7.php';
         } else {
-            $list = include __DIR__ . '/Icons/FontAwesome5.php';
+            $list = include __DIR__ . '/Icons/FontAwesome7.php';
         }
 
         $options = [

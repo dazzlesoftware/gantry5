@@ -20,24 +20,25 @@ form:
       type: select.select
       label: Version
       description: Specify which version of the Font Awesome icon library should be loaded on the frontend. You can also completely disable Font Awesome or specify the import tags yourself in the textfield below.
-      default: fa4
+      default: fa7css
       options:
-        fa4: Font Awesome 4 (legacy)
-        fa5css: Font Awesome 6 Free (Webfont / CSS)
-        fa5js: Font Awesome 6 Free (SVG / JS)
+        fa5css: Font Awesome 5 Free (Webfont / CSS)
+        fa5js: Font Awesome 5 Free (SVG / JS)
+        fa6css: Font Awesome 6 Free (Webfont / CSS)
+        fa6js: Font Awesome 6 Free (SVG / JS)
         fa7css: Font Awesome 7 Free (Webfont / CSS)
         fa7js: Font Awesome 7 Free (SVG / JS)
 
     fa4_compatibility:
       type: enable.enable
       label: V4 Compatibility
-      description: Enable or disable the backwards compatibility for version 4.x of the Font Awesome library when using version 5.x.
+      description: Enable or disable backwards compatibility for Font Awesome 4 icons when using a newer Font Awesome library.
       default: 1
 
     content_compatibility:
       type: enable.enable
       label: Content Compatibility
-      description: Enable or disable the content (pseudo-element) compatibility when using the SVG / JS version of Font Awesome 5.x. This also applies when loading the library manually.
+      description: Enable or disable content (pseudo-element) compatibility when using an SVG / JS version of Font Awesome. This also applies when loading the library manually.
       default: 1
 
     html_css_import:

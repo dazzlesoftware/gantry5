@@ -19,7 +19,6 @@ use Genesis\Component\Config\Config;
 use Genesis\Debugger;
 use Genesis\Framework\Atoms;
 use Genesis\Framework\Genesis;
-use Joomla\CMS\Version;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
@@ -141,12 +140,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
             $config->set('page.head.atoms', (new Atoms($atoms))->init()->toArray());
         }
 
-        // Set FA default in Joomla
-        if (class_exists(Version::class)) {
-            $config->def('page.fontawesome.default_version', Version::MAJOR_VERSION < 4 ? 'fa4' : 'fa5css');
-        } else {
-            $config->def('page.fontawesome.default_version', 'fa4');
-        }
+        $config->def('page.fontawesome.default_version', 'fa7css');
 
         return $config;
     }

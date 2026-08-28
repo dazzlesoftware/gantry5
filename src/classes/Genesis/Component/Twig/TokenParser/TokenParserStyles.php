@@ -17,7 +17,7 @@ use Twig\Token;
  * Adds stylesheets to document.
  *
  * {% styles with { priority: 2 } %}
- *   <link rel="stylesheet" href="{{ url('genesis-assets://css/font-awesome.min.css') }}" type="text/css"/>
+ *   <link rel="stylesheet" href="{{ url('genesis-assets://css/font-awesome7-all.min.css') }}" type="text/css"/>
  * {% endstyles -%}
  */
 class TokenParserStyles extends TokenParserAssets

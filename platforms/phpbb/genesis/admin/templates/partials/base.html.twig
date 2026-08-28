@@ -2,8 +2,21 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ url('genesis-admin://assets/css-compiled/g-admin.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-all.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-shim.min.css') }}" type="text/css" />
+    {% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa7css' %}
+    {% set faVersion = faVersion == 'fa4' ? 'fa7css' : faVersion %}
+    {% if faVersion == 'fa5css' or faVersion == 'fa5js' %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome5-all.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome5-shim.min.css') }}" type="text/css" />
+    {% elseif faVersion == 'fa6css' or faVersion == 'fa6js' %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome6-all.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome6-shim.min.css') }}" type="text/css" />
+    {% elseif faVersion == 'fa7css' or faVersion == 'fa7js' %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-all.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-shim.min.css') }}" type="text/css" />
+    {% else %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-all.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome7-shim.min.css') }}" type="text/css" />
+    {% endif %}
     {{ parent() }}
 {% endblock %}
 

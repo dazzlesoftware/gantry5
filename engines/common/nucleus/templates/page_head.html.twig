@@ -2,7 +2,8 @@
 {%- do genesis.theme.loadAtoms() -%}
 
 {% set faEnabled = genesis.config.page.fontawesome.enable|default(1) %}
-{% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa4' %}
+{% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa7css' %}
+{% set faVersion = faVersion == 'fa4' ? 'fa7css' : faVersion %}
 
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
@@ -17,6 +18,11 @@
         {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_js_import|trim %}
             {{ genesis.config.page.fontawesome.html_js_import|html|raw -}}
         {% elseif faVersion == 'fa5js' %}
+            <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome5-all.min.js') }}"></script>
+            {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
+                <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome5-shim.min.js') }}"></script>
+            {% endif %}
+        {% elseif faVersion == 'fa6js' %}
             <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome6-all.min.js') }}"></script>
             {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
                 <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome6-shim.min.js') }}"></script>
@@ -36,17 +42,27 @@
         {% if faEnabled %}
             {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_css_import|trim %}
                 {{ genesis.config.page.fontawesome.html_css_import|html|raw -}}
-            {% elseif faVersion == 'fa4' %}
-                <link rel="stylesheet" href="genesis-assets://css/font-awesome.min.css" type="text/css"/>
             {% elseif faVersion == 'fa5css' %}
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome5-all.min.css" type="text/css">
+                {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
+                    <link rel="stylesheet" href="genesis-assets://css/font-awesome5-shim.min.css" type="text/css">
+                {% endif %}
+            {% elseif faVersion == 'fa6css' %}
                 <link rel="stylesheet" href="genesis-assets://css/font-awesome6-all.min.css" type="text/css">
                 {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
-
+                    <link rel="stylesheet" href="genesis-assets://css/font-awesome6-shim.min.css" type="text/css">
                 {% endif %}
             {% elseif faVersion == 'fa7css' %}
                 <link rel="stylesheet" href="genesis-assets://css/font-awesome7-all.min.css" type="text/css">
-            {% elseif (faVersion == 'fa5js' or (faVersion == 'manual' and genesis.config.page.fontawesome.html_js_import)) and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
+                {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
+                    <link rel="stylesheet" href="genesis-assets://css/font-awesome7-shim.min.css" type="text/css">
+                {% endif %}
+            {% elseif faVersion == 'fa5js' and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome5-pseudo.min.css" type="text/css">
+            {% elseif faVersion == 'fa6js' and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
                 <link rel="stylesheet" href="genesis-assets://css/font-awesome6-pseudo.min.css" type="text/css">
+            {% elseif faVersion == 'fa7js' and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome7-pseudo.min.css" type="text/css">
             {% endif %}
         {% endif %}
         {% for scss in genesis.theme.configuration.css.overrides|default([]) %}
