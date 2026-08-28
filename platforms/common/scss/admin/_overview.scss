@@ -1,7 +1,7 @@
 [data-genesis-container] {//wrapper
 
 .overview-header {
-    .g-block {
+    > [class*="col-"] {
         padding: $content-padding;
     }
 
@@ -42,7 +42,7 @@
     margin-right: -($content-padding + $content-margin);
     padding: 0 ($content-padding + $content-margin) $content-padding ($content-padding + $content-margin);
     border-bottom: 1px solid $medium-gray;
-    .g-block {
+    > [class*="col-"] {
         padding: $content-padding;
     }
 
@@ -56,7 +56,7 @@
 }
 
 .overview-genesis {
-    .g-block {
+    > [class*="col-"] {
         padding: $content-padding;
     }
 

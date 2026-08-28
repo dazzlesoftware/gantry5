@@ -1,15 +1,15 @@
 {% extends ajax-suffix ? "@genesis-admin/partials/ajax.html.twig" : "@genesis-admin/partials/base.html.twig" %}
 
 {% block genesis %}
-    <div class="row g-grid overview-header">
-        <div class="col g-block">
+    <div class="row overview-header">
+        <div class="col-12 col-md-6">
             <h2 class="theme-title">
                 {% if genesis.theme.icon %}<i class="fa fa-{{ genesis.theme.icon }}"></i>{% endif %} {{ genesis.theme.title }}
             </h2>
             <span class="theme-version">v{{ genesis.theme.version }}</span>
             <div>By <a href="{{ genesis.theme.author.link }}">{{ genesis.theme.author.name }}</a></div>
         </div>
-        <div class="col g-block">
+        <div class="col-12 col-md-6">
             <span class="float-right">
                 <button class="button button-back-to-conf"><i class="fa fa-fw fa-arrow-left"></i> <span>Back to Setup</span></button>
                 <a href="{{ genesis.theme.support.link }}" class="button button-primary"><i class="fa fa-support"></i> <span>Support</span></a>
@@ -18,12 +18,12 @@
         </div>
     </div>
 
-    <div class="row g-grid overview-details">
-        <div class="col g-block col-4">
+    <div class="row overview-details">
+        <div class="col-12 col-md-4">
              <img src="{{ url(info.thumbnail) }}" class="preview-image" alt="">
         </div>
 
-        <div class="col g-block">
+        <div class="col-12 col-md-8">
             <p>Pinnacle is an admirable, clean design with a fresh approach for the ever-changing Web. Integrated with the modern Genesis template framework, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>
             <ul class="overview-list">
                 <li><i class="fa fa-asterisk"></i>Admirable, clean design</li>

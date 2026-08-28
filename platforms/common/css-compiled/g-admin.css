@@ -12489,7 +12489,7 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   }
 }
 
-[data-genesis-container] .overview-header .g-block {
+[data-genesis-container] .overview-header > [class*=col-] {
   padding: 0.938rem;
 }
 [data-genesis-container] .overview-header .theme-title {
@@ -12527,7 +12527,7 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   padding: 0 1.563rem 0.938rem 1.563rem;
   border-bottom: 1px solid #ddd;
 }
-[data-genesis-container] .overview-details .g-block {
+[data-genesis-container] .overview-details > [class*=col-] {
   padding: 0.938rem;
 }
 @media only all and (max-width: 47.99rem) {
@@ -12538,7 +12538,7 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
 [data-genesis-container] .overview-details .preview-image {
   width: 350px;
 }
-[data-genesis-container] .overview-genesis .g-block {
+[data-genesis-container] .overview-genesis > [class*=col-] {
   padding: 0.938rem;
 }
 @media only all and (max-width: 47.99rem) {
