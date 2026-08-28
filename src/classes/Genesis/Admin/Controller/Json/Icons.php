@@ -36,6 +36,8 @@ class Icons extends JsonController
         $version = $config->get('page.fontawesome.version', $config->get('page.fontawesome.default_version', 'fa4'));
         if ($version === 'fa4') {
             $list = include __DIR__ . '/Icons/FontAwesome4.php';
+        } elseif ($version === 'fa7css' || $version === 'fa7js') {
+            $list = include __DIR__ . '/Icons/FontAwesome7.php';
         } else {
             $list = include __DIR__ . '/Icons/FontAwesome5.php';
         }
