@@ -45,7 +45,7 @@
     "varFiles": 18,
     "legacyBrowserApiFiles": 5,
     "inlineCodeGenerationFiles": 0,
-    "duplicateGroups": 1
+    "duplicateGroups": 0
   },
   "buildEntryPoints": [
     "assets/common/application/main.js",
@@ -57,15 +57,7 @@
     "assets/common/js/swiper.js",
     "platforms/common/js/main.js"
   ],
-  "duplicateGroups": [
-    {
-      "count": 2,
-      "paths": [
-        "platforms/common/js/main.js",
-        "platforms/phpbb/genesis/admin/common/js/main.js"
-      ]
-    }
-  ],
+  "duplicateGroups": [],
   "files": [
     {
       "path": "assets/common/application/main.js",
@@ -5844,9 +5836,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 7906,
-      "lines": 175,
-      "sha256": "e7a058d651d84ff8e57d1959bb56f9ed1a146924acbbd2137d4e4cc80a92a142",
+      "bytes": 8900,
+      "lines": 188,
+      "sha256": "1e986a8a596723438963c074d8e539b638d3269791cbab5ce5fbfd277b5d6d49",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5860,6 +5852,9 @@
         ],
         "dataAttributes": [
           "g-icon",
+          "g-icon-library",
+          "g-icon-modifiers",
+          "g-icon-style",
           "g-select",
           "genesis-iconpicker"
         ],
@@ -7766,9 +7761,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 621946,
-      "lines": 15190,
-      "sha256": "ae8919d8bc389ba5b1852dcccbaa58b93f23f6b11908bd4fcad4d2fc1a583003",
+      "bytes": 621164,
+      "lines": 15193,
+      "sha256": "05081b52c2b6cf15d23a996eca0f0ae3ec048d1b77f99180bbb06b6b667b5518",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -7845,6 +7840,9 @@
           "g-file-preview",
           "g-global-filter",
           "g-icon",
+          "g-icon-library",
+          "g-icon-modifiers",
+          "g-icon-style",
           "g-inherit",
           "g-inheritance-settings",
           "g-instancepicker",

@@ -73,7 +73,7 @@ dom.ready(function() {
                     updatePreview = function() {
                         let data = [],
                             active = container.querySelector('[data-g-icon].active'),
-                            options = container.querySelectorAll('.g-particles-header .float-right input:checked, .g-particles-header .float-right select');
+                            options = container.querySelectorAll('[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select');
 
                         if (active) { data.push(active.getAttribute('data-g-icon')); }
                         options.forEach(function(option) {
@@ -90,6 +90,22 @@ dom.ready(function() {
                         let total = container.querySelectorAll('[data-g-icon]:not(.hide-icon)').length,
                             label = container.querySelector('.particle-search-total');
                         if (label) { label.textContent = total; }
+                    },
+                    applyFilters = function() {
+                        let searchField = container.querySelector('.particle-search-wrapper input[type="text"]'),
+                            libraryField = container.querySelector('[data-g-icon-library]'),
+                            styleField = container.querySelector('[data-g-icon-style]'),
+                            search = searchField ? searchField.value.toLowerCase().trim() : '',
+                            library = libraryField ? libraryField.value : '',
+                            style = styleField ? styleField.value : '';
+
+                        icons.forEach(function(icon) {
+                            let matchesSearch = !search || icon.getAttribute('data-g-icon').toLowerCase().includes(search),
+                                matchesLibrary = !library || icon.getAttribute('data-g-icon-library') === library,
+                                matchesStyle = !style || icon.getAttribute('data-g-icon-style') === style;
+                            icon.classList.toggle('hide-icon', !(matchesSearch && matchesLibrary && matchesStyle));
+                        });
+                        updateTotal();
                     };
 
                 if (selectButton) { selectButton.disabled = !container.querySelector('[data-g-icon].active'); }
@@ -116,14 +132,11 @@ dom.ready(function() {
                     modal.close();
                 });
 
-                dom.delegate(container, 'change', '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
+                dom.delegate(container, 'change', '[data-g-icon-modifiers] input[type="checkbox"], [data-g-icon-modifiers] select', updatePreview);
+                dom.delegate(container, 'change', '[data-g-icon-library], [data-g-icon-style]', applyFilters);
 
                 dom.delegate(container, 'keyup', '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
-                    let search = input.value.toLowerCase();
-                    icons.forEach(function(icon) {
-                        icon.classList.toggle('hide-icon', Boolean(search) && !icon.getAttribute('data-g-icon').toLowerCase().includes(search));
-                    });
-                    updateTotal();
+                    applyFilters();
                 });
 
                 icons.forEach(function(icon) {

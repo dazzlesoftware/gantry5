@@ -54,7 +54,31 @@ class Icons extends JsonController
         $list = array_unique($list);
         sort($list);
 
-        $response['html'] = $this->render('@genesis-admin/ajax/icons.html.twig', ['icons' => $list, 'options' => $options, 'total' => count($list)]);
+        $icons = array_map(static function (string $icon): array {
+            $prefix = strtok($icon, ' ');
+            $styles = [
+                'fab' => 'brands',
+                'far' => 'regular',
+                'fas' => 'solid'
+            ];
+
+            return [
+                'value' => $icon,
+                'library' => 'font-awesome',
+                'style' => $styles[$prefix] ?? 'other'
+            ];
+        }, $list);
+
+        $libraries = ['font-awesome' => 'Font Awesome'];
+        $styles = ['solid' => 'Solid', 'regular' => 'Regular', 'brands' => 'Brands'];
+
+        $response['html'] = $this->render('@genesis-admin/ajax/icons.html.twig', [
+            'icons' => $icons,
+            'libraries' => $libraries,
+            'styles' => $styles,
+            'options' => $options,
+            'total' => count($icons)
+        ]);
 
         return new JsonResponse($response);
     }

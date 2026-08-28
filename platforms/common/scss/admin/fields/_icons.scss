@@ -26,7 +26,8 @@
     }
 
     .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content {
-        width: 650px;
+        width: min(1200px, calc(100vw - 48px));
+        max-width: none;
 
         .g-icon-preview {
             padding: 0 2px;
@@ -46,6 +47,10 @@
 
         .g-particles-header {
             color: lighten(#000, 50);
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 10px 16px;
 
             label, select, input {
                 margin: 0 !important;
@@ -57,39 +62,64 @@
                 font-size: 0.75em;
             }
 
-            .float-right input, select {
+            .icon-option-wrapper input, select {
                 width: auto !important;
             }
 
-            .float-left.particle-search-wrapper input {
-                width: 245px;
+            .particle-search-wrapper {
+                flex: 1 1 300px;
+
+                input {
+                    width: 100%;
+                    min-width: 240px;
+                }
+            }
+
+            .icon-filter-wrapper, .icon-option-wrapper {
+                display: flex;
+                align-items: flex-end;
+                gap: 8px;
+            }
+
+            .icon-filter-wrapper label {
+                display: flex !important;
+                flex-direction: column;
+                gap: 3px;
+                font-size: 0.72em;
+
+                select {
+                    min-width: 135px;
+                }
             }
         }
 
         .icons-wrapper {
-            max-height: 500px;
+            max-height: min(65vh, 720px);
             overflow: auto;
             ul {
                 @extend %list-reset;
                 background-color: $white;
                 border-radius: 3px;
                 padding: 10px;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+                gap: 3px 8px;
 
                 li {
-                    display: inline-block;
-                    min-width: 190px;
-                    font-size: 0.85em;
+                    min-width: 0;
+                    font-size: 0.9em;
                     color: lighten(#000, 70);
                     cursor: pointer;
                     padding: 4px;
-                    margin: 2px 0;
+                    margin: 0;
                     border-radius: 3px;
-                    display: inline-block;
-                    max-width: 190px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow-wrap: normal;
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+
+                    span {
+                        overflow-wrap: anywhere;
+                    }
 
                     i {
                         color: #333;
@@ -112,6 +142,18 @@
                         display: none;
                     }
                 }
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            width: calc(100vw - 20px);
+
+            .g-particles-header .icon-option-wrapper {
+                flex-wrap: wrap;
+            }
+
+            .icons-wrapper ul {
+                grid-template-columns: 1fr;
             }
         }
     }

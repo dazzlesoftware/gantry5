@@ -16933,7 +16933,8 @@ html.genesis-dialog-open {
   margin-bottom: 0;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content {
-  width: 650px;
+  width: min(1200px, 100vw - 48px);
+  max-width: none;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-icon-preview {
   padding: 0 2px;
@@ -16950,6 +16951,10 @@ html.genesis-dialog-open {
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header {
   color: rgb(127.5, 127.5, 127.5);
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px 16px;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header label, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header select, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header input {
   margin: 0 !important;
@@ -16959,36 +16964,56 @@ html.genesis-dialog-open {
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header label {
   font-size: 0.75em;
 }
-[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .float-right input, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .lm-blocks [data-lm-blocktype=container] .container-wrapper .container-actions input, [data-genesis-container] .lm-blocks [data-lm-blocktype=container] .container-wrapper .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .container-actions input, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header select {
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-option-wrapper input, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header select {
   width: auto !important;
 }
-[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .float-left.particle-search-wrapper input, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .lm-blocks [data-lm-blocktype=container] .container-wrapper .particle-search-wrapper.container-title input, [data-genesis-container] .lm-blocks [data-lm-blocktype=container] .container-wrapper .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .particle-search-wrapper.container-title input {
-  width: 245px;
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .particle-search-wrapper {
+  flex: 1 1 300px;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .particle-search-wrapper input {
+  width: 100%;
+  min-width: 240px;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-filter-wrapper, [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-option-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-filter-wrapper label {
+  display: flex !important;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.72em;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-filter-wrapper label select {
+  min-width: 135px;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper {
-  max-height: 500px;
+  max-height: min(65vh, 720px);
   overflow: auto;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul {
   background-color: #fff;
   border-radius: 3px;
   padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 3px 8px;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul li {
-  display: inline-block;
-  min-width: 190px;
-  font-size: 0.85em;
+  min-width: 0;
+  font-size: 0.9em;
   color: rgb(178.5, 178.5, 178.5);
   cursor: pointer;
   padding: 4px;
-  margin: 2px 0;
+  margin: 0;
   border-radius: 3px;
-  display: inline-block;
-  max-width: 190px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow-wrap: normal;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul li span {
+  overflow-wrap: anywhere;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul li i {
   color: #333;
@@ -17005,6 +17030,17 @@ html.genesis-dialog-open {
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul li.hide-icon {
   display: none;
+}
+@media only screen and (max-width: 700px) {
+  [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content {
+    width: calc(100vw - 20px);
+  }
+  [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-option-wrapper {
+    flex-wrap: wrap;
+  }
+  [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .icons-wrapper ul {
+    grid-template-columns: 1fr;
+  }
 }
 
 [data-genesis-container] .g-filepicker > *:not(div), [data-genesis-container] .g-filepicker label {

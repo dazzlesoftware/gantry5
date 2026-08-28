@@ -1,9 +1,25 @@
-<div class="g-particles-header icons-header settings-block clearfix">
-    <div class="float-left particle-search-wrapper">
+<div class="g-particles-header icons-header settings-block">
+    <div class="particle-search-wrapper">
         <input type="text" placeholder="{{ 'GENESIS_PLATFORM_SEARCH_ELI'|trans }}"/>
         <span class="particle-search-total">{{ total }}</span>
     </div>
-    <div class="float-right">
+    <div class="icon-filter-wrapper">
+        <label>
+            <span>Library</span>
+            <select data-g-icon-library>
+                <option value="">All libraries</option>
+                {% for key,label in libraries %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <label>
+            <span>Style</span>
+            <select data-g-icon-style>
+                <option value="">All styles</option>
+                {% for key,label in styles %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="icon-option-wrapper" data-g-icon-modifiers="font-awesome">
         {% for type,option in options %}
             {% if option is iterable %}
                 <select name="type">
@@ -21,7 +37,7 @@
 <div class="g-particles-main icons-wrapper">
     <ul>
         {% for icon in icons %}
-            <li data-g-icon="{{ icon }}"><i class="fa-fw {{ icon }}" aria-hidden="true"></i> {{ icon }}</li>
+            <li data-g-icon="{{ icon.value }}" data-g-icon-library="{{ icon.library }}" data-g-icon-style="{{ icon.style }}"><i class="fa-fw {{ icon.value }}" aria-hidden="true"></i> <span>{{ icon.value }}</span></li>
         {% endfor %}
     </ul>
 </div>
