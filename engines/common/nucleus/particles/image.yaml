@@ -32,4 +32,4 @@ form:
     link: {type: input.text, label: Link, description: Used when lightbox is disabled.}
     target: {type: select.select, label: Link Target, default: _self, options: {_self: Same Window, _blank: New Window}}
     fetchpriority: {type: select.select, label: Fetch Priority, default: auto, options: {auto: Auto, high: High, low: Low}}
-    wrapper: {type: input.checkbox, label: Wrap Image in Container, description: 'Wrap the image in an extra <div class="img-wrapper"> element, for themes that hook custom hover/overlay effects onto it. Leave off unless your theme needs it.', default: false}
+    wrapper: {type: input.checkbox, label: Wrap Image in Container, description: 'Wrap the image in an optional container with the img-wrapper CSS class. This supports themes that add custom hover or overlay effects. Leave it disabled unless your theme requires it.', default: false}
