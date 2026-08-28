@@ -1,0 +1,29 @@
+{% extends 'forms/fields/input/selectize.html.twig' %}
+
+{% block global_attributes %}
+    {% set variations = genesis.theme.details.configuration['block-variations'] %}
+    {% set Options = field.selectize.Options %}
+    {% set Optgroups = field.selectize.Optgroups %}
+    {% set options = [] %}
+    {% set optgroups = [] %}
+    {% if variations %}
+        {% for key,text in variations %}
+            {% if text is iterable %}
+                {% for item_key,item_text in text %}
+                    {% set options = options|merge([{optgroup: key, value: item_key, text: item_text}])  %}
+                    {% if key not in optgroups %}{% set optgroups = optgroups|merge([{value: key, label: key}]) %}{% endif %}
+                {%  endfor %}
+            {% else %}
+                {% set options = options|merge([{value: key, text: text}])  %}
+            {% endif %}
+        {% endfor %}
+
+
+        {% set field = field|merge(field.selectize.Options|default({}))|merge(field.selectize.Optgroups|default({}))|merge({selectize: { Options: options, Optgroups: optgroups, Subtitles: true }}) %}
+    {% endif %}
+
+    {# `field.selectize` is fully built above; let the parent block (selectize.html.twig)
+       emit the single `data-selectize` attribute so the `create: true` default it merges
+       in isn't lost to a duplicate attribute (browsers keep only the first one). #}
+    {{ parent() }}
+{% endblock %}

@@ -28,8 +28,7 @@ dist
 bin/tester/cache
 bin/tester/tests
 
-# Symbolic links in admin
-platforms/*/*/admin/common
+# Generated platform links
 platforms/*/*/src
 platforms/*/*/assets
 platforms/*/*/engines

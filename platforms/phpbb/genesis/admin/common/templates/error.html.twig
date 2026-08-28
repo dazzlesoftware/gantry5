@@ -1,0 +1,7 @@
+{% extends ajax-suffix ? "@genesis-admin/partials/ajax.html.twig" : "@genesis-admin/partials/base.html.twig" %}
+
+{% block genesis %}
+    <h1>{{ title }}</h1>
+
+    <p>{{ 'GENESIS_PLATFORM_OOPS'|trans }}, {{ error.getMessage }}.</p>
+{% endblock %}
