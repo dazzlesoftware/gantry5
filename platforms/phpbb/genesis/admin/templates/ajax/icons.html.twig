@@ -19,7 +19,7 @@
             </select>
         </label>
     </div>
-    <div class="icon-option-wrapper" data-g-icon-modifiers="font-awesome">
+    {% if libraries['font-awesome'] is defined %}<div class="icon-option-wrapper" data-g-icon-modifiers="font-awesome">
         {% for type,option in options %}
             {% if option is iterable %}
                 <select name="type">
@@ -31,20 +31,20 @@
                 <label><input type="checkbox" name="fa-{{ type }}" value="fa-{{ type }}"/> {{ option }}</label>
             {% endif %}
         {% endfor %}
-    </div>
+    </div>{% endif %}
 </div>
 
 <div class="g-particles-main icons-wrapper">
     <ul>
         {% for icon in icons %}
-            <li data-g-icon="{{ icon.value }}" data-g-icon-library="{{ icon.library }}" data-g-icon-style="{{ icon.style }}"><i class="fa-fw {{ icon.value }}" aria-hidden="true"></i> <span>{{ icon.value }}</span></li>
+            <li data-g-icon="{{ icon.value }}" data-g-icon-library="{{ icon.library }}" data-g-icon-style="{{ icon.style }}"><i class="{{ icon.value }}" aria-hidden="true"></i> <span>{{ icon.value }}</span></li>
         {% endfor %}
     </ul>
 </div>
 
 {% set faVersion = (genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa7css')|replace({'fa4': 'fa7css'})|substr(0, 3)|upper %}
 
-<div class="alert alert-info">{{ 'Displaying %s icons (see <strong>Base Outline</strong> &gt; <strong>Page Settings</strong> &gt; <strong>Font Awesome</strong>).'|trans(faVersion)|raw }}</div>
+<div class="alert alert-info">Displaying {{ libraries|join(', ') }} icons. Use the Library and Style filters to narrow the list.</div>
 
 <div class="g-particles-footer settings-block clearfix">
     <div class="float-left g-icon-preview"></div>

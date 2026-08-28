@@ -16932,6 +16932,21 @@ html.genesis-dialog-open {
   text-align: center;
   margin-bottom: 0;
 }
+[data-genesis-container] .g-icon-preview-1x {
+  font-size: 1em !important;
+}
+[data-genesis-container] .g-icon-preview-2x {
+  font-size: 2em !important;
+}
+[data-genesis-container] .g-icon-preview-3x {
+  font-size: 3em !important;
+}
+[data-genesis-container] .g-icon-preview-4x {
+  font-size: 4em !important;
+}
+[data-genesis-container] .g-icon-preview-5x {
+  font-size: 5em !important;
+}
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content {
   width: min(1200px, 100vw - 48px);
   max-width: none;
@@ -16978,6 +16993,9 @@ html.genesis-dialog-open {
   display: flex;
   align-items: flex-end;
   gap: 8px;
+}
+[data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-option-wrapper.hide-options {
+  display: none;
 }
 [data-genesis-container] .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content .g-particles-header .icon-filter-wrapper label {
   display: flex !important;

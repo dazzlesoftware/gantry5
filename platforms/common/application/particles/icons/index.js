@@ -73,7 +73,8 @@ dom.ready(function() {
                     updatePreview = function() {
                         let data = [],
                             active = container.querySelector('[data-g-icon].active'),
-                            options = container.querySelectorAll('[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select');
+                            activeLibrary = active ? active.getAttribute('data-g-icon-library') : '',
+                            options = activeLibrary === 'font-awesome' ? container.querySelectorAll('[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select') : [];
 
                         if (active) { data.push(active.getAttribute('data-g-icon')); }
                         options.forEach(function(option) {
@@ -105,6 +106,8 @@ dom.ready(function() {
                                 matchesStyle = !style || icon.getAttribute('data-g-icon-style') === style;
                             icon.classList.toggle('hide-icon', !(matchesSearch && matchesLibrary && matchesStyle));
                         });
+                        let modifiers = container.querySelector('[data-g-icon-modifiers]');
+                        if (modifiers) { modifiers.classList.toggle('hide-options', Boolean(library) && library !== 'font-awesome'); }
                         updateTotal();
                     };
 
@@ -139,12 +142,15 @@ dom.ready(function() {
                     applyFilters();
                 });
 
-                icons.forEach(function(icon) {
+                dom.delegate(container, 'mouseover', '[data-g-icon]', function(popoverEvent, icon) {
+                    if (icon.hasAttribute('data-g-icon-popover')) { return; }
+                    icon.setAttribute('data-g-icon-popover', '');
+
                     let iconName = icon.getAttribute('data-g-icon'),
                         html = '';
 
                     for (let size = 5; size > 0; size--) {
-                        html += '<i class="' + escapeHTML(iconName) + ' fa-' + size + 'x" aria-hidden="true"></i> ';
+                        html += '<i class="' + escapeHTML(iconName) + ' g-icon-preview-' + size + 'x" aria-hidden="true"></i> ';
                     }
                     html += '<h3>' + escapeHTML(iconName) + '</h3>';
 
@@ -160,6 +166,10 @@ dom.ready(function() {
                     popover.on('hidden.popover', function(instance) {
                         if (instance.$target) { instance.$target.remove(); }
                     });
+                });
+
+                icons.forEach(function(icon) {
+                    let iconName = icon.getAttribute('data-g-icon');
 
                     if (!value.includes(iconName)) { return; }
 

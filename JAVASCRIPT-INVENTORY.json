@@ -22,26 +22,26 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 217,
+    "totalFiles": 218,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 193,
+      "first_party_source": 194,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 13
     },
     "areas": {
       "administration": 87,
-      "build": 6,
+      "build": 7,
       "frontend_core": 5,
       "platform_integration": 3,
       "recovered_theme": 33,
       "shared_browser_asset": 83
     },
     "activeReferencedFiles": 215,
-    "unreferencedFiles": 2,
+    "unreferencedFiles": 3,
     "commonjsFiles": 10,
-    "esModuleFiles": 93,
+    "esModuleFiles": 94,
     "varFiles": 18,
     "legacyBrowserApiFiles": 5,
     "inlineCodeGenerationFiles": 0,
@@ -3858,6 +3858,31 @@
       }
     },
     {
+      "path": "bin/generate-icon-libraries.mjs",
+      "area": "build",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 0,
+      "consumers": [],
+      "bytes": 5770,
+      "lines": 132,
+      "sha256": "74e336093f645295b8db4887b47dcbb97ffc59832950b703888155ecdb145617",
+      "signals": {
+        "commonjs": false,
+        "esModule": true,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "engines/common/nucleus/gulpfile.js",
       "area": "build",
       "classification": "build_tool",
@@ -5836,9 +5861,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 8900,
-      "lines": 188,
-      "sha256": "1e986a8a596723438963c074d8e539b638d3269791cbab5ce5fbfd277b5d6d49",
+      "bytes": 9617,
+      "lines": 198,
+      "sha256": "75ad9350ef266222540c7233104f0bc7edd9067889df16166ab8e9a0e415b39d",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5854,6 +5879,7 @@
           "g-icon",
           "g-icon-library",
           "g-icon-modifiers",
+          "g-icon-popover",
           "g-icon-style",
           "g-select",
           "genesis-iconpicker"
@@ -7761,9 +7787,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 621164,
-      "lines": 15193,
-      "sha256": "05081b52c2b6cf15d23a996eca0f0ae3ec048d1b77f99180bbb06b6b667b5518",
+      "bytes": 621845,
+      "lines": 15204,
+      "sha256": "8d11e4d9dd874b1feb0187597e4cfdb2f0f404f6b143f4802a720682d777939c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -7842,6 +7868,7 @@
           "g-icon",
           "g-icon-library",
           "g-icon-modifiers",
+          "g-icon-popover",
           "g-icon-style",
           "g-inherit",
           "g-inheritance-settings",

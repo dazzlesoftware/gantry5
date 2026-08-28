@@ -12987,7 +12987,7 @@
             return false;
           }
           let selectButton = container.querySelector("[data-g-select]"), updatePreview = function() {
-            let data = [], active = container.querySelector("[data-g-icon].active"), options = container.querySelectorAll("[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select");
+            let data = [], active = container.querySelector("[data-g-icon].active"), activeLibrary = active ? active.getAttribute("data-g-icon-library") : "", options = activeLibrary === "font-awesome" ? container.querySelectorAll("[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select") : [];
             if (active) {
               data.push(active.getAttribute("data-g-icon"));
             }
@@ -13014,6 +13014,10 @@
               let matchesSearch = !search || icon.getAttribute("data-g-icon").toLowerCase().includes(search), matchesLibrary = !library || icon.getAttribute("data-g-icon-library") === library, matchesStyle = !style || icon.getAttribute("data-g-icon-style") === style;
               icon.classList.toggle("hide-icon", !(matchesSearch && matchesLibrary && matchesStyle));
             });
+            let modifiers = container.querySelector("[data-g-icon-modifiers]");
+            if (modifiers) {
+              modifiers.classList.toggle("hide-options", Boolean(library) && library !== "font-awesome");
+            }
             updateTotal();
           };
           if (selectButton) {
@@ -13047,10 +13051,14 @@
           dom22.delegate(container, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
             applyFilters();
           });
-          icons.forEach(function(icon) {
+          dom22.delegate(container, "mouseover", "[data-g-icon]", function(popoverEvent, icon) {
+            if (icon.hasAttribute("data-g-icon-popover")) {
+              return;
+            }
+            icon.setAttribute("data-g-icon-popover", "");
             let iconName = icon.getAttribute("data-g-icon"), html = "";
             for (let size3 = 5; size3 > 0; size3--) {
-              html += '<i class="' + escapeHTML2(iconName) + " fa-" + size3 + 'x" aria-hidden="true"></i> ';
+              html += '<i class="' + escapeHTML2(iconName) + " g-icon-preview-" + size3 + 'x" aria-hidden="true"></i> ';
             }
             html += "<h3>" + escapeHTML2(iconName) + "</h3>";
             let popover = popovers.create(icon, {
@@ -13067,6 +13075,9 @@
                 instance2.$target.remove();
               }
             });
+          });
+          icons.forEach(function(icon) {
+            let iconName = icon.getAttribute("data-g-icon");
             if (!value.includes(iconName)) {
               return;
             }

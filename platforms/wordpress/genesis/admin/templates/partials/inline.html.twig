@@ -2,6 +2,11 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ url('genesis-admin://assets/css-compiled/admin.css') }}" type="text/css" />
+    {% if genesis.config.page.lucide.enable|default(1) %}<link rel="stylesheet" href="{{ url('genesis-admin://assets/css/lucide-icons.css') }}" type="text/css" />{% endif %}
+    {% if genesis.config.page.tabler.enable|default(1) %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/tabler-icons.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/tabler-icons-filled.css') }}" type="text/css" />
+    {% endif %}
     {% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa7css' %}
     {% set faVersion = faVersion == 'fa4' ? 'fa7css' : faVersion %}
     {% if faVersion == 'fa5css' or faVersion == 'fa5js' %}

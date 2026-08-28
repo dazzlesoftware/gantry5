@@ -2,6 +2,8 @@
 {%- do genesis.theme.loadAtoms() -%}
 
 {% set faEnabled = genesis.config.page.fontawesome.enable|default(1) %}
+{% set lucideEnabled = genesis.config.page.lucide.enable|default(1) %}
+{% set tablerEnabled = genesis.config.page.tabler.enable|default(1) %}
 {% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa7css' %}
 {% set faVersion = faVersion == 'fa4' ? 'fa7css' : faVersion %}
 
@@ -39,6 +41,13 @@
     {% block head_platform %}{% endblock %}
 
    {% block head_overrides -%}
+        {% if lucideEnabled %}
+            <link rel="stylesheet" href="genesis-assets://css/lucide-icons.css" type="text/css">
+        {% endif %}
+        {% if tablerEnabled %}
+            <link rel="stylesheet" href="genesis-assets://css/tabler-icons.css" type="text/css">
+            <link rel="stylesheet" href="genesis-assets://css/tabler-icons-filled.css" type="text/css">
+        {% endif %}
         {% if faEnabled %}
             {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_css_import|trim %}
                 {{ genesis.config.page.fontawesome.html_css_import|html|raw -}}

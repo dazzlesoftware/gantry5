@@ -1,0 +1,17 @@
+name: Lucide Settings
+description: Configuration for the bundled Lucide icon library.
+type: global
+
+form:
+  fields:
+
+    _info:
+      type: separator.note
+      condition: override
+      content: Set your Lucide settings in the <strong>Base Outline</strong>. These settings should not be overridden <strong>here</strong>.
+
+    enable:
+      type: enable.enable
+      label: Enable
+      description: Enable or disable Lucide icons in the icon picker and on the frontend.
+      default: 1
