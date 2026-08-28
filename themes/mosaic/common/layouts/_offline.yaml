@@ -237,7 +237,7 @@ content:
   custom-5639:
     title: 'Custom HTML'
     attributes:
-      html: "<section id=\"rt-subscription-form\">\n\n<p class=\"rt-subscription-title\">\n\t\t\t\t\t\t\t\tGet Notified When We Release\t\t\t\t\t\t\t</p>\n\n<form class=\"rt-comingsoon-form\" onsubmit=\"window.open('http://feedburner.google.com/fb/a/mailverify', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true\" target=\"popupwindow\" method=\"post\" action=\"http://feedburner.google.com/fb/a/mailverify\">\n\t<input type=\"text\" name=\"email\" class=\"inputbox\" placeholder=\"Email Address\" />\n\t<input type=\"hidden\" name=\"uri\" value=\"rocketthemeblog\" />\n\t<input type=\"hidden\" value=\"en_US\" name=\"loc\" />\n\t<input type=\"submit\" value=\"Subscribe\" class=\"readon\" name=\"Submit\" />\n</form>\n</section>"
+      html: "<section id=\"rt-subscription-form\">\n\n<p class=\"rt-subscription-title\">\n\t\t\t\t\t\t\t\tGet Notified When We Release\t\t\t\t\t\t\t</p>\n\n<form class=\"rt-comingsoon-form\" onsubmit=\"window.open('http://feedburner.google.com/fb/a/mailverify', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true\" target=\"popupwindow\" method=\"post\" action=\"http://feedburner.google.com/fb/a/mailverify\">\n\t<input type=\"text\" name=\"email\" class=\"inputbox\" placeholder=\"Email Address\" />\n\t<input type=\"hidden\" name=\"uri\" value=\"dazzlesoftware\" />\n\t<input type=\"hidden\" value=\"en_US\" name=\"loc\" />\n\t<input type=\"submit\" value=\"Subscribe\" class=\"readon\" name=\"Submit\" />\n</form>\n</section>"
     block:
       variations: 'center nomarginall nopaddingall'
   position-position-5798:

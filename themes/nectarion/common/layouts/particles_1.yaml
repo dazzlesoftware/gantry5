@@ -984,7 +984,7 @@ content:
       headtext: Subscribe to our newsletter and stay updated on the latest developments and special offers!
       inputboxtext: Responsive particle test content for item 1.
       buttontext: Join
-      uri: rocketthemeblog
+      uri: dazzlesoftware
       buttonclass: button-4
     title: Newsletter — Mainbar
     block:
@@ -997,7 +997,7 @@ content:
       headtext: Subscribe to our newsletter and stay updated on the latest developments and special offers!
       inputboxtext: Responsive particle test content for item 1.
       buttontext: Join
-      uri: rocketthemeblog
+      uri: dazzlesoftware
       buttonclass: button-4
     title: Newsletter — Sidebar
     block:
