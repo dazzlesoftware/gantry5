@@ -6,7 +6,7 @@
         {% set column_classes = column_classes|merge(['col-' ~ breakpoint ~ '-' ~ attribute(segment.attributes.columns, breakpoint)]) %}
     {% endif %}
 {% endfor %}
-{% set class = 'g-block ' ~ column_classes|join(' ')
+{% set class = 'col ' ~ column_classes|join(' ')
     ~ (segment.attributes.variations ? ' ' ~ segment.attributes.variations|join(' '))
     ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
 

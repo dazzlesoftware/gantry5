@@ -46,11 +46,11 @@
     <div class="g-content-array g-joomla-articles{% if particle.css.class %} {{ particle.css.class }}{% endif %}" {{- attr_extra|raw }}>
 
         {% for column in articles|batch(limit.columns) %}
-            <div class="g-grid">
+            <div class="row">
                 {% for article in column %}
 
-                    <div class="g-block">
-                        <div class="g-content">
+                    <div class="col">
+                        <div class="genesis-content">
                             <div class="g-array-item">
                                 {% if display.edit and article.edit %}
                                     {% if not joomla.checkVersion('4.0') %}

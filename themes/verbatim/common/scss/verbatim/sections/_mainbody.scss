@@ -3,7 +3,7 @@
     color: $mainbody-text-color;
 
 	.fp-headlines {
-		> .g-content {
+		> .genesis-content {
 			padding: 10px !important;
 		}
 	}
@@ -16,7 +16,7 @@
 }
 
 .fp-content-top {
-	.g-content {
+	.genesis-content {
 		padding: 0;
 		@include breakpoint(mobile-only) {
 			padding: 15px 25px;
@@ -29,7 +29,7 @@
 }
 
 .fp-content-tabs {
-	.g-content {
+	.genesis-content {
 		padding: 15px 0 0;
 
 		hr {
@@ -39,7 +39,7 @@
 }
 
 .fp-content-bottom {
-    .g-content {
+    .genesis-content {
 	padding: 15px;
 	width: 88%;
 	margin: 25px auto;

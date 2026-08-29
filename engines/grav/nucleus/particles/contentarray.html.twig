@@ -23,11 +23,11 @@
     <div class="g-content-array g-grav-pages{% if particle.css.class %} {{ particle.css.class }}{% endif %}" {{- attr_extra|raw }}>
 
         {% for column in pages.batch(limit.columns) %}
-            <div class="g-grid">
+            <div class="row">
                 {% for page in column %}
 
-                    <div class="g-block">
-                        <div class="g-content">
+                    <div class="col">
+                        <div class="genesis-content">
                             <div class="g-array-item">
                                 {% if display.image.enabled %}
                                     {% if display.image.enabled == 'intro' %}

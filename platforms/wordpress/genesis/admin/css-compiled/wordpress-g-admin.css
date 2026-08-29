@@ -504,7 +504,7 @@ body.genesis.admin-color-sunrise [data-genesis-container] #main-header .settings
 body.genesis [data-genesis-container] #main-header dd, body.genesis [data-genesis-container] #main-header li {
   margin-bottom: 0;
 }
-body.genesis [data-genesis-container] #main-header .g-content {
+body.genesis [data-genesis-container] #main-header .genesis-content {
   padding: 0 1.563rem;
 }
 body.genesis [data-genesis-container] #main-header .settings-state {
@@ -737,11 +737,11 @@ body.genesis [data-genesis-container] nav.navbar * {
   border-color: rgba(221, 130, 59, 0.5);
 }
 
-body.wp-admin.widgets-php [data-genesis-container] .g-content, body.wp-customizer [data-genesis-container] .g-content {
+body.wp-admin.widgets-php [data-genesis-container] .genesis-content, body.wp-customizer [data-genesis-container] .genesis-content {
   margin: 0 0 0.625rem;
   padding: 0 0 0.938rem;
 }
-body.wp-admin.widgets-php [data-genesis-container] .g-content .settings-block .settings-param-field, body.wp-customizer [data-genesis-container] .g-content .settings-block .settings-param-field {
+body.wp-admin.widgets-php [data-genesis-container] .genesis-content .settings-block .settings-param-field, body.wp-customizer [data-genesis-container] .genesis-content .settings-block .settings-param-field {
   margin-left: 0;
 }
 body.wp-admin.widgets-php [data-genesis-container] .genesis-dialog, body.wp-customizer [data-genesis-container] .genesis-dialog {

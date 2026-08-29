@@ -6,20 +6,20 @@
       background-size: cover;
   }      
   // Container
-  .g-container {
+  .container {
     background: $slideshow-background;
   }
   &.fp-slideshow {
-    .g-container {
+    .container {
       background: transparent;
     }   
   }
   &.fp-slideshow-blocks {
     padding-top: $content-margin / 2;
-    > .g-container {
+    > .container {
       margin-top: (-1 * ($content-margin));
       }
-    .g-content {
+    .genesis-content {
       margin: $content-margin / 2;
       @include breakpoint(mobile-only) {
         margin: ($content-margin / 2) ($content-margin * 2);

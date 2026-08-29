@@ -23,7 +23,7 @@
 		@include breakpoint(mobile-only) {
 			margin-top: 0;
 		}
-        .g-content, .g-swiper {
+        .genesis-content, .g-swiper {
             height: 100%;
         }
     }
@@ -57,19 +57,19 @@
     // Flex
     .g-feature-swiper-content {
         @extend %g-swiper-flex;
-        > .g-content {
+        > .genesis-content {
             -webkit-flex-wrap: wrap;
             display: flex;
         }
-        .g-block {
+        .col {
             display: -webkit-flex;
             &.g-triangle-block {
-                .g-content {
+                .genesis-content {
                     margin: 0 auto !important;
                 }
             }
         }
-        .g-content,
+        .genesis-content,
         .g-swiper {
             @extend %g-swiper-flex;
         }

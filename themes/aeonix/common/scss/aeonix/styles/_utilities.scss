@@ -21,7 +21,7 @@ $css_size: "small", "med", "large", "xlarge";
     @each $dir in $css_directions {
         @each $size in $css_size {
             .#{$size}#{$prop}#{$dir} {
-                &:not(.g-block), > .g-content {   
+                &:not(.col), > .genesis-content {   
                     @if ($size == "small") {
                         @if ($dir != "all") {
                             #{$prop}-#{$dir}: 5px;

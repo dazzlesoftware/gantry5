@@ -1,8 +1,8 @@
 .flush {
-  .g-container {
-    > .g-grid {
-      > .g-block {
-        > .g-content {
+  .container {
+    > .row {
+      > .col {
+        > .genesis-content {
           margin: 0;
           padding: 0;
         }
@@ -19,10 +19,10 @@
 }
 
 .box1 {
-  &.moduletable, &.widget, &.g-outer-box,> .g-content {
+  &.moduletable, &.widget, &.g-outer-box,> .genesis-content {
     background: $box1-background;
   }
-  &.moduletable, &.widget, > .g-content {
+  &.moduletable, &.widget, > .genesis-content {
     &, h1, h2, h3, h4, h5, h6, strong, i {
       color: darken($box1-background, 65%);
     }
@@ -30,10 +30,10 @@
 }
 
 .box2 {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     background: $box2-background;
   }
-  &.moduletable, &.widget, > .g-content {
+  &.moduletable, &.widget, > .genesis-content {
     &, h1, h2, h3, h4, h5, h6, strong, i {
       color: darken($box2-background, 45%);
     }
@@ -42,10 +42,10 @@
 
 .box3 {
   &.moduletable, &.widget, &.g-outer-box,
-  > .g-content {
+  > .genesis-content {
     background: $accent-color-1;
   }
-  &.moduletable, &.widget, > .g-content {
+  &.moduletable, &.widget, > .genesis-content {
     &, h1, h2, h3, h4, h5, h6, strong, i {
       color: $white;
     }
@@ -66,10 +66,10 @@
 }
 
 .box4 {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     background: $accent-color-2;
   }
-  &.moduletable, &.widget, > .g-content {
+  &.moduletable, &.widget, > .genesis-content {
     &, h1, h2, h3, h4, h5, h6, strong, i {
       color: $white;
     }
@@ -90,31 +90,31 @@
 }
 
 .shadow {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   }
 }
 
 .shadow2 {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     box-shadow: 0 0 4px rgba(0,0,0,0.15);
   }
 }
 
 .disabled {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     opacity: 0.4;
   }
 }
 
 .square {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     border-radius: none;
   }
 }
 
 .rounded {
-  &.moduletable, &.widget, &.g-outer-box, > .g-content {
+  &.moduletable, &.widget, &.g-outer-box, > .genesis-content {
     border-radius: $core-border-radius;
   }
 }

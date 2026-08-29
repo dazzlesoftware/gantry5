@@ -1,4 +1,4 @@
-body #g-navigation .g-container > .g-grid:not(:has(.g-system-messages)) {
+body #g-navigation .container > .row:not(:has(.g-system-messages)) {
   display: flex;
   align-items: center;
   min-height: 6.25rem;

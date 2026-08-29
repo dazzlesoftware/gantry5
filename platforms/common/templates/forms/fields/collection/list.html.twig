@@ -18,7 +18,7 @@
                 <button class="button" type="button" data-g-collapse-all="false"><i class="far fa-fw fa-caret-square-down" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_EXPAND_ALL'|trans }}</button>
             </div>
         </div>
-        <div class="cards-wrapper g-grid">
+        <div class="cards-wrapper row">
             {% set labels = {collapse: 'GENESIS_PLATFORM_COLLAPSE'|trans, expand: 'GENESIS_PLATFORM_EXPAND'|trans} %}
             {% for key, val in value %}
                 {% set title = (field.value == field.key ? key : val[field.value]) %}

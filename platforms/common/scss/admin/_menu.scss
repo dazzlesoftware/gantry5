@@ -334,11 +334,11 @@ $submenu-ratio:                 60px;
     color: $core-text;
     background-color: $white;
 
-    &.moving .g-block .submenu-reorder {
+    &.moving .col .submenu-reorder {
         display: none;
     }
 
-    .g-block {
+    .col {
         position: relative;
         padding-bottom: $submenu-ratio;
         background: $navbar-bg;

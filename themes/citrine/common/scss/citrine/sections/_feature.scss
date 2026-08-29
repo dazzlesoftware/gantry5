@@ -3,12 +3,12 @@
     color: $feature-text-color;
 
     #g-featuremain {
-        > .g-grid {
+        > .row {
             padding: 0 0 $section-padding 0;
         }
     }
 
-    .g-content {
+    .genesis-content {
         padding: 0.2rem;
     }
 }

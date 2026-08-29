@@ -6,9 +6,9 @@
 
   <div class="g-aetheriablock {{ particle.class|e }}">
     
-    <div class="row g-grid">
-      <div class="col g-block g-aetheriablock-item g-aetheriablock-item-1 col-{{ particle.left|default(4)|e }}" style="background-image: url('{{ url(particle.image1)|e }}');">
-        <div class="g-content">
+    <div class="row">
+      <div class="col g-aetheriablock-item g-aetheriablock-item-1 col-{{ particle.left|default(4)|e }}" style="background-image: url('{{ url(particle.image1)|e }}');">
+        <div class="genesis-content">
           <div class="g-aetheriablock-content">
             <div class="g-tag"><a href="{{ particle.link1|e }}">{{ particle.title1|e }}</a></div>
             <p>{{ particle.desc1|e }}</p>
@@ -28,10 +28,10 @@
         </div>
       </div>
       
-      <div class="col g-block g-aetheriablock-item col-{{ particle.right|default(8)|e }}">
-        <div class="row g-grid">
-          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-2" style="background-image: url('{{ url(particle.image2)|e }}');">
-            <div class="g-content">
+      <div class="col g-aetheriablock-item col-{{ particle.right|default(8)|e }}">
+        <div class="row">
+          <div class="col g-aetheriablock-item g-aetheriablock-item-2" style="background-image: url('{{ url(particle.image2)|e }}');">
+            <div class="genesis-content">
               <div class="g-aetheriablock-content">
                 <h2 class="g-larger"><a href="{{ particle.link2|e }}">{{ particle.title2|e }}</a></h2>
                 <p>{{ particle.desc2|e }}</p>
@@ -40,9 +40,9 @@
             </div>
           </div>
         </div>
-        <div class="row g-grid">
-          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-3">
-            <div class="g-content">
+        <div class="row">
+          <div class="col g-aetheriablock-item g-aetheriablock-item-3">
+            <div class="genesis-content">
               <div class="g-aetheriablock-content">
                 <div class="g-headline">{{ particle.desc3|e }}</div>
                 {% if particle.listgriditems3 %}
@@ -60,8 +60,8 @@
               </div>    
             </div>
           </div>
-          <div class="col g-block g-aetheriablock-item g-aetheriablock-item-4" style="background-image: url('{{ url(particle.image4)|e }}');">
-            <div class="g-content">
+          <div class="col g-aetheriablock-item g-aetheriablock-item-4" style="background-image: url('{{ url(particle.image4)|e }}');">
+            <div class="genesis-content">
               <div class="g-aetheriablock-content">
                 {% if particle.listgriditems4 %}
                 <ul class="g-horizontalmenu">

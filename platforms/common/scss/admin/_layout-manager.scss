@@ -41,12 +41,12 @@ $atom: #9055AF;
             border: 2px dashed #dfdfdf;
         }
 
-        .g-grid, .g-block {
+        .row, .col {
             position: relative;
         }
 
         // resizers
-        .g-grid > .g-block {
+        .row > .col {
             &:after {
                 content: "";
                 position: absolute;
@@ -65,8 +65,8 @@ $atom: #9055AF;
             }
         }
 
-        &.moving .g-grid > .g-block:after, &.moving .g-grid > .g-block > [data-lm-blocktype]:after,
-        &.moving .g-grid:hover > .g-block [data-lm-blocktype]:not(:empty):after {
+        &.moving .row > .col:after, &.moving .row > .col > [data-lm-blocktype]:after,
+        &.moving .row:hover > .col [data-lm-blocktype]:not(:empty):after {
             display: none;
         }
 
@@ -113,7 +113,7 @@ $atom: #9055AF;
             }
         }
 
-        .g-grid .g-block {
+        .row .col {
             .section:first-child {
                 margin-top: 0;
             }
@@ -216,14 +216,14 @@ $atom: #9055AF;
                     }
                 }
 
-                &.g-inheriting-children > .g-grid:not(:empty) {
+                &.g-inheriting-children > .row:not(:empty) {
                     &:before, &:after {
                         display: none !important;
                     }
                 }
             }
 
-            .g-grid {
+            .row {
                 margin: 8px 0;
                 padding: 4px;
                 border: 0;
@@ -284,7 +284,7 @@ $atom: #9055AF;
                     margin-top: 0;
                 }
 
-                .g-block:after {
+                .col:after {
                     display: none;
                 }
 
@@ -312,7 +312,7 @@ $atom: #9055AF;
             margin-top: 28px;
             border-top: 1px solid #ddd;
 
-            .g-grid {
+            .row {
                 background: $white;
             }
         }
@@ -322,7 +322,7 @@ $atom: #9055AF;
                 content: "Drop atoms here...";
             }
 
-            .g-grid {
+            .row {
                 &:not(:empty):not(.no-hover):before, &:not(:empty):not(.no-hover):not(.no-gear):after {
                     display: none;
                     opacity: 0;
@@ -334,11 +334,11 @@ $atom: #9055AF;
                 }
             }
 
-            .g-block {
+            .col {
                 min-width: 20%;
             }
 
-            > .g-block {
+            > .col {
                 > .particle, > .position, > .spacer, > .system {
                     &:after {
                         display: none;
@@ -349,7 +349,7 @@ $atom: #9055AF;
             }
 
             /* sets the atoms margin-right to 0 for the last item or in case of nowrap to every 5th
-            .g-block
+            .col
                 &:nth-child(5n+5) .atom {
                     margin-right: 0;
                 }
@@ -382,7 +382,7 @@ $atom: #9055AF;
         }
 
         .offcanvas-section, .wrapper-section {
-            .g-grid:empty:after {
+            .row:empty:after {
                 content: "Drop particles here...";
                 display: inline-block;
                 max-width: 100%;
@@ -393,14 +393,14 @@ $atom: #9055AF;
             }
         }
 
-        > .g-grid > .g-block, .g-lm-container > .g-grid {
+        > .row > .col, .g-lm-container > .row {
             border-bottom: 8px solid #e0e0e0;
 
             &:last-child {
                 border-bottom: 0;
             }
 
-            > .g-block {
+            > .col {
                 background: $white;
                 padding-bottom: 50px;
 
@@ -417,8 +417,8 @@ $atom: #9055AF;
             }
         }
 
-        .g-grid {
-            &:hover > .g-block {
+        .row {
+            &:hover > .col {
                 > .particle, > .position, > .spacer, > .system {
                     &:after {
                         content: "";
@@ -435,7 +435,7 @@ $atom: #9055AF;
             }
         }
 
-        .section > .g-grid > .g-block:last-child, .section > .g-lm-container > .g-grid > .g-block:last-child, .offcanvas-section > .g-grid > .g-block:last-child, .wrapper-section > .g-grid > .g-block:last-child {
+        .section > .row > .col:last-child, .section > .g-lm-container > .row > .col:last-child, .offcanvas-section > .row > .col:last-child, .wrapper-section > .row > .col:last-child {
             .particle, .position, .spacer, .system, .atom {
                 margin-right: 0;
             }
@@ -448,7 +448,7 @@ $atom: #9055AF;
 
         }
 
-        .g-grid > .g-block {
+        .row > .col {
             &:last-child {
                 margin-right: 0;
             }
@@ -734,7 +734,7 @@ $atom: #9055AF;
     .lm-newblocks {
         padding-bottom: 8px;
 
-        .g-block {
+        .col {
             display: inline-block;
             text-align: center;
             background: $navbar-bg;
@@ -1085,7 +1085,7 @@ $atom: #9055AF;
         z-index: 0;
     }
 
-    .g-inheriting:not(.g-inheriting-children) .g-grid {
+    .g-inheriting:not(.g-inheriting-children) .row {
         z-index: inherit;
     }
 
@@ -1139,7 +1139,7 @@ $atom: #9055AF;
 
     // Bootstrap rows have fixed column spans selected through the row menu.
     // Retire Gantry's old drag-resize rails without affecting legacy grids.
-    [data-lm-preset-grid="bootstrap"] > .g-block {
+    [data-lm-preset-grid="bootstrap"] > .col {
         &:after,
         > [data-lm-blocktype]:after {
             display: none !important;
@@ -1150,15 +1150,15 @@ $atom: #9055AF;
     // Interactive block resizing has been removed from the Layout Manager.
     // Hide every remaining legacy resize rail, including layouts saved before
     // the Bootstrap preset marker was introduced.
-    .lm-blocks .g-grid > .g-block:after,
-    .lm-blocks .g-grid > .g-block > [data-lm-blocktype]:after {
+    .lm-blocks .row > .col:after,
+    .lm-blocks .row > .col > [data-lm-blocktype]:after {
         display: none !important;
         content: none !important;
     }
 
     // Remove the old external grid movement rail. Rows and Divs now expose
     // their own unambiguous header handles.
-    .lm-blocks .g-grid:before {
+    .lm-blocks .row:before {
         display: none !important;
         content: none !important;
     }
@@ -1166,7 +1166,7 @@ $atom: #9055AF;
     // A selected preset immediately renders its Bootstrap columns as usable
     // drop targets, matching the row-builder reference instead of showing an
     // apparently empty grid.
-    .g-grid > .g-block:not(:has(> [data-lm-id])) {
+    .row > .col:not(:has(> [data-lm-id])) {
         min-height: 110px;
         margin-top: 8px;
         margin-bottom: 8px;

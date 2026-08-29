@@ -13,14 +13,14 @@ html {
 
 // Theme containers retain their configured widths; Bootstrap owns alignment,
 // responsive rows, and columns.
-.g-container {
+.container {
     margin-right: auto;
     margin-left: auto;
     padding-right: 0;
     padding-left: 0;
 }
 
-.g-block > .g-container {
+.col > .container {
     width: auto;
 }
 

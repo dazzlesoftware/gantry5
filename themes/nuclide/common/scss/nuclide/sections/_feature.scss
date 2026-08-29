@@ -3,7 +3,7 @@
     color: $feature-text-color;  
 
 	// Container
-	.g-container {
+	.container {
 		padding: 1.5rem 0;
 		@include breakpoint(mobile-only) {
 			text-align: center;

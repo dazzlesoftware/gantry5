@@ -9,7 +9,7 @@
 	}
 
 	// Container
-	.g-content {
+	.genesis-content {
 		padding-bottom: $content-padding/2;
 		@include breakpoint(mobile-only) {
 			padding: $content-padding/2 $content-padding 0 $content-padding;

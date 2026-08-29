@@ -223,7 +223,7 @@
         background-color: #2a394f !important;
     }
 
-    .g-content {
+    .genesis-content {
         background-color: #2a394f !important;
     }
 
@@ -372,7 +372,7 @@
     }
 
     // Configuration sections
-    .g-grid .g-block {
+    .row .col {
         background: #2a394f !important;
     }
 
@@ -397,7 +397,7 @@
     }
 
     // Layout editor
-    .g-grid .g-block .g-block-content {
+    .row .col .g-block-content {
         background-color: #1a2537 !important;
     }
 
@@ -504,7 +504,7 @@
 
     // Content blocks
     .g-panel,
-    .g-content {
+    .genesis-content {
         color: $white;
     }
 
@@ -1154,7 +1154,7 @@
             border-top-color: #374f6b !important; // Darker border color for offcanvas and atoms sections
         }
 
-        .g-grid {
+        .row {
             background-color: #1a2537 !important;
 
             &:hover:not(:empty) {
@@ -1173,12 +1173,12 @@
             }
         }
 
-        .g-grid>.g-block {
+        .row>.col {
             &:after {
                 background: #00baaa !important; // Keep the original accent color for resizing
             }
 
-            >.g-block {
+            >.col {
                 background: #2a394f !important;
 
                 >.section {

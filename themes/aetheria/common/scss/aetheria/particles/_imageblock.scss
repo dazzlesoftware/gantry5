@@ -15,7 +15,7 @@
 
 // Imageblock
 .g-imageblock {	
-	> .g-grid {
+	> .row {
 		@include breakpoint(mobile-only) {
 			display: block;
 		}		

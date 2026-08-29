@@ -11,7 +11,7 @@
 
     // Typography
     .g-typography & {
-    	> .g-grid {
+    	> .row {
     		&:nth-child(even) {
     			background: darken($main-background, 1%);
     		}

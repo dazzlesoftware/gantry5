@@ -3,7 +3,7 @@
 	color: $footer-text-color;
 
 	// Container
-	.g-container {
+	.container {
 		padding: 2rem 0 1.5rem 0;
 	}
 
@@ -133,7 +133,7 @@
 	// Sample Sitemap
 	.g-sample-sitemap {
 		@include breakpoint(mobile-only) {
-			.g-block {
+			.col {
 				flex: 0 0 auto;
 				width: 50% !important;
 			}

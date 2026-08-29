@@ -479,14 +479,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
-          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
           \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
           \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
           \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
@@ -508,14 +508,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
-          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col\
           \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
@@ -537,14 +537,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
-          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
           \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
           g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
           >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\
@@ -576,14 +576,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
-          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
           \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
           \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
           \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
@@ -605,14 +605,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
-          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col\
           \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
@@ -634,14 +634,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
-          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
           \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
           g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
           >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\
@@ -1850,14 +1850,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
-          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
           \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
           \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
           \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
@@ -1879,14 +1879,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
-          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col\
           \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
           >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
@@ -1908,14 +1908,14 @@ content:
       - linklabel: ''
         link: ''
         content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
-          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
-          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          g-infolist-item-img col left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
           \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
           \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
           \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
-          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img col left\"\
           ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
-          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          g-infolist-item-text col\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
           \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
           g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
           >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\

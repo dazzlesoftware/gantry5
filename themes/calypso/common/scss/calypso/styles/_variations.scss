@@ -82,7 +82,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
   		color: $white;
 		background: $box1-background;
 	}
@@ -134,7 +134,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
   		border: 2px solid $rule-color;
 	}	
 	.g-title {
@@ -175,7 +175,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
 		color: $white;
 		background: $black;
 		font-family: get-font-family($font-family-special);
@@ -209,7 +209,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
 		color: $base-text-color;
 		background: $base-background;
 		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -235,7 +235,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
   		color: $feature-text-color; 
 	    @if $feature-background-direction == 1 {
 	    	background-image: linear-gradient(to right, $feature-background-1, $feature-background-2);
@@ -290,7 +290,7 @@
 	&.moduletable, 
 	&.widget,
 	&.g-outer-box,
-  	> .g-content  {
+  	> .genesis-content  {
 		color: $base-text-color;
 		background: darken($base-background, 5%);
 		font-family: get-font-family($font-family-default);
@@ -337,7 +337,7 @@
 .box-white {
   &.moduletable, &.widget,
 &.g-outer-box,
-  > .g-content {
+  > .genesis-content {
 	background: $box-white-background;
 }
 .button {
@@ -371,7 +371,7 @@ a {
 .box-grey {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-grey-background;
 	}
 	.button {
@@ -408,7 +408,7 @@ a {
 .box-pink {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-pink-background;
 	}
 	.button {
@@ -445,7 +445,7 @@ a {
 .box-red {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-red-background;
 	}
 	.button {
@@ -482,7 +482,7 @@ a {
 .box-purple {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-purple-background;
 	}
 	.button {
@@ -519,7 +519,7 @@ a {
 .box-blue {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-blue-background;
 	}
 	.button {
@@ -556,7 +556,7 @@ a {
 .box-orange {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-orange-background;
 	}
 	.button {
@@ -586,44 +586,44 @@ a {
 }
 
 .spaced {
-	.g-content {
+	.genesis-content {
 		margin: 1px;
 	}		
 }
 
 .bordered {
-	.g-content {
+	.genesis-content {
 		border: 1px solid $rule-color;
 		margin: 1px;
 	}	
 }
 
 .shadow {
-	.g-content {
+	.genesis-content {
 		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	}
 }
 
 .shadow2 {
-	.g-content {
+	.genesis-content {
 		box-shadow: 0 0 4px rgba(0,0,0,0.15);
 	}
 }
 
 .disabled {
-	.g-content {
+	.genesis-content {
 		opacity: 0.4;
 	}
 }
 
 .square {
-	.g-content {
+	.genesis-content {
 		border-radius: none;
 	}
 }
 
 .rounded {
-	.g-content {
+	.genesis-content {
 		border-radius: $core-border-radius;
 		overflow: hidden;
 	}
@@ -646,7 +646,7 @@ a {
 	#g-sidebar {
 		width: 100%;
 	}
-	.g-content {
+	.genesis-content {
         flex-basis: 100%;
         width: auto; 
     }

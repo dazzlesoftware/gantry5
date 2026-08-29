@@ -8,7 +8,7 @@
 	// Home
 	.g-home-positions.g-altairis-style &,
 	.g-home-particles.g-altairis-style & {
-		.g-container {
+		.container {
 			margin-top: -30rem;
 			margin-bottom: -8rem;
             @include breakpoint(mobile-only) {
@@ -21,7 +21,7 @@
     .g-home-positions &,
     .g-home-particles & {
         background: transparent;
-        .g-container {
+        .container {
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         }
     }    
@@ -31,7 +31,7 @@
     .fp-above-b, 
     .fp-above-c,
     .fp-above-d {
-    	> .g-content {
+    	> .genesis-content {
     		margin: 0;
     		padding: 0;
     	}

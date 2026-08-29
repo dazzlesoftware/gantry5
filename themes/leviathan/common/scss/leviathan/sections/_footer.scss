@@ -6,13 +6,13 @@
 	border-bottom: 1px solid $rule-color;
 
 	// Container
-	.g-container {
+	.container {
 		@include breakpoint(mobile-only) {
 			text-align: center;
 			border: 0;
 		}
 	}
-	.g-content {
+	.genesis-content {
 		padding: 0 $content-padding;
 		@include breakpoint(mobile-only) {
 			padding: $content-padding/2 $content-padding 0 $content-padding;
@@ -70,7 +70,7 @@
 		border-left: 1px solid $rule-color;
 		border-right: 1px solid $rule-color;
 		margin: 0 -1px;
-		.g-content {
+		.genesis-content {
 			padding-top: 0.7rem;
 		}
 		@include breakpoint(mobile-only) {
@@ -167,7 +167,7 @@
 	// Sample Sitemap
 	.g-sample-sitemap {
 		@include breakpoint(mobile-only) {
-			.g-block {
+			.col {
 				flex: 0 0 auto;
 				width: 50% !important;
 			}

@@ -111,12 +111,12 @@
 
 // Preset Thumbnails
 .g-preset-thumbnails {
-	.g-block {
+	.col {
 		flex: 1 1 auto !important;
-    &:first-child > .g-content {
+    &:first-child > .genesis-content {
       margin-left: 0 !important;
     }
-    &:last-child > .g-content {
+    &:last-child > .genesis-content {
       margin-right: 0 !important;
     }
 	}

@@ -4,7 +4,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     position: relative;
 
-    .g-content {
+    .genesis-content {
 		margin: 0.625rem;
     }
 	&.headroom-bg-section {
@@ -31,10 +31,10 @@
 	}
 
 	.g-aeonix-menu {
-		.g-content {
+		.genesis-content {
 			margin: 0;
 		}	
-		.menu-item-particle .g-content {
+		.menu-item-particle .genesis-content {
 			margin: $content-margin;
 			text-align: center;
 		}	
@@ -45,13 +45,13 @@
 
 #g-navigation {
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 	}
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}
 

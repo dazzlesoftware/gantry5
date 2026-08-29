@@ -1,18 +1,18 @@
 .flush {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 		padding: 0 !important;
 	}
 }
 
 .nopaddingall {
-	> .g-content {
+	> .genesis-content {
 		padding: 0 !important;
 	}	
 }
 
 .nomarginall {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 	}	
 }
@@ -69,20 +69,20 @@
 			margin-left: 0;
 		}
 	}
-	.g-content {
+	.genesis-content {
 		padding: 15px;
 	}
 }
 
 [class^="box"], [class*=" box"] {
-	.g-content, &.moduletable {
+	.genesis-content, &.moduletable {
 		border-radius: 3px;
 	}
 }	
 
-.g-block {
+.col {
 	&[class*="box"] {
-		.g-content {
+		.genesis-content {
 			margin-bottom: 25px;
 		}
 	}
@@ -96,7 +96,7 @@
 }
 
 .box1 {
-	&.moduletable, .g-content {
+	&.moduletable, .genesis-content {
 		color: $white;
 		background: $accent-color-1;
 	}
@@ -118,7 +118,7 @@
 	}		
 }
 .box2 {
-	&.moduletable, .g-content {
+	&.moduletable, .genesis-content {
 		color: $white;
 		background: $accent-color-2;
 	}
@@ -137,7 +137,7 @@
 	}		
 }
 .box3 {
-	&.moduletable, .g-content {
+	&.moduletable, .genesis-content {
 		color: $white;
 		background: $accent-color-3;
 	}	
@@ -155,7 +155,7 @@
 	}	
 }
 .box4 {
-	&.moduletable, .g-content {
+	&.moduletable, .genesis-content {
 		color: $white;
 		background: $navigation-background;
 	}
@@ -203,44 +203,44 @@
 
 
 .spaced {
-	.g-content {
+	.genesis-content {
 		margin: 1px;
 	}		
 }
 
 .bordered {
-	.g-content {
+	.genesis-content {
 		border: 1px solid $rule-color;
 		margin: 1px;
 	}	
 }
 
 .shadow {
-	.g-content {
+	.genesis-content {
 		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	}
 }
 
 .shadow2 {
-	.g-content {
+	.genesis-content {
 		box-shadow: 0 0 4px rgba(0,0,0,0.15);
 	}
 }
 
 .disabled {
-	.g-content {
+	.genesis-content {
 		opacity: 0.4;
 	}
 }
 
 .square {
-	.g-content {
+	.genesis-content {
 		border-radius: none;
 	}
 }
 
 .rounded {
-	.g-content {
+	.genesis-content {
 		border-radius: $core-border-radius;
 		overflow: hidden;
 	}
@@ -264,7 +264,7 @@
 	#g-sidebar {
 		width: 100%;
 	}
-	.g-content {
+	.genesis-content {
         flex-basis: 100%;
         width: auto; 
     }

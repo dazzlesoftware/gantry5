@@ -1,15 +1,32 @@
 .g-swipercarousel {
     color: #eceeef;
 
+    // The original Argon hero is a shallow, cropped stage. Do not allow the
+    // intrinsic 16:9 header artwork (or its lazy-load timing) to set the
+    // carousel height.
+    .swiper-wrapper,
+    .swiper-slide,
+    .g-swipercarousel-item,
+    .g-swipercarousel-item-wrapper {
+        height: clamp(34rem, 27vw, 64rem);
+    }
+
     .g-swipercarousel-item-wrapper,
     .g-swipercarousel-item-img {
         position: relative;
     }
 
     .g-swipercarousel-item-img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+
         img {
             display: block;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         &::after {
@@ -155,10 +172,10 @@
     }
 
     .swiper-pagination {
-        bottom: 12%;
+        bottom: 1.25rem;
 
         @include breakpoint(desktop-range) {
-            bottom: 5%;
+            bottom: 1.25rem;
         }
 
         @include breakpoint(tablet-range) {
@@ -171,8 +188,8 @@
     }
 
     .swiper-pagination-bullet {
-        width: 15px;
-        height: 15px;
+        width: 0.625rem;
+        height: 0.625rem;
         margin: 0 ($content-margin * 0.5) !important;
         background: $base-text-color;
         opacity: 0.75;
@@ -182,6 +199,24 @@
         &:hover {
             background: $white;
             opacity: 1;
+        }
+    }
+
+    @include breakpoint(tablet-range) {
+        .swiper-wrapper,
+        .swiper-slide,
+        .g-swipercarousel-item,
+        .g-swipercarousel-item-wrapper {
+            height: 30rem;
+        }
+    }
+
+    @include breakpoint(mobile-only) {
+        .swiper-wrapper,
+        .swiper-slide,
+        .g-swipercarousel-item,
+        .g-swipercarousel-item-wrapper {
+            height: 24rem;
         }
     }
 

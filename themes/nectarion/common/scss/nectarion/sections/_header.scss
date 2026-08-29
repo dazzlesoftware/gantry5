@@ -7,7 +7,7 @@
 	&.g-home {
 		background: transparent;
 		color: $header-text-color;
-	    .g-container {
+	    .container {
 			@include breakpoint(mobile-only) {
 				border-bottom: 2px solid $white;
 			}    	
@@ -15,14 +15,14 @@
 	}
 
     // Container
-    .g-container {
+    .container {
     	border-bottom: 2px solid $white;
 		@include breakpoint(mobile-only) {
 			border-bottom: 0;
 		}    	
     }	
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}    
 	a {
@@ -35,7 +35,7 @@
 		@include breakpoint(mobile-only) {
 			text-align: center;
 		}	
-		.g-content {
+		.genesis-content {
 			@include breakpoint(mobile-only) {
 				margin: 0;
 				padding: 0;
@@ -60,7 +60,7 @@
 	}
 	// Horizontal Menu
 	.g-menu-block {
-		> .g-content {
+		> .genesis-content {
 			@include breakpoint(mobile-only) {
 				margin-bottom: 0;
 			}

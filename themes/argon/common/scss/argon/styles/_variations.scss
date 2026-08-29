@@ -1,8 +1,8 @@
 // Flush
 .flush,
 .g-flushed {
-    > .g-container,
-    > .g-content {
+    > .container,
+    > .genesis-content {
         margin: 0 !important;
         padding: 0 !important;
     }
@@ -20,7 +20,7 @@ $css_multipliers: 2, 3;
 @each $prop in $css_properties {
     @each $dir in $css_directions {
         .no#{$prop}#{$dir} {
-            &, > .g-content {
+            &, > .genesis-content {
                 @if ($dir != "all") {
                     #{$prop}-#{$dir}: 0;
                 }
@@ -32,7 +32,7 @@ $css_multipliers: 2, 3;
     }
     @each $multi in $css_multipliers {
         .#{$prop}#{$multi}x {
-            > .g-content {
+            > .genesis-content {
                 @if ($prop == "padding") {
                     #{$prop}: $content-padding * $multi;
                 }
@@ -108,12 +108,12 @@ $css_multipliers: 2, 3;
 .box1 {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content  {
+    > .genesis-content  {
         background: darken($box1-background, 8%);
     }
 
     &.moduletable, &.widget,
-    > .g-content  {
+    > .genesis-content  {
         color: $white;
     }
 
@@ -153,12 +153,12 @@ $css_multipliers: 2, 3;
 .box2 {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box2-background;
     }
 
     &.moduletable, &.widget,
-    > .g-content {
+    > .genesis-content {
         color: $white;
     }
 
@@ -199,12 +199,12 @@ $css_multipliers: 2, 3;
 .box-gradient {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content  {
+    > .genesis-content  {
         background: linear-gradient(45deg, $accent-color-1, $accent-color-2);
     }
 
     &.moduletable, &.widget,
-    > .g-content  {
+    > .genesis-content  {
         color: $white;
     }
 
@@ -244,7 +244,7 @@ $css_multipliers: 2, 3;
 .box-outline {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content  {
+    > .genesis-content  {
         border: 1px solid $accent-color-1;
     }
 }
@@ -259,28 +259,28 @@ $css_multipliers: 2, 3;
 
 // Spaced
 .spaced {
-    .g-content {
+    .genesis-content {
         margin: 1px;
     }
 }
 
 // Shadow
 .shadow {
-    .g-content {
+    .genesis-content {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     }
 }
 
 // Disabled
 .disabled {
-    .g-content {
+    .genesis-content {
         opacity: 0.4;
     }
 }
 
 // Rounded
 .rounded {
-    .g-content {
+    .genesis-content {
         border-radius: $core-border-radius;
         overflow: hidden;
     }
@@ -294,7 +294,7 @@ $css_multipliers: 2, 3;
         width: 100%;
     }
 
-    .g-content {
+    .genesis-content {
         width: auto;
     }
 }

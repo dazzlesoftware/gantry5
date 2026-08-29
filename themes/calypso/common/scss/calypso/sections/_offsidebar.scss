@@ -1,5 +1,5 @@
 #g-offsidebar,
-#g-offsidebar .g-container {
+#g-offsidebar .container {
     @include breakpoint(large-desktop-range) {
         width: $offsidebar-large-desktop-width !important;
     }
@@ -56,7 +56,7 @@
     }
 
     // Container
-    .g-container {
+    .container {
         padding: 0 !important;
     }
 
@@ -292,11 +292,11 @@
             margin: 0.5rem auto 1rem auto;
         }
         text-align: center;
-        .g-block {
+        .col {
             flex: 0 0 auto;
             width: 33.33333% !important;
         }
-        .g-content {
+        .genesis-content {
             margin: 0 0.25rem;
         }
     }

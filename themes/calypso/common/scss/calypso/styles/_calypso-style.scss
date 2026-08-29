@@ -7,9 +7,9 @@
             background: transparent;
             position: relative;
             z-index: 12;
-            .g-container {
-                .g-block {
-                    > .g-content {
+            .container {
+                .col {
+                    > .genesis-content {
                         margin: 0;
                         padding: 1rem ($content-margin + $content-padding);
                         border-bottom: 1px solid fade-out($black, 0.95);

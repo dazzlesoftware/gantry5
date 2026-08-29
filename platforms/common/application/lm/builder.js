@@ -172,13 +172,13 @@ class Builder extends EventEmitter {
     cleanupLonely() {
         let ghosts = [],
             parent,
-            children = document.querySelectorAll('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
+            children = document.querySelectorAll('[data-lm-root] > .g-section > .row > .col .row > .col, [data-lm-root] > .g-section > .row > .col > .col');
 
         if (!children.length) { return; }
         children.forEach(function(child) {
             parent = null;
             let childParent = child.parentElement,
-                isGrid = childParent && childParent.classList.contains('g-grid');
+                isGrid = childParent && childParent.classList.contains('row');
             if (isGrid && childParent.children.length > 1) { return; }
             if (isGrid) {
                 let gridId = childParent.getAttribute('data-lm-id');

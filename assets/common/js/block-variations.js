@@ -1,4 +1,4 @@
-document.querySelectorAll('.wiggle .g-content').forEach((content) => {
+document.querySelectorAll('.wiggle .genesis-content').forEach((content) => {
     const frame = document.createElement('div');
     frame.className = 'wiggle-frame';
     content.append(frame);

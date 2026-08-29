@@ -21,18 +21,18 @@
             </h2>
         </div>
 
-        <ul class="g-grid">
-            <li class="card g-block admin-card-quarter">
+        <ul class="row">
+            <li class="card col admin-card-quarter">
                 {% set name = 'default' %}
                 {% include '@genesis-admin/layouts/outline.html.twig' %}
             </li>
             {% for name, title in genesis.outlines.user %}
-                <li class="card g-block admin-card-quarter{{ genesis.outlines.isDefault(name) ? ' outline-is-default' : '' }}">
+                <li class="card col admin-card-quarter{{ genesis.outlines.isDefault(name) ? ' outline-is-default' : '' }}">
                     {% include '@genesis-admin/layouts/outline.html.twig' %}
                 </li>
             {% endfor %}
             {% if genesis.authorize('outline.create') %}
-            <li class="card g-block admin-card-quarter add-new">
+            <li class="card col admin-card-quarter add-new">
                 <div class="page">
                     <a href="{{ genesis.route('configurations', 'create') }}"
                        title="{{ 'GENESIS_PLATFORM_ADD_NEW_OUTLINE'|trans }}"
@@ -46,10 +46,10 @@
         </ul>
 
         <h2>{{ 'GENESIS_PLATFORM_SYSTEM_OUTLINES'|trans }}</h2>
-        <ul class="g-grid">
+        <ul class="row">
             {% for name, title in genesis.outlines.system %}
                 {% set preset = genesis.outlines.layoutPreset(name) %}
-                <li class="card g-block admin-card-quarter">
+                <li class="card col admin-card-quarter">
                     <div class="page">
                         <h4>{{ title }} <span class="float-right font-small">({{ 'GENESIS_PLATFORM_ID_X'|trans(name) }})</span></h4>
                         <div class="inner-params">

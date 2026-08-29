@@ -1,5 +1,5 @@
 {% set attr_extra = segment.attributes.extra|attribute_array %}
-{% set class = 'row g-grid' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
+{% set class = 'row' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
 
 {%- set html %}
     {% if segment.children %}

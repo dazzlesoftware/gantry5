@@ -1,18 +1,18 @@
 .flush {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 		padding: 0 !important;
 	}
 }
 
 .nopaddingall {
-	> .g-content {
+	> .genesis-content {
 		padding: 0 !important;
 	}	
 }
 
 .nomarginall {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 	}	
 }
@@ -117,7 +117,7 @@
 		background-position: center center !important;	
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		background-image: url("genesis-theme://images/variations/box-bg.png");
 		background-repeat: no-repeat;
 		background-position: center center;			
@@ -129,7 +129,7 @@
 		background-color: darken($box1-background, 8%) !important;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		background-color: darken($box1-background, 8%);
 		color: $white;
 	}	
@@ -160,7 +160,7 @@
 		background-color: $box2-background !important;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		background-color: $box2-background;
 		color: $white;
 	}
@@ -191,7 +191,7 @@
 		background-color: $box3-background !important;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		background-color: $box3-background;
 		color: $white;
 	}
@@ -222,7 +222,7 @@
 		background-color: $box4-background !important;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		background-color: $box4-background;
 		color: $base-text-color;
 	}
@@ -266,7 +266,7 @@
 .box-white {
   &.moduletable, &.widget,
   &.g-outer-box,
-  > .g-content {
+  > .genesis-content {
     background: $box-white-background;
   }
   .button {
@@ -300,7 +300,7 @@
 .box-grey {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-grey-background;
 	}
 	.button {
@@ -334,7 +334,7 @@
 	&.g-outer-box {
 		background: $box-darkgrey-background !important;
 	}
-	 > .g-content {
+	 > .genesis-content {
 		background: $box-darkgrey-background;
 	}
 	.button {
@@ -363,7 +363,7 @@
 }
 .box-darkgrey {
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-darkgrey-background;
 	}
 	.button {
@@ -400,7 +400,7 @@
 .box-pink {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-pink-background;
 	}
 	.button {
@@ -437,7 +437,7 @@
 .box-red {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-red-background;
 	}
 	.button {
@@ -474,7 +474,7 @@
 .box-purple {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-purple-background;
 	}
 	.button {
@@ -511,7 +511,7 @@
 .box-blue {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-blue-background;
 	}
 	.button {
@@ -548,7 +548,7 @@
 .box-orange {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-orange-background;
 	}
 	.button {
@@ -578,44 +578,44 @@
 }
 
 .spaced {
-	.g-content {
+	.genesis-content {
 		margin: 1px;
 	}		
 }
 
 .bordered {
-	.g-content {
+	.genesis-content {
 		border: 1px solid $rule-color;
 		margin: 1px;
 	}	
 }
 
 .shadow {
-	.g-content {
+	.genesis-content {
 		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	}
 }
 
 .shadow2 {
-	.g-content {
+	.genesis-content {
 		box-shadow: 0 0 4px rgba(0,0,0,0.15);
 	}
 }
 
 .disabled {
-	.g-content {
+	.genesis-content {
 		opacity: 0.4;
 	}
 }
 
 .square {
-	.g-content {
+	.genesis-content {
 		border-radius: none;
 	}
 }
 
 .rounded {
-	.g-content {
+	.genesis-content {
 		border-radius: $core-border-radius;
 		overflow: hidden;
 	}
@@ -626,7 +626,7 @@
 }
 
 .equal-height { 
-	.g-content { 
+	.genesis-content { 
 		flex-basis: 100%; 
 		width: auto; 
 	}

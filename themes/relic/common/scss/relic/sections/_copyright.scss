@@ -4,7 +4,7 @@
 
     @extend .section-paddings;
 
-    .g-grid {
+    .row {
         &:not(:last-child) {
             border-bottom: 2px solid transparentize($copyright-text-color, 0.75);
         }

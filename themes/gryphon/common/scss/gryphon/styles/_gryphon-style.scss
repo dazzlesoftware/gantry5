@@ -5,7 +5,7 @@
         position: relative;
         z-index: -1;
 
-        > .g-block {
+        > .col {
             margin-top: -7.35rem !important;
 
             @include breakpoint(tablet-range) {

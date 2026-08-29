@@ -84,7 +84,7 @@ class DragDrop extends EventEmitter {
 
         // Prevents dragging a column from itself and limiting to its handle
         let target = dom(event.target);
-        if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
+        if (!element.parent('[data-lm-root]') && element.hasClass('col') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
         if (event.which && event.which !== 1 || dom(event.target).matches(this.options.exclude)) { return true; }
         if (event.__genesisDragStarted) { return true; }
@@ -94,7 +94,7 @@ class DragDrop extends EventEmitter {
         this.matched = false;
         if (this.options.catchClick) { this.moved = false; }
 
-        // we force the menu column reorder handle to the g-block parent
+        // we force the menu column reorder handle to the col parent
         if (target.matches('.submenu-reorder') || target.parent('.submenu-reorder')) {
             this.element = target.parent('[data-mm-id]');
         }

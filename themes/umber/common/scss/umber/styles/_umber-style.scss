@@ -46,7 +46,7 @@
     margin-top: -11rem;
     position: relative;
     .fp-header-slideshow {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
@@ -69,7 +69,7 @@
 // Slideshow section offset and tweaks
 .fp-slideshow {
     .fp-slideshow-imagegrid {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
@@ -87,7 +87,7 @@
 }
 .fp-bookingform {
     background: $base-background;
-    .g-content {
+    .genesis-content {
         padding: $content-padding - 1 $content-padding - 1 0 $content-padding - 1;
     }
     border-radius: $border-radius;
@@ -152,7 +152,7 @@
     & { align-items: center; }
     & { justify-content: center; }
 
-    .g-content {
+    .genesis-content {
         margin: 0 $content-margin;
         padding: 0 $content-padding;
         @include breakpoint(mobile-only) {
@@ -194,14 +194,14 @@
 }
 .fp-feature-imagegrid {
     margin-bottom: $content-padding + $content-margin;
-    .g-content {
+    .genesis-content {
         padding: 0;
         margin: 0;
         margin-left: 1px;
     }
 }
 .fp-feature-simplemenu {
-    .g-content {
+    .genesis-content {
         @include breakpoint(mobile-only) {
             justify-content: center;
             display: flex;
@@ -243,7 +243,7 @@
             }
         }
     }
-    .g-content {
+    .genesis-content {
         padding-bottom: $content-padding * 2;
     }
 }
@@ -255,7 +255,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: $content-padding * 4;
 
-    .g-content {
+    .genesis-content {
         margin-bottom: 0;
         padding-bottom: 0;
     }
@@ -285,7 +285,7 @@
     @include breakpoint(mobile-only) {
         text-align: center;
     }
-    .g-content {
+    .genesis-content {
         margin-left: 0;
         padding-left: 0;
 
@@ -329,7 +329,7 @@
 .g-simpleweather-footer {
     text-align: left;
 
-    .g-content {
+    .genesis-content {
         margin-right: 0;
         padding-right: 0;
 
@@ -409,7 +409,7 @@
         }
     }
     .g-newsletter-footer {
-        .g-content {
+        .genesis-content {
             margin-left: 0;
             margin-right: 0;
             padding-left: 0;

@@ -11,11 +11,11 @@
     .dir-rtl & {
         border-radius: 0 0 0 1.2rem;
     }
-    .g-block {
+    .col {
         margin-bottom: -1.5rem;
     }
     .g-dropdown-column {
-        .g-block {
+        .col {
             margin-bottom: 0;
         }
     }
@@ -66,13 +66,13 @@
                 }
             }
         }
-        .g-grid {
+        .row {
             margin-bottom: 1rem;
             &:not(:last-child) {
                 border-bottom-width: 1px;
             }
         }
-        .g-content {
+        .genesis-content {
             padding-bottom: 1rem;
         }
         .g-array-item {
@@ -153,7 +153,7 @@
         &.moduletable,
         &.widget,
         &.g-outer-box,
-        > .g-content {
+        > .genesis-content {
             border-radius: 0 1rem 0 0;
             margin-top: -7rem !important;
             padding-right: 15%;

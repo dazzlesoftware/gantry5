@@ -1,6 +1,6 @@
 // Large Padding
 .largepadding {
-    .g-content {
+    .genesis-content {
         padding: 8vw;
     }
 }
@@ -58,11 +58,11 @@
             }
         }
 
-        .g-content {
+        .genesis-content {
             padding: 0;
         }
 
-        .g-grid {
+        .row {
             border: 0 none !important;
             margin-bottom: $content-margin + 0.2;
         }

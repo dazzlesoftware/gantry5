@@ -9,11 +9,11 @@
 		color: $navigation-text-color;
 	}    
 	.g-nectarion-menu {
-		.g-content {
+		.genesis-content {
 			margin-left: 0;
 			margin-right: 0;
 		}	
-		.menu-item-particle .g-content {
+		.menu-item-particle .genesis-content {
 			margin: $content-margin;
 			text-align: center;
 			a {
@@ -37,14 +37,14 @@
 
 #g-navigation {
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 		padding-bottom: 1rem;
 	}
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}
 

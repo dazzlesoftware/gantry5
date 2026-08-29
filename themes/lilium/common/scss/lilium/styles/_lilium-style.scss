@@ -2,7 +2,7 @@
 .g-vnavigation-container {
     position: relative;
 
-    .g-content.g-particle {
+    .genesis-content.g-particle {
         height: 100%;
         @include breakpoint(mobile-only) {
             height: 0;
@@ -43,7 +43,7 @@
 
 // Above
 #g-above.fp-above {
-    .g-content {
+    .genesis-content {
         height: 100%;
     }
 

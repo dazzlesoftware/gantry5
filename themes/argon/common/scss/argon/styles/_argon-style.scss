@@ -70,7 +70,7 @@
         #g-intro {
             padding-bottom: 0;
 
-            .g-content {
+            .genesis-content {
                 margin-bottom: 0;
                 padding-bottom: 0;
 
@@ -84,13 +84,13 @@
 
         // Features
         .fp-features {
-            .g-grid {
+            .row {
                 @include breakpoint(no-mobile) {
                     row-gap: 4.5rem;
                 }
             }
 
-            .g-block {
+            .col {
                 @include breakpoint(mobile-only) {
                     &:not(:last-child) {
                         margin-bottom: 4.5rem;
@@ -168,7 +168,7 @@
 
         // Multi Column Text
         .fp-multi-column-text {
-            .g-block {
+            .col {
                 p {
                     padding: 0 5rem;
                     border-left: 1px solid $base-border-color;

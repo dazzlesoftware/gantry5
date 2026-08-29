@@ -1,7 +1,7 @@
 // Navigation
 #g-navigation.g-fluid-navigation {
     @include breakpoint(desktop-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -11,7 +11,7 @@
     }
 
     @include breakpoint(large-desktop-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -21,7 +21,7 @@
     }
 
     @include breakpoint(tablet-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -87,12 +87,12 @@
         padding-left: 0;
     }
 
-    .g-grid {
+    .row {
         align-items: center;
     }
 
     .fp-cards {
-        .g-content {
+        .genesis-content {
             @include breakpoint(mobile-only) {
               margin: 0;
               padding: 0;
@@ -100,7 +100,7 @@
         }
 
         &.nomarginright {
-            .g-content {
+            .genesis-content {
                 .dir-rtl & {
                     margin-right: $content-margin !important;
                     margin-left: 0;
@@ -109,7 +109,7 @@
         }
 
         &.nopaddingright {
-            .g-content {
+            .genesis-content {
                 .dir-rtl & {
                     padding-right: $content-padding !important;
                     padding-left: 0;

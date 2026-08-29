@@ -123,9 +123,9 @@
 
 // Preset Thumbnails
 .g-preset-thumbnails {
-    .g-block {
+    .col {
         flex: 1 1 auto !important;
-        > .g-content {
+        > .genesis-content {
             margin: 1rem 0;
             padding: 0 0.5rem !important;
         }

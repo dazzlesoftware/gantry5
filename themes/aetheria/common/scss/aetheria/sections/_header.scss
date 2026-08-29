@@ -15,7 +15,7 @@
 		@include breakpoint(mobile-only) {
 			text-align: center;
 		}	
-		.g-content {
+		.genesis-content {
 			@include breakpoint(mobile-only) {
 				margin: 0;
 				padding: 0;
@@ -49,13 +49,13 @@
 
 #g-header {
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 	}
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}
 

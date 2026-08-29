@@ -19,9 +19,9 @@
 
             {# Begin Post Entries #}
             <section class="entries">
-                <div class="row g-grid">
+                <div class="row">
                     {% for post in posts %}
-                        <div class="col g-block {% if pagination.current == 1 and 'sticky' in post.class %}col-12{% else %}{{ genesis.config.get('content.' ~ scope ~ '.content.columns')|default('col-12') }}{% endif %}">
+                        <div class="col {% if pagination.current == 1 and 'sticky' in post.class %}col-12{% else %}{{ genesis.config.get('content.' ~ scope ~ '.content.columns')|default('col-12') }}{% endif %}">
                             {% include ['partials/content-' ~ scope ~ '.html.twig', (post.format) ? 'partials/content-' ~ post.format ~ '.html.twig' : '', 'partials/content.html.twig'] %}
                         </div>
                     {% endfor %}

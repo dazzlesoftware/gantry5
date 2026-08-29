@@ -4,7 +4,7 @@
 }
 
 .fp-showcase-maintop {
-	.g-content {
+	.genesis-content {
 		margin: 10px 25px;
 
 		@include breakpoint(mobile-only) {
@@ -15,7 +15,7 @@
 }
 
 .fp-tabs-maintop {
-	.g-content {
+	.genesis-content {
 		margin: 0;
     	padding: 10px 25px 10px 0;
 
@@ -36,7 +36,7 @@
 }
 
 .fp-maintop {
-	.g-content {
+	.genesis-content {
 		padding: 0 15px;
 		margin: 0 0 10px;
 

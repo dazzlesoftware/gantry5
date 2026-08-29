@@ -49,7 +49,7 @@ let singles = {
         if (grids) { grids.addClass('no-hover'); }
     },
     cleanup: function(builder, dropLast, start) {
-        let emptyGrids = start ? start.search('> .g-grid:empty') : dom('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
+        let emptyGrids = start ? start.search('> .row:empty') : dom('[data-lm-blocktype="section"] > .row:empty, [data-lm-blocktype="container"] > .row:empty, [data-lm-blocktype="offcanvas"] > .row:empty');
 
         if (emptyGrids) {
             emptyGrids.forEach(function(grid) {
@@ -182,7 +182,7 @@ let LayoutManagerDefinition = {
 
         clone = dom(clone);
         this.original = clone.after(element).style({
-            display: clone.hasClass('g-grid') ? 'flex' : 'block',
+            display: clone.hasClass('row') ? 'flex' : 'block',
             opacity: 0.5
         }).addClass('original-placeholder').data('lm-dropzone', null);
 

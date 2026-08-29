@@ -2,9 +2,9 @@
 
 {% block particle %}
 	<div class="sample-content">
-		<div class="row g-grid">
-			<div class="col g-block">
-				<div class="g-content">
+		<div class="row">
+			<div class="col">
+				<div class="genesis-content">
 					{% if particle.image %}<img src="{{ url(particle.image) }}" class="logo-large" alt="{{ particle.headline|e }}" />{% endif %}
 					{% if particle.headline %}<h1>{{ particle.headline|raw }}</h1>{% endif %}
 					{% if particle.description %}<div class="sample-description">{{ particle.description|raw }}</div>{% endif %}
@@ -12,11 +12,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="row g-grid">
+		<div class="row">
 			{% for sample in particle.samples %}
 				<div {% if sample.id %}id="{{ sample.id|e }}"{% endif %}
-					 class="col g-block {{ sample.class }} {{ sample.variations }}">
-					<div class="g-content">
+					 class="col {{ sample.class }} {{ sample.variations }}">
+					<div class="genesis-content">
 						<i class="{{ sample.icon }} sample-icons"></i>
 						<h4>{{ sample.title|raw }}</h4>
 						{{ sample.subtitle|raw }}

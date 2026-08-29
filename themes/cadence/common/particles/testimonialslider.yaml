@@ -43,7 +43,7 @@ form:
     matchheight:
       type: select.select
       label: Match Height
-      description: Auto adjusts height to match particles .g-block height. This overrides the Fixed Height value.
+      description: Auto adjusts height to match particles .col height. This overrides the Fixed Height value.
       placeholder: 'Select...'
       options:
           enabled: Enabled

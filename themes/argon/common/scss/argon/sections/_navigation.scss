@@ -5,13 +5,13 @@
     z-index: 11;
 
     // Container
-    .g-container {
+    .container {
         position: relative;
     }
 
     // Preserve the original shared centerline after the Bootstrap grid
     // migration. Each column has different intrinsic content height.
-    .row.g-grid {
+    .row.row {
         align-items: center;
     }
 
@@ -30,7 +30,7 @@
     // Social Particle
     .g-social-header {
         @include breakpoint(mobile-only) {
-            .g-content {
+            .genesis-content {
                 margin-top: 0;
                 padding: 0 $content-padding;
             }

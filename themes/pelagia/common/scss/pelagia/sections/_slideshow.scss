@@ -61,7 +61,7 @@
 
 
     .blobs {
-        .g-content {
+        .genesis-content {
             @if $slideshow-background-image {
                 background-image: url($slideshow-background-image);
                 background-size: cover;

@@ -57,7 +57,7 @@
 
     #g-container-copyright {
         @include breakpoint(mobile-only) {
-            .g-content {
+            .genesis-content {
                 text-align: center;
                 padding-bottom: 0;
             }

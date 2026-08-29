@@ -3,7 +3,7 @@
     color: $navigation-text-color;
 
     .social {
-    	.g-content {
+    	.genesis-content {
     		margin: 21px 0;
     		padding: 0;
 
@@ -29,7 +29,7 @@
     }
 
     .search {
-    	.g-content {
+    	.genesis-content {
     		margin: 15px 25px 0 0;
     		padding: 0;
 
@@ -53,8 +53,8 @@
 
 #g-navigation {
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 	}
 

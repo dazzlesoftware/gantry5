@@ -119,7 +119,7 @@
     // stacked controls corner-to-corner at every viewport width.
     position: relative;
 
-    > .g-content {
+    > .genesis-content {
         // The black box is the particle content, not the surrounding grid
         // block. Anchor to its visible top-right corner.
         position: relative;
@@ -142,10 +142,6 @@
 					width: 100%;
 					position: static;
 					overflow: hidden;
-
-					.swiper-wrapper {
-						overflow: hidden;
-					}
 
 				.swiper-slide {
                         line-height: 1.2em;

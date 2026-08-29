@@ -2,8 +2,8 @@
 	color: $slideshow-text-color;
 	position: relative;
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}
 	a {
@@ -16,7 +16,7 @@
 		@include breakpoint(mobile-only) {
 			text-align: center;
 		}
-		.g-content {
+		.genesis-content {
 			@include breakpoint(mobile-only) {
 				margin: 0;
 				padding: 0;
@@ -41,7 +41,7 @@
 	}
 	// Horizontal Menu
 	.g-menu-block {
-		> .g-content {
+		> .genesis-content {
 			@include breakpoint(mobile-only) {
 				margin-bottom: 0;
 			}

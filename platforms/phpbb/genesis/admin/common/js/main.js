@@ -4468,7 +4468,7 @@
     }
     layout() {
       let isPreset = this.getAttribute("layoutPreset") === "bootstrap", preset = isPreset ? ' data-lm-preset-grid="bootstrap"' : "";
-      return '<div class="row g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span></span><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
+      return '<div class="row nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span></span><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
     }
     onRendered() {
       let parent = this.block.parent();
@@ -4530,7 +4530,7 @@
       return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_SETTINGS", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Section") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + "</div>";
     }
     adopt(child) {
-      let node = child && child.nodeType ? child : child && child[0], grid = this.block[0].querySelector(".g-grid");
+      let node = child && child.nodeType ? child : child && child[0], grid = this.block[0].querySelector(".row");
       if (node && grid) {
         grid.appendChild(node);
       }
@@ -4832,7 +4832,7 @@
       return this;
     }
     layout() {
-      return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
+      return '<div class="col" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
     }
     onRendered(element, parent) {
       let elementBlock = element.block[0];
@@ -5254,13 +5254,13 @@
       this.load();
     }
     cleanupLonely() {
-      let ghosts = [], parent, children = document.querySelectorAll("[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block");
+      let ghosts = [], parent, children = document.querySelectorAll("[data-lm-root] > .g-section > .row > .col .row > .col, [data-lm-root] > .g-section > .row > .col > .col");
       if (!children.length) {
         return;
       }
       children.forEach(function(child) {
         parent = null;
-        let childParent = child.parentElement, isGrid = childParent && childParent.classList.contains("g-grid");
+        let childParent = child.parentElement, isGrid = childParent && childParent.classList.contains("row");
         if (isGrid && childParent.children.length > 1) {
           return;
         }
@@ -5645,7 +5645,7 @@
       dom7("html").attribute("style", "height: 100% !important");
       this.scrollHeight = document.body.scrollHeight;
       let target = dom7(event.target);
-      if (!element.parent("[data-lm-root]") && element.hasClass("g-block") && (!target.matches(".submenu-reorder") && !target.parent(".submenu-reorder"))) {
+      if (!element.parent("[data-lm-root]") && element.hasClass("col") && (!target.matches(".submenu-reorder") && !target.parent(".submenu-reorder"))) {
         return true;
       }
       if (event.which && event.which !== 1 || dom7(event.target).matches(this.options.exclude)) {
@@ -6028,7 +6028,7 @@
       }
     },
     cleanup: function(builder2, dropLast, start) {
-      let emptyGrids = start ? start.search("> .g-grid:empty") : dom8('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
+      let emptyGrids = start ? start.search("> .row:empty") : dom8('[data-lm-blocktype="section"] > .row:empty, [data-lm-blocktype="container"] > .row:empty, [data-lm-blocktype="offcanvas"] > .row:empty');
       if (emptyGrids) {
         emptyGrids.forEach(function(grid) {
           grid = dom8(grid);
@@ -6144,7 +6144,7 @@
       this.placeholder.style({ display: "none" });
       clone3 = dom8(clone3);
       this.original = clone3.after(element).style({
-        display: clone3.hasClass("g-grid") ? "flex" : "block",
+        display: clone3.hasClass("row") ? "flex" : "block",
         opacity: 0.5
       }).addClass("original-placeholder").data("lm-dropzone", null);
       if (type === "grid") {
@@ -7565,10 +7565,10 @@
   ready6(function() {
     let body = dom11("body"), root = dom11("[data-lm-root]"), data;
     layoutmanager = new LayoutManager2("[data-lm-container]", {
-      delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] .g-block > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="div"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+      delegate: '[data-lm-root] .row:not([data-lm-preset-grid="bootstrap"]) > .col:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .col > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] .col > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="div"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
       droppables: "[data-lm-dropzone]",
       exclude: ".section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]",
-      resize_handles: "[data-lm-root] .g-grid > .g-block:not(:last-child)",
+      resize_handles: "[data-lm-root] .row > .col:not(:last-child)",
       builder,
       history: lmhistory,
       savestate
@@ -8195,7 +8195,7 @@
         return false;
       }
       let sectionBlock = section[0];
-      let lastGrid = sectionBlock.querySelector(':scope > .g-grid:last-child, :scope > [data-lm-blocktype="container"] > .g-grid:last-child');
+      let lastGrid = sectionBlock.querySelector(':scope > .row:last-child, :scope > [data-lm-blocktype="container"] > .row:last-child');
       if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
         return false;
       }
@@ -8594,7 +8594,7 @@
       if (target.matches(".g-menu-addblock") || target.parent(".g-menu-addblock")) {
         return false;
       }
-      if (element.hasClass("g-block")) {
+      if (element.hasClass("col")) {
         this.stopAnimation();
         return true;
       }
@@ -8632,7 +8632,7 @@
       if (!this.ordering[itemID].length) {
         this.ordering[itemID].push([]);
       }
-      columns.innerHTML = '<section class="row g-grid submenu-selector"><div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%"><div class="submenu-column"><div class="submenu-level">Level 1</div><ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '" data-mm-base-level="1"><li class="submenu-add-slot" data-lm-nodrag><button type="button" data-mm-submenu-add data-lm-nodrag aria-label="Add item"><span aria-hidden="true" data-lm-nodrag>+</span></button></li></ul></div></div></section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
+      columns.innerHTML = '<section class="row submenu-selector"><div class="col" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%"><div class="submenu-column"><div class="submenu-level">Level 1</div><ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '" data-mm-base-level="1"><li class="submenu-add-slot" data-lm-nodrag><button type="button" data-mm-submenu-add data-lm-nodrag aria-label="Add item"><span aria-hidden="true" data-lm-nodrag>+</span></button></li></ul></div></div></section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
       let submenu = dom12("[data-genesis-menu-columns] .submenu-selector"), submenuBlocks = submenu && submenu.search("> [data-mm-id]");
       if (submenuBlocks) {
         this.resizer.updateMaxValues(submenuBlocks);
@@ -8646,7 +8646,7 @@
       this.block = null;
       this.targetLevel = void 0;
       this.addNewItem = false;
-      this.type = element.parent(".g-toplevel") || element.matches(".g-toplevel") ? "main" : element.matches(".g-block") ? "column" : "columns_items";
+      this.type = element.parent(".g-toplevel") || element.matches(".g-toplevel") ? "main" : element.matches(".col") ? "column" : "columns_items";
       this.isParticle = element.matches("[data-mm-blocktype]") || element.matches("[data-mm-original-type]");
       this.wasActive = element.hasClass("active");
       this.isNewParticle = element.parent(".genesis-mm-particles-picker");
@@ -8699,7 +8699,7 @@
         this.dragdrop.element = this.original;
       }
       if (this.type == "column") {
-        root.search(".g-block > *").style({ "pointer-events": "none" });
+        root.search(".col > *").style({ "pointer-events": "none" });
       }
     },
     moveOnce: function(element) {
@@ -8714,7 +8714,7 @@
       if (!this.placeholder) {
         this.placeholder = zen6((this.type == "column" ? "div" : "li") + ".block.placeholder[data-mm-placeholder]").style({ display: "none" });
       }
-      let targetType = target.parent(".g-toplevel") || target.matches(".g-toplevel") ? "main" : target.matches(".g-block") ? "column" : "columns_items", dataLevel = target.data("mm-level"), originalLevel = this.block.data("mm-level");
+      let targetType = target.parent(".g-toplevel") || target.matches(".g-toplevel") ? "main" : target.matches(".col") ? "column" : "columns_items", dataLevel = target.data("mm-level"), originalLevel = this.block.data("mm-level");
       if (this.isParticle && targetType === "main" && !dataLevel) {
         let rootTarget = target.matches(".g-toplevel") ? target : target.parent(".g-toplevel");
         if (!rootTarget || !target.matches(".g-toplevel") && !target.matches("[data-mm-root-dropzone]")) {
@@ -8746,7 +8746,7 @@
       }
       if (dataLevel === null && (this.type === "columns_items" || this.isParticle)) {
         let submenu_items = target.find(".submenu-items"), submenu_items_level = submenu_items.data("mm-base-level");
-        if (!target.hasClass("g-block") || target.find(this.block) || !this.isParticle && originalLevel != submenu_items_level && (!submenu_items || submenu_items.children() || originalLevel > 2)) {
+        if (!target.hasClass("col") || target.find(this.block) || !this.isParticle && originalLevel != submenu_items_level && (!submenu_items || submenu_items.children() || originalLevel > 2)) {
           this.dragdrop.matched = false;
           return;
         }
@@ -8904,7 +8904,7 @@
         element.removeClass("active");
       }
       if (this.type == "column") {
-        this.root.search(".g-block > *").attribute("style", null);
+        this.root.search(".col > *").attribute("style", null);
       }
       if (!this.dragdrop.matched && !this.addNewItem) {
         if (this.placeholder) {
@@ -8941,7 +8941,7 @@
         element.addClass("active");
       }
       if (this.isParticle) {
-        let id2 = last2(this.itemID.split("/")), targetItem = target || this.itemTo, base2 = targetItem[target && !target.hasClass("g-block") ? "parent" : "find"]("[data-mm-base]").data("mm-base");
+        let id2 = last2(this.itemID.split("/")), targetItem = target || this.itemTo, base2 = targetItem[target && !target.hasClass("col") ? "parent" : "find"]("[data-mm-base]").data("mm-base");
         this.itemID = base2 ? base2 + "/" + id2 : id2;
         this.itemLevel = this.targetLevel;
         this.block.data("mm-id", this.itemID).data("mm-level", this.targetLevel);
@@ -9755,7 +9755,7 @@
       });
     };
     menumanager2 = new MenuManager2("[data-mm-container]", {
-      delegate: ".genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block",
+      delegate: ".genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .col",
       droppables: "#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]",
       exclude: "[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, [data-mm-submenu-add], [data-mm-submenu-add] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *",
       resize_handles: ".submenu-column:not(:last-child)",
@@ -12987,7 +12987,7 @@
             return false;
           }
           let selectButton = container.querySelector("[data-g-select]"), updatePreview = function() {
-            let data = [], active = container.querySelector("[data-g-icon].active"), options = container.querySelectorAll(".g-particles-header .float-right input:checked, .g-particles-header .float-right select");
+            let data = [], active = container.querySelector("[data-g-icon].active"), activeLibrary = active ? active.getAttribute("data-g-icon-library") : "", options = activeLibrary === "font-awesome" ? container.querySelectorAll("[data-g-icon-modifiers] input:checked, [data-g-icon-modifiers] select") : [];
             if (active) {
               data.push(active.getAttribute("data-g-icon"));
             }
@@ -13008,6 +13008,17 @@
             if (label) {
               label.textContent = total;
             }
+          }, applyFilters = function() {
+            let searchField = container.querySelector('.particle-search-wrapper input[type="text"]'), libraryField = container.querySelector("[data-g-icon-library]"), styleField = container.querySelector("[data-g-icon-style]"), search = searchField ? searchField.value.toLowerCase().trim() : "", library = libraryField ? libraryField.value : "", style = styleField ? styleField.value : "";
+            icons.forEach(function(icon) {
+              let matchesSearch = !search || icon.getAttribute("data-g-icon").toLowerCase().includes(search), matchesLibrary = !library || icon.getAttribute("data-g-icon-library") === library, matchesStyle = !style || icon.getAttribute("data-g-icon-style") === style;
+              icon.classList.toggle("hide-icon", !(matchesSearch && matchesLibrary && matchesStyle));
+            });
+            let modifiers = container.querySelector("[data-g-icon-modifiers]");
+            if (modifiers) {
+              modifiers.classList.toggle("hide-options", Boolean(library) && library !== "font-awesome");
+            }
+            updateTotal();
           };
           if (selectButton) {
             selectButton.disabled = !container.querySelector("[data-g-icon].active");
@@ -13035,18 +13046,19 @@
             field.dispatchEvent(new Event("input", { bubbles: true }));
             modal16.close();
           });
-          dom22.delegate(container, "change", '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
+          dom22.delegate(container, "change", '[data-g-icon-modifiers] input[type="checkbox"], [data-g-icon-modifiers] select', updatePreview);
+          dom22.delegate(container, "change", "[data-g-icon-library], [data-g-icon-style]", applyFilters);
           dom22.delegate(container, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
-            let search = input.value.toLowerCase();
-            icons.forEach(function(icon) {
-              icon.classList.toggle("hide-icon", Boolean(search) && !icon.getAttribute("data-g-icon").toLowerCase().includes(search));
-            });
-            updateTotal();
+            applyFilters();
           });
-          icons.forEach(function(icon) {
+          dom22.delegate(container, "mouseover", "[data-g-icon]", function(popoverEvent, icon) {
+            if (icon.hasAttribute("data-g-icon-popover")) {
+              return;
+            }
+            icon.setAttribute("data-g-icon-popover", "");
             let iconName = icon.getAttribute("data-g-icon"), html = "";
             for (let size3 = 5; size3 > 0; size3--) {
-              html += '<i class="' + escapeHTML2(iconName) + " fa-" + size3 + 'x" aria-hidden="true"></i> ';
+              html += '<i class="' + escapeHTML2(iconName) + " g-icon-preview-" + size3 + 'x" aria-hidden="true"></i> ';
             }
             html += "<h3>" + escapeHTML2(iconName) + "</h3>";
             let popover = popovers.create(icon, {
@@ -13063,6 +13075,9 @@
                 instance2.$target.remove();
               }
             });
+          });
+          icons.forEach(function(icon) {
+            let iconName = icon.getAttribute("data-g-icon");
             if (!value.includes(iconName)) {
               return;
             }
@@ -13578,7 +13593,7 @@
             thickness: "auto",
             fill: { gradient: colors.gradient, color: false }
           };
-          files.className = "g-files g-block g-filemode-" + mode2;
+          files.className = "g-files col g-filemode-" + mode2;
           files.querySelectorAll("[data-file-uploadprogress]").forEach(function(progressElement) {
             let config2 = clone2(progressConf);
             if (progressElement.closest(".g-file-error")) {

@@ -13,7 +13,7 @@
 
     {% if showcase %}
         <div class="g-container-wrapper-panel">
-            <div class="g-container carousel">
+            <div class="container carousel">
                 {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
                 <div class="g-swipercarousel-panel-container" id="g-swipercarousel-panel-{{ id }}" role="tablist">
                     {% for item in particle.items|default([]) %}
@@ -30,7 +30,7 @@
     {% endif %}
 
     <div class="{{ showcase ? 'g-container-wrapper' : '' }}">
-        <div class="{{ showcase ? 'g-container carousel' : '' }}">
+        <div class="{{ showcase ? 'container carousel' : '' }}">
             <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|default('standard')|e }}"
                  {% if showcase %}data-g-swiper-showcase data-panel-selector="#g-swipercarousel-panel-{{ id }}"{% endif %}>
                 {% if showcase %}

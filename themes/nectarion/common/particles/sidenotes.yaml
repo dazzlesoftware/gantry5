@@ -1,0 +1,112 @@
+name: SideNotes
+description: Displays a rotating collection of side notes.
+type: particle
+category: content
+icon: fa-sticky-note
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    label:
+      type: input.text
+      label: Label
+      description: Customize the panel label.
+      default: Side Notes
+
+    nav:
+      type: select.select
+      label: Prev / Next
+      description: Enable or disable the Prev / Next navigation.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Enable or disable autoplay.
+      default: disabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    autoplaySpeed:
+      type: input.text
+      label: Autoplay Speed
+      description: Set the autoplay delay in milliseconds.
+      placeholder: 5000
+
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      description: Pause the slideshow while it is being hovered.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    slides:
+      type: collection.list
+      array: true
+      label: Side Note Slides
+      description: Create each slide and its list of notes.
+      value: name
+      ajax: true
+
+      fields:
+        .name:
+          type: input.text
+          label: Name
+          description: Administrative name for the slide.
+        .intro:
+          type: textarea.textarea
+          label: Introduction
+          description: Introductory text displayed above the notes.
+          placeholder: Enter introductory text
+        .introextended:
+          type: textarea.textarea
+          label: Extended Introduction
+          description: Additional introduction text hidden at tablet sizes.
+          placeholder: Enter optional extended text
+        .note1title:
+          type: input.text
+          label: Note 1 Title
+        .note1image:
+          type: input.imagepicker
+          label: Note 1 Image
+        .note1link:
+          type: input.text
+          label: Note 1 Link
+        .note2title:
+          type: input.text
+          label: Note 2 Title
+        .note2image:
+          type: input.imagepicker
+          label: Note 2 Image
+        .note2link:
+          type: input.text
+          label: Note 2 Link
+        .note3title:
+          type: input.text
+          label: Note 3 Title
+        .note3image:
+          type: input.imagepicker
+          label: Note 3 Image
+        .note3link:
+          type: input.text
+          label: Note 3 Link

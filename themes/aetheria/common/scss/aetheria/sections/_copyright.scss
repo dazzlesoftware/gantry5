@@ -9,8 +9,8 @@
 #g-copyright {
 	background: $copyright-background;
 	color: $copyright-text-color;
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		padding: 2rem 0;
 	}	
 	// Accent Color
@@ -21,7 +21,7 @@
 		}
 	}
 	// Copyright Content
-	.g-copyright > .g-content {
+	.g-copyright > .genesis-content {
 		font-size: $core-font-size - 0.2;
 		line-height: 1.8;
 	}
@@ -37,7 +37,7 @@
 	}
 	.bordered-bottom {
 		position: relative;
-		.g-content:after {
+		.genesis-content:after {
 			content: "";
 			position: absolute;
 			bottom: 0;

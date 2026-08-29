@@ -1,6 +1,6 @@
 #g-navigation.g-fluid-navigation {
     @include breakpoint(desktop-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -10,7 +10,7 @@
     }
 
     @include breakpoint(large-desktop-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -20,7 +20,7 @@
     }
 
     @include breakpoint(tablet-range) {
-        .g-block {
+        .col {
             flex: auto;
             width: auto;
         }
@@ -34,10 +34,10 @@
 .fp-slideshow {
     height: 100%;
 
-    > .g-grid {
+    > .row {
         height: 100%;
 
-        .g-content {
+        .genesis-content {
             height: 100%;
         }
 
@@ -93,10 +93,10 @@
 .fp-sidebartop {
     height: 100%;
 
-    > .g-grid {
+    > .row {
         height: 100%;
 
-        .g-content {
+        .genesis-content {
             @include breakpoint(tablet-range) {
                 margin: $content-margin 0;
                 padding: $content-padding 0;
@@ -129,7 +129,7 @@
     overflow: hidden;
     background: none;
 
-    .g-grid {
+    .row {
         z-index: 1;
         position: relative;
     }

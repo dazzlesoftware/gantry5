@@ -16,10 +16,10 @@
 		}
 	}    
 	.g-mosaic-menu {
-		.g-content {
+		.genesis-content {
 			margin: 0;
 		}	
-		.menu-item-particle .g-content {
+		.menu-item-particle .genesis-content {
 			margin: $content-margin;
 			text-align: center;
 		}	
@@ -46,13 +46,13 @@
 
 #g-navigation {
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 	}
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 	}
 

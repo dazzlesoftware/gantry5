@@ -3,7 +3,7 @@
     color: $bottom-text-color;
 
     #g-bottommain {
-        > .g-grid:last-child {
+        > .row:last-child {
             padding: 0 0 $section-padding 0;
         }
     }

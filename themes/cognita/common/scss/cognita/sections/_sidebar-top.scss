@@ -5,8 +5,8 @@
             background: transparentize($base-text-color, 0.70);
         }
 
-        .g-grid {
-            .g-block {
+        .row {
+            .col {
                 &:after {
                     position: absolute;
                     z-index: 1;

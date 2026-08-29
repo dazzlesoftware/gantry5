@@ -7,12 +7,12 @@
         background-size: cover;
     }
 
-    > .g-grid {
+    > .row {
         background-color: fade-out($maintop-background, 0.30);
     }
 
     .fp-maintop {
-        .g-content {
+        .genesis-content {
             padding: 100px;
             @include breakpoint(mobile-only) {
                     padding: 25px;

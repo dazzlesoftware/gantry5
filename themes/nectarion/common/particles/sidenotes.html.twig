@@ -1,0 +1,77 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('genesis-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
+
+    <div class="{{ particle.class|e }} g-swipercarousel-headlines g-sidenotes">
+        <div class="headlines-container">
+            {% if particle.label %}
+                <div class="headlines-badge">
+                    <span>{{ particle.label|e }}</span>
+                </div>
+            {% endif %}
+
+            <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper"
+                data-g-swiper
+                data-slides-per-view="1"
+                data-navigation="{{ particle.nav|default('enabled')|e }}"
+                data-pagination="disabled"
+                data-loop="disabled"
+                data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+                data-autoplay-delay="{{ particle.autoplaySpeed|default(5000)|e }}"
+                data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+                data-speed="500"
+                data-effect="slide"
+                data-centered="disabled">
+
+                {% for slide in particle.slides %}
+                    <div class="item">
+                        <div class="g-swipercarousel-content">
+                            <div class="g-swipercarousel-item-desc">
+                                <div class="g-headlines-desc">
+                                    <div class="g-infolist g-1cols">
+                                        {% if slide.intro or slide.introextended %}
+                                            <p>
+                                                {{ slide.intro|e }}{% if slide.introextended %}<span class="hidden-tablet">{{ slide.introextended|e }}</span>{% endif %}
+                                            </p>
+                                        {% endif %}
+
+                                        {% for noteNumber in 1..3 %}
+                                            {% set noteTitle = attribute(slide, 'note' ~ noteNumber ~ 'title') %}
+                                            {% set noteImage = attribute(slide, 'note' ~ noteNumber ~ 'image') %}
+                                            {% set noteLink = attribute(slide, 'note' ~ noteNumber ~ 'link') %}
+                                            {% if noteTitle or noteImage %}
+                                            <div class="g-infolist-item{% if noteImage %} g-infolist-with-img{% endif %}">
+                                                {% if noteImage %}
+                                                    <div class="g-infolist-item-img col col-3 hidden-phone left">
+                                                        <img src="{{ url(noteImage)|e }}" alt="{{ noteTitle|e }}" />
+                                                    </div>
+                                                {% endif %}
+                                                <div class="g-infolist-item-text{% if noteImage %} col{% endif %}">
+                                                    {% if noteTitle %}
+                                                        <div class="g-infolist-item-title">
+                                                            {% if noteLink %}<a href="{{ noteLink|e }}">{% endif %}
+                                                            {{ noteTitle|e }}
+                                                            {% if noteLink %}</a>{% endif %}
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

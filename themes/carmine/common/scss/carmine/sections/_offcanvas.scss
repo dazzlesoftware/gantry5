@@ -73,7 +73,7 @@
 #g-offcanvas {
 
     div[id*="mobile-menu"] {
-        &.g-content {
+        &.genesis-content {
             padding: $content-padding;
         }
     }
@@ -118,11 +118,11 @@
             margin-bottom: 1rem;
         }
         text-align: center;
-        .g-block {
+        .col {
             flex: 0 0 auto;
             width: 50% !important;
         }
-        .g-content {
+        .genesis-content {
             margin: 0;
         }
         a {

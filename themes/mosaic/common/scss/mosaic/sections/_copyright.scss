@@ -6,7 +6,7 @@
 		color: $white;
 	}
 	// Copyright Content
-	.g-copyright > .g-content {
+	.g-copyright > .genesis-content {
 		font-size: $core-font-size - 0.2;
 		line-height: 1.8;	
 		@include breakpoint(small-mobile-range) {
@@ -30,7 +30,7 @@
 			margin: 0 0.25rem;
 		}				
 	}
-	.g-block {
+	.col {
 		position: relative;
 	}
 }

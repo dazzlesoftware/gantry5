@@ -20,7 +20,7 @@
 				min-height: 630px;
 			}
 
-			.g-container {
+			.container {
 				position: relative;
 				width: $breakpoints-large-desktop-container;
 				@include breakpoint(desktop-range) {

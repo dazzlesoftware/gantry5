@@ -14,7 +14,7 @@
     .g-home-positions.g-altairis-style &,
     .g-home-particles.g-altairis-style & {
         // Container
-        .g-container {
+        .container {
         	padding: 11rem 0 8rem 0;
             @include breakpoint(large-mobile-range) {
               padding: 2rem 0 11rem 0;

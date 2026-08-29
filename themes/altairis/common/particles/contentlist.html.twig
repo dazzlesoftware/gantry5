@@ -6,12 +6,12 @@
 
 	<div class="g-contentlist {{ particle.class|e }}">
 
-	    <div class="row g-grid">
-	        <div class="col g-block col-4 g-contentlist-img" style="background-image: url({{ url(particle.image)|e }})">
+	    <div class="row">
+	        <div class="col col-4 g-contentlist-img" style="background-image: url({{ url(particle.image)|e }})">
 	            {% if particle.imagetag %}<div class="g-contentlist-img-tag">{{ particle.imagetag|e }}</div>{% endif %}
 	        </div>
-	        <div class="col g-block col-8 g-contentlist-text">
-	            <div class="g-content">
+	        <div class="col col-8 g-contentlist-text">
+	            <div class="genesis-content">
 	                {% if particle.headline %}<h3 class="g-contentlist-headline">{{ particle.headline|raw }}</h3>{% endif %}
 	                {% if particle.subtitle %}<h5 class="g-contentlist-subtitle">{{ particle.subtitle|raw }}</h5>{% endif %}
 	                {% if particle.desc %}<div class="g-contentlist-desc">{{ particle.desc|raw }}</div>{% endif %}
@@ -21,9 +21,9 @@
 	    </div> 
 
 	    {% if particle.listgriditems %}
-	    <div class="row g-grid g-contentlist-list">
-	        <div class="col g-block">
-	            <div class="g-content">
+	    <div class="row g-contentlist-list">
+	        <div class="col">
+	            <div class="genesis-content">
 	                <div class="g-listgrid {{ particle.cols|e }}">
 						{% for listgriditem in particle.listgriditems %}
 		                    <div class="g-listgrid-item">

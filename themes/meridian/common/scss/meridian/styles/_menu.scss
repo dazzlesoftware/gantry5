@@ -229,12 +229,12 @@
     margin-top: $content-margin;
     justify-content: center;
 
-    .g-content {
+    .genesis-content {
         padding: $content-padding - 1.5 !important;
         margin: 0;
     }
 
-    .g-block {
+    .col {
         width: 30% !important;
         flex: 1 1 auto !important;
     }

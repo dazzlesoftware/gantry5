@@ -5070,8 +5070,8 @@
       const menu = (mobile ? this.mainContainer : this.mobileContainer).querySelector(this.selectors.topLevel);
       if (!menu) return;
       this._setBootstrapMode(menu, mobile);
-      const mainBlock = closest(this.mainContainer, ".g-block");
-      const mobileBlock = closest(this.mobileContainer, ".g-block");
+      const mainBlock = closest(this.mainContainer, ".col");
+      const mobileBlock = closest(this.mobileContainer, ".col");
       if (mobile) {
         if (mainBlock) mainBlock.classList.add("hidden");
         if (mobileBlock) mobileBlock.classList.remove("hidden");
@@ -5173,14 +5173,14 @@
       if (!togglers.length) return;
       setTimeout(() => {
         const mobileContainer = this.offcanvas.querySelector("#g-mobilemenu-container");
-        const blocks = Array.from(this.offcanvas.querySelectorAll(".g-block"));
+        const blocks = Array.from(this.offcanvas.querySelectorAll(".col"));
         const mobileText = mobileContainer ? mobileContainer.textContent.length : 0;
         const shouldCollapse = blocks.length === 1 && mobileContainer && !this.offcanvas.textContent.trim().length && !blocks.some((block) => block.querySelector(".g-menu-item"));
         togglers.forEach((toggler) => {
           toggler.classList.toggle("g-offcanvas-hide", Boolean(shouldCollapse));
         });
         if (mobileContainer) {
-          const block = mobileContainer.closest(".g-block");
+          const block = mobileContainer.closest(".col");
           if (block) block.classList.toggle("hidden", !mobileText);
         }
       }, 0);

@@ -104,7 +104,7 @@ let MenuManagerDefinition = {
             return false;
         }
 
-        if (element.hasClass('g-block')) {
+        if (element.hasClass('col')) {
             this.stopAnimation();
             return true;
         }
@@ -139,8 +139,8 @@ let MenuManagerDefinition = {
         if (!this.ordering[itemID]) { this.ordering[itemID] = [[]]; }
         if (!this.ordering[itemID].length) { this.ordering[itemID].push([]); }
 
-        columns.innerHTML = '<section class="row g-grid submenu-selector">' +
-            '<div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%">' +
+        columns.innerHTML = '<section class="row submenu-selector">' +
+            '<div class="col" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%">' +
                 '<div class="submenu-column">' +
                     '<div class="submenu-level">Level 1</div>' +
                     '<ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '" data-mm-base-level="1">' +
@@ -167,7 +167,7 @@ let MenuManagerDefinition = {
         this.block = null;
         this.targetLevel = undefined;
         this.addNewItem = false;
-        this.type =  element.parent('.g-toplevel') || element.matches('.g-toplevel') ? 'main' : (element.matches('.g-block') ? 'column' : 'columns_items');
+        this.type =  element.parent('.g-toplevel') || element.matches('.g-toplevel') ? 'main' : (element.matches('.col') ? 'column' : 'columns_items');
         this.isParticle = element.matches('[data-mm-blocktype]') || element.matches('[data-mm-original-type]');
         this.wasActive = element.hasClass('active');
         this.isNewParticle = element.parent('.genesis-mm-particles-picker');
@@ -227,7 +227,7 @@ let MenuManagerDefinition = {
         }
 
         if (this.type == 'column') {
-            root.search('.g-block > *').style({ 'pointer-events': 'none' });
+            root.search('.col > *').style({ 'pointer-events': 'none' });
         }
     },
 
@@ -242,7 +242,7 @@ let MenuManagerDefinition = {
         (!this.isNewParticle ? this.original : this.block).style({transform: 'translate(0, 0)'});
         if (!this.placeholder) { this.placeholder = zen((this.type == 'column' ? 'div' : 'li') + '.block.placeholder[data-mm-placeholder]').style({ display: 'none' }); }
 
-        let targetType = target.parent('.g-toplevel') || target.matches('.g-toplevel') ? 'main' : (target.matches('.g-block') ? 'column' : 'columns_items'),
+        let targetType = target.parent('.g-toplevel') || target.matches('.g-toplevel') ? 'main' : (target.matches('.col') ? 'column' : 'columns_items'),
             dataLevel = target.data('mm-level'),
             originalLevel = this.block.data('mm-level');
 
@@ -286,7 +286,7 @@ let MenuManagerDefinition = {
                 submenu_items_level = submenu_items.data('mm-base-level');
 
             // extend drop areas and ensure items cannot be dragged between different levels
-            if ((!target.hasClass('g-block') || target.find(this.block)) || (!this.isParticle && originalLevel != submenu_items_level) && (!submenu_items || submenu_items.children() || originalLevel > 2)) {
+            if ((!target.hasClass('col') || target.find(this.block)) || (!this.isParticle && originalLevel != submenu_items_level) && (!submenu_items || submenu_items.children() || originalLevel > 2)) {
                 this.dragdrop.matched = false;
                 return;
             }
@@ -469,7 +469,7 @@ let MenuManagerDefinition = {
 
         if (target) { element.removeClass('active'); }
         if (this.type == 'column') {
-            this.root.search('.g-block > *').attribute('style', null);
+            this.root.search('.col > *').attribute('style', null);
         }
 
         if (!this.dragdrop.matched && !this.addNewItem) {
@@ -507,7 +507,7 @@ let MenuManagerDefinition = {
         if (this.isParticle) {
             let id = last(this.itemID.split('/')),
                 targetItem = (target || this.itemTo),
-                base = targetItem[target && !target.hasClass('g-block') ? 'parent' : 'find']('[data-mm-base]').data('mm-base');
+                base = targetItem[target && !target.hasClass('col') ? 'parent' : 'find']('[data-mm-base]').data('mm-base');
 
             this.itemID = base ? base + '/' + id : id;
             this.itemLevel = this.targetLevel;

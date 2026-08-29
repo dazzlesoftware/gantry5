@@ -33,7 +33,7 @@
     }
 
     &.fp-slideshow {
-        .g-content {
+        .genesis-content {
             @include breakpoint(mobile-only) {
                 padding: 0;
                 margin: 0;

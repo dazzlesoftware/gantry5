@@ -9,7 +9,7 @@
 
 .fp-totop {
 	@include breakpoint(mobile-only) {
-		.g-content {
+		.genesis-content {
 			margin-top: 0;
 			padding-top: 0;
 		}	

@@ -20,7 +20,7 @@
         {% endset %}
 
         {% set imagedata %}
-        <div class="g-infolist-item-img g-block{% if infolist.imagestyle == 'compact' %} col-3 hidden-phone{% endif %}{% if infolist.imagestyle == 'browser' %} browser{% endif %} {{ infolist.imageloc|e }} {% if infolist.imagestyle == 'avatar' %}avatar{% endif %}">
+        <div class="g-infolist-item-img col{% if infolist.imagestyle == 'compact' %} col-3 hidden-phone{% endif %}{% if infolist.imagestyle == 'browser' %} browser{% endif %} {{ infolist.imageloc|e }} {% if infolist.imagestyle == 'avatar' %}avatar{% endif %}">
           {% if infolist.imagestyle == 'browser' %}
           <div class="browser-wrapper">
             <div class="browser-bar">
@@ -42,7 +42,7 @@
           {{ imagedata }}
         {% endif %}
 
-        <div class="g-infolist-item-text{% if infolist.icon or infolist.image %} g-block{% endif %} g-infolist-textstyle-{{ infolist.textstyle }}">
+        <div class="g-infolist-item-text{% if infolist.icon or infolist.image %} col{% endif %} g-infolist-textstyle-{{ infolist.textstyle }}">
           {% if infolist.icon and infolist.iconloc == 'center' %}
             {{ icondata }}
           {% endif %}

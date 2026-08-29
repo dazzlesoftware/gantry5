@@ -1,6 +1,6 @@
 // Responsive page-container widths. Column sizing is provided exclusively by
 // Bootstrap's grid classes.
-.g-container {
+.container {
 	width: $breakpoints-large-desktop-container;
 	@include breakpoint(desktop-range) {
 		width: $breakpoints-desktop-container;

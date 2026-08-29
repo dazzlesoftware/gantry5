@@ -50,7 +50,7 @@ class Section extends Base {
 
     adopt(child) {
         let node = child && child.nodeType ? child : child && child[0],
-            grid = this.block[0].querySelector('.g-grid');
+            grid = this.block[0].querySelector('.row');
         if (node && grid) { grid.appendChild(node); }
     }
 

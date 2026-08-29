@@ -17,7 +17,7 @@
         font-size: $core-font-size + 0.2;
     }
 
-    .g-content {
+    .genesis-content {
         padding: 0;
     }
 }
@@ -111,7 +111,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         color: $white;
         background: $accent-color-1;
 
@@ -196,7 +196,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         color: $white;
         background: $accent-color-2;
     }
@@ -238,7 +238,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: linear-gradient(-200deg, $accent-color-1, $accent-color-2);
         transform-origin: bottom;
         color: $white;
@@ -284,7 +284,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: linear-gradient(-200deg, adjust_hue($accent-color-1, 60deg), $accent-color-2);
         transform-origin: bottom;
         color: $white;
@@ -328,7 +328,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         color: $base-text-color;
         background: darken($white, 10%);
     }
@@ -362,7 +362,7 @@
     &.moduletable,
     &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         color: $white;
         background: #2d2d2d;
     }
@@ -406,7 +406,7 @@
 .box-white {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-white-background;
     }
 
@@ -457,7 +457,7 @@
 .box-grey {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-grey-background;
     }
 
@@ -516,7 +516,7 @@
 .box-pink {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-pink-background;
     }
 
@@ -575,7 +575,7 @@
 .box-red {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-red-background;
     }
 
@@ -634,7 +634,7 @@
 .box-purple {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-purple-background;
     }
 
@@ -693,7 +693,7 @@
 .box-blue {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-blue-background;
     }
 
@@ -752,7 +752,7 @@
 .box-orange {
     &.moduletable, &.widget,
     &.g-outer-box,
-    > .g-content {
+    > .genesis-content {
         background: $box-orange-background;
     }
 
@@ -791,44 +791,44 @@
 }
 
 .spaced {
-    .g-content {
+    .genesis-content {
         margin: 1px;
     }
 }
 
 .bordered {
-    .g-content {
+    .genesis-content {
         border: 1px solid $rule-color;
         margin: 1px;
     }
 }
 
 .shadow {
-    .g-content {
+    .genesis-content {
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     }
 }
 
 .shadow2 {
-    .g-content {
+    .genesis-content {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     }
 }
 
 .disabled {
-    .g-content {
+    .genesis-content {
         opacity: 0.4;
     }
 }
 
 .square {
-    .g-content {
+    .genesis-content {
         border-radius: none;
     }
 }
 
 .rounded {
-    .g-content {
+    .genesis-content {
         border-radius: $core-border-radius;
         overflow: hidden;
     }
@@ -852,7 +852,7 @@
         width: 100%;
     }
 
-    .g-content {
+    .genesis-content {
         flex-basis: 100%;
         width: auto; 
     }

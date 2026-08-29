@@ -3,10 +3,10 @@
 .visible-desktop,
 .visible-tablet,
 .visible-phone,
-.g-block.visible-large,
-.g-block.visible-desktop,
-.g-block.visible-tablet,
-.g-block.visible-phone {
+.col.visible-large,
+.col.visible-desktop,
+.col.visible-tablet,
+.col.visible-phone {
   display: none !important;
 }
 
@@ -14,7 +14,7 @@
   .visible-phone {
     display: block !important;
   }
-  .g-block.visible-phone {
+  .col.visible-phone {
     display: block !important;
   }
 }
@@ -23,7 +23,7 @@
   .visible-tablet {
     display: block !important;
   }
-  .g-block.visible-tablet {
+  .col.visible-tablet {
     display: block !important;
   }
 }
@@ -32,7 +32,7 @@
   .visible-desktop {
     display: block !important;
   }
-  .g-block.visible-desktop {
+  .col.visible-desktop {
     display: block !important;
   }
 }
@@ -41,13 +41,13 @@
   .visible-large {
     display: block !important;
   }
-  .g-block.visible-large {
+  .col.visible-large {
     display: block !important;
   }
   .visible-desktop {
     display: block !important;
   }
-  .g-block.visible-desktop {
+  .col.visible-desktop {
     display: block !important;
   }
 }

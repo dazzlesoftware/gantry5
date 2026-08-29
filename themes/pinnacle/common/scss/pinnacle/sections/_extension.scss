@@ -1,6 +1,6 @@
 #g-extension {
 	padding-bottom: 4rem;
-	.g-container {
+	.container {
 	    background: $extension-background;
 	    color: $extension-text-color;  
 	    border-radius: $border-radius;
@@ -11,7 +11,7 @@
     	background-size: cover;
 	}    
 	&.fp-extension {
-		.g-container {
+		.container {
 			position: relative;
 			top: -8rem;
 			margin-bottom: 5rem;

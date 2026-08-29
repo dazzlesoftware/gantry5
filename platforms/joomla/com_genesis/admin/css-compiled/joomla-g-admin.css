@@ -76,7 +76,7 @@ body.com_modules [data-genesis-container] .inner-container, body.com_advancedmod
 body.com_modules [data-genesis-container] .main-block, body.com_advancedmodules [data-genesis-container] .main-block, body.com_menus [data-genesis-container] .main-block {
   background-color: inherit;
 }
-body.com_modules [data-genesis-container] .g-content, body.com_advancedmodules [data-genesis-container] .g-content, body.com_menus [data-genesis-container] .g-content {
+body.com_modules [data-genesis-container] .genesis-content, body.com_advancedmodules [data-genesis-container] .genesis-content, body.com_menus [data-genesis-container] .genesis-content {
   margin: 0;
   padding: 0;
 }
@@ -107,7 +107,7 @@ body.com_modules [data-genesis-container] .g-instancepicker-title + .button, bod
 body.com_genesis [data-genesis-container] [data-mode-indicator=production] {
   background-color: #3180C2;
 }
-body.com_genesis [data-genesis-container] #main-header .g-content {
+body.com_genesis [data-genesis-container] #main-header .genesis-content {
   padding: 0 1.563rem;
 }
 body.com_genesis [data-genesis-container] #main-header .dev-mode-toggle {
@@ -334,7 +334,7 @@ body.com_genesis [data-genesis-container] .navbar-block #genesis-logo {
 [data-genesis-container].genesis-dark-mode #g-main {
   background-color: #2a394f !important;
 }
-[data-genesis-container].genesis-dark-mode .g-content {
+[data-genesis-container].genesis-dark-mode .genesis-content {
   background-color: #2a394f !important;
 }
 [data-genesis-container].genesis-dark-mode input,
@@ -452,7 +452,7 @@ body.com_genesis [data-genesis-container] .navbar-block #genesis-logo {
 [data-genesis-container].genesis-dark-mode .settings-block.disabled {
   opacity: 0.4 !important;
 }
-[data-genesis-container].genesis-dark-mode .g-grid .g-block {
+[data-genesis-container].genesis-dark-mode .row .col {
   background: #2a394f !important;
 }
 [data-genesis-container].genesis-dark-mode .card-block,
@@ -471,7 +471,7 @@ body.com_genesis [data-genesis-container] .navbar-block #genesis-logo {
 [data-genesis-container].genesis-dark-mode .genesis-outlines .g-switch {
   background-color: #1a2537 !important;
 }
-[data-genesis-container].genesis-dark-mode .g-grid .g-block .g-block-content {
+[data-genesis-container].genesis-dark-mode .row .col .g-block-content {
   background-color: #1a2537 !important;
 }
 [data-genesis-container].genesis-dark-mode .g-section {
@@ -542,7 +542,7 @@ body.com_genesis [data-genesis-container] .navbar-block #genesis-logo {
   color: #fff;
 }
 [data-genesis-container].genesis-dark-mode .g-panel,
-[data-genesis-container].genesis-dark-mode .g-content {
+[data-genesis-container].genesis-dark-mode .genesis-content {
   color: #fff;
 }
 [data-genesis-container].genesis-dark-mode a:not(.button) {
@@ -1142,27 +1142,27 @@ body.com_genesis [data-genesis-container] .navbar-block #genesis-logo {
 [data-genesis-container].genesis-dark-mode .lm-blocks .offcanvas-section {
   border-top-color: #374f6b !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row {
   background-color: #1a2537 !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid:hover:not(:empty) {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row:hover:not(:empty) {
   box-shadow: 0 0 0 1px #374f6b !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid:not(:empty):not(.no-hover):before, [data-genesis-container].genesis-dark-mode .lm-blocks .g-grid:not(:empty):not(.no-hover):not(.no-gear):after {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row:not(:empty):not(.no-hover):before, [data-genesis-container].genesis-dark-mode .lm-blocks .row:not(:empty):not(.no-hover):not(.no-gear):after {
   background: #1a2537 !important;
   border-color: #374f6b !important;
   color: #cbd9e8 !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid:empty:after {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row:empty:after {
   color: #6a85a0 !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid > .g-block:after {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row > .col:after {
   background: #00baaa !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid > .g-block > .g-block {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row > .col > .col {
   background: #2a394f !important;
 }
-[data-genesis-container].genesis-dark-mode .lm-blocks .g-grid > .g-block > .g-block > .section {
+[data-genesis-container].genesis-dark-mode .lm-blocks .row > .col > .col > .section {
   border-bottom-color: #1a2537 !important;
 }
 [data-genesis-container].genesis-dark-mode .lm-blocks .particle,

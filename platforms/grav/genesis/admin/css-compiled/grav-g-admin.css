@@ -119,16 +119,16 @@ body #admin-main .admin-block {
 [data-genesis-container] #main-header {
   height: 4.2rem;
 }
-[data-genesis-container] #main-header .g-content {
+[data-genesis-container] #main-header .genesis-content {
   padding: 0 3em !important;
 }
 @media only all and (min-width: 60rem) and (max-width: 74.99rem) {
-  [data-genesis-container] #main-header .g-content {
+  [data-genesis-container] #main-header .genesis-content {
     padding: 0 0.7em 0 3em !important;
   }
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
-  [data-genesis-container] #main-header .g-content {
+  [data-genesis-container] #main-header .genesis-content {
     padding: 0 0.7em 0 3em !important;
   }
 }
@@ -245,7 +245,7 @@ body #admin-main .admin-block {
 [data-genesis-container] [data-mode-indicator=production] {
   background-color: transparent;
 }
-[data-genesis-container] #main-header .g-content {
+[data-genesis-container] #main-header .genesis-content {
   padding: 0 1.563rem;
 }
 [data-genesis-container] #main-header .dev-mode-toggle {
@@ -401,7 +401,7 @@ body #admin-main .admin-block {
   z-index: 4;
   color: #3D424E;
 }
-.ga-theme-17x [data-genesis-container] #main-header .g-content {
+.ga-theme-17x [data-genesis-container] #main-header .genesis-content {
   padding: 0 30px !important;
 }
 .ga-theme-17x [data-genesis-container] #main-header .theme-title i {

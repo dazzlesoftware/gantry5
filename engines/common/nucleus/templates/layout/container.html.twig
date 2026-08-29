@@ -10,12 +10,12 @@
     {% if boxed is not null %}
         {% set boxed = boxed|trim == '' ? genesis.config.page.body.layout.sections : boxed %}
     {% endif %}
-    {% set class = 'g-wrapper' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class) %}
+    {% set class = 'genesis-wrapper' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class) %}
     {% set attr_extra = segment.attributes.extra|attribute_array %}
 
     {% if boxed is not null and (boxed == 0 or boxed == 2) %}
         {% set html %}
-        <div class="g-container{{ boxed == 2 ? ' g-flushed' }}">{{ html|raw }}</div>
+        <div class="container{{ boxed == 2 ? ' g-flushed' }}">{{ html|raw }}</div>
         {% endset %}
     {% endif %}
 
@@ -26,7 +26,7 @@
     {% endset %}
 
     {% if boxed == 1 %}
-        <div class="g-container">{{ html|raw }}</div>
+        <div class="container">{{ html|raw }}</div>
     {% else %}
         {{ html|raw }}
     {% endif %}

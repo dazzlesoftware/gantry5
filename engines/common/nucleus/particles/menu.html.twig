@@ -148,10 +148,10 @@
 
 {% macro displayContainers(item, menu, context, dropdown_type, start_level) %}
     {% import _self as self %}
-    <div class="row g-grid">
+    <div class="row">
         {% set groups = item.getDropdown() == 'standard' ? [item] : item.groups %}
         {% for column, items in groups %}
-        <div class="col g-block col-{{ item.columnSpan(column) }}">
+        <div class="col col-{{ item.columnSpan(column) }}">
             <ul class="g-sublevel">
                 {{ self.displayItems(items, menu, context, dropdown_type, start_level) }}
             </ul>

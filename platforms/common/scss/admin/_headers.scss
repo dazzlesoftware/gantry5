@@ -8,9 +8,35 @@
         font-weight: $font-weight-medium;
         color: $main-header-text;
 
-        .g-content {
+        // Bootstrap owns the structural row/column classes. Keep the admin
+        // masthead on one line instead of allowing the generic column rules
+        // to collapse its title and navigation.
+        > .row {
+            display: block;
+            margin: 0;
+            background-color: transparent !important;
+            color: inherit;
+
+            > .col {
+                display: block;
+                flex: none;
+                width: 100%;
+                max-width: none;
+                padding: 0;
+                background-color: transparent !important;
+                color: inherit;
+            }
+        }
+
+        .genesis-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 3rem;
             margin: 0;
             padding: 0 $content-padding + 1.5;
+            background-color: transparent !important;
+            color: inherit;
         }
 
         .theme-title {
@@ -24,6 +50,7 @@
 
         ul {
             @extend %list-reset;
+            margin-left: auto;
             li {
                 display: inline-block;
                 margin-right: -4px;

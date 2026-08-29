@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let touchMove = asBool(container.dataset.slideshowTouchmove);
 
         if(container.parents('.fp-slideshow').length > 0) {
-            container.closest('.g-grid').addClass('has-slideshow');
+            container.closest('.row').addClass('has-slideshow');
         }
 
         if(thumbs) {

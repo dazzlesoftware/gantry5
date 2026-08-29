@@ -4,7 +4,7 @@
 {% set html %}
     {% if enabled and (segment.attributes.enabled is null or segment.attributes.enabled) %}
         {% if subtype == 'content' %}
-            {% set class = 'g-content' %}
+            {% set class = 'genesis-content' %}
             {{ content|raw }}
         {% elseif subtype == 'messages' %}
             {% set class = 'g-system-messages' %}

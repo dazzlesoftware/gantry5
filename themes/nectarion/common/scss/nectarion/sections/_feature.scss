@@ -34,9 +34,11 @@
         width: 25%;
     }
 
-    .g-tabbedcards-tab {
+    .g-tabbedcards-tab,
+    .g-tabbedcards-tabs .nav-link {
         color: $black;
         background: transparent;
+        border: 0 !important;
         border-radius: 0;
         display: block;
         font-family: get-font-family($font-family-promo);
@@ -47,7 +49,8 @@
         text-transform: uppercase;
         width: fit-content;
 
-        &[aria-selected="true"] {
+        &[aria-selected="true"],
+        &.active {
             color: $white;
             background: $accent-color-1;
         }
@@ -126,7 +129,8 @@
             width: 100%;
         }
 
-        .g-tabbedcards-tab {
+        .g-tabbedcards-tab,
+        .g-tabbedcards-tabs .nav-link {
             font-size: 1.5rem;
         }
     }
@@ -183,7 +187,7 @@
 }
 
 #feature-headlines {
-    > .g-content {
+    > .genesis-content {
         // The red bar is drawn by this element. Use it as the navigation
         // boundary so the black control fills the bar from edge to edge.
         position: relative;

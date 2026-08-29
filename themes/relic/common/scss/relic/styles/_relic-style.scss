@@ -38,7 +38,7 @@
       padding-top: $content-padding;
     }
     .g-content-array {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
 
@@ -90,7 +90,7 @@
 
 // Header
 .fp-header-eventlist {
-    .g-content {
+    .genesis-content {
         width: 100%;
     }
     .g-eventlist-location-line1, .g-eventlist-location-line2  {
@@ -117,7 +117,7 @@
     }
 }
 .fp-header-audioplayer {
-    .g-content {
+    .genesis-content {
         width: 100%;
         @include breakpoint(mobile-only) {
               overflow: hidden;
@@ -198,7 +198,7 @@
         text-align: center;
     }
 
-    .g-grid {
+    .row {
         @media only all and (max-width: 74.938rem) and (min-width: $breakpoints-tablet-container) {
             @include breakpoint(tablet-range) {
                 flex-direction: row;

@@ -2,13 +2,13 @@
     margin-left: (-1 * ($content-padding));
     margin-right: (-1 * ($content-padding));
 
-    .g-grid {
+    .row {
         margin-bottom: $content-padding;
 
         &:last-child {
             margin-bottom: 0;
 
-            .g-block {
+            .col {
                 &:last-child {
                     .g-array-item {
                         @include breakpoint(mobile-only) {
@@ -24,7 +24,7 @@
         }
     }
 
-    .g-content {
+    .genesis-content {
         margin: 0;
         padding-top: 0;
         padding-bottom: 0;

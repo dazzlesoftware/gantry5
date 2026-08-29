@@ -23,7 +23,7 @@
 	// Sample Sitemap
 	.g-sample-sitemap {
 		@include breakpoint(mobile-only) {
-			.g-block {
+			.col {
 				flex: 0 0 auto;
 				width: 50% !important;
 			}
@@ -31,7 +31,7 @@
 	}	
 }
 .fp-footside-a {
-	.g-content {
+	.genesis-content {
 		padding: 2.5rem 1.5rem;
 	}
 	p {

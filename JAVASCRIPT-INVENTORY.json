@@ -45,7 +45,7 @@
     "varFiles": 18,
     "legacyBrowserApiFiles": 5,
     "inlineCodeGenerationFiles": 0,
-    "duplicateGroups": 0
+    "duplicateGroups": 1
   },
   "buildEntryPoints": [
     "assets/common/application/main.js",
@@ -57,7 +57,15 @@
     "assets/common/js/swiper.js",
     "platforms/common/js/main.js"
   ],
-  "duplicateGroups": [],
+  "duplicateGroups": [
+    {
+      "count": 2,
+      "paths": [
+        "platforms/common/js/main.js",
+        "platforms/phpbb/genesis/admin/common/js/main.js"
+      ]
+    }
+  ],
   "files": [
     {
       "path": "assets/common/application/main.js",
@@ -147,9 +155,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 5847,
+      "bytes": 5839,
       "lines": 141,
-      "sha256": "4cfa68890cd85745a5820d99f102eb094300acc5bc480d2f7a5ccd1d78db4c6b",
+      "sha256": "68a32364258b3110684d911e7272fabdf78b1de90880bad0a10d579499982652",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -208,9 +216,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 2709,
+      "bytes": 2701,
       "lines": 66,
-      "sha256": "8a33968119b3195e0d9c9c2a840c4d071f09c1ddaf3b9d015079a620f948f8d0",
+      "sha256": "5d88e4c37bfbb04a17321bfa00ae9dba683f5381d888702c6a724be77a7f25d8",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -586,9 +594,9 @@
         "themes/akari/common/config/default/page/assets.yaml",
         "themes/lilium/common/config/default/page/assets.yaml"
       ],
-      "bytes": 866,
+      "bytes": 872,
       "lines": 17,
-      "sha256": "b3c3b451cca8ac422109f86a4f5bdbd42607308feabe5840ec365e4b98dca73b",
+      "sha256": "478354eb08690f964ef122925061d5036db0c42d55b112634a2d0039e9ae447d",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -2161,9 +2169,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 194773,
+      "bytes": 194757,
       "lines": 5254,
-      "sha256": "d2899bea65777b36ab404700101edb8ba44081e84bd1a407549516c862400b5f",
+      "sha256": "0dcbd51f62cae1514fad54e4cb133059d4f9eab6d6dce2a559f667ae0d33172c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -3596,9 +3604,9 @@
       "consumers": [
         "themes/cadence/common/particles/testimonialslider.html.twig"
       ],
-      "bytes": 1624,
+      "bytes": 1620,
       "lines": 41,
-      "sha256": "32125eb92b301b7f6553eecdcf2884b557a921301520455cd4f6585dcc91124e",
+      "sha256": "47c6f307ea85f6d9152afebbe42f0a8bbcd5ef4abb8529bb51a14a559ae8c42c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -4434,9 +4442,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 2742,
+      "bytes": 2738,
       "lines": 82,
-      "sha256": "9f27be93f271b84b04d3355df48d30c89eeca73a83cfe7a16f5c7803fff38e73",
+      "sha256": "5f970ea976a822b3d1e6bc4d45ae9f3213bee3a3c378ea99eb894248f1ff2138",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4541,9 +4549,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 1958,
+      "bytes": 1951,
       "lines": 53,
-      "sha256": "e57a79e6b6c050a24ef38dc06620859213bc8ff0260972b799d70a481771027d",
+      "sha256": "33af09b5a3695dd0d77e4ac0dbb04c8dca33594dfd2aecc2c3ed57664bf73b37",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4744,9 +4752,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 7041,
+      "bytes": 7038,
       "lines": 164,
-      "sha256": "25f33955d8cdefb48b95336f37e586dd70757e6b5306e6554e76a8965d713043",
+      "sha256": "eef315e40e0da09efc67762242633532ea081b245f144aeefd0f64663a1eeb04",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4871,9 +4879,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 7973,
+      "bytes": 7945,
       "lines": 230,
-      "sha256": "33320455af4eaca4eddfe81eba2b1459f4a00ca5ec043c7718dbc58cddc946e4",
+      "sha256": "7e2a7403b992eac56f2d9e8f0d997f595cf23a60fe763faadefe71fa2e02dd02",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4995,9 +5003,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 43661,
+      "bytes": 43633,
       "lines": 921,
-      "sha256": "0ddad9bdb5b5104ca8b9548975b7c782be0683250be6b4a0926fcd967546a25a",
+      "sha256": "566f414443937bfb2e3b16fe26234bce0c7e56ddad3b1e124087d0b8804640bc",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5126,9 +5134,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 24975,
+      "bytes": 24960,
       "lines": 612,
-      "sha256": "52756fd2bb937919aa57eb459ff4a1e9b828b75879aad9bf5efebc3f55c7003a",
+      "sha256": "7cadbf46ed6870fe2502eb6038325c032d4b68a0825cc0e530aca8939afdc389",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5411,9 +5419,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 19441,
+      "bytes": 19437,
       "lines": 437,
-      "sha256": "68b695b7fa7d6d3996ea0648dc46b354ecd0ebd3f4fc5e2da557396a97ff7529",
+      "sha256": "92e3ae58c6ce909b0a80065cb79111f8609fe8285620f7bccc6d68dda68b6389",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5460,9 +5468,9 @@
         "platforms/phpbb/genesis/admin/templates/pages/menu/menu.html.twig",
         "src/platforms/phpbb/classes/Genesis/Framework/Menu.php"
       ],
-      "bytes": 25606,
+      "bytes": 25567,
       "lines": 634,
-      "sha256": "d888c8b77d37675693f34d9748a65e7afa60c8e194bbc88934f03476a72fc691",
+      "sha256": "3675a0e7f343be1d88c3d013f0447095c20599c748da77b3b5729297bcba03f5",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5725,9 +5733,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 24905,
+      "bytes": 24901,
       "lines": 648,
-      "sha256": "591c6c7f123a98ca6938b4b492ec474f3fc56fb3108662bfd3a1162502fbc1b6",
+      "sha256": "3fc336575fcca77a217d17862cffa3102f20cd2e5c4ae534ffcc8a71b0c9677f",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6366,9 +6374,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 15983,
+      "bytes": 15975,
       "lines": 399,
-      "sha256": "88616c0bcb0c9d19370031aabe227cece50bd20a0a4cb36dbd86c71e2862dbae",
+      "sha256": "3b2772dd617a603c383c22101adaaa730e06a3356d4292987c3aa77bfca4bc32",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -7787,9 +7795,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 621845,
-      "lines": 15204,
-      "sha256": "8d11e4d9dd874b1feb0187597e4cfdb2f0f404f6b143f4802a720682d777939c",
+      "bytes": 623204,
+      "lines": 15205,
+      "sha256": "0af7c30551b2ffb83496d95be92b3c3f8078b4eb1cc81bf8953e82608a4c0b77",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -8078,9 +8086,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 621946,
-      "lines": 15190,
-      "sha256": "ae8919d8bc389ba5b1852dcccbaa58b93f23f6b11908bd4fcad4d2fc1a583003",
+      "bytes": 623204,
+      "lines": 15205,
+      "sha256": "0af7c30551b2ffb83496d95be92b3c3f8078b4eb1cc81bf8953e82608a4c0b77",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -8157,6 +8165,10 @@
           "g-file-preview",
           "g-global-filter",
           "g-icon",
+          "g-icon-library",
+          "g-icon-modifiers",
+          "g-icon-popover",
+          "g-icon-style",
           "g-inherit",
           "g-inheritance-settings",
           "g-instancepicker",
@@ -8969,9 +8981,9 @@
       "consumers": [
         "themes/gryphon/common/particles/slideshow.html.twig"
       ],
-      "bytes": 3500,
+      "bytes": 3406,
       "lines": 92,
-      "sha256": "24752ef8f33aaf699ef2652e3c33f2c52a7acd355a413d31ede06ab28674cb58",
+      "sha256": "f745e16002fd58871b5f4bdc5839fa351e8e763b7b2a12e0ddaa7c6110753b7c",
       "signals": {
         "commonjs": false,
         "esModule": false,

@@ -3,12 +3,12 @@
     color: $showcase-text-color;
 
     #g-showcasemain, #g-showcaseleft2 {
-        > .g-grid {
+        > .row {
             padding: $section-padding 0;
         }
     }
 
-    .g-grid {
+    .row {
         z-index: 2;
         position: relative;
     }

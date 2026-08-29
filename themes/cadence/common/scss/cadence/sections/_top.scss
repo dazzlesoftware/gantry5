@@ -4,8 +4,8 @@
 }
 
 #g-container-top {
-    > .g-grid, .g-container > .g-grid {
-        > .g-block {
+    > .row, .container > .row {
+        > .col {
             &:first-child:not(.col-12) {
                 > section:first-child {
                     border-radius: 0.3rem 0 0 0;

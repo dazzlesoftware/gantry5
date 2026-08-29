@@ -19,11 +19,11 @@
   }
 
   // Container
-  .g-container {
+  .container {
     position: relative;
 
-    .g-block {
-      > .g-content {
+    .col {
+      > .genesis-content {
         margin: $content-margin 0;
         padding: 0.5rem 0;
         padding-bottom: 0;
@@ -31,8 +31,8 @@
       }
     }
 
-    .g-block:first-child {
-      > .g-content {
+    .col:first-child {
+      > .genesis-content {
         margin-left: $content-margin + $content-padding;
         padding-left: 0;
 
@@ -42,8 +42,8 @@
         }
       }
     }
-    .g-block:last-child {
-      > .g-content {
+    .col:last-child {
+      > .genesis-content {
         margin-right: $content-margin + $content-padding;
         padding-right: 0;
 

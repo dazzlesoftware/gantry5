@@ -46,11 +46,11 @@ $fixedside-position: 		left !default;
 
 
 	// Container
-	.g-container {
+	.container {
 		width: $fixedside-width !important;
 		padding: 0 !important;
 	}
-	.g-content {
+	.genesis-content {
 		margin: 0;
 		padding: 0;
 		text-align: center;
@@ -305,11 +305,11 @@ $fixedside-position: 		left !default;
 			margin: 0.5rem auto 1rem auto;
 		}
 		text-align: center;
-		.g-block {
+		.col {
 			flex: 0 0 auto;
 			width: 25% !important;
 		}
-		.g-content {
+		.genesis-content {
 			margin: 0 0.25rem;
 		}
 	}
@@ -324,7 +324,7 @@ $fixedside-position: 		left !default;
 			margin-right: ($fixedside-width - 7) !important;
 		}
 	}
-	.g-container {
+	.container {
 		.dir-ltr & {
 			padding-left: $fixedside-width !important;
 		}
@@ -342,7 +342,7 @@ $fixedside-position: 		left !default;
 // Demo Specific
 @media only screen and (min-width: $breakpoints-large-desktop-container + $fixedside-width) {
 	.g-leviathan-width-alt {
-		.g-container {
+		.container {
 			width: $breakpoints-large-desktop-container + $fixedside-width;
 		}
 	}

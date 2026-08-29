@@ -3,7 +3,7 @@
 	color: $footer-text-color;
 
 	// Container
-	.g-container {
+	.container {
 		border-bottom: 1px solid $rule-color;
 	}
 
@@ -87,7 +87,7 @@
 	// Sample Sitemap
 	.g-sample-sitemap {
 		@include breakpoint(mobile-only) {
-			.g-block {
+			.col {
 				flex: 0 0 auto;
 				width: 50% !important;
 			}

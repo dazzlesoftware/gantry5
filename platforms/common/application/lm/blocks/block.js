@@ -45,7 +45,7 @@ class Block extends Base {
     }
 
     layout() {
-        return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block">' +
+        return '<div class="col" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block">' +
             '<button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content">' +
                 '<span aria-hidden="true">+</span>' +
             '</button>' +

@@ -18,7 +18,7 @@
         padding: 0;
     }
 
-    .g-content {
+    .genesis-content {
         margin: 0 $content-margin;
         padding: ($content-padding - 0.3) 0.5rem;
     }
@@ -30,7 +30,7 @@
 }
 
 .g-default-navigation-menu {
-    .g-content {
+    .genesis-content {
         padding-left: 0;
         margin-left: 0;
         padding-right: 0;
@@ -69,7 +69,7 @@
         }
     }
     @include breakpoint(mobile-only) {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
@@ -217,7 +217,7 @@
 // Above Styling
 .fp-above {
     .fp-above-swipercarousel {
-        .g-content {
+        .genesis-content {
             height: 100%;
             padding-top: ($content-padding * 2.5);
 
@@ -256,14 +256,14 @@
 // Showcase Joomla/Wp/Grav Articles
 .fp-showcase-contentarray {
     .g-content-array {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
         .g-array-item {
             margin-bottom: $content-padding + 1.5;
         }
-        .g-grid {
+        .row {
             border: 0 none !important;
         }
         .g-array-item-title .g-item-title {
@@ -361,7 +361,7 @@
         font-size: $core-font-size + 0.15;
         color: transparentize($feature-text-color, 0.50);
     }
-    .g-content {
+    .genesis-content {
         padding-top: 0;
         margin-top: 0;
     }
@@ -678,7 +678,7 @@
     padding: $content-padding 0;
     // copyright menu
     .g-copyright-menu {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
             .g-simplemenu-particle {
@@ -707,7 +707,7 @@
         a {
             color: $copyright-text-color;
         }
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
@@ -717,7 +717,7 @@
     .g-copyright-text {
         font-size: $core-font-size - 0.1;
         font-weight: $font-weight-bold;
-        .g-content {
+        .genesis-content {
             margin: 0;
         }
     }

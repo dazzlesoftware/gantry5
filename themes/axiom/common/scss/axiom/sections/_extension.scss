@@ -3,7 +3,7 @@
     background: $extension-background;
     position: relative;
 
-    .equal-height .g-content {
+    .equal-height .genesis-content {
         flex-basis: 100%;
         width: auto; 
     }
@@ -17,11 +17,11 @@
 
     .g-content-array  {
         margin: $content-padding * 2;
-        .g-content {
+        .genesis-content {
             margin-bottom: 0;
             padding: 0 0 0.6rem;
         }
-        .g-grid {
+        .row {
             border-color: transparentize($border-color-light, 0.5);
             margin-bottom: 0.9rem;
         }
@@ -37,7 +37,7 @@
             opacity: 0.5;
             margin: $content-margin 0;
         }
-        .g-grid:first-child {
+        .row:first-child {
             .g-item-title {
                 font-weight: $font-weight-bold;
                 font-size: $core-font-size + 1;

@@ -196,7 +196,7 @@ content:
   custom-3240:
     title: 'Quick Menu'
     attributes:
-      html: "<div class=\"row g-grid g-sample-sitemap\">\n<div class=\"col g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">About</a></li>\n<li><a href=\"#\">Our Blog</a></li>\n<li><a href=\"#\">Our Team</li>\n<li><a href=\"#\">We're hiring !</a></li>\n</ul>\n</div>\n<div class=\"col g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">FAQ</a></li>\n<li><a href=\"#\">Support</a></li>\n<li><a href=\"#\">Showcase</li>\n<li><a href=\"#\">Contact Us</a></li>\n</ul>\n</div>\n<div class=\"col g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">Tumblr</a></li>\n<li><a href=\"#\">Facebook</a></li>\n<li><a href=\"#\">Twitter</li>\n<li><a href=\"#\">Pinterest</a></li>\n</ul>\n</div>\n</div>"
+      html: "<div class=\"row g-sample-sitemap\">\n<div class=\"col\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">About</a></li>\n<li><a href=\"#\">Our Blog</a></li>\n<li><a href=\"#\">Our Team</li>\n<li><a href=\"#\">We're hiring !</a></li>\n</ul>\n</div>\n<div class=\"col\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">FAQ</a></li>\n<li><a href=\"#\">Support</a></li>\n<li><a href=\"#\">Showcase</li>\n<li><a href=\"#\">Contact Us</a></li>\n</ul>\n</div>\n<div class=\"col\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">Tumblr</a></li>\n<li><a href=\"#\">Facebook</a></li>\n<li><a href=\"#\">Twitter</li>\n<li><a href=\"#\">Pinterest</a></li>\n</ul>\n</div>\n</div>"
   newsletter-1075:
     attributes:
       width: g-newsletter-fullwidth

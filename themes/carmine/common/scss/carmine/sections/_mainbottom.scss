@@ -1,7 +1,7 @@
 #g-mainbottom {
     color: $mainbottom-text-color;
 
-    > .g-grid {
+    > .row {
         background-color: fade-out($mainbottom-background, 0.30);
     }
 }

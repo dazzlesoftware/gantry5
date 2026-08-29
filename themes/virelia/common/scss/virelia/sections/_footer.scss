@@ -3,7 +3,7 @@
     background: $footer-background;
     @extend .section-paddings;
 
-    > .g-grid {
+    > .row {
         border-bottom: 1px solid $base-border-color;
     }
 

@@ -877,7 +877,7 @@ progress {
   width: 91.66666667%;
 }
 
-.col-12, .full-width .g-block, .full-width {
+.col-12, .full-width .col, .full-width {
   flex: 0 0 auto;
   width: 100%;
 }
@@ -4586,7 +4586,7 @@ fieldset:disabled input[type=submit] {
   width: 75% !important;
 }
 
-.w-100, .g-flushed .g-container, #g-mobilemenu-container .g-dropdown-column [class*=col-] {
+.w-100, .g-flushed .container, #g-mobilemenu-container .g-dropdown-column [class*=col-] {
   width: 100% !important;
 }
 
@@ -4638,7 +4638,7 @@ fieldset:disabled input[type=submit] {
   min-height: 100vh !important;
 }
 
-.flex-fill, .equal-height .g-content {
+.flex-fill, .equal-height .genesis-content {
   flex: 1 1 auto !important;
 }
 
@@ -4834,7 +4834,7 @@ fieldset:disabled input[type=submit] {
   order: 6 !important;
 }
 
-.m-0, .g-flushed .g-content, .nomarginall .g-content, .nomarginall {
+.m-0, .g-flushed .genesis-content, .nomarginall .genesis-content, .nomarginall {
   margin: 0 !important;
 }
 
@@ -4932,7 +4932,7 @@ fieldset:disabled input[type=submit] {
   margin-bottom: auto !important;
 }
 
-.mt-0, .nomargintop .g-content, .nomargintop {
+.mt-0, .nomargintop .genesis-content, .nomargintop {
   margin-top: 0 !important;
 }
 
@@ -4960,7 +4960,7 @@ fieldset:disabled input[type=submit] {
   margin-top: auto !important;
 }
 
-.me-0, .nomarginright .g-content, .nomarginright {
+.me-0, .nomarginright .genesis-content, .nomarginright {
   margin-right: 0 !important;
 }
 
@@ -4988,7 +4988,7 @@ fieldset:disabled input[type=submit] {
   margin-right: auto !important;
 }
 
-.mb-0, .nomarginbottom .g-content, .nomarginbottom {
+.mb-0, .nomarginbottom .genesis-content, .nomarginbottom {
   margin-bottom: 0 !important;
 }
 
@@ -5016,7 +5016,7 @@ fieldset:disabled input[type=submit] {
   margin-bottom: auto !important;
 }
 
-.ms-0, .nomarginleft .g-content, .nomarginleft {
+.ms-0, .nomarginleft .genesis-content, .nomarginleft {
   margin-left: 0 !important;
 }
 
@@ -5194,7 +5194,7 @@ fieldset:disabled input[type=submit] {
   margin-left: -3rem !important;
 }
 
-.p-0, .g-flushed .g-content, .g-flushed, .nopaddingall .g-content, .nopaddingall {
+.p-0, .g-flushed .genesis-content, .g-flushed, .nopaddingall .genesis-content, .nopaddingall {
   padding: 0 !important;
 }
 
@@ -5278,7 +5278,7 @@ fieldset:disabled input[type=submit] {
   padding-bottom: 3rem !important;
 }
 
-.pt-0, .nopaddingtop .g-content, .nopaddingtop {
+.pt-0, .nopaddingtop .genesis-content, .nopaddingtop {
   padding-top: 0 !important;
 }
 
@@ -5302,7 +5302,7 @@ fieldset:disabled input[type=submit] {
   padding-top: 3rem !important;
 }
 
-.pe-0, .nopaddingright .g-content, .nopaddingright {
+.pe-0, .nopaddingright .genesis-content, .nopaddingright {
   padding-right: 0 !important;
 }
 
@@ -5326,7 +5326,7 @@ fieldset:disabled input[type=submit] {
   padding-right: 3rem !important;
 }
 
-.pb-0, .nopaddingbottom .g-content, .nopaddingbottom {
+.pb-0, .nopaddingbottom .genesis-content, .nopaddingbottom {
   padding-bottom: 0 !important;
 }
 
@@ -5350,7 +5350,7 @@ fieldset:disabled input[type=submit] {
   padding-bottom: 3rem !important;
 }
 
-.ps-0, .nopaddingleft .g-content, .nopaddingleft {
+.ps-0, .nopaddingleft .genesis-content, .nopaddingleft {
   padding-left: 0 !important;
 }
 
@@ -8174,14 +8174,14 @@ html {
   overflow: hidden;
 }
 
-.g-container {
+.container {
   margin-right: auto;
   margin-left: auto;
   padding-right: 0;
   padding-left: 0;
 }
 
-.g-block > .g-container {
+.col > .container {
   width: auto;
 }
 
@@ -8475,6 +8475,10 @@ input[type=file] {
 
 textarea {
   resize: vertical;
+}
+
+.g-flushed .container {
+  max-width: none;
 }
 
 .g-offcanvas-toggle {
@@ -10077,7 +10081,7 @@ textarea {
     margin: 0 0 var(--gf-media-gap);
   }
 }
-.g-content[id^=teamcarousel-][id$=-particle] {
+.genesis-content[id^=teamcarousel-][id$=-particle] {
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
@@ -10290,7 +10294,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
-.g-content[id^=clients-][id$=-particle] {
+.genesis-content[id^=clients-][id$=-particle] {
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
@@ -10441,7 +10445,7 @@ textarea {
   background: var(--gclients-bullet-active);
 }
 
-.g-content[id^=gmap-][id$=-particle] {
+.genesis-content[id^=gmap-][id$=-particle] {
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;

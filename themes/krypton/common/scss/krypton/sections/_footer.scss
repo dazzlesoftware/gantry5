@@ -7,13 +7,13 @@
 	}
 
 	// Container
-	.g-container {
+	.container {
 		padding: 1.5rem 0;
 		@include breakpoint(mobile-only) {
 			text-align: center;
 		}		
 	}
-	.g-content {
+	.genesis-content {
 		padding: 0 $content-padding;
 		@include breakpoint(mobile-only) {
 			padding: $content-padding/2 $content-padding 0 $content-padding;
@@ -124,7 +124,7 @@
 	// Sample Sitemap
 	.g-sample-sitemap {
 		@include breakpoint(mobile-only) {
-			.g-block {
+			.col {
 				flex: 0 0 auto;
 				width: 50% !important;
 			}

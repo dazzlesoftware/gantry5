@@ -231,7 +231,7 @@ WARN;
             // stylesheet contains non-ASCII characters. The checksum must be
             // the first 36 bytes for production cache validation, so leaving
             // the BOM in place after the checksum makes it part of the first
-            // selector and corrupts that rule (for example, `.g-content`).
+            // selector and corrupts that rule (for example, `.genesis-content`).
             if (strncmp($css, "\xEF\xBB\xBF", 3) === 0) {
                 $css = substr($css, 3);
             }

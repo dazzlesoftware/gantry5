@@ -578,7 +578,7 @@ class FilePicker {
                         fill: { gradient: colors.gradient, color: false }
                     };
 
-                files.className = 'g-files g-block g-filemode-' + mode;
+                files.className = 'g-files col g-filemode-' + mode;
                 files.querySelectorAll('[data-file-uploadprogress]').forEach(function(progressElement) {
                     let config = clone(progressConf);
                     if (progressElement.closest('.g-file-error')) {

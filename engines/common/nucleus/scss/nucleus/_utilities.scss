@@ -11,63 +11,64 @@
 
 .nomarginall {
     @extend .m-0;
-    .g-content { @extend .m-0; }
+    .genesis-content { @extend .m-0; }
 }
 .nomargintop {
     @extend .mt-0;
-    .g-content { @extend .mt-0; }
+    .genesis-content { @extend .mt-0; }
 }
 .nomarginbottom {
     @extend .mb-0;
-    .g-content { @extend .mb-0; }
+    .genesis-content { @extend .mb-0; }
 }
 .nomarginleft {
     @extend .ms-0;
-    .g-content { @extend .ms-0; }
+    .genesis-content { @extend .ms-0; }
 }
 .nomarginright {
     @extend .me-0;
-    .g-content { @extend .me-0; }
+    .genesis-content { @extend .me-0; }
 }
 
 .nopaddingall {
     @extend .p-0;
-    .g-content { @extend .p-0; }
+    .genesis-content { @extend .p-0; }
 }
 .nopaddingtop {
     @extend .pt-0;
-    .g-content { @extend .pt-0; }
+    .genesis-content { @extend .pt-0; }
 }
 .nopaddingbottom {
     @extend .pb-0;
-    .g-content { @extend .pb-0; }
+    .genesis-content { @extend .pb-0; }
 }
 .nopaddingleft {
     @extend .ps-0;
-    .g-content { @extend .ps-0; }
+    .genesis-content { @extend .ps-0; }
 }
 .nopaddingright {
     @extend .pe-0;
-    .g-content { @extend .pe-0; }
+    .genesis-content { @extend .pe-0; }
 }
 
 .g-flushed {
     @extend .p-0;
 
-    .g-content {
+    .genesis-content {
         @extend .p-0;
         @extend .m-0;
     }
 
-    .g-container {
+    .container {
         @extend .w-100;
+        max-width: none;
     }
 }
 
 .full-width {
     @extend .col-12;
 
-    .g-block {
+    .col {
         @extend .col-12;
     }
 }
@@ -83,7 +84,7 @@
 .equal-height {
     @extend .d-flex;
 
-    .g-content {
+    .genesis-content {
         @extend .flex-fill;
     }
 }

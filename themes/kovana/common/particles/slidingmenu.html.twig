@@ -1,4 +1,4 @@
-<div class="slidingmenu slidingmenu-{{ particle.animation|default('sideslide') }} menu-wrap g-block" data-slidingmenu-animation="{{ particle.animation|default('sideslide') }}">
+<div class="slidingmenu slidingmenu-{{ particle.animation|default('sideslide') }} menu-wrap col" data-slidingmenu-animation="{{ particle.animation|default('sideslide') }}">
     <div class="slidingmenu-overlay"></div>
     <nav class="menu">
         {% try %}
@@ -96,10 +96,10 @@
 
         {% macro displayContainers(item, menu, context, dropdown_type) %}
             {% import _self as self %}
-            <div class="row g-grid">
+            <div class="row">
                 {% set groups = item.getDropdown() == 'standard' ? [item]: item.groups %}
                 {% for column, items in groups %}
-                    <div class="col g-block col-{{ item.columnSpan(column) }}">
+                    <div class="col col-{{ item.columnSpan(column) }}">
                         <ul class="g-sublevel">
                             <li class="g-level-{{ item.level }} g-menu-back">
                                 <a class="g-menu-item-container" href="#" data-g-menuparent="">

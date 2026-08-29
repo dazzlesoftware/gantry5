@@ -4,27 +4,27 @@
 {% set settings_key = genesis.platform.settings_key %}
 
 {% block content %}
-    <div id="genesis-container" data-genesis-container="" class="g-container">
+    <div id="genesis-container" data-genesis-container="" class="container">
         <div class="inner-container">
-            <div class="g-grid">
-                <div class="g-block main-block">
+            <div class="row">
+                <div class="col main-block">
                     <section id="main">
                         <div data-genesis-content="">
                             {% block genesis %}
-                                <div class="g-content" data-genesis-content="">
-                                    <div class="g-grid overview-header">
-                                        <div class="g-block">
+                                <div class="genesis-content" data-genesis-content="">
+                                    <div class="row overview-header">
+                                        <div class="col">
                                             <h2 class="theme-title"><i class="fa fa-fw fa-plug" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_AVAILABLE_THEMES'|trans }}</h2>
                                         </div>
                                     {% if settings_url %}
-                                        <div class="g-block">
+                                        <div class="col">
                                             <a class="button button-primary float-right" href="{{ settings_url }}" data-settings-key="{{ settings_key }}">
                                                 <i class="fa fa-cog" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_PLATFORM_SETTINGS'|trans }}
                                             </a>
                                         </div>
                                     {% endif %}
                                     </div>
-                                    <div class="themes cards-wrapper g-grid fixed-blocks">
+                                    <div class="themes cards-wrapper row fixed-blocks">
                                         {% if themes|length %}
                                         {% for id, theme in themes %}
                                             <div class="theme card">

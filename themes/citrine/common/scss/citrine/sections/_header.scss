@@ -49,7 +49,7 @@
     }
 
     #g-navigationleft, #g-navigationright, #g-navigationmain {
-        .g-content {
+        .genesis-content {
             padding-top: 4rem;
             padding-bottom: 0.5rem;
             @include breakpoint(tablet-range){
@@ -61,7 +61,7 @@
         }
     }
     #g-headerleft, #g-headerright, #g-headermain {
-        .g-content {
+        .genesis-content {
             margin-top: 5.1rem;
             @include breakpoint(tablet-range){
                 margin: $content-margin;
@@ -102,7 +102,7 @@
     }
 
     #g-navigationright {
-        .g-grid {
+        .row {
             z-index: 1;
             position: relative;
         }
@@ -120,7 +120,7 @@
         }
     }
     .box5 {
-        .g-content {
+        .genesis-content {
             background: none;
             box-shadow: none;
         }
@@ -243,7 +243,7 @@
 
     // Content Array Particle
     .g-content-array {
-        .g-content {
+        .genesis-content {
             margin: 0 !important;
         }
     }
@@ -379,7 +379,7 @@
     }
 }
 @if $header-background-image2 {
-    .g-wrapper {
+    .genesis-wrapper {
         position: relative;
     }
 }

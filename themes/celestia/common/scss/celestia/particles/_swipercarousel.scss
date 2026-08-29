@@ -376,7 +376,7 @@
     position: relative;
 }
 
-.g-container.carousel {
+.container.carousel {
     position: relative;
     width: $breakpoints-large-desktop-container;
     @include breakpoint(desktop-range) {

@@ -1,8 +1,10 @@
-.g-content {
+@import url(get-font-url("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif));
+@import url(get-font-url("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif));
+.genesis-content {
   margin: 0.625rem;
   padding: 0.938rem;
 }
-.g-flushed .g-content {
+.g-flushed .genesis-content {
   margin: 0;
   padding: 0;
 }
@@ -123,13 +125,25 @@ a:hover {
   color: #424753;
 }
 
+@font-face {
+  font-family: get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
+  font-style: normal;
+  font-weight: get-local-font-weights(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif));
+  src: url('get-local-font-url(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).woff2') format("woff2"), url('get-local-font-url(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).woff') format("woff"), url('get-local-font-url(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).ttf') format("truetype");
+}
+@font-face {
+  font-family: get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
+  font-style: normal;
+  font-weight: get-local-font-weights(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif));
+  src: url('get-local-font-url(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).woff2') format("woff2"), url('get-local-font-url(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).woff') format("woff"), url('get-local-font-url(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif), get-local-font-weights(get-local-fonts("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif))).ttf') format("truetype");
+}
 body {
-  font-family: Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 400;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 400;
 }
 
@@ -146,7 +160,7 @@ blockquote {
 }
 blockquote p {
   font-size: 1.1rem;
-  color: #6f788c;
+  color: rgb(111.1812080537, 119.6040268456, 139.8187919463);
 }
 blockquote cite {
   display: block;
@@ -164,7 +178,7 @@ samp {
 
 code {
   background: #f9f2f4;
-  color: #9c1d3d;
+  color: rgb(155.9957627119, 29.0042372881, 61.1440677966);
 }
 
 pre {
@@ -280,10 +294,10 @@ hr {
   padding-bottom: 6vw;
 }
 
-.flush > .g-container,
-.flush > .g-content,
-.g-flushed > .g-container,
-.g-flushed > .g-content {
+.flush > .container,
+.flush > .genesis-content,
+.g-flushed > .container,
+.g-flushed > .genesis-content {
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -292,59 +306,59 @@ hr {
   margin: -4rem 0;
 }
 
-.nomarginleft, .nomarginleft > .g-content {
+.nomarginleft, .nomarginleft > .genesis-content {
   margin-left: 0;
 }
 
-.nomarginright, .nomarginright > .g-content {
+.nomarginright, .nomarginright > .genesis-content {
   margin-right: 0;
 }
 
-.nomargintop, .nomargintop > .g-content {
+.nomargintop, .nomargintop > .genesis-content {
   margin-top: 0;
 }
 
-.nomarginbottom, .nomarginbottom > .g-content {
+.nomarginbottom, .nomarginbottom > .genesis-content {
   margin-bottom: 0;
 }
 
-.nomarginall, .nomarginall > .g-content {
+.nomarginall, .nomarginall > .genesis-content {
   margin: 0;
 }
 
-.margin2x > .g-content {
+.margin2x > .genesis-content {
   margin: 1.25rem;
 }
 
-.margin3x > .g-content {
+.margin3x > .genesis-content {
   margin: 1.875rem;
 }
 
-.nopaddingleft, .nopaddingleft > .g-content {
+.nopaddingleft, .nopaddingleft > .genesis-content {
   padding-left: 0;
 }
 
-.nopaddingright, .nopaddingright > .g-content {
+.nopaddingright, .nopaddingright > .genesis-content {
   padding-right: 0;
 }
 
-.nopaddingtop, .nopaddingtop > .g-content {
+.nopaddingtop, .nopaddingtop > .genesis-content {
   padding-top: 0;
 }
 
-.nopaddingbottom, .nopaddingbottom > .g-content {
+.nopaddingbottom, .nopaddingbottom > .genesis-content {
   padding-bottom: 0;
 }
 
-.nopaddingall, .nopaddingall > .g-content {
+.nopaddingall, .nopaddingall > .genesis-content {
   padding: 0;
 }
 
-.padding2x > .g-content {
+.padding2x > .genesis-content {
   padding: 1.876rem;
 }
 
-.padding3x > .g-content {
+.padding3x > .genesis-content {
   padding: 2.814rem;
 }
 
@@ -391,28 +405,28 @@ hr {
 }
 
 .box1.moduletable, .box1.widget, .box1.g-outer-box,
-.box1 > .g-content {
-  background: #409697;
+.box1 > .genesis-content {
+  background: rgb(64.3905511811, 149.9622047244, 150.8094488189);
 }
 .box1.moduletable, .box1.widget,
-.box1 > .g-content {
+.box1 > .genesis-content {
   color: #ffffff;
 }
 .box1 .button {
   color: #ffffff;
 }
 .box1 .button:hover {
-  background: #367d7e;
+  background: rgb(53.7086614173, 125.0846456693, 125.7913385827);
 }
 .box1 a {
-  color: #b8e0e1;
+  color: rgb(184.2204724409, 224.3818897638, 224.7795275591);
 }
 .box1 a:hover {
   color: #ffffff;
 }
 
 .box1.title1 .g-title {
-  background: #367d7e;
+  background: rgb(53.7086614173, 125.0846456693, 125.7913385827);
 }
 
 .title2 .g-title {
@@ -421,29 +435,29 @@ hr {
 }
 
 .box2.moduletable, .box2.widget, .box2.g-outer-box,
-.box2 > .g-content {
+.box2 > .genesis-content {
   background: #8f4dae;
 }
 .box2.moduletable, .box2.widget,
-.box2 > .g-content {
+.box2 > .genesis-content {
   color: #ffffff;
 }
 .box2 .button {
   color: #ffffff;
-  background: #723d8b;
+  background: rgb(113.9442231076, 61.3545816733, 138.6454183267);
 }
 .box2 .button:hover {
-  background: #633679;
+  background: rgb(99.4163346614, 53.53187251, 120.96812749);
 }
 .box2 a {
-  color: #381e44;
+  color: rgb(55.8326693227, 30.0637450199, 67.9362549801);
 }
 .box2 a:hover {
   color: #ffffff;
 }
 
 .box2.title2 .g-title {
-  background: #723d8b;
+  background: rgb(113.9442231076, 61.3545816733, 138.6454183267);
 }
 
 .title-gradient .g-title {
@@ -452,22 +466,22 @@ hr {
 }
 
 .box-gradient.moduletable, .box-gradient.widget, .box-gradient.g-outer-box,
-.box-gradient > .g-content {
+.box-gradient > .genesis-content {
   background: linear-gradient(45deg, #4db2b3, #8f4dae);
 }
 .box-gradient.moduletable, .box-gradient.widget,
-.box-gradient > .g-content {
+.box-gradient > .genesis-content {
   color: #ffffff;
 }
 .box-gradient .button {
   color: #ffffff;
-  background: #45a1a2;
+  background: rgb(68.968503937, 160.624015748, 161.531496063);
 }
 .box-gradient .button:hover {
-  background: #367d7e;
+  background: rgb(53.7086614173, 125.0846456693, 125.7913385827);
 }
 .box-gradient a {
-  color: #b8e0e1;
+  color: rgb(184.2204724409, 224.3818897638, 224.7795275591);
 }
 .box-gradient a:hover {
   color: #ffffff;
@@ -482,7 +496,7 @@ hr {
 }
 
 .box-outline.moduletable, .box-outline.widget, .box-outline.g-outer-box,
-.box-outline > .g-content {
+.box-outline > .genesis-content {
   border: 1px solid #4db2b3;
 }
 
@@ -491,19 +505,19 @@ hr {
   border-bottom: 1px solid #4db2b3;
 }
 
-.spaced .g-content {
+.spaced .genesis-content {
   margin: 1px;
 }
 
-.shadow .g-content {
+.shadow .genesis-content {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.disabled .g-content {
+.disabled .genesis-content {
   opacity: 0.4;
 }
 
-.rounded .g-content {
+.rounded .genesis-content {
   border-radius: 0.25rem;
   overflow: hidden;
 }
@@ -513,13 +527,13 @@ hr {
 .equal-height #g-sidebar {
   width: 100%;
 }
-.equal-height .g-content {
+.equal-height .genesis-content {
   width: auto;
 }
 
 .button {
   display: inline-block;
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 600;
   font-size: 0.8rem;
   line-height: 1.15;
@@ -536,7 +550,7 @@ hr {
   transition: all 0.2s;
 }
 .button:hover, .button:active, .button:focus {
-  background: #3d8f90;
+  background: rgb(61.3385826772, 142.8543307087, 143.6614173228);
   color: #ffffff;
   outline: 0;
 }
@@ -581,7 +595,7 @@ hr {
   transition: all 0.2s;
 }
 .button.button-2:hover, .button.button-2:active, .button.button-2:focus {
-  background: #723d8b;
+  background: rgb(113.9442231076, 61.3545816733, 138.6454183267);
   color: #ffffff;
 }
 .button.button-outline {
@@ -610,7 +624,7 @@ hr {
 }
 
 table {
-  border: 1px solid #dce2e9;
+  border: 1px solid rgb(220.3709677419, 225.8387096774, 233.1290322581);
 }
 
 th {
@@ -620,7 +634,7 @@ th {
 
 td {
   padding: 0.5rem;
-  border: 1px solid #dce2e9;
+  border: 1px solid rgb(220.3709677419, 225.8387096774, 233.1290322581);
 }
 
 textarea, select[multiple=multiple] {
@@ -678,23 +692,23 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-main-nav .g-standard .g-fade.g-dropdown {
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
-.g-main-nav .g-standard .g-zoom.g-active {
+.g-main-nav .g-standard .g-zoom.show {
   animation-duration: 0.3s;
   animation-name: g-dropdown-zoom;
 }
-.g-main-nav .g-standard .g-fade-in-up.g-active {
+.g-main-nav .g-standard .g-fade-in-up.show {
   animation-duration: 0.3s;
   animation-name: g-dropdown-fade-in-up;
 }
-.g-main-nav .g-standard .g-dropdown-bounce-in-left.g-active {
+.g-main-nav .g-standard .g-dropdown-bounce-in-left.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-left;
 }
-.g-main-nav .g-standard .g-dropdown-bounce-in-right.g-active {
+.g-main-nav .g-standard .g-dropdown-bounce-in-right.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-right;
 }
-.g-main-nav .g-standard .g-dropdown-bounce-in-down.g-active {
+.g-main-nav .g-standard .g-dropdown-bounce-in-down.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-down;
 }
@@ -704,19 +718,19 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-main-nav .g-fullwidth > .g-fade.g-dropdown {
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
-.g-main-nav .g-fullwidth > .g-zoom.g-active {
+.g-main-nav .g-fullwidth > .g-zoom.show {
   animation-duration: 0.3s;
   animation-name: g-dropdown-zoom;
 }
-.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-left.g-active {
+.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-left.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-left;
 }
-.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-right.g-active {
+.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-right.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-right;
 }
-.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-down.g-active {
+.g-main-nav .g-fullwidth > .g-dropdown-bounce-in-down.show {
   animation-duration: 0.5s;
   animation-name: g-dropdown-bounce-in-down;
 }
@@ -859,27 +873,27 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-home-particles.g-argon-style #g-intro {
   padding-bottom: 0;
 }
-.g-home-particles.g-argon-style #g-intro .g-content {
+.g-home-particles.g-argon-style #g-intro .genesis-content {
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.g-home-particles.g-argon-style #g-intro .g-content .fp-intro p {
+.g-home-particles.g-argon-style #g-intro .genesis-content .fp-intro p {
   margin-bottom: 2rem;
 }
 @media only all and (min-width: 48rem) {
-  .g-home-particles.g-argon-style .fp-features .g-grid {
+  .g-home-particles.g-argon-style .fp-features .row {
     row-gap: 4.5rem;
   }
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-features .g-block:not(:last-child) {
+  .g-home-particles.g-argon-style .fp-features .col:not(:last-child) {
     margin-bottom: 4.5rem;
   }
 }
-.g-home-particles.g-argon-style .fp-features .g-block .card .card-block {
+.g-home-particles.g-argon-style .fp-features .col .card .card-block {
   padding: 0 0.938rem;
 }
-.g-home-particles.g-argon-style .fp-features .g-block .card .card-block .fa {
+.g-home-particles.g-argon-style .fp-features .col .card .card-block .fa {
   width: 120px;
   height: 120px;
   font-size: 4.125rem;
@@ -888,19 +902,19 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   border: 8px solid rgba(224, 224, 229, 0.4);
   border-radius: 50%;
 }
-.g-home-particles.g-argon-style .fp-features .g-block .card .card-block .card-title {
+.g-home-particles.g-argon-style .fp-features .col .card .card-block .card-title {
   margin-bottom: 5px;
   font-size: 2.25rem;
   line-height: 1.66rem;
   font-weight: 600;
 }
-.g-home-particles.g-argon-style .fp-features .g-block .card .card-block .card-subtitle {
+.g-home-particles.g-argon-style .fp-features .col .card .card-block .card-subtitle {
   display: block;
   color: rgba(66, 71, 83, 0.5);
   margin-bottom: 1.5rem;
   font-weight: 200;
 }
-.g-home-particles.g-argon-style .fp-features .g-block .card .card-block .card-subtitle:after {
+.g-home-particles.g-argon-style .fp-features .col .card .card-block .card-subtitle:after {
   display: block;
   width: 80%;
   height: 1px;
@@ -927,31 +941,31 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   margin-bottom: 1.25rem;
   border: 4px solid #ffffff;
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .g-block p {
+.g-home-particles.g-argon-style .fp-multi-column-text .col p {
   padding: 0 5rem;
   border-left: 1px solid #e0e0e5;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .g-block p {
+  .g-home-particles.g-argon-style .fp-multi-column-text .col p {
     border: none;
   }
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .g-block:first-child p {
+.g-home-particles.g-argon-style .fp-multi-column-text .col:first-child p {
   padding-left: 0;
   padding-right: 5rem;
   border-left: none;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .g-block:first-child p {
+  .g-home-particles.g-argon-style .fp-multi-column-text .col:first-child p {
     padding: 0;
   }
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .g-block:last-child p {
+.g-home-particles.g-argon-style .fp-multi-column-text .col:last-child p {
   padding-right: 0;
   padding-left: 5rem;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .g-block:last-child p {
+  .g-home-particles.g-argon-style .fp-multi-column-text .col:last-child p {
     padding: 0;
   }
 }
@@ -1022,10 +1036,10 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   position: relative;
   z-index: 11;
 }
-#g-navigation .g-container {
+#g-navigation .container {
   position: relative;
 }
-#g-navigation .row.g-grid {
+#g-navigation .row.row {
   align-items: center;
 }
 #g-navigation .g-logo {
@@ -1036,7 +1050,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   fill: #ffffff;
 }
 @media only all and (max-width: 47.99rem) {
-  #g-navigation .g-social-header .g-content {
+  #g-navigation .g-social-header .genesis-content {
     margin-top: 0;
     padding: 0 0.938rem;
   }
@@ -1054,7 +1068,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   text-align: left;
 }
 #g-navigation .g-main-nav {
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 700;
   line-height: 1.5;
 }
@@ -1107,7 +1121,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   box-shadow: 0 2px 0 rgba(255, 255, 255, 0.2);
 }
 #g-navigation .g-main-nav .g-dropdown {
-  background: #36343e;
+  background: rgb(53.8524271845, 51.654368932, 61.545631068);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.25rem;
 }
@@ -1176,14 +1190,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   font-weight: bold;
   padding: 0.469rem 0;
   white-space: normal;
-}
-.g-main-nav .g-sublevel > li > .g-menu-item-container, .g-main-nav .g-toplevel > li > .g-menu-item-container {
   overflow-wrap: break-word;
-}
-.g-main-nav .g-sublevel > li > .g-menu-item-container, .g-main-nav .g-toplevel > li > .g-menu-item-container {
-  word-wrap: break-word;
-}
-.g-main-nav .g-sublevel > li > .g-menu-item-container, .g-main-nav .g-toplevel > li > .g-menu-item-container {
   word-break: break-all;
 }
 .g-main-nav .g-sublevel > li > .g-menu-item-container, .g-main-nav .g-toplevel > li > .g-menu-item-container {
@@ -1303,10 +1310,10 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   opacity: 0.7;
 }
 
-.g-preset-thumbnails .g-block {
+.g-preset-thumbnails .col {
   flex: 1 1 auto !important;
 }
-.g-preset-thumbnails .g-block > .g-content {
+.g-preset-thumbnails .col > .genesis-content {
   margin: 1rem 0;
   padding: 0 0.5rem !important;
 }
@@ -1413,7 +1420,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   z-index: 10;
 }
 #g-testimonials a {
-  color: #94d1d2;
+  color: rgb(148.4803149606, 208.9212598425, 209.5196850394);
 }
 #g-testimonials a:hover {
   color: inherit;
@@ -1483,7 +1490,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: #ffffff;
   padding: 3rem 0;
 }
-#g-footer .g-content {
+#g-footer .genesis-content {
   margin: 0.625rem 0;
 }
 #g-footer .g-logo {
@@ -1547,7 +1554,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: #eceeef;
 }
 #g-offcanvas a:hover {
-  color: #265a5a;
+  color: rgb(38.4488188976, 89.5452755906, 90.0511811024);
 }
 #g-offcanvas h1, #g-offcanvas h2, #g-offcanvas h3, #g-offcanvas h4, #g-offcanvas h5, #g-offcanvas h6, #g-offcanvas strong {
   color: #eceeef;
@@ -1557,10 +1564,10 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: #eceeef;
 }
 #g-offcanvas .button:hover {
-  background: #9b5db7;
+  background: rgb(154.5298804781, 93.1314741036, 183.3685258964);
 }
 #g-offcanvas .button:active {
-  background: #80459c;
+  background: rgb(128.4721115538, 69.1772908367, 156.3227091633);
 }
 #g-offcanvas hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -1578,10 +1585,12 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   height: 32px;
   top: 1.2rem;
   z-index: 100001;
-  display: none;
 }
 .g-offcanvas-open .g-offcanvas-toggle {
   color: rgba(255, 255, 255, 0.6);
+}
+.g-offcanvas-toggle {
+  display: none;
 }
 @media only all and (max-width: 48rem) {
   .g-offcanvas-toggle {
@@ -1616,20 +1625,22 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: #eceeef;
 }
 #g-offcanvas #g-mobilemenu-container ul > li:not(.g-menu-item-type-particle):not(.g-menu-item-type-module).active {
-  background: #409697;
+  background: rgb(64.3905511811, 149.9622047244, 150.8094488189);
 }
 #g-offcanvas #g-mobilemenu-container ul > li:not(.g-menu-item-type-particle):not(.g-menu-item-type-module):hover {
-  background: #45a1a2;
+  background: rgb(68.968503937, 160.624015748, 161.531496063);
 }
 #g-offcanvas #g-mobilemenu-container ul > li.g-menu-item-link-parent > .g-menu-item-container > .g-menu-parent-indicator {
-  border: 1px solid #62bbbc;
-  background: #46a4a5;
+  border: 1px solid rgb(98.4440944882, 187.2763779528, 188.1559055118);
+  background: rgb(70.494488189, 164.1779527559, 165.105511811);
+}
+#g-offcanvas #g-mobilemenu-container ul > li.g-menu-item-link-parent > .g-menu-item-container > .g-menu-parent-indicator:hover {
+  background: rgb(64.3905511811, 149.9622047244, 150.8094488189);
+}
+#g-offcanvas #g-mobilemenu-container ul > li.g-menu-item-link-parent > .g-menu-item-container > .g-menu-parent-indicator {
   border-radius: 0.25rem;
   margin: -0.3rem 0 -0.2rem 0.5rem;
   padding: 0.2rem;
-}
-#g-offcanvas #g-mobilemenu-container ul > li.g-menu-item-link-parent > .g-menu-item-container > .g-menu-parent-indicator:hover {
-  background: #409697;
 }
 #g-offcanvas #g-mobilemenu-container ul .g-dropdown-column {
   width: 17rem;
@@ -1649,11 +1660,11 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   .g-preset-thumbnails {
     text-align: center;
   }
-  .g-preset-thumbnails .g-block {
+  .g-preset-thumbnails .col {
     flex: 0 0 auto;
     width: 50% !important;
   }
-  .g-preset-thumbnails .g-content {
+  .g-preset-thumbnails .genesis-content {
     margin: 0;
   }
 }
@@ -1664,72 +1675,72 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
     color: #000 !important;
   }
 }
-.g-error #g-header .g-content {
+.g-error #g-header .genesis-content {
   padding: 3.5rem 0.938rem;
   text-align: center;
 }
-.g-error #g-header .g-content h2.g-title {
+.g-error #g-header .genesis-content h2.g-title {
   font-size: 3.5rem;
 }
-.g-error #g-header .g-content p {
+.g-error #g-header .genesis-content p {
   font-size: 1.5rem;
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
-  .g-error #g-header .g-content h2.g-title {
+  .g-error #g-header .genesis-content h2.g-title {
     font-size: 3rem;
   }
-  .g-error #g-header .g-content p {
+  .g-error #g-header .genesis-content p {
     font-size: 1rem;
   }
 }
 @media only all and (max-width: 47.99rem) {
-  .g-error #g-header .g-content {
+  .g-error #g-header .genesis-content {
     padding: 1rem 0.938rem;
   }
-  .g-error #g-header .g-content h2.g-title {
+  .g-error #g-header .genesis-content h2.g-title {
     font-size: 2rem;
   }
-  .g-error #g-header .g-content p {
+  .g-error #g-header .genesis-content p {
     font-size: 1rem;
   }
 }
 .g-error #g-mainbar {
   text-align: center;
 }
-.g-error #g-footer .g-content .g-totop {
+.g-error #g-footer .genesis-content .g-totop {
   text-align: center;
 }
 
-.g-offline #g-header .g-content {
+.g-offline #g-header .genesis-content {
   padding: 3.5rem 0.938rem;
   text-align: center;
 }
-.g-offline #g-header .g-content h2.g-title {
+.g-offline #g-header .genesis-content h2.g-title {
   font-size: 3.5rem;
 }
-.g-offline #g-header .g-content p {
+.g-offline #g-header .genesis-content p {
   font-size: 1.5rem;
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
-  .g-offline #g-header .g-content h2.g-title {
+  .g-offline #g-header .genesis-content h2.g-title {
     font-size: 3rem;
   }
-  .g-offline #g-header .g-content p {
+  .g-offline #g-header .genesis-content p {
     font-size: 1rem;
   }
 }
 @media only all and (max-width: 47.99rem) {
-  .g-offline #g-header .g-content {
+  .g-offline #g-header .genesis-content {
     padding: 1rem 0.938rem;
   }
-  .g-offline #g-header .g-content h2.g-title {
+  .g-offline #g-header .genesis-content h2.g-title {
     font-size: 2rem;
   }
-  .g-offline #g-header .g-content p {
+  .g-offline #g-header .genesis-content p {
     font-size: 1rem;
   }
 }
-.g-offline #g-footer .g-content .g-totop {
+.g-offline #g-footer .genesis-content .g-totop {
   text-align: center;
 }
 .g-offline #grav-login {
@@ -1756,7 +1767,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 
 .g-logo {
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 900;
   font-size: 1.35rem;
   vertical-align: middle;
@@ -1797,23 +1808,23 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   margin-left: -0.938rem;
   margin-right: -0.938rem;
 }
-.g-content-array .g-grid {
+.g-content-array .row {
   margin-bottom: 2.3445rem;
 }
-.g-content-array .g-grid:last-child {
+.g-content-array .row:last-child {
   margin-bottom: 0;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-content-array .g-grid:last-child .g-block:last-child .g-array-item {
+  .g-content-array .row:last-child .col:last-child .g-array-item {
     margin-bottom: 0;
   }
 }
 @media only all and (max-width: 47.99rem) {
-  .g-content-array .g-grid {
+  .g-content-array .row {
     margin-bottom: 0;
   }
 }
-.g-content-array .g-content {
+.g-content-array .genesis-content {
   margin: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -1952,45 +1963,6 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: inherit;
 }
 
-.ui-tabs {
-  position: relative;
-}
-.ui-tabs .ui-tabs-nav {
-  margin: 0;
-  display: flex;
-}
-@media only all and (max-width: 47.99rem) {
-  .ui-tabs .ui-tabs-nav {
-    flex-direction: column;
-  }
-}
-.ui-tabs .ui-tabs-nav li {
-  list-style: none;
-  float: left;
-  border-bottom-width: 0;
-  padding: 0;
-  outline: none;
-}
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-  cursor: text;
-}
-.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor {
-  cursor: text;
-}
-.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-  cursor: text;
-}
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-  text-decoration: none;
-}
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor:hover {
-  color: inherit;
-}
-
-.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-  cursor: pointer;
-}
-
 .g-contenttabs .g-contenttabs-tab-wrapper-container {
   display: flex;
   list-style: none;
@@ -2044,7 +2016,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content > * {
   flex-basis: 100%;
 }
-.g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content .g-grid {
+.g-contenttabs .g-contenttabs-content-wrapper-container .g-contenttabs-tab-wrapper-body .g-contenttabs-content .row {
   display: flex;
   flex-flow: row wrap;
 }
@@ -2062,13 +2034,27 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-swipercarousel {
   color: #eceeef;
 }
+.g-swipercarousel .swiper-wrapper,
+.g-swipercarousel .swiper-slide,
+.g-swipercarousel .g-swipercarousel-item,
+.g-swipercarousel .g-swipercarousel-item-wrapper {
+  height: clamp(34rem, 27vw, 64rem);
+}
 .g-swipercarousel .g-swipercarousel-item-wrapper,
 .g-swipercarousel .g-swipercarousel-item-img {
   position: relative;
 }
+.g-swipercarousel .g-swipercarousel-item-img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
 .g-swipercarousel .g-swipercarousel-item-img img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .g-swipercarousel .g-swipercarousel-item-img::after {
   position: absolute;
@@ -2128,7 +2114,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   }
 }
 .g-swipercarousel .g-swipercarousel-item-title {
-  font-family: Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-size: 3.5rem;
   line-height: 4rem;
   font-weight: 500;
@@ -2210,11 +2196,11 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   right: 3rem;
 }
 .g-swipercarousel .swiper-pagination {
-  bottom: 12%;
+  bottom: 1.25rem;
 }
 @media only all and (min-width: 60rem) and (max-width: 74.99rem) {
   .g-swipercarousel .swiper-pagination {
-    bottom: 5%;
+    bottom: 1.25rem;
   }
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
@@ -2228,8 +2214,8 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   }
 }
 .g-swipercarousel .swiper-pagination-bullet {
-  width: 15px;
-  height: 15px;
+  width: 0.625rem;
+  height: 0.625rem;
   margin: 0 0.3125rem !important;
   background: #424753;
   opacity: 0.75;
@@ -2238,6 +2224,22 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 .g-swipercarousel .swiper-pagination-bullet.swiper-pagination-bullet-active, .g-swipercarousel .swiper-pagination-bullet:hover {
   background: #ffffff;
   opacity: 1;
+}
+@media only all and (min-width: 48rem) and (max-width: 59.99rem) {
+  .g-swipercarousel .swiper-wrapper,
+  .g-swipercarousel .swiper-slide,
+  .g-swipercarousel .g-swipercarousel-item,
+  .g-swipercarousel .g-swipercarousel-item-wrapper {
+    height: 30rem;
+  }
+}
+@media only all and (max-width: 47.99rem) {
+  .g-swipercarousel .swiper-wrapper,
+  .g-swipercarousel .swiper-slide,
+  .g-swipercarousel .g-swipercarousel-item,
+  .g-swipercarousel .g-swipercarousel-item-wrapper {
+    height: 24rem;
+  }
 }
 .g-swipercarousel.has-color-overlay .swiper-slide:nth-child(even) .g-swipercarousel-item-img::after {
   background: linear-gradient(40deg, #4db2b3, #8f4dae);
@@ -2252,7 +2254,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 700;
 }
 @media only all and (max-width: 47.99rem) {
@@ -2277,7 +2279,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 
 .g-totop {
-  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: get-font-family("Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif);
   font-weight: 700;
   text-align: right;
 }
@@ -2478,68 +2480,41 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   text-align: center;
 }
 
-.g-container {
+.container {
   width: 75rem;
 }
 @media only all and (min-width: 60rem) and (max-width: 74.99rem) {
-  .g-container {
+  .container {
     width: 60rem;
   }
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
-  .g-container {
+  .container {
     width: 48rem;
   }
 }
 @media only all and (min-width: 30.01rem) and (max-width: 47.99rem) {
-  .g-container {
+  .container {
     width: 30rem;
   }
 }
 @media only all and (max-width: 30rem) {
-  .g-container {
+  .container {
     width: 100%;
   }
 }
-.g-container.g-flushed {
+.container.g-flushed {
   width: 100%;
 }
 
-@media only all and (max-width: 47.99rem) {
-  .g-block {
-    flex-grow: 0;
-    flex-basis: 100%;
-  }
-}
-
-@media only all and (max-width: 47.99rem) {
-  body [class*=size-] {
-    flex-grow: 0;
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-}
-
-@media only all and (max-width: 47.99rem) {
-  @supports not (flex-wrap: wrap) {
-    .g-grid {
-      display: block;
-      flex-wrap: inherit;
-    }
-    .g-block {
-      display: block;
-      flex: inherit;
-    }
-  }
-}
 .visible-large,
 .visible-desktop,
 .visible-tablet,
 .visible-phone,
-.g-block.visible-large,
-.g-block.visible-desktop,
-.g-block.visible-tablet,
-.g-block.visible-phone {
+.col.visible-large,
+.col.visible-desktop,
+.col.visible-tablet,
+.col.visible-phone {
   display: none !important;
 }
 
@@ -2547,7 +2522,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   .visible-phone {
     display: block !important;
   }
-  .g-block.visible-phone {
+  .col.visible-phone {
     display: block !important;
   }
 }
@@ -2555,7 +2530,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   .visible-tablet {
     display: block !important;
   }
-  .g-block.visible-tablet {
+  .col.visible-tablet {
     display: block !important;
   }
 }
@@ -2563,7 +2538,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   .visible-desktop {
     display: block !important;
   }
-  .g-block.visible-desktop {
+  .col.visible-desktop {
     display: block !important;
   }
 }
@@ -2571,13 +2546,13 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   .visible-large {
     display: block !important;
   }
-  .g-block.visible-large {
+  .col.visible-large {
     display: block !important;
   }
   .visible-desktop {
     display: block !important;
   }
-  .g-block.visible-desktop {
+  .col.visible-desktop {
     display: block !important;
   }
 }

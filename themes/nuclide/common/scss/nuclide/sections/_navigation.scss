@@ -14,10 +14,10 @@
     border-bottom: 5px solid fade-out($navigation-text-color, 0.75);
 
     // Container
-    .g-container {
+    .container {
     	position: relative;
     }
-    .g-block > .g-content {
+    .col > .genesis-content {
     	padding: 0 $content-padding;
     }
 

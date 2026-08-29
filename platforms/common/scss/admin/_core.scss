@@ -47,14 +47,14 @@ body.g-prime {
         color: $core-accent;
     }
 
-    .g-block {
+    .col {
         position: relative;
         @include breakpoint(mobile-only) {
             flex: 0 100%;
         }
     }
 
-    .g-content {
+    .genesis-content {
         margin: $content-margin;
         padding: $content-padding;
     }

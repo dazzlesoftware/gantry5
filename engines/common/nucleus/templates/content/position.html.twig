@@ -14,7 +14,7 @@
     {%- if html|trim %}
         {% if genesis.debug and segment.attributes.key %}<!-- START POSITION {{ segment.attributes.key }} -->{% endif %}
 
-        <div class="g-content{{ segment.classes ? ' ' ~ segment.classes|join(' ')|e }}">
+        <div class="genesis-content{{ segment.classes ? ' ' ~ segment.classes|join(' ')|e }}">
             {{ html|raw }}
         </div>
         {% if genesis.debug and segment.attributes.key %}<!-- END POSITION {{ segment.attributes.key }} -->{% endif %}

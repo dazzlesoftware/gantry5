@@ -59,7 +59,7 @@
 }
 
 .g-promo-2 {
-    .g-content {
+    .genesis-content {
         .g-simplecontent {
             padding: 0 8%;
             @include breakpoint(tablet-range) {
@@ -128,7 +128,7 @@
 .g-home-feature {
     @extend .section-paddings;
 
-    .g-grid {
+    .row {
         align-items: center;
     }
 

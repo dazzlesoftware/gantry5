@@ -52,8 +52,8 @@
         {% set accent = 'accent3' %}
     {% endif %}
 
-    <div class="col g-block g-blockcontent-subcontent-block {{ subcontent.class }} g-blockcontent-subcontent-block-{{ accent }}">
-        <div class="g-content g-blockcontent-subcontent-block-content">
+    <div class="col g-blockcontent-subcontent-block {{ subcontent.class }} g-blockcontent-subcontent-block-{{ accent }}">
+        <div class="genesis-content g-blockcontent-subcontent-block-content">
             {% if article_image %}
                 <a data-rel="lightcase" title="{{ article.title|e }}" href="{{ article_image}}">
                     <img src="{{ url(article_image) }}" class="g-blockcontent-subcontent-img" alt="{{ article.title|e }}"/>

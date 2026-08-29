@@ -5,8 +5,8 @@
     z-index: 101;
 
 
-	// g-container
-	> .g-container {
+	// container
+	> .container {
 		position: relative;
 		padding: 0.5rem 0;
 		@include breakpoint(mobile-only) {
@@ -14,8 +14,8 @@
 		}	
 	}
 
-	// g-content
-	.g-content {
+	// genesis-content
+	.genesis-content {
 		padding: 0;
 		@include breakpoint(mobile-only) {
 			margin: 0;

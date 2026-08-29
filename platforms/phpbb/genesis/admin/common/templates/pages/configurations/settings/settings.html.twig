@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="cards-wrapper g-grid">
+                        <div class="cards-wrapper row">
                             {% for id, particle in list %}
                                 {% if not particle.hidden %}
                                     {% set particle = genesis.particles.getBlueprintForm(id) %}

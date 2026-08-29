@@ -8,7 +8,7 @@
 			color: $accent-color-1;
 		}
 	}
-	.g-container {
+	.container {
 		border-top: 1px solid $rule-color;
 		@include breakpoint(small-mobile-range) {
 			text-align: center;

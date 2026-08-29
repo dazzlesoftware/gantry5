@@ -53,7 +53,7 @@ dom.ready(function() {
     };
 
     menumanager = new MenuManager('[data-mm-container]', {
-        delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
+        delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .col',
         droppables: '#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]',
         exclude: '[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, [data-mm-submenu-add], [data-mm-submenu-add] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *',
         resize_handles: '.submenu-column:not(:last-child)',

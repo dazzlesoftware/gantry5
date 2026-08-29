@@ -33,7 +33,7 @@
     {% endset %}
     {% set html = html|trim %}
 
-    {% set classes = ((not inContent ? 'g-content g-particle ' : 'g-particle ') ~ segment.classes|join(' '))|trim %}
+    {% set classes = ((not inContent ? 'genesis-content g-particle ' : 'g-particle ') ~ segment.classes|join(' '))|trim %}
     {%- if html -%}
             {% if genesis.debug %}<!-- START PARTICLE {{ id }} -->{% endif %}
 

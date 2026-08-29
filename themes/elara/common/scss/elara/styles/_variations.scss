@@ -1,18 +1,18 @@
 .flush {
-	> .g-content {
+	> .genesis-content {
 		margin: 0;
 		padding: 0;
 	}
 }
 
 .nopaddingall {
-	> .g-content {
+	> .genesis-content {
 		padding: 0;
 	}	
 }
 
 .nomarginall {
-	> .g-content {
+	> .genesis-content {
 		margin: 0;
 	}	
 }
@@ -37,7 +37,7 @@
 		background: $box1-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box1-background;
 		color: darken($box1-background, 35%);
 		a {
@@ -52,7 +52,7 @@
 		background: $box2-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box2-background;
 		color: darken($box2-background, 50%);
 	}
@@ -64,7 +64,7 @@
 		background: $box3-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box3-background;
 		color: $base-text-color;
 	}
@@ -76,7 +76,7 @@
 		background: $box4-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box4-background;
 		color: $base-text-color;
 	}
@@ -92,7 +92,7 @@
 		background: $box-grey-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-grey-background;
 	}
 	.button {
@@ -112,7 +112,7 @@
 		background: $box-pink-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-pink-background;
 	}
 	.button {
@@ -132,7 +132,7 @@
 		background: $box-red-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-red-background;
 	}
 	.button {
@@ -152,7 +152,7 @@
 		background: $box-purple-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-purple-background;
 	}
 	.button {
@@ -172,7 +172,7 @@
 		background: $box-blue-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-blue-background;
 	}
 	.button {
@@ -192,7 +192,7 @@
 		background: $box-orange-background;
 	}
   &.moduletable, &.widget,
-  > .g-content {
+  > .genesis-content {
 		background: $box-orange-background;
 	}
 	.button {
@@ -207,38 +207,38 @@
 }
 
 .shadow {
-	.g-content {
+	.genesis-content {
 		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	}
 }
 
 .shadow2 {
-	.g-content {
+	.genesis-content {
 		box-shadow: 0 0 4px rgba(0,0,0,0.15);
 	}
 }
 
 .disabled {
-	.g-content {
+	.genesis-content {
 		opacity: 0.4;
 	}
 }
 
 .square {
-	.g-content {
+	.genesis-content {
 		border-radius: none;
 	}
 }
 
 .rounded {
-	.g-content {
+	.genesis-content {
 		border-radius: $core-border-radius;
 		overflow: hidden;
 	}
 }
 
 .equal-height { 
-	.g-content { 
+	.genesis-content { 
 		flex-basis: 100%; 
 		width: auto; 
 	}

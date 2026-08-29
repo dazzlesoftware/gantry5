@@ -148,8 +148,8 @@
         }
 
         .g-dropdown-column {
-            > .g-grid {
-                > .g-block {
+            > .row {
+                > .col {
                     &.col-12 {
                         border-radius: 10px;
                     }
@@ -170,7 +170,7 @@
             }
         }
 
-        .g-block:not(.col-12) {
+        .col:not(.col-12) {
             &:first-child {
                 > .g-sublevel {
                     > li {
@@ -280,12 +280,12 @@
     margin-top: $content-margin;
     justify-content: center;
 
-    .g-content {
+    .genesis-content {
         padding: $content-padding - 1.5 !important;
         margin: 0;
     }
 
-    .g-block {
+    .col {
         width: 30% !important;
         flex: 1 1 auto !important;
     }

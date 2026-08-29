@@ -4,8 +4,11 @@
     margin-top: -142px;
     border-bottom: 5px solid $accent-color-1;
     // Container
-    .g-container {
+    > .container {
 	width: 100%;
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
     }
     // RokSprocket Features
 	.sprocket-features, .g-swipercarousel-feature-slider {

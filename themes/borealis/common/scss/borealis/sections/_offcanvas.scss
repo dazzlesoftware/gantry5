@@ -227,7 +227,7 @@
     @include breakpoint(mobile-only) {
         text-align: center;
 
-        .g-block {
+        .col {
             flex: 0 0 auto;
             width: 45% !important;
 
@@ -236,7 +236,7 @@
             }
         }
 
-        .g-content {
+        .genesis-content {
             margin-left: 5px;
         }
     }

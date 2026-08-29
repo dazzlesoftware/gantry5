@@ -1,4 +1,4 @@
-.g-container { 
+.container { 
     > #g-navigation {
         border-radius: 0.3rem 0.3rem 0 0;
     }    
@@ -10,7 +10,7 @@
     position: relative;
     z-index: 5;
 
-    .g-grid {
+    .row {
         align-items: center;
 
         // Main Navigation

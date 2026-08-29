@@ -56,7 +56,7 @@
                 }
 
                 // Compatibility for content saved before the Bootstrap grid migration.
-                .g-grid {
+                .row {
                     display: flex;
                     flex-flow: row wrap;
                 }

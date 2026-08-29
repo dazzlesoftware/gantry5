@@ -43,7 +43,7 @@ class Offcanvas {
 
         setTimeout(() => {
             const mobileContainer = this.offcanvas.querySelector('#g-mobilemenu-container');
-            const blocks = Array.from(this.offcanvas.querySelectorAll('.g-block'));
+            const blocks = Array.from(this.offcanvas.querySelectorAll('.col'));
             const mobileText = mobileContainer ? mobileContainer.textContent.length : 0;
             const shouldCollapse = blocks.length === 1
                 && mobileContainer
@@ -55,7 +55,7 @@ class Offcanvas {
             });
 
             if (mobileContainer) {
-                const block = mobileContainer.closest('.g-block');
+                const block = mobileContainer.closest('.col');
                 if (block) block.classList.toggle('hidden', !mobileText);
             }
         }, 0);

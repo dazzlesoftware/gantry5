@@ -1,6 +1,6 @@
 .g-offline {
     #g-container-header {
-        .g-content {
+        .genesis-content {
             padding: 1.5rem $content-padding;
 
             @include breakpoint(large-mobile-range) {
@@ -14,7 +14,7 @@
     }
     #g-container-copyright {
         @include breakpoint(mobile-only) {
-            .g-content {
+            .genesis-content {
                 text-align: center;
                 padding-bottom: 0;
             }

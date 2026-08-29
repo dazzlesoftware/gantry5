@@ -8,7 +8,7 @@ body {
 		margin: 0 0 15px 0;
 	}
 
-	.g-container {
+	.container {
 		@include breakpoint(large-mobile-range) {
 			width: $breakpoints-mobile-container;
 		}	

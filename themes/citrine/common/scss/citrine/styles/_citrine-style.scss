@@ -19,7 +19,7 @@
         .fp-showcase-tags {
             padding: $content-margin;
         }
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
         }
@@ -33,7 +33,7 @@
             border-radius: $border-radius 0 $border-radius $border-radius;
         }
 
-        .g-content {
+        .genesis-content {
             margin-left: 0;
             @include breakpoint(mobile-only) {
                 margin-left: $content-margin;
@@ -67,7 +67,7 @@
                 }
             }
         }
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
             padding-right: $content-padding;
@@ -108,7 +108,7 @@
     position: relative;
     z-index: 2;
     margin-top: -2rem;
-    .g-content {
+    .genesis-content {
         background: $white;
         box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
         border-radius: 0 0 $border-radius  $border-radius;

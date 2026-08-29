@@ -27,7 +27,7 @@
         pointer-events: none;
     }
 
-    .g-container {
+    .container {
         &:before {
             border-top: 1px solid $border-color-light;
             content: "";

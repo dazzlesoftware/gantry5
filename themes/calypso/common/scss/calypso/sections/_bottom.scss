@@ -3,7 +3,7 @@
 	color: $bottom-text-color;
 
 	// Container
-	.g-container {
+	.container {
 		padding: ($content-margin + $content-padding)*2 0;
         @include breakpoint(mobile-only) {
           padding-top: 2rem;
@@ -12,8 +12,8 @@
 	}
 
 	// Block
-	.g-block {
-		> .g-content {
+	.col {
+		> .genesis-content {
 			margin: 0 $content-margin;
 			padding: 0 $content-padding;
             font-size: $core-font-size - 0.125;

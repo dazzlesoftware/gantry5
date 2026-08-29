@@ -127,11 +127,11 @@
 // Preset Thumbnails
 .g-preset-thumbnails {
     margin-top: $content-margin;
-    .g-content {
+    .genesis-content {
         padding: $content-padding - 1.5 !important;
         margin: 0;
     }
-    .g-block {
+    .col {
         flex: 1 1 auto !important;
     }
 }

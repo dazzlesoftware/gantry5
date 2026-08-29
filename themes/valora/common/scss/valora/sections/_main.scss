@@ -3,11 +3,11 @@
     color: $base-text-color; 
 }
 
-.g-block.main {
+.col.main {
 	background: $white;
 }
 
-.g-block.sidebar {
+.col.sidebar {
 	background: darken($white, 6%);
 }
 
@@ -15,7 +15,7 @@
 	background: darken($white, 6%);
 	padding-top: 15px;
 
-	> .g-grid {
+	> .row {
 		padding: 0 15px;
 	}
 }

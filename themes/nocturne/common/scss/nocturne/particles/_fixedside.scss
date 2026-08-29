@@ -27,11 +27,11 @@ $fixedside-position: 		left !default;
 
 
 	// Container
-	.g-container {
+	.container {
 		width: $fixedside-width !important;
 		padding: 0 !important;
 	}
-	.g-content {
+	.genesis-content {
 		margin: 0;
 		padding: 0;
 		text-align: center;
@@ -71,7 +71,7 @@ $fixedside-position: 		left !default;
 only screen and (min-width: 1195px) and (max-width: 1300px),
 only screen and (min-width: 960px) and (max-width: 1070px),
 only screen and (min-width: 768px) and (max-width: 880px) {
-	.g-container {
+	.container {
 		padding-left: $fixedside-width + 0.2 !important;
 		padding-right: $fixedside-width + 0.2 !important;
 	}

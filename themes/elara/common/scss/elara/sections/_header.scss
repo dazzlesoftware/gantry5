@@ -5,7 +5,7 @@
 		@include breakpoint(mobile-only) {
 			text-align: center;
 		}	
-		.g-content {
+		.genesis-content {
 			@include breakpoint(mobile-only) {
 				margin: 0;
 				padding: 0;
@@ -25,8 +25,8 @@
 }
 
 #g-top-surround, #g-header-surround {
-    &.g-wrapper {
-        .g-container {
+    &.genesis-wrapper {
+        .container {
             background: inherit;
             color: inherit;
         }
@@ -34,9 +34,9 @@
 }   
 
 #g-top-surround {
-	> .g-grid {
-		> .g-block {
-			.g-container {
+	> .row {
+		> .col {
+			.container {
 				width: $breakpoints-large-desktop-container;
 				@include breakpoint(desktop-range) {
 					width: $breakpoints-desktop-container;

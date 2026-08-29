@@ -139,7 +139,7 @@ content:
   custom-9045:
     title: 'Introduction - Mission - Business'
     attributes:
-      html: "<div class=\"row g-grid center\">\n    <div class=\"col g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-01.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Introduction</h2>\n        </div>\n    </div>\n    <div class=\"col g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-02.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Mission</h2>\n        </div>\n    </div>\n    <div class=\"col g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-03.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Business</h2>\n        </div>\n    </div>\n</div>"
+      html: "<div class=\"row center\">\n    <div class=\"col\">\n        <div class=\"genesis-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-01.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Introduction</h2>\n        </div>\n    </div>\n    <div class=\"col\">\n        <div class=\"genesis-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-02.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Mission</h2>\n        </div>\n    </div>\n    <div class=\"col\">\n        <div class=\"genesis-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-03.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Business</h2>\n        </div>\n    </div>\n</div>"
     block:
       class: flush
       variations: box2
@@ -219,7 +219,7 @@ content:
   custom-6774:
     title: 'Sample Sitemap'
     attributes:
-      html: "<h2 class=\"g-title\">Sample Sitemap</h2>\n\n<div class=\"row g-grid\">\n\t<div class=\"col g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Home</a></li>\n\t\t\t<li><a href=\"#\">Features</a></li>\n\t\t\t<li><a href=\"#\">Typography</a></li>\n\t\t\t<li><a href=\"#\">Particles</a></li>\n\t\t\t<li><a href=\"#\">Variations</a></li>\n\t\t</ul>\t\t\n\t</div>\n\t<div class=\"col g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Buttons</a></li>\n\t\t\t<li><a href=\"#\">Pages</a></li>\n\t\t\t<li><a href=\"#\">Guide</a></li>\n\t\t\t<li><a href=\"#\">Support</a></li>\n\t\t\t<li><a href=\"#\">Download</a></li>\n\t\t</ul>\t\t\n\t</div>\t\n</div>"
+      html: "<h2 class=\"g-title\">Sample Sitemap</h2>\n\n<div class=\"row\">\n\t<div class=\"col\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Home</a></li>\n\t\t\t<li><a href=\"#\">Features</a></li>\n\t\t\t<li><a href=\"#\">Typography</a></li>\n\t\t\t<li><a href=\"#\">Particles</a></li>\n\t\t\t<li><a href=\"#\">Variations</a></li>\n\t\t</ul>\t\t\n\t</div>\n\t<div class=\"col\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Buttons</a></li>\n\t\t\t<li><a href=\"#\">Pages</a></li>\n\t\t\t<li><a href=\"#\">Guide</a></li>\n\t\t\t<li><a href=\"#\">Support</a></li>\n\t\t\t<li><a href=\"#\">Download</a></li>\n\t\t</ul>\t\t\n\t</div>\t\n</div>"
   copyright-4956:
     attributes:
       date:

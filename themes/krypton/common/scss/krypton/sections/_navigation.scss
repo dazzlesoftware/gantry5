@@ -13,10 +13,10 @@
     z-index: 10002;
 
     // Container
-    .g-container {
+    .container {
     	position: relative;
     }
-    .g-block > .g-content {
+    .col > .genesis-content {
     	padding: 0 $content-padding;
     }
 

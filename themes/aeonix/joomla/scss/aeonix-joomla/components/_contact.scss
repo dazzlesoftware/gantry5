@@ -35,8 +35,8 @@
 
 .contact-page {
   #g-showcase {
-    .g-block {
-      > .g-content {
+    .col {
+      > .genesis-content {
         margin-bottom: 0;
       }
     }
@@ -45,8 +45,8 @@
     background: #f2f2f2; 
   }
   #g-mainbody {
-    .g-block {
-      > .g-content {
+    .col {
+      > .genesis-content {
         margin-top: 0;
       }
     }

@@ -3,7 +3,7 @@
 	color: $header-text-color;
 
   // Container
-  .g-container {
+  .container {
     padding-top: 4rem;
     padding-bottom: 4rem;   
     @include breakpoint(small-mobile-range) {

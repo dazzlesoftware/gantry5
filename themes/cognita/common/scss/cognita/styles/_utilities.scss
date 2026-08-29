@@ -1,8 +1,8 @@
 .flush,
 .g-flushed {
     margin: 0 !important;
-    > .g-container,
-    > .g-content {
+    > .container,
+    > .genesis-content {
         margin: 0 !important;
         padding: 0 !important;
     }
@@ -11,8 +11,8 @@
 @include breakpoint(mobile-only) {
     .flush-mobile {
         margin: 0 !important;
-        > .g-container,
-        > .g-content {
+        > .container,
+        > .genesis-content {
             margin: 0 !important;
             padding: 0 !important;
         }
@@ -36,7 +36,7 @@ $css_size: "small", "med", "large";
 @each $prop in $css_properties {
     @each $dir in $css_directions {
         .no#{$prop}#{$dir} {
-            &, > .g-content {
+            &, > .genesis-content {
                 @if ($dir != "all") {
                     #{$prop}-#{$dir}: 0;
                 } @else {
@@ -47,7 +47,7 @@ $css_size: "small", "med", "large";
 
         @each $size in $css_size {
             .#{$size}#{$prop}#{$dir} {
-                &:not(.g-block), > .g-content {   
+                &:not(.col), > .genesis-content {   
                     @if ($size == "small") {
                         @if ($dir != "all") {
                             #{$prop}-#{$dir}: 0.25rem;
@@ -74,7 +74,7 @@ $css_size: "small", "med", "large";
 
     @each $multi in $css_multipliers {
         .#{$prop}#{$multi}x {
-            > .g-content {
+            > .genesis-content {
                 @if ($prop == "padding") {
                     #{$prop}: $content-padding * $multi;
                 } @else if ($prop == "margin") {
@@ -171,8 +171,8 @@ $css_size: "small", "med", "large";
         }
     }
 
-    .g-grid {
-        .g-block {
+    .row {
+        .col {
             position: relative;
             z-index: 0;
 
@@ -204,8 +204,8 @@ $css_size: "small", "med", "large";
             }
         }
 
-        .g-grid {
-            .g-block {
+        .row {
+            .col {
                 &:before {
                     left: 0;
                     right: -100%;
@@ -295,7 +295,7 @@ body.fullwidth {
 }
 
 .g-compact {
-    .g-container {
+    .container {
         padding: 0 !important;
     }
 }
@@ -311,11 +311,11 @@ body.fullwidth {
 
 .g-mobile-center-compact {
     @include breakpoint(mobile-only) {
-        .g-container {
+        .container {
             padding: $content-padding 0;
         }
 
-        .g-content {
+        .genesis-content {
             padding: 0 $content-padding;
             margin: $content-margin/2 $content-margin;
             text-align: center !important;

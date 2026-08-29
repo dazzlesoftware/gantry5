@@ -1,18 +1,18 @@
 .flush {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 		padding: 0 !important;
 	}
 }
 
 .nopaddingall {
-	> .g-content {
+	> .genesis-content {
 		padding: 0 !important;
 	}	
 }
 
 .nomarginall {
-	> .g-content {
+	> .genesis-content {
 		margin: 0 !important;
 	}	
 }
@@ -89,11 +89,11 @@
 .box1 {
   &.moduletable, &.widget,
 	&.g-outer-box,
-  > .g-content  {
+  > .genesis-content  {
 		background: darken($box1-background, 8%);
 	}
   &.moduletable, &.widget,
-  > .g-content  {
+  > .genesis-content  {
 		color: $white;
   }
 	.button {
@@ -134,11 +134,11 @@
 .box2 {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box2-background;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		color: $white;
 	}
 	.button {
@@ -179,11 +179,11 @@
 .box3 {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box3-background;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		color: $white;
 	}
 	.button {
@@ -221,11 +221,11 @@
 .box4 {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box4-background;
 	}
   &.moduletable, &.widget,
-	 > .g-content {
+	 > .genesis-content {
 		color: $base-text-color;
 	}
 	.button {
@@ -277,7 +277,7 @@
 .box-white {
   &.moduletable, &.widget,
   &.g-outer-box,
-  > .g-content {
+  > .genesis-content {
 	background: $box-white-background;
 }
 .button {
@@ -311,7 +311,7 @@ a {
 .box-grey {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-grey-background;
 	}
 	.button {
@@ -348,7 +348,7 @@ a {
 .box-pink {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-pink-background;
 	}
 	.button {
@@ -385,7 +385,7 @@ a {
 .box-red {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-red-background;
 	}
 	.button {
@@ -422,7 +422,7 @@ a {
 .box-purple {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-purple-background;
 	}
 	.button {
@@ -459,7 +459,7 @@ a {
 .box-blue {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-blue-background;
 	}
 	.button {
@@ -496,7 +496,7 @@ a {
 .box-orange {
   &.moduletable, &.widget,
 	&.g-outer-box,
-   > .g-content {
+   > .genesis-content {
 		background: $box-orange-background;
 	}
 	.button {
@@ -526,44 +526,44 @@ a {
 }
 
 .spaced {
-	.g-content {
+	.genesis-content {
 		margin: 1px;
 	}		
 }
 
 .bordered {
-	.g-content {
+	.genesis-content {
 		border: 1px solid $rule-color;
 		margin: 1px;
 	}	
 }
 
 .shadow {
-	.g-content {
+	.genesis-content {
 		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	}
 }
 
 .shadow2 {
-	.g-content {
+	.genesis-content {
 		box-shadow: 0 0 4px rgba(0,0,0,0.15);
 	}
 }
 
 .disabled {
-	.g-content {
+	.genesis-content {
 		opacity: 0.4;
 	}
 }
 
 .square {
-	.g-content {
+	.genesis-content {
 		border-radius: none;
 	}
 }
 
 .rounded {
-	.g-content {
+	.genesis-content {
 		border-radius: $core-border-radius;
 		overflow: hidden;
 	}
@@ -574,7 +574,7 @@ a {
 }
 
 .equal-height { 
-	.g-content { 
+	.genesis-content { 
 		flex-basis: 100%; 
 		width: auto; 
 	}

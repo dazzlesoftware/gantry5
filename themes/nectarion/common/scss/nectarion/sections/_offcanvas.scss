@@ -129,11 +129,11 @@
 	}
 	@include breakpoint(mobile-only) {
 		text-align: center;
-		.g-block {
+		.col {
 			flex: 0 0 auto;
 			width: 50% !important;
 		}
-		.g-content {
+		.genesis-content {
 			margin: 0;
 		}
 	}	

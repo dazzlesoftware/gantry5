@@ -49,8 +49,8 @@ class Menu {
 
         this._setBootstrapMode(menu, mobile);
 
-        const mainBlock = closest(this.mainContainer, ".g-block");
-        const mobileBlock = closest(this.mobileContainer, ".g-block");
+        const mainBlock = closest(this.mainContainer, ".col");
+        const mobileBlock = closest(this.mobileContainer, ".col");
 
         if (mobile) {
             if (mainBlock) mainBlock.classList.add("hidden");

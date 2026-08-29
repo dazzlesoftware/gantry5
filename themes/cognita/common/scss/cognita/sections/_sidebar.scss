@@ -14,15 +14,15 @@
             background: $sidebar-background;
         }
 
-        .g-grid {
-            .g-block {
+        .row {
+            .col {
                 &:before {
                     background: $sidebar-background;
                 }
             }
 
             &:not(:last-child) {
-                .g-block {
+                .col {
                     &:after {
                         position: absolute;
                         z-index: 1;

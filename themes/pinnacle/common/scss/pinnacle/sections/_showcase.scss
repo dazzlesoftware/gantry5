@@ -29,13 +29,13 @@
     }
 
     .fp-showcase-b {
-    	.g-grid {
+    	.row {
     		@include breakpoint(mobile-only) {
     			flex-flow: row nowrap;
     			margin: 0 1rem;
     		}
     	}
-    	.g-content {
+    	.genesis-content {
     		@include breakpoint(mobile-only) {
 	    		margin: 0;
 	    		padding: 0;

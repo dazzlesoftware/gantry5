@@ -6,7 +6,7 @@
         background-image: url($showcase-background-image);
         background-repeat: no-repeat;
         background-size: cover;
-        .g-grid {
+        .row {
             background-color: fade-out($showcase-background, 0.50);
         }
     } @else {
@@ -14,7 +14,7 @@
     }   
 
     .fp-showcase {
-        .g-content {
+        .genesis-content {
             margin: 0;
             padding: 0;
             height: 350px;

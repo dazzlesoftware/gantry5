@@ -7,7 +7,7 @@
     .inner-container,
     [data-genesis-content-wrapper],
     #g-main,
-    .g-content,
+    .genesis-content,
     .main-block,
     .sidebar-block {
         color: #d7e0e8;
@@ -15,7 +15,7 @@
     }
 
     #main-header,
-    #main-header .g-content,
+    #main-header .genesis-content,
     #navbar,
     .page-title {
         color: #e7edf2;
@@ -47,14 +47,14 @@
     .section-header,
     .g-lm-div-header { color: #dfe7ed !important; }
 
-    .lm-blocks .g-grid,
+    .lm-blocks .row,
     [data-lm-blocktype="grid"] {
         background: #111820 !important;
         border-color: #3b4a57 !important;
         box-shadow: none !important;
     }
 
-    .lm-blocks .g-grid > .g-block,
+    .lm-blocks .row > .col,
     .g-lm-div {
         background-color: #18222b !important;
         border-color: #435360 !important;
@@ -79,7 +79,7 @@
 
     .grid-row-title { color: #aebdc8; }
 
-    .g-grid > .g-block:not(:has(> [data-lm-id])) {
+    .row > .col:not(:has(> [data-lm-id])) {
         background: rgba(#17212a, 0.85) !important;
         border-color: #536675 !important;
 

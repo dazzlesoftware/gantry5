@@ -32,7 +32,7 @@
         }
 
         if (container.dataset.testimonialsliderMatchheight === 'enabled') {
-            let block = container.closest('.g-block');
+            let block = container.closest('.col');
             if (block) carousel.style.minHeight = block.getBoundingClientRect().height + 'px';
         }
         show(0);

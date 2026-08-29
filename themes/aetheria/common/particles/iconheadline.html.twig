@@ -5,11 +5,11 @@
     {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
 
 	<div class="g-iconheadline {{ particle.class|e }}">
-		<div class="row g-grid">
+		<div class="row">
 			<div class="g-listgrid {{ particle.cols|default('g-listgrid-3cols')|e }}">
 			{% for listgriditem in particle.listgriditems %}
-			<div class="col g-block g-listgrid-item {{ listgriditem.variation }}{{ listgriditem.class }}">
-				<div class="g-content">
+			<div class="col g-listgrid-item {{ listgriditem.variation }}{{ listgriditem.class }}">
+				<div class="genesis-content">
 					<div class="g-iconheadline-item">
 						<div class="g-iconheadline-icon">
 							<span class="{{ listgriditem.icon }}"></span>

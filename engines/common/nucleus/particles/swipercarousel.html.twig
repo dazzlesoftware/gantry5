@@ -9,6 +9,8 @@
     {% set paginationValue = particle.dots|default('0') ~ '' %}
     {% set navigationEnabled = navigationValue in ['enable', 'enabled', 'true', '1'] %}
     {% set paginationEnabled = paginationValue in ['enable', 'enabled', 'true', '1'] %}
+    {% set widthClass = particle.width|default('g-swipercarousel-fullwidth') %}
+    {% set autoHeight = particle.autoHeight|default(widthClass == 'g-swipercarousel-fullwidth' ? 'false' : 'true') %}
 
     {% if particle.footerShadow == 'enable' %}
         {% styles with { priority: -10 } %}
@@ -25,7 +27,7 @@
 
         <div
             id="g-swipercarousel-{{ id }}"
-            class="g-swipercarousel swiper {{ particle.width|default('g-swipercarousel-fullwidth')|e }} {% if particle.imageOverlay == 'enable' %}has-color-overlay{% endif %}"
+            class="g-swipercarousel swiper {{ widthClass|e }} {% if particle.imageOverlay == 'enable' %}has-color-overlay{% endif %}"
             data-g-swiper
             data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
             data-navigation="{{ particle.nav|default('disable')|e }}"
@@ -36,6 +38,7 @@
             data-pause-on-hover="{{ particle.pauseOnHover|default('enable')|e }}"
             data-speed="{{ particle.transitionSpeed|default(500)|e }}"
             data-effect="{{ particle.effect|default('slide')|e }}"
+            data-auto-height="{{ autoHeight|e }}"
             data-previous-label="Previous slide"
             data-next-label="Next slide"
         >
@@ -45,7 +48,12 @@
                         <div class="g-swipercarousel-item-wrapper">
                             {% if item.image %}
                                 <div class="g-swipercarousel-item-img">
-                                    <img src="{{ url(item.image)|e }}" alt="{{ item.title|striptags|e }}" loading="lazy" />
+                                    <img
+                                        src="{{ url(item.image)|e }}"
+                                        alt="{{ item.title|striptags|e }}"
+                                        loading="{{ loop.first ? 'eager' : 'lazy' }}"
+                                        {% if loop.first %}fetchpriority="high"{% endif %}
+                                    />
                                 </div>
                             {% endif %}
                             <div class="g-swipercarousel-item-content-container">

@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="cards-wrapper g-grid">
+                    <div class="cards-wrapper row">
                         {% for id, item in list %}
                             {% if not item.hidden %}
                                 {% set item = genesis.content.getBlueprintForm(group ~ '/' ~ id) %}

@@ -26,7 +26,7 @@
     font-weight: $font-weight-medium;
     margin-right: -1px;
 
-    .g-content {
+    .genesis-content {
         padding: 0;
         margin: $content-margin 0;
     }
@@ -138,11 +138,11 @@
     }
 }
 
-.g-block.navbar-icons {
+.col.navbar-icons {
     flex: 0 3%;
 }
 
-.g-block.navbar-closed {
+.col.navbar-closed {
     flex: 0;
 }
 
