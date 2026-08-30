@@ -139,7 +139,6 @@ structure:
       class: 'section-horizontal-paddings section-vertical-paddings'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   verticalmenu-8085:
     title: 'Vertical Menu'

@@ -1,6 +1,9 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {# Preserve existing outlines saved with Gantry's legacy one-third token. #}
+    {% set columns = particle.columns|default(4) == '33-3' ? 4 : particle.columns|default(4) %}
+
     {% if particle.title %}
         <h2 class="g-title">{{ particle.title|raw }}</h2>
     {% endif %}
@@ -9,7 +12,7 @@
         <div class="row">
             {% for item in particle.items %}
                 {% if not item.disabled %}
-                    <div class="col col-{{ particle.columns|default(4)|e }} {{ item.class|e }}">
+                    <div class="col col-12 col-md-{{ columns|e }} {{ item.class|e }}">
                         <div class="card">
                             <div class="card-block">
                                 {% if item.icon %}

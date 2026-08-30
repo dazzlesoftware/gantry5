@@ -168,7 +168,14 @@
 
         // Multi Column Text
         .fp-multi-column-text {
-            .col {
+            [class*="col-"] {
+                @include breakpoint(mobile-only) {
+                    // Also fixes existing saved outlines that still use col-6.
+                    flex: 0 0 100%;
+                    width: 100%;
+                    max-width: 100%;
+                }
+
                 p {
                     padding: 0 5rem;
                     border-left: 1px solid $base-border-color;

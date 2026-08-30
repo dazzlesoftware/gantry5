@@ -168,7 +168,6 @@ structure:
       extra: {  }
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   slideshow-4169:
     attributes:

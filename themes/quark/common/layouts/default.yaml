@@ -146,11 +146,9 @@ structure:
       variations: ''
   offcanvas:
     attributes:
-      position: g-offcanvas-left
+      position: offcanvas-start
       class: ''
       extra: {  }
-      swipe: '0'
-      css3animation: '1'
 content:
   logo-5679:
     attributes:

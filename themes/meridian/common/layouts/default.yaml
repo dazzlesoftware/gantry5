@@ -166,7 +166,6 @@ structure:
       class: section-horizontal-paddings
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   simplecontact-5085:
     title: 'Simple Contact'

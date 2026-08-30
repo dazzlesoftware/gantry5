@@ -125,7 +125,7 @@ content:
     title: 'Genesis Features'
     attributes:
       class: fp-features
-      columns: 33-3
+      columns: 4
       items:
         -
           title: Drupal
@@ -218,6 +218,6 @@ content:
   custom-6355:
     title: 'Develop CMS themes quickly'
     attributes:
-      html: "<div class=\"fp-multi-column-text\">\n    <h2 class=\"g-title\">Develop CMS themes quickly and efficiently</h2>\n    <div class=\"row\">\n        <div class=\"col col-6\">\n            <p>\n                Argon was crafted with love by the <a href=\"https://dazzlesoftware.org\">Dazzle Software</a> team to showcase the capabilities of the Genesis framework. Argon is open source and available for free under a dual license system (<a href=\"http://www.opensource.org/licenses/mit-license.php\">MIT</a> or <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GPL version 3 or later</a>). You do not have to keep the Genesis or Dazzle Software links and logos in the front end, however, you must ensure that all copyright notices in the code are retained.\n            </p>\n        </div>\n        <div class=\"col col-6\">\n            <p>\n                Documentation for Genesis is available on the <a href=\"https://codex.dazzlecms.org\">official Genesis website</a>. You can submit any issues or feature requests for Genesis through <a href=\"http://github.com/genesis/genesis\">GitHub</a>. A chat room has been set up using <a href=\"https://gitter.im/genesis/genesis\">Gitter</a> where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.\n            </p>\n        </div>\n    </div>\n</div>"
+      html: "<div class=\"fp-multi-column-text\">\n    <h2 class=\"g-title\">Develop CMS themes quickly and efficiently</h2>\n    <div class=\"row\">\n        <div class=\"col-12 col-md-6\">\n            <p>\n                Argon was crafted with love by the <a href=\"https://dazzlesoftware.org\">Dazzle Software</a> team to showcase the capabilities of the Genesis framework. Argon is open source and available for free under a dual license system (<a href=\"http://www.opensource.org/licenses/mit-license.php\">MIT</a> or <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GPL version 3 or later</a>). You do not have to keep the Genesis or Dazzle Software links and logos in the front end, however, you must ensure that all copyright notices in the code are retained.\n            </p>\n        </div>\n        <div class=\"col-12 col-md-6\">\n            <p>\n                Documentation for Genesis is available on the <a href=\"https://codex.dazzlecms.org\">official Genesis website</a>. You can submit any issues or feature requests for Genesis through <a href=\"http://github.com/genesis/genesis\">GitHub</a>. A chat room has been set up using <a href=\"https://gitter.im/genesis/genesis\">Gitter</a> where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.\n            </p>\n        </div>\n    </div>\n</div>"
     block:
       variations: title-center

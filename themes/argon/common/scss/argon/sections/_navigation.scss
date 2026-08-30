@@ -30,6 +30,10 @@
     // Social Particle
     .g-social-header {
         @include breakpoint(mobile-only) {
+            flex: 0 0 100%;
+            width: 100%;
+            max-width: 100%;
+
             .genesis-content {
                 margin-top: 0;
                 padding: 0 $content-padding;
@@ -44,9 +48,10 @@
         @include breakpoint(mobile-only) {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            text-align: center;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: right;
         }
 
         .rtl & {

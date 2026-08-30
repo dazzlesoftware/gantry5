@@ -33,6 +33,23 @@
 	&:hover {
 		background: darken($navigation-background, 8%);
 	}
+
+	@include breakpoint(mobile-only) {
+		// Center the brand while the hamburger occupies its own left-side lane.
+		.g-logo-block,
+		.g-logo {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		// The menu list is mounted into Bootstrap's offcanvas on mobile;
+		// hide the original desktop navigation wrapper so it cannot show
+		// behind the centered logo.
+		.g-main-nav,
+		.g-main-nav.hidden {
+			display: none !important;
+		}
+	}
 }
 
 #g-navigation {

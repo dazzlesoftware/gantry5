@@ -191,7 +191,7 @@ content:
   custom-4799:
     title: 'Off Canvas Toggle'
     attributes:
-      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-indent\"></i>\n</div>"
+      html: "<button type=\"button\" class=\"g-offcanvas-toggle\" data-bs-toggle=\"offcanvas\" data-bs-target=\"#g-offcanvas\" aria-controls=\"g-offcanvas\" aria-label=\"Open menu\">\n  <i class=\"fa fa-fw fa-indent\" aria-hidden=\"true\"></i>\n</button>"
   position-3954:
     title: 'Header A'
     attributes:
@@ -389,4 +389,4 @@ content:
   custom-3998:
     title: Offcanvas
     attributes:
-      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Pinnacle</h2>\n\n<p>Pinnacle is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/pinnacle\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"
+      html: "<button type=\"button\" class=\"g-offcanvas-toggle\" data-bs-dismiss=\"offcanvas\" aria-label=\"Close menu\">\n  <i class=\"fa fa-fw fa-remove\" aria-hidden=\"true\"></i>\n</button>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Pinnacle</h2>\n\n<p>Pinnacle is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/pinnacle\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

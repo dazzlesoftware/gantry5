@@ -124,7 +124,6 @@ structure:
         - children
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   logo-1837:
     inherit:

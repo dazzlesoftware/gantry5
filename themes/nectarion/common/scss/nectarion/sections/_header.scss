@@ -15,12 +15,18 @@
 	}
 
     // Container
-    .container {
-    	border-bottom: 2px solid $white;
+	.container {
+		border-bottom: 2px solid $white;
 		@include breakpoint(mobile-only) {
 			border-bottom: 0;
+
+			> .row > [class*="col-"] {
+				flex: 0 0 100%;
+				width: 100%;
+				max-width: 100%;
+			}
 		}    	
-    }	
+	}
 	// genesis-content
 	.genesis-content {
 		padding: 0;

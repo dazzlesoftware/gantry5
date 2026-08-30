@@ -150,7 +150,6 @@ structure:
       class: ''
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   shoppingcart-5200:
     title: 'Shopping Cart'

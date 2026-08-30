@@ -150,7 +150,6 @@ structure:
       class: 'section-horizontal-paddings'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   menu-2350:
     block:

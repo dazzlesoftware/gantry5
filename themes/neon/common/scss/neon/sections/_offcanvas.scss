@@ -88,17 +88,3 @@
 		color: #000 !important;
 	}
 }
-
-.g-offcanvas-open {
-    .g-offcanvas-left {
-        #g-page-surround {
-            left: $offcanvas-width;
-        }
-    }
-
-    .g-offcanvas-right {
-        #g-page-surround {
-            right: $offcanvas-width;
-        }
-    }
-}

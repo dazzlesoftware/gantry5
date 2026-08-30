@@ -68,38 +68,6 @@
     }
 }
 
-.g-offcanvas-open {
-    .g-nav-overlay {
-        z-index: 100000;
-    }
-
-    .g-offcanvas-left {
-        #g-page-surround {
-            left: $offcanvas-width;
-        }
-    }
-
-    .g-offcanvas-right {
-        #g-page-surround {
-            right: $offcanvas-width;
-        }
-    }
-
-    .dir-rtl {
-        &.g-offcanvas-left {
-            #g-offcanvas {
-                right: auto;
-            }
-        }
-
-        &.g-offcanvas-right {
-            #g-offcanvas {
-                left: auto;
-            }
-        }
-    }
-}
-
 // Mobile Menu
 #g-offcanvas {
     #g-mobilemenu-container {

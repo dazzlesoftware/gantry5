@@ -86,13 +86,13 @@
 	.g-infolist-link {
 		margin-top: 1rem;
 	}
-	.g-roksprocket-tabs-style-2 &, #mainbar-tabs & {
+	.g-roksprocket-tabs-style-2 &, .fp-mainbar-tab & {
 		margin: 1% 0 -9px 0;
 		@include breakpoint(mobile-only) {
 			margin-bottom: 0;
 		}
 	}
-	.g-roksprocket-headlines-style-2 &, #mainleft-headlines & {
+	.g-roksprocket-headlines-style-2 &, .fp-side-notes & {
 		display: block;
 	}
 	&.g-1cols {

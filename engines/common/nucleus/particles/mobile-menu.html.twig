@@ -1,10 +1,8 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-    {# Mount point inside the layout's Bootstrap Offcanvas. The responsive menu
-       controller moves the Menu particle's .g-toplevel element here below the
-       configured breakpoint and switches nested dropdowns to Bootstrap Collapse.
-       This remains a plain container because the surrounding layout segment owns
-       the single .offcanvas component, backdrop, focus trap, and close behavior. #}
+    {# Optional compatibility mount point for saved outlines. Bootstrap
+       Offcanvas owns the drawer; the shared layout supplies the same mount
+       automatically when this particle is disabled or absent. #}
     <div id="g-mobilemenu-container" class="g-mobilemenu" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
 {% endblock %}

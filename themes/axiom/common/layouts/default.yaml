@@ -146,7 +146,6 @@ structure:
       class: 'g-default-copyright'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   menu-2350:
     block:

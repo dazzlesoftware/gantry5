@@ -150,7 +150,6 @@ structure:
       class: 'g-default-copyright section-horizontal-paddings'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   menu-9498:
     block:

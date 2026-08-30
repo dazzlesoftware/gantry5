@@ -175,11 +175,9 @@ structure:
       variations: ''
   offcanvas:
     attributes:
-      position: g-offcanvas-left
+      position: offcanvas-start
       class: ''
       extra: {  }
-      swipe: '0'
-      css3animation: '1'
 content:
   position-position-3724:
     title: 'Utility A'

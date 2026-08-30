@@ -7,10 +7,10 @@
 	<div class="g-contentlist {{ particle.class|e }}">
 
 	    <div class="row">
-	        <div class="col col-4 g-contentlist-img" style="background-image: url({{ url(particle.image)|e }})">
+	        <div class="col col-12 col-md-4 g-contentlist-img" style="background-image: url({{ url(particle.image)|e }})">
 	            {% if particle.imagetag %}<div class="g-contentlist-img-tag">{{ particle.imagetag|e }}</div>{% endif %}
 	        </div>
-	        <div class="col col-8 g-contentlist-text">
+	        <div class="col col-12 col-md-8 g-contentlist-text">
 	            <div class="genesis-content">
 	                {% if particle.headline %}<h3 class="g-contentlist-headline">{{ particle.headline|raw }}</h3>{% endif %}
 	                {% if particle.subtitle %}<h5 class="g-contentlist-subtitle">{{ particle.subtitle|raw }}</h5>{% endif %}

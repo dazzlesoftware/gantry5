@@ -188,7 +188,6 @@ structure:
     attributes:
       class: overlay-light
       extra: {  }
-      swipe: '0'
 content:
   slider-2706:
     attributes:

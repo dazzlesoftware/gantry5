@@ -176,7 +176,6 @@ structure:
       class: ''
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   accordionmenu-7045:
     title: 'Accordion Menu'

@@ -148,7 +148,6 @@ structure:
       variations: section-horizontal-paddings
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   logo-2704:
     title: 'Logo / Image'

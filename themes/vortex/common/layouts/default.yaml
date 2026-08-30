@@ -150,7 +150,6 @@ structure:
       class: 'g-default-copyright section-horizontal-paddings'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   search-5987:
     attributes:

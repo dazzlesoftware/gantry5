@@ -95,17 +95,3 @@
 #g-mobilemenu-container {
 	margin: (-1 * ($content-padding + $content-margin));
 }
-
-.g-offcanvas-open {
-    .g-offcanvas-left {
-        #g-page-surround {
-            left: $offcanvas-width;
-        }
-    }
-
-    .g-offcanvas-right {
-        #g-page-surround {
-            right: $offcanvas-width;
-        }
-    }
-}

@@ -750,7 +750,7 @@ content:
       enabled: true
       class: fp-features
       title: Nectarion Test Item 1
-      columns: 33-3
+      columns: 4
       items:
       - title: Drupal
         description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content
@@ -783,7 +783,7 @@ content:
       enabled: true
       class: fp-features
       title: Nectarion Test Item 1
-      columns: 33-3
+      columns: 4
       items:
       - title: Drupal
         description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content
@@ -1983,7 +1983,7 @@ content:
       enabled: true
       class: fp-features
       title: Nectarion Test Item 1
-      columns: 33-3
+      columns: 4
       items:
       - title: Drupal
         description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content

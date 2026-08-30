@@ -1,4 +1,12 @@
 #g-footer {
+	@media #{$media} and (max-width: #{$breakpoints-mobile-menu-breakpoint - 0.062}) {
+		> .container > .row > [class*="col-"] {
+			flex: 0 0 100% !important;
+			width: 100% !important;
+			max-width: 100% !important;
+		}
+		.g-social ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+	}
 	background: $footer-background;
 	color: $footer-text-color;	
 	// Accent Color

@@ -172,7 +172,6 @@ structure:
       extra: {  }
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   logo-3453:
     title: 'Logo / Image'

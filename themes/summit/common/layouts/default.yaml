@@ -150,7 +150,6 @@ structure:
       class: 'section-horizontal-paddings section-vertical-paddings'
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   logo-5992:
     block:

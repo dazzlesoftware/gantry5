@@ -941,31 +941,38 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   margin-bottom: 1.25rem;
   border: 4px solid #ffffff;
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .col p {
+@media only all and (max-width: 47.99rem) {
+  .g-home-particles.g-argon-style .fp-multi-column-text [class*=col-] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.g-home-particles.g-argon-style .fp-multi-column-text [class*=col-] p {
   padding: 0 5rem;
   border-left: 1px solid #e0e0e5;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .col p {
+  .g-home-particles.g-argon-style .fp-multi-column-text [class*=col-] p {
     border: none;
   }
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .col:first-child p {
+.g-home-particles.g-argon-style .fp-multi-column-text [class*=col-]:first-child p {
   padding-left: 0;
   padding-right: 5rem;
   border-left: none;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .col:first-child p {
+  .g-home-particles.g-argon-style .fp-multi-column-text [class*=col-]:first-child p {
     padding: 0;
   }
 }
-.g-home-particles.g-argon-style .fp-multi-column-text .col:last-child p {
+.g-home-particles.g-argon-style .fp-multi-column-text [class*=col-]:last-child p {
   padding-right: 0;
   padding-left: 5rem;
 }
 @media only all and (max-width: 47.99rem) {
-  .g-home-particles.g-argon-style .fp-multi-column-text .col:last-child p {
+  .g-home-particles.g-argon-style .fp-multi-column-text [class*=col-]:last-child p {
     padding: 0;
   }
 }
@@ -1050,6 +1057,11 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   fill: #ffffff;
 }
 @media only all and (max-width: 47.99rem) {
+  #g-navigation .g-social-header {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
   #g-navigation .g-social-header .genesis-content {
     margin-top: 0;
     padding: 0 0.938rem;
@@ -1061,7 +1073,12 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 @media only all and (max-width: 47.99rem) {
   #g-navigation .g-social {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
   }
 }
 .rtl #g-navigation .g-social {
@@ -1490,8 +1507,24 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   color: #ffffff;
   padding: 3rem 0;
 }
+@media only all and (max-width: 47.99rem) {
+  #g-footer > .container > .row {
+    row-gap: 0.75rem;
+  }
+  #g-footer > .container > .row > [class*=col-] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+}
 #g-footer .genesis-content {
   margin: 0.625rem 0;
+}
+@media only all and (max-width: 47.99rem) {
+  #g-footer .genesis-content {
+    margin: 0;
+  }
 }
 #g-footer .g-logo {
   display: block;
@@ -1519,6 +1552,10 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 @media only all and (max-width: 47.99rem) {
   #g-footer .g-horizontalmenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     text-align: center;
   }
 }
@@ -1572,6 +1609,13 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 #g-offcanvas hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
+#g-offcanvas .offcanvas-header {
+  justify-content: flex-end;
+  padding-bottom: 0;
+}
+#g-offcanvas .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
 #g-offcanvas .g-offcanvas-toggle {
   color: #eceeef;
   left: 14rem;
@@ -1585,33 +1629,12 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   height: 32px;
   top: 1.2rem;
   z-index: 100001;
-}
-.g-offcanvas-open .g-offcanvas-toggle {
-  color: rgba(255, 255, 255, 0.6);
-}
-.g-offcanvas-toggle {
   display: none;
 }
 @media only all and (max-width: 48rem) {
   .g-offcanvas-toggle {
     display: block;
   }
-}
-
-.g-offcanvas-open .g-nav-overlay {
-  z-index: 100000;
-}
-.g-offcanvas-open .g-offcanvas-left #g-page-surround {
-  left: 17rem;
-}
-.g-offcanvas-open .g-offcanvas-right #g-page-surround {
-  right: 17rem;
-}
-.g-offcanvas-open .dir-rtl.g-offcanvas-left #g-offcanvas {
-  right: auto;
-}
-.g-offcanvas-open .dir-rtl.g-offcanvas-right #g-offcanvas {
-  left: auto;
 }
 
 #g-offcanvas #g-mobilemenu-container ul {
@@ -1857,8 +1880,10 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
   background: linear-gradient(45deg, #8f4dae, #4db2b3);
   color: #ffffff;
 }
-.g-contentcubes .cube-items-wrapper .cube-row.row.image-position-right {
-  flex-flow: row-reverse wrap;
+@media only all and (min-width: 48rem) {
+  .g-contentcubes .cube-items-wrapper .cube-row.row.image-position-right {
+    flex-flow: row-reverse wrap;
+  }
 }
 .g-contentcubes .cube-items-wrapper .cube-image-wrapper {
   position: relative;
@@ -1867,6 +1892,7 @@ input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, inp
 }
 .g-contentcubes .cube-items-wrapper .cube-image-wrapper img {
   display: block;
+  width: 100%;
   height: auto;
   transform: scale3d(1.8, 1.8, 1);
   transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);

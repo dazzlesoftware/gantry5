@@ -5,7 +5,7 @@
             color: $accent-color-1;
         }
     }
-	.fp-mainbar-tab, #mainbar-tabs {
+	.fp-mainbar-tab {
 		position: relative;
 		.g-title {
 			position: absolute;
@@ -22,7 +22,7 @@
 			}
 		}
 	}
-	.fp-mainright-tab, #mainright-tabs {
+	.fp-mainright-tab, .fp-promoted-news {
 		.g-small {
 			display: block;
 			margin: 0.75rem 0;
@@ -31,7 +31,7 @@
 			margin: 0.5rem 0;
 		}
 	}
-	.g-roksprocket-headlines-style-2, #mainleft-headlines {
+	.g-roksprocket-headlines-style-2, .fp-side-notes {
 		.g-infolist .g-infolist-item-title {
 			.g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
 				@include breakpoint(tablet-range) {
@@ -42,7 +42,7 @@
 	}
 }
 
-#mainbar-tabs {
+.fp-mainbar-tab {
     .g-contenttabs-container {
 	border: 1px solid rgba(136, 136, 136, 0.25);
 	overflow: hidden;
@@ -90,7 +90,7 @@
 	}
 }
 
-#mainright-tabs {
+.fp-promoted-news {
 	ul.g-contenttabs-tab-wrapper-container {
 		> li {
 			margin-right: 5px;
@@ -114,7 +114,7 @@
 	}
 }
 
-#mainleft-headlines {
+.fp-side-notes {
     // Make the complete black block the positioning context. This keeps the
     // stacked controls corner-to-corner at every viewport width.
     position: relative;
@@ -226,4 +226,30 @@
 		background: #fff !important;
 		color: #000 !important;
 	}
+}
+
+@media #{$media} and (max-width: #{$breakpoints-mobile-menu-breakpoint - 0.062}) {
+    .fp-home-content > .container > .row > [class*="col-"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .fp-mainbar-tab .g-infolist-item,
+    .fp-promoted-news .g-infolist-item {
+        display: block;
+    }
+    .fp-mainbar-tab .g-infolist-item-img,
+    .fp-promoted-news .g-infolist-item-img {
+        float: none;
+        width: 100% !important;
+        max-width: none;
+        min-height: 12rem;
+        margin: 0 0 1rem 0;
+    }
+    .fp-mainbar-tab .g-infolist-item-text,
+    .fp-promoted-news .g-infolist-item-text { width: 100%; padding: 0; }
+
+    .fp-side-notes,
+    .fp-promoted-news { flex: 0 0 100% !important; width: 100% !important; max-width: 100% !important; }
 }

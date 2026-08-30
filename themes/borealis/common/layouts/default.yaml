@@ -182,7 +182,6 @@ structure:
       boxed: ''
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   social-1063:
     block:

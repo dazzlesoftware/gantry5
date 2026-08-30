@@ -185,7 +185,6 @@ structure:
     attributes:
       class: overlay-light
       extra: {  }
-      swipe: '0'
 content:
   promo-6483:
     attributes:

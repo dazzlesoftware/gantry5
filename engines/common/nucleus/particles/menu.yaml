@@ -68,8 +68,8 @@ form:
     mobileTarget:
       type: input.checkbox
       label: Mobile Target
-      description: Check this field if you want this menu to become the target for Mobile Menu and to appear in Offcanvas
-      default: 0
+      description: Use this menu as the responsive navigation inside Bootstrap Offcanvas.
+      default: 1
 
     forceTarget:
       type: input.checkbox

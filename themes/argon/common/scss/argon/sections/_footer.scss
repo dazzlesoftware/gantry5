@@ -3,8 +3,25 @@
     color: $footer-text-color;
     padding: $section-padding 0;
 
+    @include breakpoint(mobile-only) {
+        > .container > .row {
+            row-gap: 0.75rem;
+
+            > [class*="col-"] {
+                flex: 0 0 100%;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
     .genesis-content {
         margin: $content-margin 0;
+
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
     }
 
     // Compact Argon identity for the narrow footer logo column.
@@ -37,6 +54,10 @@
         text-align: right;
 
         @include breakpoint(mobile-only) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 

@@ -130,7 +130,6 @@ structure:
         - children
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   simplecontent-8300:
     title: 'Coming Soon'

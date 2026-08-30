@@ -54,10 +54,6 @@
     top: 1.2rem;
 	z-index: 100001;
 
-    .g-offcanvas-open & {
-        color: fade-out($white, 0.4);
-    }
-
     @if $offcanvas-toggle-visibility == 1 {
         display: none;
         @media only all and (max-width: $breakpoints-mobile-menu-breakpoint) {
@@ -66,38 +62,6 @@
     } @else {
         display: block !important;
     }
-}
-
-.g-offcanvas-open {
-	.g-nav-overlay {
-		z-index: 100000;
-	}
-
-    .g-offcanvas-left {
-        #g-page-surround {
-            left: $offcanvas-width;
-        }
-    }
-
-    .g-offcanvas-right {
-        #g-page-surround {
-            right: $offcanvas-width;
-        }
-    }
-
-	.dir-rtl {
-	    &.g-offcanvas-left {
-	        #g-offcanvas {
-	            right : auto;
-	        }
-	    }
-
-	    &.g-offcanvas-right {
-	        #g-offcanvas {
-	            left : auto;
-	        }
-		}
-	}
 }
 
 // Mobile Menu

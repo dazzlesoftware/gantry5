@@ -83,6 +83,7 @@ structure:
   container-3489:
     attributes:
       boxed: ''
+      class: fp-home-content
   extension:
     type: section
     attributes:
@@ -482,7 +483,8 @@ content:
           title: Articles
     block:
       id: mainbar-tabs
-      class: nopaddingall
+      class: fp-mainbar-tab
+      variations: nopaddingall
   sidenotes-6037:
     title: SideNotes
     attributes:
@@ -521,6 +523,7 @@ content:
           note3link: '#'
     block:
       id: mainleft-headlines
+      class: fp-side-notes
       variations: 'box3 nopaddingall'
   contenttabs-3161:
     title: 'Content Tabs'
@@ -544,6 +547,7 @@ content:
           title: Rumors
     block:
       id: mainright-tabs
+      class: fp-promoted-news
       variations: nopaddingall
   promoimage-7909:
     title: 'Sidebar Image'

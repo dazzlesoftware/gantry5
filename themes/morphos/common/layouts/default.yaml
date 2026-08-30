@@ -152,7 +152,6 @@ structure:
       class: fp-copyright
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   menu-4196:
     block:

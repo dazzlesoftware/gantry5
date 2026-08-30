@@ -207,7 +207,6 @@ structure:
       boxed: ''
   offcanvas:
     attributes:
-      swipe: '0'
 content:
   menu-1228:
     block:

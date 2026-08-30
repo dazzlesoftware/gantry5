@@ -1,7 +1,8 @@
 {% do genesis.load('bootstrap.5') %}
 {% set attr_extra = segment.attributes.extra|attribute_array %}
-{% set position = segment.attributes.position|default('g-offcanvas-left') %}
-{% set bs_side = position == 'g-offcanvas-right' ? 'offcanvas-end' : 'offcanvas-start' %}
+{% set position = segment.attributes.position|default('offcanvas-start') %}
+{# Accept saved pre-Bootstrap values while emitting only Bootstrap classes. #}
+{% set bs_side = position in ['offcanvas-end', 'g-offcanvas-right'] ? 'offcanvas-end' : 'offcanvas-start' %}
 
 {% set offcanvas %}
     {% for child in segment.children %}
@@ -17,13 +18,16 @@
    full-viewport push-the-page panel — see BOOTSTRAP_MIGRATION_ROADMAP.md
    Stage 3 for context. Touch-swipe-to-open/close is not reimplemented;
    Bootstrap has no built-in equivalent. #}
-{%- if segment.attributes.sticky or offcanvas|trim -%}
-<div id="g-offcanvas" class="offcanvas {{ bs_side }}{{ segment.attributes.class ? ' ' ~ segment.attributes.class|e }}" tabindex="-1" aria-label="Offcanvas"{{- attr_extra|raw }}>
+<div id="g-offcanvas" class="offcanvas {{ bs_side }}{{ segment.attributes.class ? ' ' ~ segment.attributes.class|e }}" tabindex="-1" aria-label="Offcanvas" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"{{- attr_extra|raw }}>
     <div class="offcanvas-header">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
     </div>
     <div class="offcanvas-body">
         {{ offcanvas|raw -}}
+        {# Bootstrap owns the host. Avoid duplicating the compatibility mount
+           point rendered by older saved outlines. #}
+        {% if 'id="g-mobilemenu-container"' not in offcanvas and "id='g-mobilemenu-container'" not in offcanvas %}
+        <div id="g-mobilemenu-container" class="g-mobilemenu" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
+        {% endif %}
     </div>
 </div>
-{% endif %}

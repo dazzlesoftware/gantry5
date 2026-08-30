@@ -8,7 +8,9 @@
         .cube-row {
             &.row {
                 &.image-position-right {
-                    flex-flow: row-reverse wrap;
+                    @include breakpoint(no-mobile) {
+                        flex-flow: row-reverse wrap;
+                    }
                 }
             }
         }
@@ -21,6 +23,7 @@
 
             img {
                 display: block;
+                width: 100%;
                 height: auto;
 
                 transform: scale3d(1.8, 1.8, 1);
