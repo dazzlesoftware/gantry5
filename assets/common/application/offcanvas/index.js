@@ -43,12 +43,15 @@ class Offcanvas {
 
         setTimeout(() => {
             const mobileContainer = this.offcanvas.querySelector('#g-mobilemenu-container');
-            const blocks = Array.from(this.offcanvas.querySelectorAll('.col'));
-            const mobileText = mobileContainer ? mobileContainer.textContent.length : 0;
-            const shouldCollapse = blocks.length === 1
-                && mobileContainer
-                && !this.offcanvas.textContent.trim().length
-                && !blocks.some(block => block.querySelector('.g-menu-item'));
+            const mobileText = mobileContainer ? mobileContainer.textContent.trim().length : 0;
+            const body = this.offcanvas.querySelector('.offcanvas-body');
+            const hasMenu = Boolean(body && body.querySelector('.g-menu-item'));
+            const hasOtherContent = Boolean(body && Array.from(body.children).some(child =>
+                child !== mobileContainer
+                && !child.classList.contains('hidden')
+                && (child.textContent.trim().length || child.children.length)
+            ));
+            const shouldCollapse = !hasMenu && !hasOtherContent;
 
             togglers.forEach(toggler => {
                 toggler.classList.toggle('g-offcanvas-hide', Boolean(shouldCollapse));

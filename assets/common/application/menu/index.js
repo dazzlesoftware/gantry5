@@ -1,5 +1,3 @@
-const closest = (element, selector) => element instanceof Element ? element.closest(selector) : null;
-
 class Menu {
     constructor(options = {}) {
         this.selectors = {
@@ -11,13 +9,33 @@ class Menu {
         };
 
         this.mobileContainer = document.querySelector(this.selectors.mobileContainer);
-        this.mainContainer = document.querySelector(
-            `${this.selectors.mainContainer}${this.selectors.mobileTarget}`
-        ) || document.querySelector(this.selectors.mainContainer);
+        const menuCandidates = Array.from(document.querySelectorAll(this.selectors.mainContainer))
+            .filter(menu => !menu.closest('#g-offcanvas') && menu.querySelector(this.selectors.topLevel));
+        this.mainContainer = menuCandidates.find(menu => menu.matches(this.selectors.mobileTarget))
+            || menuCandidates[0]
+            || null;
 
-        if (!this.mobileContainer || !this.mainContainer) return;
+        if (!this.mainContainer) return;
 
-        const breakpoint = this.mobileContainer.getAttribute("data-g-menu-breakpoint") || "48rem";
+        if (!this.mobileContainer) {
+            const offcanvasBody = document.querySelector("#g-offcanvas .offcanvas-body");
+            if (!offcanvasBody) return;
+
+            const configuredBreakpoint = offcanvasBody.closest("#g-offcanvas")
+                ?.getAttribute("data-g-menu-breakpoint");
+
+            this.mobileContainer = document.createElement("div");
+            this.mobileContainer.id = this.selectors.mobileContainer.replace(/^#/, "");
+            this.mobileContainer.className = "g-mobilemenu";
+            if (configuredBreakpoint) {
+                this.mobileContainer.setAttribute("data-g-menu-breakpoint", configuredBreakpoint);
+            }
+            offcanvasBody.append(this.mobileContainer);
+        }
+
+        const breakpoint = this.mobileContainer.getAttribute("data-g-menu-breakpoint")
+            || document.querySelector("#g-offcanvas")?.getAttribute("data-g-menu-breakpoint");
+        if (!breakpoint) return;
         this.mediaQuery = window.matchMedia(
             `only all and (max-width: ${this._calculateBreakpoint(breakpoint)})`
         );
@@ -50,16 +68,13 @@ class Menu {
 
         this._setBootstrapMode(menu, mobile);
 
-        const mainBlock = closest(this.mainContainer, ".col");
-        const mobileBlock = closest(this.mobileContainer, ".col");
-
         if (mobile) {
-            if (mainBlock) mainBlock.classList.add("hidden");
-            if (mobileBlock) mobileBlock.classList.remove("hidden");
+            this.mainContainer.classList.add("hidden");
+            this.mobileContainer.classList.remove("hidden");
             this.mobileContainer.prepend(menu);
         } else {
-            if (mobileBlock) mobileBlock.classList.add("hidden");
-            if (mainBlock) mainBlock.classList.remove("hidden");
+            this.mobileContainer.classList.add("hidden");
+            this.mainContainer.classList.remove("hidden");
             this.mainContainer.prepend(menu);
         }
 
