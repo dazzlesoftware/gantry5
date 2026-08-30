@@ -45,6 +45,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="Genesis Neon">https://updates.dazzlecms.org/joomla/genesis/tmpl_neon.xml</server>
+        <server type="extension" priority="1" name="Genesis Neon">https://updates.dazzlecms.org/joomla/neon/tpl_neon.xml</server>
     </updateservers>
 </extension>

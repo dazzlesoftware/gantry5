@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Cadence Template">https://updates.dazzlecms.org/joomla/genesis/tpl_cadence.xml</server -->
+        <server type="extension" priority="1" name="Cadence Template">https://updates.dazzlecms.org/joomla/cadence/tpl_cadence.xml</server>
     </updateservers>
 </extension>

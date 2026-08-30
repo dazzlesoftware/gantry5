@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Relic Template">https://updates.dazzlecms.org/joomla/genesis/tpl_relic.xml</server -->
+        <server type="extension" priority="1" name="Relic Template">https://updates.dazzlecms.org/joomla/relic/tpl_relic.xml</server>
     </updateservers>
 </extension>

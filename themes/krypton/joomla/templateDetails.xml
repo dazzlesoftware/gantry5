@@ -98,6 +98,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Krypton Template">https://updates.dazzlecms.org/joomla/genesis/tpl_krypton.xml</server -->
+        <server type="extension" priority="1" name="Krypton Template">https://updates.dazzlecms.org/joomla/krypton/tpl_krypton.xml</server>
     </updateservers>
 </extension>

@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Lilium Template">https://updates.dazzlecms.org/joomla/genesis/tpl_lilium.xml</server -->
+        <server type="extension" priority="1" name="Lilium Template">https://updates.dazzlecms.org/joomla/lilium/tpl_lilium.xml</server>
     </updateservers>
 </extension>

@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Umber Template">https://updates.dazzlecms.org/joomla/genesis/tpl_umber.xml</server -->
+        <server type="extension" priority="1" name="Umber Template">https://updates.dazzlecms.org/joomla/umber/tpl_umber.xml</server>
     </updateservers>
 </extension>

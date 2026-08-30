@@ -16,7 +16,7 @@ details:
 
   updates:
     link: 'https://dazzlecms.org/downloads'
-    server: 'https://updates.dazzlecms.org/joomla/genesis/tmpl_neon.xml'
+    server: 'https://updates.dazzlecms.org/joomla/neon/tpl_neon.xml'
 
   copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv3 and later

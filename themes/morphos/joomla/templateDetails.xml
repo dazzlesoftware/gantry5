@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Morphos Template">https://updates.dazzlecms.org/joomla/genesis/tpl_morphos.xml</server -->
+        <server type="extension" priority="1" name="Morphos Template">https://updates.dazzlecms.org/joomla/morphos/tpl_morphos.xml</server>
     </updateservers>
 </extension>

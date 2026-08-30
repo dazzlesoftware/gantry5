@@ -98,6 +98,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Nuclide Template">https://updates.dazzlecms.org/joomla/genesis/tpl_nuclide.xml</server -->
+        <server type="extension" priority="1" name="Nuclide Template">https://updates.dazzlecms.org/joomla/nuclide/tpl_nuclide.xml</server>
     </updateservers>
 </extension>

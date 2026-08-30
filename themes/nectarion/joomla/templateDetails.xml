@@ -86,6 +86,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Nectarion Template">https://updates.dazzlecms.org/joomla/genesis/tpl_nectarion.xml</server -->
+        <server type="extension" priority="1" name="Nectarion Template">https://updates.dazzlecms.org/joomla/nectarion/tpl_nectarion.xml</server>
     </updateservers>
 </extension>

@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Summit Template">https://updates.dazzlecms.org/joomla/genesis/tpl_summit.xml</server -->
+        <server type="extension" priority="1" name="Summit Template">https://updates.dazzlecms.org/joomla/summit/tpl_summit.xml</server>
     </updateservers>
 </extension>

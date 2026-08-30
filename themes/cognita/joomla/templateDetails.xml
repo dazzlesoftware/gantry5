@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Cognita Template">https://updates.dazzlecms.org/joomla/genesis/tpl_cognita.xml</server -->
+        <server type="extension" priority="1" name="Cognita Template">https://updates.dazzlecms.org/joomla/cognita/tpl_cognita.xml</server>
     </updateservers>
 </extension>

@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Castora Template">https://updates.dazzlecms.org/joomla/genesis/tpl_castora.xml</server -->
+        <server type="extension" priority="1" name="Castora Template">https://updates.dazzlecms.org/joomla/castora/tpl_castora.xml</server>
     </updateservers>
 </extension>

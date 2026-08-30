@@ -59,6 +59,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Elara Template">https://updates.dazzlecms.org/joomla/genesis/tpl_elara.xml</server -->
+        <server type="extension" priority="1" name="Elara Template">https://updates.dazzlecms.org/joomla/elara/tpl_elara.xml</server>
     </updateservers>
 </extension>

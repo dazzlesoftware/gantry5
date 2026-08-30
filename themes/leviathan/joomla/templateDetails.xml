@@ -102,6 +102,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Leviathan Template">https://updates.dazzlecms.org/joomla/genesis/tpl_leviathan.xml</server -->
+        <server type="extension" priority="1" name="Leviathan Template">https://updates.dazzlecms.org/joomla/leviathan/tpl_leviathan.xml</server>
     </updateservers>
 </extension>

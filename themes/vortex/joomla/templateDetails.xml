@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Vortex Template">https://updates.dazzlecms.org/joomla/genesis/tpl_vortex.xml</server -->
+        <server type="extension" priority="1" name="Vortex Template">https://updates.dazzlecms.org/joomla/vortex/tpl_vortex.xml</server>
     </updateservers>
 </extension>

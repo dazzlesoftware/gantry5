@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Lucida Template">https://updates.dazzlecms.org/joomla/genesis/tpl_lucida.xml</server -->
+        <server type="extension" priority="1" name="Lucida Template">https://updates.dazzlecms.org/joomla/lucida/tpl_lucida.xml</server>
     </updateservers>
 </extension>

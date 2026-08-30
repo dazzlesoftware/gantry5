@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Meridian Template">https://updates.dazzlecms.org/joomla/genesis/tpl_meridian.xml</server -->
+        <server type="extension" priority="1" name="Meridian Template">https://updates.dazzlecms.org/joomla/meridian/tpl_meridian.xml</server>
     </updateservers>
 </extension>

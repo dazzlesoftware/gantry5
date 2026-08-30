@@ -98,6 +98,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Calypso Template">https://updates.dazzlecms.org/joomla/genesis/tpl_calypso.xml</server -->
+        <server type="extension" priority="1" name="Calypso Template">https://updates.dazzlecms.org/joomla/calypso/tpl_calypso.xml</server>
     </updateservers>
 </extension>
