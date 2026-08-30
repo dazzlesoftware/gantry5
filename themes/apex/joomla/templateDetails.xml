@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Apex Template">https://updates.dazzlecms.org/joomla/genesis/tpl_apex.xml</server -->
+        <server type="extension" priority="1" name="Apex Template">https://updates.dazzlecms.org/joomla/apex/tpl_apex.xml</server>
     </updateservers>
 </extension>

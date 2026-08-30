@@ -521,7 +521,7 @@ INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`,  `extra_qu
 INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALUES (LAST_INSERT_ID(),@package_id);
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`, `extra_query`) VALUES
-('Genesis','collection','http://updates.genesis.org/5.0/joomla/list.xml',1,'');
+('Genesis','collection','http://updates.dazzlecms.org/joomla/genesis/list.xml',1,'');
 INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALUES (LAST_INSERT_ID(),@package_id);
 
 EOS;

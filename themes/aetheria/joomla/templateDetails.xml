@@ -50,6 +50,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Aetheria Template">https://updates.dazzlecms.org/joomla/genesis/tpl_aetheria.xml</server -->
+        <server type="extension" priority="1" name="Aetheria Template">https://updates.dazzlecms.org/joomla/aetheria/tpl_aetheria.xml</server>
     </updateservers>
 </extension>

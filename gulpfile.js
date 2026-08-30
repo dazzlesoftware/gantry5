@@ -81,6 +81,10 @@ paths = {
             out: './platforms/wordpress/genesis/admin/css-compiled/wordpress-g-admin.css',
             load: './engines/common/nucleus/scss'
         },
+        { // WordPress admin sidebar icon
+            in: './assets/wordpress/scss/wordpress-admin-icon.scss',
+            out: './assets/wordpress/css/wordpress-admin-icon.css'
+        },
         { // admin - grav
             in: './platforms/grav/genesis/admin/scss/grav-admin.scss',
             out: './platforms/grav/genesis/admin/css-compiled/grav-g-admin.css',

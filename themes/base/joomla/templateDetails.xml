@@ -45,6 +45,6 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="Base Template">https://updates.dazzlecms.org/joomla/genesis/tpl_base.xml</server>
+        <server type="extension" priority="1" name="Base Template">https://updates.dazzlecms.org/joomla/base/tpl_base.xml</server>
     </updateservers>
 </extension>

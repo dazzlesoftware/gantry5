@@ -76,6 +76,23 @@ class Builder extends EventEmitter {
         delete this.map[id];
     }
 
+    clearChildren(root) {
+        root = root ? (root.nodeType ? root : root[0]) : null;
+        if (!root) { return this; }
+
+        // Remove the deepest objects first so no stale rows/grids remain in
+        // the map when a cloned section is replaced by inherited children.
+        Array.from(root.querySelectorAll('[data-lm-id]')).reverse().forEach(function(element) {
+            this.remove(element.getAttribute('data-lm-id'));
+        }, this);
+
+        Array.from(root.children).forEach(function(element) {
+            if (element.hasAttribute('data-lm-id')) { element.remove(); }
+        });
+
+        return this;
+    }
+
     get(block) {
         let id = typeof block === 'string' ? block : block.id;
         return Object.prototype.hasOwnProperty.call(this.map, id) ? this.map[id] : block;
@@ -88,9 +105,9 @@ class Builder extends EventEmitter {
         return this;
     }
 
-    normalizeGridColumns(root) {
+    normalizeGridColumns(root, fixedBlock) {
         root = root || document.querySelector('[data-lm-root]');
-        normalizeGridColumns(root, this.get.bind(this));
+        normalizeGridColumns(root, this.get.bind(this), fixedBlock);
         return this;
     }
 

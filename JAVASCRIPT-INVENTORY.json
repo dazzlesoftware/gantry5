@@ -45,7 +45,7 @@
     "varFiles": 18,
     "legacyBrowserApiFiles": 5,
     "inlineCodeGenerationFiles": 0,
-    "duplicateGroups": 1
+    "duplicateGroups": 0
   },
   "buildEntryPoints": [
     "assets/common/application/main.js",
@@ -57,15 +57,7 @@
     "assets/common/js/swiper.js",
     "platforms/common/js/main.js"
   ],
-  "duplicateGroups": [
-    {
-      "count": 2,
-      "paths": [
-        "platforms/common/js/main.js",
-        "platforms/phpbb/genesis/admin/common/js/main.js"
-      ]
-    }
-  ],
+  "duplicateGroups": [],
   "files": [
     {
       "path": "assets/common/application/main.js",
@@ -3178,7 +3170,7 @@
       "owner": "Genesis",
       "generatedFrom": "assets/common/application/swiper.js",
       "entryPoint": false,
-      "activeReferenceCount": 195,
+      "activeReferenceCount": 196,
       "consumers": [
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/particles/swipercarousel.html.twig",
@@ -3309,6 +3301,7 @@
         "themes/nectarion/common/particles/featuresslider.html.twig",
         "themes/nectarion/common/particles/headlines.html.twig",
         "themes/nectarion/common/particles/lists.html.twig",
+        "themes/nectarion/common/particles/sidenotes.html.twig",
         "themes/nectarion/common/particles/stripsslider.html.twig",
         "themes/nectarion/common/particles/swiper.html.twig",
         "themes/nocturne/common/particles/swiper.html.twig",
@@ -3934,9 +3927,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 10708,
-      "lines": 322,
-      "sha256": "ca3174d7cc8e37c56f4ac78b3c8b73e8ba0f86a7902c6702bc97abd0a1085207",
+      "bytes": 10897,
+      "lines": 326,
+      "sha256": "1f07e5e354d4e2bf1b608e623994aa28be180bc973f42ebb963d1b264c95f798",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4879,9 +4872,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 7945,
-      "lines": 230,
-      "sha256": "7e2a7403b992eac56f2d9e8f0d997f595cf23a60fe763faadefe71fa2e02dd02",
+      "bytes": 8601,
+      "lines": 247,
+      "sha256": "50f714c439aa941d9f0ff4aff68c58c173dfd66345fb21b2546d8e4e5c2df57d",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5003,9 +4996,9 @@
         "platforms/phpbb/genesis/admin/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 43633,
+      "bytes": 43580,
       "lines": 921,
-      "sha256": "566f414443937bfb2e3b16fe26234bce0c7e56ddad3b1e124087d0b8804640bc",
+      "sha256": "c1385c2f3e3dae76f06f1bddcd72a9ee7fbf9c7db98048543ad4270ee92f2dff",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5171,9 +5164,9 @@
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/common/js/main.js"
       ],
-      "bytes": 2002,
-      "lines": 50,
-      "sha256": "8a05875e6ca54e873a993d2d26be028c4f88b57da99acbb24f1c0e4af8fe174c",
+      "bytes": 3100,
+      "lines": 78,
+      "sha256": "0e965c2c698424691619e9fc8678032eb71adee9effd2f57add5db4959315fd4",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -7795,9 +7788,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 623204,
-      "lines": 15205,
-      "sha256": "0af7c30551b2ffb83496d95be92b3c3f8078b4eb1cc81bf8953e82608a4c0b77",
+      "bytes": 624722,
+      "lines": 15243,
+      "sha256": "fefc9395935ff3682ffd91f78a19c888de5d35a2487d3168bf67f5b46f2dab32",
       "signals": {
         "commonjs": false,
         "esModule": false,

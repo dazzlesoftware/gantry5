@@ -95,6 +95,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Atelier Template">https://updates.dazzlecms.org/joomla/genesis/tpl_atelier.xml</server -->
+        <server type="extension" priority="1" name="Atelier Template">https://updates.dazzlecms.org/joomla/atelier/tpl_atelier.xml</server>
     </updateservers>
 </extension>

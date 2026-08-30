@@ -336,7 +336,7 @@ msgid "GENESIS_PLATFORM_PLATFORM_SETTINGS"
 msgstr "Platform Settings"
 
 msgid "GENESIS_PLATFORM_FOOTER"
-msgstr "<a href=http://genesis.org>Genesis Administration</a> by <a href=https://dazzlesoftware.org>Dazzle Software</a>"
+msgstr "<a href=https://dazzlecms.org>Genesis Administration</a> by <a href=https://dazzlesoftware.org>Dazzle Software</a>"
 
 msgid "GENESIS_PLATFORM_BASE_OUTLINE"
 msgstr "Base Outline"

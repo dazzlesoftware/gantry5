@@ -96,6 +96,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Axiom Template">https://updates.dazzlecms.org/joomla/genesis/tpl_axiom.xml</server -->
+        <server type="extension" priority="1" name="Axiom Template">https://updates.dazzlecms.org/joomla/axiom/tpl_axiom.xml</server>
     </updateservers>
 </extension>

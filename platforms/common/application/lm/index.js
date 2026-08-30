@@ -543,7 +543,7 @@ ready(function() {
 
                                 block.setAttributes(response.body.data.block);
                                 block.applyColumnClasses();
-                                builder.normalizeGridColumns();
+                                builder.normalizeGridColumns(block.block[0].parentElement, block);
                             }
 
                             // particle inheritance
@@ -556,7 +556,7 @@ ready(function() {
                             }
 
                             if (response.body.data.children) {
-                                layoutmanager.clear(particle.block, { save: false, dropLastGrid: !!response.body.data.children.length, emptyInherits: true });
+                                builder.clearChildren(particle.block);
                                 builder.recursiveLoad(response.body.data.children, builder.insert, 0, particle.getId());
                             }
 

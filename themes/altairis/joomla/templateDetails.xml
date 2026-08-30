@@ -98,6 +98,6 @@
     </config>
 
     <updateservers>
-        <!-- server type="extension" priority="1" name="Altairis Template">https://updates.dazzlecms.org/joomla/genesis/tpl_altairis.xml</server -->
+        <server type="extension" priority="1" name="Altairis Template">https://updates.dazzlecms.org/joomla/altairis/tpl_altairis.xml</server>
     </updateservers>
 </extension>

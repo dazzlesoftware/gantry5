@@ -20,5 +20,5 @@
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.genesis.org/5.0/joomla/tmpl_Argon.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tmpl_argon.xml"/>
 </extensionset>
