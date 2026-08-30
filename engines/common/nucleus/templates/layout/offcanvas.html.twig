@@ -19,6 +19,9 @@
    Bootstrap has no built-in equivalent. #}
 {%- if segment.attributes.sticky or offcanvas|trim -%}
 <div id="g-offcanvas" class="offcanvas {{ bs_side }}{{ segment.attributes.class ? ' ' ~ segment.attributes.class|e }}" tabindex="-1" aria-label="Offcanvas"{{- attr_extra|raw }}>
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
+    </div>
     <div class="offcanvas-body">
         {{ offcanvas|raw -}}
     </div>

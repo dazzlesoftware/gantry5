@@ -30,6 +30,15 @@
 		border-bottom: 1px solid fade-out($white, 0.5);
 	}
 
+    .offcanvas-header {
+        justify-content: flex-end;
+        padding-bottom: 0;
+    }
+
+    .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
 	.g-offcanvas-toggle {
 		color: $offcanvas-text-color;
 		left: $offcanvas-width - 3rem;
@@ -178,4 +187,3 @@
         color: #000 !important;
     }
 }
-

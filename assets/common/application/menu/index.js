@@ -30,6 +30,7 @@ class Menu {
         }
 
         this._attachDesktopHover();
+        this._attachMobileNavigation();
         this._mount(this.mediaQuery.matches);
     }
 
@@ -89,6 +90,21 @@ class Menu {
                 const instance = toggle && DropdownApi && DropdownApi.getInstance(toggle);
                 if (instance) instance.hide();
             });
+        });
+    }
+
+    _attachMobileNavigation() {
+        this.mobileContainer.addEventListener("click", event => {
+            if (!this.mediaQuery.matches) return;
+
+            const link = event.target.closest("a.g-menu-item-container");
+            if (!link || !this.mobileContainer.contains(link)) return;
+
+            const OffcanvasApi = window.bootstrap && window.bootstrap.Offcanvas;
+            const offcanvas = this.mobileContainer.closest(".offcanvas");
+            if (OffcanvasApi && offcanvas) {
+                OffcanvasApi.getOrCreateInstance(offcanvas).hide();
+            }
         });
     }
 
